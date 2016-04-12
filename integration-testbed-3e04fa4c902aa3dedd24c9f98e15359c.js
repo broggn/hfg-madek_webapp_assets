@@ -80,7 +80,7 @@ module.exports = AppResource.extend({
 
 
 },{"./shared/app-resource.coffee":12}],5:[function(require,module,exports){
-var AppResource, BrowserFile, MetaData, Permissions, Person, ResourceMetaData, f, getRailsCSRFToken, xhr;
+var AppResource, BrowserFile, MetaData, Permissions, Person, ResourceMetaData, f, getRailsCSRFToken, runRequest, xhr;
 
 f = require('active-lodash');
 
@@ -113,6 +113,10 @@ module.exports = AppResource.extend({
       type: 'boolean',
       "default": false,
       required: true
+    },
+    favored: {
+      type: 'boolean',
+      "default": false
     },
     copyright_notice: ['string'],
     portrayed_object_date: ['string'],
@@ -155,6 +159,21 @@ module.exports = AppResource.extend({
       }
     }
   },
+  setFavoredStatus: function(action, callback) {
+    if (!f.include(['favor', 'disfavor'], action)) {
+      throw new Error('ArgumentError!');
+    }
+    this.set('favored', (action === 'favor' ? true : false));
+    return runRequest({
+      method: 'PATCH',
+      url: this.url + '/' + action
+    }, (function(_this) {
+      return function(err, res, data) {
+        _this.set('favored', data.isFavored);
+        return callback(err, res, data);
+      };
+    })(this));
+  },
   upload: function(callback) {
     var formData, req;
     if (!(this.uploading.file instanceof BrowserFile)) {
@@ -165,14 +184,10 @@ module.exports = AppResource.extend({
     this.merge('uploading', {
       started: (new Date()).getTime()
     });
-    req = xhr({
+    req = runRequest({
       method: 'POST',
       url: '/entries/',
-      body: formData,
-      headers: {
-        'Accept': 'application/json',
-        'X-CSRF-Token': getRailsCSRFToken()
-      }
+      body: formData
     }, (function(_this) {
       return function(err, res) {
         var attrs;
@@ -208,6 +223,26 @@ module.exports = AppResource.extend({
     }
   }
 });
+
+runRequest = function(req, callback) {
+  return xhr({
+    method: req.method,
+    url: req.url,
+    body: req.body,
+    headers: {
+      'Accept': 'application/json',
+      'X-CSRF-Token': getRailsCSRFToken()
+    }
+  }, function(err, res, body) {
+    var data;
+    data = ((function() {
+      try {
+        return JSON.parse(body);
+      } catch (undefined) {}
+    })()) || body;
+    return callback(err, res, data);
+  });
+};
 
 
 },{"../lib/rails-csrf-token.coffee":2,"./media-entry/permissions.coffee":6,"./meta-data.coffee":7,"./person.coffee":10,"./shared/app-resource.coffee":12,"./shared/resource-meta-data.coffee":14,"active-lodash":19,"global/window":43,"xhr":155}],6:[function(require,module,exports){

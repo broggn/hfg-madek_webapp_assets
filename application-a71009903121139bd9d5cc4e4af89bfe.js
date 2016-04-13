@@ -920,6 +920,172 @@ Button = require('./ui-components/Button.cjsx');
 Modal = require('./ui-components/Modal.cjsx');
 
 module.exports = React.createClass({
+  displayName: 'CollectionResourceSelection',
+  propTypes: {
+    type: React.PropTypes.oneOf(['checkbox', 'radio'])
+  },
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  render: function(arg) {
+    var authToken, get, ref, type;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, type = ref.type;
+    return React.createElement(Modal, {
+      "widthInPixel": '800'
+    }, React.createElement(RailsForm, {
+      "name": 'resource_meta_data',
+      "action": get.submit_url,
+      "method": 'put',
+      "authToken": authToken
+    }, React.createElement("div", {
+      "className": 'ui-modal-head'
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": 'true',
+      "className": 'ui-modal-close',
+      "data-dismiss": 'modal',
+      "title": 'Close',
+      "type": 'button'
+    }, React.createElement("i", {
+      "className": 'icon-close'
+    })), React.createElement("h3", {
+      "className": 'title-l'
+    }, get.i18n.title)), React.createElement("div", {
+      "className": 'ui-modal-body'
+    }, React.createElement("div", {
+      "className": 'ui-resources-table'
+    }, React.createElement("div", {
+      "className": 'ui-resources-table'
+    }, React.createElement("table", {
+      "className": 'block'
+    }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("td", {
+      "className": 'ui-resources-table-selection'
+    }, get.i18n.h_selection), React.createElement("td", {
+      "title": 'Titel'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_title)), React.createElement("td", {
+      "title": 'Untertitel'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_subtitle)), React.createElement("td", {
+      "title": 'Autor/in'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_author)), React.createElement("td", {
+      "title": 'Datierung'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_date)), React.createElement("td", {
+      "title": 'Schlagworte'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_keywords)), React.createElement("td", {
+      "title": 'Rechteinhaber'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_responsible)))), React.createElement("tbody", null, f.map(get.child_presenters.resources, function(resource) {
+      var checked;
+      checked = get.uuid_to_checked_hash[resource.uuid];
+      return React.createElement("tr", {
+        "key": resource.uuid
+      }, React.createElement("td", {
+        "className": 'ui-resources-table-selection'
+      }, (type === 'checkbox' ? React.createElement("label", null, React.createElement("input", {
+        "type": 'hidden',
+        "name": 'resource_selections[][id]',
+        "value": resource.uuid
+      }), React.createElement("input", {
+        "type": 'hidden',
+        "name": 'resource_selections[][type]',
+        "value": resource.type
+      }), React.createElement("input", {
+        "className": 'ui-set-list-input',
+        "type": 'checkbox',
+        "name": 'resource_selections[][selected]',
+        "value": 'true',
+        "defaultChecked": checked
+      }), React.createElement("img", {
+        "className": 'ui-thumbnail micro',
+        "src": resource.image_url
+      })) : type === 'radio' ? React.createElement("label", null, React.createElement("input", {
+        "defaultChecked": checked,
+        "name": 'selected_resource',
+        "type": 'radio',
+        "value": resource.uuid
+      }), React.createElement("img", {
+        "className": 'ui-thumbnail micro',
+        "src": resource.image_url
+      })) : null)), React.createElement("td", {
+        "data-name": 'title',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.title)), React.createElement("td", {
+        "data-name": 'subtitle',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.subtitle)), React.createElement("td", {
+        "data-name": 'author',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.authors_pretty)), React.createElement("td", {
+        "data-name": 'portrayed object dates',
+        "title": 'null'
+      }, resource.created_at_pretty), React.createElement("td", {
+        "data-name": 'keywords',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.keywords_pretty)), React.createElement("td", {
+        "data-name": 'copyright notice',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.responsible.name)));
+    })))))), React.createElement("div", {
+      "className": 'ui-modal-footer'
+    }, React.createElement("div", {
+      "className": 'ui-actions'
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": 'true',
+      "className": 'link weak',
+      "data-dismiss": 'modal'
+    }, get.i18n.cancel), React.createElement("button", {
+      "className": 'primary-button',
+      "type": 'submit'
+    }, get.i18n.save)))));
+  }
+});
+
+
+},{"../lib/string-translation.coffee":7,"./lib/forms/input-field-text.cjsx":38,"./lib/forms/rails-form.cjsx":42,"./ui-components/Button.cjsx":50,"./ui-components/Modal.cjsx":56,"active-lodash":71,"ampersand-react-mixin":81,"react":517,"react-dom":387}],27:[function(require,module,exports){
+var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+f = require('active-lodash');
+
+t = require('../lib/string-translation.coffee')('de');
+
+RailsForm = require('./lib/forms/rails-form.cjsx');
+
+InputFieldText = require('./lib/forms/input-field-text.cjsx');
+
+Button = require('./ui-components/Button.cjsx');
+
+Modal = require('./ui-components/Modal.cjsx');
+
+module.exports = React.createClass({
   displayName: 'CreateCollection',
   getInitialState: function() {
     return {
@@ -988,7 +1154,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/string-translation.coffee":7,"./lib/forms/input-field-text.cjsx":38,"./lib/forms/rails-form.cjsx":42,"./ui-components/Button.cjsx":50,"./ui-components/Modal.cjsx":56,"active-lodash":71,"ampersand-react-mixin":81,"react":517,"react-dom":387}],27:[function(require,module,exports){
+},{"../lib/string-translation.coffee":7,"./lib/forms/input-field-text.cjsx":38,"./lib/forms/rails-form.cjsx":42,"./ui-components/Button.cjsx":50,"./ui-components/Modal.cjsx":56,"active-lodash":71,"ampersand-react-mixin":81,"react":517,"react-dom":387}],28:[function(require,module,exports){
 var MediaPlayer, Picture, React, cx, f;
 
 React = require('react');
@@ -1039,7 +1205,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../ui-components/MediaPlayer.cjsx":55,"../ui-components/Picture.cjsx":57,"active-lodash":71,"classnames":156,"react":517}],28:[function(require,module,exports){
+},{"../ui-components/MediaPlayer.cjsx":55,"../ui-components/Picture.cjsx":57,"active-lodash":71,"classnames":156,"react":517}],29:[function(require,module,exports){
 var ActionsBar, Button, ButtonGroup, FallBackMsg, FilterBar, FilterExamples, Icon, LAYOUT_MODES, Link, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, UiToolBar, ampersandReactMixin, classList, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, qs, ref, resourceListParams, router, setUrlParams, viewConfigProps, xhr;
 
 React = require('react');
@@ -1558,7 +1724,7 @@ filter_examples = {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":3,"../../lib/router.coffee":4,"../../lib/set-params-for-url.coffee":6,"../../shared/resource_list_params.coffee":63,"../lib/forms/rails-form.cjsx":42,"../ui-components/index.coffee":60,"./ResourceThumbnail.cjsx":29,"active-lodash":71,"ampersand-react-mixin":81,"classnames/dedupe":155,"local-links":256,"qs":379,"react":517,"xhr":545}],29:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":3,"../../lib/router.coffee":4,"../../lib/set-params-for-url.coffee":6,"../../shared/resource_list_params.coffee":63,"../lib/forms/rails-form.cjsx":42,"../ui-components/index.coffee":60,"./ResourceThumbnail.cjsx":30,"active-lodash":71,"ampersand-react-mixin":81,"classnames/dedupe":155,"local-links":256,"qs":379,"react":517,"xhr":545}],30:[function(require,module,exports){
 var Button, Icon, Models, RailsForm, React, Thumbnail, ampersandReactMixin, async, f, getRailsCSRFToken, getUrlFromBrowserFileQueue, localPreviewImage, ref, urlFromBrowserFile;
 
 React = require('react');
@@ -1779,7 +1945,7 @@ localPreviewImage = function(resource, callback) {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":3,"../../lib/url-from-browser-file.coffee":8,"../../models/index.coffee":11,"../lib/forms/rails-form.cjsx":42,"../ui-components/Button.cjsx":50,"../ui-components/index.coffee":60,"active-lodash":71,"ampersand-react-mixin":81,"async":106,"react":517}],30:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":3,"../../lib/url-from-browser-file.coffee":8,"../../models/index.coffee":11,"../lib/forms/rails-form.cjsx":42,"../ui-components/Button.cjsx":50,"../ui-components/index.coffee":60,"active-lodash":71,"ampersand-react-mixin":81,"async":106,"react":517}],31:[function(require,module,exports){
 var requireBulk;
 
 
@@ -1787,153 +1953,7 @@ var requireBulk;
 module.exports = ({"MediaEntryPreview":require("./MediaEntryPreview.cjsx"),"MediaResourcesBox":require("./MediaResourcesBox.cjsx"),"ResourceThumbnail":require("./ResourceThumbnail.cjsx")});
 
 
-},{"./MediaEntryPreview.cjsx":27,"./MediaResourcesBox.cjsx":28,"./ResourceThumbnail.cjsx":29}],31:[function(require,module,exports){
-var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-ampersandReactMixin = require('ampersand-react-mixin');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation.coffee')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-InputFieldText = require('./lib/forms/input-field-text.cjsx');
-
-Button = require('./ui-components/Button.cjsx');
-
-Modal = require('./ui-components/Modal.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'EditCollectionCover',
-  getInitialState: function() {
-    return {
-      active: false
-    };
-  },
-  render: function(arg) {
-    var authToken, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    return React.createElement(Modal, {
-      "widthInPixel": '800'
-    }, React.createElement(RailsForm, {
-      "name": 'resource_meta_data',
-      "action": get.submit_url,
-      "method": 'put',
-      "authToken": authToken
-    }, React.createElement("div", {
-      "className": 'ui-modal-head'
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": 'true',
-      "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
-      "title": 'Close',
-      "type": 'button'
-    }, React.createElement("i", {
-      "className": 'icon-close'
-    })), React.createElement("h3", {
-      "className": 'title-l'
-    }, t('collection_edit_cover_title'))), React.createElement("div", {
-      "className": 'ui-modal-body'
-    }, React.createElement("div", {
-      "className": 'ui-resources-table'
-    }, React.createElement("div", {
-      "className": 'ui-resources-table'
-    }, React.createElement("table", {
-      "className": 'block'
-    }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("td", {
-      "className": 'ui-resources-table-selection'
-    }, t('collection_edit_cover_h_selection')), React.createElement("td", {
-      "title": 'Titel'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, t('collection_edit_cover_h_title'))), React.createElement("td", {
-      "title": 'Untertitel'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, t('collection_edit_cover_h_subtitle'))), React.createElement("td", {
-      "title": 'Autor/in'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, t('collection_edit_cover_h_author'))), React.createElement("td", {
-      "title": 'Datierung'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, t('collection_edit_cover_h_date'))), React.createElement("td", {
-      "title": 'Schlagworte'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, t('collection_edit_cover_h_keywords'))), React.createElement("td", {
-      "title": 'Rechteinhaber'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, t('collection_edit_cover_h_responsible'))))), React.createElement("tbody", null, f.map(get.media_entries_presenter.resources, function(resource) {
-      var cover;
-      cover = get.cover_id === resource.uuid;
-      return React.createElement("tr", {
-        "key": resource.uuid
-      }, React.createElement("td", {
-        "className": 'ui-resources-table-selection'
-      }, React.createElement("label", null, React.createElement("input", {
-        "defaultChecked": cover,
-        "name": 'cover',
-        "type": 'radio',
-        "value": resource.uuid
-      }), React.createElement("img", {
-        "className": 'ui-thumbnail micro',
-        "src": resource.image_url
-      }))), React.createElement("td", {
-        "data-name": 'title',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.title)), React.createElement("td", {
-        "data-name": 'subtitle',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.subtitle)), React.createElement("td", {
-        "data-name": 'author',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.authors_pretty)), React.createElement("td", {
-        "data-name": 'portrayed object dates',
-        "title": 'null'
-      }, resource.created_at_pretty), React.createElement("td", {
-        "data-name": 'keywords',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.keywords_pretty)), React.createElement("td", {
-        "data-name": 'copyright notice',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.responsible.name)));
-    })))))), React.createElement("div", {
-      "className": 'ui-modal-footer'
-    }, React.createElement("div", {
-      "className": 'ui-actions'
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": 'true',
-      "className": 'link weak',
-      "data-dismiss": 'modal'
-    }, t('collection_edit_cover_cancel')), React.createElement("button", {
-      "className": 'primary-button',
-      "type": 'submit'
-    }, t('collection_edit_cover_save'))))));
-  }
-});
-
-
-},{"../lib/string-translation.coffee":7,"./lib/forms/input-field-text.cjsx":38,"./lib/forms/rails-form.cjsx":42,"./ui-components/Button.cjsx":50,"./ui-components/Modal.cjsx":56,"active-lodash":71,"ampersand-react-mixin":81,"react":517,"react-dom":387}],32:[function(require,module,exports){
+},{"./MediaEntryPreview.cjsx":28,"./MediaResourcesBox.cjsx":29,"./ResourceThumbnail.cjsx":30}],32:[function(require,module,exports){
 var InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, RailsForm, React, VocabularyFormItem, VocabularyHeader, f;
 
 React = require('react');
@@ -2047,7 +2067,7 @@ UI = {
   CreateCollection: require('./create-collection.cjsx'),
   AskDeleteCollection: require('./ask-delete-collection.cjsx'),
   SelectCollection: require('./select-collection.cjsx'),
-  EditCollectionCover: require('./edit-collection-cover.cjsx'),
+  CollectionResourceSelection: require('./collection-resource-selection.cjsx'),
   FormResourceMetaData: require('./form-resource-meta-data.cjsx'),
   Uploader: require('./uploader.cjsx'),
   UI: require('./ui-components/index.coffee'),
@@ -2057,7 +2077,7 @@ UI = {
 module.exports = UI;
 
 
-},{"./ask-delete-collection.cjsx":25,"./create-collection.cjsx":26,"./decorators/index.coffee":30,"./edit-collection-cover.cjsx":31,"./form-resource-meta-data.cjsx":32,"./rights-management.cjsx":47,"./select-collection.cjsx":48,"./ui-components/index.coffee":60,"./uploader.cjsx":62}],34:[function(require,module,exports){
+},{"./ask-delete-collection.cjsx":25,"./collection-resource-selection.cjsx":26,"./create-collection.cjsx":27,"./decorators/index.coffee":31,"./form-resource-meta-data.cjsx":32,"./rights-management.cjsx":47,"./select-collection.cjsx":48,"./ui-components/index.coffee":60,"./uploader.cjsx":62}],34:[function(require,module,exports){
 
 /*
 
@@ -4386,7 +4406,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/string-translation.coffee":7,"./decorators/MediaResourcesBox.cjsx":28,"./lib/file-dropbox.cjsx":36,"active-lodash":71,"ampersand-react-mixin":81,"async":106,"react":517,"react-dom":387}],63:[function(require,module,exports){
+},{"../lib/string-translation.coffee":7,"./decorators/MediaResourcesBox.cjsx":29,"./lib/file-dropbox.cjsx":36,"active-lodash":71,"ampersand-react-mixin":81,"async":106,"react":517,"react-dom":387}],63:[function(require,module,exports){
 var coerceTypes, f, parseJsonParam, qs, resourceListParams;
 
 f = require('active-lodash');
@@ -4536,9 +4556,9 @@ module.exports = reactUjs = function() {
 
 
 },{"../lib/router.coffee":4,"../models/media-entries.coffee":12,"../models/media-entry/permissions.coffee":14,"../models/meta-datum.coffee":16,"../react/index.coffee":33,"../react/meta-datum-edit.cjsx":46,"../react/rights-management.cjsx":47,"../react/uploader.cjsx":62,"active-lodash":71,"jquery":254,"react":517,"react-dom":387,"url":540}],66:[function(require,module,exports){
-module.exports = {"de":{"activerecord":{"attributes":{"meta_datum/keywords":{"created_by":"Ersteller"}},"errors":{"messages":{"record_invalid":"Überprüfung fehlgeschlagen: %{errors}","taken":"ist bereits vergeben","blank":"ist leer"}}},"flash":{"actions":{"create":{"success":"%{resource_name} wurde erstellt.","error":"%{resource_name} konnte nicht erstellt werden."},"update":{"success":"%{resource_name} wurde gespeichert.","error":"%{resource_name} konnte nicht gespeichert werden."},"destroy":{"success":"%{resource_name} wurde gelöscht.","error":"%{resource_name} konnte nicht gelöscht werden."},"meta_data_update":{"success":"Metadaten von %{resource_name} wurden gespeichert.","error":"Metadaten von %{resource_name} konnten nicht gespeichert werden."}}},"sitemap_admin":"Admin","sitemap_api":"API","sitemap_media_entries":"Einträge","sitemap_collections":"Sets","sitemap_filter_sets":"FilterSets","sitemap_explore":"Erkunden","sitemap_my_archive":"Mein Archiv","sitemap_my_unpublished":"Meine unveröffentlichten Einträge","sitemap_my_content_media_entries":"Meine Einträge","sitemap_my_content_collections":"Meine Sets","sitemap_my_content_filter_sets":"Meine FilterSets","sitemap_my_latest_imports":"Meine letzten Importe","sitemap_my_favorite_media_entries":"Meine Favoriten (Einträge)","sitemap_my_favorite_collections":"Meine Favoriten (Sets)","sitemap_my_favorite_filter_sets":"Meine Favoriten (FilterSets)","sitemap_my_used_keywords":"Meine Schlagworte","sitemap_my_entrusted_media_entries":"Mir anvertraute Einträge","sitemap_my_entrusted_collections":"Mir anvertraute Sets","sitemap_my_entrusted_filter_sets":"Mir anvertraute FilterSets","sitemap_my_groups":"Meine Arbeitsgruppen","sitemap_my_filter_demo":"Filter demo","user_menu_login_btn":"Anmelden","user_menu_logout_btn":"Abmelden","login_box_rememberme":"Login merken","login_box_login_btn":"Anmelden","login_box_external":"ZHdK-Login","login_box_internal":"Externe","permission_subject_title_users":"Personen","permission_subject_title_groups":"Gruppen","permission_subject_title_apiapps":"API-Applikationen","permission_subject_title_public":"Öffentlichkeit","permission_subject_name_public":"Internet","permission_name_get_metadata_and_previews":"Betrachten","permission_name_get_full_size":"Original exportieren & in PDF blättern","permission_name_edit_metadata":"Metadaten editieren & Inhalte zu Set hinzufügen","permission_name_edit_permissions":"Zugriffsberechtigungen ändern","permission_overridden_by_public":"(überschrieben durch die Öffentlichen Berechtigungen)","permissions_responsible_user_title":"Verantwortliche Person","permissions_responsible_user_msg":"Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.","permissions_table_title":"Berechtigungen","permissions_table_edit_btn":"Bearbeiten","permissions_table_save_btn":"Speichern","permissions_table_cancel_btn":"Abbrechen","permissions_table_remove_subject_btn":"Berechtigung entfernen","permissions_overview_yours_title":"Ihre Berechtigungen","permissions_overview_yours_msg_start":"Sie, ","permissions_overview_yours_msg_end":", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen","btn_delete_confirm_msq":"Are you sure you want to delete this?","btn_publish_confirm_msg":"Are you sure you want to publish this?","btn_delete_text":"Delete!","btn_publish_text":"Publish!","picture_alt_prefix":"Bild: ","picture_alt_fallback":"(Unbekannt)","pagination_prefix":"Page","pagination_of":"of","relations_title":"Relations","no_relations_title":"No relations found.","relations_parents_title":"Parents","relations_siblings_title":"Siblings","collection_media_resources_title":"MediaResources in Collection:","collection_permissions_btn":"Permissions","collection_edit_cover_submit_btn":"Submit","collection_edit_highlights_btn":"Submit","collection_edit_permissions_btn":"Submit","collection_new_header":"Create Collection","collection_new_dialog_title":"Set erstellen","collection_new_label_title":"Titel","collection_new_create_set":"Set erstellen","collection_new_cancel":"Abbrechen","collection_new_flash_title_needed":"Titel ist ein Pflichtfeld","collection_new_flash_successful":"Set wurde kreiert!","collection_edit_cover_title":"Titelbild für Set festlegen","collection_edit_cover_cancel":"Abbrechen","collection_edit_cover_save":"Auswahl speichern","collection_edit_cover_h_selection":"Auswahl","collection_edit_cover_h_title":"Titel","collection_edit_cover_h_subtitle":"Untertitel","collection_edit_cover_h_author":"Autor/in","collection_edit_cover_h_date":"Datierung","collection_edit_cover_h_keywords":"Schlagworte","collection_edit_cover_h_responsible":"Rechteinhaber","collection_ask_delete_title":"Set löschen","collection_ask_delete_ok":"Löschen","collection_ask_delete_cancel":"Abbrechen","collection_ask_delete_question_pre":"Sind Sie sicher, dass Sie folgendes Set löschen möchten: ","collection_ask_delete_question_post":"?","collection_delete_success":"Set wurde gelöscht!","no_content_fallback":"(No content.)","no_groups_fallback":"(No groups.)","no_keywords_fallback":"(No Keywords.)","group_new_group_btn":"Neue Arbeitsgruppe","group_edit_btn":"Edit","group_delete_confirm_msg":"Are you sure you want to delete this group?","external_groups":"Abteilungsgruppen","internal_groups":"Arbeitsgruppen","authentication_groups":"Systemgruppen","workgroup_link_to_contents_title":"Inhalte dieser Gruppe anzeigen","workgroup_link_to_contents_text":"Inhalte","workgroup_members_table_title":"Members","workgroup_members_table_login":"Login","workgroup_members_table_is_member":"Member?","dashboard_title_head":"Dashboard - Madek","resources_header_show_all":"show all","dashboard_create_media_entry_btn":"Create media entry","dashboard_create_collection_btn":"Create set","dashboard_welcome_msg":"Welcome to Madek!","dashboard_create_collection":"Set erstellen","resource_meta_data_title":"Titel","resource_meta_data_description":"Description","resource_meta_data_keywords":"Keywords","resource_meta_data_responsible":"Responsible","resource_meta_data_copyright_notice":"Copyright Notice","resource_meta_data_date":"Date","resource_meta_data_saved_filter":"Gespeicherter Filter","resource_meta_data_resource_type":"Typ","resource_meta_data_fallback":"Es sind keine Metadaten zu diesem Kontext bereit gestellt.","media_entry_tab_main":"Medieneintrag","media_entry_tab_relations":"Zusammenhänge","media_entry_tab_more_data":"Alle Daten","media_entry_tab_permissions":"Berechtigungen","media_entry_not_published_warning_msg":"Entry is not published yet!","media_entry_meta_data_header_prefix":"Metadaten editieren: ","media_entry_more_data_title":"Resource","media_entry_file_information_title":"File Information","media_entry_media_import_header":"Medien importieren","media_entry_media_import_title":"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen:","media_entry_media_import_inside":"Dateien auswählen oder Drag&Drop","media_entry_media_import_inside_nojs":"Dateien auswählen","media_entry_back_btn":"Back","media_entry_upload_btn":"Upload","media_entry_notices_title":"Hinweise","resource_select_collection_title":"Zu Set hinzufügen/entfernen","resource_select_collection_search":"Suchen","resource_select_collection_search_placeholder":"Suche","resource_select_collection_clear":"Clear","resource_select_collection_hint_search":"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.","resource_select_collection_hint_more":"Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.","resource_select_collection_non_found":"Zu dieser Suche wurde kein Set gefunden.","resource_select_collection_non_assigned":"Inhalt ist noch keinem Set zugewiesen.","resource_select_collection_save":"Speichern","resource_select_collection_cancel":"Abbrechen","media_entry_select_collection_flash_result":"Removed entry from %{removed_count} sets. Added entry to %{added_count} sets.","collection_select_collection_flash_result":"Removed set from %{removed_count} sets. Added set to %{added_count} sets.","meta_data_form_save_btn":"Save","meta_data_form_cancel_link":"Cancel","meta_data_form_submit_btn":"Submit","meta_data_meta_key_label":"KEY","meta_data_type_label":"TYPE","meta_data_value_label":"VALUE","meta_data_action_edit_btn":"Edit","meta_data_action_delete_btn":"Delete","meta_data_delete_confirm_msg":"Are you sure you want to delete this MetaDatum?","meta_data_header_text":"MetaDatum","people_toolbar_header":"MediaResources related via MetaData:","group_edit_form_new_member_login":"New member login","group_toolbar_header_entrusted_resources":"Entrusted MediaResources:","group_meta_data_name":"Name","group_meta_data_institutional_group_name":"Institutional group name","media_entry_was_favored":"Medieneintrag wurde favorisiert!","media_entry_was_disfavored":"Medieneintrag wurde defavorisiert!","collection_was_favored":"Set wurde favorisiert!","collection_was_disfavored":"Set wurde defavorisiert!"}};
+module.exports = {"de":{"activerecord":{"attributes":{"meta_datum/keywords":{"created_by":"Ersteller"}},"errors":{"messages":{"record_invalid":"Überprüfung fehlgeschlagen: %{errors}","taken":"ist bereits vergeben","blank":"ist leer"}}},"flash":{"actions":{"create":{"success":"%{resource_name} wurde erstellt.","error":"%{resource_name} konnte nicht erstellt werden."},"update":{"success":"%{resource_name} wurde gespeichert.","error":"%{resource_name} konnte nicht gespeichert werden."},"destroy":{"success":"%{resource_name} wurde gelöscht.","error":"%{resource_name} konnte nicht gelöscht werden."},"meta_data_update":{"success":"Metadaten von %{resource_name} wurden gespeichert.","error":"Metadaten von %{resource_name} konnten nicht gespeichert werden."}}},"sitemap_admin":"Admin","sitemap_api":"API","sitemap_media_entries":"Einträge","sitemap_collections":"Sets","sitemap_filter_sets":"FilterSets","sitemap_explore":"Erkunden","sitemap_my_archive":"Mein Archiv","sitemap_my_unpublished":"Meine unveröffentlichten Einträge","sitemap_my_content_media_entries":"Meine Einträge","sitemap_my_content_collections":"Meine Sets","sitemap_my_content_filter_sets":"Meine FilterSets","sitemap_my_latest_imports":"Meine letzten Importe","sitemap_my_favorite_media_entries":"Meine Favoriten (Einträge)","sitemap_my_favorite_collections":"Meine Favoriten (Sets)","sitemap_my_favorite_filter_sets":"Meine Favoriten (FilterSets)","sitemap_my_used_keywords":"Meine Schlagworte","sitemap_my_entrusted_media_entries":"Mir anvertraute Einträge","sitemap_my_entrusted_collections":"Mir anvertraute Sets","sitemap_my_entrusted_filter_sets":"Mir anvertraute FilterSets","sitemap_my_groups":"Meine Arbeitsgruppen","sitemap_my_filter_demo":"Filter demo","user_menu_login_btn":"Anmelden","user_menu_logout_btn":"Abmelden","login_box_rememberme":"Login merken","login_box_login_btn":"Anmelden","login_box_external":"ZHdK-Login","login_box_internal":"Externe","permission_subject_title_users":"Personen","permission_subject_title_groups":"Gruppen","permission_subject_title_apiapps":"API-Applikationen","permission_subject_title_public":"Öffentlichkeit","permission_subject_name_public":"Internet","permission_name_get_metadata_and_previews":"Betrachten","permission_name_get_full_size":"Original exportieren & in PDF blättern","permission_name_edit_metadata":"Metadaten editieren & Inhalte zu Set hinzufügen","permission_name_edit_permissions":"Zugriffsberechtigungen ändern","permission_overridden_by_public":"(überschrieben durch die Öffentlichen Berechtigungen)","permissions_responsible_user_title":"Verantwortliche Person","permissions_responsible_user_msg":"Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.","permissions_table_title":"Berechtigungen","permissions_table_edit_btn":"Bearbeiten","permissions_table_save_btn":"Speichern","permissions_table_cancel_btn":"Abbrechen","permissions_table_remove_subject_btn":"Berechtigung entfernen","permissions_overview_yours_title":"Ihre Berechtigungen","permissions_overview_yours_msg_start":"Sie, ","permissions_overview_yours_msg_end":", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen","btn_delete_confirm_msq":"Are you sure you want to delete this?","btn_publish_confirm_msg":"Are you sure you want to publish this?","btn_delete_text":"Delete!","btn_publish_text":"Publish!","picture_alt_prefix":"Bild: ","picture_alt_fallback":"(Unbekannt)","pagination_prefix":"Page","pagination_of":"of","relations_title":"Relations","no_relations_title":"No relations found.","relations_parents_title":"Parents","relations_siblings_title":"Siblings","collection_media_resources_title":"MediaResources in Collection:","collection_permissions_btn":"Permissions","collection_edit_cover_submit_btn":"Submit","collection_edit_highlights_btn":"Submit","collection_edit_permissions_btn":"Submit","collection_new_header":"Create Collection","collection_new_dialog_title":"Set erstellen","collection_new_label_title":"Titel","collection_new_create_set":"Set erstellen","collection_new_cancel":"Abbrechen","collection_new_flash_title_needed":"Titel ist ein Pflichtfeld","collection_new_flash_successful":"Set wurde kreiert!","collection_edit_highlights_title":"Inhalte hervorheben","collection_edit_cover_title":"Titelbild für Set festlegen","collection_resource_selection_cancel":"Abbrechen","collection_resource_selection_save":"Auswahl speichern","collection_resource_selection_h_selection":"Auswahl","collection_resource_selection_h_title":"Titel","collection_resource_selection_h_subtitle":"Untertitel","collection_resource_selection_h_author":"Autor/in","collection_resource_selection_h_date":"Datierung","collection_resource_selection_h_keywords":"Schlagworte","collection_resource_selection_h_responsible":"Rechteinhaber","collection_ask_delete_title":"Set löschen","collection_ask_delete_ok":"Löschen","collection_ask_delete_cancel":"Abbrechen","collection_ask_delete_question_pre":"Sind Sie sicher, dass Sie folgendes Set löschen möchten: ","collection_ask_delete_question_post":"?","collection_delete_success":"Set wurde gelöscht!","no_content_fallback":"(No content.)","no_groups_fallback":"(No groups.)","no_keywords_fallback":"(No Keywords.)","group_new_group_btn":"Neue Arbeitsgruppe","group_edit_btn":"Edit","group_delete_confirm_msg":"Are you sure you want to delete this group?","external_groups":"Abteilungsgruppen","internal_groups":"Arbeitsgruppen","authentication_groups":"Systemgruppen","workgroup_link_to_contents_title":"Inhalte dieser Gruppe anzeigen","workgroup_link_to_contents_text":"Inhalte","workgroup_members_table_title":"Members","workgroup_members_table_login":"Login","workgroup_members_table_is_member":"Member?","dashboard_title_head":"Dashboard - Madek","resources_header_show_all":"show all","dashboard_create_media_entry_btn":"Create media entry","dashboard_create_collection_btn":"Create set","dashboard_welcome_msg":"Welcome to Madek!","dashboard_create_collection":"Set erstellen","resource_meta_data_title":"Titel","resource_meta_data_description":"Description","resource_meta_data_keywords":"Keywords","resource_meta_data_responsible":"Responsible","resource_meta_data_copyright_notice":"Copyright Notice","resource_meta_data_date":"Date","resource_meta_data_saved_filter":"Gespeicherter Filter","resource_meta_data_resource_type":"Typ","resource_meta_data_fallback":"Es sind keine Metadaten zu diesem Kontext bereit gestellt.","media_entry_tab_main":"Medieneintrag","media_entry_tab_relations":"Zusammenhänge","media_entry_tab_more_data":"Alle Daten","media_entry_tab_permissions":"Berechtigungen","media_entry_not_published_warning_msg":"Entry is not published yet!","media_entry_meta_data_header_prefix":"Metadaten editieren: ","media_entry_more_data_title":"Resource","media_entry_file_information_title":"File Information","media_entry_media_import_header":"Medien importieren","media_entry_media_import_title":"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen:","media_entry_media_import_inside":"Dateien auswählen oder Drag&Drop","media_entry_media_import_inside_nojs":"Dateien auswählen","media_entry_back_btn":"Back","media_entry_upload_btn":"Upload","media_entry_notices_title":"Hinweise","resource_select_collection_title":"Zu Set hinzufügen/entfernen","resource_select_collection_search":"Suchen","resource_select_collection_search_placeholder":"Suche","resource_select_collection_clear":"Clear","resource_select_collection_hint_search":"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.","resource_select_collection_hint_more":"Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.","resource_select_collection_non_found":"Zu dieser Suche wurde kein Set gefunden.","resource_select_collection_non_assigned":"Inhalt ist noch keinem Set zugewiesen.","resource_select_collection_save":"Speichern","resource_select_collection_cancel":"Abbrechen","media_entry_select_collection_flash_result":"Removed entry from %{removed_count} sets. Added entry to %{added_count} sets.","collection_select_collection_flash_result":"Removed set from %{removed_count} sets. Added set to %{added_count} sets.","meta_data_form_save_btn":"Save","meta_data_form_cancel_link":"Cancel","meta_data_form_submit_btn":"Submit","meta_data_meta_key_label":"KEY","meta_data_type_label":"TYPE","meta_data_value_label":"VALUE","meta_data_action_edit_btn":"Edit","meta_data_action_delete_btn":"Delete","meta_data_delete_confirm_msg":"Are you sure you want to delete this MetaDatum?","meta_data_header_text":"MetaDatum","people_toolbar_header":"MediaResources related via MetaData:","group_edit_form_new_member_login":"New member login","group_toolbar_header_entrusted_resources":"Entrusted MediaResources:","group_meta_data_name":"Name","group_meta_data_institutional_group_name":"Institutional group name","media_entry_was_favored":"Medieneintrag wurde favorisiert!","media_entry_was_disfavored":"Medieneintrag wurde defavorisiert!","collection_was_favored":"Set wurde favorisiert!","collection_was_disfavored":"Set wurde defavorisiert!"}};
 },{}],67:[function(require,module,exports){
-module.exports = {"en":{"activerecord":{"errors":{"messages":{"record_invalid":"Validation failed: %{errors}","taken":"has already been taken"}}},"flash":{"actions":{"create":{"success":"%{resource_name} was successfully created.","error":"%{resource_name} could not be created."},"update":{"success":"%{resource_name} was successfully updated.","error":"%{resource_name} could not be updated."},"destroy":{"success":"%{resource_name} was successfully destroyed.","error":"%{resource_name} could not be destroyed."}}},"helpers":{"submit":{"group":{"update":"Update group","create":"Create group"}}},"sitemap_admin":"Admin","sitemap_api":"API","sitemap_media_entries":"Entries","sitemap_collections":"Sets","sitemap_filter_sets":"FilterSets","sitemap_explore":"Explore","sitemap_my_archive":"My Archive","sitemap_my_unpublished":"My unpublished Entries","sitemap_my_content_media_entries":"My Entries","sitemap_my_content_collections":"My Sets","sitemap_my_content_filter_sets":"My FilterSets","sitemap_my_latest_imports":"My latest imports","sitemap_my_favorite_media_entries":"My favorites (Entries)","sitemap_my_favorite_collections":"My favorites (Sets)","sitemap_my_favorite_filter_sets":"My favorites (FilterSets)","sitemap_my_used_keywords":"My keywords","sitemap_my_entrusted_media_entries":"My entrusted Entries","sitemap_my_entrusted_collections":"My entrusted Sets","sitemap_my_entrusted_filter_sets":"My entrusted FilterSets","sitemap_my_groups":"My Groups","sitemap_my_filter_demo":"Filter demo","user_menu_login_btn":"Log in","user_menu_logout_btn":"Log out","login_box_rememberme":"remember me","login_box_login_btn":"Log In","login_box_external":"ZHdK Login","login_box_internal":"External","permission_subject_title_users":"Users","permission_subject_title_groups":"Groups","permission_subject_title_apiapps":"API Clients","permission_subject_title_public":"Public","permission_subject_name_public":"Internet","permission_name_get_metadata_and_previews":"View","permission_name_get_full_size":"Edit original & Browse PDFs","permission_name_edit_metadata":"Edit metadata & Add content to Set","permission_name_edit_permissions":"Edit permissions","permission_overridden_by_public":"(overridden by public permissions)","permissions_responsible_user_title":"Responsible User","permissions_responsible_user_msg":"The responsible User has all permissions for the selected content and can also delete it","permissions_table_title":"Permissions","permissions_table_edit_btn":"Edit","permissions_table_save_btn":"Save","permissions_table_cancel_btn":"Cancel","permissions_table_remove_subject_btn":"remove permissions","permissions_overview_yours_title":"Your Permissions","permissions_overview_yours_msg_start":"You, ","permissions_overview_yours_msg_end":", currently have the following permissions (either directly or as a member of a group):","btn_delete_confirm_msq":"Are you sure you want to delete this?","btn_publish_confirm_msg":"Are you sure you want to publish this?","btn_delete_text":"Delete!","btn_publish_text":"Publish!","picture_alt_prefix":"Picture:","picture_alt_fallback":"(Picture)","pagination_prefix":"Page","pagination_of":"of","relations_title":"Relations","no_relations_title":"No relations found.","relations_parents_title":"Parents","relations_siblings_title":"Siblings","collection_media_resources_title":"MediaResources in Collection:","collection_permissions_btn":"Permissions","collection_edit_cover_submit_btn":"Submit","collection_edit_highlights_btn":"Submit","collection_edit_permissions_btn":"Submit","collection_new_header":"Create Collection","collection_new_dialog_title":"Set erstellen","collection_new_label_title":"Titel","collection_new_create_set":"Set erstellen","collection_new_cancel":"Abbrechen","collection_new_flash_title_needed":"Titel ist ein Pflichtfeld","collection_new_flash_successful":"Set wurde kreiert!","collection_edit_cover_title":"Titelbild für Set festlegen","collection_edit_cover_cancel":"Abbrechen","collection_edit_cover_save":"Auswahl speichern","collection_edit_cover_h_selection":"Auswahl","collection_edit_cover_h_title":"Titel","collection_edit_cover_h_subtitle":"Untertitel","collection_edit_cover_h_author":"Autor/in","collection_edit_cover_h_date":"Datierung","collection_edit_cover_h_keywords":"Schlagworte","collection_edit_cover_h_responsible":"Rechteinhaber","collection_ask_delete_title":"Set löschen","collection_ask_delete_ok":"Löschen","collection_ask_delete_cancel":"Abbrechen","collection_ask_delete_question_pre":"Sind Sie sicher, dass Sie folgendes Set löschen möchten: ","collection_ask_delete_question_post":"?","collection_delete_success":"Set wurde gelöscht!","no_content_fallback":"(No content.)","no_groups_fallback":"(No groups.)","no_keywords_fallback":"(No Keywords.)","group_new_group_btn":"New Work Group","group_edit_btn":"Edit","group_delete_confirm_msg":"Are you sure you want to delete this group?","external_groups":"Department Groups","internal_groups":"Work Groups","authentication_groups":"System Groups","workgroup_link_to_contents_title":"View contents of this group","workgroup_link_to_contents_text":"Contents","workgroup_members_table_title":"Members","workgroup_members_table_login":"Login","workgroup_members_table_is_member":"Member?","dashboard_title_head":"Dashboard - Madek","resources_header_show_all":"show all","dashboard_create_media_entry_btn":"Create media entry","dashboard_create_collection_btn":"Create set","dashboard_welcome_msg":"Welcome to Madek!","dashboard_create_collection":"Set erstellen","resource_meta_data_title":"Title","resource_meta_data_description":"Description","resource_meta_data_keywords":"Keywords","resource_meta_data_responsible":"Responsible","resource_meta_data_copyright_notice":"Copyright Notice","resource_meta_data_date":"Date","resource_meta_data_saved_filter":"Saved Filter","resource_meta_data_resource_type":"Resource Type","resource_meta_data_fallback":"No meta data for this Context.","media_entry_tab_main":"Entry","media_entry_tab_relations":"Relations","media_entry_tab_more_data":"All Data","media_entry_tab_permissions":"Permissions","media_entry_not_published_warning_msg":"Entry is not published yet!","media_entry_meta_data_header_prefix":"Editing Metadata:","media_entry_more_data_title":"Resource","media_entry_file_information_title":"File Information","media_entry_media_import_header":"Media import","media_entry_back_btn":"Back","media_entry_upload_btn":"Upload","media_entry_notices_title":"Notices","resource_select_collection_title":"Zu Set hinzufügen/entfernen","resource_select_collection_search":"Suchen","resource_select_collection_search_placeholder":"Suche","resource_select_collection_clear":"Clear","resource_select_collection_hint_search":"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.","resource_select_collection_hint_more":"Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.","resource_select_collection_non_found":"Zu dieser Suche wurde kein Set gefunden.","resource_select_collection_non_assigned":"Inhalt ist noch keinem Set zugewiesen.","resource_select_collection_save":"Speichern","resource_select_collection_cancel":"Abbrechen","media_entry_select_collection_flash_result":"Removed entry from %{removed_count} sets. Added entry to %{added_count} sets.","collection_select_collection_flash_result":"Removed set from %{removed_count} sets. Added set to %{added_count} sets.","meta_data_form_save_btn":"Save","meta_data_form_cancel_link":"Cancel","meta_data_form_submit_btn":"Submit","meta_data_meta_key_label":"KEY","meta_data_type_label":"TYPE","meta_data_value_label":"VALUE","meta_data_action_edit_btn":"Edit","meta_data_action_delete_btn":"Delete","meta_data_delete_confirm_msg":"Are you sure you want to delete this MetaDatum?","meta_data_header_text":"MetaDatum","people_toolbar_header":"MediaResources related via MetaData:","group_edit_form_new_member_login":"New member login","group_toolbar_header_entrusted_resources":"Entrusted MediaResources:","group_meta_data_name":"Name","group_meta_data_institutional_group_name":"Institutional group name","media_entry_was_favored":"Media Entry was favored!","media_entry_was_disfavored":"Media Entry was disfavored!","collection_was_favored":"Collection was favored!","collection_was_disfavored":"Collection was disfavored!"}};
+module.exports = {"en":{"activerecord":{"errors":{"messages":{"record_invalid":"Validation failed: %{errors}","taken":"has already been taken"}}},"flash":{"actions":{"create":{"success":"%{resource_name} was successfully created.","error":"%{resource_name} could not be created."},"update":{"success":"%{resource_name} was successfully updated.","error":"%{resource_name} could not be updated."},"destroy":{"success":"%{resource_name} was successfully destroyed.","error":"%{resource_name} could not be destroyed."}}},"helpers":{"submit":{"group":{"update":"Update group","create":"Create group"}}},"sitemap_admin":"Admin","sitemap_api":"API","sitemap_media_entries":"Entries","sitemap_collections":"Sets","sitemap_filter_sets":"FilterSets","sitemap_explore":"Explore","sitemap_my_archive":"My Archive","sitemap_my_unpublished":"My unpublished Entries","sitemap_my_content_media_entries":"My Entries","sitemap_my_content_collections":"My Sets","sitemap_my_content_filter_sets":"My FilterSets","sitemap_my_latest_imports":"My latest imports","sitemap_my_favorite_media_entries":"My favorites (Entries)","sitemap_my_favorite_collections":"My favorites (Sets)","sitemap_my_favorite_filter_sets":"My favorites (FilterSets)","sitemap_my_used_keywords":"My keywords","sitemap_my_entrusted_media_entries":"My entrusted Entries","sitemap_my_entrusted_collections":"My entrusted Sets","sitemap_my_entrusted_filter_sets":"My entrusted FilterSets","sitemap_my_groups":"My Groups","sitemap_my_filter_demo":"Filter demo","user_menu_login_btn":"Log in","user_menu_logout_btn":"Log out","login_box_rememberme":"remember me","login_box_login_btn":"Log In","login_box_external":"ZHdK Login","login_box_internal":"External","permission_subject_title_users":"Users","permission_subject_title_groups":"Groups","permission_subject_title_apiapps":"API Clients","permission_subject_title_public":"Public","permission_subject_name_public":"Internet","permission_name_get_metadata_and_previews":"View","permission_name_get_full_size":"Edit original & Browse PDFs","permission_name_edit_metadata":"Edit metadata & Add content to Set","permission_name_edit_permissions":"Edit permissions","permission_overridden_by_public":"(overridden by public permissions)","permissions_responsible_user_title":"Responsible User","permissions_responsible_user_msg":"The responsible User has all permissions for the selected content and can also delete it","permissions_table_title":"Permissions","permissions_table_edit_btn":"Edit","permissions_table_save_btn":"Save","permissions_table_cancel_btn":"Cancel","permissions_table_remove_subject_btn":"remove permissions","permissions_overview_yours_title":"Your Permissions","permissions_overview_yours_msg_start":"You, ","permissions_overview_yours_msg_end":", currently have the following permissions (either directly or as a member of a group):","btn_delete_confirm_msq":"Are you sure you want to delete this?","btn_publish_confirm_msg":"Are you sure you want to publish this?","btn_delete_text":"Delete!","btn_publish_text":"Publish!","picture_alt_prefix":"Picture:","picture_alt_fallback":"(Picture)","pagination_prefix":"Page","pagination_of":"of","relations_title":"Relations","no_relations_title":"No relations found.","relations_parents_title":"Parents","relations_siblings_title":"Siblings","collection_media_resources_title":"MediaResources in Collection:","collection_permissions_btn":"Permissions","collection_edit_cover_submit_btn":"Submit","collection_edit_highlights_btn":"Submit","collection_edit_permissions_btn":"Submit","collection_new_header":"Create Collection","collection_new_dialog_title":"Set erstellen","collection_new_label_title":"Titel","collection_new_create_set":"Set erstellen","collection_new_cancel":"Abbrechen","collection_new_flash_title_needed":"Titel ist ein Pflichtfeld","collection_new_flash_successful":"Set wurde kreiert!","collection_edit_highlights_title":"Inhalte hervorheben","collection_edit_cover_title":"Titelbild für Set festlegen","collection_resource_selection_cancel":"Abbrechen","collection_resource_selection_save":"Auswahl speichern","collection_resource_selection_h_selection":"Auswahl","collection_resource_selection_h_title":"Titel","collection_resource_selection_h_subtitle":"Untertitel","collection_resource_selection_h_author":"Autor/in","collection_resource_selection_h_date":"Datierung","collection_resource_selection_h_keywords":"Schlagworte","collection_resource_selection_h_responsible":"Rechteinhaber","collection_ask_delete_title":"Set löschen","collection_ask_delete_ok":"Löschen","collection_ask_delete_cancel":"Abbrechen","collection_ask_delete_question_pre":"Sind Sie sicher, dass Sie folgendes Set löschen möchten: ","collection_ask_delete_question_post":"?","collection_delete_success":"Set wurde gelöscht!","no_content_fallback":"(No content.)","no_groups_fallback":"(No groups.)","no_keywords_fallback":"(No Keywords.)","group_new_group_btn":"New Work Group","group_edit_btn":"Edit","group_delete_confirm_msg":"Are you sure you want to delete this group?","external_groups":"Department Groups","internal_groups":"Work Groups","authentication_groups":"System Groups","workgroup_link_to_contents_title":"View contents of this group","workgroup_link_to_contents_text":"Contents","workgroup_members_table_title":"Members","workgroup_members_table_login":"Login","workgroup_members_table_is_member":"Member?","dashboard_title_head":"Dashboard - Madek","resources_header_show_all":"show all","dashboard_create_media_entry_btn":"Create media entry","dashboard_create_collection_btn":"Create set","dashboard_welcome_msg":"Welcome to Madek!","dashboard_create_collection":"Set erstellen","resource_meta_data_title":"Title","resource_meta_data_description":"Description","resource_meta_data_keywords":"Keywords","resource_meta_data_responsible":"Responsible","resource_meta_data_copyright_notice":"Copyright Notice","resource_meta_data_date":"Date","resource_meta_data_saved_filter":"Saved Filter","resource_meta_data_resource_type":"Resource Type","resource_meta_data_fallback":"No meta data for this Context.","media_entry_tab_main":"Entry","media_entry_tab_relations":"Relations","media_entry_tab_more_data":"All Data","media_entry_tab_permissions":"Permissions","media_entry_not_published_warning_msg":"Entry is not published yet!","media_entry_meta_data_header_prefix":"Editing Metadata:","media_entry_more_data_title":"Resource","media_entry_file_information_title":"File Information","media_entry_media_import_header":"Media import","media_entry_back_btn":"Back","media_entry_upload_btn":"Upload","media_entry_notices_title":"Notices","resource_select_collection_title":"Zu Set hinzufügen/entfernen","resource_select_collection_search":"Suchen","resource_select_collection_search_placeholder":"Suche","resource_select_collection_clear":"Clear","resource_select_collection_hint_search":"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.","resource_select_collection_hint_more":"Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.","resource_select_collection_non_found":"Zu dieser Suche wurde kein Set gefunden.","resource_select_collection_non_assigned":"Inhalt ist noch keinem Set zugewiesen.","resource_select_collection_save":"Speichern","resource_select_collection_cancel":"Abbrechen","media_entry_select_collection_flash_result":"Removed entry from %{removed_count} sets. Added entry to %{added_count} sets.","collection_select_collection_flash_result":"Removed set from %{removed_count} sets. Added set to %{added_count} sets.","meta_data_form_save_btn":"Save","meta_data_form_cancel_link":"Cancel","meta_data_form_submit_btn":"Submit","meta_data_meta_key_label":"KEY","meta_data_type_label":"TYPE","meta_data_value_label":"VALUE","meta_data_action_edit_btn":"Edit","meta_data_action_delete_btn":"Delete","meta_data_delete_confirm_msg":"Are you sure you want to delete this MetaDatum?","meta_data_header_text":"MetaDatum","people_toolbar_header":"MediaResources related via MetaData:","group_edit_form_new_member_login":"New member login","group_toolbar_header_entrusted_resources":"Entrusted MediaResources:","group_meta_data_name":"Name","group_meta_data_institutional_group_name":"Institutional group name","media_entry_was_favored":"Media Entry was favored!","media_entry_was_disfavored":"Media Entry was disfavored!","collection_was_favored":"Collection was favored!","collection_was_disfavored":"Collection was disfavored!"}};
 },{}],68:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.2-pre.1+forked

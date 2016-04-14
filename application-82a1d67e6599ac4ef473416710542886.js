@@ -1840,14 +1840,8 @@ module.exports = React.createClass({
     actionsRight = [];
     parents = this.props.get.parent_relations;
     children = this.props.get.child_relations;
-    parentsCount = 0;
-    childrenCount = 0;
-    if (parents) {
-      parentsCount = parents.resources.length;
-    }
-    if (children) {
-      childrenCount = children.resources.length;
-    }
+    parentsCount = this.props.get.parent_count;
+    childrenCount = this.props.get.child_count;
     parentRelations = [];
     childRelations = [];
     if (parentsCount > 0) {

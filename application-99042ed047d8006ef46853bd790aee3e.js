@@ -1238,7 +1238,7 @@ module.exports = React.createClass({
 
 
 },{"../ui-components/Icon.cjsx":53,"../ui-components/Link.cjsx":54,"../ui-components/MediaPlayer.cjsx":55,"../ui-components/Picture.cjsx":57,"active-lodash":71,"classnames":156,"react":517}],29:[function(require,module,exports){
-var ActionsBar, Button, ButtonGroup, FallBackMsg, FilterBar, FilterExamples, Icon, LAYOUT_MODES, Link, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, UiToolBar, ampersandReactMixin, classList, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, qs, ref, resourceListParams, router, setUrlParams, viewConfigProps, xhr;
+var ActionsBar, Button, ButtonGroup, FallBackMsg, FilterBar, FilterExamples, FilterPreloader, Icon, LAYOUT_MODES, Link, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, UiToolBar, ampersandReactMixin, classList, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, qs, ref, resourceListParams, router, setUrlParams, viewConfigProps, xhr;
 
 React = require('react');
 
@@ -1368,20 +1368,44 @@ module.exports = React.createClass({
   handleRequestInternally: function(event) {
     return handleLinkIfLocal(event, alert);
   },
-  handleAccordion: function(event) {
-    var currentParams, newParams, newUrl;
+  _onFilterChange: function(event, newParams) {
+    var currentParams, params;
+    if (event && f.isFunction(event.preventDefault)) {
+      event.preventDefault();
+    }
     currentParams = {
       list: f.omit(this.state.config, 'for_url')
     };
-    newParams = {
+    params = f.merge(newParams, {
       list: {
-        page: 1,
+        page: 1
+      }
+    });
+    return window.location = setUrlParams(this.props.for_url, currentParams, params);
+  },
+  _onFilterToggle: function(event) {
+    if (f.present(f.get(this.props, ['get', 'dynamic_filters']))) {
+      event.preventDefault();
+      this.handleChangeInternally(event);
+    }
+    return void 0;
+  },
+  _onSearch: function(event) {
+    return this._onFilterChange(event, {
+      list: {
+        filter: JSON.stringify({
+          search: this.refs.filterSearch.value
+        })
+      }
+    });
+  },
+  handleAccordion: function(event) {
+    return this._onFilterChange(event, {
+      list: {
         filter: JSON.stringify(event.current),
         accordion: JSON.stringify(event.accordion)
       }
-    };
-    newUrl = setUrlParams(this.props.for_url, currentParams, newParams);
-    return window.location = newUrl;
+    });
   },
   createFilterSetFromConfig: function(config, event) {
     var name;
@@ -1500,28 +1524,31 @@ module.exports = React.createClass({
         });
       };
     })(this)(config) : void 0;
-    BoxFilterBar = (function() {
-      var filterToggleLink, props;
-      if (!interactive || !get.can_filter) {
-        return null;
-      }
-      filterToggleLink = setUrlParams(config.for_url, currentQuery, {
-        list: {
-          show_filter: !config.show_filter
+    BoxFilterBar = (function(_this) {
+      return function() {
+        var filterToggleLink, props;
+        if (!interactive || !get.can_filter) {
+          return null;
         }
-      });
-      props = {
-        filter: {
-          toggle: {
-            name: 'Filtern',
-            mods: config.show_filter ? 'active' : void 0,
-            href: filterToggleLink
-          },
-          reset: f.present(config.filter) ? resetFilterLink : void 0
-        }
+        filterToggleLink = setUrlParams(config.for_url, currentQuery, {
+          list: {
+            show_filter: !config.show_filter
+          }
+        });
+        props = {
+          filter: {
+            toggle: {
+              name: 'Filtern',
+              mods: config.show_filter ? 'active' : void 0,
+              href: filterToggleLink,
+              onClick: _this._onFilterToggle
+            },
+            reset: f.present(config.filter) ? resetFilterLink : void 0
+          }
+        };
+        return React.createElement(FilterBar, React.__spread({}, props));
       };
-      return React.createElement(FilterBar, React.__spread({}, props));
-    })();
+    })(this)();
     Sidebar = (function(_this) {
       return function(arg1, arg2) {
         var active, config, dynamic_filters;
@@ -1543,15 +1570,23 @@ module.exports = React.createClass({
           "query": currentQuery
         })), React.createElement("div", {
           "className": 'js-only'
-        }, React.createElement("div", {
-          "className": 'ui-slide-filter-item'
-        }, React.createElement("div", {
-          "className": 'title-xs by-center'
-        }, "Filter werden geladen"), React.createElement("div", {
-          "className": 'ui-preloader small'
-        })))) : React.createElement("div", {
+        }, FilterPreloader)) : React.createElement("div", {
           "className": 'js-only'
-        }, React.createElement(SideFilter, {
+        }, React.createElement("div", {
+          "className": 'ui-side-filter-search filter-search'
+        }, React.createElement("form", {
+          "name": 'filter_search_form',
+          "onSubmit": _this._onSearch
+        }, React.createElement("input", {
+          "type": 'submit',
+          "className": 'unstyled',
+          "value": 'Eingrenzen mit Suchwort'
+        }), React.createElement("input", {
+          "type": 'text',
+          "className": 'ui-filter-search-input block',
+          "ref": 'filterSearch',
+          "defaultValue": f.get(config, ['filter', 'search'])
+        }))), React.createElement(SideFilter, {
           "dynamic": dynamic_filters,
           "current": config.filter || {},
           "accordion": config.accordion || {},
@@ -1690,6 +1725,14 @@ FallBackMsg = function(arg) {
     "className": 'title-l by-center'
   }, children));
 };
+
+FilterPreloader = React.createElement("div", {
+  "className": 'ui-slide-filter-item'
+}, React.createElement("div", {
+  "className": 'title-xs by-center'
+}, "Filter werden geladen"), React.createElement("div", {
+  "className": 'ui-preloader small'
+}));
 
 FilterExamples = function(arg) {
   var examples, query, ref1, url;
@@ -1920,6 +1963,7 @@ module.exports = React.createClass({
     Element = elm || 'div';
     thumbProps = {
       type: f.kebabCase(type),
+      mods: get.media_type === 'video' ? ['video'] : void 0,
       src: get.image_url || state.localPreview || '.',
       href: get.url,
       alt: get.title,
@@ -4448,7 +4492,7 @@ module.exports = resourceListParams = function(location) {
   var allowed, base, coerced_types, query;
   query = qs.parse(location.search.slice(1));
   base = 'list';
-  allowed = ['layout', 'filter', 'search', 'show_filter', 'accordion', 'page', 'per_page'];
+  allowed = ['layout', 'filter', 'show_filter', 'accordion', 'page', 'per_page'];
   coerced_types = {
     bools: ['show_filter'],
     jsons: ['filter', 'accordion']

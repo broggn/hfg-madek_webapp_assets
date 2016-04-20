@@ -2527,7 +2527,7 @@ f = require('active-lodash');
 parseMods = require('../../lib/parse-mods.coffee').fromProps;
 
 module.exports = React.createClass({
-  displayName: 'RailsForm',
+  displayName: 'RestForm',
   propTypes: {
     name: React.PropTypes.string.isRequired,
     action: React.PropTypes.string,
@@ -2535,12 +2535,13 @@ module.exports = React.createClass({
     authToken: React.PropTypes.string
   },
   render: function(arg) {
-    var action, authToken, children, emulateHTTP, formMethod, method, name, needsAuthToken, railsMethod, ref;
+    var action, authToken, authTokenParam, children, emulateHTTP, formMethod, method, name, needsAuthToken, ref, restMethod;
     ref = arg != null ? arg : this.props, name = ref.name, action = ref.action, method = ref.method, authToken = ref.authToken, children = ref.children;
-    railsMethod = (method || 'post').toLowerCase();
-    formMethod = railsMethod === 'get' ? 'get' : 'post';
-    emulateHTTP = !f.includes(['get', 'post'], method);
-    needsAuthToken = method !== 'get';
+    restMethod = (method || 'post').toLowerCase();
+    emulateHTTP = !f.includes(['get', 'post'], restMethod);
+    formMethod = restMethod === 'get' ? 'get' : 'post';
+    needsAuthToken = !(restMethod === 'get');
+    authTokenParam = 'authenticity_token';
     if (needsAuthToken && !f.present(authToken)) {
       throw new Error('No `authToken` given!');
     }
@@ -2557,9 +2558,9 @@ module.exports = React.createClass({
     }), (emulateHTTP ? React.createElement("input", {
       "name": '_method',
       "type": 'hidden',
-      "value": railsMethod
+      "value": restMethod
     }) : void 0), (needsAuthToken ? React.createElement("input", {
-      "name": 'authenticity_token',
+      "name": authTokenParam,
       "type": 'hidden',
       "value": authToken
     }) : void 0), children);

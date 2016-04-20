@@ -1155,13 +1155,19 @@ module.exports = React.createClass({
 
 
 },{"../lib/string-translation.coffee":7,"./lib/forms/input-field-text.cjsx":38,"./lib/forms/rails-form.cjsx":42,"./ui-components/Button.cjsx":50,"./ui-components/Modal.cjsx":56,"active-lodash":71,"ampersand-react-mixin":81,"react":517,"react-dom":387}],28:[function(require,module,exports){
-var MediaPlayer, Picture, React, cx, f;
+var Icon, Link, MediaPlayer, Picture, PropTypes, React, cx, f;
 
 React = require('react');
+
+PropTypes = React.PropTypes;
 
 f = require('active-lodash');
 
 cx = require('classnames');
+
+Link = require('../ui-components/Link.cjsx');
+
+Icon = require('../ui-components/Icon.cjsx');
 
 Picture = require('../ui-components/Picture.cjsx');
 
@@ -1170,42 +1176,68 @@ MediaPlayer = require('../ui-components/MediaPlayer.cjsx');
 module.exports = React.createClass({
   displayName: 'MediaEntryPreview',
   propTypes: {
-    get: React.PropTypes.object.isRequired,
-    mods: React.PropTypes.any
+    get: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+      media_file: PropTypes.shape({
+        previews: PropTypes.object,
+        original_file_url: PropTypes.string
+      }).isRequired
+    }).isRequired,
+    mods: PropTypes.any
   },
-  render: function(arg) {
-    var audio_previews, classes, image_url, ref, title, video_previews;
-    ref = arg != null ? arg : this.props.get, audio_previews = ref.audio_previews, video_previews = ref.video_previews, image_url = ref.image_url, title = ref.title;
+  render: function() {
+    var classes, hasZoom, href, image_url, picture, previews, ref, title;
+    ref = this.props.get, image_url = ref.image_url, title = ref.title;
+    previews = this.props.get.media_file.previews;
     classes = cx(this.props.mods);
+    href = f.chain(previews.images).sortBy('width').last().get('url').run();
+    picture = React.createElement(Picture, {
+      "className": classes,
+      "src": image_url,
+      "title": title
+    });
     switch (false) {
-      case !video_previews:
+      case !previews.videos:
         return React.createElement(MediaPlayer, {
           "type": 'video',
           "className": classes,
-          "sources": video_previews,
+          "sources": previews.videos,
           "poster": image_url
         });
-      case !audio_previews:
+      case !previews.audios:
         return React.createElement("div", {
-          "className": 'ui-container mtm'
+          "className": 'ui-container mvm'
         }, React.createElement(MediaPlayer, {
           "type": 'audio',
           "className": classes,
-          "sources": audio_previews,
+          "sources": previews.audios,
           "poster": image_url
         }));
+      case !href:
+        hasZoom = !(href === image_url);
+        return React.createElement("div", {
+          "className": cx({
+            'ui-has-magnifier': hasZoom
+          })
+        }, React.createElement("a", {
+          "href": href
+        }, picture), (hasZoom ? React.createElement("a", {
+          "href": href,
+          "target": '_blank',
+          "className": 'ui-magnifier'
+        }, React.createElement(Icon, {
+          "i": 'magnifier',
+          "mods": 'bright'
+        })) : void 0));
       default:
-        return React.createElement(Picture, {
-          "className": classes,
-          "src": image_url,
-          "alt": title
-        });
+        return picture;
     }
   }
 });
 
 
-},{"../ui-components/MediaPlayer.cjsx":55,"../ui-components/Picture.cjsx":57,"active-lodash":71,"classnames":156,"react":517}],29:[function(require,module,exports){
+},{"../ui-components/Icon.cjsx":53,"../ui-components/Link.cjsx":54,"../ui-components/MediaPlayer.cjsx":55,"../ui-components/Picture.cjsx":57,"active-lodash":71,"classnames":156,"react":517}],29:[function(require,module,exports){
 var ActionsBar, Button, ButtonGroup, FallBackMsg, FilterBar, FilterExamples, Icon, LAYOUT_MODES, Link, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, UiToolBar, ampersandReactMixin, classList, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, qs, ref, resourceListParams, router, setUrlParams, viewConfigProps, xhr;
 
 React = require('react');
@@ -3692,7 +3724,7 @@ module.exports = React.createClass({
 
 
 },{"react":517,"react-dom":387}],57:[function(require,module,exports){
-var React, f, parseMods, t;
+var React, cx, f, parseMods, t;
 
 React = require('react');
 
@@ -3700,30 +3732,34 @@ f = require('active-lodash');
 
 parseMods = require('../lib/parse-mods.coffee').fromProps;
 
+cx = require('classnames');
+
 t = require('../../lib/string-translation.coffee')('de');
 
 module.exports = React.createClass({
   displayName: 'Picture',
   propTypes: {
     src: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string,
     alt: React.PropTypes.string
   },
   render: function(arg) {
-    var alt, altAttr, altTxt, klasses, ref, src;
-    ref = arg != null ? arg : this.props, src = ref.src, alt = ref.alt;
-    klasses = parseMods(this.props);
-    altTxt = f.presence(alt) || t('picture_alt_fallback');
-    altAttr = (t('picture_alt_prefix')) + " " + altTxt;
-    return React.createElement("img", {
-      "src": src,
-      "className": klasses,
-      "alt": altAttr
-    });
+    var alt, altTxt, classes, ref, src, title, titleTxt;
+    ref = arg != null ? arg : this.props, src = ref.src, title = ref.title, alt = ref.alt;
+    classes = cx(parseMods(this.props));
+    titleTxt = title || alt || t('picture_alt_fallback');
+    altTxt = (t('picture_alt_prefix')) + " " + titleTxt;
+    return React.createElement("img", React.__spread({
+      "className": classes
+    }, this.props, {
+      "title": titleTxt,
+      "alt": altTxt
+    }));
   }
 });
 
 
-},{"../../lib/string-translation.coffee":7,"../lib/parse-mods.coffee":45,"active-lodash":71,"react":517}],58:[function(require,module,exports){
+},{"../../lib/string-translation.coffee":7,"../lib/parse-mods.coffee":45,"active-lodash":71,"classnames":156,"react":517}],58:[function(require,module,exports){
 var FilterItem, Icon, Link, MadekPropTypes, React, css, f, forCurrentFiltersSelectItemsInTree, initializeFilterTreeFromProps, initializeItems, initializeSections, initializeSubSections, parseMods, setUrlParams;
 
 React = require('react');

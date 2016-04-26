@@ -441,18 +441,25 @@ module.exports = AppResource.extend({
 
 
 },{"./shared/app-resource.coffee":13}],12:[function(require,module,exports){
-var Collection, RailsResource;
+var Collection, RailsResource, f;
+
+f = require('active-lodash');
 
 Collection = require('ampersand-rest-collection');
 
 RailsResource = require('./rails-resource-mixin.coffee');
 
 module.exports = Collection.extend(RailsResource, {
-  type: 'AppCollectionBase'
+  type: 'AppCollectionBase',
+  mainIndex: ['url'],
+  indexes: ['uuid'],
+  has: function(index) {
+    return f.present(this.get(index));
+  }
 });
 
 
-},{"./rails-resource-mixin.coffee":14,"ampersand-rest-collection":30}],13:[function(require,module,exports){
+},{"./rails-resource-mixin.coffee":14,"active-lodash":20,"ampersand-rest-collection":30}],13:[function(require,module,exports){
 var Model, RailsResource, f, getRailsCSRFToken, xhr;
 
 Model = require('ampersand-model');

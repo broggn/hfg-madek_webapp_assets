@@ -1,0 +1,209 @@
+de:
+  activerecord:
+    attributes:
+      meta_datum/keywords:
+        created_by: Ersteller
+    errors:
+      messages:
+        record_invalid: "Überprüfung fehlgeschlagen: %{errors}"
+        taken: ist bereits vergeben
+        blank: ist leer
+  flash:
+    actions:
+      create:
+        success: "%{resource_name} wurde erstellt."
+        error: "%{resource_name} konnte nicht erstellt werden."
+      update:
+        success: "%{resource_name} wurde gespeichert."
+        error: "%{resource_name} konnte nicht gespeichert werden."
+      destroy:
+        success: "%{resource_name} wurde gelöscht."
+        error: "%{resource_name} konnte nicht gelöscht werden."
+      meta_data_update:
+        success: "Metadaten von %{resource_name} wurden gespeichert."
+        error: "Metadaten von %{resource_name} konnten nicht gespeichert werden."
+  sitemap_admin: Admin
+  sitemap_api: API
+  sitemap_media_entries: Einträge
+  sitemap_collections: Sets
+  sitemap_filter_sets: Filtersets
+  sitemap_explore: Erkunden
+  sitemap_my_archive: Mein Archiv
+  sitemap_my_archive_title: Mein Archiv
+  sitemap_my_unpublished: Meine ungesicherten Medieneinträge
+  sitemap_my_unpublished_title: Meine ungesicherten Medieneinträge
+  sitemap_my_content_media_entries: Meine Medieneinträge
+  sitemap_my_content_media_entries_title: Meine Medieneinträge
+  sitemap_my_content_collections: Meine Sets
+  sitemap_my_content_collections_title: Meine Sets
+  sitemap_my_content_filter_sets: Meine Filtersets
+  sitemap_my_content_filter_sets_title: Meine Filtersets
+  sitemap_my_latest_imports: Meine letzten Importe
+  sitemap_my_latest_imports_title: Meine letzten Importe
+  sitemap_my_favorite_media_entries: Meine Favoriten (Medieneinträge)
+  sitemap_my_favorite_media_entries_title: Meine Favoriten (Medieneinträge)
+  sitemap_my_favorite_collections: Meine Favoriten (Sets)
+  sitemap_my_favorite_collections_title: Meine Favoriten (Sets)
+  sitemap_my_favorite_filter_sets: Meine Favoriten (Filtersets)
+  sitemap_my_favorite_filter_sets_title: Meine Favoriten (Filtersets)
+  sitemap_my_used_keywords: Meine Schlagworte
+  sitemap_my_used_keywords_title: Meine Schlagworte
+  sitemap_my_entrusted_media_entries: Mir anvertraute Medieneinträge
+  sitemap_my_entrusted_media_entries_title: Mir anvertraute Medieneinträge
+  sitemap_my_entrusted_collections: Mir anvertraute Sets
+  sitemap_my_entrusted_collections_title: Mir anvertraute Sets
+  sitemap_my_entrusted_filter_sets: Mir anvertraute Filtersets
+  sitemap_my_entrusted_filter_sets_title: Mir anvertraute Filtersets
+  sitemap_my_groups: Meine Arbeitsgruppen
+  sitemap_my_groups_title: Meine Arbeitsgruppen
+  user_menu_login_btn: Anmelden
+  user_menu_logout_btn: Abmelden
+  login_box_rememberme: Login merken
+  login_box_login_btn: Anmelden
+  login_box_external: ZHdK-Login
+  login_box_internal: Externe
+  permission_subject_title_users: Personen
+  permission_subject_title_groups: Gruppen
+  permission_subject_title_apiapps: API-Applikationen
+  permission_subject_title_public: Öffentlichkeit
+  permission_subject_name_public: Internet
+  permission_name_get_metadata_and_previews: Betrachten
+  permission_name_get_full_size: "Original exportieren & in PDF blättern"
+  permission_name_edit_metadata: "Metadaten editieren & Inhalte zu Set hinzufügen"
+  permission_name_edit_permissions: Zugriffsberechtigungen ändern
+  permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
+  permissions_responsible_user_title: Verantwortliche Person
+  permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.
+  permissions_table_title: Berechtigungen
+  permissions_table_edit_btn: Bearbeiten
+  permissions_table_save_btn: Speichern
+  permissions_table_cancel_btn: Abbrechen
+  permissions_table_remove_subject_btn: Berechtigung entfernen
+  permissions_overview_yours_title: Ihre Berechtigungen
+  permissions_overview_yours_msg_start: "Sie, "
+  permissions_overview_yours_msg_end: ", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen"
+  btn_delete_confirm_msq: "Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?"
+  btn_publish_confirm_msg: "Sind Sie sicher, dass Sie diesen Inhalt veröffentlichen wollen?"
+  btn_delete_text: Löschen
+  btn_publish_text: Veröffentlichen
+  picture_alt_prefix: "Bild: "
+  picture_alt_fallback: (unbekannt)
+  pagination_prefix: Seite
+  pagination_of: der
+  relations_title: Zusammenhänge
+  no_relations_title: Es wurden keine Zusammenhänge gefunden.
+  relations_parents_title: Übergeordnete Sets
+  relations_siblings_title: Untergeordnete Sets
+  collection_media_resources_title: "Medieneintrag im Set:"
+  collection_permissions_btn: Zugriffsberechtigungen ändern
+  collection_edit_cover_submit_btn: Submit
+  collection_edit_highlights_btn: Submit
+  collection_edit_permissions_btn: Submit
+  no_content_fallback: (Keine Inhalte vorhanden.)
+  no_groups_fallback: (Keine Gruppen vorhanden.)
+  no_keywords_fallback: (Keine Schlagworte vorhanden.)
+  group_new_group_btn: Neue Arbeitsgruppe
+  group_edit_btn: Bearbeiten
+  group_delete_confirm_msg: "Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?"
+  external_groups: Abteilungsgruppen
+  internal_groups: Arbeitsgruppen
+  authentication_groups: Systemgruppen
+  workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
+  workgroup_link_to_contents_text: Inhalte
+  workgroup_members_table_title: Mitglieder
+  workgroup_members_table_login: Login
+  workgroup_members_table_is_member: Mitglied?
+  dashboard_title_head: Mein Archiv
+  resources_header_show_all: alle anzeigen
+  dashboard_create_media_entry_btn: Medien importieren
+  dashboard_welcome_msg: "Willkommen im Medienarchiv der Künste!"
+  resource_meta_data_title: Titel
+  resource_meta_data_description: Beschreibung
+  resource_meta_data_keywords: Schlagworte
+  resource_meta_data_responsible: Verantwortliche Person
+  resource_meta_data_copyright_notice: Rechte am geistigen Eigentum
+  resource_meta_data_date: Datierung
+  resource_meta_data_saved_filter: Gespeicherter Filter
+  resource_meta_data_resource_type: Medientyp
+  resource_meta_data_fallback: Es sind keine Metadaten zu diesem Kontext bereitgestellt.
+  media_entry_tab_main: Medieneintrag
+  media_entry_tab_relations: Zusammenhänge
+  media_entry_tab_more_data: Alle Daten
+  media_entry_tab_permissions: Berechtigungen
+  media_entry_not_published_warning_msg: "Dieser Medieneintrag ist noch nicht veröffentlicht!"
+  media_entry_meta_data_header_prefix: "Metadaten editieren: "
+  media_entry_more_data_title: Verantwortlichkeit und Aktivität
+  media_entry_file_information_title: Datei
+  media_entry_media_import_header: Medien importieren
+  media_entry_media_import_title: "Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen."
+  media_entry_media_import_inside: Dateien auf dieses Feld ziehen oder
+  media_entry_media_import_inside_nojs: Dateien auswählen
+  media_entry_back_btn: Zurück
+  media_entry_upload_btn: Importieren
+  media_entry_notices_title: Hinweise
+  meta_data_form_save_btn: Speichern
+  meta_data_form_cancel_link: Abbrechen
+  meta_data_form_submit_btn: Speichern
+  meta_data_meta_key_label: Schlüssel
+  meta_data_type_label: Typ
+  meta_data_value_label: Wert
+  meta_data_action_edit_btn: Bearbeiten
+  meta_data_action_delete_btn: Löschen
+  meta_data_delete_confirm_msg: "Sind Sie sicher, dass Sie diese Werte löschen wollen?"
+  meta_data_header_text: Werte
+  people_toolbar_header: Ähnliche Inhalte
+  group_edit_form_new_member_login: Login des neuen Mitglieds dieser Gruppe
+  group_toolbar_header_entrusted_resources: Mir anvertraute Medieneinträge
+  group_meta_data_name: Name
+  group_meta_data_institutional_group_name: Name der Abteilungsgruppe
+  sitemap_entries: Medieneinträge
+  media_entry_was_favored: Der Medieneintrag wurde zu den Favoriten hinzugefügt.
+  media_entry_was_disfavored: Der Medieneintrag wurde von den Favoriten entfernt.
+  collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
+  collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
+  batch_meta_data_edit: "Metadaten für %{media_entry_count} Einträge gleichzeitig editieren"
+  collection_ask_delete_title: Set löschen
+  collection_ask_delete_ok: Löschen
+  collection_ask_delete_cancel: Abbrechen
+  collection_ask_delete_question_pre: "Sind Sie sicher, dass Sie folgendes Set löschen möchten: "
+  collection_ask_delete_question_post: "?"
+  collection_delete_success: "Set wurde gelöscht!"
+  collection_edit_highlights_title: Inhalte hervorheben
+  collection_edit_cover_title: Titelbild für Set festlegen
+  collection_new_header: Create Collection
+  collection_new_dialog_title: Set erstellen
+  collection_new_label_title: Titel
+  collection_new_create_set: Set erstellen
+  collection_new_cancel: Abbrechen
+  collection_new_flash_title_needed: Titel ist ein Pflichtfeld
+  collection_new_flash_successful: "Set wurde kreiert!"
+  collection_resource_selection_cancel: Abbrechen
+  collection_resource_selection_save: Auswahl speichern
+  collection_resource_selection_h_selection: Auswahl
+  collection_resource_selection_h_title: Titel
+  collection_resource_selection_h_subtitle: Untertitel
+  collection_resource_selection_h_author: Autor/in
+  collection_resource_selection_h_date: Datierung
+  collection_resource_selection_h_keywords: Schlagworte
+  collection_resource_selection_h_responsible: Rechteinhaber
+  dashboard_create_collection_btn: Create set
+  dashboard_create_collection: Set erstellen
+  media_entry_select_collection_flash_result: "Removed entry from %{removed_count} sets. Added entry to %{added_count} sets."
+  collection_select_collection_flash_result: "Removed set from %{removed_count} sets. Added set to %{added_count} sets."
+  meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
+  meta_data_batch_hint_differences: Unterschiedliche Metadaten vorhanden
+  meta_data_batch_hint_differences_override: "Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten."
+  meta_data_batch_hint_equal_data: Gleiche Metadaten vorhanden
+  meta_data_batch_hint_value: Wert und Text
+  meta_data_batch_success: Metadaten wurden erfolgreich aktualisiert.
+  meta_data_batch_failure: Metadaten konnten nicht aktualisiert werden.
+  resource_select_collection_title: Zu Set hinzufügen/entfernen
+  resource_select_collection_search: Suchen
+  resource_select_collection_search_placeholder: Suche
+  resource_select_collection_clear: Clear
+  resource_select_collection_hint_search: "Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll."
+  resource_select_collection_hint_more: Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.
+  resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
+  resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
+  resource_select_collection_save: Speichern
+  resource_select_collection_cancel: Abbrechen

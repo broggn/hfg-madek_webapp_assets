@@ -34903,9 +34903,7 @@ function _createXHR(options) {
 
 function noop() {}
 
-},{"global/window":157,"is-function":45,"once":153,"parse-headers":154,"xtend":158}],157:[function(require,module,exports){
-arguments[4][44][0].apply(exports,arguments)
-},{"dup":44}],158:[function(require,module,exports){
+},{"global/window":44,"is-function":45,"once":153,"parse-headers":154,"xtend":157}],157:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

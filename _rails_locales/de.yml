@@ -28,6 +28,8 @@ de:
   sitemap_collections: Sets
   sitemap_filter_sets: Filtersets
   sitemap_explore: Erkunden
+  sitemap_help: Support
+  sitemap_search: Suche
   sitemap_my_archive: Mein Archiv
   sitemap_my_archive_title: Mein Archiv
   sitemap_my_unpublished: Meine ungesicherten Medieneinträge
@@ -207,3 +209,4 @@ de:
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
   resource_select_collection_save: Speichern
   resource_select_collection_cancel: Abbrechen
+  search_btn_search: Suchen

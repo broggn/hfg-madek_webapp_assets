@@ -26,6 +26,8 @@ en:
   sitemap_collections: Sets
   sitemap_filter_sets: Filter sets
   sitemap_explore: Explore
+  sitemap_help: Support
+  sitemap_search: Search
   sitemap_my_archive: My archive
   sitemap_my_archive_title: My archive
   sitemap_my_unpublished: My unsaved media entries
@@ -205,3 +207,4 @@ en:
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
   resource_select_collection_save: Speichern
   resource_select_collection_cancel: Abbrechen
+  search_btn_search: Search

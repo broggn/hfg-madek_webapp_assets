@@ -107,6 +107,10 @@ resourcesConfig = {
   People: {
     url: '/people'
   },
+  Licenses: {
+    url: '/licenses',
+    key: 'label'
+  },
   Keywords: {
     url: '/keywords',
     key: 'label',
@@ -2790,13 +2794,16 @@ decorators = {
   },
   Keyword: function(o) {
     return o.label;
+  },
+  License: function(o) {
+    return o.label;
   }
 };
 
 module.exports = function(o) {
   var decorate;
   if (!(f.isObject(o) && f.isFunction(decorate = decorators[o.type]))) {
-    throw new Error("Decorator: Invalid Object!");
+    throw new Error('Decorator: Unknown Resource!');
   }
   return decorate(o);
 };
@@ -3076,6 +3083,14 @@ module.exports = {
     render: function() {
       return React.createElement(InputResources, React.__spread({}, this.props, {
         "resourceType": 'People'
+      }));
+    }
+  }),
+  Licenses: React.createClass({
+    displayName: 'InputLicenses',
+    render: function() {
+      return React.createElement(InputResources, React.__spread({}, this.props, {
+        "resourceType": 'Licenses'
       }));
     }
   }),

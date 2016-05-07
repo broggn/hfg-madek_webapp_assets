@@ -71,6 +71,7 @@ en:
   permission_name_get_full_size: "Edit original & browse PDFs"
   permission_name_edit_metadata: "Edit metadata & add content to set"
   permission_name_edit_permissions: Edit permissions
+  permission_name_edit_metadata_and_relations: "Metadaten editieren & Inhalte zu Set hinzufügen"
   permission_overridden_by_public: (overridden by public permissions)
   permissions_responsible_user_title: Responsible User
   permissions_responsible_user_msg: The responsible user has all permissions for the selected content and can also delete it.
@@ -127,6 +128,7 @@ en:
   resource_meta_data_resource_type: Media type
   resource_meta_data_fallback: No meta data for this context.
   media_entry_tab_main: Media Entry
+  collection_tab_main: Set
   media_entry_tab_relations: Relations
   media_entry_tab_more_data: All Data
   media_entry_tab_permissions: Permissions

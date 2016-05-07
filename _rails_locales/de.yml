@@ -73,6 +73,7 @@ de:
   permission_name_get_full_size: "Original exportieren & in PDF blättern"
   permission_name_edit_metadata: "Metadaten editieren & Inhalte zu Set hinzufügen"
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
+  permission_name_edit_metadata_and_relations: "Metadaten editieren & Inhalte zu Set hinzufügen"
   permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
   permissions_responsible_user_title: Verantwortliche Person
   permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.
@@ -129,6 +130,7 @@ de:
   resource_meta_data_resource_type: Medientyp
   resource_meta_data_fallback: Es sind keine Metadaten zu diesem Kontext bereitgestellt.
   media_entry_tab_main: Medieneintrag
+  collection_tab_main: Set
   media_entry_tab_relations: Zusammenhänge
   media_entry_tab_more_data: Alle Daten
   media_entry_tab_permissions: Berechtigungen

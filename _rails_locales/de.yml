@@ -58,6 +58,7 @@ de:
   sitemap_my_entrusted_filter_sets_title: Mir anvertraute Filtersets
   sitemap_my_groups: Meine Arbeitsgruppen
   sitemap_my_groups_title: Meine Arbeitsgruppen
+  "": ""
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden
   login_box_rememberme: Login merken
@@ -73,7 +74,6 @@ de:
   permission_name_get_full_size: "Original exportieren & in PDF blättern"
   permission_name_edit_metadata: "Metadaten editieren & Inhalte zu Set hinzufügen"
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
-  permission_name_edit_metadata_and_relations: "Metadaten editieren & Inhalte zu Set hinzufügen"
   permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
   permissions_responsible_user_title: Verantwortliche Person
   permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.
@@ -86,22 +86,22 @@ de:
   permissions_overview_yours_msg_start: "Sie, "
   permissions_overview_yours_msg_end: ", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen"
   btn_delete_confirm_msq: "Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?"
-  btn_publish_confirm_msg: "Sind Sie sicher, dass Sie diesen Inhalt veröffentlichen wollen?"
+  btn_publish_confirm_msg: "Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?"
   btn_delete_text: Löschen
-  btn_publish_text: Veröffentlichen
+  btn_publish_text: Speichern
   picture_alt_prefix: "Bild: "
   picture_alt_fallback: (unbekannt)
   pagination_prefix: Seite
-  pagination_of: der
+  pagination_of: von
   relations_title: Zusammenhänge
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
   relations_parents_title: Übergeordnete Sets
-  relations_siblings_title: Untergeordnete Sets
+  relations_siblings_title: Benachbarte Sets
   collection_media_resources_title: "Medieneintrag im Set:"
   collection_permissions_btn: Zugriffsberechtigungen ändern
-  collection_edit_cover_submit_btn: Submit
-  collection_edit_highlights_btn: Submit
-  collection_edit_permissions_btn: Submit
+  collection_edit_cover_submit_btn: Speichern
+  collection_edit_highlights_btn: Bearbeiten
+  collection_edit_permissions_btn: Speichern
   no_content_fallback: (Keine Inhalte vorhanden.)
   no_groups_fallback: (Keine Gruppen vorhanden.)
   no_keywords_fallback: (Keine Schlagworte vorhanden.)
@@ -130,11 +130,11 @@ de:
   resource_meta_data_resource_type: Medientyp
   resource_meta_data_fallback: Es sind keine Metadaten zu diesem Kontext bereitgestellt.
   media_entry_tab_main: Medieneintrag
-  collection_tab_main: Set
   media_entry_tab_relations: Zusammenhänge
+  collection_tab_main: Set
   media_entry_tab_more_data: Alle Daten
   media_entry_tab_permissions: Berechtigungen
-  media_entry_not_published_warning_msg: "Dieser Medieneintrag ist noch nicht veröffentlicht!"
+  media_entry_not_published_warning_msg: "Dieser Medieneintrag ist noch nicht gesichert!"
   media_entry_meta_data_header_prefix: "Metadaten editieren: "
   media_entry_more_data_title: Verantwortlichkeit und Aktivität
   media_entry_file_information_title: Datei
@@ -174,13 +174,13 @@ de:
   collection_delete_success: "Set wurde gelöscht!"
   collection_edit_highlights_title: Inhalte hervorheben
   collection_edit_cover_title: Titelbild für Set festlegen
-  collection_new_header: Create Collection
+  collection_new_header: Neues Set
   collection_new_dialog_title: Set erstellen
   collection_new_label_title: Titel
   collection_new_create_set: Set erstellen
   collection_new_cancel: Abbrechen
-  collection_new_flash_title_needed: Titel ist ein Pflichtfeld
-  collection_new_flash_successful: "Set wurde kreiert!"
+  collection_new_flash_title_needed: Titel ist ein Pflichtfeld.
+  collection_new_flash_successful: Set wurde erstellt.
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_save: Auswahl speichern
   collection_resource_selection_h_selection: Auswahl
@@ -190,10 +190,10 @@ de:
   collection_resource_selection_h_date: Datierung
   collection_resource_selection_h_keywords: Schlagworte
   collection_resource_selection_h_responsible: Rechteinhaber
-  dashboard_create_collection_btn: Create set
+  dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
-  media_entry_select_collection_flash_result: "Removed entry from %{removed_count} sets. Added entry to %{added_count} sets."
-  collection_select_collection_flash_result: "Removed set from %{removed_count} sets. Added set to %{added_count} sets."
+  media_entry_select_collection_flash_result: "Eintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt."
+  collection_select_collection_flash_result: "Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt."
   meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
   meta_data_batch_hint_differences: Unterschiedliche Metadaten vorhanden
   meta_data_batch_hint_differences_override: "Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten."
@@ -204,7 +204,7 @@ de:
   resource_select_collection_title: Zu Set hinzufügen/entfernen
   resource_select_collection_search: Suchen
   resource_select_collection_search_placeholder: Suche
-  resource_select_collection_clear: Clear
+  resource_select_collection_clear: Löschen
   resource_select_collection_hint_search: "Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll."
   resource_select_collection_hint_more: Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.
   resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
@@ -212,3 +212,5 @@ de:
   resource_select_collection_save: Speichern
   resource_select_collection_cancel: Abbrechen
   search_btn_search: Suchen
+  meta_data_blank_value_for_required_meta_key_pre: "Metadatum-Wert nicht vorhanden für Meta-Key "
+  meta_data_blank_value_for_required_meta_key_post: "!"

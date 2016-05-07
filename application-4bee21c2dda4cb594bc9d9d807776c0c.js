@@ -1576,9 +1576,11 @@ module.exports = React.createClass({
       return React.createElement(ResourceButton, {
         "key": button.action,
         "icon": button.icon,
+        "title": button.title,
+        "name": button.action,
+        "href": button.action,
         "method": button.method,
-        "authToken": authToken,
-        "href": button.action
+        "authToken": authToken
       });
     }))), React.createElement("ul", {
       "className": "ui-tabs large"
@@ -1634,8 +1636,8 @@ Tab = React.createClass({
 ResourceButton = React.createClass({
   displayName: 'ResourceButton',
   render: function(arg) {
-    var authToken, href, icon, method, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, href = ref.href, method = ref.method, icon = ref.icon;
+    var authToken, href, icon, method, name, ref, title;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, href = ref.href, method = ref.method, icon = ref.icon, title = ref.title, name = ref.name;
     if (!method) {
       method = 'post';
     }
@@ -1648,7 +1650,8 @@ ResourceButton = React.createClass({
       "authToken": authToken
     }, React.createElement("button", {
       "className": "button",
-      "type": "submit"
+      "type": "submit",
+      "title": title
     }, React.createElement("i", {
       "className": icon
     })));

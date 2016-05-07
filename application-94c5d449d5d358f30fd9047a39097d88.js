@@ -2732,9 +2732,11 @@ module.exports = ({"MediaEntryPreview":require("./MediaEntryPreview.cjsx"),"Medi
 
 
 },{"./MediaEntryPreview.cjsx":33,"./MediaResourcesBox.cjsx":34,"./ResourceThumbnail.cjsx":35}],37:[function(require,module,exports){
-var InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, RailsForm, React, VocabularyFormItem, VocabularyHeader, classnames, f, getRailsCSRFToken, t, xhr;
+var InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, PropTypes, RailsForm, React, VocabularyFormItem, VocabularyHeader, cx, f, getRailsCSRFToken, t, xhr;
 
 React = require('react');
+
+PropTypes = React.PropTypes;
 
 f = require('active-lodash');
 
@@ -2752,10 +2754,20 @@ xhr = require('xhr');
 
 getRailsCSRFToken = require('../lib/rails-csrf-token.coffee');
 
-classnames = require('classnames');
+cx = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'FormResourceMetaData',
+  propTypes: {
+    get: PropTypes.shape({
+      meta_data: PropTypes.shape({
+        by_vocabulary: PropTypes.objectOf(PropTypes.shape({
+          vocabulary: PropTypes.object.isRequired,
+          meta_data: PropTypes.object.isRequired
+        }))
+      })
+    }).isRequired
+  },
   getInitialState: function() {
     return {
       editing: false,
@@ -2811,11 +2823,12 @@ module.exports = React.createClass({
       };
     })(this));
   },
-  render: function(arg) {
-    var authToken, get, meta_data, name, ref;
+  render: function(arg, arg1) {
+    var authToken, errors, get, meta_data, name, ref;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
+    errors = (arg1 != null ? arg1 : this.state).errors;
     name = (f.snakeCase(get.type)) + "[meta_data]";
-    meta_data = get.meta_data.by_vocabulary;
+    meta_data = f.sortBy(get.meta_data.by_vocabulary, 'vocabulary.position');
     return React.createElement(RailsForm, {
       "ref": 'form',
       "onSubmit": this._onSubmit,
@@ -2832,16 +2845,14 @@ module.exports = React.createClass({
       "className": "error ui-alert"
     }, t('resource_meta_data_has_validation_errors'))) : void 0), React.createElement("div", {
       "className": 'form-body'
-    }, f.keys(meta_data).map((function(_this) {
-      return function(voc_id) {
-        return React.createElement(VocabularyFormItem, {
-          "errors": _this.state.errors,
-          "get": meta_data[voc_id],
-          "name": name,
-          "key": voc_id
-        });
-      };
-    })(this))), React.createElement("div", {
+    }, meta_data.map(function(vocabulary) {
+      return React.createElement(VocabularyFormItem, {
+        "errors": errors,
+        "get": vocabulary,
+        "name": name,
+        "key": vocabulary.uuid
+      });
+    })), React.createElement("div", {
       "className": 'form-footer'
     }, React.createElement("div", {
       "className": 'ui-actions'
@@ -2867,9 +2878,9 @@ VocabularyFormItem = React.createClass({
       "vocabulary": get.vocabulary
     }), get.meta_data.map(function(datum) {
       return React.createElement(MetaDatumFormItem, {
-        "error": errors[datum.meta_key.uuid],
         "get": datum,
         "name": name,
+        "error": errors[datum.meta_key.uuid],
         "key": datum.meta_key.uuid
       });
     }));
@@ -2894,7 +2905,7 @@ VocabularyHeader = React.createClass({
 MetaDatumFormItem = React.createClass({
   displayName: 'MetaDatumFormItem',
   propTypes: {
-    name: React.PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     get: MadekPropTypes.metaDatum
   },
   render: function(arg) {
@@ -2902,7 +2913,7 @@ MetaDatumFormItem = React.createClass({
     ref = arg != null ? arg : this.props, get = ref.get, name = ref.name, error = ref.error;
     name += "[" + get.meta_key.uuid + "][]";
     return React.createElement("fieldset", {
-      "className": classnames('ui-form-group', 'columned', {
+      "className": cx('ui-form-group', 'columned', {
         'error': error
       })
     }, (error ? React.createElement("div", {

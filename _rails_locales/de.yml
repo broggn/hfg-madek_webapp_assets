@@ -129,6 +129,7 @@ de:
   resource_meta_data_saved_filter: Gespeicherter Filter
   resource_meta_data_resource_type: Medientyp
   resource_meta_data_fallback: Es sind keine Metadaten zu diesem Kontext bereitgestellt.
+  resource_meta_data_has_validation_errors: Es gibt fehlerhafte Eingabefelder.
   media_entry_tab_main: Medieneintrag
   media_entry_tab_relations: Zusammenhänge
   collection_tab_main: Set

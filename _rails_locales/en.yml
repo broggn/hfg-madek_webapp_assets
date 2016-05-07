@@ -127,6 +127,7 @@ en:
   resource_meta_data_saved_filter: Saved filter
   resource_meta_data_resource_type: Media type
   resource_meta_data_fallback: No meta data for this context.
+  resource_meta_data_has_validation_errors: Es gibt fehlerhafte Eingabefelder.
   media_entry_tab_main: Media Entry
   media_entry_tab_relations: Relations
   collection_tab_main: Set

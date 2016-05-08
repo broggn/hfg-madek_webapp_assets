@@ -56,7 +56,6 @@ en:
   sitemap_my_entrusted_filter_sets_title: My Entrusted Filter Sets
   sitemap_my_groups: My work groups
   sitemap_my_groups_title: My Work Groups
-  "": ""
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out
   login_box_rememberme: remember me
@@ -70,8 +69,9 @@ en:
   permission_subject_name_public: Internet
   permission_name_get_metadata_and_previews: View
   permission_name_get_full_size: "Export original & browse PDF"
-  permission_name_edit_metadata: "Edit metadata & add items to set"
+  permission_name_edit_metadata: Edit metadata
   permission_name_edit_permissions: Edit permissions
+  permission_name_edit_metadata_and_relations: Edit Metadate and contents
   permission_overridden_by_public: (overridden by public permissions)
   permissions_responsible_user_title: Responsible User
   permissions_responsible_user_msg: The responsible user has all permissions for the selected content and can also delete it.

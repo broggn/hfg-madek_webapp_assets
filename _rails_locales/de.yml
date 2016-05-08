@@ -58,7 +58,6 @@ de:
   sitemap_my_entrusted_filter_sets_title: Mir anvertraute Filtersets
   sitemap_my_groups: Meine Arbeitsgruppen
   sitemap_my_groups_title: Meine Arbeitsgruppen
-  "": ""
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden
   login_box_rememberme: Login merken
@@ -72,8 +71,9 @@ de:
   permission_subject_name_public: Internet
   permission_name_get_metadata_and_previews: Betrachten
   permission_name_get_full_size: "Original exportieren & in PDF blättern"
-  permission_name_edit_metadata: "Metadaten editieren & Inhalte zu Set hinzufügen"
+  permission_name_edit_metadata: Metadaten editieren
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
+  permission_name_edit_metadata_and_relations: "Metadaten editieren & Inhalte hinzufügen"
   permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
   permissions_responsible_user_title: Verantwortliche Person
   permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.

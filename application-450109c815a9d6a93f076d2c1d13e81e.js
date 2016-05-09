@@ -2140,8 +2140,9 @@ module.exports = React.createClass({
     }), " ", 'Filter zurücksetzen') : void 0 : void 0;
     BoxToolBar = withBox ? (function(_this) {
       return function() {
-        var actions, filter, for_url, isClient, layout, layouts, selection;
+        var actions, filter, for_url, isClient, layout, layouts, selection, totalCount;
         filter = config.filter, layout = config.layout, for_url = config.for_url;
+        totalCount = f.get(get, 'pagination.total_count');
         isClient = _this.state.isClient;
         selection = f.presence(_this.state.selectedResources) || false;
         layouts = LAYOUT_MODES.map(function(itm) {
@@ -2178,7 +2179,7 @@ module.exports = React.createClass({
           }
         } : void 0;
         return React.createElement(UiToolBar, {
-          "heading": get.pagination.total_count + " " + 'Inhalte',
+          "heading": (totalCount ? totalCount + " " + 'Inhalte' : void 0),
           "mods": toolbarClasses,
           "actions": actions,
           "layouts": layouts

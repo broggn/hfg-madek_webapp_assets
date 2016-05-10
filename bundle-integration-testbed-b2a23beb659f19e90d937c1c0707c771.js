@@ -1,47 +1,45 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-(function() {
-  var handleResult;
+var handleResult;
 
-  window.$ = require('jquery');
+window.$ = require('jquery');
 
-  window.tests = {
-    MediaEntryMetaData: require('./spec/media-entry-meta-data-update_spec.coffee')
+window.tests = {
+  MediaEntryMetaData: require('./spec/media-entry-meta-data-update_spec.coffee')
+};
+
+window.runTest = function(name, data) {
+  var error, error1, test;
+  if (data == null) {
+    data = {};
+  }
+  window.onerror = function(err) {
+    return handleResult(err);
   };
-
-  window.runTest = function(name, data) {
-    var error, test;
-    if (data == null) {
-      data = {};
+  try {
+    if (typeof (test = tests[name]) !== 'function') {
+      throw new Error("No test named " + name + "!");
     }
-    window.onerror = function(err) {
-      return handleResult(err);
+    test(data, handleResult);
+  } catch (error1) {
+    error = error1;
+    handleResult(error);
+  }
+  return null;
+};
+
+handleResult = function(err, res) {
+  var errorMessage;
+  if (err != null) {
+    errorMessage = {
+      error: err.toString()
     };
-    try {
-      if (typeof (test = tests[name]) !== 'function') {
-        throw new Error("No test named " + name + "!");
-      }
-      test(data, handleResult);
-    } catch (_error) {
-      error = _error;
-      handleResult(error);
-    }
-    return null;
-  };
+  }
+  $('<div id="TestBedResult">').text(JSON.stringify(errorMessage != null ? errorMessage : res || {})).appendTo('body');
+  if (err != null) {
+    throw err;
+  }
+};
 
-  handleResult = function(err, res) {
-    var errorMessage;
-    if (err != null) {
-      errorMessage = {
-        error: err.toString()
-      };
-    }
-    $('<div id="TestBedResult">').text(JSON.stringify(errorMessage != null ? errorMessage : res || {})).appendTo('body');
-    if (err != null) {
-      throw err;
-    }
-  };
-
-}).call(this);
 
 },{"./spec/media-entry-meta-data-update_spec.coffee":18,"jquery":46}],2:[function(require,module,exports){
 var getRailsCSRFToken;

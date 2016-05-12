@@ -2735,7 +2735,7 @@ module.exports = React.createClass({
       meta_data: PropTypes.shape({
         by_vocabulary: PropTypes.objectOf(PropTypes.shape({
           vocabulary: PropTypes.object.isRequired,
-          meta_data: PropTypes.object.isRequired
+          meta_data: PropTypes.array.isRequired
         }))
       })
     }).isRequired
@@ -2842,13 +2842,14 @@ module.exports = React.createClass({
 VocabularyFormItem = React.createClass({
   displayName: 'VocabularyFormItem',
   render: function(arg) {
-    var errors, get, name, ref;
+    var errors, get, meta_data, name, ref;
     ref = arg != null ? arg : this.props, get = ref.get, name = ref.name, errors = ref.errors;
+    meta_data = f.sortBy(get.meta_data, 'meta_key.position');
     return React.createElement("div", {
       "className": 'mbl'
     }, React.createElement(VocabularyHeader, {
       "vocabulary": get.vocabulary
-    }), get.meta_data.map(function(datum) {
+    }), meta_data.map(function(datum) {
       return React.createElement(MetaDatumFormItem, {
         "get": datum,
         "name": name,

@@ -41,7 +41,7 @@ handleResult = function(err, res) {
 };
 
 
-},{"./spec/media-entry-meta-data-update_spec.coffee":18,"jquery":46}],2:[function(require,module,exports){
+},{"./spec/media-entry-meta-data-update_spec.coffee":19,"jquery":47}],2:[function(require,module,exports){
 var getRailsCSRFToken;
 
 module.exports = getRailsCSRFToken = function() {
@@ -64,7 +64,29 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":13}],4:[function(require,module,exports){
+},{"./shared/app-resource.coffee":14}],4:[function(require,module,exports){
+module.exports = {
+  props: {
+    deleted: {
+      type: 'boolean',
+      "default": false
+    }
+  },
+  "delete": function(callback) {
+    return this._runRequest({
+      method: 'DELETE',
+      url: this.url
+    }, function(err, res, data) {
+      if (parseInt(res.statusCode) >= 400) {
+        alert('Unexpected Error: ' + JSON.stringify(res));
+      }
+      return callback(err, res, data);
+    });
+  }
+};
+
+
+},{}],5:[function(require,module,exports){
 var f;
 
 f = require('active-lodash');
@@ -94,7 +116,7 @@ module.exports = {
 };
 
 
-},{"active-lodash":20}],5:[function(require,module,exports){
+},{"active-lodash":21}],6:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -107,8 +129,8 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":13}],6:[function(require,module,exports){
-var AppResource, BrowserFile, Favoritable, MetaData, Permissions, Person, ResourceMetaData, f;
+},{"./shared/app-resource.coffee":14}],7:[function(require,module,exports){
+var AppResource, BrowserFile, Deletable, Favoritable, MetaData, Permissions, Person, ResourceMetaData, f;
 
 f = require('active-lodash');
 
@@ -126,7 +148,9 @@ MetaData = require('./meta-data.coffee');
 
 Favoritable = require('./concerns/resource-favoritable.coffee');
 
-module.exports = AppResource.extend(Favoritable, {
+Deletable = require('./concerns/resource-deletable.coffee');
+
+module.exports = AppResource.extend(Favoritable, Deletable, {
   type: 'MediaEntry',
   urlRoot: '/entries',
   props: {
@@ -232,7 +256,7 @@ module.exports = AppResource.extend(Favoritable, {
 });
 
 
-},{"./concerns/resource-favoritable.coffee":4,"./media-entry/permissions.coffee":7,"./meta-data.coffee":8,"./person.coffee":11,"./shared/app-resource.coffee":13,"./shared/resource-meta-data.coffee":15,"active-lodash":20,"global/window":44}],7:[function(require,module,exports){
+},{"./concerns/resource-deletable.coffee":4,"./concerns/resource-favoritable.coffee":5,"./media-entry/permissions.coffee":8,"./meta-data.coffee":9,"./person.coffee":12,"./shared/app-resource.coffee":14,"./shared/resource-meta-data.coffee":16,"active-lodash":21,"global/window":45}],8:[function(require,module,exports){
 var ApiClient, AppResource, Collection, Group, MediaEntryApiClientPermissions, MediaEntryGroupPermissions, MediaEntryPublicPermission, MediaEntryUserPermissions, ResourcePermissions, User;
 
 Collection = require('ampersand-rest-collection');
@@ -317,7 +341,7 @@ module.exports = ResourcePermissions.extend({
 });
 
 
-},{"../api-client.coffee":3,"../group.coffee":5,"../shared/app-resource.coffee":13,"../shared/resource-permissions.coffee":16,"../user.coffee":17,"ampersand-rest-collection":30}],8:[function(require,module,exports){
+},{"../api-client.coffee":3,"../group.coffee":6,"../shared/app-resource.coffee":14,"../shared/resource-permissions.coffee":17,"../user.coffee":18,"ampersand-rest-collection":31}],9:[function(require,module,exports){
 var AppCollection, MetaDatum, f, serializeForSave, subtypes;
 
 f = require('active-lodash');
@@ -363,7 +387,7 @@ serializeForSave = function(list) {
 };
 
 
-},{"./meta-datum.coffee":9,"./shared/app-collection.coffee":12,"active-lodash":20}],9:[function(require,module,exports){
+},{"./meta-datum.coffee":10,"./shared/app-collection.coffee":13,"active-lodash":21}],10:[function(require,module,exports){
 var AppResource, MetaDatum, MetaKey;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -411,7 +435,7 @@ module.exports = {
 };
 
 
-},{"./meta-key.coffee":10,"./shared/app-resource.coffee":13}],10:[function(require,module,exports){
+},{"./meta-key.coffee":11,"./shared/app-resource.coffee":14}],11:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -425,7 +449,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":13}],11:[function(require,module,exports){
+},{"./shared/app-resource.coffee":14}],12:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -438,7 +462,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":13}],12:[function(require,module,exports){
+},{"./shared/app-resource.coffee":14}],13:[function(require,module,exports){
 var Collection, RailsResource, f;
 
 f = require('active-lodash');
@@ -457,7 +481,7 @@ module.exports = Collection.extend(RailsResource, {
 });
 
 
-},{"./rails-resource-mixin.coffee":14,"active-lodash":20,"ampersand-rest-collection":30}],13:[function(require,module,exports){
+},{"./rails-resource-mixin.coffee":15,"active-lodash":21,"ampersand-rest-collection":31}],14:[function(require,module,exports){
 var Model, RailsResource, f, getRailsCSRFToken, xhr;
 
 Model = require('ampersand-model');
@@ -511,7 +535,7 @@ module.exports = Model.extend(RailsResource, {
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":14,"active-lodash":20,"ampersand-model":29,"xhr":156}],14:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":15,"active-lodash":21,"ampersand-model":30,"xhr":157}],15:[function(require,module,exports){
 var getRailsCSRFToken;
 
 getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
@@ -526,7 +550,7 @@ module.exports = {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":2}],15:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2}],16:[function(require,module,exports){
 var AppResource, MetaData, MetaDatum, f;
 
 AppResource = require('./app-resource.coffee');
@@ -565,7 +589,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"../meta-data.coffee":8,"../meta-datum.coffee":9,"./app-resource.coffee":13,"active-lodash":20}],16:[function(require,module,exports){
+},{"../meta-data.coffee":9,"../meta-datum.coffee":10,"./app-resource.coffee":14,"active-lodash":21}],17:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./app-resource.coffee');
@@ -594,7 +618,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./app-resource.coffee":13}],17:[function(require,module,exports){
+},{"./app-resource.coffee":14}],18:[function(require,module,exports){
 var AppResource, Person;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -612,7 +636,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./person.coffee":11,"./shared/app-resource.coffee":13}],18:[function(require,module,exports){
+},{"./person.coffee":12,"./shared/app-resource.coffee":14}],19:[function(require,module,exports){
 var MediaEntry, f;
 
 f = require('active-lodash');
@@ -647,7 +671,7 @@ module.exports = function(data, callback) {
 };
 
 
-},{"../models/media-entry.coffee":6,"active-lodash":20}],19:[function(require,module,exports){
+},{"../models/media-entry.coffee":7,"active-lodash":21}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -677,7 +701,7 @@ exports['default'] = function (f) {
 };
 
 module.exports = exports['default'];
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -705,7 +729,7 @@ exports['default'] = (function () {
 })();
 
 module.exports = exports['default'];
-},{"../lodash.custom":23,"./additions":19,"./overrides":22,"babel-runtime/helpers/interop-require-default":40}],21:[function(require,module,exports){
+},{"../lodash.custom":24,"./additions":20,"./overrides":23,"babel-runtime/helpers/interop-require-default":41}],22:[function(require,module,exports){
 "use strict";
 
 var _Object$create = require("babel-runtime/core-js/object/create")["default"];
@@ -721,7 +745,7 @@ exports["default"] = function (func) {
 };
 
 module.exports = exports["default"];
-},{"babel-runtime/core-js/object/create":39}],22:[function(require,module,exports){
+},{"babel-runtime/core-js/object/create":40}],23:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -753,7 +777,7 @@ exports['default'] = function (f) {
 };
 
 module.exports = exports['default'];
-},{"./lib/callWithNewObject":21,"babel-runtime/helpers/interop-require-default":40}],23:[function(require,module,exports){
+},{"./lib/callWithNewObject":22,"babel-runtime/helpers/interop-require-default":41}],24:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -12771,7 +12795,7 @@ module.exports = exports['default'];
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var assign = require('lodash.assign');
 
 /// Following code is largely pasted from Backbone.js
@@ -12820,7 +12844,7 @@ var extend = function(protoProps) {
 // Expose the extend function
 module.exports = extend;
 
-},{"lodash.assign":94}],25:[function(require,module,exports){
+},{"lodash.assign":95}],26:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-collection-lodash-mixin"] = window.ampersand["ampersand-collection-lodash-mixin"] || [];  window.ampersand["ampersand-collection-lodash-mixin"].push("2.0.1");}
 var isFunction = require('lodash.isfunction');
 var _ = {
@@ -12934,7 +12958,7 @@ mixins.size = function () {
 
 module.exports = mixins;
 
-},{"lodash.countby":98,"lodash.difference":100,"lodash.drop":101,"lodash.every":103,"lodash.filter":104,"lodash.find":105,"lodash.foreach":106,"lodash.groupby":107,"lodash.includes":110,"lodash.indexby":111,"lodash.indexof":112,"lodash.initial":113,"lodash.invoke":114,"lodash.isempty":118,"lodash.isfunction":120,"lodash.lastindexof":128,"lodash.map":130,"lodash.max":131,"lodash.min":132,"lodash.partition":136,"lodash.reduce":137,"lodash.reduceright":138,"lodash.reject":139,"lodash.rest":140,"lodash.sample":143,"lodash.shuffle":144,"lodash.some":145,"lodash.sortby":146,"lodash.take":147,"lodash.without":151}],26:[function(require,module,exports){
+},{"lodash.countby":99,"lodash.difference":101,"lodash.drop":102,"lodash.every":104,"lodash.filter":105,"lodash.find":106,"lodash.foreach":107,"lodash.groupby":108,"lodash.includes":111,"lodash.indexby":112,"lodash.indexof":113,"lodash.initial":114,"lodash.invoke":115,"lodash.isempty":119,"lodash.isfunction":121,"lodash.lastindexof":129,"lodash.map":131,"lodash.max":132,"lodash.min":133,"lodash.partition":137,"lodash.reduce":138,"lodash.reduceright":139,"lodash.reject":140,"lodash.rest":141,"lodash.sample":144,"lodash.shuffle":145,"lodash.some":146,"lodash.sortby":147,"lodash.take":148,"lodash.without":152}],27:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-collection-rest-mixin"] = window.ampersand["ampersand-collection-rest-mixin"] || [];  window.ampersand["ampersand-collection-rest-mixin"].push("5.0.0");}
 var sync = require('ampersand-sync');
 var assign = require('lodash.assign');
@@ -13047,7 +13071,7 @@ module.exports = {
     }
 };
 
-},{"ampersand-sync":32,"lodash.assign":94}],27:[function(require,module,exports){
+},{"ampersand-sync":33,"lodash.assign":95}],28:[function(require,module,exports){
 var AmpersandEvents = require('ampersand-events');
 var classExtend = require('ampersand-class-extend');
 var isArray = require('lodash.isarray');
@@ -13427,7 +13451,7 @@ Collection.extend = classExtend;
 
 module.exports = Collection;
 
-},{"ampersand-class-extend":24,"ampersand-events":28,"lodash.assign":94,"lodash.bind":96,"lodash.isarray":116}],28:[function(require,module,exports){
+},{"ampersand-class-extend":25,"ampersand-events":29,"lodash.assign":95,"lodash.bind":97,"lodash.isarray":117}],29:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-events"] = window.ampersand["ampersand-events"] || [];  window.ampersand["ampersand-events"].push("1.1.1");}
 var runOnce = require('lodash.once');
 var uniqueId = require('lodash.uniqueid');
@@ -13610,7 +13634,7 @@ Events.listenToAndRun = function (obj, name, callback) {
 
 module.exports = Events;
 
-},{"lodash.assign":94,"lodash.bind":96,"lodash.foreach":106,"lodash.isempty":118,"lodash.keys":126,"lodash.once":134,"lodash.uniqueid":150}],29:[function(require,module,exports){
+},{"lodash.assign":95,"lodash.bind":97,"lodash.foreach":107,"lodash.isempty":119,"lodash.keys":127,"lodash.once":135,"lodash.uniqueid":151}],30:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-model"] = window.ampersand["ampersand-model"] || [];  window.ampersand["ampersand-model"].push("6.0.2");}
 var State = require('ampersand-state');
 var sync = require('ampersand-sync');
@@ -13754,7 +13778,7 @@ var Model = State.extend({
 
 module.exports = Model;
 
-},{"ampersand-state":31,"ampersand-sync":32,"lodash.assign":94,"lodash.clone":97,"lodash.isobject":122,"lodash.result":142}],30:[function(require,module,exports){
+},{"ampersand-state":32,"ampersand-sync":33,"lodash.assign":95,"lodash.clone":98,"lodash.isobject":123,"lodash.result":143}],31:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-rest-collection"] = window.ampersand["ampersand-rest-collection"] || [];  window.ampersand["ampersand-rest-collection"].push("5.0.0");}
 var Collection = require('ampersand-collection');
 var lodashMixin = require('ampersand-collection-lodash-mixin');
@@ -13763,7 +13787,7 @@ var restMixins = require('ampersand-collection-rest-mixin');
 
 module.exports = Collection.extend(lodashMixin, restMixins);
 
-},{"ampersand-collection":27,"ampersand-collection-lodash-mixin":25,"ampersand-collection-rest-mixin":26}],31:[function(require,module,exports){
+},{"ampersand-collection":28,"ampersand-collection-lodash-mixin":26,"ampersand-collection-rest-mixin":27}],32:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-state"] = window.ampersand["ampersand-state"] || [];  window.ampersand["ampersand-state"].push("4.6.0");}
 var uniqueId = require('lodash.uniqueid');
 var assign = require('lodash.assign');
@@ -14575,11 +14599,11 @@ Base.extend = extend;
 // Our main exports
 module.exports = Base;
 
-},{"ampersand-events":28,"array-next":38,"key-tree-store":47,"lodash.assign":94,"lodash.bind":96,"lodash.clone":97,"lodash.defaults":99,"lodash.escape":102,"lodash.foreach":106,"lodash.has":109,"lodash.includes":110,"lodash.isarray":116,"lodash.isdate":117,"lodash.isempty":118,"lodash.isequal":119,"lodash.isfunction":120,"lodash.isnull":121,"lodash.isobject":122,"lodash.isstring":123,"lodash.isundefined":125,"lodash.keys":126,"lodash.omit":133,"lodash.result":142,"lodash.union":149,"lodash.uniqueid":150}],32:[function(require,module,exports){
+},{"ampersand-events":29,"array-next":39,"key-tree-store":48,"lodash.assign":95,"lodash.bind":97,"lodash.clone":98,"lodash.defaults":100,"lodash.escape":103,"lodash.foreach":107,"lodash.has":110,"lodash.includes":111,"lodash.isarray":117,"lodash.isdate":118,"lodash.isempty":119,"lodash.isequal":120,"lodash.isfunction":121,"lodash.isnull":122,"lodash.isobject":123,"lodash.isstring":124,"lodash.isundefined":126,"lodash.keys":127,"lodash.omit":134,"lodash.result":143,"lodash.union":150,"lodash.uniqueid":151}],33:[function(require,module,exports){
 var xhr = require('xhr');
 module.exports = require('./core')(xhr);
 
-},{"./core":33,"xhr":156}],33:[function(require,module,exports){
+},{"./core":34,"xhr":157}],34:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-sync"] = window.ampersand["ampersand-sync"] || [];  window.ampersand["ampersand-sync"].push("4.0.2");}
 var result = require('lodash.result');
 var defaults = require('lodash.defaults');
@@ -14731,7 +14755,7 @@ module.exports = function (xhr) {
   };
 };
 
-},{"lodash.assign":94,"lodash.defaults":99,"lodash.includes":110,"lodash.result":142,"media-type":152,"qs":34}],34:[function(require,module,exports){
+},{"lodash.assign":95,"lodash.defaults":100,"lodash.includes":111,"lodash.result":143,"media-type":153,"qs":35}],35:[function(require,module,exports){
 // Load modules
 
 var Stringify = require('./stringify');
@@ -14748,7 +14772,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":35,"./stringify":36}],35:[function(require,module,exports){
+},{"./parse":36,"./stringify":37}],36:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -14936,7 +14960,7 @@ module.exports = function (str, options) {
     return Utils.compact(obj);
 };
 
-},{"./utils":37}],36:[function(require,module,exports){
+},{"./utils":38}],37:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -15059,7 +15083,7 @@ module.exports = function (obj, options) {
     return keys.join(delimiter);
 };
 
-},{"./utils":37}],37:[function(require,module,exports){
+},{"./utils":38}],38:[function(require,module,exports){
 // Load modules
 
 
@@ -15251,7 +15275,7 @@ exports.isBuffer = function (obj) {
               obj.constructor.isBuffer(obj));
 };
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = function arrayNext(array, currentItem) {
     var len = array.length;
     var newIndex = array.indexOf(currentItem) + 1;
@@ -15259,9 +15283,9 @@ module.exports = function arrayNext(array, currentItem) {
     return array[newIndex];
 };
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
-},{"core-js/library/fn/object/create":41}],40:[function(require,module,exports){
+},{"core-js/library/fn/object/create":42}],41:[function(require,module,exports){
 "use strict";
 
 exports["default"] = function (obj) {
@@ -15271,12 +15295,12 @@ exports["default"] = function (obj) {
 };
 
 exports.__esModule = true;
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 var $ = require('../../modules/$');
 module.exports = function create(P, D){
   return $.create(P, D);
 };
-},{"../../modules/$":42}],42:[function(require,module,exports){
+},{"../../modules/$":43}],43:[function(require,module,exports){
 var $Object = Object;
 module.exports = {
   create:     $Object.create,
@@ -15290,7 +15314,7 @@ module.exports = {
   getSymbols: $Object.getOwnPropertySymbols,
   each:       [].forEach
 };
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var isFunction = require('is-function')
 
 module.exports = forEach
@@ -15338,7 +15362,7 @@ function forEachObject(object, iterator, context) {
     }
 }
 
-},{"is-function":45}],44:[function(require,module,exports){
+},{"is-function":46}],45:[function(require,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window;
@@ -15351,7 +15375,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -15368,7 +15392,7 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -25201,7 +25225,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 var slice = Array.prototype.slice;
 
 // our constructor
@@ -25288,7 +25312,7 @@ KeyTreeStore.prototype.run = function (keypath, context) {
 
 module.exports = KeyTreeStore;
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25319,7 +25343,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25352,7 +25376,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25386,7 +25410,7 @@ function arrayEvery(array, predicate) {
 
 module.exports = arrayEvery;
 
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25422,7 +25446,7 @@ function arrayFilter(array, predicate) {
 
 module.exports = arrayFilter;
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25454,7 +25478,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25483,7 +25507,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"lodash._basecopy":57,"lodash.keys":126}],54:[function(require,module,exports){
+},{"lodash._basecopy":58,"lodash.keys":127}],55:[function(require,module,exports){
 /**
  * lodash 3.3.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -25907,7 +25931,7 @@ function property(path) {
 
 module.exports = baseCallback;
 
-},{"lodash._baseisequal":70,"lodash._bindcallback":80,"lodash.isarray":116,"lodash.pairs":135}],55:[function(require,module,exports){
+},{"lodash._baseisequal":71,"lodash._bindcallback":81,"lodash.isarray":117,"lodash.pairs":136}],56:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.3.0 (Custom Build) <https://lodash.com/>
@@ -26182,7 +26206,7 @@ function isObject(value) {
 module.exports = baseClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":48,"lodash._arrayeach":49,"lodash._baseassign":53,"lodash._basefor":66,"lodash.isarray":116,"lodash.keys":126}],56:[function(require,module,exports){
+},{"lodash._arraycopy":49,"lodash._arrayeach":50,"lodash._baseassign":54,"lodash._basefor":67,"lodash.isarray":117,"lodash.keys":127}],57:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26227,7 +26251,7 @@ function baseCompareAscending(value, other) {
 
 module.exports = baseCompareAscending;
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26261,7 +26285,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26320,7 +26344,7 @@ function isObject(value) {
 
 module.exports = baseCreate;
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26385,7 +26409,7 @@ function baseDifference(array, values) {
 
 module.exports = baseDifference;
 
-},{"lodash._baseindexof":69,"lodash._cacheindexof":81,"lodash._createcache":84}],60:[function(require,module,exports){
+},{"lodash._baseindexof":70,"lodash._cacheindexof":82,"lodash._createcache":85}],61:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26568,7 +26592,7 @@ function isObject(value) {
 
 module.exports = baseEach;
 
-},{"lodash.keys":126}],61:[function(require,module,exports){
+},{"lodash.keys":127}],62:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26714,7 +26738,7 @@ function isObject(value) {
 
 module.exports = baseEachRight;
 
-},{"lodash._baseforright":67,"lodash.keys":126}],62:[function(require,module,exports){
+},{"lodash._baseforright":68,"lodash.keys":127}],63:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26746,7 +26770,7 @@ function baseFilter(collection, predicate) {
 
 module.exports = baseFilter;
 
-},{"lodash._baseeach":60}],63:[function(require,module,exports){
+},{"lodash._baseeach":61}],64:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26782,7 +26806,7 @@ function baseFind(collection, predicate, eachFunc, retKey) {
 
 module.exports = baseFind;
 
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 /**
  * lodash 3.6.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26816,7 +26840,7 @@ function baseFindIndex(array, predicate, fromRight) {
 
 module.exports = baseFindIndex;
 
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26949,7 +26973,7 @@ function isLength(value) {
 
 module.exports = baseFlatten;
 
-},{"lodash.isarguments":115,"lodash.isarray":116}],66:[function(require,module,exports){
+},{"lodash.isarguments":116,"lodash.isarray":117}],67:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27037,7 +27061,7 @@ function isObject(value) {
 
 module.exports = baseFor;
 
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27123,7 +27147,7 @@ function isObject(value) {
 
 module.exports = baseForRight;
 
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27199,7 +27223,7 @@ function isObject(value) {
 
 module.exports = baseGet;
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27258,7 +27282,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = baseIndexOf;
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27602,7 +27626,7 @@ function isObject(value) {
 
 module.exports = baseIsEqual;
 
-},{"lodash.isarray":116,"lodash.istypedarray":124,"lodash.keys":126}],71:[function(require,module,exports){
+},{"lodash.isarray":117,"lodash.istypedarray":125,"lodash.keys":127}],72:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27631,7 +27655,7 @@ function baseRandom(min, max) {
 
 module.exports = baseRandom;
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27666,7 +27690,7 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27709,7 +27733,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27741,7 +27765,7 @@ function baseSortBy(array, comparer) {
 
 module.exports = baseSortBy;
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27765,7 +27789,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27835,7 +27859,7 @@ function baseUniq(array, iteratee) {
 
 module.exports = baseUniq;
 
-},{"lodash._baseindexof":69,"lodash._cacheindexof":81,"lodash._createcache":84}],77:[function(require,module,exports){
+},{"lodash._baseindexof":70,"lodash._cacheindexof":82,"lodash._createcache":85}],78:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27868,7 +27892,7 @@ function baseValues(object, props) {
 
 module.exports = baseValues;
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27935,7 +27959,7 @@ function identity(value) {
 
 module.exports = binaryIndex;
 
-},{"lodash._binaryindexby":79}],79:[function(require,module,exports){
+},{"lodash._binaryindexby":80}],80:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28003,7 +28027,7 @@ function binaryIndexBy(array, value, iteratee, retHighest) {
 
 module.exports = binaryIndexBy;
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28070,7 +28094,7 @@ function identity(value) {
 
 module.exports = bindCallback;
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28125,7 +28149,7 @@ function isObject(value) {
 
 module.exports = cacheIndexOf;
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28173,7 +28197,7 @@ function createAggregator(setter, initializer) {
 
 module.exports = createAggregator;
 
-},{"lodash._basecallback":54,"lodash._baseeach":60,"lodash.isarray":116}],83:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeach":61,"lodash.isarray":117}],84:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28227,7 +28251,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"lodash._bindcallback":80,"lodash._isiterateecall":88,"lodash.restparam":141}],84:[function(require,module,exports){
+},{"lodash._bindcallback":81,"lodash._isiterateecall":89,"lodash.restparam":142}],85:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
@@ -28322,7 +28346,7 @@ SetCache.prototype.push = cachePush;
 module.exports = createCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._getnative":86}],85:[function(require,module,exports){
+},{"lodash._getnative":87}],86:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
@@ -28721,7 +28745,7 @@ function isObject(value) {
 module.exports = createWrapper;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":48,"lodash._basecreate":58,"lodash._replaceholders":91}],86:[function(require,module,exports){
+},{"lodash._arraycopy":49,"lodash._basecreate":59,"lodash._replaceholders":92}],87:[function(require,module,exports){
 /**
  * lodash 3.9.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28860,7 +28884,7 @@ function isNative(value) {
 
 module.exports = getNative;
 
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28975,7 +28999,7 @@ function isObject(value) {
 
 module.exports = invokePath;
 
-},{"lodash._baseget":68,"lodash._baseslice":73,"lodash._topath":93,"lodash.isarray":116}],88:[function(require,module,exports){
+},{"lodash._baseget":69,"lodash._baseslice":74,"lodash._topath":94,"lodash.isarray":117}],89:[function(require,module,exports){
 /**
  * lodash 3.0.9 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29109,7 +29133,7 @@ function isObject(value) {
 
 module.exports = isIterateeCall;
 
-},{}],89:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29184,7 +29208,7 @@ function isObject(value) {
 
 module.exports = pickByArray;
 
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29230,7 +29254,7 @@ function pickByCallback(object, predicate) {
 
 module.exports = pickByCallback;
 
-},{"lodash._basefor":66,"lodash.keysin":127}],91:[function(require,module,exports){
+},{"lodash._basefor":67,"lodash.keysin":128}],92:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29269,7 +29293,7 @@ function replaceHolders(array, placeholder) {
 
 module.exports = replaceHolders;
 
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29411,7 +29435,7 @@ function values(object) {
 
 module.exports = toIterable;
 
-},{"lodash._basevalues":77,"lodash.keys":126}],93:[function(require,module,exports){
+},{"lodash._basevalues":78,"lodash.keys":127}],94:[function(require,module,exports){
 /**
  * lodash 3.8.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29460,7 +29484,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"lodash.isarray":116}],94:[function(require,module,exports){
+},{"lodash.isarray":117}],95:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29542,7 +29566,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"lodash._baseassign":53,"lodash._createassigner":83,"lodash.keys":126}],95:[function(require,module,exports){
+},{"lodash._baseassign":54,"lodash._createassigner":84,"lodash.keys":127}],96:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29595,7 +29619,7 @@ function before(n, func) {
 
 module.exports = before;
 
-},{}],96:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29661,7 +29685,7 @@ bind.placeholder = {};
 
 module.exports = bind;
 
-},{"lodash._createwrapper":85,"lodash._replaceholders":91,"lodash.restparam":141}],97:[function(require,module,exports){
+},{"lodash._createwrapper":86,"lodash._replaceholders":92,"lodash.restparam":142}],98:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29741,7 +29765,7 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"lodash._baseclone":55,"lodash._bindcallback":80,"lodash._isiterateecall":88}],98:[function(require,module,exports){
+},{"lodash._baseclone":56,"lodash._bindcallback":81,"lodash._isiterateecall":89}],99:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29805,7 +29829,7 @@ var countBy = createAggregator(function(result, value, key) {
 
 module.exports = countBy;
 
-},{"lodash._createaggregator":82}],99:[function(require,module,exports){
+},{"lodash._createaggregator":83}],100:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29870,7 +29894,7 @@ var defaults = createDefaults(assign, assignDefaults);
 
 module.exports = defaults;
 
-},{"lodash.assign":94,"lodash.restparam":141}],100:[function(require,module,exports){
+},{"lodash.assign":95,"lodash.restparam":142}],101:[function(require,module,exports){
 /**
  * lodash 3.2.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29973,7 +29997,7 @@ var difference = restParam(function(array, values) {
 
 module.exports = difference;
 
-},{"lodash._basedifference":59,"lodash._baseflatten":65,"lodash.restparam":141}],101:[function(require,module,exports){
+},{"lodash._basedifference":60,"lodash._baseflatten":66,"lodash.restparam":142}],102:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30023,7 +30047,7 @@ function drop(array, n, guard) {
 
 module.exports = drop;
 
-},{"lodash._baseslice":73,"lodash._isiterateecall":88}],102:[function(require,module,exports){
+},{"lodash._baseslice":74,"lodash._isiterateecall":89}],103:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30101,7 +30125,7 @@ function escape(string) {
 
 module.exports = escape;
 
-},{"lodash._basetostring":75}],103:[function(require,module,exports){
+},{"lodash._basetostring":76}],104:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30196,7 +30220,7 @@ function every(collection, predicate, thisArg) {
 
 module.exports = every;
 
-},{"lodash._arrayevery":50,"lodash._basecallback":54,"lodash._baseeach":60,"lodash._isiterateecall":88,"lodash.isarray":116}],104:[function(require,module,exports){
+},{"lodash._arrayevery":51,"lodash._basecallback":55,"lodash._baseeach":61,"lodash._isiterateecall":89,"lodash.isarray":117}],105:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30267,7 +30291,7 @@ function filter(collection, predicate, thisArg) {
 
 module.exports = filter;
 
-},{"lodash._arrayfilter":51,"lodash._basecallback":54,"lodash._basefilter":62,"lodash.isarray":116}],105:[function(require,module,exports){
+},{"lodash._arrayfilter":52,"lodash._basecallback":55,"lodash._basefilter":63,"lodash.isarray":117}],106:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30355,7 +30379,7 @@ var find = createFind(baseEach);
 
 module.exports = find;
 
-},{"lodash._basecallback":54,"lodash._baseeach":60,"lodash._basefind":63,"lodash._basefindindex":64,"lodash.isarray":116}],106:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeach":61,"lodash._basefind":64,"lodash._basefindindex":65,"lodash.isarray":117}],107:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30419,7 +30443,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"lodash._arrayeach":49,"lodash._baseeach":60,"lodash._bindcallback":80,"lodash.isarray":116}],107:[function(require,module,exports){
+},{"lodash._arrayeach":50,"lodash._baseeach":61,"lodash._bindcallback":81,"lodash.isarray":117}],108:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30488,7 +30512,7 @@ var groupBy = createAggregator(function(result, value, key) {
 
 module.exports = groupBy;
 
-},{"lodash._createaggregator":82}],108:[function(require,module,exports){
+},{"lodash._createaggregator":83}],109:[function(require,module,exports){
 /**
  * lodash 3.9.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30524,7 +30548,7 @@ function gt(value, other) {
 
 module.exports = gt;
 
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30703,7 +30727,7 @@ function has(object, path) {
 
 module.exports = has;
 
-},{"lodash._baseget":68,"lodash._baseslice":73,"lodash._topath":93,"lodash.isarguments":115,"lodash.isarray":116}],110:[function(require,module,exports){
+},{"lodash._baseget":69,"lodash._baseslice":74,"lodash._topath":94,"lodash.isarguments":116,"lodash.isarray":117}],111:[function(require,module,exports){
 /**
  * lodash 3.1.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30842,7 +30866,7 @@ function values(object) {
 
 module.exports = includes;
 
-},{"lodash._baseindexof":69,"lodash._basevalues":77,"lodash._isiterateecall":88,"lodash.isarray":116,"lodash.isstring":123,"lodash.keys":126}],111:[function(require,module,exports){
+},{"lodash._baseindexof":70,"lodash._basevalues":78,"lodash._isiterateecall":89,"lodash.isarray":117,"lodash.isstring":124,"lodash.keys":127}],112:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30905,7 +30929,7 @@ var indexBy = createAggregator(function(result, value, key) {
 
 module.exports = indexBy;
 
-},{"lodash._createaggregator":82}],112:[function(require,module,exports){
+},{"lodash._createaggregator":83}],113:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30968,7 +30992,7 @@ function indexOf(array, value, fromIndex) {
 
 module.exports = indexOf;
 
-},{"lodash._baseindexof":69,"lodash._binaryindex":78}],113:[function(require,module,exports){
+},{"lodash._baseindexof":70,"lodash._binaryindex":79}],114:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31036,7 +31060,7 @@ function initial(array) {
 
 module.exports = initial;
 
-},{"lodash._baseslice":73,"lodash._isiterateecall":88}],114:[function(require,module,exports){
+},{"lodash._baseslice":74,"lodash._isiterateecall":89}],115:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31204,7 +31228,7 @@ function isObject(value) {
 
 module.exports = invoke;
 
-},{"lodash._baseeach":60,"lodash._invokepath":87,"lodash.isarray":116,"lodash.restparam":141}],115:[function(require,module,exports){
+},{"lodash._baseeach":61,"lodash._invokepath":88,"lodash.isarray":117,"lodash.restparam":142}],116:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31312,7 +31336,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31494,7 +31518,7 @@ function isNative(value) {
 
 module.exports = isArray;
 
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31549,7 +31573,7 @@ function isDate(value) {
 
 module.exports = isDate;
 
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31670,7 +31694,7 @@ function isEmpty(value) {
 
 module.exports = isEmpty;
 
-},{"lodash.isarguments":115,"lodash.isarray":116,"lodash.isfunction":120,"lodash.isstring":123,"lodash.keys":126}],119:[function(require,module,exports){
+},{"lodash.isarguments":116,"lodash.isarray":117,"lodash.isfunction":121,"lodash.isstring":124,"lodash.keys":127}],120:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31734,7 +31758,7 @@ function isEqual(value, other, customizer, thisArg) {
 
 module.exports = isEqual;
 
-},{"lodash._baseisequal":70,"lodash._bindcallback":80}],120:[function(require,module,exports){
+},{"lodash._baseisequal":71,"lodash._bindcallback":81}],121:[function(require,module,exports){
 /**
  * lodash 3.0.6 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31808,7 +31832,7 @@ function isObject(value) {
 
 module.exports = isFunction;
 
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31840,7 +31864,7 @@ function isNull(value) {
 
 module.exports = isNull;
 
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31879,7 +31903,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],123:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31934,7 +31958,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{}],124:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32046,7 +32070,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32078,7 +32102,7 @@ function isUndefined(value) {
 
 module.exports = isUndefined;
 
-},{}],126:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32316,7 +32340,7 @@ function keysIn(object) {
 
 module.exports = keys;
 
-},{"lodash._getnative":86,"lodash.isarguments":115,"lodash.isarray":116}],127:[function(require,module,exports){
+},{"lodash._getnative":87,"lodash.isarguments":116,"lodash.isarray":117}],128:[function(require,module,exports){
 /**
  * lodash 3.0.8 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32450,7 +32474,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"lodash.isarguments":115,"lodash.isarray":116}],128:[function(require,module,exports){
+},{"lodash.isarguments":116,"lodash.isarray":117}],129:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32542,7 +32566,7 @@ function lastIndexOf(array, value, fromIndex) {
 
 module.exports = lastIndexOf;
 
-},{"lodash._binaryindex":78}],129:[function(require,module,exports){
+},{"lodash._binaryindex":79}],130:[function(require,module,exports){
 /**
  * lodash 3.9.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32578,7 +32602,7 @@ function lt(value, other) {
 
 module.exports = lt;
 
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32730,7 +32754,7 @@ function map(collection, iteratee, thisArg) {
 
 module.exports = map;
 
-},{"lodash._arraymap":52,"lodash._basecallback":54,"lodash._baseeach":60,"lodash.isarray":116}],131:[function(require,module,exports){
+},{"lodash._arraymap":53,"lodash._basecallback":55,"lodash._baseeach":61,"lodash.isarray":117}],132:[function(require,module,exports){
 /**
  * lodash 3.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32880,7 +32904,7 @@ var max = createExtremum(gt, NEGATIVE_INFINITY);
 
 module.exports = max;
 
-},{"lodash._basecallback":54,"lodash._baseeach":60,"lodash._isiterateecall":88,"lodash._toiterable":92,"lodash.gt":108,"lodash.isarray":116}],132:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeach":61,"lodash._isiterateecall":89,"lodash._toiterable":93,"lodash.gt":109,"lodash.isarray":117}],133:[function(require,module,exports){
 /**
  * lodash 3.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33030,7 +33054,7 @@ var min = createExtremum(lt, POSITIVE_INFINITY);
 
 module.exports = min;
 
-},{"lodash._basecallback":54,"lodash._baseeach":60,"lodash._isiterateecall":88,"lodash._toiterable":92,"lodash.isarray":116,"lodash.lt":129}],133:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeach":61,"lodash._isiterateecall":89,"lodash._toiterable":93,"lodash.isarray":117,"lodash.lt":130}],134:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33092,7 +33116,7 @@ var omit = restParam(function(object, props) {
 
 module.exports = omit;
 
-},{"lodash._arraymap":52,"lodash._basedifference":59,"lodash._baseflatten":65,"lodash._bindcallback":80,"lodash._pickbyarray":89,"lodash._pickbycallback":90,"lodash.keysin":127,"lodash.restparam":141}],134:[function(require,module,exports){
+},{"lodash._arraymap":53,"lodash._basedifference":60,"lodash._baseflatten":66,"lodash._bindcallback":81,"lodash._pickbyarray":90,"lodash._pickbycallback":91,"lodash.keysin":128,"lodash.restparam":142}],135:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33126,7 +33150,7 @@ function once(func) {
 
 module.exports = once;
 
-},{"lodash.before":95}],135:[function(require,module,exports){
+},{"lodash.before":96}],136:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33206,7 +33230,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"lodash.keys":126}],136:[function(require,module,exports){
+},{"lodash.keys":127}],137:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33282,7 +33306,7 @@ var partition = createAggregator(function(result, value, key) {
 
 module.exports = partition;
 
-},{"lodash._createaggregator":82}],137:[function(require,module,exports){
+},{"lodash._createaggregator":83}],138:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33378,7 +33402,7 @@ var reduce = createReduce(arrayReduce, baseEach);
 
 module.exports = reduce;
 
-},{"lodash._basecallback":54,"lodash._baseeach":60,"lodash._basereduce":72,"lodash.isarray":116}],138:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeach":61,"lodash._basereduce":73,"lodash.isarray":117}],139:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33458,7 +33482,7 @@ var reduceRight = createReduce(arrayReduceRight, baseEachRight);
 
 module.exports = reduceRight;
 
-},{"lodash._basecallback":54,"lodash._baseeachright":61,"lodash._basereduce":72,"lodash.isarray":116}],139:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeachright":62,"lodash._basereduce":73,"lodash.isarray":117}],140:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33518,7 +33542,7 @@ function reject(collection, predicate, thisArg) {
 
 module.exports = reject;
 
-},{"lodash._arrayfilter":51,"lodash._basecallback":54,"lodash._basefilter":62,"lodash.isarray":116}],140:[function(require,module,exports){
+},{"lodash._arrayfilter":52,"lodash._basecallback":55,"lodash._basefilter":63,"lodash.isarray":117}],141:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33586,7 +33610,7 @@ function rest(array) {
 
 module.exports = rest;
 
-},{"lodash._baseslice":73,"lodash._isiterateecall":88}],141:[function(require,module,exports){
+},{"lodash._baseslice":74,"lodash._isiterateecall":89}],142:[function(require,module,exports){
 /**
  * lodash 3.6.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33655,7 +33679,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],142:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33793,7 +33817,7 @@ function result(object, path, defaultValue) {
 
 module.exports = result;
 
-},{"lodash._baseget":68,"lodash._baseslice":73,"lodash._topath":93,"lodash.isarray":116,"lodash.isfunction":120}],143:[function(require,module,exports){
+},{"lodash._baseget":69,"lodash._baseslice":74,"lodash._topath":94,"lodash.isarray":117,"lodash.isfunction":121}],144:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33853,7 +33877,7 @@ function sample(collection, n, guard) {
 
 module.exports = sample;
 
-},{"lodash._baserandom":71,"lodash._isiterateecall":88,"lodash._toiterable":92,"lodash.toarray":148}],144:[function(require,module,exports){
+},{"lodash._baserandom":72,"lodash._isiterateecall":89,"lodash._toiterable":93,"lodash.toarray":149}],145:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33887,7 +33911,7 @@ function shuffle(collection) {
 
 module.exports = shuffle;
 
-},{"lodash.sample":143}],145:[function(require,module,exports){
+},{"lodash.sample":144}],146:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34005,7 +34029,7 @@ function some(collection, predicate, thisArg) {
 
 module.exports = some;
 
-},{"lodash._basecallback":54,"lodash._baseeach":60,"lodash._isiterateecall":88,"lodash.isarray":116}],146:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._baseeach":61,"lodash._isiterateecall":89,"lodash.isarray":117}],147:[function(require,module,exports){
 /**
  * lodash 3.1.5 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34173,7 +34197,7 @@ function sortBy(collection, iteratee, thisArg) {
 
 module.exports = sortBy;
 
-},{"lodash._basecallback":54,"lodash._basecompareascending":56,"lodash._baseeach":60,"lodash._basesortby":74,"lodash._isiterateecall":88}],147:[function(require,module,exports){
+},{"lodash._basecallback":55,"lodash._basecompareascending":57,"lodash._baseeach":61,"lodash._basesortby":75,"lodash._isiterateecall":89}],148:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34223,7 +34247,7 @@ function take(array, n, guard) {
 
 module.exports = take;
 
-},{"lodash._baseslice":73,"lodash._isiterateecall":88}],148:[function(require,module,exports){
+},{"lodash._baseslice":74,"lodash._isiterateecall":89}],149:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34337,7 +34361,7 @@ function values(object) {
 
 module.exports = toArray;
 
-},{"lodash._arraycopy":48,"lodash._basevalues":77,"lodash.keys":126}],149:[function(require,module,exports){
+},{"lodash._arraycopy":49,"lodash._basevalues":78,"lodash.keys":127}],150:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34374,7 +34398,7 @@ var union = restParam(function(arrays) {
 
 module.exports = union;
 
-},{"lodash._baseflatten":65,"lodash._baseuniq":76,"lodash.restparam":141}],150:[function(require,module,exports){
+},{"lodash._baseflatten":66,"lodash._baseuniq":77,"lodash.restparam":142}],151:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34411,7 +34435,7 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"lodash._basetostring":75}],151:[function(require,module,exports){
+},{"lodash._basetostring":76}],152:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34502,7 +34526,7 @@ var without = restParam(function(array, values) {
 
 module.exports = without;
 
-},{"lodash._basedifference":59,"lodash.restparam":141}],152:[function(require,module,exports){
+},{"lodash._basedifference":60,"lodash.restparam":142}],153:[function(require,module,exports){
 /**
  * media-type
  * @author Lovell Fuller
@@ -34611,7 +34635,7 @@ exports.fromString = function(str) {
   return mediaType;
 };
 
-},{}],153:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = once
 
 once.proto = once(function () {
@@ -34632,7 +34656,7 @@ function once (fn) {
   }
 }
 
-},{}],154:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 var trim = require('trim')
   , forEach = require('for-each')
   , isArray = function(arg) {
@@ -34664,7 +34688,7 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":43,"trim":155}],155:[function(require,module,exports){
+},{"for-each":44,"trim":156}],156:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -34680,7 +34704,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],156:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 "use strict";
 var window = require("global/window")
 var once = require("once")
@@ -34901,7 +34925,7 @@ function _createXHR(options) {
 
 function noop() {}
 
-},{"global/window":44,"is-function":45,"once":153,"parse-headers":154,"xtend":157}],157:[function(require,module,exports){
+},{"global/window":45,"is-function":46,"once":154,"parse-headers":155,"xtend":158}],158:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

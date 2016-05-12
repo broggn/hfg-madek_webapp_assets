@@ -158,6 +158,7 @@ de:
   meta_data_action_delete_btn: Löschen
   meta_data_delete_confirm_msg: "Sind Sie sicher, dass Sie diese Werte löschen wollen?"
   meta_data_header_text: Werte
+  meta_data_batch_items_selected: Einträge selektiert
   people_toolbar_header: Ähnliche Inhalte
   group_edit_form_new_member_login: Login des neuen Mitglieds dieser Gruppe
   group_toolbar_header_entrusted_resources: Mir anvertraute Medieneinträge
@@ -170,11 +171,14 @@ de:
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   batch_meta_data_edit: "Metadaten für %{media_entry_count} Einträge gleichzeitig editieren"
   collection_ask_delete_title: Set löschen
-  collection_ask_delete_ok: Löschen
-  collection_ask_delete_cancel: Abbrechen
+  media_entry_ask_delete_title: Eintrag löschen
+  resource_ask_delete_ok: Löschen
+  resource_ask_delete_cancel: Abbrechen
   collection_ask_delete_question_pre: "Sind Sie sicher, dass Sie folgendes Set löschen möchten: "
-  collection_ask_delete_question_post: "?"
+  media_entry_ask_delete_question_pre: "Sind Sie sicher, dass Sie folgende Eintrag löschen möchten: "
+  resource_ask_delete_question_post: "?"
   collection_delete_success: "Set wurde gelöscht!"
+  media_entry_delete_success: "Eintrag wurde gelöscht!"
   collection_edit_highlights_title: Inhalte hervorheben
   collection_edit_cover_title: Titelbild für Set festlegen
   collection_new_header: Neues Set

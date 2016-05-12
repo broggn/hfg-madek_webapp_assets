@@ -156,6 +156,7 @@ en:
   meta_data_action_delete_btn: Delete
   meta_data_delete_confirm_msg: Are you sure you want to delete these values?
   meta_data_header_text: Values
+  meta_data_batch_items_selected: entries selected
   people_toolbar_header: Related Resources
   group_edit_form_new_member_login: New group member login
   group_toolbar_header_entrusted_resources: Entrusted Media Entries
@@ -168,11 +169,14 @@ en:
   collection_was_disfavored: Set was removed from favorites.
   batch_meta_data_edit: "Edit meta data for %{media_entry_count} entries at once."
   collection_ask_delete_title: Delete Set
-  collection_ask_delete_ok: Delete
-  collection_ask_delete_cancel: Cancel
+  media_entry_ask_delete_title: Delete Entry
+  resource_ask_delete_ok: Delete
+  resource_ask_delete_cancel: Cancel
   collection_ask_delete_question_pre: "Are you sure that you want to delete the following set:"
-  collection_ask_delete_question_post: "?"
+  media_entry_ask_delete_question_pre: "Are you sure that you want to delete the following entry:"
+  resource_ask_delete_question_post: "?"
   collection_delete_success: Set deleted.
+  media_entry_delete_success: Entry deleted.
   collection_edit_highlights_title: Highlight Contents
   collection_edit_cover_title: Define Set Cover
   collection_new_header: Create Set

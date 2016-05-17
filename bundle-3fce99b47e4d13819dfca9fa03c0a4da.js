@@ -2782,7 +2782,8 @@ module.exports = React.createClass({
       if (parentsCount > 0) {
         parentThumbs = f.get(get, ['parent_relations', 'resources']).map(function(item) {
           return React.createElement("li", {
-            "className": 'ui-thumbnail-level-item media_set set odd'
+            "className": 'ui-thumbnail-level-item media_set set odd',
+            "key": item.uuid
           }, React.createElement("a", {
             "className": 'ui-level-image-wrapper',
             "href": item.url
@@ -2806,7 +2807,8 @@ module.exports = React.createClass({
             classes = 'ui-thumbnail-level-item media_entry image odd';
           }
           return React.createElement("li", {
-            "className": classes
+            "className": classes,
+            "key": item.uuid
           }, React.createElement("a", {
             "className": 'ui-level-image-wrapper',
             "href": item.url

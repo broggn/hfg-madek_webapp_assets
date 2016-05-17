@@ -2019,6 +2019,7 @@ module.exports = React.createClass({
     withBox: React.PropTypes.bool,
     authToken: React.PropTypes.string.isRequired,
     get: React.PropTypes.shape({
+      type: React.PropTypes.oneOf(['MediaEntries', 'Collections', 'FilterSets', 'MediaResources']),
       with_actions: React.PropTypes.bool,
       can_filter: React.PropTypes.bool,
       config: viewConfigProps,
@@ -2046,16 +2047,18 @@ module.exports = React.createClass({
       };
     })(this));
     router.start();
-    selection = new MediaEntriesCollection();
-    f.each(['add', 'remove', 'reset', 'change'], (function(_this) {
-      return function(eventName) {
-        return selection.on(eventName, function() {
-          if (_this.isMounted()) {
-            return _this.forceUpdate();
-          }
-        });
-      };
-    })(this));
+    if (this.props.get.type === 'MediaEntries') {
+      selection = new MediaEntriesCollection();
+      f.each(['add', 'remove', 'reset', 'change'], (function(_this) {
+        return function(eventName) {
+          return selection.on(eventName, function() {
+            if (_this.isMounted()) {
+              return _this.forceUpdate();
+            }
+          });
+        };
+      })(this));
+    }
     return this.setState({
       isClient: true,
       selectedResources: selection
@@ -2235,7 +2238,9 @@ module.exports = React.createClass({
         filter = config.filter, layout = config.layout, for_url = config.for_url;
         totalCount = f.get(get, 'pagination.total_count');
         isClient = _this.state.isClient;
-        selection = f.presence(_this.state.selectedResources) || false;
+        if (get.type === 'MediaEntries') {
+          selection = f.presence(_this.state.selectedResources) || false;
+        }
         layouts = LAYOUT_MODES.map(function(itm) {
           var href;
           href = setUrlParams(for_url, currentQuery, {
@@ -2260,14 +2265,14 @@ module.exports = React.createClass({
             }),
             onClick: isClient && f.present(filter) ? f.curry(_this._onCreateFilterSet)(config) : void 0
           } : void 0,
-          batch_edit: {
+          batch_edit: get.type === 'MediaEntries' ? {
             children: React.createElement(Icon, {
               "i": 'pen',
               "mods": 'small',
               "title": 'Auswahl bearbeiten'
             }),
             onClick: isClient && selection && !selection.isEmpty() ? _this._onBatchEdit : void 0
-          }
+          } : void 0
         } : void 0;
         return React.createElement(UiToolBar, {
           "heading": (totalCount ? totalCount + " " + 'Inhalte' : void 0),
@@ -2299,13 +2304,13 @@ module.exports = React.createClass({
             },
             reset: f.present(config.filter) ? resetFilterLink : void 0
           },
-          select: {
+          select: selection ? {
             active: 'Alle abwählen',
             inactive: 'Alle auswählen',
             isActive: selection && !(selection.isEmpty()),
             isDirty: selection && !(selection.length === get.resources.length),
             onClick: _this._onSelectionAllToggle
-          }
+          } : void 0
         };
         return React.createElement(FilterBar, React.__spread({}, props));
       };
@@ -2483,7 +2488,7 @@ UiToolBar = function(arg) {
       "i": btn.icon,
       "title": btn.title
     }));
-  })), (actions ? React.createElement(ButtonGroup, {
+  })), (f.any(actions) ? React.createElement(ButtonGroup, {
     "mods": 'small right mls',
     "list": actions
   }) : void 0)));
@@ -5426,7 +5431,7 @@ Picture = require('./Picture.cjsx');
 flyoutProps = React.PropTypes.shape({
   title: React.PropTypes.string.isRequired,
   caption: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node.isRequired
+  children: React.PropTypes.node
 });
 
 module.exports = React.createClass({

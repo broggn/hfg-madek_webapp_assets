@@ -334,9 +334,8 @@ CollectionUserPermissions = Collection.extend({
     props: {
       get_metadata_and_previews: ['boolean', false, false],
       get_full_size: ['boolean', false, false],
-      edit_metadata: ['boolean', false, false],
-      edit_permissions: ['boolean', false, false],
-      edit_metadata_and_relations: ['boolean', false, false]
+      edit_metadata_and_relations: ['boolean', false, false],
+      edit_permissions: ['boolean', false, false]
     }
   })
 });
@@ -351,7 +350,7 @@ CollectionGroupPermissions = Collection.extend({
     props: {
       get_metadata_and_previews: ['boolean', false, false],
       get_full_size: ['boolean', false, false],
-      edit_metadata: ['boolean', false, false]
+      edit_metadata_and_relations: ['boolean', false, false]
     }
   })
 });

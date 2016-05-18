@@ -5,23 +5,23 @@ de:
         created_by: Ersteller
     errors:
       messages:
-        record_invalid: "Überprüfung fehlgeschlagen: %{errors}"
+        record_invalid: 'Überprüfung fehlgeschlagen: %{errors}'
         taken: ist bereits vergeben
         blank: ist leer
   flash:
     actions:
       create:
-        success: "%{resource_name} wurde erstellt."
-        error: "%{resource_name} konnte nicht erstellt werden."
+        success: '%{resource_name} wurde erstellt.'
+        error: '%{resource_name} konnte nicht erstellt werden.'
       update:
-        success: "%{resource_name} wurde gespeichert."
-        error: "%{resource_name} konnte nicht gespeichert werden."
+        success: '%{resource_name} wurde gespeichert.'
+        error: '%{resource_name} konnte nicht gespeichert werden.'
       destroy:
-        success: "%{resource_name} wurde gelöscht."
-        error: "%{resource_name} konnte nicht gelöscht werden."
+        success: '%{resource_name} wurde gelöscht.'
+        error: '%{resource_name} konnte nicht gelöscht werden.'
       meta_data_update:
-        success: "Metadaten von %{resource_name} wurden gespeichert."
-        error: "Metadaten von %{resource_name} konnten nicht gespeichert werden."
+        success: 'Metadaten von %{resource_name} wurden gespeichert.'
+        error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
   sitemap_admin: Admin
   sitemap_api: API
   sitemap_media_entries: Einträge
@@ -70,10 +70,10 @@ de:
   permission_subject_title_public: Öffentlichkeit
   permission_subject_name_public: Internet
   permission_name_get_metadata_and_previews: Betrachten
-  permission_name_get_full_size: "Original exportieren & in PDF blättern"
+  permission_name_get_full_size: 'Original exportieren & in PDF blättern'
   permission_name_edit_metadata: Metadaten editieren
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
-  permission_name_edit_metadata_and_relations: "Metadaten editieren & Inhalte hinzufügen"
+  permission_name_edit_metadata_and_relations: 'Metadaten editieren & Inhalte hinzufügen'
   permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
   permissions_responsible_user_title: Verantwortliche Person
   permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.
@@ -83,13 +83,13 @@ de:
   permissions_table_cancel_btn: Abbrechen
   permissions_table_remove_subject_btn: Berechtigung entfernen
   permissions_overview_yours_title: Ihre Berechtigungen
-  permissions_overview_yours_msg_start: "Sie, "
-  permissions_overview_yours_msg_end: ", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen"
-  btn_delete_confirm_msq: "Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?"
-  btn_publish_confirm_msg: "Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?"
+  permissions_overview_yours_msg_start: 'Sie, '
+  permissions_overview_yours_msg_end: ', haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen'
+  btn_delete_confirm_msq: 'Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?'
+  btn_publish_confirm_msg: 'Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?'
   btn_delete_text: Löschen
   btn_publish_text: Speichern
-  picture_alt_prefix: "Bild: "
+  picture_alt_prefix: 'Bild: '
   picture_alt_fallback: (unbekannt)
   pagination_prefix: Seite
   pagination_of: von
@@ -97,7 +97,7 @@ de:
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
   relations_parents_title: Übergeordnete Sets
   relations_siblings_title: Benachbarte Sets
-  collection_media_resources_title: "Medieneintrag im Set:"
+  collection_media_resources_title: 'Medieneintrag im Set:'
   collection_permissions_btn: Zugriffsberechtigungen ändern
   collection_edit_cover_submit_btn: Speichern
   collection_edit_highlights_btn: Bearbeiten
@@ -107,7 +107,7 @@ de:
   no_keywords_fallback: (Keine Schlagworte vorhanden.)
   group_new_group_btn: Neue Arbeitsgruppe
   group_edit_btn: Bearbeiten
-  group_delete_confirm_msg: "Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?"
+  group_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?'
   external_groups: Abteilungsgruppen
   internal_groups: Arbeitsgruppen
   authentication_groups: Systemgruppen
@@ -119,7 +119,7 @@ de:
   dashboard_title_head: Mein Archiv
   resources_header_show_all: alle anzeigen
   dashboard_create_media_entry_btn: Medien importieren
-  dashboard_welcome_msg: "Willkommen im Medienarchiv der Künste!"
+  dashboard_welcome_msg: 'Willkommen im Medienarchiv der Künste!'
   resource_meta_data_title: Titel
   resource_meta_data_description: Beschreibung
   resource_meta_data_keywords: Schlagworte
@@ -135,19 +135,19 @@ de:
   collection_tab_main: Set
   media_entry_tab_more_data: Alle Daten
   media_entry_tab_permissions: Berechtigungen
-  media_entry_not_published_warning_msg: "Dieser Medieneintrag ist noch nicht gesichert!"
-  media_entry_meta_data_header_prefix: "Metadaten editieren: "
+  media_entry_not_published_warning_msg: 'Dieser Medieneintrag ist noch nicht gesichert!'
+  media_entry_meta_data_header_prefix: 'Metadaten editieren: '
   media_entry_more_data_title: Verantwortlichkeit und Aktivität
   media_entry_file_information_title: Datei
   media_entry_media_import_header: Medien importieren
-  media_entry_media_import_title: "Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen."
+  media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
   media_entry_media_import_inside: Dateien auf dieses Feld ziehen oder
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_back_btn: Zurück
   media_entry_upload_btn: Importieren
   media_entry_notices_title: Hinweise
-  meta_data_blank_value_for_required_meta_key_pre: "Metadatum-Wert nicht vorhanden für Meta-Key "
-  meta_data_blank_value_for_required_meta_key_post: "!"
+  meta_data_blank_value_for_required_meta_key_pre: 'Metadatum-Wert nicht vorhanden für Meta-Key '
+  meta_data_blank_value_for_required_meta_key_post: '!'
   meta_data_form_save_btn: Speichern
   meta_data_form_cancel_link: Abbrechen
   meta_data_form_submit_btn: Speichern
@@ -156,7 +156,7 @@ de:
   meta_data_value_label: Wert
   meta_data_action_edit_btn: Bearbeiten
   meta_data_action_delete_btn: Löschen
-  meta_data_delete_confirm_msg: "Sind Sie sicher, dass Sie diese Werte löschen wollen?"
+  meta_data_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Werte löschen wollen?'
   meta_data_header_text: Werte
   meta_data_batch_items_selected: Einträge selektiert
   people_toolbar_header: Ähnliche Inhalte
@@ -169,16 +169,16 @@ de:
   media_entry_was_disfavored: Der Medieneintrag wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
-  batch_meta_data_edit: "Metadaten für %{media_entry_count} Einträge gleichzeitig editieren"
+  batch_meta_data_edit: 'Metadaten für %{media_entry_count} Einträge gleichzeitig editieren'
   collection_ask_delete_title: Set löschen
   media_entry_ask_delete_title: Eintrag löschen
   resource_ask_delete_ok: Löschen
   resource_ask_delete_cancel: Abbrechen
-  collection_ask_delete_question_pre: "Sind Sie sicher, dass Sie folgendes Set löschen möchten: "
-  media_entry_ask_delete_question_pre: "Sind Sie sicher, dass Sie folgende Eintrag löschen möchten: "
-  resource_ask_delete_question_post: "?"
-  collection_delete_success: "Set wurde gelöscht!"
-  media_entry_delete_success: "Eintrag wurde gelöscht!"
+  collection_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgendes Set löschen möchten: '
+  media_entry_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgende Eintrag löschen möchten: '
+  resource_ask_delete_question_post: '?'
+  collection_delete_success: 'Set wurde gelöscht!'
+  media_entry_delete_success: 'Eintrag wurde gelöscht!'
   collection_edit_highlights_title: Inhalte hervorheben
   collection_edit_cover_title: Titelbild für Set festlegen
   collection_new_header: Neues Set
@@ -199,11 +199,11 @@ de:
   collection_resource_selection_h_responsible: Rechteinhaber
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
-  media_entry_select_collection_flash_result: "Eintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt."
-  collection_select_collection_flash_result: "Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt."
+  media_entry_select_collection_flash_result: 'Eintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.'
+  collection_select_collection_flash_result: 'Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.'
   meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
   meta_data_batch_hint_differences: Unterschiedliche Metadaten vorhanden
-  meta_data_batch_hint_differences_override: "Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten."
+  meta_data_batch_hint_differences_override: 'Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.'
   meta_data_batch_hint_equal_data: Gleiche Metadaten vorhanden
   meta_data_batch_hint_value: Wert und Text
   meta_data_batch_success: Metadaten wurden erfolgreich aktualisiert.
@@ -212,7 +212,7 @@ de:
   resource_select_collection_search: Suchen
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_clear: Löschen
-  resource_select_collection_hint_search: "Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll."
+  resource_select_collection_hint_search: 'Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.'
   resource_select_collection_hint_more: Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.
   resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.

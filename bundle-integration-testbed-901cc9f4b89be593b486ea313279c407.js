@@ -195,6 +195,8 @@ module.exports = AppResource.extend(Favoritable, Deletable, {
         switch (false) {
           case !!this.uploading:
             break;
+          case !this.uploading.error:
+            return 'Error!';
           case !!this.uploading.progress:
             return 'Waiting…';
           case !(this.uploading.progress < 100):
@@ -222,7 +224,11 @@ module.exports = AppResource.extend(Favoritable, Deletable, {
     }, (function(_this) {
       return function(err, res) {
         var attrs;
-        if (!(err || !res)) {
+        if (err || !res) {
+          _this.set('uploading', {
+            error: err || true
+          });
+        } else {
           attrs = ((function() {
             try {
               return JSON.parse(res.body);

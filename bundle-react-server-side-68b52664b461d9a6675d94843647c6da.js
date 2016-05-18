@@ -549,6 +549,8 @@ module.exports = AppResource.extend(Favoritable, Deletable, {
         switch (false) {
           case !!this.uploading:
             break;
+          case !this.uploading.error:
+            return 'Error!';
           case !!this.uploading.progress:
             return 'Waiting…';
           case !(this.uploading.progress < 100):
@@ -576,7 +578,11 @@ module.exports = AppResource.extend(Favoritable, Deletable, {
     }, (function(_this) {
       return function(err, res) {
         var attrs;
-        if (!(err || !res)) {
+        if (err || !res) {
+          _this.set('uploading', {
+            error: err || true
+          });
+        } else {
           attrs = ((function() {
             try {
               return JSON.parse(res.body);
@@ -2617,11 +2623,14 @@ module.exports = React.createClass({
     };
   },
   componentDidMount: function() {
-    var model, modelByType;
-    if ((modelByType = Models[this.props.get.type])) {
-      model = new modelByType(this.props.get);
-    } else {
-      console.error('WARNING: No model found for resource!', this.props.get);
+    var get, model, modelByType;
+    get = this.props.get;
+    if (!(get.isState || get.isCollection)) {
+      if ((modelByType = Models[get.type])) {
+        model = new modelByType(get);
+      } else {
+        console.error('WARNING: No model found for resource!', get);
+      }
     }
     return this.setState({
       active: true,
@@ -5585,7 +5594,7 @@ module.exports = React.createClass({
     return f.each(added, function(model) {
       return UploadQueue.push(model, function(err, res) {
         if (err) {
-          return console.error(err);
+          return console.error('Uploader failed!', model, err);
         }
       });
     });

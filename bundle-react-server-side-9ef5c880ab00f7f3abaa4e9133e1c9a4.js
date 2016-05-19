@@ -35,7 +35,7 @@ function readTranslationsFromCSV (rawCsvText, ignoreColumns) {
 
 module.exports = readTranslationsFromCSV
 
-},{"active-lodash":81,"babyparse":104}],2:[function(require,module,exports){
+},{"active-lodash":80,"babyparse":103}],2:[function(require,module,exports){
 var getRailsCSRFToken;
 
 module.exports = getRailsCSRFToken = function() {
@@ -66,7 +66,7 @@ module.exports = {
 };
 
 
-},{"history/lib/createBrowserHistory":147,"url":422}],4:[function(require,module,exports){
+},{"history/lib/createBrowserHistory":146,"url":421}],4:[function(require,module,exports){
 var Bloodhound, BloodhoundFactory, f, resourcesConfig, tokenizer, url;
 
 url = require('url');
@@ -146,7 +146,7 @@ BloodhoundFactory = function(config, parameters) {
 };
 
 
-},{"@eins78/typeahead.js/dist/bloodhound.js":78,"active-lodash":81,"url":422}],5:[function(require,module,exports){
+},{"@eins78/typeahead.js/dist/bloodhound.js":77,"active-lodash":80,"url":421}],5:[function(require,module,exports){
 var formatQuery, formatUrl, isObject, isString, merge, parseQuery, parseUrl, qs, reduce, set, setUrlParams, urlFromStringOrObject,
   slice = [].slice;
 
@@ -206,7 +206,7 @@ urlFromStringOrObject = function(url) {
 };
 
 
-},{"active-lodash":81,"qs":269,"url":422}],6:[function(require,module,exports){
+},{"active-lodash":80,"qs":268,"url":421}],6:[function(require,module,exports){
 // provides string translation functions.
 // usage
 // t = require('…')('de'); t('hello') // => 'Hallo'
@@ -236,7 +236,7 @@ module.exports = function tFactory (lang) {
   }
 }
 
-},{"./parse-translations-from-csv":1,"active-lodash":81,"path":267}],7:[function(require,module,exports){
+},{"./parse-translations-from-csv":1,"active-lodash":80,"path":266}],7:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -302,7 +302,7 @@ module.exports = AppResource.extend(Favoritable, Deletable, {
 });
 
 
-},{"./concerns/resource-deletable.coffee":10,"./concerns/resource-favoritable.coffee":11,"./media-entry/permissions.coffee":16,"./meta-data.coffee":17,"./person.coffee":20,"./shared/app-resource.coffee":22,"./shared/resource-meta-data.coffee":24,"active-lodash":81}],9:[function(require,module,exports){
+},{"./concerns/resource-deletable.coffee":10,"./concerns/resource-favoritable.coffee":11,"./media-entry/permissions.coffee":16,"./meta-data.coffee":17,"./person.coffee":20,"./shared/app-resource.coffee":22,"./shared/resource-meta-data.coffee":24,"active-lodash":80}],9:[function(require,module,exports){
 var ApiClient, AppResource, Collection, CollectionApiClientPermissions, CollectionGroupPermissions, CollectionPublicPermission, CollectionUserPermissions, Group, ResourcePermissions, User;
 
 Collection = require('ampersand-rest-collection');
@@ -387,7 +387,7 @@ module.exports = ResourcePermissions.extend({
 });
 
 
-},{"../api-client.coffee":7,"../group.coffee":12,"../shared/app-resource.coffee":22,"../shared/resource-permissions.coffee":25,"../user.coffee":26,"ampersand-rest-collection":92}],10:[function(require,module,exports){
+},{"../api-client.coffee":7,"../group.coffee":12,"../shared/app-resource.coffee":22,"../shared/resource-permissions.coffee":25,"../user.coffee":26,"ampersand-rest-collection":91}],10:[function(require,module,exports){
 module.exports = {
   props: {
     deleted: {
@@ -439,7 +439,7 @@ module.exports = {
 };
 
 
-},{"active-lodash":81}],12:[function(require,module,exports){
+},{"active-lodash":80}],12:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -470,7 +470,7 @@ Models = f.object(f.filter(f.map(index, function(val, key) {
 module.exports = Models;
 
 
-},{"./api-client.coffee":7,"./collection.coffee":8,"./group.coffee":12,"./index.coffee":13,"./media-entries.coffee":14,"./media-entry.coffee":15,"./meta-data.coffee":17,"./meta-datum.coffee":18,"./meta-key.coffee":19,"./person.coffee":20,"./user.coffee":26,"active-lodash":81}],14:[function(require,module,exports){
+},{"./api-client.coffee":7,"./collection.coffee":8,"./group.coffee":12,"./index.coffee":13,"./media-entries.coffee":14,"./media-entry.coffee":15,"./meta-data.coffee":17,"./meta-datum.coffee":18,"./meta-key.coffee":19,"./person.coffee":20,"./user.coffee":26,"active-lodash":80}],14:[function(require,module,exports){
 var AppCollection, MediaEntry;
 
 AppCollection = require('./shared/app-collection.coffee');
@@ -616,7 +616,7 @@ module.exports = AppResource.extend(Favoritable, Deletable, {
 });
 
 
-},{"./concerns/resource-deletable.coffee":10,"./concerns/resource-favoritable.coffee":11,"./media-entry/permissions.coffee":16,"./meta-data.coffee":17,"./person.coffee":20,"./shared/app-resource.coffee":22,"./shared/resource-meta-data.coffee":24,"active-lodash":81,"global/window":140}],16:[function(require,module,exports){
+},{"./concerns/resource-deletable.coffee":10,"./concerns/resource-favoritable.coffee":11,"./media-entry/permissions.coffee":16,"./meta-data.coffee":17,"./person.coffee":20,"./shared/app-resource.coffee":22,"./shared/resource-meta-data.coffee":24,"active-lodash":80,"global/window":139}],16:[function(require,module,exports){
 var ApiClient, AppResource, Collection, Group, MediaEntryApiClientPermissions, MediaEntryGroupPermissions, MediaEntryPublicPermission, MediaEntryUserPermissions, ResourcePermissions, User;
 
 Collection = require('ampersand-rest-collection');
@@ -701,7 +701,7 @@ module.exports = ResourcePermissions.extend({
 });
 
 
-},{"../api-client.coffee":7,"../group.coffee":12,"../shared/app-resource.coffee":22,"../shared/resource-permissions.coffee":25,"../user.coffee":26,"ampersand-rest-collection":92}],17:[function(require,module,exports){
+},{"../api-client.coffee":7,"../group.coffee":12,"../shared/app-resource.coffee":22,"../shared/resource-permissions.coffee":25,"../user.coffee":26,"ampersand-rest-collection":91}],17:[function(require,module,exports){
 var AppCollection, MetaDatum, f, serializeForSave, subtypes;
 
 f = require('active-lodash');
@@ -747,7 +747,7 @@ serializeForSave = function(list) {
 };
 
 
-},{"./meta-datum.coffee":18,"./shared/app-collection.coffee":21,"active-lodash":81}],18:[function(require,module,exports){
+},{"./meta-datum.coffee":18,"./shared/app-collection.coffee":21,"active-lodash":80}],18:[function(require,module,exports){
 var AppResource, MetaDatum, MetaKey;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -841,7 +841,7 @@ module.exports = Collection.extend(RailsResource, {
 });
 
 
-},{"./rails-resource-mixin.coffee":23,"active-lodash":81,"ampersand-rest-collection":92}],22:[function(require,module,exports){
+},{"./rails-resource-mixin.coffee":23,"active-lodash":80,"ampersand-rest-collection":91}],22:[function(require,module,exports){
 var Model, RailsResource, f, getRailsCSRFToken, xhr;
 
 Model = require('ampersand-model');
@@ -895,7 +895,7 @@ module.exports = Model.extend(RailsResource, {
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":23,"active-lodash":81,"ampersand-model":90,"xhr":425}],23:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":23,"active-lodash":80,"ampersand-model":89,"xhr":424}],23:[function(require,module,exports){
 var getRailsCSRFToken;
 
 getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
@@ -949,7 +949,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"../meta-data.coffee":17,"../meta-datum.coffee":18,"./app-resource.coffee":22,"active-lodash":81}],25:[function(require,module,exports){
+},{"../meta-data.coffee":17,"../meta-datum.coffee":18,"./app-resource.coffee":22,"active-lodash":80}],25:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./app-resource.coffee');
@@ -1020,107 +1020,27 @@ global.ReactDOM = ReactDOM
 global.UI = UI
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./react/index.coffee":39,"react":420,"react-dom":276,"react-dom/server":277}],28:[function(require,module,exports){
-var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-ampersandReactMixin = require('ampersand-react-mixin');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-InputFieldText = require('./lib/forms/input-field-text.cjsx');
-
-Button = require('./ui-components/Button.cjsx');
-
-Modal = require('./ui-components/Modal.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'AskDeleteCollection',
-  getInitialState: function() {
-    return {
-      active: false
-    };
-  },
-  render: function(arg) {
-    var authToken, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    return React.createElement(Modal, {
-      "widthInPixel": '400'
-    }, React.createElement(RailsForm, {
-      "name": 'resource_meta_data',
-      "action": get.submit_url,
-      "method": 'delete',
-      "authToken": authToken
-    }, React.createElement("div", {
-      "className": 'ui-modal-head'
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": 'true',
-      "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
-      "title": 'Close',
-      "type": 'button',
-      "style": {
-        position: 'static',
-        float: 'right',
-        paddingTop: '5px'
-      }
-    }, React.createElement("i", {
-      "className": 'icon-close'
-    })), React.createElement("h3", {
-      "className": 'title-l'
-    }, t('collection_ask_delete_title'))), React.createElement("div", {
-      "className": 'ui-modal-body',
-      "style": {
-        maxHeight: 'none'
-      }
-    }, React.createElement("p", {
-      "className": "pam by-center"
-    }, t('collection_ask_delete_question_pre'), React.createElement("strong", null, get.title), t('resource_ask_delete_question_post'))), React.createElement("div", {
-      "className": "ui-modal-footer"
-    }, React.createElement("div", {
-      "className": "ui-actions"
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": "true",
-      "className": "link weak",
-      "data-dismiss": "modal"
-    }, t('resource_ask_delete_cancel')), React.createElement(Button, {
-      "className": "primary-button",
-      "type": 'submit'
-    }, t('resource_ask_delete_ok'))))));
-  }
-});
-
-
-},{"../lib/string-translation":6,"./lib/forms/input-field-text.cjsx":45,"./lib/forms/rails-form.cjsx":49,"./ui-components/Button.cjsx":58,"./ui-components/Modal.cjsx":66,"active-lodash":81,"ampersand-react-mixin":91,"react":420,"react-dom":276}],29:[function(require,module,exports){
-var BatchHintBox, Classnames, InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, RailsForm, React, VocabularyFormItem, VocabularyHeader, compare_datum_between_entries, compare_datums, equal_meta_data_values, f, find_other_datum_in_voc, t;
+},{"./react/index.coffee":35,"react":419,"react-dom":275,"react-dom/server":276}],28:[function(require,module,exports){
+var BatchHintBox, InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, RailsForm, React, VocabularyFormItem, VocabularyHeader, compare_datum_between_entries, compare_datums, cx, equal_meta_data_values, f, find_other_datum_in_voc, t;
 
 React = require('react');
 
 f = require('active-lodash');
 
-RailsForm = require('./lib/forms/rails-form.cjsx');
+cx = require('classnames');
 
-MetaKeyFormLabel = require('./lib/forms/form-label.cjsx');
+t = require('../../lib/string-translation')('de');
 
-InputMetaDatum = require('./lib/input-meta-datum.cjsx');
+RailsForm = require('../lib/forms/rails-form.cjsx');
 
-MadekPropTypes = require('./lib/madek-prop-types.coffee');
+MetaKeyFormLabel = require('../lib/forms/form-label.cjsx');
 
-Classnames = require('classnames');
+InputMetaDatum = require('../lib/input-meta-datum.cjsx');
 
-t = require('../lib/string-translation')('de');
+MadekPropTypes = require('../lib/madek-prop-types.coffee');
 
 module.exports = React.createClass({
-  displayName: 'BatchFormResourceMetaData',
+  displayName: 'BatchResourceMetaDataForm',
   render: function(arg) {
     var authToken, get, name, ref, vocabularies;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
@@ -1257,7 +1177,7 @@ MetaDatumFormItem = React.createClass({
       copy.values = [];
     }
     new_name = name + ("[" + datum.meta_key.uuid + "][values][]");
-    classes = Classnames('ui-form-group', 'columned', {
+    classes = cx('ui-form-group', 'columned', {
       'highlight': !difference.all_equal
     });
     return React.createElement("fieldset", {
@@ -1374,476 +1294,7 @@ compare_datum_between_entries = function(refernce_vocabulary, reference_datum, a
 };
 
 
-},{"../lib/string-translation":6,"./lib/forms/form-label.cjsx":44,"./lib/forms/rails-form.cjsx":49,"./lib/input-meta-datum.cjsx":50,"./lib/madek-prop-types.coffee":51,"active-lodash":81,"classnames":107,"react":420}],30:[function(require,module,exports){
-var BatchFormResourceMetaData, React, Thumbnail, ThumbnailWrapper, f, t;
-
-React = require('react');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation.js')('de');
-
-BatchFormResourceMetaData = require('./batch-form-resource-meta-data.cjsx');
-
-Thumbnail = require('./ui-components/Thumbnail.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'BatchResourcesBox',
-  render: function(arg) {
-    var authToken, get, ref;
-    ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
-    return React.createElement("div", {
-      "className": "bordered ui-container midtone rounded-right rounded-bottom mbm"
-    }, React.createElement("div", {
-      "className": "ui-resources-selection"
-    }, React.createElement("div", {
-      "className": "ui-toolbar inverted ui-container pvx phs rounded-top"
-    }, React.createElement("h2", {
-      "className": "ui-toolbar-header"
-    }, get.resources.resources.length + ' ' + t('meta_data_batch_items_selected'))), React.createElement("div", {
-      "className": "ui-resources-media"
-    }, React.createElement("div", {
-      "className": "ui-resources-holder pal"
-    }, React.createElement("ul", {
-      "className": "grid ui-resources"
-    }, f.map(get.resources.resources, function(resource) {
-      return React.createElement(ThumbnailWrapper, {
-        "key": resource.uuid,
-        "title": resource.title,
-        "authors": resource.authors_pretty,
-        "hrefUrl": resource.url,
-        "imageUrl": resource.image_url
-      });
-    }))))));
-  }
-});
-
-ThumbnailWrapper = React.createClass({
-  displayName: 'ThumbnailWrapper',
-  render: function(arg) {
-    var authors, hrefUrl, imageUrl, ref, title;
-    ref = arg != null ? arg : this.props, title = ref.title, authors = ref.authors, imageUrl = ref.imageUrl, hrefUrl = ref.hrefUrl;
-    return React.createElement("li", {
-      "className": "ui-resource not-loaded-contexts"
-    }, React.createElement("div", {
-      "className": "ui-resource-body"
-    }, React.createElement("div", {
-      "className": "ui-resource-thumbnail"
-    }, React.createElement(Thumbnail, {
-      "className": "ui-thumbnail media-entry image",
-      "src": imageUrl,
-      "href": hrefUrl,
-      "meta": {
-        title: title,
-        subtitle: authors
-      }
-    }))));
-  }
-});
-
-
-},{"../lib/string-translation.js":6,"./batch-form-resource-meta-data.cjsx":29,"./ui-components/Thumbnail.cjsx":70,"active-lodash":81,"react":420}],31:[function(require,module,exports){
-var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-ampersandReactMixin = require('ampersand-react-mixin');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-InputFieldText = require('./lib/forms/input-field-text.cjsx');
-
-Button = require('./ui-components/Button.cjsx');
-
-Modal = require('./ui-components/Modal.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'CollectionResourceSelection',
-  propTypes: {
-    type: React.PropTypes.oneOf(['checkbox', 'radio'])
-  },
-  getInitialState: function() {
-    return {
-      active: false
-    };
-  },
-  render: function(arg) {
-    var authToken, get, ref, type;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, type = ref.type;
-    return React.createElement(Modal, {
-      "widthInPixel": '800'
-    }, React.createElement(RailsForm, {
-      "name": 'resource_meta_data',
-      "action": get.submit_url,
-      "method": 'put',
-      "authToken": authToken
-    }, React.createElement("div", {
-      "className": 'ui-modal-head'
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": 'true',
-      "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
-      "title": 'Close',
-      "type": 'button',
-      "style": {
-        position: 'static',
-        float: 'right',
-        paddingTop: '5px'
-      }
-    }, React.createElement("i", {
-      "className": 'icon-close'
-    })), React.createElement("h3", {
-      "className": 'title-l'
-    }, get.i18n.title)), React.createElement("div", {
-      "className": 'ui-modal-body',
-      "style": {
-        maxHeight: 'none'
-      }
-    }, React.createElement("div", {
-      "className": 'ui-resources-table'
-    }, React.createElement("div", {
-      "className": 'ui-resources-table'
-    }, React.createElement("table", {
-      "className": 'block'
-    }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("td", {
-      "className": 'ui-resources-table-selection'
-    }, get.i18n.h_selection), React.createElement("td", {
-      "title": 'Titel'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, get.i18n.h_title)), React.createElement("td", {
-      "title": 'Untertitel'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, get.i18n.h_subtitle)), React.createElement("td", {
-      "title": 'Autor/in'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, get.i18n.h_author)), React.createElement("td", {
-      "title": 'Datierung'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, get.i18n.h_date)), React.createElement("td", {
-      "title": 'Schlagworte'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, get.i18n.h_keywords)), React.createElement("td", {
-      "title": 'Rechteinhaber'
-    }, React.createElement("span", {
-      "className": 'ui-resources-table-cell-content'
-    }, get.i18n.h_responsible)))), React.createElement("tbody", null, f.map(get.child_presenters.resources, function(resource) {
-      var checked;
-      checked = get.uuid_to_checked_hash[resource.uuid];
-      return React.createElement("tr", {
-        "key": resource.uuid
-      }, React.createElement("td", {
-        "className": 'ui-resources-table-selection'
-      }, (type === 'checkbox' ? React.createElement("label", null, React.createElement("input", {
-        "type": 'hidden',
-        "name": 'resource_selections[][id]',
-        "value": resource.uuid
-      }), React.createElement("input", {
-        "type": 'hidden',
-        "name": 'resource_selections[][type]',
-        "value": resource.type
-      }), React.createElement("input", {
-        "className": 'ui-set-list-input',
-        "type": 'checkbox',
-        "name": 'resource_selections[][selected]',
-        "value": 'true',
-        "defaultChecked": checked
-      }), React.createElement("img", {
-        "className": 'ui-thumbnail micro',
-        "src": resource.image_url
-      })) : type === 'radio' ? React.createElement("label", null, React.createElement("input", {
-        "defaultChecked": checked,
-        "name": 'selected_resource',
-        "type": 'radio',
-        "value": resource.uuid
-      }), React.createElement("img", {
-        "className": 'ui-thumbnail micro',
-        "src": resource.image_url
-      })) : null)), React.createElement("td", {
-        "data-name": 'title',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.title)), React.createElement("td", {
-        "data-name": 'subtitle',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.subtitle)), React.createElement("td", {
-        "data-name": 'author',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.authors_pretty)), React.createElement("td", {
-        "data-name": 'portrayed object dates',
-        "title": 'null'
-      }, resource.created_at_pretty), React.createElement("td", {
-        "data-name": 'keywords',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.keywords_pretty)), React.createElement("td", {
-        "data-name": 'copyright notice',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, resource.responsible.name)));
-    })))))), React.createElement("div", {
-      "className": 'ui-modal-footer'
-    }, React.createElement("div", {
-      "className": 'ui-actions'
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": 'true',
-      "className": 'link weak',
-      "data-dismiss": 'modal'
-    }, get.i18n.cancel), React.createElement("button", {
-      "className": 'primary-button',
-      "type": 'submit'
-    }, get.i18n.save)))));
-  }
-});
-
-
-},{"../lib/string-translation":6,"./lib/forms/input-field-text.cjsx":45,"./lib/forms/rails-form.cjsx":49,"./ui-components/Button.cjsx":58,"./ui-components/Modal.cjsx":66,"active-lodash":81,"ampersand-react-mixin":91,"react":420,"react-dom":276}],32:[function(require,module,exports){
-var CollectionDetail, CollectionMetadata, CollectionRelations, MediaResourcesBox, RailsForm, React, ReactDOM, ResourceButton, RightsManagement, Tab, classnames, f, t;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation.js')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-MediaResourcesBox = require('./decorators/MediaResourcesBox.cjsx');
-
-RightsManagement = require('./rights-management.cjsx');
-
-CollectionDetail = require('./views/collection-detail.cjsx');
-
-CollectionRelations = require('./views/collection-relations.cjsx');
-
-CollectionMetadata = require('./views/collection-metadata.cjsx');
-
-classnames = require('classnames');
-
-module.exports = React.createClass({
-  displayName: 'Base',
-  render: function(arg) {
-    var activeTab, authToken, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, activeTab = ref.activeTab;
-    return React.createElement("div", {
-      "className": "app-body-ui-container"
-    }, React.createElement("div", {
-      "className": "ui-body-title"
-    }, React.createElement("div", {
-      "className": "ui-body-title-label"
-    }, React.createElement("h1", {
-      "className": "title-xl"
-    }, React.createElement("i", {
-      "className": "icon-set"
-    }), " ", get.title)), React.createElement("div", {
-      "className": "ui-body-title-actions"
-    }, f.map(get.buttons, function(button) {
-      return React.createElement(ResourceButton, {
-        "key": button.action,
-        "icon": button.icon,
-        "title": button.title,
-        "name": button.action,
-        "href": button.action,
-        "method": button.method,
-        "authToken": authToken
-      });
-    }))), React.createElement("ul", {
-      "className": "ui-tabs large"
-    }, f.map(get.tabs, function(tab, index) {
-      return React.createElement(Tab, {
-        "get": get,
-        "key": tab.href,
-        "iconType": tab.icon_type,
-        "href": tab.href,
-        "label": tab.label,
-        "active": index === activeTab
-      });
-    })), (activeTab === 0 ? React.createElement(CollectionDetail, {
-      "get": get,
-      "authToken": authToken
-    }) : void 0), (activeTab === 1 ? React.createElement(CollectionRelations, {
-      "get": get,
-      "authToken": authToken
-    }) : void 0), (activeTab === 2 ? React.createElement(CollectionMetadata, {
-      "get": get,
-      "authToken": authToken
-    }) : void 0), (activeTab === 3 ? React.createElement("div", {
-      "className": "bright pal rounded-bottom rounded-top-right ui-container"
-    }, React.createElement(RightsManagement, {
-      "get": get.permissions
-    })) : void 0));
-  }
-});
-
-Tab = React.createClass({
-  displayName: 'Tab',
-  render: function(arg) {
-    var active, classes, get, href, icon, iconType, icon_map, label, ref;
-    ref = arg != null ? arg : this.props, get = ref.get, label = ref.label, href = ref.href, iconType = ref.iconType, active = ref.active;
-    classes = classnames({
-      active: active
-    }, 'ui-tabs-item');
-    icon = iconType === 'privacy_status_icon' ? get.privacy_status ? (icon_map = {
-      "public": 'open',
-      shared: 'group',
-      "private": 'private'
-    }, React.createElement("i", {
-      "className": 'icon-privacy-' + icon_map[get.privacy_status]
-    })) : void 0 : void 0;
-    return React.createElement("li", {
-      "className": classes
-    }, React.createElement("a", {
-      "href": href
-    }, (icon ? React.createElement("span", null, icon, " ", label) : label)));
-  }
-});
-
-ResourceButton = React.createClass({
-  displayName: 'ResourceButton',
-  render: function(arg) {
-    var authToken, href, icon, method, name, ref, title;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, href = ref.href, method = ref.method, icon = ref.icon, title = ref.title, name = ref.name;
-    if (!method) {
-      method = 'post';
-    }
-    icon = 'icon-' + icon;
-    return React.createElement(RailsForm, {
-      "className": 'button_to',
-      "name": '',
-      "method": method,
-      "action": href,
-      "authToken": authToken
-    }, React.createElement("button", {
-      "className": "button",
-      "type": "submit",
-      "title": title
-    }, React.createElement("i", {
-      "className": icon
-    })));
-  }
-});
-
-
-},{"../lib/string-translation.js":6,"./decorators/MediaResourcesBox.cjsx":35,"./lib/forms/rails-form.cjsx":49,"./rights-management.cjsx":54,"./views/collection-detail.cjsx":74,"./views/collection-metadata.cjsx":75,"./views/collection-relations.cjsx":76,"active-lodash":81,"classnames":107,"react":420,"react-dom":276}],33:[function(require,module,exports){
-var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-ampersandReactMixin = require('ampersand-react-mixin');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-InputFieldText = require('./lib/forms/input-field-text.cjsx');
-
-Button = require('./ui-components/Button.cjsx');
-
-Modal = require('./ui-components/Modal.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'CreateCollection',
-  getInitialState: function() {
-    return {
-      active: false
-    };
-  },
-  render: function(arg) {
-    var alerts, authToken, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    alerts = this.props.get.error ? (function(_this) {
-      return function() {
-        return React.createElement("div", {
-          "className": "ui-alerts"
-        }, React.createElement("p", {
-          "className": "ui-alert error"
-        }, _this.props.get.error));
-      };
-    })(this)() : void 0;
-    return React.createElement(Modal, null, React.createElement(RailsForm, {
-      "name": 'resource_meta_data',
-      "action": get.submit_url,
-      "method": 'post',
-      "authToken": authToken
-    }, React.createElement("div", {
-      "className": 'ui-modal-head'
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": 'true',
-      "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
-      "title": 'Close',
-      "type": 'button',
-      "style": {
-        position: 'static',
-        float: 'right',
-        paddingTop: '5px'
-      }
-    }, React.createElement("i", {
-      "className": 'icon-close'
-    })), React.createElement("h3", {
-      "className": 'title-l'
-    }, t('collection_new_dialog_title'))), React.createElement("div", {
-      "className": 'ui-modal-body',
-      "style": {
-        maxHeight: 'none'
-      }
-    }, alerts, React.createElement("div", {
-      "className": "form-body"
-    }, React.createElement("div", {
-      "className": "ui-form-group rowed compact"
-    }, React.createElement("label", {
-      "className": "form-label"
-    }, t('collection_new_label_title')), React.createElement("div", {
-      "className": "form-item"
-    }, React.createElement(InputFieldText, {
-      "autocomplete": 'off',
-      "autofocus": 'autofocus',
-      "name": 'collection_title',
-      "value": ''
-    }))))), React.createElement("div", {
-      "className": "ui-modal-footer"
-    }, React.createElement("div", {
-      "className": "ui-actions"
-    }, React.createElement("a", {
-      "href": get.cancel_url,
-      "aria-hidden": "true",
-      "className": "link weak",
-      "data-dismiss": "modal"
-    }, t('collection_new_cancel')), React.createElement(Button, {
-      "className": "primary-button",
-      "type": 'submit'
-    }, t('collection_new_create_set'))))));
-  }
-});
-
-
-},{"../lib/string-translation":6,"./lib/forms/input-field-text.cjsx":45,"./lib/forms/rails-form.cjsx":49,"./ui-components/Button.cjsx":58,"./ui-components/Modal.cjsx":66,"active-lodash":81,"ampersand-react-mixin":91,"react":420,"react-dom":276}],34:[function(require,module,exports){
+},{"../../lib/string-translation":6,"../lib/forms/form-label.cjsx":40,"../lib/forms/rails-form.cjsx":45,"../lib/input-meta-datum.cjsx":46,"../lib/madek-prop-types.coffee":47,"active-lodash":80,"classnames":106,"react":419}],29:[function(require,module,exports){
 var Icon, Link, MediaPlayer, Picture, PropTypes, React, cx, f;
 
 React = require('react');
@@ -1925,7 +1376,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../ui-components/Icon.cjsx":63,"../ui-components/Link.cjsx":64,"../ui-components/MediaPlayer.cjsx":65,"../ui-components/Picture.cjsx":67,"active-lodash":81,"classnames":107,"react":420}],35:[function(require,module,exports){
+},{"../ui-components/Icon.cjsx":56,"../ui-components/Link.cjsx":57,"../ui-components/MediaPlayer.cjsx":58,"../ui-components/Picture.cjsx":60,"active-lodash":80,"classnames":106,"react":419}],30:[function(require,module,exports){
 var ActionsBar, Button, ButtonGroup, FallBackMsg, FilterBar, FilterExamples, FilterPreloader, Icon, LAYOUT_MODES, Link, MediaEntriesCollection, PageCounter, Preloader, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, UiToolBar, ampersandReactMixin, classList, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, qs, ref, resourceListParams, router, setUrlParams, viewConfigProps, xhr;
 
 React = require('react');
@@ -2596,301 +2047,7 @@ filter_examples = {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":2,"../../lib/router.coffee":3,"../../lib/set-params-for-url.coffee":5,"../../models/media-entries.coffee":14,"../../shared/resource_list_params.coffee":77,"../lib/forms/rails-form.cjsx":49,"../ui-components/index.coffee":71,"./ResourceThumbnail.cjsx":36,"active-lodash":81,"ampersand-react-mixin":91,"classnames/dedupe":106,"local-links":158,"qs":269,"react":420,"xhr":425}],36:[function(require,module,exports){
-var AskModal, Button, CURSOR_SELECT_STYLE, Icon, Link, Models, RailsForm, React, Thumbnail, ampersandReactMixin, async, cx, f, getRailsCSRFToken, ref, t;
-
-React = require('react');
-
-async = require('async');
-
-f = require('active-lodash');
-
-cx = require('classnames');
-
-ampersandReactMixin = require('ampersand-react-mixin');
-
-ref = require('../ui-components/index.coffee'), Link = ref.Link, Icon = ref.Icon, Thumbnail = ref.Thumbnail, AskModal = ref.AskModal;
-
-getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
-
-Models = require('../../models/index.coffee');
-
-RailsForm = require('../lib/forms/rails-form.cjsx');
-
-Button = require('../ui-components/Button.cjsx');
-
-t = require('../../lib/string-translation')('de');
-
-CURSOR_SELECT_STYLE = {
-  cursor: 'cell'
-};
-
-module.exports = React.createClass({
-  displayName: 'ResourceThumbnail',
-  mixins: [ampersandReactMixin],
-  propTypes: {
-    authToken: React.PropTypes.string.isRequired,
-    onSelect: React.PropTypes.func,
-    onClick: React.PropTypes.func,
-    get: React.PropTypes.shape({
-      type: React.PropTypes.oneOf(['MediaEntry', 'Collection', 'FilterSet'])
-    }),
-    resource: React.PropTypes.shape({
-      type: React.PropTypes.oneOf(['MediaEntry'])
-    })
-  },
-  getInitialState: function() {
-    return {
-      active: this.props.isClient || false,
-      pendingFavorite: false,
-      deleteModal: false
-    };
-  },
-  componentDidMount: function() {
-    var get, model, modelByType;
-    get = this.props.get;
-    if (!(get.isState || get.isCollection)) {
-      if ((modelByType = Models[get.type])) {
-        model = new modelByType(get);
-      } else {
-        console.error('WARNING: No model found for resource!', get);
-      }
-    }
-    return this.setState({
-      active: true,
-      model: model
-    });
-  },
-  _favorOnClick: function() {
-    var action;
-    this.setState({
-      pendingFavorite: true
-    });
-    action = this.state.model.favored ? 'disfavor' : 'favor';
-    return this.state.model.setFavoredStatus(action, (function(_this) {
-      return function(err, res) {
-        return _this.setState({
-          pendingFavorite: false
-        });
-      };
-    })(this));
-  },
-  _showModal: function() {
-    return this.setState({
-      deleteModal: true
-    });
-  },
-  _onModalOk: function() {
-    this.setState({
-      deleteModal: false
-    });
-    return this.state.model["delete"](function(err, res) {
-      return location.reload();
-    });
-  },
-  _onModalCancel: function() {
-    return this.setState({
-      deleteModal: false
-    });
-  },
-  render: function(arg, state) {
-    var Element, actionsLeft, actionsRight, authToken, childRelations, childThumbs, childrenCount, childrenCountText, elm, favorButton, favoriteAction, favoriteItem, favoriteOnClick, favoriteUrl, get, iconMapping, isSelected, model, onClick, onSelect, parentRelations, parentThumbs, parentsCount, parentsCountText, privacyIcon, ref1, starClass, thumbProps, type;
-    ref1 = arg != null ? arg : this.props, get = ref1.get, elm = ref1.elm, onClick = ref1.onClick, isSelected = ref1.isSelected, authToken = ref1.authToken;
-    if (state == null) {
-      state = this.state;
-    }
-    model = this.state.model || this.props.get;
-    type = get.type.replace(/Collection/, 'MediaSet');
-    iconMapping = {
-      'public': 'open',
-      'private': 'private',
-      'shared': 'group'
-    };
-    privacyIcon = "privacy-" + iconMapping[get.privacy_status];
-    actionsLeft = [];
-    actionsRight = [];
-    onSelect = this.props.onSelect;
-    if (onSelect) {
-      (function() {
-        var selector;
-        selector = React.createElement(Link, {
-          "onClick": onSelect,
-          "style": CURSOR_SELECT_STYLE,
-          "className": 'ui-thumbnail-action-checkbox',
-          "title": (isSelected ? 'Auswahl entfernen' : 'auswählen')
-        }, React.createElement(Icon, {
-          "i": 'checkbox',
-          "mods": (isSelected ? 'active' : void 0)
-        }));
-        return actionsLeft.push(React.createElement("li", {
-          "className": 'ui-thumbnail-action',
-          "key": 'selector'
-        }, React.createElement("span", {
-          "className": 'js-only'
-        }, selector)));
-      })();
-    }
-    if (get.favorite_policy) {
-      favoriteAction = model.favored ? 'disfavor' : 'favor';
-      favoriteUrl = model.url + '/' + favoriteAction;
-      starClass = model.favored ? 'icon-star' : 'icon-star-empty';
-      favoriteItem = React.createElement("i", {
-        "className": starClass
-      });
-      if (!this.state.pendingFavorite) {
-        favoriteOnClick = this._favorOnClick;
-      }
-      favorButton = state.active ? React.createElement(Button, {
-        "className": 'ui-thumbnail-action-favorite',
-        "onClick": favoriteOnClick,
-        "data-pending": state.pendingFavorite
-      }, favoriteItem) : React.createElement(RailsForm, {
-        "name": 'resource_meta_data',
-        "action": favoriteUrl,
-        "method": 'patch',
-        "authToken": authToken
-      }, React.createElement("button", {
-        "className": 'ui-thumbnail-action-favorite',
-        "type": 'submit'
-      }, favoriteItem));
-      actionsLeft.push(React.createElement("li", {
-        "key": 'favorite',
-        "className": 'ui-thumbnail-action'
-      }, favorButton));
-    }
-    if (get.editable) {
-      actionsRight.push(React.createElement("li", {
-        "key": 'edit',
-        "className": 'ui-thumbnail-action'
-      }, React.createElement(Button, {
-        "className": 'ui-thumbnail-action-favorite',
-        "href": get.url + '/meta_data/edit'
-      }, React.createElement("i", {
-        "className": 'icon-pen'
-      }))));
-    }
-    if (get.destroyable) {
-      actionsRight.push(React.createElement("li", {
-        "key": 'destroy',
-        "className": 'ui-thumbnail-action'
-      }, React.createElement(Button, {
-        "className": 'ui-thumbnail-action-favorite',
-        "onClick": this._showModal
-      }, React.createElement("i", {
-        "className": 'icon-trash'
-      }))));
-    }
-    parentRelations = get.parent_relations;
-    childRelations = get.child_relations;
-    if (parentRelations) {
-      parentsCount = parentRelations.count;
-      parentsCountText = parentsCount + ' Sets';
-      if (parentsCount > 0) {
-        parentThumbs = f.get(get, ['parent_relations', 'resources']).map(function(item) {
-          return React.createElement("li", {
-            "className": 'ui-thumbnail-level-item media_set set odd',
-            "key": item.uuid
-          }, React.createElement("a", {
-            "className": 'ui-level-image-wrapper',
-            "href": item.url
-          }, React.createElement("div", {
-            "className": 'ui-thumbnail-level-image-holder'
-          }, React.createElement("img", {
-            "className": 'ui-thumbnail-level-image',
-            "src": item.image_url
-          }))));
-        });
-      }
-    }
-    if (childRelations) {
-      childrenCount = childRelations.count;
-      childrenCountText = childrenCount + ' Inhalte';
-      if (childrenCount > 0) {
-        childThumbs = f.get(get, ['child_relations', 'resources']).map(function(item) {
-          var classes;
-          classes = 'ui-thumbnail-level-item media_set set odd';
-          if (item.type === 'MediaEntry') {
-            classes = 'ui-thumbnail-level-item media_entry image odd';
-          }
-          return React.createElement("li", {
-            "className": classes,
-            "key": item.uuid
-          }, React.createElement("a", {
-            "className": 'ui-level-image-wrapper',
-            "href": item.url
-          }, React.createElement("div", {
-            "className": 'ui-thumbnail-level-image-holder'
-          }, React.createElement("img", {
-            "className": 'ui-thumbnail-level-image',
-            "src": item.image_url
-          }))));
-        });
-      }
-    }
-    Element = elm || 'div';
-    thumbProps = {
-      type: f.kebabCase(type),
-      mods: get.media_type === 'video' ? ['video'] : void 0,
-      src: get.image_url || state.localPreview || '.',
-      href: get.url,
-      alt: get.title,
-      onClick: onClick,
-      style: (onClick && (onClick === this.props.onSelect) ? CURSOR_SELECT_STYLE : void 0),
-      meta: {
-        title: get.title || get.uploadStatus
-      },
-      badgeLeft: React.createElement(Icon, {
-        "i": privacyIcon,
-        "title": get.privacy_status
-      }),
-      badgeRight: get.type === 'FilterSet' ? React.createElement(Icon, {
-        "i": 'filter',
-        "title": 'This is a Filterset'
-      }) : void 0,
-      actionsLeft: actionsLeft,
-      actionsRight: actionsRight,
-      flyoutTop: parentRelations ? {
-        title: 'Übergeordnete Sets',
-        children: parentThumbs,
-        caption: parentsCount + ' Sets'
-      } : void 0,
-      flyoutBottom: childRelations ? {
-        title: 'Set enthält',
-        children: childThumbs,
-        caption: childrenCount + ' Inhalte'
-      } : void 0
-    };
-    return React.createElement(Element, {
-      "className": cx('ui-resource', {
-        'ui-selected': isSelected
-      })
-    }, React.createElement("div", {
-      "className": 'ui-resource-body'
-    }, React.createElement(Thumbnail, React.__spread({}, thumbProps)), (this.state.deleteModal === true ? (type = (function() {
-      switch (get.type) {
-        case 'Collection':
-          return 'collection';
-        case 'MediaEntry':
-          return 'media_entry';
-      }
-    })(), React.createElement(AskModal, {
-      "title": t(type + '_ask_delete_title'),
-      "onCancel": this._onModalCancel,
-      "onOk": this._onModalOk
-    }, t(type + '_ask_delete_question_pre'), React.createElement("strong", null, model.title), t('resource_ask_delete_question_post'))) : null)));
-  }
-});
-
-
-},{"../../lib/rails-csrf-token.coffee":2,"../../lib/string-translation":6,"../../models/index.coffee":13,"../lib/forms/rails-form.cjsx":49,"../ui-components/Button.cjsx":58,"../ui-components/index.coffee":71,"active-lodash":81,"ampersand-react-mixin":91,"async":101,"classnames":107,"react":420}],37:[function(require,module,exports){
-var requireBulk;
-
-
-
-module.exports = ({"MediaEntryPreview":require("./MediaEntryPreview.cjsx"),"MediaResourcesBox":require("./MediaResourcesBox.cjsx"),"ResourceThumbnail":require("./ResourceThumbnail.cjsx")});
-
-
-},{"./MediaEntryPreview.cjsx":34,"./MediaResourcesBox.cjsx":35,"./ResourceThumbnail.cjsx":36}],38:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2,"../../lib/router.coffee":3,"../../lib/set-params-for-url.coffee":5,"../../models/media-entries.coffee":14,"../../shared/resource_list_params.coffee":76,"../lib/forms/rails-form.cjsx":45,"../ui-components/index.coffee":64,"./ResourceThumbnail.cjsx":33,"active-lodash":80,"ampersand-react-mixin":90,"classnames/dedupe":105,"local-links":157,"qs":268,"react":419,"xhr":424}],31:[function(require,module,exports){
 var InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, PropTypes, RailsForm, React, VocabularyFormItem, VocabularyHeader, cx, f, getRailsCSRFToken, t, xhr;
 
 React = require('react');
@@ -2899,24 +2056,24 @@ PropTypes = React.PropTypes;
 
 f = require('active-lodash');
 
-t = require('../lib/string-translation.js')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-MetaKeyFormLabel = require('./lib/forms/form-label.cjsx');
-
-InputMetaDatum = require('./lib/input-meta-datum.cjsx');
-
-MadekPropTypes = require('./lib/madek-prop-types.coffee');
-
 xhr = require('xhr');
-
-getRailsCSRFToken = require('../lib/rails-csrf-token.coffee');
 
 cx = require('classnames');
 
+t = require('../../lib/string-translation.js')('de');
+
+RailsForm = require('../lib/forms/rails-form.cjsx');
+
+getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
+
+MetaKeyFormLabel = require('../lib/forms/form-label.cjsx');
+
+InputMetaDatum = require('../lib/input-meta-datum.cjsx');
+
+MadekPropTypes = require('../lib/madek-prop-types.coffee');
+
 module.exports = React.createClass({
-  displayName: 'FormResourceMetaData',
+  displayName: 'ResourceMetaDataForm',
   propTypes: {
     get: PropTypes.shape({
       meta_data: PropTypes.shape({
@@ -3094,904 +2251,14 @@ MetaDatumFormItem = React.createClass({
 });
 
 
-},{"../lib/rails-csrf-token.coffee":2,"../lib/string-translation.js":6,"./lib/forms/form-label.cjsx":44,"./lib/forms/rails-form.cjsx":49,"./lib/input-meta-datum.cjsx":50,"./lib/madek-prop-types.coffee":51,"active-lodash":81,"classnames":107,"react":420,"xhr":425}],39:[function(require,module,exports){
-var UI;
-
-UI = {
-  RightsManagement: require('./rights-management.cjsx'),
-  CreateCollection: require('./create-collection.cjsx'),
-  AskDeleteCollection: require('./ask-delete-collection.cjsx'),
-  SelectCollection: require('./select-collection.cjsx'),
-  CollectionShow: require('./collection-show.cjsx'),
-  MediaEntryExport: require('./media-entry-export.cjsx'),
-  CollectionResourceSelection: require('./collection-resource-selection.cjsx'),
-  FormResourceMetaData: require('./form-resource-meta-data.cjsx'),
-  BatchFormResourceMetaData: require('./batch-form-resource-meta-data.cjsx'),
-  BatchResourcesBox: require('./batch-resources-box.cjsx'),
-  Uploader: require('./uploader.cjsx'),
-  UI: require('./ui-components/index.coffee'),
-  Deco: require('./decorators/index.coffee'),
-  AsyncDashboardSection: require('./lib/AsyncDashboardSection.cjsx')
-};
-
-module.exports = UI;
-
-
-},{"./ask-delete-collection.cjsx":28,"./batch-form-resource-meta-data.cjsx":29,"./batch-resources-box.cjsx":30,"./collection-resource-selection.cjsx":31,"./collection-show.cjsx":32,"./create-collection.cjsx":33,"./decorators/index.coffee":37,"./form-resource-meta-data.cjsx":38,"./lib/AsyncDashboardSection.cjsx":40,"./media-entry-export.cjsx":53,"./rights-management.cjsx":54,"./select-collection.cjsx":55,"./ui-components/index.coffee":71,"./uploader.cjsx":73}],40:[function(require,module,exports){
-var Preloader, PropTypes, React, ReactDOM, UILibrary, f, getRailsCSRFToken, xhr;
-
-React = require('react');
-
-PropTypes = React.PropTypes;
-
-ReactDOM = require('react-dom');
-
-f = require('active-lodash');
-
-xhr = require('xhr');
-
-getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
-
-UILibrary = {
-  UI: require('../ui-components/index.coffee'),
-  Deco: require('../decorators/index.coffee')
-};
-
-Preloader = require('../ui-components/Preloader.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'AsyncDashboardSection',
-  propTypes: {
-    url: PropTypes.string.isRequired,
-    component: PropTypes.string.isRequired,
-    json_path: PropTypes.string,
-    initial_props: PropTypes.object
-  },
-  getInitialState: function() {
-    return {
-      isClient: false,
-      fetchedProps: null
-    };
-  },
-  componentDidMount: function() {
-    this.setState({
-      isClient: true
-    });
-    return this._getPropsAsync((function(_this) {
-      return function(props) {
-        return _this.setState({
-          fetchedProps: props
-        });
-      };
-    })(this));
-  },
-  _getPropsAsync: function(callback) {
-    return xhr({
-      url: this.props.url,
-      json: true
-    }, (function(_this) {
-      return function(err, res, data) {
-        var props;
-        props = _this.props.initial_props;
-        props.get = _this.props.json_path ? f.get(data, _this.props.json_path) : data;
-        props.authToken = getRailsCSRFToken();
-        return callback(props);
-      };
-    })(this));
-  },
-  render: function() {
-    var UIComponent;
-    UIComponent = f.get(UILibrary, this.props.component);
-    return React.createElement("div", {
-      "className": 'ui_async-view'
-    }, (!this.state.isClient || !f.present(this.state.fetchedProps) ? React.createElement("div", {
-      "style": {
-        height: '250px'
-      }
-    }, React.createElement("div", {
-      "className": 'pvh mtm'
-    }, React.createElement(Preloader, null))) : UIComponent ? React.createElement(UIComponent, this.state.fetchedProps) : void 0));
-  }
-});
-
-
-},{"../../lib/rails-csrf-token.coffee":2,"../decorators/index.coffee":37,"../ui-components/Preloader.cjsx":68,"../ui-components/index.coffee":71,"active-lodash":81,"react":420,"react-dom":276,"xhr":425}],41:[function(require,module,exports){
-
-/*
-
- * AutoComplete
-
-Component that wraps the jQuery.typeahead and provides search functionality
-for Resources that we have a search backend for.
-
-Example:
-callback = (data)-> alert(data.uuid)
-<AutoComplete name='foo[person]' resourceType='People' onSelect={callback}/>
-
-FIXME: fails if even required on server (jQuery)!
- */
-var PropTypes, React, ReactDOM, initTypeahead, jQuery, searchResources;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-PropTypes = React.PropTypes;
-
-jQuery = require('jquery');
-
-require('@eins78/typeahead.js/dist/typeahead.jquery.js');
-
-searchResources = require('../../lib/search.coffee');
-
-initTypeahead = function(domNode, resourceType, params, callback) {
-  var $input, dataSource;
-  if (!(dataSource = searchResources(resourceType, params))) {
-    throw new Error("No search backend for '" + resourceType + "'!");
-  }
-  $input = jQuery(domNode);
-  return $input.typeahead({
-    hint: false,
-    highlight: true,
-    minLength: 1,
-    classNames: {
-      wrapper: 'ui-autocomplete-holder',
-      input: 'ui-typeahead-input',
-      hint: 'ui-autocomplete-hint',
-      menu: 'ui-autocomplete ui-menu',
-      cursor: 'ui-autocomplete-cursor',
-      suggestion: 'ui-menu-item'
-    }
-  }, dataSource).on('keypress', function(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-    }
-    return null;
-  }).on('typeahead:select typeahead:autocomplete', function(event, item) {
-    event.preventDefault();
-    $input.typeahead('val', '');
-    return callback(item);
-  });
-};
-
-module.exports = React.createClass({
-  displayName: 'AutoComplete',
-  propTypes: {
-    name: PropTypes.string.isRequired,
-    resourceType: PropTypes.string.isRequired,
-    onSelect: PropTypes.func.isRequired,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    className: PropTypes.string,
-    autoFocus: PropTypes.bool,
-    searchParams: PropTypes.object
-  },
-  componentDidMount: function(arg) {
-    var autoFocus, onSelect, ref, resourceType, searchParams;
-    ref = arg != null ? arg : this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, onSelect = ref.onSelect;
-    initTypeahead(ReactDOM.findDOMNode(this.refs.InputField), resourceType, searchParams, onSelect);
-    if (autoFocus) {
-      return this.focus();
-    }
-  },
-  focus: function() {
-    return jQuery(ReactDOM.findDOMNode(this.refs.InputField)).focus();
-  },
-  render: function() {
-    var className, name, placeholder, ref, value;
-    ref = this.props, name = ref.name, value = ref.value, placeholder = ref.placeholder, className = ref.className;
-    name = '___autocomplete_for_' + name;
-    return React.createElement("input", {
-      "ref": "InputField",
-      "className": className + ' typeahead',
-      "type": "text",
-      "defaultValue": value || '',
-      "placeholder": placeholder || 'search…',
-      "name": name
-    });
-  }
-});
-
-
-},{"../../lib/search.coffee":4,"@eins78/typeahead.js/dist/typeahead.jquery.js":79,"jquery":156,"react":420,"react-dom":276}],42:[function(require,module,exports){
-var decorators, f;
-
-f = require('active-lodash');
-
-decorators = {
-  Person: function(o) {
-    return o.name;
-  },
-  Keyword: function(o) {
-    return o.label;
-  },
-  License: function(o) {
-    return o.label;
-  }
-};
-
-module.exports = function(o) {
-  var decorate;
-  if (!(f.isObject(o) && f.isFunction(decorate = decorators[o.type]))) {
-    throw new Error('Decorator: Unknown Resource!');
-  }
-  return decorate(o);
-};
-
-
-},{"active-lodash":81}],43:[function(require,module,exports){
-var FileDrop, React;
-
-React = require('react');
-
-FileDrop = 'div';
-
-module.exports = React.createClass({
-  displayName: 'FileDropBox',
-  propTypes: {
-    onFilesDrop: React.PropTypes.func.isRequired
-  },
-  getInitialState: function() {
-    return {
-      dragging: false
-    };
-  },
-  componentDidMount: function() {
-    return FileDrop = require('react-file-drop');
-  },
-  onDragOver: function(event) {
-    return this.setState({
-      dragging: true
-    });
-  },
-  onDragLeave: function(event) {
-    return this.setState({
-      dragging: false
-    });
-  },
-  onFilesDrop: function(files, event) {
-    this.setState({
-      dragging: false
-    });
-    return this.props.onFilesDrop(event, files);
-  },
-  render: function(arg) {
-    var containerClass, props, ref, state;
-    ref = arg != null ? arg : this, props = ref.props, state = ref.state;
-    containerClass = 'ui-container clearfix mvl bordered rounded ';
-    containerClass += (state.dragging ? 'inverted' : 'midtone');
-    return React.createElement(FileDrop, {
-      "id": 'ui-uploader',
-      "className": containerClass,
-      "onDrop": this.onFilesDrop,
-      "onDragOver": this.onDragOver,
-      "onDragLeave": this.onDragLeave,
-      "targetAlwaysVisible": true
-    }, this.props.children);
-  }
-});
-
-
-},{"react":420,"react-file-drop":278}],44:[function(require,module,exports){
-var MadekPropTypes, React;
-
-React = require('react');
-
-MadekPropTypes = require('../madek-prop-types.coffee');
-
-module.exports = React.createClass({
-  displayName: 'MetaKeyFormLabel',
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    metaKey: MadekPropTypes.metaKey
-  },
-  render: function(arg) {
-    var description, metaKey;
-    metaKey = (arg != null ? arg : this.props).metaKey;
-    return React.createElement("label", {
-      "className": 'form-label'
-    }, metaKey.label, ((description = metaKey.description) ? React.createElement("span", {
-      "className": 'ui-form-ui-ttip-toggle ui-ttip-toggle',
-      "rel": 'tooltip',
-      "title": description
-    }, React.createElement("i", {
-      "className": 'icon-question'
-    })) : void 0), React.createElement("small", null, metaKey.hint));
-  }
-});
-
-
-},{"../madek-prop-types.coffee":51,"react":420}],45:[function(require,module,exports){
-var React;
-
-React = require('react');
-
-module.exports = React.createClass({
-  displayName: 'InputFieldText',
-  propTypes: {
-    name: React.PropTypes.string.isRequired
-  },
-  render: function(arg) {
-    var className, name, placeholder, ref, type, value;
-    ref = arg != null ? arg : this.props, name = ref.name, type = ref.type, value = ref.value, placeholder = ref.placeholder, className = ref.className;
-    return React.createElement("input", {
-      "type": type || 'text',
-      "className": className + ' block',
-      "name": name,
-      "defaultValue": value || '',
-      "placeholder": placeholder
-    });
-  }
-});
-
-
-},{"react":420}],46:[function(require,module,exports){
-var AutoComplete, InputFieldText, React, decorateResource, f;
-
-React = require('react');
-
-f = require('active-lodash');
-
-decorateResource = require('../decorate-resource-names.coffee');
-
-InputFieldText = require('../forms/input-field-text.cjsx');
-
-AutoComplete = null;
-
-module.exports = React.createClass({
-  displayName: 'InputResources',
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    resourceType: React.PropTypes.string.isRequired,
-    values: React.PropTypes.array.isRequired,
-    active: React.PropTypes.bool.isRequired,
-    multiple: React.PropTypes.bool.isRequired
-  },
-  getInitialState: function() {
-    return {
-      isClient: false
-    };
-  },
-  componentDidMount: function(arg) {
-    var values;
-    values = (arg != null ? arg : this.props).values;
-    AutoComplete = require('../autocomplete.cjsx');
-    return this.setState({
-      isClient: true,
-      values: values
-    });
-  },
-  onItemAdd: function(item) {
-    if (!f(this.state.values).map('uuid').includes(item.uuid)) {
-      return this.setState({
-        values: this.state.values.concat(item),
-        adding: true
-      });
-    }
-  },
-  onItemRemove: function(item, _event) {
-    return this.setState({
-      values: f.reject(this.state.values, item)
-    });
-  },
-  componentDidUpdate: function() {
-    if (this.state.adding) {
-      this.setState({
-        adding: false
-      });
-      return setTimeout(this.refs.ListAdder.focus, 1);
-    }
-  },
-  render: function(arg, state) {
-    var multiple, name, onItemAdd, onItemRemove, ref, resourceType, searchParams, values;
-    ref = arg != null ? arg : this.props, name = ref.name, resourceType = ref.resourceType, searchParams = ref.searchParams, values = ref.values, multiple = ref.multiple;
-    if (state == null) {
-      state = this.state;
-    }
-    onItemAdd = this.onItemAdd, onItemRemove = this.onItemRemove;
-    values = state.values || values;
-    if (!AutoComplete) {
-      return null;
-    }
-    return React.createElement("div", {
-      "className": 'form-item'
-    }, React.createElement("div", {
-      "className": 'multi-select'
-    }, React.createElement("ul", {
-      "className": 'multi-select-holder'
-    }, values.map(function(item) {
-      var remover;
-      remover = f.curry(onItemRemove)(item);
-      return React.createElement("li", {
-        "className": 'multi-select-tag',
-        "key": item.uuid
-      }, decorateResource(item), React.createElement("a", {
-        "className": 'multi-select-tag-remove',
-        "onClick": remover
-      }, React.createElement("i", {
-        "className": 'icon-close'
-      })));
-    }), (multiple || f.empty(values) ? React.createElement("li", {
-      "className": 'multi-select-input-holder'
-    }, React.createElement(AutoComplete, {
-      "className": 'multi-select-input',
-      "name": name,
-      "resourceType": resourceType,
-      "searchParams": searchParams,
-      "onSelect": onItemAdd,
-      "ref": 'ListAdder'
-    }), React.createElement("a", {
-      "className": 'multi-select-input-toggle icon-arrow-down'
-    })) : void 0))), f.map(f(values).pluck('uuid').presence() || [''], function(val) {
-      return React.createElement(InputFieldText, {
-        "type": 'hidden',
-        "name": name,
-        "value": val,
-        "key": val || 'empty'
-      });
-    }));
-  }
-});
-
-
-},{"../autocomplete.cjsx":41,"../decorate-resource-names.coffee":42,"../forms/input-field-text.cjsx":45,"active-lodash":81,"react":420}],47:[function(require,module,exports){
-var InputFieldText, React, f;
-
-React = require('react');
-
-f = require('active-lodash');
-
-InputFieldText = require('../forms/input-field-text.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'InputText',
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    values: React.PropTypes.array.isRequired,
-    active: React.PropTypes.bool.isRequired,
-    multiple: React.PropTypes.bool.isRequired
-  },
-  render: function(arg) {
-    var active, get, multiple, name, ref, shouldAddValue, values;
-    ref = arg != null ? arg : this.props, get = ref.get, name = ref.name, values = ref.values, active = ref.active, multiple = ref.multiple;
-    shouldAddValue = f.isEmpty(values) || multiple;
-    return React.createElement("div", {
-      "className": 'form-item'
-    }, React.createElement("div", {
-      "className": 'form-item-values'
-    }, values.map(function(textValue, n) {
-      return React.createElement(InputFieldText, {
-        "name": name,
-        "value": textValue,
-        "key": n
-      });
-    })), (shouldAddValue ? React.createElement("div", {
-      "className": 'form-item-add'
-    }, React.createElement(InputFieldText, {
-      "name": name
-    })) : void 0));
-  }
-});
-
-
-},{"../forms/input-field-text.cjsx":45,"active-lodash":81,"react":420}],48:[function(require,module,exports){
-var InputResources, MadekPropTypes, React, Text;
-
-React = require('react');
-
-MadekPropTypes = require('../madek-prop-types.coffee');
-
-Text = require('./input-text.cjsx');
-
-InputResources = require('./input-resources.cjsx');
-
-module.exports = {
-  Text: Text,
-  TextDate: Text,
-  People: React.createClass({
-    displayName: 'InputPeople',
-    render: function() {
-      return React.createElement(InputResources, React.__spread({}, this.props, {
-        "resourceType": 'People'
-      }));
-    }
-  }),
-  Licenses: React.createClass({
-    displayName: 'InputLicenses',
-    render: function() {
-      return React.createElement(InputResources, React.__spread({}, this.props, {
-        "resourceType": 'Licenses'
-      }));
-    }
-  }),
-  Keywords: React.createClass({
-    propTypes: {
-      metaKey: MadekPropTypes.metaKey.isRequired
-    },
-    displayName: 'InputKeywords',
-    render: function(arg) {
-      var metaKey, params;
-      metaKey = (arg != null ? arg : this.props).metaKey;
-      params = {
-        meta_key_id: metaKey.uuid
-      };
-      return React.createElement(InputResources, React.__spread({}, this.props, {
-        "resourceType": 'Keywords',
-        "searchParams": params
-      }));
-    }
-  })
-};
-
-
-},{"../madek-prop-types.coffee":51,"./input-resources.cjsx":46,"./input-text.cjsx":47,"react":420}],49:[function(require,module,exports){
-var $, React, ReactDOM, f, ui;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-f = require('active-lodash');
-
-ui = require('../../lib/ui.coffee');
-
-$ = require('jquery');
-
-module.exports = React.createClass({
-  displayName: 'RestForm',
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    action: React.PropTypes.string,
-    method: React.PropTypes.oneOf(['get', 'GET', 'post', 'POST', 'put', 'PUT', 'patch', 'PATCH', 'delete', 'DELETE']),
-    authToken: React.PropTypes.string,
-    onSubmit: React.PropTypes.func
-  },
-  serialize: function() {
-    var form;
-    form = ReactDOM.findDOMNode(this.refs.form);
-    return $(form).serialize();
-  },
-  render: function(arg) {
-    var action, authToken, authTokenParam, children, emulateHTTP, formMethod, method, name, needsAuthToken, onSubmit, ref, restMethod;
-    ref = arg != null ? arg : this.props, name = ref.name, action = ref.action, method = ref.method, authToken = ref.authToken, onSubmit = ref.onSubmit, children = ref.children;
-    restMethod = (method || 'post').toLowerCase();
-    emulateHTTP = !f.includes(['get', 'post'], restMethod);
-    formMethod = restMethod === 'get' ? 'get' : 'post';
-    needsAuthToken = !(restMethod === 'get');
-    authTokenParam = 'authenticity_token';
-    if (needsAuthToken && !f.present(authToken)) {
-      throw new Error('No `authToken` given!');
-    }
-    return React.createElement("form", React.__spread({}, this.props, {
-      "ref": 'form',
-      "onSubmit": onSubmit,
-      "name": name,
-      "method": formMethod,
-      "action": action,
-      "className": ui.cx(ui.parseMods(this.props)),
-      "acceptCharset": 'UTF-8'
-    }), React.createElement("input", {
-      "name": 'utf8',
-      "type": 'hidden',
-      "value": '✓'
-    }), (emulateHTTP ? React.createElement("input", {
-      "name": '_method',
-      "type": 'hidden',
-      "value": restMethod
-    }) : void 0), (needsAuthToken ? React.createElement("input", {
-      "name": authTokenParam,
-      "type": 'hidden',
-      "value": authToken
-    }) : void 0), children);
-  }
-});
-
-
-},{"../../lib/ui.coffee":52,"active-lodash":81,"jquery":156,"react":420,"react-dom":276}],50:[function(require,module,exports){
-var InputsByType, MadekPropTypes, React, f;
-
-React = require('react');
-
-f = require('active-lodash');
-
-MadekPropTypes = require('./madek-prop-types.coffee');
-
-InputsByType = require('./forms/inputs-by-type.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'InputMetaDatum',
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    get: MadekPropTypes.metaDatum.isRequired
-  },
-  getInitialState: function() {
-    return {
-      active: false
-    };
-  },
-  componentDidMount: function(arg) {
-    var get;
-    get = (arg != null ? arg : this.props).get;
-    return this.setState({
-      active: true,
-      values: get.values
-    });
-  },
-  onChange: function(values) {
-    return this.setState({
-      values: values
-    });
-  },
-  render: function(arg, state) {
-    var InputForType, get, multiple, name, ref, resourceType, values;
-    ref = arg != null ? arg : this.props, get = ref.get, name = ref.name;
-    if (state == null) {
-      state = this.state;
-    }
-    resourceType = f.last(get.type.split('::'));
-    multiple = !(f.includes(['Text', 'TextDate'], resourceType));
-    values = state.values || get.literal_values;
-    InputForType = state.active && InputsByType[resourceType] ? InputsByType[resourceType] : InputsByType.Text;
-    return React.createElement(InputForType, {
-      "name": name,
-      "metaKey": get.meta_key,
-      "active": state.active,
-      "multiple": multiple,
-      "values": values
-    });
-  }
-});
-
-
-},{"./forms/inputs-by-type.cjsx":48,"./madek-prop-types.coffee":51,"active-lodash":81,"react":420}],51:[function(require,module,exports){
-var M, META_DATUM_TYPES, MKEY_REGEX, MadekPropTypes, NAMESPACE_MATCH, PropTypes, ResourceFiltersMetaData, VOCABULARY_REGEX, f, validateUUID;
-
-f = require('active-lodash');
-
-PropTypes = require('react').PropTypes;
-
-validateUUID = require('uuid-validate');
-
-NAMESPACE_MATCH = '[a-z0-9\-_]+';
-
-VOCABULARY_REGEX = RegExp("^" + NAMESPACE_MATCH + "$");
-
-MKEY_REGEX = RegExp("^" + NAMESPACE_MATCH + ":" + NAMESPACE_MATCH + "$");
-
-META_DATUM_TYPES = ['MetaDatum::Text', 'MetaDatum::TextDate', 'MetaDatum::People', 'MetaDatum::Groups', 'MetaDatum::Keywords', 'MetaDatum::Licenses'];
-
-MadekPropTypes = M = {};
-
-M.uuid = function(props, propName, _componentName) {
-  if (!validateUUID(props[propName], 4)) {
-    return new Error('Malformed uuid!');
-  }
-};
-
-M.metaKeyId = function(props, propName, _componentName) {
-  if (!MKEY_REGEX.test(props[propName])) {
-    return new Error('Malformed metaKeyId!');
-  }
-};
-
-M.metaKey = PropTypes.shape({
-  label: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  hint: PropTypes.string
-});
-
-M.metaDatum = PropTypes.shape({
-  meta_key: M.metaKey
-});
-
-ResourceFiltersMetaData = f.values({
-  keyUuid: PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    value: M.uuid.isRequired
-  }),
-  keyMatch: PropTypes.shape({
-    key: M.metaKeyId.isRequired,
-    match: PropTypes.string.isRequired
-  }),
-  searchKeyType: PropTypes.shape({
-    key: PropTypes.oneOf(['any']).isRequired,
-    match: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(META_DATUM_TYPES).isRequired
-  }),
-  searchKey: PropTypes.shape({
-    key: PropTypes.oneOf(['any']).isRequired,
-    match: PropTypes.string.isRequired
-  }),
-  hasKey: PropTypes.shape({
-    key: M.metaKeyId.isRequired
-  }),
-  notKey: PropTypes.shape({
-    not_key: M.metaKeyId.isRequired
-  })
-});
-
-M.resourceFilter = PropTypes.shape({
-  search: PropTypes.string,
-  meta_data: PropTypes.arrayOf(PropTypes.oneOfType(ResourceFiltersMetaData)),
-  media_files: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
-  })),
-  permissions: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.shape({
-      key: PropTypes.oneOf(['responsible_user', 'entrusted_to_user', 'entrusted_to_group']).isRequired,
-      value: M.uuid.isRequired
-    }), PropTypes.shape({
-      key: PropTypes.oneOf(['public']).isRequired,
-      value: PropTypes.oneOf([true, false]).isRequired
-    })
-  ]))
-});
-
-module.exports = MadekPropTypes;
-
-
-},{"active-lodash":81,"react":420,"uuid-validate":423}],52:[function(require,module,exports){
-var classnames, f, parseModsfromProps;
-
-f = require('active-lodash');
-
-classnames = require('classnames/dedupe');
-
-parseModsfromProps = function(arg) {
-  var className, mods, ref;
-  ref = arg != null ? arg : props, className = ref.className, mods = ref.mods;
-  return [mods, className];
-};
-
-module.exports = {
-  parseMods: parseModsfromProps,
-  classnames: classnames,
-  cx: classnames
-};
-
-
-},{"active-lodash":81,"classnames/dedupe":106}],53:[function(require,module,exports){
-var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
-
-React = require('react');
-
-ReactDOM = require('react-dom');
-
-ampersandReactMixin = require('ampersand-react-mixin');
-
-f = require('active-lodash');
-
-t = require('../lib/string-translation')('de');
-
-RailsForm = require('./lib/forms/rails-form.cjsx');
-
-InputFieldText = require('./lib/forms/input-field-text.cjsx');
-
-Button = require('./ui-components/Button.cjsx');
-
-Modal = require('./ui-components/Modal.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'MediaEntryExport',
-  getInitialState: function() {
-    return {
-      active: false
-    };
-  },
-  render: function(arg) {
-    var authToken, get, hasNeither, hasOriginal, hasPreviews, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    hasPreviews = false;
-    f.each(get.media_file.previews, function(preview) {
-      return f.each(preview, function(entry) {
-        return hasPreviews = true;
-      });
-    });
-    hasOriginal = get.media_file.original_file_url;
-    hasNeither = !hasPreviews && !hasOriginal;
-    return React.createElement(Modal, {
-      "widthInPixel": '800'
-    }, React.createElement("div", {
-      "className": 'ui-modal-head'
-    }, React.createElement("a", {
-      "href": get.url,
-      "aria-hidden": 'true',
-      "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
-      "title": 'Close',
-      "type": 'button',
-      "style": {
-        position: 'static',
-        float: 'right',
-        paddingTop: '5px'
-      }
-    }, React.createElement("i", {
-      "className": 'icon-close'
-    })), React.createElement("h3", {
-      "className": 'title-l'
-    }, t('media_entry_export_title'))), React.createElement("div", {
-      "className": 'ui-modal-body',
-      "style": {
-        maxHeight: 'none'
-      }
-    }, (hasNeither ? React.createElement("div", {
-      "className": "ui-export-block",
-      "id": "original-meta-data"
-    }, t('media_entry_export_no_content')) : void 0), (hasNeither === false ? React.createElement("div", {
-      "className": "ui-export-block",
-      "id": "original-meta-data"
-    }, React.createElement("h2", {
-      "className": "title-l ui-resource-title",
-      "style": {
-        marginTop: '0px',
-        marginLeft: '0px',
-        marginBottom: '20px'
-      }
-    }, t('media_entry_export_original')), (hasOriginal ? [
-      React.createElement("div", {
-        "className": "col1of2"
-      }, React.createElement("p", null, t('media_entry_export_original_hint'))), React.createElement("div", {
-        "className": "col1of2 by-right"
-      }, React.createElement("a", {
-        "href": get.media_file.original_file_url,
-        "aria-hidden": 'true',
-        "className": 'primary-button',
-        "data-dismiss": 'modal'
-      }, t('media_entry_export_download')))
-    ] : React.createElement("div", {
-      "className": "col1of2"
-    }, React.createElement("p", null, t('media_entry_export_has_no_original'))))) : void 0), (hasPreviews ? f.map(get.media_file.previews, function(preview, type) {
-      return React.createElement("div", {
-        "key": type,
-        "className": "align-left bg-light sg-canvas sg-modifier"
-      }, React.createElement("h2", {
-        "className": "title-l ui-resource-title",
-        "style": {
-          marginTop: '40px',
-          marginLeft: '0px',
-          marginBottom: '20px'
-        }
-      }, t('media_entry_export_subtitle_' + type)), React.createElement("table", {
-        "className": "block"
-      }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("td", null, "Auflösung"), React.createElement("td", null, "Typ"), React.createElement("td", null))), React.createElement("tbody", null, f.map(preview, function(image, key) {
-        return React.createElement("tr", {
-          "key": key
-        }, (image.width && image.height ? React.createElement("td", null, image.width + 'x' + image.height) : React.createElement("td", null, "-")), React.createElement("td", null, image.extension), React.createElement("td", null, React.createElement("a", {
-          "href": image.url,
-          "aria-hidden": 'true',
-          "target": '_blank',
-          "className": 'primary-button',
-          "style": {
-            float: 'right'
-          },
-          "data-dismiss": 'modal'
-        }, React.createElement("i", {
-          "className": "icon-dload"
-        }))));
-      }))));
-    }) : void 0)), React.createElement("div", {
-      "className": 'ui-modal-footer'
-    }, React.createElement("div", {
-      "className": 'ui-actions'
-    }, React.createElement("a", {
-      "href": get.url,
-      "aria-hidden": 'true',
-      "className": 'primary-button',
-      "data-dismiss": 'modal'
-    }, t('media_entry_export_close')))));
-  }
-});
-
-
-},{"../lib/string-translation":6,"./lib/forms/input-field-text.cjsx":45,"./lib/forms/rails-form.cjsx":49,"./ui-components/Button.cjsx":58,"./ui-components/Modal.cjsx":66,"active-lodash":81,"ampersand-react-mixin":91,"react":420,"react-dom":276}],54:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2,"../../lib/string-translation.js":6,"../lib/forms/form-label.cjsx":40,"../lib/forms/rails-form.cjsx":45,"../lib/input-meta-datum.cjsx":46,"../lib/madek-prop-types.coffee":47,"active-lodash":80,"classnames":106,"react":419,"xhr":424}],32:[function(require,module,exports){
 var ApiClientIndex, AutoComplete, GroupIndex, PermissionsBySubjectType, PermissionsOverview, PermissionsSubject, PermissionsSubjectHeader, React, RemoveButton, UserIndex, ampersandReactMixin, f, t, url;
 
 React = require('react');
 
 f = require('active-lodash');
 
-t = require('../lib/string-translation')('de');
+t = require('../../lib/string-translation')('de');
 
 url = require('url');
 
@@ -4026,12 +2293,12 @@ module.exports = React.createClass({
   },
   componentDidMount: function() {
     var PermissionsModel, editUrl, model, router;
-    AutoComplete = require('./lib/autocomplete.cjsx');
-    router = require('../lib/router.coffee');
+    AutoComplete = require('../lib/autocomplete.cjsx');
+    router = require('../../lib/router.coffee');
     if (this.props.get.type === 'Collection') {
-      PermissionsModel = require('../models/collection/permissions.coffee');
+      PermissionsModel = require('../../models/collection/permissions.coffee');
     } else {
-      PermissionsModel = require('../models/media-entry/permissions.coffee');
+      PermissionsModel = require('../../models/media-entry/permissions.coffee');
     }
     model = new PermissionsModel(this.props.get);
     editUrl = url.resolve(this.props.get.url, 'permissions/edit');
@@ -4399,156 +2666,1103 @@ RemoveButton = React.createClass({displayName: "RemoveButton",
 });
 
 
-},{"../lib/router.coffee":3,"../lib/string-translation":6,"../models/collection/permissions.coffee":9,"../models/media-entry/permissions.coffee":16,"./lib/autocomplete.cjsx":41,"active-lodash":81,"ampersand-react-mixin":91,"react":420,"url":422}],55:[function(require,module,exports){
-var Button, Icon, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, classList, f, t;
+},{"../../lib/router.coffee":3,"../../lib/string-translation":6,"../../models/collection/permissions.coffee":9,"../../models/media-entry/permissions.coffee":16,"../lib/autocomplete.cjsx":37,"active-lodash":80,"ampersand-react-mixin":90,"react":419,"url":421}],33:[function(require,module,exports){
+var AskModal, Button, CURSOR_SELECT_STYLE, Icon, Link, Models, RailsForm, React, Thumbnail, ampersandReactMixin, async, cx, f, getRailsCSRFToken, ref, t;
+
+React = require('react');
+
+async = require('async');
+
+f = require('active-lodash');
+
+cx = require('classnames');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+t = require('../../lib/string-translation')('de');
+
+getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
+
+Models = require('../../models/index.coffee');
+
+RailsForm = require('../lib/forms/rails-form.cjsx');
+
+ref = require('../ui-components/index.coffee'), Link = ref.Link, Icon = ref.Icon, Thumbnail = ref.Thumbnail, Button = ref.Button, AskModal = ref.AskModal;
+
+CURSOR_SELECT_STYLE = {
+  cursor: 'cell'
+};
+
+module.exports = React.createClass({
+  displayName: 'ResourceThumbnail',
+  mixins: [ampersandReactMixin],
+  propTypes: {
+    authToken: React.PropTypes.string.isRequired,
+    onSelect: React.PropTypes.func,
+    onClick: React.PropTypes.func,
+    get: React.PropTypes.shape({
+      type: React.PropTypes.oneOf(['MediaEntry', 'Collection', 'FilterSet'])
+    }),
+    resource: React.PropTypes.shape({
+      type: React.PropTypes.oneOf(['MediaEntry'])
+    })
+  },
+  getInitialState: function() {
+    return {
+      active: this.props.isClient || false,
+      pendingFavorite: false,
+      deleteModal: false
+    };
+  },
+  componentDidMount: function() {
+    var get, model, modelByType;
+    get = this.props.get;
+    if (!(get.isState || get.isCollection)) {
+      if ((modelByType = Models[get.type])) {
+        model = new modelByType(get);
+      } else {
+        console.error('WARNING: No model found for resource!', get);
+      }
+    }
+    return this.setState({
+      active: true,
+      model: model
+    });
+  },
+  _favorOnClick: function() {
+    var action;
+    this.setState({
+      pendingFavorite: true
+    });
+    action = this.state.model.favored ? 'disfavor' : 'favor';
+    return this.state.model.setFavoredStatus(action, (function(_this) {
+      return function(err, res) {
+        return _this.setState({
+          pendingFavorite: false
+        });
+      };
+    })(this));
+  },
+  _showModal: function() {
+    return this.setState({
+      deleteModal: true
+    });
+  },
+  _onModalOk: function() {
+    this.setState({
+      deleteModal: false
+    });
+    return this.state.model["delete"](function(err, res) {
+      return location.reload();
+    });
+  },
+  _onModalCancel: function() {
+    return this.setState({
+      deleteModal: false
+    });
+  },
+  render: function(arg, state) {
+    var Element, actionsLeft, actionsRight, authToken, childRelations, childThumbs, childrenCount, childrenCountText, elm, favorButton, favoriteAction, favoriteItem, favoriteOnClick, favoriteUrl, get, iconMapping, isSelected, model, onClick, onSelect, parentRelations, parentThumbs, parentsCount, parentsCountText, privacyIcon, ref1, starClass, thumbProps, type;
+    ref1 = arg != null ? arg : this.props, get = ref1.get, elm = ref1.elm, onClick = ref1.onClick, isSelected = ref1.isSelected, authToken = ref1.authToken;
+    if (state == null) {
+      state = this.state;
+    }
+    model = this.state.model || this.props.get;
+    type = get.type.replace(/Collection/, 'MediaSet');
+    iconMapping = {
+      'public': 'open',
+      'private': 'private',
+      'shared': 'group'
+    };
+    privacyIcon = "privacy-" + iconMapping[get.privacy_status];
+    actionsLeft = [];
+    actionsRight = [];
+    onSelect = this.props.onSelect;
+    if (onSelect) {
+      (function() {
+        var selector;
+        selector = React.createElement(Link, {
+          "onClick": onSelect,
+          "style": CURSOR_SELECT_STYLE,
+          "className": 'ui-thumbnail-action-checkbox',
+          "title": (isSelected ? 'Auswahl entfernen' : 'auswählen')
+        }, React.createElement(Icon, {
+          "i": 'checkbox',
+          "mods": (isSelected ? 'active' : void 0)
+        }));
+        return actionsLeft.push(React.createElement("li", {
+          "className": 'ui-thumbnail-action',
+          "key": 'selector'
+        }, React.createElement("span", {
+          "className": 'js-only'
+        }, selector)));
+      })();
+    }
+    if (get.favorite_policy) {
+      favoriteAction = model.favored ? 'disfavor' : 'favor';
+      favoriteUrl = model.url + '/' + favoriteAction;
+      starClass = model.favored ? 'icon-star' : 'icon-star-empty';
+      favoriteItem = React.createElement("i", {
+        "className": starClass
+      });
+      if (!this.state.pendingFavorite) {
+        favoriteOnClick = this._favorOnClick;
+      }
+      favorButton = state.active ? React.createElement(Button, {
+        "className": 'ui-thumbnail-action-favorite',
+        "onClick": favoriteOnClick,
+        "data-pending": state.pendingFavorite
+      }, favoriteItem) : React.createElement(RailsForm, {
+        "name": 'resource_meta_data',
+        "action": favoriteUrl,
+        "method": 'patch',
+        "authToken": authToken
+      }, React.createElement("button", {
+        "className": 'ui-thumbnail-action-favorite',
+        "type": 'submit'
+      }, favoriteItem));
+      actionsLeft.push(React.createElement("li", {
+        "key": 'favorite',
+        "className": 'ui-thumbnail-action'
+      }, favorButton));
+    }
+    if (get.editable) {
+      actionsRight.push(React.createElement("li", {
+        "key": 'edit',
+        "className": 'ui-thumbnail-action'
+      }, React.createElement(Button, {
+        "className": 'ui-thumbnail-action-favorite',
+        "href": get.url + '/meta_data/edit'
+      }, React.createElement("i", {
+        "className": 'icon-pen'
+      }))));
+    }
+    if (get.destroyable) {
+      actionsRight.push(React.createElement("li", {
+        "key": 'destroy',
+        "className": 'ui-thumbnail-action'
+      }, React.createElement(Button, {
+        "className": 'ui-thumbnail-action-favorite',
+        "onClick": this._showModal
+      }, React.createElement("i", {
+        "className": 'icon-trash'
+      }))));
+    }
+    parentRelations = get.parent_relations;
+    childRelations = get.child_relations;
+    if (parentRelations) {
+      parentsCount = parentRelations.count;
+      parentsCountText = parentsCount + ' Sets';
+      if (parentsCount > 0) {
+        parentThumbs = f.get(get, ['parent_relations', 'resources']).map(function(item) {
+          return React.createElement("li", {
+            "className": 'ui-thumbnail-level-item media_set set odd',
+            "key": item.uuid
+          }, React.createElement("a", {
+            "className": 'ui-level-image-wrapper',
+            "href": item.url
+          }, React.createElement("div", {
+            "className": 'ui-thumbnail-level-image-holder'
+          }, React.createElement("img", {
+            "className": 'ui-thumbnail-level-image',
+            "src": item.image_url
+          }))));
+        });
+      }
+    }
+    if (childRelations) {
+      childrenCount = childRelations.count;
+      childrenCountText = childrenCount + ' Inhalte';
+      if (childrenCount > 0) {
+        childThumbs = f.get(get, ['child_relations', 'resources']).map(function(item) {
+          var classes;
+          classes = 'ui-thumbnail-level-item media_set set odd';
+          if (item.type === 'MediaEntry') {
+            classes = 'ui-thumbnail-level-item media_entry image odd';
+          }
+          return React.createElement("li", {
+            "className": classes,
+            "key": item.uuid
+          }, React.createElement("a", {
+            "className": 'ui-level-image-wrapper',
+            "href": item.url
+          }, React.createElement("div", {
+            "className": 'ui-thumbnail-level-image-holder'
+          }, React.createElement("img", {
+            "className": 'ui-thumbnail-level-image',
+            "src": item.image_url
+          }))));
+        });
+      }
+    }
+    Element = elm || 'div';
+    thumbProps = {
+      type: f.kebabCase(type),
+      mods: get.media_type === 'video' ? ['video'] : void 0,
+      src: get.image_url || state.localPreview || '.',
+      href: get.url,
+      alt: get.title,
+      onClick: onClick,
+      style: (onClick && (onClick === this.props.onSelect) ? CURSOR_SELECT_STYLE : void 0),
+      meta: {
+        title: get.title || get.uploadStatus
+      },
+      badgeLeft: React.createElement(Icon, {
+        "i": privacyIcon,
+        "title": get.privacy_status
+      }),
+      badgeRight: get.type === 'FilterSet' ? React.createElement(Icon, {
+        "i": 'filter',
+        "title": 'This is a Filterset'
+      }) : void 0,
+      actionsLeft: actionsLeft,
+      actionsRight: actionsRight,
+      flyoutTop: parentRelations ? {
+        title: 'Übergeordnete Sets',
+        children: parentThumbs,
+        caption: parentsCount + ' Sets'
+      } : void 0,
+      flyoutBottom: childRelations ? {
+        title: 'Set enthält',
+        children: childThumbs,
+        caption: childrenCount + ' Inhalte'
+      } : void 0
+    };
+    return React.createElement(Element, {
+      "className": cx('ui-resource', {
+        'ui-selected': isSelected
+      })
+    }, React.createElement("div", {
+      "className": 'ui-resource-body'
+    }, React.createElement(Thumbnail, React.__spread({}, thumbProps)), (this.state.deleteModal === true ? (type = (function() {
+      switch (get.type) {
+        case 'Collection':
+          return 'collection';
+        case 'MediaEntry':
+          return 'media_entry';
+      }
+    })(), React.createElement(AskModal, {
+      "title": t(type + '_ask_delete_title'),
+      "onCancel": this._onModalCancel,
+      "onOk": this._onModalOk
+    }, t(type + '_ask_delete_question_pre'), React.createElement("strong", null, model.title), t('resource_ask_delete_question_post'))) : null)));
+  }
+});
+
+
+},{"../../lib/rails-csrf-token.coffee":2,"../../lib/string-translation":6,"../../models/index.coffee":13,"../lib/forms/rails-form.cjsx":45,"../ui-components/index.coffee":64,"active-lodash":80,"ampersand-react-mixin":90,"async":100,"classnames":106,"react":419}],34:[function(require,module,exports){
+var React, Thumbnail, ThumbnailWrapper, f, t;
+
+React = require('react');
+
+f = require('active-lodash');
+
+t = require('../../lib/string-translation.js')('de');
+
+Thumbnail = require('../ui-components/Thumbnail.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'ResourcesBatchBox',
+  render: function(arg) {
+    var authToken, get, ref;
+    ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
+    return React.createElement("div", {
+      "className": "bordered ui-container midtone rounded-right rounded-bottom mbm"
+    }, React.createElement("div", {
+      "className": "ui-resources-selection"
+    }, React.createElement("div", {
+      "className": "ui-toolbar inverted ui-container pvx phs rounded-top"
+    }, React.createElement("h2", {
+      "className": "ui-toolbar-header"
+    }, get.resources.resources.length + ' ' + t('meta_data_batch_items_selected'))), React.createElement("div", {
+      "className": "ui-resources-media"
+    }, React.createElement("div", {
+      "className": "ui-resources-holder pal"
+    }, React.createElement("ul", {
+      "className": "grid ui-resources"
+    }, f.map(get.resources.resources, function(resource) {
+      return React.createElement(ThumbnailWrapper, {
+        "key": resource.uuid,
+        "title": resource.title,
+        "authors": resource.authors_pretty,
+        "hrefUrl": resource.url,
+        "imageUrl": resource.image_url
+      });
+    }))))));
+  }
+});
+
+ThumbnailWrapper = React.createClass({
+  displayName: 'ThumbnailWrapper',
+  render: function(arg) {
+    var authors, hrefUrl, imageUrl, ref, title;
+    ref = arg != null ? arg : this.props, title = ref.title, authors = ref.authors, imageUrl = ref.imageUrl, hrefUrl = ref.hrefUrl;
+    return React.createElement("li", {
+      "className": "ui-resource not-loaded-contexts"
+    }, React.createElement("div", {
+      "className": "ui-resource-body"
+    }, React.createElement("div", {
+      "className": "ui-resource-thumbnail"
+    }, React.createElement(Thumbnail, {
+      "className": "ui-thumbnail media-entry image",
+      "src": imageUrl,
+      "href": hrefUrl,
+      "meta": {
+        title: title,
+        subtitle: authors
+      }
+    }))));
+  }
+});
+
+
+},{"../../lib/string-translation.js":6,"../ui-components/Thumbnail.cjsx":63,"active-lodash":80,"react":419}],35:[function(require,module,exports){
+var UI, requireBulk;
+
+
+
+UI = {
+  UI: require('./ui-components/index.coffee'),
+  Deco: ({"decorators":({"BatchResourceMetaDataForm":require("./decorators/BatchResourceMetaDataForm.cjsx"),"MediaEntryPreview":require("./decorators/MediaEntryPreview.cjsx"),"MediaResourcesBox":require("./decorators/MediaResourcesBox.cjsx"),"ResourceMetaDataForm":require("./decorators/ResourceMetaDataForm.cjsx"),"ResourcePermissions":require("./decorators/ResourcePermissions.cjsx"),"ResourceThumbnail":require("./decorators/ResourceThumbnail.cjsx"),"ResourcesBatchBox":require("./decorators/ResourcesBatchBox.cjsx")})}).decorators,
+  Views: ({"views":({"CollectionShow":require("./views/CollectionShow.cjsx"),"Collection":({"AskDelete":require("./views/Collection/AskDelete.cjsx"),"Detail":require("./views/Collection/Detail.cjsx"),"Metadata":require("./views/Collection/Metadata.cjsx"),"Relations":require("./views/Collection/Relations.cjsx"),"ResourceSelection":require("./views/Collection/ResourceSelection.cjsx"),"SelectCollection":require("./views/Collection/SelectCollection.cjsx")}),"MediaEntry":({"Export":require("./views/MediaEntry/Export.cjsx"),"Uploader":require("./views/MediaEntry/Uploader.cjsx")}),"My":({"CreateCollection":require("./views/My/CreateCollection.cjsx")})})}).views,
+  AsyncDashboardSection: require('./lib/AsyncDashboardSection.cjsx')
+};
+
+module.exports = UI;
+
+
+},{"./decorators/BatchResourceMetaDataForm.cjsx":28,"./decorators/MediaEntryPreview.cjsx":29,"./decorators/MediaResourcesBox.cjsx":30,"./decorators/ResourceMetaDataForm.cjsx":31,"./decorators/ResourcePermissions.cjsx":32,"./decorators/ResourceThumbnail.cjsx":33,"./decorators/ResourcesBatchBox.cjsx":34,"./lib/AsyncDashboardSection.cjsx":36,"./ui-components/index.coffee":64,"./views/Collection/AskDelete.cjsx":66,"./views/Collection/Detail.cjsx":67,"./views/Collection/Metadata.cjsx":68,"./views/Collection/Relations.cjsx":69,"./views/Collection/ResourceSelection.cjsx":70,"./views/Collection/SelectCollection.cjsx":71,"./views/CollectionShow.cjsx":72,"./views/MediaEntry/Export.cjsx":73,"./views/MediaEntry/Uploader.cjsx":74,"./views/My/CreateCollection.cjsx":75}],36:[function(require,module,exports){
+var Preloader, PropTypes, React, ReactDOM, UILibrary, f, getRailsCSRFToken, xhr;
+
+React = require('react');
+
+PropTypes = React.PropTypes;
+
+ReactDOM = require('react-dom');
+
+f = require('active-lodash');
+
+xhr = require('xhr');
+
+getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
+
+UILibrary = require('../index.coffee');
+
+Preloader = require('../ui-components/Preloader.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'AsyncDashboardSection',
+  propTypes: {
+    url: PropTypes.string.isRequired,
+    component: PropTypes.string.isRequired,
+    json_path: PropTypes.string,
+    initial_props: PropTypes.object
+  },
+  getInitialState: function() {
+    return {
+      isClient: false,
+      fetchedProps: null
+    };
+  },
+  componentDidMount: function() {
+    this.setState({
+      isClient: true
+    });
+    return this._getPropsAsync((function(_this) {
+      return function(props) {
+        return _this.setState({
+          fetchedProps: props
+        });
+      };
+    })(this));
+  },
+  _getPropsAsync: function(callback) {
+    return xhr({
+      url: this.props.url,
+      json: true
+    }, (function(_this) {
+      return function(err, res, data) {
+        var props;
+        props = _this.props.initial_props;
+        props.get = _this.props.json_path ? f.get(data, _this.props.json_path) : data;
+        props.authToken = getRailsCSRFToken();
+        return callback(props);
+      };
+    })(this));
+  },
+  render: function() {
+    var UIComponent;
+    UIComponent = f.get(UILibrary, this.props.component);
+    return React.createElement("div", {
+      "className": 'ui_async-view'
+    }, (!this.state.isClient || !f.present(this.state.fetchedProps) ? React.createElement("div", {
+      "style": {
+        height: '250px'
+      }
+    }, React.createElement("div", {
+      "className": 'pvh mtm'
+    }, React.createElement(Preloader, null))) : UIComponent ? React.createElement(UIComponent, this.state.fetchedProps) : void 0));
+  }
+});
+
+
+},{"../../lib/rails-csrf-token.coffee":2,"../index.coffee":35,"../ui-components/Preloader.cjsx":61,"active-lodash":80,"react":419,"react-dom":275,"xhr":424}],37:[function(require,module,exports){
+
+/*
+
+ * AutoComplete
+
+Component that wraps the jQuery.typeahead and provides search functionality
+for Resources that we have a search backend for.
+
+Example:
+callback = (data)-> alert(data.uuid)
+<AutoComplete name='foo[person]' resourceType='People' onSelect={callback}/>
+
+FIXME: fails if even required on server (jQuery)!
+ */
+var PropTypes, React, ReactDOM, initTypeahead, jQuery, searchResources;
 
 React = require('react');
 
 ReactDOM = require('react-dom');
 
-ampersandReactMixin = require('ampersand-react-mixin');
+PropTypes = React.PropTypes;
+
+jQuery = require('jquery');
+
+require('@eins78/typeahead.js/dist/typeahead.jquery.js');
+
+searchResources = require('../../lib/search.coffee');
+
+initTypeahead = function(domNode, resourceType, params, callback) {
+  var $input, dataSource;
+  if (!(dataSource = searchResources(resourceType, params))) {
+    throw new Error("No search backend for '" + resourceType + "'!");
+  }
+  $input = jQuery(domNode);
+  return $input.typeahead({
+    hint: false,
+    highlight: true,
+    minLength: 1,
+    classNames: {
+      wrapper: 'ui-autocomplete-holder',
+      input: 'ui-typeahead-input',
+      hint: 'ui-autocomplete-hint',
+      menu: 'ui-autocomplete ui-menu',
+      cursor: 'ui-autocomplete-cursor',
+      suggestion: 'ui-menu-item'
+    }
+  }, dataSource).on('keypress', function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+    }
+    return null;
+  }).on('typeahead:select typeahead:autocomplete', function(event, item) {
+    event.preventDefault();
+    $input.typeahead('val', '');
+    return callback(item);
+  });
+};
+
+module.exports = React.createClass({
+  displayName: 'AutoComplete',
+  propTypes: {
+    name: PropTypes.string.isRequired,
+    resourceType: PropTypes.string.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    className: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    searchParams: PropTypes.object
+  },
+  componentDidMount: function(arg) {
+    var autoFocus, onSelect, ref, resourceType, searchParams;
+    ref = arg != null ? arg : this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, onSelect = ref.onSelect;
+    initTypeahead(ReactDOM.findDOMNode(this.refs.InputField), resourceType, searchParams, onSelect);
+    if (autoFocus) {
+      return this.focus();
+    }
+  },
+  focus: function() {
+    return jQuery(ReactDOM.findDOMNode(this.refs.InputField)).focus();
+  },
+  render: function() {
+    var className, name, placeholder, ref, value;
+    ref = this.props, name = ref.name, value = ref.value, placeholder = ref.placeholder, className = ref.className;
+    name = '___autocomplete_for_' + name;
+    return React.createElement("input", {
+      "ref": "InputField",
+      "className": className + ' typeahead',
+      "type": "text",
+      "defaultValue": value || '',
+      "placeholder": placeholder || 'search…',
+      "name": name
+    });
+  }
+});
+
+
+},{"../../lib/search.coffee":4,"@eins78/typeahead.js/dist/typeahead.jquery.js":78,"jquery":155,"react":419,"react-dom":275}],38:[function(require,module,exports){
+var decorators, f;
 
 f = require('active-lodash');
 
-t = require('../lib/string-translation')('de');
+decorators = {
+  Person: function(o) {
+    return o.name;
+  },
+  Keyword: function(o) {
+    return o.label;
+  },
+  License: function(o) {
+    return o.label;
+  }
+};
 
-RailsForm = require('./lib/forms/rails-form.cjsx');
+module.exports = function(o) {
+  var decorate;
+  if (!(f.isObject(o) && f.isFunction(decorate = decorators[o.type]))) {
+    throw new Error('Decorator: Unknown Resource!');
+  }
+  return decorate(o);
+};
 
-InputFieldText = require('./lib/forms/input-field-text.cjsx');
 
-Button = require('./ui-components/Button.cjsx');
+},{"active-lodash":80}],39:[function(require,module,exports){
+var FileDrop, React;
 
-Icon = require('./ui-components/Icon.cjsx');
+React = require('react');
 
-classList = require('classnames/dedupe');
-
-Modal = require('./ui-components/Modal.cjsx');
+FileDrop = 'div';
 
 module.exports = React.createClass({
-  displayName: 'SelectCollection',
+  displayName: 'FileDropBox',
+  propTypes: {
+    onFilesDrop: React.PropTypes.func.isRequired
+  },
+  getInitialState: function() {
+    return {
+      dragging: false
+    };
+  },
+  componentDidMount: function() {
+    return FileDrop = require('react-file-drop');
+  },
+  onDragOver: function(event) {
+    return this.setState({
+      dragging: true
+    });
+  },
+  onDragLeave: function(event) {
+    return this.setState({
+      dragging: false
+    });
+  },
+  onFilesDrop: function(files, event) {
+    this.setState({
+      dragging: false
+    });
+    return this.props.onFilesDrop(event, files);
+  },
+  render: function(arg) {
+    var containerClass, props, ref, state;
+    ref = arg != null ? arg : this, props = ref.props, state = ref.state;
+    containerClass = 'ui-container clearfix mvl bordered rounded ';
+    containerClass += (state.dragging ? 'inverted' : 'midtone');
+    return React.createElement(FileDrop, {
+      "id": 'ui-uploader',
+      "className": containerClass,
+      "onDrop": this.onFilesDrop,
+      "onDragOver": this.onDragOver,
+      "onDragLeave": this.onDragLeave,
+      "targetAlwaysVisible": true
+    }, this.props.children);
+  }
+});
+
+
+},{"react":419,"react-file-drop":277}],40:[function(require,module,exports){
+var MadekPropTypes, React;
+
+React = require('react');
+
+MadekPropTypes = require('../madek-prop-types.coffee');
+
+module.exports = React.createClass({
+  displayName: 'MetaKeyFormLabel',
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    metaKey: MadekPropTypes.metaKey
+  },
+  render: function(arg) {
+    var description, metaKey;
+    metaKey = (arg != null ? arg : this.props).metaKey;
+    return React.createElement("label", {
+      "className": 'form-label'
+    }, metaKey.label, ((description = metaKey.description) ? React.createElement("span", {
+      "className": 'ui-form-ui-ttip-toggle ui-ttip-toggle',
+      "rel": 'tooltip',
+      "title": description
+    }, React.createElement("i", {
+      "className": 'icon-question'
+    })) : void 0), React.createElement("small", null, metaKey.hint));
+  }
+});
+
+
+},{"../madek-prop-types.coffee":47,"react":419}],41:[function(require,module,exports){
+var React;
+
+React = require('react');
+
+module.exports = React.createClass({
+  displayName: 'InputFieldText',
+  propTypes: {
+    name: React.PropTypes.string.isRequired
+  },
+  render: function(arg) {
+    var className, name, placeholder, ref, type, value;
+    ref = arg != null ? arg : this.props, name = ref.name, type = ref.type, value = ref.value, placeholder = ref.placeholder, className = ref.className;
+    return React.createElement("input", {
+      "type": type || 'text',
+      "className": className + ' block',
+      "name": name,
+      "defaultValue": value || '',
+      "placeholder": placeholder
+    });
+  }
+});
+
+
+},{"react":419}],42:[function(require,module,exports){
+var AutoComplete, InputFieldText, React, decorateResource, f;
+
+React = require('react');
+
+f = require('active-lodash');
+
+decorateResource = require('../decorate-resource-names.coffee');
+
+InputFieldText = require('../forms/input-field-text.cjsx');
+
+AutoComplete = null;
+
+module.exports = React.createClass({
+  displayName: 'InputResources',
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    resourceType: React.PropTypes.string.isRequired,
+    values: React.PropTypes.array.isRequired,
+    active: React.PropTypes.bool.isRequired,
+    multiple: React.PropTypes.bool.isRequired
+  },
+  getInitialState: function() {
+    return {
+      isClient: false
+    };
+  },
+  componentDidMount: function(arg) {
+    var values;
+    values = (arg != null ? arg : this.props).values;
+    AutoComplete = require('../autocomplete.cjsx');
+    return this.setState({
+      isClient: true,
+      values: values
+    });
+  },
+  onItemAdd: function(item) {
+    if (!f(this.state.values).map('uuid').includes(item.uuid)) {
+      return this.setState({
+        values: this.state.values.concat(item),
+        adding: true
+      });
+    }
+  },
+  onItemRemove: function(item, _event) {
+    return this.setState({
+      values: f.reject(this.state.values, item)
+    });
+  },
+  componentDidUpdate: function() {
+    if (this.state.adding) {
+      this.setState({
+        adding: false
+      });
+      return setTimeout(this.refs.ListAdder.focus, 1);
+    }
+  },
+  render: function(arg, state) {
+    var multiple, name, onItemAdd, onItemRemove, ref, resourceType, searchParams, values;
+    ref = arg != null ? arg : this.props, name = ref.name, resourceType = ref.resourceType, searchParams = ref.searchParams, values = ref.values, multiple = ref.multiple;
+    if (state == null) {
+      state = this.state;
+    }
+    onItemAdd = this.onItemAdd, onItemRemove = this.onItemRemove;
+    values = state.values || values;
+    if (!AutoComplete) {
+      return null;
+    }
+    return React.createElement("div", {
+      "className": 'form-item'
+    }, React.createElement("div", {
+      "className": 'multi-select'
+    }, React.createElement("ul", {
+      "className": 'multi-select-holder'
+    }, values.map(function(item) {
+      var remover;
+      remover = f.curry(onItemRemove)(item);
+      return React.createElement("li", {
+        "className": 'multi-select-tag',
+        "key": item.uuid
+      }, decorateResource(item), React.createElement("a", {
+        "className": 'multi-select-tag-remove',
+        "onClick": remover
+      }, React.createElement("i", {
+        "className": 'icon-close'
+      })));
+    }), (multiple || f.empty(values) ? React.createElement("li", {
+      "className": 'multi-select-input-holder'
+    }, React.createElement(AutoComplete, {
+      "className": 'multi-select-input',
+      "name": name,
+      "resourceType": resourceType,
+      "searchParams": searchParams,
+      "onSelect": onItemAdd,
+      "ref": 'ListAdder'
+    }), React.createElement("a", {
+      "className": 'multi-select-input-toggle icon-arrow-down'
+    })) : void 0))), f.map(f(values).pluck('uuid').presence() || [''], function(val) {
+      return React.createElement(InputFieldText, {
+        "type": 'hidden',
+        "name": name,
+        "value": val,
+        "key": val || 'empty'
+      });
+    }));
+  }
+});
+
+
+},{"../autocomplete.cjsx":37,"../decorate-resource-names.coffee":38,"../forms/input-field-text.cjsx":41,"active-lodash":80,"react":419}],43:[function(require,module,exports){
+var InputFieldText, React, f;
+
+React = require('react');
+
+f = require('active-lodash');
+
+InputFieldText = require('../forms/input-field-text.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'InputText',
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    values: React.PropTypes.array.isRequired,
+    active: React.PropTypes.bool.isRequired,
+    multiple: React.PropTypes.bool.isRequired
+  },
+  render: function(arg) {
+    var active, get, multiple, name, ref, shouldAddValue, values;
+    ref = arg != null ? arg : this.props, get = ref.get, name = ref.name, values = ref.values, active = ref.active, multiple = ref.multiple;
+    shouldAddValue = f.isEmpty(values) || multiple;
+    return React.createElement("div", {
+      "className": 'form-item'
+    }, React.createElement("div", {
+      "className": 'form-item-values'
+    }, values.map(function(textValue, n) {
+      return React.createElement(InputFieldText, {
+        "name": name,
+        "value": textValue,
+        "key": n
+      });
+    })), (shouldAddValue ? React.createElement("div", {
+      "className": 'form-item-add'
+    }, React.createElement(InputFieldText, {
+      "name": name
+    })) : void 0));
+  }
+});
+
+
+},{"../forms/input-field-text.cjsx":41,"active-lodash":80,"react":419}],44:[function(require,module,exports){
+var InputResources, MadekPropTypes, React, Text;
+
+React = require('react');
+
+MadekPropTypes = require('../madek-prop-types.coffee');
+
+Text = require('./input-text.cjsx');
+
+InputResources = require('./input-resources.cjsx');
+
+module.exports = {
+  Text: Text,
+  TextDate: Text,
+  People: React.createClass({
+    displayName: 'InputPeople',
+    render: function() {
+      return React.createElement(InputResources, React.__spread({}, this.props, {
+        "resourceType": 'People'
+      }));
+    }
+  }),
+  Licenses: React.createClass({
+    displayName: 'InputLicenses',
+    render: function() {
+      return React.createElement(InputResources, React.__spread({}, this.props, {
+        "resourceType": 'Licenses'
+      }));
+    }
+  }),
+  Keywords: React.createClass({
+    propTypes: {
+      metaKey: MadekPropTypes.metaKey.isRequired
+    },
+    displayName: 'InputKeywords',
+    render: function(arg) {
+      var metaKey, params;
+      metaKey = (arg != null ? arg : this.props).metaKey;
+      params = {
+        meta_key_id: metaKey.uuid
+      };
+      return React.createElement(InputResources, React.__spread({}, this.props, {
+        "resourceType": 'Keywords',
+        "searchParams": params
+      }));
+    }
+  })
+};
+
+
+},{"../madek-prop-types.coffee":47,"./input-resources.cjsx":42,"./input-text.cjsx":43,"react":419}],45:[function(require,module,exports){
+var $, React, ReactDOM, f, ui;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+f = require('active-lodash');
+
+ui = require('../../lib/ui.coffee');
+
+$ = require('jquery');
+
+module.exports = React.createClass({
+  displayName: 'RestForm',
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    action: React.PropTypes.string,
+    method: React.PropTypes.oneOf(['get', 'GET', 'post', 'POST', 'put', 'PUT', 'patch', 'PATCH', 'delete', 'DELETE']),
+    authToken: React.PropTypes.string,
+    onSubmit: React.PropTypes.func
+  },
+  serialize: function() {
+    var form;
+    form = ReactDOM.findDOMNode(this.refs.form);
+    return $(form).serialize();
+  },
+  render: function(arg) {
+    var action, authToken, authTokenParam, children, emulateHTTP, formMethod, method, name, needsAuthToken, onSubmit, ref, restMethod;
+    ref = arg != null ? arg : this.props, name = ref.name, action = ref.action, method = ref.method, authToken = ref.authToken, onSubmit = ref.onSubmit, children = ref.children;
+    restMethod = (method || 'post').toLowerCase();
+    emulateHTTP = !f.includes(['get', 'post'], restMethod);
+    formMethod = restMethod === 'get' ? 'get' : 'post';
+    needsAuthToken = !(restMethod === 'get');
+    authTokenParam = 'authenticity_token';
+    if (needsAuthToken && !f.present(authToken)) {
+      throw new Error('No `authToken` given!');
+    }
+    return React.createElement("form", React.__spread({}, this.props, {
+      "ref": 'form',
+      "onSubmit": onSubmit,
+      "name": name,
+      "method": formMethod,
+      "action": action,
+      "className": ui.cx(ui.parseMods(this.props)),
+      "acceptCharset": 'UTF-8'
+    }), React.createElement("input", {
+      "name": 'utf8',
+      "type": 'hidden',
+      "value": '✓'
+    }), (emulateHTTP ? React.createElement("input", {
+      "name": '_method',
+      "type": 'hidden',
+      "value": restMethod
+    }) : void 0), (needsAuthToken ? React.createElement("input", {
+      "name": authTokenParam,
+      "type": 'hidden',
+      "value": authToken
+    }) : void 0), children);
+  }
+});
+
+
+},{"../../lib/ui.coffee":48,"active-lodash":80,"jquery":155,"react":419,"react-dom":275}],46:[function(require,module,exports){
+var InputsByType, MadekPropTypes, React, f;
+
+React = require('react');
+
+f = require('active-lodash');
+
+MadekPropTypes = require('./madek-prop-types.coffee');
+
+InputsByType = require('./forms/inputs-by-type.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'InputMetaDatum',
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    get: MadekPropTypes.metaDatum.isRequired
+  },
   getInitialState: function() {
     return {
       active: false
     };
   },
-  render: function(arg) {
-    var authToken, buttonMargins, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    buttonMargins = {
-      marginTop: '5px',
-      marginRight: '5px'
-    };
-    return React.createElement(Modal, null, React.createElement("div", {
-      "className": 'ui-modal-head'
-    }, React.createElement("a", {
-      "href": get.resource_url,
-      "aria-hidden": 'true',
-      "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
-      "title": 'Close',
-      "type": 'button',
-      "style": {
-        position: 'static',
-        float: 'right',
-        paddingTop: '5px'
-      }
-    }, React.createElement("i", {
-      "className": 'icon-close'
-    })), React.createElement("h3", {
-      "className": 'title-l'
-    }, t('resource_select_collection_title'))), React.createElement("div", {
-      "className": 'ui-modal-toolbar top'
-    }, React.createElement("div", {
-      "className": 'ui-search'
-    }, React.createElement(RailsForm, {
-      "name": 'search_collections',
-      "action": get.select_collection_url,
-      "method": 'get',
-      "authToken": authToken,
-      "className": 'dummy'
-    }, React.createElement(InputFieldText, {
-      "autocomplete": 'off',
-      "autofocus": 'autofocus',
-      "className": 'ui-search-input block',
-      "placeholder": t('resource_select_collection_search_placeholder'),
-      "name": 'search_term',
-      "value": get.search_term
-    }), React.createElement(Button, {
-      "style": buttonMargins,
-      "className": 'button',
-      "type": 'submit',
-      "name": 'search'
-    }, t('resource_select_collection_search')), React.createElement(Button, {
-      "style": buttonMargins,
-      "className": 'button',
-      "type": 'submit',
-      "name": 'clear'
-    }, t('resource_select_collection_clear'))))), React.createElement(RailsForm, {
-      "name": 'select_collections',
-      "action": get.add_remove_collection_url,
-      "method": 'patch',
-      "authToken": authToken,
-      "className": 'dummy',
-      "className": 'save-arcs'
-    }, React.createElement("div", {
-      "className": 'ui-modal-body',
-      "style": {
-        maxHeight: 'none'
-      }
-    }, (get.collection_rows.length !== 0 ? React.createElement("ol", {
-      "className": 'ui-set-list pbs'
-    }, f.map(get.collection_rows, function(row) {
-      var checked, collection;
-      collection = row.collection;
-      checked = row.contains_media_entry;
-      return React.createElement("li", {
-        "key": collection.uuid,
-        "className": 'ui-set-list-item'
-      }, React.createElement("label", null, React.createElement("input", {
-        "type": 'hidden',
-        "name": 'selected_collections[' + collection.uuid + '][]',
-        "value": 'false'
-      }), React.createElement("input", {
-        "className": 'ui-set-list-input',
-        "type": 'checkbox',
-        "name": 'selected_collections[' + collection.uuid + '][]',
-        "value": 'true',
-        "defaultChecked": checked
-      }), React.createElement("span", {
-        "className": 'title'
-      }, collection.title), React.createElement("span", {
-        "className": 'owner'
-      }, collection.owner_pretty), React.createElement("span", {
-        "className": 'created-at'
-      }, collection.created_at_pretty)));
-    })) : void 0), (get.collection_rows.length === 0 && f.presence(get.search_term) ? React.createElement("h3", {
-      "className": "by-center title-m"
-    }, t('resource_select_collection_non_found')) : void 0), (get.collection_rows.length === 0 && !f.presence(get.search_term) ? React.createElement("h3", {
-      "className": "by-center title-m"
-    }, t('resource_select_collection_non_assigned')) : void 0)), (!get.reduced_set && !f.presence(get.search_term) ? React.createElement("div", {
-      "className": "body-upper-limit ui-modal-toolbar bottom try-search-hint"
-    }, React.createElement("p", {
-      "className": "title-xs by-center"
-    }, t('resource_select_collection_hint_search'))) : void 0), (get.reduced_set ? React.createElement("div", {
-      "className": "body-upper-limit ui-modal-toolbar bottom try-search-hint"
-    }, React.createElement("p", {
-      "className": "title-xs by-center"
-    }, t('resource_select_collection_hint_more'))) : void 0), React.createElement("div", {
-      "className": "ui-modal-footer body-lower-limit"
-    }, React.createElement("div", {
-      "className": "ui-actions"
-    }, React.createElement("a", {
-      "href": get.resource_url,
-      "className": "link weak"
-    }, t('resource_select_collection_cancel')), React.createElement(Button, {
-      "className": "primary-button",
-      "type": 'submit'
-    }, t('resource_select_collection_save'))))));
+  componentDidMount: function(arg) {
+    var get;
+    get = (arg != null ? arg : this.props).get;
+    return this.setState({
+      active: true,
+      values: get.values
+    });
+  },
+  onChange: function(values) {
+    return this.setState({
+      values: values
+    });
+  },
+  render: function(arg, state) {
+    var InputForType, get, multiple, name, ref, resourceType, values;
+    ref = arg != null ? arg : this.props, get = ref.get, name = ref.name;
+    if (state == null) {
+      state = this.state;
+    }
+    resourceType = f.last(get.type.split('::'));
+    multiple = !(f.includes(['Text', 'TextDate'], resourceType));
+    values = state.values || get.literal_values;
+    InputForType = state.active && InputsByType[resourceType] ? InputsByType[resourceType] : InputsByType.Text;
+    return React.createElement(InputForType, {
+      "name": name,
+      "metaKey": get.meta_key,
+      "active": state.active,
+      "multiple": multiple,
+      "values": values
+    });
   }
 });
 
 
-},{"../lib/string-translation":6,"./lib/forms/input-field-text.cjsx":45,"./lib/forms/rails-form.cjsx":49,"./ui-components/Button.cjsx":58,"./ui-components/Icon.cjsx":63,"./ui-components/Modal.cjsx":66,"active-lodash":81,"ampersand-react-mixin":91,"classnames/dedupe":106,"react":420,"react-dom":276}],56:[function(require,module,exports){
+},{"./forms/inputs-by-type.cjsx":44,"./madek-prop-types.coffee":47,"active-lodash":80,"react":419}],47:[function(require,module,exports){
+var M, META_DATUM_TYPES, MKEY_REGEX, MadekPropTypes, NAMESPACE_MATCH, PropTypes, ResourceFiltersMetaData, VOCABULARY_REGEX, f, validateUUID;
+
+f = require('active-lodash');
+
+PropTypes = require('react').PropTypes;
+
+validateUUID = require('uuid-validate');
+
+NAMESPACE_MATCH = '[a-z0-9\-_]+';
+
+VOCABULARY_REGEX = RegExp("^" + NAMESPACE_MATCH + "$");
+
+MKEY_REGEX = RegExp("^" + NAMESPACE_MATCH + ":" + NAMESPACE_MATCH + "$");
+
+META_DATUM_TYPES = ['MetaDatum::Text', 'MetaDatum::TextDate', 'MetaDatum::People', 'MetaDatum::Groups', 'MetaDatum::Keywords', 'MetaDatum::Licenses'];
+
+MadekPropTypes = M = {};
+
+M.uuid = function(props, propName, _componentName) {
+  if (!validateUUID(props[propName], 4)) {
+    return new Error('Malformed uuid!');
+  }
+};
+
+M.metaKeyId = function(props, propName, _componentName) {
+  if (!MKEY_REGEX.test(props[propName])) {
+    return new Error('Malformed metaKeyId!');
+  }
+};
+
+M.metaKey = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  hint: PropTypes.string
+});
+
+M.metaDatum = PropTypes.shape({
+  meta_key: M.metaKey
+});
+
+ResourceFiltersMetaData = f.values({
+  keyUuid: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    value: M.uuid.isRequired
+  }),
+  keyMatch: PropTypes.shape({
+    key: M.metaKeyId.isRequired,
+    match: PropTypes.string.isRequired
+  }),
+  searchKeyType: PropTypes.shape({
+    key: PropTypes.oneOf(['any']).isRequired,
+    match: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(META_DATUM_TYPES).isRequired
+  }),
+  searchKey: PropTypes.shape({
+    key: PropTypes.oneOf(['any']).isRequired,
+    match: PropTypes.string.isRequired
+  }),
+  hasKey: PropTypes.shape({
+    key: M.metaKeyId.isRequired
+  }),
+  notKey: PropTypes.shape({
+    not_key: M.metaKeyId.isRequired
+  })
+});
+
+M.resourceFilter = PropTypes.shape({
+  search: PropTypes.string,
+  meta_data: PropTypes.arrayOf(PropTypes.oneOfType(ResourceFiltersMetaData)),
+  media_files: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  })),
+  permissions: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.shape({
+      key: PropTypes.oneOf(['responsible_user', 'entrusted_to_user', 'entrusted_to_group']).isRequired,
+      value: M.uuid.isRequired
+    }), PropTypes.shape({
+      key: PropTypes.oneOf(['public']).isRequired,
+      value: PropTypes.oneOf([true, false]).isRequired
+    })
+  ]))
+});
+
+module.exports = MadekPropTypes;
+
+
+},{"active-lodash":80,"react":419,"uuid-validate":422}],48:[function(require,module,exports){
+var classnames, f, parseModsfromProps;
+
+f = require('active-lodash');
+
+classnames = require('classnames/dedupe');
+
+parseModsfromProps = function(arg) {
+  var className, mods, ref;
+  ref = arg != null ? arg : props, className = ref.className, mods = ref.mods;
+  return [mods, className];
+};
+
+module.exports = {
+  parseMods: parseModsfromProps,
+  classnames: classnames,
+  cx: classnames
+};
+
+
+},{"active-lodash":80,"classnames/dedupe":105}],49:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -4565,7 +3779,7 @@ module.exports = React.createClass({
 });
 
 
-},{"react":420}],57:[function(require,module,exports){
+},{"react":419}],50:[function(require,module,exports){
 var Button, Modal, React, ReactDOM, t;
 
 React = require('react');
@@ -4628,7 +3842,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":6,"./Button.cjsx":58,"./Modal.cjsx":66,"react":420,"react-dom":276}],58:[function(require,module,exports){
+},{"../../lib/string-translation":6,"./Button.cjsx":51,"./Modal.cjsx":59,"react":419,"react-dom":275}],51:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -4674,7 +3888,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"react":420}],59:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"react":419}],52:[function(require,module,exports){
 var Button, React, UiPropTypes, f, ui;
 
 React = require('react');
@@ -4719,7 +3933,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"./Button.cjsx":58,"./propTypes.coffee":72,"active-lodash":81,"react":420}],60:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"./Button.cjsx":51,"./propTypes.coffee":65,"active-lodash":80,"react":419}],53:[function(require,module,exports){
 var Button, Icon, Link, React, cx, f;
 
 React = require('react');
@@ -4776,7 +3990,7 @@ module.exports = React.createClass({
 });
 
 
-},{"./Button.cjsx":58,"./Icon.cjsx":63,"./Link.cjsx":64,"active-lodash":81,"classnames":107,"react":420}],61:[function(require,module,exports){
+},{"./Button.cjsx":51,"./Icon.cjsx":56,"./Link.cjsx":57,"active-lodash":80,"classnames":106,"react":419}],54:[function(require,module,exports){
 var Icon, React, ui;
 
 React = require('react');
@@ -4826,7 +4040,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"./Icon.cjsx":63,"react":420}],62:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"./Icon.cjsx":56,"react":419}],55:[function(require,module,exports){
 var Button, ButtonGroup, DropdownButton, Icon, Link, React, SelectionToggle, ToggleButtonGroup, UiPropTypes, cx, f, parseMods, ui;
 
 React = require('react');
@@ -4930,7 +4144,7 @@ SelectionToggle = function(arg) {
 };
 
 
-},{"../lib/ui.coffee":52,"./Button.cjsx":58,"./ButtonGroup.cjsx":59,"./DropdownButton.cjsx":60,"./DropdownMenu.cjsx":61,"./Icon.cjsx":63,"./Link.cjsx":64,"./propTypes.coffee":72,"active-lodash":81,"react":420}],63:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"./Button.cjsx":51,"./ButtonGroup.cjsx":52,"./DropdownButton.cjsx":53,"./DropdownMenu.cjsx":54,"./Icon.cjsx":56,"./Link.cjsx":57,"./propTypes.coffee":65,"active-lodash":80,"react":419}],56:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -4952,7 +4166,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"react":420}],64:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"react":419}],57:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -4979,7 +4193,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"react":420}],65:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"react":419}],58:[function(require,module,exports){
 var React, f;
 
 React = require('react');
@@ -5015,7 +4229,7 @@ module.exports = React.createClass({
 });
 
 
-},{"active-lodash":81,"react":420}],66:[function(require,module,exports){
+},{"active-lodash":80,"react":419}],59:[function(require,module,exports){
 var React, ReactDOM;
 
 React = require('react');
@@ -5108,7 +4322,7 @@ module.exports = React.createClass({
 });
 
 
-},{"react":420,"react-dom":276}],67:[function(require,module,exports){
+},{"react":419,"react-dom":275}],60:[function(require,module,exports){
 var React, f, t, ui;
 
 React = require('react');
@@ -5142,7 +4356,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":6,"../lib/ui.coffee":52,"active-lodash":81,"react":420}],68:[function(require,module,exports){
+},{"../../lib/string-translation":6,"../lib/ui.coffee":48,"active-lodash":80,"react":419}],61:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -5161,7 +4375,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"react":420}],69:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"react":419}],62:[function(require,module,exports){
 var FilterItem, Icon, Link, MadekPropTypes, React, css, f, forCurrentFiltersSelectItemsInTree, initializeFilterTreeFromProps, initializeItems, initializeSections, initializeSubSections, setUrlParams, ui;
 
 React = require('react');
@@ -5603,7 +4817,7 @@ initializeItems = function(filters) {
 };
 
 
-},{"../../lib/set-params-for-url.coffee":5,"../lib/madek-prop-types.coffee":51,"../lib/ui.coffee":52,"./Icon.cjsx":63,"./Link.cjsx":64,"active-lodash":81,"classnames":107,"react":420}],70:[function(require,module,exports){
+},{"../../lib/set-params-for-url.coffee":5,"../lib/madek-prop-types.coffee":47,"../lib/ui.coffee":48,"./Icon.cjsx":56,"./Link.cjsx":57,"active-lodash":80,"classnames":106,"react":419}],63:[function(require,module,exports){
 var Icon, Link, Picture, PropTypes, React, f, flyoutProps, ui;
 
 React = require('react');
@@ -5710,7 +4924,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":52,"./Icon.cjsx":63,"./Link.cjsx":64,"./Picture.cjsx":67,"active-lodash":81,"react":420}],71:[function(require,module,exports){
+},{"../lib/ui.coffee":48,"./Icon.cjsx":56,"./Link.cjsx":57,"./Picture.cjsx":60,"active-lodash":80,"react":419}],64:[function(require,module,exports){
 var requireBulk;
 
 
@@ -5718,7 +4932,7 @@ var requireBulk;
 module.exports = ({"ActionsBar":require("./ActionsBar.cjsx"),"AskModal":require("./AskModal.cjsx"),"Button":require("./Button.cjsx"),"ButtonGroup":require("./ButtonGroup.cjsx"),"DropdownButton":require("./DropdownButton.cjsx"),"DropdownMenu":require("./DropdownMenu.cjsx"),"FilterBar":require("./FilterBar.cjsx"),"Icon":require("./Icon.cjsx"),"Link":require("./Link.cjsx"),"MediaPlayer":require("./MediaPlayer.cjsx"),"Modal":require("./Modal.cjsx"),"Picture":require("./Picture.cjsx"),"Preloader":require("./Preloader.cjsx"),"SideFilter":require("./SideFilter.cjsx"),"Thumbnail":require("./Thumbnail.cjsx")});
 
 
-},{"./ActionsBar.cjsx":56,"./AskModal.cjsx":57,"./Button.cjsx":58,"./ButtonGroup.cjsx":59,"./DropdownButton.cjsx":60,"./DropdownMenu.cjsx":61,"./FilterBar.cjsx":62,"./Icon.cjsx":63,"./Link.cjsx":64,"./MediaPlayer.cjsx":65,"./Modal.cjsx":66,"./Picture.cjsx":67,"./Preloader.cjsx":68,"./SideFilter.cjsx":69,"./Thumbnail.cjsx":70}],72:[function(require,module,exports){
+},{"./ActionsBar.cjsx":49,"./AskModal.cjsx":50,"./Button.cjsx":51,"./ButtonGroup.cjsx":52,"./DropdownButton.cjsx":53,"./DropdownMenu.cjsx":54,"./FilterBar.cjsx":55,"./Icon.cjsx":56,"./Link.cjsx":57,"./MediaPlayer.cjsx":58,"./Modal.cjsx":59,"./Picture.cjsx":60,"./Preloader.cjsx":61,"./SideFilter.cjsx":62,"./Thumbnail.cjsx":63}],65:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -5741,8 +4955,8 @@ module.exports = {
 };
 
 
-},{"react":420}],73:[function(require,module,exports){
-var FileDropBox, MediaResourcesBox, React, ReactDOM, UPLOAD_CONCURRENCY, UploadQueue, ampersandReactMixin, async, f, t;
+},{"react":419}],66:[function(require,module,exports){
+var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
 
 React = require('react');
 
@@ -5752,101 +4966,77 @@ ampersandReactMixin = require('ampersand-react-mixin');
 
 f = require('active-lodash');
 
-async = require('async');
+t = require('../../../lib/string-translation')('de');
 
-t = require('../lib/string-translation')('de');
+RailsForm = require('../../lib/forms/rails-form.cjsx');
 
-FileDropBox = require('./lib/file-dropbox.cjsx');
+InputFieldText = require('../../lib/forms/input-field-text.cjsx');
 
-MediaResourcesBox = require('./decorators/MediaResourcesBox.cjsx');
+Button = require('../../ui-components/Button.cjsx');
 
-UPLOAD_CONCURRENCY = 4;
-
-UploadQueue = async.queue((function(resource, callback) {
-  return resource.upload(callback);
-}), UPLOAD_CONCURRENCY);
+Modal = require('../../ui-components/Modal.cjsx');
 
 module.exports = React.createClass({
-  displayName: 'Uploader',
+  displayName: 'Collection.AskDelete',
   getInitialState: function() {
     return {
       active: false
     };
   },
-  componentDidMount: function() {
-    if (!this.props.appCollection.isCollection) {
-      throw new Error('No AppCollection given!');
-    }
-    return this.setState({
-      active: true
-    });
-  },
-  onFilesDrop: function(_event, files) {
-    return this.addFiles(files);
-  },
-  onFilesSelect: function(event) {
-    return this.addFiles(f.get(event, 'target.files'));
-  },
-  addFiles: function(files) {
-    var added;
-    if (!f.present(files)) {
-      return;
-    }
-    added = this.props.appCollection.add(f.map(files, function(file) {
-      return {
-        uploading: {
-          file: file
-        }
-      };
-    }));
-    return f.each(added, function(model) {
-      return UploadQueue.push(model, function(err, res) {
-        if (err) {
-          return console.error('Uploader failed!', model, err);
-        }
-      });
-    });
-  },
   render: function(arg) {
-    var name, props, ref, state;
-    ref = arg != null ? arg : this, props = ref.props, state = ref.state;
-    name = 'media_entry';
-    return React.createElement("div", {
-      "id": 'ui-uploader'
-    }, React.createElement(FileDropBox, {
-      "onFilesDrop": this.onFilesDrop
-    }, React.createElement("label", {
-      "className": 'ui-form-group rowed by-center'
+    var authToken, get, ref;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    return React.createElement(Modal, {
+      "widthInPixel": '400'
+    }, React.createElement(RailsForm, {
+      "name": 'resource_meta_data',
+      "action": get.submit_url,
+      "method": 'delete',
+      "authToken": authToken
     }, React.createElement("div", {
-      "className": 'form-label'
-    }, React.createElement("h3", {
-      "className": 'title-l'
-    }, t('media_entry_media_import_inside'))), React.createElement("div", {
-      "className": 'form-item'
-    }, React.createElement("div", {
-      "className": 'ui-container mas pal'
-    }, React.createElement("input", {
-      "onChange": this.onFilesSelect,
-      "type": 'file',
-      "multiple": true,
-      "name": name + '[media_file][]'
-    }))))), (state.active ? React.createElement("div", {
-      "className": 'ui-container bordered midtone rounded mvl phl ptl',
-      "id": 'ui-resources-preview'
-    }, React.createElement(MediaResourcesBox, {
-      "className": 'ui-uploader-uploads',
-      "authToken": props.authToken,
-      "interactive": false,
-      "get": {
-        resources: props.appCollection
+      "className": 'ui-modal-head'
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": 'true',
+      "className": 'ui-modal-close',
+      "data-dismiss": 'modal',
+      "title": 'Close',
+      "type": 'button',
+      "style": {
+        position: 'static',
+        float: 'right',
+        paddingTop: '5px'
       }
-    })) : void 0));
+    }, React.createElement("i", {
+      "className": 'icon-close'
+    })), React.createElement("h3", {
+      "className": 'title-l'
+    }, t('collection_ask_delete_title'))), React.createElement("div", {
+      "className": 'ui-modal-body',
+      "style": {
+        maxHeight: 'none'
+      }
+    }, React.createElement("p", {
+      "className": "pam by-center"
+    }, t('collection_ask_delete_question_pre'), React.createElement("strong", null, get.title), t('resource_ask_delete_question_post'))), React.createElement("div", {
+      "className": "ui-modal-footer"
+    }, React.createElement("div", {
+      "className": "ui-actions"
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": "true",
+      "className": "link weak",
+      "data-dismiss": "modal"
+    }, t('resource_ask_delete_cancel')), React.createElement(Button, {
+      "className": "primary-button",
+      "type": 'submit'
+    }, t('resource_ask_delete_ok'))))));
   }
 });
 
 
-},{"../lib/string-translation":6,"./decorators/MediaResourcesBox.cjsx":35,"./lib/file-dropbox.cjsx":43,"active-lodash":81,"ampersand-react-mixin":91,"async":101,"react":420,"react-dom":276}],74:[function(require,module,exports){
-var Additional, Keyword, MediaResourcesBox, Metadata, Overview, Preview, RailsForm, React, ReactDOM, RightsManagement, classnames, f, t;
+},{"../../../lib/string-translation":6,"../../lib/forms/input-field-text.cjsx":41,"../../lib/forms/rails-form.cjsx":45,"../../ui-components/Button.cjsx":51,"../../ui-components/Modal.cjsx":59,"active-lodash":80,"ampersand-react-mixin":90,"react":419,"react-dom":275}],67:[function(require,module,exports){
+var Additional, Keyword, MediaResourcesBox, Metadata, Overview, Preview, React, ReactDOM, classnames, f, t;
 
 React = require('react');
 
@@ -5854,13 +5044,9 @@ ReactDOM = require('react-dom');
 
 f = require('active-lodash');
 
-t = require('../../lib/string-translation.js')('de');
+t = require('../../../lib/string-translation.js')('de');
 
-RailsForm = require('../lib/forms/rails-form.cjsx');
-
-MediaResourcesBox = require('../decorators/MediaResourcesBox.cjsx');
-
-RightsManagement = require('../rights-management.cjsx');
+MediaResourcesBox = require('../../decorators/MediaResourcesBox.cjsx');
 
 classnames = require('classnames');
 
@@ -6013,8 +5199,8 @@ Metadata = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":6,"../decorators/MediaResourcesBox.cjsx":35,"../lib/forms/rails-form.cjsx":49,"../rights-management.cjsx":54,"active-lodash":81,"classnames":107,"react":420,"react-dom":276}],75:[function(require,module,exports){
-var Bubbles, MediaResourcesBox, MetaDatum, RailsForm, React, ReactDOM, RightsManagement, Text, classnames, f, t;
+},{"../../../lib/string-translation.js":6,"../../decorators/MediaResourcesBox.cjsx":30,"active-lodash":80,"classnames":106,"react":419,"react-dom":275}],68:[function(require,module,exports){
+var Bubbles, MediaResourcesBox, MetaDatum, RailsForm, React, ReactDOM, Text, classnames, f, t;
 
 React = require('react');
 
@@ -6022,13 +5208,11 @@ ReactDOM = require('react-dom');
 
 f = require('active-lodash');
 
-t = require('../../lib/string-translation.js')('de');
+t = require('../../../lib/string-translation.js')('de');
 
-RailsForm = require('../lib/forms/rails-form.cjsx');
+RailsForm = require('../../lib/forms/rails-form.cjsx');
 
-MediaResourcesBox = require('../decorators/MediaResourcesBox.cjsx');
-
-RightsManagement = require('../rights-management.cjsx');
+MediaResourcesBox = require('../../decorators/MediaResourcesBox.cjsx');
 
 classnames = require('classnames');
 
@@ -6127,8 +5311,8 @@ MetaDatum = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":6,"../decorators/MediaResourcesBox.cjsx":35,"../lib/forms/rails-form.cjsx":49,"../rights-management.cjsx":54,"active-lodash":81,"classnames":107,"react":420,"react-dom":276}],76:[function(require,module,exports){
-var MediaResourcesBox, RailsForm, React, ReactDOM, RightsManagement, classnames, f, t;
+},{"../../../lib/string-translation.js":6,"../../decorators/MediaResourcesBox.cjsx":30,"../../lib/forms/rails-form.cjsx":45,"active-lodash":80,"classnames":106,"react":419,"react-dom":275}],69:[function(require,module,exports){
+var MediaResourcesBox, RailsForm, React, ReactDOM, classnames, f, t;
 
 React = require('react');
 
@@ -6136,13 +5320,11 @@ ReactDOM = require('react-dom');
 
 f = require('active-lodash');
 
-t = require('../../lib/string-translation.js')('de');
+t = require('../../../lib/string-translation.js')('de');
 
-RailsForm = require('../lib/forms/rails-form.cjsx');
+RailsForm = require('../../lib/forms/rails-form.cjsx');
 
-MediaResourcesBox = require('../decorators/MediaResourcesBox.cjsx');
-
-RightsManagement = require('../rights-management.cjsx');
+MediaResourcesBox = require('../../decorators/MediaResourcesBox.cjsx');
 
 classnames = require('classnames');
 
@@ -6172,7 +5354,792 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":6,"../decorators/MediaResourcesBox.cjsx":35,"../lib/forms/rails-form.cjsx":49,"../rights-management.cjsx":54,"active-lodash":81,"classnames":107,"react":420,"react-dom":276}],77:[function(require,module,exports){
+},{"../../../lib/string-translation.js":6,"../../decorators/MediaResourcesBox.cjsx":30,"../../lib/forms/rails-form.cjsx":45,"active-lodash":80,"classnames":106,"react":419,"react-dom":275}],70:[function(require,module,exports){
+var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+f = require('active-lodash');
+
+t = require('../../../lib/string-translation')('de');
+
+RailsForm = require('../../lib/forms/rails-form.cjsx');
+
+InputFieldText = require('../../lib/forms/input-field-text.cjsx');
+
+Button = require('../../ui-components/Button.cjsx');
+
+Modal = require('../../ui-components/Modal.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'Collection.ResourceSelection',
+  propTypes: {
+    type: React.PropTypes.oneOf(['checkbox', 'radio'])
+  },
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  render: function(arg) {
+    var authToken, get, ref, type;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, type = ref.type;
+    return React.createElement(Modal, {
+      "widthInPixel": '800'
+    }, React.createElement(RailsForm, {
+      "name": 'resource_meta_data',
+      "action": get.submit_url,
+      "method": 'put',
+      "authToken": authToken
+    }, React.createElement("div", {
+      "className": 'ui-modal-head'
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": 'true',
+      "className": 'ui-modal-close',
+      "data-dismiss": 'modal',
+      "title": 'Close',
+      "type": 'button',
+      "style": {
+        position: 'static',
+        float: 'right',
+        paddingTop: '5px'
+      }
+    }, React.createElement("i", {
+      "className": 'icon-close'
+    })), React.createElement("h3", {
+      "className": 'title-l'
+    }, get.i18n.title)), React.createElement("div", {
+      "className": 'ui-modal-body',
+      "style": {
+        maxHeight: 'none'
+      }
+    }, React.createElement("div", {
+      "className": 'ui-resources-table'
+    }, React.createElement("div", {
+      "className": 'ui-resources-table'
+    }, React.createElement("table", {
+      "className": 'block'
+    }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("td", {
+      "className": 'ui-resources-table-selection'
+    }, get.i18n.h_selection), React.createElement("td", {
+      "title": 'Titel'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_title)), React.createElement("td", {
+      "title": 'Untertitel'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_subtitle)), React.createElement("td", {
+      "title": 'Autor/in'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_author)), React.createElement("td", {
+      "title": 'Datierung'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_date)), React.createElement("td", {
+      "title": 'Schlagworte'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_keywords)), React.createElement("td", {
+      "title": 'Rechteinhaber'
+    }, React.createElement("span", {
+      "className": 'ui-resources-table-cell-content'
+    }, get.i18n.h_responsible)))), React.createElement("tbody", null, f.map(get.child_presenters.resources, function(resource) {
+      var checked;
+      checked = get.uuid_to_checked_hash[resource.uuid];
+      return React.createElement("tr", {
+        "key": resource.uuid
+      }, React.createElement("td", {
+        "className": 'ui-resources-table-selection'
+      }, (type === 'checkbox' ? React.createElement("label", null, React.createElement("input", {
+        "type": 'hidden',
+        "name": 'resource_selections[][id]',
+        "value": resource.uuid
+      }), React.createElement("input", {
+        "type": 'hidden',
+        "name": 'resource_selections[][type]',
+        "value": resource.type
+      }), React.createElement("input", {
+        "className": 'ui-set-list-input',
+        "type": 'checkbox',
+        "name": 'resource_selections[][selected]',
+        "value": 'true',
+        "defaultChecked": checked
+      }), React.createElement("img", {
+        "className": 'ui-thumbnail micro',
+        "src": resource.image_url
+      })) : type === 'radio' ? React.createElement("label", null, React.createElement("input", {
+        "defaultChecked": checked,
+        "name": 'selected_resource',
+        "type": 'radio',
+        "value": resource.uuid
+      }), React.createElement("img", {
+        "className": 'ui-thumbnail micro',
+        "src": resource.image_url
+      })) : null)), React.createElement("td", {
+        "data-name": 'title',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.title)), React.createElement("td", {
+        "data-name": 'subtitle',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.subtitle)), React.createElement("td", {
+        "data-name": 'author',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.authors_pretty)), React.createElement("td", {
+        "data-name": 'portrayed object dates',
+        "title": 'null'
+      }, resource.created_at_pretty), React.createElement("td", {
+        "data-name": 'keywords',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.keywords_pretty)), React.createElement("td", {
+        "data-name": 'copyright notice',
+        "title": ''
+      }, React.createElement("span", {
+        "className": 'ui-resources-table-cell-content'
+      }, resource.responsible.name)));
+    })))))), React.createElement("div", {
+      "className": 'ui-modal-footer'
+    }, React.createElement("div", {
+      "className": 'ui-actions'
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": 'true',
+      "className": 'link weak',
+      "data-dismiss": 'modal'
+    }, get.i18n.cancel), React.createElement("button", {
+      "className": 'primary-button',
+      "type": 'submit'
+    }, get.i18n.save)))));
+  }
+});
+
+
+},{"../../../lib/string-translation":6,"../../lib/forms/input-field-text.cjsx":41,"../../lib/forms/rails-form.cjsx":45,"../../ui-components/Button.cjsx":51,"../../ui-components/Modal.cjsx":59,"active-lodash":80,"ampersand-react-mixin":90,"react":419,"react-dom":275}],71:[function(require,module,exports){
+var Button, Icon, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, classList, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+f = require('active-lodash');
+
+classList = require('classnames/dedupe');
+
+t = require('../../../lib/string-translation')('de');
+
+RailsForm = require('../../lib/forms/rails-form.cjsx');
+
+InputFieldText = require('../../lib/forms/input-field-text.cjsx');
+
+Button = require('../../ui-components/Button.cjsx');
+
+Icon = require('../../ui-components/Icon.cjsx');
+
+Modal = require('../../ui-components/Modal.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'SelectCollection',
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  render: function(arg) {
+    var authToken, buttonMargins, get, ref;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    buttonMargins = {
+      marginTop: '5px',
+      marginRight: '5px'
+    };
+    return React.createElement(Modal, null, React.createElement("div", {
+      "className": 'ui-modal-head'
+    }, React.createElement("a", {
+      "href": get.resource_url,
+      "aria-hidden": 'true',
+      "className": 'ui-modal-close',
+      "data-dismiss": 'modal',
+      "title": 'Close',
+      "type": 'button',
+      "style": {
+        position: 'static',
+        float: 'right',
+        paddingTop: '5px'
+      }
+    }, React.createElement("i", {
+      "className": 'icon-close'
+    })), React.createElement("h3", {
+      "className": 'title-l'
+    }, t('resource_select_collection_title'))), React.createElement("div", {
+      "className": 'ui-modal-toolbar top'
+    }, React.createElement("div", {
+      "className": 'ui-search'
+    }, React.createElement(RailsForm, {
+      "name": 'search_collections',
+      "action": get.select_collection_url,
+      "method": 'get',
+      "authToken": authToken,
+      "className": 'dummy'
+    }, React.createElement(InputFieldText, {
+      "autocomplete": 'off',
+      "autofocus": 'autofocus',
+      "className": 'ui-search-input block',
+      "placeholder": t('resource_select_collection_search_placeholder'),
+      "name": 'search_term',
+      "value": get.search_term
+    }), React.createElement(Button, {
+      "style": buttonMargins,
+      "className": 'button',
+      "type": 'submit',
+      "name": 'search'
+    }, t('resource_select_collection_search')), React.createElement(Button, {
+      "style": buttonMargins,
+      "className": 'button',
+      "type": 'submit',
+      "name": 'clear'
+    }, t('resource_select_collection_clear'))))), React.createElement(RailsForm, {
+      "name": 'select_collections',
+      "action": get.add_remove_collection_url,
+      "method": 'patch',
+      "authToken": authToken,
+      "className": 'dummy',
+      "className": 'save-arcs'
+    }, React.createElement("div", {
+      "className": 'ui-modal-body',
+      "style": {
+        maxHeight: 'none'
+      }
+    }, (get.collection_rows.length !== 0 ? React.createElement("ol", {
+      "className": 'ui-set-list pbs'
+    }, f.map(get.collection_rows, function(row) {
+      var checked, collection;
+      collection = row.collection;
+      checked = row.contains_media_entry;
+      return React.createElement("li", {
+        "key": collection.uuid,
+        "className": 'ui-set-list-item'
+      }, React.createElement("label", null, React.createElement("input", {
+        "type": 'hidden',
+        "name": 'selected_collections[' + collection.uuid + '][]',
+        "value": 'false'
+      }), React.createElement("input", {
+        "className": 'ui-set-list-input',
+        "type": 'checkbox',
+        "name": 'selected_collections[' + collection.uuid + '][]',
+        "value": 'true',
+        "defaultChecked": checked
+      }), React.createElement("span", {
+        "className": 'title'
+      }, collection.title), React.createElement("span", {
+        "className": 'owner'
+      }, collection.owner_pretty), React.createElement("span", {
+        "className": 'created-at'
+      }, collection.created_at_pretty)));
+    })) : void 0), (get.collection_rows.length === 0 && f.presence(get.search_term) ? React.createElement("h3", {
+      "className": "by-center title-m"
+    }, t('resource_select_collection_non_found')) : void 0), (get.collection_rows.length === 0 && !f.presence(get.search_term) ? React.createElement("h3", {
+      "className": "by-center title-m"
+    }, t('resource_select_collection_non_assigned')) : void 0)), (!get.reduced_set && !f.presence(get.search_term) ? React.createElement("div", {
+      "className": "body-upper-limit ui-modal-toolbar bottom try-search-hint"
+    }, React.createElement("p", {
+      "className": "title-xs by-center"
+    }, t('resource_select_collection_hint_search'))) : void 0), (get.reduced_set ? React.createElement("div", {
+      "className": "body-upper-limit ui-modal-toolbar bottom try-search-hint"
+    }, React.createElement("p", {
+      "className": "title-xs by-center"
+    }, t('resource_select_collection_hint_more'))) : void 0), React.createElement("div", {
+      "className": "ui-modal-footer body-lower-limit"
+    }, React.createElement("div", {
+      "className": "ui-actions"
+    }, React.createElement("a", {
+      "href": get.resource_url,
+      "className": "link weak"
+    }, t('resource_select_collection_cancel')), React.createElement(Button, {
+      "className": "primary-button",
+      "type": 'submit'
+    }, t('resource_select_collection_save'))))));
+  }
+});
+
+
+},{"../../../lib/string-translation":6,"../../lib/forms/input-field-text.cjsx":41,"../../lib/forms/rails-form.cjsx":45,"../../ui-components/Button.cjsx":51,"../../ui-components/Icon.cjsx":56,"../../ui-components/Modal.cjsx":59,"active-lodash":80,"ampersand-react-mixin":90,"classnames/dedupe":105,"react":419,"react-dom":275}],72:[function(require,module,exports){
+var CollectionDetail, CollectionMetadata, CollectionRelations, MediaResourcesBox, RailsForm, React, ReactDOM, ResourceButton, RightsManagement, Tab, classnames, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+f = require('active-lodash');
+
+t = require('../../lib/string-translation.js')('de');
+
+RailsForm = require('../lib/forms/rails-form.cjsx');
+
+MediaResourcesBox = require('../decorators/MediaResourcesBox.cjsx');
+
+RightsManagement = require('../decorators/ResourcePermissions.cjsx');
+
+CollectionDetail = require('./Collection/Detail.cjsx');
+
+CollectionRelations = require('./Collection/Relations.cjsx');
+
+CollectionMetadata = require('./Collection/Metadata.cjsx');
+
+classnames = require('classnames');
+
+module.exports = React.createClass({
+  displayName: 'Base',
+  render: function(arg) {
+    var activeTab, authToken, get, ref;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, activeTab = ref.activeTab;
+    return React.createElement("div", {
+      "className": "app-body-ui-container"
+    }, React.createElement("div", {
+      "className": "ui-body-title"
+    }, React.createElement("div", {
+      "className": "ui-body-title-label"
+    }, React.createElement("h1", {
+      "className": "title-xl"
+    }, React.createElement("i", {
+      "className": "icon-set"
+    }), " ", get.title)), React.createElement("div", {
+      "className": "ui-body-title-actions"
+    }, f.map(get.buttons, function(button) {
+      return React.createElement(ResourceButton, {
+        "key": button.action,
+        "icon": button.icon,
+        "title": button.title,
+        "name": button.action,
+        "href": button.action,
+        "method": button.method,
+        "authToken": authToken
+      });
+    }))), React.createElement("ul", {
+      "className": "ui-tabs large"
+    }, f.map(get.tabs, function(tab, index) {
+      return React.createElement(Tab, {
+        "get": get,
+        "key": tab.href,
+        "iconType": tab.icon_type,
+        "href": tab.href,
+        "label": tab.label,
+        "active": index === activeTab
+      });
+    })), (activeTab === 0 ? React.createElement(CollectionDetail, {
+      "get": get,
+      "authToken": authToken
+    }) : void 0), (activeTab === 1 ? React.createElement(CollectionRelations, {
+      "get": get,
+      "authToken": authToken
+    }) : void 0), (activeTab === 2 ? React.createElement(CollectionMetadata, {
+      "get": get,
+      "authToken": authToken
+    }) : void 0), (activeTab === 3 ? React.createElement("div", {
+      "className": "bright pal rounded-bottom rounded-top-right ui-container"
+    }, React.createElement(RightsManagement, {
+      "get": get.permissions
+    })) : void 0));
+  }
+});
+
+Tab = React.createClass({
+  displayName: 'Tab',
+  render: function(arg) {
+    var active, classes, get, href, icon, iconType, icon_map, label, ref;
+    ref = arg != null ? arg : this.props, get = ref.get, label = ref.label, href = ref.href, iconType = ref.iconType, active = ref.active;
+    classes = classnames({
+      active: active
+    }, 'ui-tabs-item');
+    icon = iconType === 'privacy_status_icon' ? get.privacy_status ? (icon_map = {
+      "public": 'open',
+      shared: 'group',
+      "private": 'private'
+    }, React.createElement("i", {
+      "className": 'icon-privacy-' + icon_map[get.privacy_status]
+    })) : void 0 : void 0;
+    return React.createElement("li", {
+      "className": classes
+    }, React.createElement("a", {
+      "href": href
+    }, (icon ? React.createElement("span", null, icon, " ", label) : label)));
+  }
+});
+
+ResourceButton = React.createClass({
+  displayName: 'ResourceButton',
+  render: function(arg) {
+    var authToken, href, icon, method, name, ref, title;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, href = ref.href, method = ref.method, icon = ref.icon, title = ref.title, name = ref.name;
+    if (!method) {
+      method = 'post';
+    }
+    icon = 'icon-' + icon;
+    return React.createElement(RailsForm, {
+      "className": 'button_to',
+      "name": '',
+      "method": method,
+      "action": href,
+      "authToken": authToken
+    }, React.createElement("button", {
+      "className": "button",
+      "type": "submit",
+      "title": title
+    }, React.createElement("i", {
+      "className": icon
+    })));
+  }
+});
+
+
+},{"../../lib/string-translation.js":6,"../decorators/MediaResourcesBox.cjsx":30,"../decorators/ResourcePermissions.cjsx":32,"../lib/forms/rails-form.cjsx":45,"./Collection/Detail.cjsx":67,"./Collection/Metadata.cjsx":68,"./Collection/Relations.cjsx":69,"active-lodash":80,"classnames":106,"react":419,"react-dom":275}],73:[function(require,module,exports){
+var Button, InputFieldText, Modal, React, ReactDOM, ampersandReactMixin, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+f = require('active-lodash');
+
+t = require('../../../lib/string-translation')('de');
+
+InputFieldText = require('../../lib/forms/input-field-text.cjsx');
+
+Button = require('../../ui-components/Button.cjsx');
+
+Modal = require('../../ui-components/Modal.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'MediaEntryExport',
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  render: function(arg) {
+    var authToken, get, hasNeither, hasOriginal, hasPreviews, ref;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    hasPreviews = false;
+    f.each(get.media_file.previews, function(preview) {
+      return f.each(preview, function(entry) {
+        return hasPreviews = true;
+      });
+    });
+    hasOriginal = get.media_file.original_file_url;
+    hasNeither = !hasPreviews && !hasOriginal;
+    return React.createElement(Modal, {
+      "widthInPixel": '800'
+    }, React.createElement("div", {
+      "className": 'ui-modal-head'
+    }, React.createElement("a", {
+      "href": get.url,
+      "aria-hidden": 'true',
+      "className": 'ui-modal-close',
+      "data-dismiss": 'modal',
+      "title": 'Close',
+      "type": 'button',
+      "style": {
+        position: 'static',
+        float: 'right',
+        paddingTop: '5px'
+      }
+    }, React.createElement("i", {
+      "className": 'icon-close'
+    })), React.createElement("h3", {
+      "className": 'title-l'
+    }, t('media_entry_export_title'))), React.createElement("div", {
+      "className": 'ui-modal-body',
+      "style": {
+        maxHeight: 'none'
+      }
+    }, (hasNeither ? React.createElement("div", {
+      "className": "ui-export-block",
+      "id": "original-meta-data"
+    }, t('media_entry_export_no_content')) : void 0), (hasNeither === false ? React.createElement("div", {
+      "className": "ui-export-block",
+      "id": "original-meta-data"
+    }, React.createElement("h2", {
+      "className": "title-l ui-resource-title",
+      "style": {
+        marginTop: '0px',
+        marginLeft: '0px',
+        marginBottom: '20px'
+      }
+    }, t('media_entry_export_original')), (hasOriginal ? [
+      React.createElement("div", {
+        "className": "col1of2"
+      }, React.createElement("p", null, t('media_entry_export_original_hint'))), React.createElement("div", {
+        "className": "col1of2 by-right"
+      }, React.createElement("a", {
+        "href": get.media_file.original_file_url,
+        "aria-hidden": 'true',
+        "className": 'primary-button',
+        "data-dismiss": 'modal'
+      }, t('media_entry_export_download')))
+    ] : React.createElement("div", {
+      "className": "col1of2"
+    }, React.createElement("p", null, t('media_entry_export_has_no_original'))))) : void 0), (hasPreviews ? f.map(get.media_file.previews, function(preview, type) {
+      return React.createElement("div", {
+        "key": type,
+        "className": "align-left bg-light sg-canvas sg-modifier"
+      }, React.createElement("h2", {
+        "className": "title-l ui-resource-title",
+        "style": {
+          marginTop: '40px',
+          marginLeft: '0px',
+          marginBottom: '20px'
+        }
+      }, t('media_entry_export_subtitle_' + type)), React.createElement("table", {
+        "className": "block"
+      }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("td", null, "Auflösung"), React.createElement("td", null, "Typ"), React.createElement("td", null))), React.createElement("tbody", null, f.map(preview, function(image, key) {
+        return React.createElement("tr", {
+          "key": key
+        }, (image.width && image.height ? React.createElement("td", null, image.width + 'x' + image.height) : React.createElement("td", null, "-")), React.createElement("td", null, image.extension), React.createElement("td", null, React.createElement("a", {
+          "href": image.url,
+          "aria-hidden": 'true',
+          "target": '_blank',
+          "className": 'primary-button',
+          "style": {
+            float: 'right'
+          },
+          "data-dismiss": 'modal'
+        }, React.createElement("i", {
+          "className": "icon-dload"
+        }))));
+      }))));
+    }) : void 0)), React.createElement("div", {
+      "className": 'ui-modal-footer'
+    }, React.createElement("div", {
+      "className": 'ui-actions'
+    }, React.createElement("a", {
+      "href": get.url,
+      "aria-hidden": 'true',
+      "className": 'primary-button',
+      "data-dismiss": 'modal'
+    }, t('media_entry_export_close')))));
+  }
+});
+
+
+},{"../../../lib/string-translation":6,"../../lib/forms/input-field-text.cjsx":41,"../../ui-components/Button.cjsx":51,"../../ui-components/Modal.cjsx":59,"active-lodash":80,"ampersand-react-mixin":90,"react":419,"react-dom":275}],74:[function(require,module,exports){
+var FileDropBox, MediaResourcesBox, React, ReactDOM, UPLOAD_CONCURRENCY, UploadQueue, ampersandReactMixin, async, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+f = require('active-lodash');
+
+async = require('async');
+
+t = require('../../../lib/string-translation')('de');
+
+FileDropBox = require('../../lib/file-dropbox.cjsx');
+
+MediaResourcesBox = require('../../decorators/MediaResourcesBox.cjsx');
+
+UPLOAD_CONCURRENCY = 4;
+
+UploadQueue = async.queue((function(resource, callback) {
+  return resource.upload(callback);
+}), UPLOAD_CONCURRENCY);
+
+module.exports = React.createClass({
+  displayName: 'Uploader',
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  componentDidMount: function() {
+    if (!f.get(this.props, 'appCollection.isCollection')) {
+      throw new Error('No AppCollection given!');
+    }
+    return this.setState({
+      active: true
+    });
+  },
+  onFilesDrop: function(_event, files) {
+    return this.addFiles(files);
+  },
+  onFilesSelect: function(event) {
+    return this.addFiles(f.get(event, 'target.files'));
+  },
+  addFiles: function(files) {
+    var added;
+    if (!f.present(files)) {
+      return;
+    }
+    added = this.props.appCollection.add(f.map(files, function(file) {
+      return {
+        uploading: {
+          file: file
+        }
+      };
+    }));
+    return f.each(added, function(model) {
+      return UploadQueue.push(model, function(err, res) {
+        if (err) {
+          return console.error('Uploader failed!', model, err);
+        }
+      });
+    });
+  },
+  render: function(arg) {
+    var name, props, ref, state;
+    ref = arg != null ? arg : this, props = ref.props, state = ref.state;
+    name = 'media_entry';
+    return React.createElement("div", {
+      "id": 'ui-uploader'
+    }, React.createElement(FileDropBox, {
+      "onFilesDrop": this.onFilesDrop
+    }, React.createElement("label", {
+      "className": 'ui-form-group rowed by-center'
+    }, React.createElement("div", {
+      "className": 'form-label'
+    }, React.createElement("h3", {
+      "className": 'title-l'
+    }, t('media_entry_media_import_inside'))), React.createElement("div", {
+      "className": 'form-item'
+    }, React.createElement("div", {
+      "className": 'ui-container mas pal'
+    }, React.createElement("input", {
+      "onChange": this.onFilesSelect,
+      "type": 'file',
+      "multiple": true,
+      "name": name + '[media_file][]'
+    }))))), (state.active ? React.createElement("div", {
+      "className": 'ui-container bordered midtone rounded mvl phl ptl',
+      "id": 'ui-resources-preview'
+    }, React.createElement(MediaResourcesBox, {
+      "className": 'ui-uploader-uploads',
+      "authToken": props.authToken,
+      "interactive": false,
+      "get": {
+        resources: props.appCollection
+      }
+    })) : void 0));
+  }
+});
+
+
+},{"../../../lib/string-translation":6,"../../decorators/MediaResourcesBox.cjsx":30,"../../lib/file-dropbox.cjsx":39,"active-lodash":80,"ampersand-react-mixin":90,"async":100,"react":419,"react-dom":275}],75:[function(require,module,exports){
+var Button, InputFieldText, Modal, RailsForm, React, ReactDOM, ampersandReactMixin, f, t;
+
+React = require('react');
+
+ReactDOM = require('react-dom');
+
+ampersandReactMixin = require('ampersand-react-mixin');
+
+f = require('active-lodash');
+
+t = require('../../../lib/string-translation')('de');
+
+RailsForm = require('../../lib/forms/rails-form.cjsx');
+
+InputFieldText = require('../../lib/forms/input-field-text.cjsx');
+
+Button = require('../../ui-components/Button.cjsx');
+
+Modal = require('../../ui-components/Modal.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'CreateCollection',
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  render: function(arg) {
+    var alerts, authToken, get, ref;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    alerts = this.props.get.error ? (function(_this) {
+      return function() {
+        return React.createElement("div", {
+          "className": "ui-alerts"
+        }, React.createElement("p", {
+          "className": "ui-alert error"
+        }, _this.props.get.error));
+      };
+    })(this)() : void 0;
+    return React.createElement(Modal, null, React.createElement(RailsForm, {
+      "name": 'resource_meta_data',
+      "action": get.submit_url,
+      "method": 'post',
+      "authToken": authToken
+    }, React.createElement("div", {
+      "className": 'ui-modal-head'
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": 'true',
+      "className": 'ui-modal-close',
+      "data-dismiss": 'modal',
+      "title": 'Close',
+      "type": 'button',
+      "style": {
+        position: 'static',
+        float: 'right',
+        paddingTop: '5px'
+      }
+    }, React.createElement("i", {
+      "className": 'icon-close'
+    })), React.createElement("h3", {
+      "className": 'title-l'
+    }, t('collection_new_dialog_title'))), React.createElement("div", {
+      "className": 'ui-modal-body',
+      "style": {
+        maxHeight: 'none'
+      }
+    }, alerts, React.createElement("div", {
+      "className": "form-body"
+    }, React.createElement("div", {
+      "className": "ui-form-group rowed compact"
+    }, React.createElement("label", {
+      "className": "form-label"
+    }, t('collection_new_label_title')), React.createElement("div", {
+      "className": "form-item"
+    }, React.createElement(InputFieldText, {
+      "autocomplete": 'off',
+      "autofocus": 'autofocus',
+      "name": 'collection_title',
+      "value": ''
+    }))))), React.createElement("div", {
+      "className": "ui-modal-footer"
+    }, React.createElement("div", {
+      "className": "ui-actions"
+    }, React.createElement("a", {
+      "href": get.cancel_url,
+      "aria-hidden": "true",
+      "className": "link weak",
+      "data-dismiss": "modal"
+    }, t('collection_new_cancel')), React.createElement(Button, {
+      "className": "primary-button",
+      "type": 'submit'
+    }, t('collection_new_create_set'))))));
+  }
+});
+
+
+},{"../../../lib/string-translation":6,"../../lib/forms/input-field-text.cjsx":41,"../../lib/forms/rails-form.cjsx":45,"../../ui-components/Button.cjsx":51,"../../ui-components/Modal.cjsx":59,"active-lodash":80,"ampersand-react-mixin":90,"react":419,"react-dom":275}],76:[function(require,module,exports){
 var coerceTypes, f, parseJsonParam, qs, resourceListParams;
 
 f = require('active-lodash');
@@ -6218,7 +6185,7 @@ parseJsonParam = function(key, val) {
 };
 
 
-},{"active-lodash":81,"qs":269}],78:[function(require,module,exports){
+},{"active-lodash":80,"qs":268}],77:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.2-pre.1+forked
  * https://github.com/twitter/typeahead.js
@@ -7137,7 +7104,7 @@ parseJsonParam = function(key, val) {
     }();
     return Bloodhound;
 });
-},{"jquery":156}],79:[function(require,module,exports){
+},{"jquery":155}],78:[function(require,module,exports){
 /*!
  * typeahead.js 0.11.2-pre.1+forked
  * https://github.com/twitter/typeahead.js
@@ -8676,7 +8643,7 @@ parseJsonParam = function(key, val) {
         }
     })();
 });
-},{"jquery":156}],80:[function(require,module,exports){
+},{"jquery":155}],79:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -8706,7 +8673,7 @@ exports['default'] = function (f) {
 };
 
 module.exports = exports['default'];
-},{}],81:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -8734,7 +8701,7 @@ exports['default'] = (function () {
 })();
 
 module.exports = exports['default'];
-},{"../lodash.custom":84,"./additions":80,"./overrides":83,"babel-runtime/helpers/interop-require-default":103}],82:[function(require,module,exports){
+},{"../lodash.custom":83,"./additions":79,"./overrides":82,"babel-runtime/helpers/interop-require-default":102}],81:[function(require,module,exports){
 "use strict";
 
 var _Object$create = require("babel-runtime/core-js/object/create")["default"];
@@ -8750,7 +8717,7 @@ exports["default"] = function (func) {
 };
 
 module.exports = exports["default"];
-},{"babel-runtime/core-js/object/create":102}],83:[function(require,module,exports){
+},{"babel-runtime/core-js/object/create":101}],82:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -8782,7 +8749,7 @@ exports['default'] = function (f) {
 };
 
 module.exports = exports['default'];
-},{"./lib/callWithNewObject":82,"babel-runtime/helpers/interop-require-default":103}],84:[function(require,module,exports){
+},{"./lib/callWithNewObject":81,"babel-runtime/helpers/interop-require-default":102}],83:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -20800,7 +20767,7 @@ module.exports = exports['default'];
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],85:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 var assign = require('lodash.assign');
 
 /// Following code is largely pasted from Backbone.js
@@ -20849,7 +20816,7 @@ var extend = function(protoProps) {
 // Expose the extend function
 module.exports = extend;
 
-},{"lodash.assign":205}],86:[function(require,module,exports){
+},{"lodash.assign":204}],85:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-collection-lodash-mixin"] = window.ampersand["ampersand-collection-lodash-mixin"] || [];  window.ampersand["ampersand-collection-lodash-mixin"].push("2.0.1");}
 var isFunction = require('lodash.isfunction');
 var _ = {
@@ -20963,7 +20930,7 @@ mixins.size = function () {
 
 module.exports = mixins;
 
-},{"lodash.countby":209,"lodash.difference":211,"lodash.drop":212,"lodash.every":214,"lodash.filter":215,"lodash.find":216,"lodash.foreach":217,"lodash.groupby":218,"lodash.includes":221,"lodash.indexby":222,"lodash.indexof":223,"lodash.initial":224,"lodash.invoke":225,"lodash.isempty":229,"lodash.isfunction":231,"lodash.lastindexof":239,"lodash.map":241,"lodash.max":242,"lodash.min":243,"lodash.partition":247,"lodash.reduce":248,"lodash.reduceright":249,"lodash.reject":250,"lodash.rest":251,"lodash.sample":254,"lodash.shuffle":255,"lodash.some":256,"lodash.sortby":257,"lodash.take":258,"lodash.without":262}],87:[function(require,module,exports){
+},{"lodash.countby":208,"lodash.difference":210,"lodash.drop":211,"lodash.every":213,"lodash.filter":214,"lodash.find":215,"lodash.foreach":216,"lodash.groupby":217,"lodash.includes":220,"lodash.indexby":221,"lodash.indexof":222,"lodash.initial":223,"lodash.invoke":224,"lodash.isempty":228,"lodash.isfunction":230,"lodash.lastindexof":238,"lodash.map":240,"lodash.max":241,"lodash.min":242,"lodash.partition":246,"lodash.reduce":247,"lodash.reduceright":248,"lodash.reject":249,"lodash.rest":250,"lodash.sample":253,"lodash.shuffle":254,"lodash.some":255,"lodash.sortby":256,"lodash.take":257,"lodash.without":261}],86:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-collection-rest-mixin"] = window.ampersand["ampersand-collection-rest-mixin"] || [];  window.ampersand["ampersand-collection-rest-mixin"].push("5.0.0");}
 var sync = require('ampersand-sync');
 var assign = require('lodash.assign');
@@ -21076,7 +21043,7 @@ module.exports = {
     }
 };
 
-},{"ampersand-sync":94,"lodash.assign":205}],88:[function(require,module,exports){
+},{"ampersand-sync":93,"lodash.assign":204}],87:[function(require,module,exports){
 var AmpersandEvents = require('ampersand-events');
 var classExtend = require('ampersand-class-extend');
 var isArray = require('lodash.isarray');
@@ -21456,7 +21423,7 @@ Collection.extend = classExtend;
 
 module.exports = Collection;
 
-},{"ampersand-class-extend":85,"ampersand-events":89,"lodash.assign":205,"lodash.bind":207,"lodash.isarray":227}],89:[function(require,module,exports){
+},{"ampersand-class-extend":84,"ampersand-events":88,"lodash.assign":204,"lodash.bind":206,"lodash.isarray":226}],88:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-events"] = window.ampersand["ampersand-events"] || [];  window.ampersand["ampersand-events"].push("1.1.1");}
 var runOnce = require('lodash.once');
 var uniqueId = require('lodash.uniqueid');
@@ -21639,7 +21606,7 @@ Events.listenToAndRun = function (obj, name, callback) {
 
 module.exports = Events;
 
-},{"lodash.assign":205,"lodash.bind":207,"lodash.foreach":217,"lodash.isempty":229,"lodash.keys":237,"lodash.once":245,"lodash.uniqueid":261}],90:[function(require,module,exports){
+},{"lodash.assign":204,"lodash.bind":206,"lodash.foreach":216,"lodash.isempty":228,"lodash.keys":236,"lodash.once":244,"lodash.uniqueid":260}],89:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-model"] = window.ampersand["ampersand-model"] || [];  window.ampersand["ampersand-model"].push("6.0.2");}
 var State = require('ampersand-state');
 var sync = require('ampersand-sync');
@@ -21783,7 +21750,7 @@ var Model = State.extend({
 
 module.exports = Model;
 
-},{"ampersand-state":93,"ampersand-sync":94,"lodash.assign":205,"lodash.clone":208,"lodash.isobject":233,"lodash.result":253}],91:[function(require,module,exports){
+},{"ampersand-state":92,"ampersand-sync":93,"lodash.assign":204,"lodash.clone":207,"lodash.isobject":232,"lodash.result":252}],90:[function(require,module,exports){
 var events = require('ampersand-events');
 var bind = require('lodash.bind');
 var forEach = require('lodash.foreach');
@@ -21845,7 +21812,7 @@ module.exports = events.createEmitter({
     }
 });
 
-},{"ampersand-events":89,"lodash.bind":207,"lodash.foreach":217}],92:[function(require,module,exports){
+},{"ampersand-events":88,"lodash.bind":206,"lodash.foreach":216}],91:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-rest-collection"] = window.ampersand["ampersand-rest-collection"] || [];  window.ampersand["ampersand-rest-collection"].push("5.0.0");}
 var Collection = require('ampersand-collection');
 var lodashMixin = require('ampersand-collection-lodash-mixin');
@@ -21854,7 +21821,7 @@ var restMixins = require('ampersand-collection-rest-mixin');
 
 module.exports = Collection.extend(lodashMixin, restMixins);
 
-},{"ampersand-collection":88,"ampersand-collection-lodash-mixin":86,"ampersand-collection-rest-mixin":87}],93:[function(require,module,exports){
+},{"ampersand-collection":87,"ampersand-collection-lodash-mixin":85,"ampersand-collection-rest-mixin":86}],92:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-state"] = window.ampersand["ampersand-state"] || [];  window.ampersand["ampersand-state"].push("4.6.0");}
 var uniqueId = require('lodash.uniqueid');
 var assign = require('lodash.assign');
@@ -22666,11 +22633,11 @@ Base.extend = extend;
 // Our main exports
 module.exports = Base;
 
-},{"ampersand-events":89,"array-next":100,"key-tree-store":157,"lodash.assign":205,"lodash.bind":207,"lodash.clone":208,"lodash.defaults":210,"lodash.escape":213,"lodash.foreach":217,"lodash.has":220,"lodash.includes":221,"lodash.isarray":227,"lodash.isdate":228,"lodash.isempty":229,"lodash.isequal":230,"lodash.isfunction":231,"lodash.isnull":232,"lodash.isobject":233,"lodash.isstring":234,"lodash.isundefined":236,"lodash.keys":237,"lodash.omit":244,"lodash.result":253,"lodash.union":260,"lodash.uniqueid":261}],94:[function(require,module,exports){
+},{"ampersand-events":88,"array-next":99,"key-tree-store":156,"lodash.assign":204,"lodash.bind":206,"lodash.clone":207,"lodash.defaults":209,"lodash.escape":212,"lodash.foreach":216,"lodash.has":219,"lodash.includes":220,"lodash.isarray":226,"lodash.isdate":227,"lodash.isempty":228,"lodash.isequal":229,"lodash.isfunction":230,"lodash.isnull":231,"lodash.isobject":232,"lodash.isstring":233,"lodash.isundefined":235,"lodash.keys":236,"lodash.omit":243,"lodash.result":252,"lodash.union":259,"lodash.uniqueid":260}],93:[function(require,module,exports){
 var xhr = require('xhr');
 module.exports = require('./core')(xhr);
 
-},{"./core":95,"xhr":425}],95:[function(require,module,exports){
+},{"./core":94,"xhr":424}],94:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-sync"] = window.ampersand["ampersand-sync"] || [];  window.ampersand["ampersand-sync"].push("4.0.2");}
 var result = require('lodash.result');
 var defaults = require('lodash.defaults');
@@ -22822,7 +22789,7 @@ module.exports = function (xhr) {
   };
 };
 
-},{"lodash.assign":205,"lodash.defaults":210,"lodash.includes":221,"lodash.result":253,"media-type":263,"qs":96}],96:[function(require,module,exports){
+},{"lodash.assign":204,"lodash.defaults":209,"lodash.includes":220,"lodash.result":252,"media-type":262,"qs":95}],95:[function(require,module,exports){
 // Load modules
 
 var Stringify = require('./stringify');
@@ -22839,7 +22806,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":97,"./stringify":98}],97:[function(require,module,exports){
+},{"./parse":96,"./stringify":97}],96:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -23027,7 +22994,7 @@ module.exports = function (str, options) {
     return Utils.compact(obj);
 };
 
-},{"./utils":99}],98:[function(require,module,exports){
+},{"./utils":98}],97:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -23150,7 +23117,7 @@ module.exports = function (obj, options) {
     return keys.join(delimiter);
 };
 
-},{"./utils":99}],99:[function(require,module,exports){
+},{"./utils":98}],98:[function(require,module,exports){
 // Load modules
 
 
@@ -23342,7 +23309,7 @@ exports.isBuffer = function (obj) {
               obj.constructor.isBuffer(obj));
 };
 
-},{}],100:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 module.exports = function arrayNext(array, currentItem) {
     var len = array.length;
     var newIndex = array.indexOf(currentItem) + 1;
@@ -23350,7 +23317,7 @@ module.exports = function arrayNext(array, currentItem) {
     return array[newIndex];
 };
 
-},{}],101:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 (function (process,global){
 /*!
  * async
@@ -24619,9 +24586,9 @@ module.exports = function arrayNext(array, currentItem) {
 }());
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":105}],102:[function(require,module,exports){
+},{"_process":104}],101:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
-},{"core-js/library/fn/object/create":108}],103:[function(require,module,exports){
+},{"core-js/library/fn/object/create":107}],102:[function(require,module,exports){
 "use strict";
 
 exports["default"] = function (obj) {
@@ -24631,7 +24598,7 @@ exports["default"] = function (obj) {
 };
 
 exports.__esModule = true;
-},{}],104:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /*
 	Baby Parse
 	v0.4.1
@@ -25478,7 +25445,7 @@ exports.__esModule = true;
 
 })(typeof window !== 'undefined' ? window : this);
 
-},{}],105:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -25571,7 +25538,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],106:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 /*!
   Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -25671,7 +25638,7 @@ process.umask = function() { return 0; };
 	}
 }());
 
-},{}],107:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 /*!
   Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -25721,12 +25688,12 @@ process.umask = function() { return 0; };
 	}
 }());
 
-},{}],108:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 var $ = require('../../modules/$');
 module.exports = function create(P, D){
   return $.create(P, D);
 };
-},{"../../modules/$":109}],109:[function(require,module,exports){
+},{"../../modules/$":108}],108:[function(require,module,exports){
 var $Object = Object;
 module.exports = {
   create:     $Object.create,
@@ -25740,7 +25707,7 @@ module.exports = {
   getSymbols: $Object.getOwnPropertySymbols,
   each:       [].forEach
 };
-},{}],110:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 var pSlice = Array.prototype.slice;
 var objectKeys = require('./lib/keys.js');
 var isArguments = require('./lib/is_arguments.js');
@@ -25836,7 +25803,7 @@ function objEquiv(a, b, opts) {
   return typeof a === typeof b;
 }
 
-},{"./lib/is_arguments.js":111,"./lib/keys.js":112}],111:[function(require,module,exports){
+},{"./lib/is_arguments.js":110,"./lib/keys.js":111}],110:[function(require,module,exports){
 var supportsArgumentsClass = (function(){
   return Object.prototype.toString.call(arguments)
 })() == '[object Arguments]';
@@ -25858,7 +25825,7 @@ function unsupported(object){
     false;
 };
 
-},{}],112:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 exports = module.exports = typeof Object.keys === 'function'
   ? Object.keys : shim;
 
@@ -25869,7 +25836,7 @@ function shim (obj) {
   return keys;
 }
 
-},{}],113:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -25955,7 +25922,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":120,"_process":105}],114:[function(require,module,exports){
+},{"./emptyFunction":119,"_process":104}],113:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -25991,7 +25958,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],115:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 "use strict";
 
 /**
@@ -26023,7 +25990,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],116:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26063,7 +26030,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":115}],117:[function(require,module,exports){
+},{"./camelize":114}],116:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26107,7 +26074,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":130}],118:[function(require,module,exports){
+},{"./isTextNode":129}],117:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -26236,7 +26203,7 @@ function createArrayFromMixed(obj) {
 
 module.exports = createArrayFromMixed;
 }).call(this,require('_process'))
-},{"./invariant":128,"_process":105}],119:[function(require,module,exports){
+},{"./invariant":127,"_process":104}],118:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -26322,7 +26289,7 @@ function createNodesFromMarkup(markup, handleScript) {
 
 module.exports = createNodesFromMarkup;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":114,"./createArrayFromMixed":118,"./getMarkupWrap":124,"./invariant":128,"_process":105}],120:[function(require,module,exports){
+},{"./ExecutionEnvironment":113,"./createArrayFromMixed":117,"./getMarkupWrap":123,"./invariant":127,"_process":104}],119:[function(require,module,exports){
 "use strict";
 
 /**
@@ -26360,7 +26327,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],121:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -26382,7 +26349,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":105}],122:[function(require,module,exports){
+},{"_process":104}],121:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26409,7 +26376,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],123:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26444,7 +26411,7 @@ function getActiveElement() /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],124:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -26541,7 +26508,7 @@ function getMarkupWrap(nodeName) {
 
 module.exports = getMarkupWrap;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":114,"./invariant":128,"_process":105}],125:[function(require,module,exports){
+},{"./ExecutionEnvironment":113,"./invariant":127,"_process":104}],124:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26580,7 +26547,7 @@ function getUnboundedScrollPosition(scrollable) {
 }
 
 module.exports = getUnboundedScrollPosition;
-},{}],126:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26613,7 +26580,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],127:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26652,7 +26619,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":126}],128:[function(require,module,exports){
+},{"./hyphenate":125}],127:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -26704,7 +26671,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":105}],129:[function(require,module,exports){
+},{"_process":104}],128:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26727,7 +26694,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],130:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26752,7 +26719,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":129}],131:[function(require,module,exports){
+},{"./isNode":128}],130:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -26802,7 +26769,7 @@ var keyMirror = function (obj) {
 
 module.exports = keyMirror;
 }).call(this,require('_process'))
-},{"./invariant":128,"_process":105}],132:[function(require,module,exports){
+},{"./invariant":127,"_process":104}],131:[function(require,module,exports){
 "use strict";
 
 /**
@@ -26837,7 +26804,7 @@ var keyOf = function (oneKeyObj) {
 };
 
 module.exports = keyOf;
-},{}],133:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26888,7 +26855,7 @@ function mapObject(object, callback, context) {
 }
 
 module.exports = mapObject;
-},{}],134:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26920,7 +26887,7 @@ function memoizeStringOnly(callback) {
 }
 
 module.exports = memoizeStringOnly;
-},{}],135:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26943,7 +26910,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":114}],136:[function(require,module,exports){
+},{"./ExecutionEnvironment":113}],135:[function(require,module,exports){
 'use strict';
 
 /**
@@ -26977,7 +26944,7 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-},{"./performance":135}],137:[function(require,module,exports){
+},{"./performance":134}],136:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -27044,7 +27011,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],138:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -27103,7 +27070,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":120,"_process":105}],139:[function(require,module,exports){
+},{"./emptyFunction":119,"_process":104}],138:[function(require,module,exports){
 var isFunction = require('is-function')
 
 module.exports = forEach
@@ -27151,7 +27118,7 @@ function forEachObject(object, iterator, context) {
     }
 }
 
-},{"is-function":155}],140:[function(require,module,exports){
+},{"is-function":154}],139:[function(require,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window;
@@ -27164,7 +27131,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],141:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 /**
  * Indicates that navigation was caused by a call to history.push.
  */
@@ -27196,7 +27163,7 @@ exports['default'] = {
   REPLACE: REPLACE,
   POP: POP
 };
-},{}],142:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -27223,7 +27190,7 @@ function loopAsync(turns, work, callback) {
 
   next();
 }
-},{}],143:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 (function (process){
 /*eslint-disable no-empty */
 'use strict';
@@ -27299,7 +27266,7 @@ function readState(key) {
   return null;
 }
 }).call(this,require('_process'))
-},{"_process":105,"warning":424}],144:[function(require,module,exports){
+},{"_process":104,"warning":423}],143:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -27375,13 +27342,13 @@ function supportsGoWithoutReloadUsingHash() {
   var ua = navigator.userAgent;
   return ua.indexOf('Firefox') === -1;
 }
-},{}],145:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
 var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 exports.canUseDOM = canUseDOM;
-},{}],146:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -27431,7 +27398,7 @@ function parsePath(path) {
   };
 }
 }).call(this,require('_process'))
-},{"_process":105,"warning":424}],147:[function(require,module,exports){
+},{"_process":104,"warning":423}],146:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -27610,7 +27577,7 @@ function createBrowserHistory() {
 exports['default'] = createBrowserHistory;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./Actions":141,"./DOMStateStorage":143,"./DOMUtils":144,"./ExecutionEnvironment":145,"./PathUtils":146,"./createDOMHistory":148,"_process":105,"invariant":153}],148:[function(require,module,exports){
+},{"./Actions":140,"./DOMStateStorage":142,"./DOMUtils":143,"./ExecutionEnvironment":144,"./PathUtils":145,"./createDOMHistory":147,"_process":104,"invariant":152}],147:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -27653,7 +27620,7 @@ function createDOMHistory(options) {
 exports['default'] = createDOMHistory;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./DOMUtils":144,"./ExecutionEnvironment":145,"./createHistory":149,"_process":105,"invariant":153}],149:[function(require,module,exports){
+},{"./DOMUtils":143,"./ExecutionEnvironment":144,"./createHistory":148,"_process":104,"invariant":152}],148:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -27944,7 +27911,7 @@ function createHistory() {
 exports['default'] = createHistory;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./Actions":141,"./AsyncUtils":142,"./PathUtils":146,"./createLocation":150,"./deprecate":151,"./runTransitionHook":152,"_process":105,"deep-equal":110,"warning":424}],150:[function(require,module,exports){
+},{"./Actions":140,"./AsyncUtils":141,"./PathUtils":145,"./createLocation":149,"./deprecate":150,"./runTransitionHook":151,"_process":104,"deep-equal":109,"warning":423}],149:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -27998,7 +27965,7 @@ function createLocation() {
 exports['default'] = createLocation;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"./Actions":141,"./PathUtils":146,"_process":105,"warning":424}],151:[function(require,module,exports){
+},{"./Actions":140,"./PathUtils":145,"_process":104,"warning":423}],150:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -28020,7 +27987,7 @@ function deprecate(fn, message) {
 exports['default'] = deprecate;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"_process":105,"warning":424}],152:[function(require,module,exports){
+},{"_process":104,"warning":423}],151:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -28047,7 +28014,7 @@ function runTransitionHook(hook, location, callback) {
 exports['default'] = runTransitionHook;
 module.exports = exports['default'];
 }).call(this,require('_process'))
-},{"_process":105,"warning":424}],153:[function(require,module,exports){
+},{"_process":104,"warning":423}],152:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -28102,7 +28069,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 }).call(this,require('_process'))
-},{"_process":105}],154:[function(require,module,exports){
+},{"_process":104}],153:[function(require,module,exports){
 /**
  * Determine if an object is Buffer
  *
@@ -28121,7 +28088,7 @@ module.exports = function (obj) {
     ))
 }
 
-},{}],155:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -28138,7 +28105,7 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],156:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.1
  * http://jquery.com/
@@ -37971,7 +37938,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],157:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 var slice = Array.prototype.slice;
 
 // our constructor
@@ -38058,7 +38025,7 @@ KeyTreeStore.prototype.run = function (keypath, context) {
 
 module.exports = KeyTreeStore;
 
-},{}],158:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 function isHTMLElement(obj) {
     return obj && (typeof obj === 'object') &&
       (obj.nodeType === 1) && (typeof obj.style === 'object') &&
@@ -38235,7 +38202,7 @@ module.exports = {
     isActive: active
 };
 
-},{}],159:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38266,7 +38233,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],160:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38299,7 +38266,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],161:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38333,7 +38300,7 @@ function arrayEvery(array, predicate) {
 
 module.exports = arrayEvery;
 
-},{}],162:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38369,7 +38336,7 @@ function arrayFilter(array, predicate) {
 
 module.exports = arrayFilter;
 
-},{}],163:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38401,7 +38368,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],164:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38430,7 +38397,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"lodash._basecopy":168,"lodash.keys":237}],165:[function(require,module,exports){
+},{"lodash._basecopy":167,"lodash.keys":236}],164:[function(require,module,exports){
 /**
  * lodash 3.3.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -38854,7 +38821,7 @@ function property(path) {
 
 module.exports = baseCallback;
 
-},{"lodash._baseisequal":181,"lodash._bindcallback":191,"lodash.isarray":227,"lodash.pairs":246}],166:[function(require,module,exports){
+},{"lodash._baseisequal":180,"lodash._bindcallback":190,"lodash.isarray":226,"lodash.pairs":245}],165:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.3.0 (Custom Build) <https://lodash.com/>
@@ -39129,7 +39096,7 @@ function isObject(value) {
 module.exports = baseClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":159,"lodash._arrayeach":160,"lodash._baseassign":164,"lodash._basefor":177,"lodash.isarray":227,"lodash.keys":237}],167:[function(require,module,exports){
+},{"lodash._arraycopy":158,"lodash._arrayeach":159,"lodash._baseassign":163,"lodash._basefor":176,"lodash.isarray":226,"lodash.keys":236}],166:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39174,7 +39141,7 @@ function baseCompareAscending(value, other) {
 
 module.exports = baseCompareAscending;
 
-},{}],168:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39208,7 +39175,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],169:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39267,7 +39234,7 @@ function isObject(value) {
 
 module.exports = baseCreate;
 
-},{}],170:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39332,7 +39299,7 @@ function baseDifference(array, values) {
 
 module.exports = baseDifference;
 
-},{"lodash._baseindexof":180,"lodash._cacheindexof":192,"lodash._createcache":195}],171:[function(require,module,exports){
+},{"lodash._baseindexof":179,"lodash._cacheindexof":191,"lodash._createcache":194}],170:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39515,7 +39482,7 @@ function isObject(value) {
 
 module.exports = baseEach;
 
-},{"lodash.keys":237}],172:[function(require,module,exports){
+},{"lodash.keys":236}],171:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39661,7 +39628,7 @@ function isObject(value) {
 
 module.exports = baseEachRight;
 
-},{"lodash._baseforright":178,"lodash.keys":237}],173:[function(require,module,exports){
+},{"lodash._baseforright":177,"lodash.keys":236}],172:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39693,7 +39660,7 @@ function baseFilter(collection, predicate) {
 
 module.exports = baseFilter;
 
-},{"lodash._baseeach":171}],174:[function(require,module,exports){
+},{"lodash._baseeach":170}],173:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39729,7 +39696,7 @@ function baseFind(collection, predicate, eachFunc, retKey) {
 
 module.exports = baseFind;
 
-},{}],175:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 /**
  * lodash 3.6.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39763,7 +39730,7 @@ function baseFindIndex(array, predicate, fromRight) {
 
 module.exports = baseFindIndex;
 
-},{}],176:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39896,7 +39863,7 @@ function isLength(value) {
 
 module.exports = baseFlatten;
 
-},{"lodash.isarguments":226,"lodash.isarray":227}],177:[function(require,module,exports){
+},{"lodash.isarguments":225,"lodash.isarray":226}],176:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -39984,7 +39951,7 @@ function isObject(value) {
 
 module.exports = baseFor;
 
-},{}],178:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40070,7 +40037,7 @@ function isObject(value) {
 
 module.exports = baseForRight;
 
-},{}],179:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40146,7 +40113,7 @@ function isObject(value) {
 
 module.exports = baseGet;
 
-},{}],180:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40205,7 +40172,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = baseIndexOf;
 
-},{}],181:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40549,7 +40516,7 @@ function isObject(value) {
 
 module.exports = baseIsEqual;
 
-},{"lodash.isarray":227,"lodash.istypedarray":235,"lodash.keys":237}],182:[function(require,module,exports){
+},{"lodash.isarray":226,"lodash.istypedarray":234,"lodash.keys":236}],181:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40578,7 +40545,7 @@ function baseRandom(min, max) {
 
 module.exports = baseRandom;
 
-},{}],183:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40613,7 +40580,7 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],184:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40656,7 +40623,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],185:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40688,7 +40655,7 @@ function baseSortBy(array, comparer) {
 
 module.exports = baseSortBy;
 
-},{}],186:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40712,7 +40679,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],187:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40782,7 +40749,7 @@ function baseUniq(array, iteratee) {
 
 module.exports = baseUniq;
 
-},{"lodash._baseindexof":180,"lodash._cacheindexof":192,"lodash._createcache":195}],188:[function(require,module,exports){
+},{"lodash._baseindexof":179,"lodash._cacheindexof":191,"lodash._createcache":194}],187:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40815,7 +40782,7 @@ function baseValues(object, props) {
 
 module.exports = baseValues;
 
-},{}],189:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40882,7 +40849,7 @@ function identity(value) {
 
 module.exports = binaryIndex;
 
-},{"lodash._binaryindexby":190}],190:[function(require,module,exports){
+},{"lodash._binaryindexby":189}],189:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -40950,7 +40917,7 @@ function binaryIndexBy(array, value, iteratee, retHighest) {
 
 module.exports = binaryIndexBy;
 
-},{}],191:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -41017,7 +40984,7 @@ function identity(value) {
 
 module.exports = bindCallback;
 
-},{}],192:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -41072,7 +41039,7 @@ function isObject(value) {
 
 module.exports = cacheIndexOf;
 
-},{}],193:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -41120,7 +41087,7 @@ function createAggregator(setter, initializer) {
 
 module.exports = createAggregator;
 
-},{"lodash._basecallback":165,"lodash._baseeach":171,"lodash.isarray":227}],194:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeach":170,"lodash.isarray":226}],193:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -41174,7 +41141,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"lodash._bindcallback":191,"lodash._isiterateecall":199,"lodash.restparam":252}],195:[function(require,module,exports){
+},{"lodash._bindcallback":190,"lodash._isiterateecall":198,"lodash.restparam":251}],194:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
@@ -41269,7 +41236,7 @@ SetCache.prototype.push = cachePush;
 module.exports = createCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._getnative":197}],196:[function(require,module,exports){
+},{"lodash._getnative":196}],195:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
@@ -41668,7 +41635,7 @@ function isObject(value) {
 module.exports = createWrapper;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":159,"lodash._basecreate":169,"lodash._replaceholders":202}],197:[function(require,module,exports){
+},{"lodash._arraycopy":158,"lodash._basecreate":168,"lodash._replaceholders":201}],196:[function(require,module,exports){
 /**
  * lodash 3.9.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -41807,7 +41774,7 @@ function isNative(value) {
 
 module.exports = getNative;
 
-},{}],198:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -41922,7 +41889,7 @@ function isObject(value) {
 
 module.exports = invokePath;
 
-},{"lodash._baseget":179,"lodash._baseslice":184,"lodash._topath":204,"lodash.isarray":227}],199:[function(require,module,exports){
+},{"lodash._baseget":178,"lodash._baseslice":183,"lodash._topath":203,"lodash.isarray":226}],198:[function(require,module,exports){
 /**
  * lodash 3.0.9 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42056,7 +42023,7 @@ function isObject(value) {
 
 module.exports = isIterateeCall;
 
-},{}],200:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42131,7 +42098,7 @@ function isObject(value) {
 
 module.exports = pickByArray;
 
-},{}],201:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42177,7 +42144,7 @@ function pickByCallback(object, predicate) {
 
 module.exports = pickByCallback;
 
-},{"lodash._basefor":177,"lodash.keysin":238}],202:[function(require,module,exports){
+},{"lodash._basefor":176,"lodash.keysin":237}],201:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42216,7 +42183,7 @@ function replaceHolders(array, placeholder) {
 
 module.exports = replaceHolders;
 
-},{}],203:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42358,7 +42325,7 @@ function values(object) {
 
 module.exports = toIterable;
 
-},{"lodash._basevalues":188,"lodash.keys":237}],204:[function(require,module,exports){
+},{"lodash._basevalues":187,"lodash.keys":236}],203:[function(require,module,exports){
 /**
  * lodash 3.8.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42407,7 +42374,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"lodash.isarray":227}],205:[function(require,module,exports){
+},{"lodash.isarray":226}],204:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42489,7 +42456,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"lodash._baseassign":164,"lodash._createassigner":194,"lodash.keys":237}],206:[function(require,module,exports){
+},{"lodash._baseassign":163,"lodash._createassigner":193,"lodash.keys":236}],205:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42542,7 +42509,7 @@ function before(n, func) {
 
 module.exports = before;
 
-},{}],207:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42608,7 +42575,7 @@ bind.placeholder = {};
 
 module.exports = bind;
 
-},{"lodash._createwrapper":196,"lodash._replaceholders":202,"lodash.restparam":252}],208:[function(require,module,exports){
+},{"lodash._createwrapper":195,"lodash._replaceholders":201,"lodash.restparam":251}],207:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42688,7 +42655,7 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"lodash._baseclone":166,"lodash._bindcallback":191,"lodash._isiterateecall":199}],209:[function(require,module,exports){
+},{"lodash._baseclone":165,"lodash._bindcallback":190,"lodash._isiterateecall":198}],208:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42752,7 +42719,7 @@ var countBy = createAggregator(function(result, value, key) {
 
 module.exports = countBy;
 
-},{"lodash._createaggregator":193}],210:[function(require,module,exports){
+},{"lodash._createaggregator":192}],209:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42817,7 +42784,7 @@ var defaults = createDefaults(assign, assignDefaults);
 
 module.exports = defaults;
 
-},{"lodash.assign":205,"lodash.restparam":252}],211:[function(require,module,exports){
+},{"lodash.assign":204,"lodash.restparam":251}],210:[function(require,module,exports){
 /**
  * lodash 3.2.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42920,7 +42887,7 @@ var difference = restParam(function(array, values) {
 
 module.exports = difference;
 
-},{"lodash._basedifference":170,"lodash._baseflatten":176,"lodash.restparam":252}],212:[function(require,module,exports){
+},{"lodash._basedifference":169,"lodash._baseflatten":175,"lodash.restparam":251}],211:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -42970,7 +42937,7 @@ function drop(array, n, guard) {
 
 module.exports = drop;
 
-},{"lodash._baseslice":184,"lodash._isiterateecall":199}],213:[function(require,module,exports){
+},{"lodash._baseslice":183,"lodash._isiterateecall":198}],212:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43048,7 +43015,7 @@ function escape(string) {
 
 module.exports = escape;
 
-},{"lodash._basetostring":186}],214:[function(require,module,exports){
+},{"lodash._basetostring":185}],213:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43143,7 +43110,7 @@ function every(collection, predicate, thisArg) {
 
 module.exports = every;
 
-},{"lodash._arrayevery":161,"lodash._basecallback":165,"lodash._baseeach":171,"lodash._isiterateecall":199,"lodash.isarray":227}],215:[function(require,module,exports){
+},{"lodash._arrayevery":160,"lodash._basecallback":164,"lodash._baseeach":170,"lodash._isiterateecall":198,"lodash.isarray":226}],214:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43214,7 +43181,7 @@ function filter(collection, predicate, thisArg) {
 
 module.exports = filter;
 
-},{"lodash._arrayfilter":162,"lodash._basecallback":165,"lodash._basefilter":173,"lodash.isarray":227}],216:[function(require,module,exports){
+},{"lodash._arrayfilter":161,"lodash._basecallback":164,"lodash._basefilter":172,"lodash.isarray":226}],215:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43302,7 +43269,7 @@ var find = createFind(baseEach);
 
 module.exports = find;
 
-},{"lodash._basecallback":165,"lodash._baseeach":171,"lodash._basefind":174,"lodash._basefindindex":175,"lodash.isarray":227}],217:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeach":170,"lodash._basefind":173,"lodash._basefindindex":174,"lodash.isarray":226}],216:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43366,7 +43333,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"lodash._arrayeach":160,"lodash._baseeach":171,"lodash._bindcallback":191,"lodash.isarray":227}],218:[function(require,module,exports){
+},{"lodash._arrayeach":159,"lodash._baseeach":170,"lodash._bindcallback":190,"lodash.isarray":226}],217:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43435,7 +43402,7 @@ var groupBy = createAggregator(function(result, value, key) {
 
 module.exports = groupBy;
 
-},{"lodash._createaggregator":193}],219:[function(require,module,exports){
+},{"lodash._createaggregator":192}],218:[function(require,module,exports){
 /**
  * lodash 3.9.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43471,7 +43438,7 @@ function gt(value, other) {
 
 module.exports = gt;
 
-},{}],220:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43650,7 +43617,7 @@ function has(object, path) {
 
 module.exports = has;
 
-},{"lodash._baseget":179,"lodash._baseslice":184,"lodash._topath":204,"lodash.isarguments":226,"lodash.isarray":227}],221:[function(require,module,exports){
+},{"lodash._baseget":178,"lodash._baseslice":183,"lodash._topath":203,"lodash.isarguments":225,"lodash.isarray":226}],220:[function(require,module,exports){
 /**
  * lodash 3.1.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43789,7 +43756,7 @@ function values(object) {
 
 module.exports = includes;
 
-},{"lodash._baseindexof":180,"lodash._basevalues":188,"lodash._isiterateecall":199,"lodash.isarray":227,"lodash.isstring":234,"lodash.keys":237}],222:[function(require,module,exports){
+},{"lodash._baseindexof":179,"lodash._basevalues":187,"lodash._isiterateecall":198,"lodash.isarray":226,"lodash.isstring":233,"lodash.keys":236}],221:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43852,7 +43819,7 @@ var indexBy = createAggregator(function(result, value, key) {
 
 module.exports = indexBy;
 
-},{"lodash._createaggregator":193}],223:[function(require,module,exports){
+},{"lodash._createaggregator":192}],222:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43915,7 +43882,7 @@ function indexOf(array, value, fromIndex) {
 
 module.exports = indexOf;
 
-},{"lodash._baseindexof":180,"lodash._binaryindex":189}],224:[function(require,module,exports){
+},{"lodash._baseindexof":179,"lodash._binaryindex":188}],223:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -43983,7 +43950,7 @@ function initial(array) {
 
 module.exports = initial;
 
-},{"lodash._baseslice":184,"lodash._isiterateecall":199}],225:[function(require,module,exports){
+},{"lodash._baseslice":183,"lodash._isiterateecall":198}],224:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44151,7 +44118,7 @@ function isObject(value) {
 
 module.exports = invoke;
 
-},{"lodash._baseeach":171,"lodash._invokepath":198,"lodash.isarray":227,"lodash.restparam":252}],226:[function(require,module,exports){
+},{"lodash._baseeach":170,"lodash._invokepath":197,"lodash.isarray":226,"lodash.restparam":251}],225:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44259,7 +44226,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{}],227:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44441,7 +44408,7 @@ function isNative(value) {
 
 module.exports = isArray;
 
-},{}],228:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44496,7 +44463,7 @@ function isDate(value) {
 
 module.exports = isDate;
 
-},{}],229:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44617,7 +44584,7 @@ function isEmpty(value) {
 
 module.exports = isEmpty;
 
-},{"lodash.isarguments":226,"lodash.isarray":227,"lodash.isfunction":231,"lodash.isstring":234,"lodash.keys":237}],230:[function(require,module,exports){
+},{"lodash.isarguments":225,"lodash.isarray":226,"lodash.isfunction":230,"lodash.isstring":233,"lodash.keys":236}],229:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44681,7 +44648,7 @@ function isEqual(value, other, customizer, thisArg) {
 
 module.exports = isEqual;
 
-},{"lodash._baseisequal":181,"lodash._bindcallback":191}],231:[function(require,module,exports){
+},{"lodash._baseisequal":180,"lodash._bindcallback":190}],230:[function(require,module,exports){
 /**
  * lodash 3.0.6 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44755,7 +44722,7 @@ function isObject(value) {
 
 module.exports = isFunction;
 
-},{}],232:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44787,7 +44754,7 @@ function isNull(value) {
 
 module.exports = isNull;
 
-},{}],233:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44826,7 +44793,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],234:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44881,7 +44848,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{}],235:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -44993,7 +44960,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{}],236:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45025,7 +44992,7 @@ function isUndefined(value) {
 
 module.exports = isUndefined;
 
-},{}],237:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45263,7 +45230,7 @@ function keysIn(object) {
 
 module.exports = keys;
 
-},{"lodash._getnative":197,"lodash.isarguments":226,"lodash.isarray":227}],238:[function(require,module,exports){
+},{"lodash._getnative":196,"lodash.isarguments":225,"lodash.isarray":226}],237:[function(require,module,exports){
 /**
  * lodash 3.0.8 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45397,7 +45364,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"lodash.isarguments":226,"lodash.isarray":227}],239:[function(require,module,exports){
+},{"lodash.isarguments":225,"lodash.isarray":226}],238:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45489,7 +45456,7 @@ function lastIndexOf(array, value, fromIndex) {
 
 module.exports = lastIndexOf;
 
-},{"lodash._binaryindex":189}],240:[function(require,module,exports){
+},{"lodash._binaryindex":188}],239:[function(require,module,exports){
 /**
  * lodash 3.9.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45525,7 +45492,7 @@ function lt(value, other) {
 
 module.exports = lt;
 
-},{}],241:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45677,7 +45644,7 @@ function map(collection, iteratee, thisArg) {
 
 module.exports = map;
 
-},{"lodash._arraymap":163,"lodash._basecallback":165,"lodash._baseeach":171,"lodash.isarray":227}],242:[function(require,module,exports){
+},{"lodash._arraymap":162,"lodash._basecallback":164,"lodash._baseeach":170,"lodash.isarray":226}],241:[function(require,module,exports){
 /**
  * lodash 3.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45827,7 +45794,7 @@ var max = createExtremum(gt, NEGATIVE_INFINITY);
 
 module.exports = max;
 
-},{"lodash._basecallback":165,"lodash._baseeach":171,"lodash._isiterateecall":199,"lodash._toiterable":203,"lodash.gt":219,"lodash.isarray":227}],243:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeach":170,"lodash._isiterateecall":198,"lodash._toiterable":202,"lodash.gt":218,"lodash.isarray":226}],242:[function(require,module,exports){
 /**
  * lodash 3.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -45977,7 +45944,7 @@ var min = createExtremum(lt, POSITIVE_INFINITY);
 
 module.exports = min;
 
-},{"lodash._basecallback":165,"lodash._baseeach":171,"lodash._isiterateecall":199,"lodash._toiterable":203,"lodash.isarray":227,"lodash.lt":240}],244:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeach":170,"lodash._isiterateecall":198,"lodash._toiterable":202,"lodash.isarray":226,"lodash.lt":239}],243:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46039,7 +46006,7 @@ var omit = restParam(function(object, props) {
 
 module.exports = omit;
 
-},{"lodash._arraymap":163,"lodash._basedifference":170,"lodash._baseflatten":176,"lodash._bindcallback":191,"lodash._pickbyarray":200,"lodash._pickbycallback":201,"lodash.keysin":238,"lodash.restparam":252}],245:[function(require,module,exports){
+},{"lodash._arraymap":162,"lodash._basedifference":169,"lodash._baseflatten":175,"lodash._bindcallback":190,"lodash._pickbyarray":199,"lodash._pickbycallback":200,"lodash.keysin":237,"lodash.restparam":251}],244:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46073,7 +46040,7 @@ function once(func) {
 
 module.exports = once;
 
-},{"lodash.before":206}],246:[function(require,module,exports){
+},{"lodash.before":205}],245:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46153,7 +46120,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"lodash.keys":237}],247:[function(require,module,exports){
+},{"lodash.keys":236}],246:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46229,7 +46196,7 @@ var partition = createAggregator(function(result, value, key) {
 
 module.exports = partition;
 
-},{"lodash._createaggregator":193}],248:[function(require,module,exports){
+},{"lodash._createaggregator":192}],247:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46325,7 +46292,7 @@ var reduce = createReduce(arrayReduce, baseEach);
 
 module.exports = reduce;
 
-},{"lodash._basecallback":165,"lodash._baseeach":171,"lodash._basereduce":183,"lodash.isarray":227}],249:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeach":170,"lodash._basereduce":182,"lodash.isarray":226}],248:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46405,7 +46372,7 @@ var reduceRight = createReduce(arrayReduceRight, baseEachRight);
 
 module.exports = reduceRight;
 
-},{"lodash._basecallback":165,"lodash._baseeachright":172,"lodash._basereduce":183,"lodash.isarray":227}],250:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeachright":171,"lodash._basereduce":182,"lodash.isarray":226}],249:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46465,7 +46432,7 @@ function reject(collection, predicate, thisArg) {
 
 module.exports = reject;
 
-},{"lodash._arrayfilter":162,"lodash._basecallback":165,"lodash._basefilter":173,"lodash.isarray":227}],251:[function(require,module,exports){
+},{"lodash._arrayfilter":161,"lodash._basecallback":164,"lodash._basefilter":172,"lodash.isarray":226}],250:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46533,7 +46500,7 @@ function rest(array) {
 
 module.exports = rest;
 
-},{"lodash._baseslice":184,"lodash._isiterateecall":199}],252:[function(require,module,exports){
+},{"lodash._baseslice":183,"lodash._isiterateecall":198}],251:[function(require,module,exports){
 /**
  * lodash 3.6.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46602,7 +46569,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],253:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46740,7 +46707,7 @@ function result(object, path, defaultValue) {
 
 module.exports = result;
 
-},{"lodash._baseget":179,"lodash._baseslice":184,"lodash._topath":204,"lodash.isarray":227,"lodash.isfunction":231}],254:[function(require,module,exports){
+},{"lodash._baseget":178,"lodash._baseslice":183,"lodash._topath":203,"lodash.isarray":226,"lodash.isfunction":230}],253:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46800,7 +46767,7 @@ function sample(collection, n, guard) {
 
 module.exports = sample;
 
-},{"lodash._baserandom":182,"lodash._isiterateecall":199,"lodash._toiterable":203,"lodash.toarray":259}],255:[function(require,module,exports){
+},{"lodash._baserandom":181,"lodash._isiterateecall":198,"lodash._toiterable":202,"lodash.toarray":258}],254:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46834,7 +46801,7 @@ function shuffle(collection) {
 
 module.exports = shuffle;
 
-},{"lodash.sample":254}],256:[function(require,module,exports){
+},{"lodash.sample":253}],255:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -46952,7 +46919,7 @@ function some(collection, predicate, thisArg) {
 
 module.exports = some;
 
-},{"lodash._basecallback":165,"lodash._baseeach":171,"lodash._isiterateecall":199,"lodash.isarray":227}],257:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._baseeach":170,"lodash._isiterateecall":198,"lodash.isarray":226}],256:[function(require,module,exports){
 /**
  * lodash 3.1.5 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -47120,7 +47087,7 @@ function sortBy(collection, iteratee, thisArg) {
 
 module.exports = sortBy;
 
-},{"lodash._basecallback":165,"lodash._basecompareascending":167,"lodash._baseeach":171,"lodash._basesortby":185,"lodash._isiterateecall":199}],258:[function(require,module,exports){
+},{"lodash._basecallback":164,"lodash._basecompareascending":166,"lodash._baseeach":170,"lodash._basesortby":184,"lodash._isiterateecall":198}],257:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -47170,7 +47137,7 @@ function take(array, n, guard) {
 
 module.exports = take;
 
-},{"lodash._baseslice":184,"lodash._isiterateecall":199}],259:[function(require,module,exports){
+},{"lodash._baseslice":183,"lodash._isiterateecall":198}],258:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -47284,7 +47251,7 @@ function values(object) {
 
 module.exports = toArray;
 
-},{"lodash._arraycopy":159,"lodash._basevalues":188,"lodash.keys":237}],260:[function(require,module,exports){
+},{"lodash._arraycopy":158,"lodash._basevalues":187,"lodash.keys":236}],259:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -47321,7 +47288,7 @@ var union = restParam(function(arrays) {
 
 module.exports = union;
 
-},{"lodash._baseflatten":176,"lodash._baseuniq":187,"lodash.restparam":252}],261:[function(require,module,exports){
+},{"lodash._baseflatten":175,"lodash._baseuniq":186,"lodash.restparam":251}],260:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -47358,7 +47325,7 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"lodash._basetostring":186}],262:[function(require,module,exports){
+},{"lodash._basetostring":185}],261:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -47449,7 +47416,7 @@ var without = restParam(function(array, values) {
 
 module.exports = without;
 
-},{"lodash._basedifference":170,"lodash.restparam":252}],263:[function(require,module,exports){
+},{"lodash._basedifference":169,"lodash.restparam":251}],262:[function(require,module,exports){
 /**
  * media-type
  * @author Lovell Fuller
@@ -47558,7 +47525,7 @@ exports.fromString = function(str) {
   return mediaType;
 };
 
-},{}],264:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 /* eslint-disable no-unused-vars */
 'use strict';
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -47599,7 +47566,7 @@ module.exports = Object.assign || function (target, source) {
 	return to;
 };
 
-},{}],265:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 module.exports = once
 
 once.proto = once(function () {
@@ -47620,7 +47587,7 @@ function once (fn) {
   }
 }
 
-},{}],266:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 var trim = require('trim')
   , forEach = require('for-each')
   , isArray = function(arg) {
@@ -47652,7 +47619,7 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":139,"trim":421}],267:[function(require,module,exports){
+},{"for-each":138,"trim":420}],266:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -47880,7 +47847,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":105}],268:[function(require,module,exports){
+},{"_process":104}],267:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -48417,7 +48384,7 @@ var substr = 'ab'.substr(-1) === 'b'
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],269:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 'use strict';
 
 var Stringify = require('./stringify');
@@ -48428,7 +48395,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":270,"./stringify":271}],270:[function(require,module,exports){
+},{"./parse":269,"./stringify":270}],269:[function(require,module,exports){
 'use strict';
 
 var Utils = require('./utils');
@@ -48594,7 +48561,7 @@ module.exports = function (str, opts) {
     return Utils.compact(obj);
 };
 
-},{"./utils":272}],271:[function(require,module,exports){
+},{"./utils":271}],270:[function(require,module,exports){
 'use strict';
 
 var Utils = require('./utils');
@@ -48727,7 +48694,7 @@ module.exports = function (object, opts) {
     return keys.join(delimiter);
 };
 
-},{"./utils":272}],272:[function(require,module,exports){
+},{"./utils":271}],271:[function(require,module,exports){
 'use strict';
 
 var hexTable = (function () {
@@ -48891,7 +48858,7 @@ exports.isBuffer = function (obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
-},{}],273:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -48977,7 +48944,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],274:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -49064,23 +49031,23 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],275:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":273,"./encode":274}],276:[function(require,module,exports){
+},{"./decode":272,"./encode":273}],275:[function(require,module,exports){
 'use strict';
 
 module.exports = require('react/lib/ReactDOM');
 
-},{"react/lib/ReactDOM":314}],277:[function(require,module,exports){
+},{"react/lib/ReactDOM":313}],276:[function(require,module,exports){
 'use strict';
 
 module.exports = require('react/lib/ReactDOMServer');
 
-},{"react/lib/ReactDOMServer":330}],278:[function(require,module,exports){
+},{"react/lib/ReactDOMServer":329}],277:[function(require,module,exports){
 (function(root, factory) {
     if (typeof exports !== "undefined") {
         var React = require("react");
@@ -49253,7 +49220,7 @@ module.exports = require('react/lib/ReactDOMServer');
     return FileDrop;
 }));
 
-},{"react":420}],279:[function(require,module,exports){
+},{"react":419}],278:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -49278,7 +49245,7 @@ var AutoFocusUtils = {
 };
 
 module.exports = AutoFocusUtils;
-},{"./ReactDOMComponentTree":318,"fbjs/lib/focusNode":122}],280:[function(require,module,exports){
+},{"./ReactDOMComponentTree":317,"fbjs/lib/focusNode":121}],279:[function(require,module,exports){
 /**
  * Copyright 2013-present Facebook, Inc.
  * All rights reserved.
@@ -49667,7 +49634,7 @@ var BeforeInputEventPlugin = {
 };
 
 module.exports = BeforeInputEventPlugin;
-},{"./EventConstants":294,"./EventPropagators":298,"./FallbackCompositionState":299,"./SyntheticCompositionEvent":378,"./SyntheticInputEvent":382,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/keyOf":132}],281:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPropagators":297,"./FallbackCompositionState":298,"./SyntheticCompositionEvent":377,"./SyntheticInputEvent":381,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/keyOf":131}],280:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -49816,7 +49783,7 @@ var CSSProperty = {
 };
 
 module.exports = CSSProperty;
-},{}],282:[function(require,module,exports){
+},{}],281:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50024,7 +49991,7 @@ ReactPerf.measureMethods(CSSPropertyOperations, 'CSSPropertyOperations', {
 
 module.exports = CSSPropertyOperations;
 }).call(this,require('_process'))
-},{"./CSSProperty":281,"./ReactPerf":360,"./dangerousStyleValue":395,"_process":105,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/camelizeStyleName":116,"fbjs/lib/hyphenateStyleName":127,"fbjs/lib/memoizeStringOnly":134,"fbjs/lib/warning":138}],283:[function(require,module,exports){
+},{"./CSSProperty":280,"./ReactPerf":359,"./dangerousStyleValue":394,"_process":104,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/camelizeStyleName":115,"fbjs/lib/hyphenateStyleName":126,"fbjs/lib/memoizeStringOnly":133,"fbjs/lib/warning":137}],282:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50132,7 +50099,7 @@ PooledClass.addPoolingTo(CallbackQueue);
 
 module.exports = CallbackQueue;
 }).call(this,require('_process'))
-},{"./PooledClass":303,"_process":105,"fbjs/lib/invariant":128,"object-assign":264}],284:[function(require,module,exports){
+},{"./PooledClass":302,"_process":104,"fbjs/lib/invariant":127,"object-assign":263}],283:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50458,7 +50425,7 @@ var ChangeEventPlugin = {
 };
 
 module.exports = ChangeEventPlugin;
-},{"./EventConstants":294,"./EventPluginHub":295,"./EventPropagators":298,"./ReactDOMComponentTree":318,"./ReactUpdates":371,"./SyntheticEvent":380,"./getEventTarget":403,"./isEventSupported":410,"./isTextInputElement":411,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/keyOf":132}],285:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPluginHub":294,"./EventPropagators":297,"./ReactDOMComponentTree":317,"./ReactUpdates":370,"./SyntheticEvent":379,"./getEventTarget":402,"./isEventSupported":409,"./isTextInputElement":410,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/keyOf":131}],284:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50618,7 +50585,7 @@ ReactPerf.measureMethods(DOMChildrenOperations, 'DOMChildrenOperations', {
 });
 
 module.exports = DOMChildrenOperations;
-},{"./DOMLazyTree":286,"./Danger":290,"./ReactMultiChildUpdateTypes":355,"./ReactPerf":360,"./createMicrosoftUnsafeLocalFunction":394,"./setInnerHTML":415,"./setTextContent":416}],286:[function(require,module,exports){
+},{"./DOMLazyTree":285,"./Danger":289,"./ReactMultiChildUpdateTypes":354,"./ReactPerf":359,"./createMicrosoftUnsafeLocalFunction":393,"./setInnerHTML":414,"./setTextContent":415}],285:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -50724,7 +50691,7 @@ DOMLazyTree.queueHTML = queueHTML;
 DOMLazyTree.queueText = queueText;
 
 module.exports = DOMLazyTree;
-},{"./createMicrosoftUnsafeLocalFunction":394,"./setTextContent":416}],287:[function(require,module,exports){
+},{"./createMicrosoftUnsafeLocalFunction":393,"./setTextContent":415}],286:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50745,7 +50712,7 @@ var DOMNamespaces = {
 };
 
 module.exports = DOMNamespaces;
-},{}],288:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50961,7 +50928,7 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],289:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],288:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51177,7 +51144,7 @@ ReactPerf.measureMethods(DOMPropertyOperations, 'DOMPropertyOperations', {
 
 module.exports = DOMPropertyOperations;
 }).call(this,require('_process'))
-},{"./DOMProperty":288,"./ReactDOMInstrumentation":326,"./ReactPerf":360,"./quoteAttributeValueForBrowser":413,"_process":105,"fbjs/lib/warning":138}],290:[function(require,module,exports){
+},{"./DOMProperty":287,"./ReactDOMInstrumentation":325,"./ReactPerf":359,"./quoteAttributeValueForBrowser":412,"_process":104,"fbjs/lib/warning":137}],289:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51324,7 +51291,7 @@ var Danger = {
 
 module.exports = Danger;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":286,"_process":105,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/createNodesFromMarkup":119,"fbjs/lib/emptyFunction":120,"fbjs/lib/getMarkupWrap":124,"fbjs/lib/invariant":128}],291:[function(require,module,exports){
+},{"./DOMLazyTree":285,"_process":104,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/createNodesFromMarkup":118,"fbjs/lib/emptyFunction":119,"fbjs/lib/getMarkupWrap":123,"fbjs/lib/invariant":127}],290:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -51352,7 +51319,7 @@ var keyOf = require('fbjs/lib/keyOf');
 var DefaultEventPluginOrder = [keyOf({ ResponderEventPlugin: null }), keyOf({ SimpleEventPlugin: null }), keyOf({ TapEventPlugin: null }), keyOf({ EnterLeaveEventPlugin: null }), keyOf({ ChangeEventPlugin: null }), keyOf({ SelectEventPlugin: null }), keyOf({ BeforeInputEventPlugin: null })];
 
 module.exports = DefaultEventPluginOrder;
-},{"fbjs/lib/keyOf":132}],292:[function(require,module,exports){
+},{"fbjs/lib/keyOf":131}],291:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -51403,7 +51370,7 @@ var DisabledInputUtils = {
 };
 
 module.exports = DisabledInputUtils;
-},{}],293:[function(require,module,exports){
+},{}],292:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -51509,7 +51476,7 @@ var EnterLeaveEventPlugin = {
 };
 
 module.exports = EnterLeaveEventPlugin;
-},{"./EventConstants":294,"./EventPropagators":298,"./ReactDOMComponentTree":318,"./SyntheticMouseEvent":384,"fbjs/lib/keyOf":132}],294:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPropagators":297,"./ReactDOMComponentTree":317,"./SyntheticMouseEvent":383,"fbjs/lib/keyOf":131}],293:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -51607,7 +51574,7 @@ var EventConstants = {
 };
 
 module.exports = EventConstants;
-},{"fbjs/lib/keyMirror":131}],295:[function(require,module,exports){
+},{"fbjs/lib/keyMirror":130}],294:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51845,7 +51812,7 @@ var EventPluginHub = {
 
 module.exports = EventPluginHub;
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":296,"./EventPluginUtils":297,"./ReactErrorUtils":343,"./accumulateInto":391,"./forEachAccumulated":399,"_process":105,"fbjs/lib/invariant":128}],296:[function(require,module,exports){
+},{"./EventPluginRegistry":295,"./EventPluginUtils":296,"./ReactErrorUtils":342,"./accumulateInto":390,"./forEachAccumulated":398,"_process":104,"fbjs/lib/invariant":127}],295:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -52089,7 +52056,7 @@ var EventPluginRegistry = {
 
 module.exports = EventPluginRegistry;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],297:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],296:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -52319,7 +52286,7 @@ var EventPluginUtils = {
 
 module.exports = EventPluginUtils;
 }).call(this,require('_process'))
-},{"./EventConstants":294,"./ReactErrorUtils":343,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],298:[function(require,module,exports){
+},{"./EventConstants":293,"./ReactErrorUtils":342,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],297:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -52459,7 +52426,7 @@ var EventPropagators = {
 
 module.exports = EventPropagators;
 }).call(this,require('_process'))
-},{"./EventConstants":294,"./EventPluginHub":295,"./EventPluginUtils":297,"./accumulateInto":391,"./forEachAccumulated":399,"_process":105,"fbjs/lib/warning":138}],299:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPluginHub":294,"./EventPluginUtils":296,"./accumulateInto":390,"./forEachAccumulated":398,"_process":104,"fbjs/lib/warning":137}],298:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52555,7 +52522,7 @@ _assign(FallbackCompositionState.prototype, {
 PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
-},{"./PooledClass":303,"./getTextContentAccessor":407,"object-assign":264}],300:[function(require,module,exports){
+},{"./PooledClass":302,"./getTextContentAccessor":406,"object-assign":263}],299:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52765,7 +52732,7 @@ var HTMLDOMPropertyConfig = {
 };
 
 module.exports = HTMLDOMPropertyConfig;
-},{"./DOMProperty":288}],301:[function(require,module,exports){
+},{"./DOMProperty":287}],300:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52824,7 +52791,7 @@ var KeyEscapeUtils = {
 };
 
 module.exports = KeyEscapeUtils;
-},{}],302:[function(require,module,exports){
+},{}],301:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -52960,7 +52927,7 @@ var LinkedValueUtils = {
 
 module.exports = LinkedValueUtils;
 }).call(this,require('_process'))
-},{"./ReactPropTypeLocations":362,"./ReactPropTypes":363,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],303:[function(require,module,exports){
+},{"./ReactPropTypeLocations":361,"./ReactPropTypes":362,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],302:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53082,7 +53049,7 @@ var PooledClass = {
 
 module.exports = PooledClass;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],304:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],303:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53172,7 +53139,7 @@ var React = {
 
 module.exports = React;
 }).call(this,require('_process'))
-},{"./ReactChildren":307,"./ReactClass":308,"./ReactComponent":309,"./ReactDOMFactories":322,"./ReactElement":340,"./ReactElementValidator":341,"./ReactPropTypes":363,"./ReactVersion":372,"./onlyChild":412,"_process":105,"fbjs/lib/warning":138,"object-assign":264}],305:[function(require,module,exports){
+},{"./ReactChildren":306,"./ReactClass":307,"./ReactComponent":308,"./ReactDOMFactories":321,"./ReactElement":339,"./ReactElementValidator":340,"./ReactPropTypes":362,"./ReactVersion":371,"./onlyChild":411,"_process":104,"fbjs/lib/warning":137,"object-assign":263}],304:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -53490,7 +53457,7 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
 });
 
 module.exports = ReactBrowserEventEmitter;
-},{"./EventConstants":294,"./EventPluginRegistry":296,"./ReactEventEmitterMixin":344,"./ViewportMetrics":390,"./getVendorPrefixedEventName":408,"./isEventSupported":410,"object-assign":264}],306:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPluginRegistry":295,"./ReactEventEmitterMixin":343,"./ViewportMetrics":389,"./getVendorPrefixedEventName":407,"./isEventSupported":409,"object-assign":263}],305:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -53618,7 +53585,7 @@ var ReactChildReconciler = {
 
 module.exports = ReactChildReconciler;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":301,"./ReactReconciler":365,"./instantiateReactComponent":409,"./shouldUpdateReactComponent":417,"./traverseAllChildren":418,"_process":105,"fbjs/lib/warning":138}],307:[function(require,module,exports){
+},{"./KeyEscapeUtils":300,"./ReactReconciler":364,"./instantiateReactComponent":408,"./shouldUpdateReactComponent":416,"./traverseAllChildren":417,"_process":104,"fbjs/lib/warning":137}],306:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -53802,7 +53769,7 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-},{"./PooledClass":303,"./ReactElement":340,"./traverseAllChildren":418,"fbjs/lib/emptyFunction":120}],308:[function(require,module,exports){
+},{"./PooledClass":302,"./ReactElement":339,"./traverseAllChildren":417,"fbjs/lib/emptyFunction":119}],307:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54528,7 +54495,7 @@ var ReactClass = {
 
 module.exports = ReactClass;
 }).call(this,require('_process'))
-},{"./ReactComponent":309,"./ReactElement":340,"./ReactNoopUpdateQueue":358,"./ReactPropTypeLocationNames":361,"./ReactPropTypeLocations":362,"_process":105,"fbjs/lib/emptyObject":121,"fbjs/lib/invariant":128,"fbjs/lib/keyMirror":131,"fbjs/lib/keyOf":132,"fbjs/lib/warning":138,"object-assign":264}],309:[function(require,module,exports){
+},{"./ReactComponent":308,"./ReactElement":339,"./ReactNoopUpdateQueue":357,"./ReactPropTypeLocationNames":360,"./ReactPropTypeLocations":361,"_process":104,"fbjs/lib/emptyObject":120,"fbjs/lib/invariant":127,"fbjs/lib/keyMirror":130,"fbjs/lib/keyOf":131,"fbjs/lib/warning":137,"object-assign":263}],308:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54652,7 +54619,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactComponent;
 }).call(this,require('_process'))
-},{"./ReactInstrumentation":350,"./ReactNoopUpdateQueue":358,"./canDefineProperty":393,"_process":105,"fbjs/lib/emptyObject":121,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],310:[function(require,module,exports){
+},{"./ReactInstrumentation":349,"./ReactNoopUpdateQueue":357,"./canDefineProperty":392,"_process":104,"fbjs/lib/emptyObject":120,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],309:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -54697,7 +54664,7 @@ ReactPerf.measureMethods(ReactComponentBrowserEnvironment, 'ReactComponentBrowse
 });
 
 module.exports = ReactComponentBrowserEnvironment;
-},{"./DOMChildrenOperations":285,"./ReactDOMIDOperations":324,"./ReactPerf":360}],311:[function(require,module,exports){
+},{"./DOMChildrenOperations":284,"./ReactDOMIDOperations":323,"./ReactPerf":359}],310:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -54751,7 +54718,7 @@ var ReactComponentEnvironment = {
 
 module.exports = ReactComponentEnvironment;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],312:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],311:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -55548,7 +55515,7 @@ var ReactCompositeComponent = {
 
 module.exports = ReactCompositeComponent;
 }).call(this,require('_process'))
-},{"./ReactComponentEnvironment":311,"./ReactCurrentOwner":313,"./ReactElement":340,"./ReactErrorUtils":343,"./ReactInstanceMap":349,"./ReactInstrumentation":350,"./ReactNodeTypes":357,"./ReactPerf":360,"./ReactPropTypeLocationNames":361,"./ReactPropTypeLocations":362,"./ReactReconciler":365,"./ReactUpdateQueue":370,"./shouldUpdateReactComponent":417,"_process":105,"fbjs/lib/emptyObject":121,"fbjs/lib/invariant":128,"fbjs/lib/warning":138,"object-assign":264}],313:[function(require,module,exports){
+},{"./ReactComponentEnvironment":310,"./ReactCurrentOwner":312,"./ReactElement":339,"./ReactErrorUtils":342,"./ReactInstanceMap":348,"./ReactInstrumentation":349,"./ReactNodeTypes":356,"./ReactPerf":359,"./ReactPropTypeLocationNames":360,"./ReactPropTypeLocations":361,"./ReactReconciler":364,"./ReactUpdateQueue":369,"./shouldUpdateReactComponent":416,"_process":104,"fbjs/lib/emptyObject":120,"fbjs/lib/invariant":127,"fbjs/lib/warning":137,"object-assign":263}],312:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55580,7 +55547,7 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-},{}],314:[function(require,module,exports){
+},{}],313:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -55687,7 +55654,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = React;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":318,"./ReactDefaultInjection":337,"./ReactMount":353,"./ReactPerf":360,"./ReactReconciler":365,"./ReactUpdates":371,"./ReactVersion":372,"./findDOMNode":397,"./getNativeComponentFromComposite":405,"./renderSubtreeIntoContainer":414,"_process":105,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/warning":138}],315:[function(require,module,exports){
+},{"./ReactDOMComponentTree":317,"./ReactDefaultInjection":336,"./ReactMount":352,"./ReactPerf":359,"./ReactReconciler":364,"./ReactUpdates":370,"./ReactVersion":371,"./findDOMNode":396,"./getNativeComponentFromComposite":404,"./renderSubtreeIntoContainer":413,"_process":104,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/warning":137}],314:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55712,7 +55679,7 @@ var ReactDOMButton = {
 };
 
 module.exports = ReactDOMButton;
-},{"./DisabledInputUtils":292}],316:[function(require,module,exports){
+},{"./DisabledInputUtils":291}],315:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56624,7 +56591,7 @@ _assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mi
 
 module.exports = ReactDOMComponent;
 }).call(this,require('_process'))
-},{"./AutoFocusUtils":279,"./CSSPropertyOperations":282,"./DOMLazyTree":286,"./DOMNamespaces":287,"./DOMProperty":288,"./DOMPropertyOperations":289,"./EventConstants":294,"./EventPluginHub":295,"./EventPluginRegistry":296,"./ReactBrowserEventEmitter":305,"./ReactComponentBrowserEnvironment":310,"./ReactDOMButton":315,"./ReactDOMComponentFlags":317,"./ReactDOMComponentTree":318,"./ReactDOMInput":325,"./ReactDOMOption":327,"./ReactDOMSelect":328,"./ReactDOMTextarea":332,"./ReactMultiChild":354,"./ReactPerf":360,"./escapeTextContentForBrowser":396,"./isEventSupported":410,"./validateDOMNesting":419,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/keyOf":132,"fbjs/lib/shallowEqual":137,"fbjs/lib/warning":138,"object-assign":264}],317:[function(require,module,exports){
+},{"./AutoFocusUtils":278,"./CSSPropertyOperations":281,"./DOMLazyTree":285,"./DOMNamespaces":286,"./DOMProperty":287,"./DOMPropertyOperations":288,"./EventConstants":293,"./EventPluginHub":294,"./EventPluginRegistry":295,"./ReactBrowserEventEmitter":304,"./ReactComponentBrowserEnvironment":309,"./ReactDOMButton":314,"./ReactDOMComponentFlags":316,"./ReactDOMComponentTree":317,"./ReactDOMInput":324,"./ReactDOMOption":326,"./ReactDOMSelect":327,"./ReactDOMTextarea":331,"./ReactMultiChild":353,"./ReactPerf":359,"./escapeTextContentForBrowser":395,"./isEventSupported":409,"./validateDOMNesting":418,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/keyOf":131,"fbjs/lib/shallowEqual":136,"fbjs/lib/warning":137,"object-assign":263}],316:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -56643,7 +56610,7 @@ var ReactDOMComponentFlags = {
 };
 
 module.exports = ReactDOMComponentFlags;
-},{}],318:[function(require,module,exports){
+},{}],317:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56832,7 +56799,7 @@ var ReactDOMComponentTree = {
 
 module.exports = ReactDOMComponentTree;
 }).call(this,require('_process'))
-},{"./DOMProperty":288,"./ReactDOMComponentFlags":317,"_process":105,"fbjs/lib/invariant":128}],319:[function(require,module,exports){
+},{"./DOMProperty":287,"./ReactDOMComponentFlags":316,"_process":104,"fbjs/lib/invariant":127}],318:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56868,7 +56835,7 @@ function ReactDOMContainerInfo(topLevelWrapper, node) {
 
 module.exports = ReactDOMContainerInfo;
 }).call(this,require('_process'))
-},{"./validateDOMNesting":419,"_process":105}],320:[function(require,module,exports){
+},{"./validateDOMNesting":418,"_process":104}],319:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56932,7 +56899,7 @@ ReactDOMDebugTool.addDevtool(ReactDOMUnknownPropertyDevtool);
 
 module.exports = ReactDOMDebugTool;
 }).call(this,require('_process'))
-},{"./ReactDOMUnknownPropertyDevtool":334,"_process":105,"fbjs/lib/warning":138}],321:[function(require,module,exports){
+},{"./ReactDOMUnknownPropertyDevtool":333,"_process":104,"fbjs/lib/warning":137}],320:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -56993,7 +56960,7 @@ _assign(ReactDOMEmptyComponent.prototype, {
 });
 
 module.exports = ReactDOMEmptyComponent;
-},{"./DOMLazyTree":286,"./ReactDOMComponentTree":318,"object-assign":264}],322:[function(require,module,exports){
+},{"./DOMLazyTree":285,"./ReactDOMComponentTree":317,"object-assign":263}],321:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57172,7 +57139,7 @@ var ReactDOMFactories = mapObject({
 
 module.exports = ReactDOMFactories;
 }).call(this,require('_process'))
-},{"./ReactElement":340,"./ReactElementValidator":341,"_process":105,"fbjs/lib/mapObject":133}],323:[function(require,module,exports){
+},{"./ReactElement":339,"./ReactElementValidator":340,"_process":104,"fbjs/lib/mapObject":132}],322:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57191,7 +57158,7 @@ var ReactDOMFeatureFlags = {
 };
 
 module.exports = ReactDOMFeatureFlags;
-},{}],324:[function(require,module,exports){
+},{}],323:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57231,7 +57198,7 @@ ReactPerf.measureMethods(ReactDOMIDOperations, 'ReactDOMIDOperations', {
 });
 
 module.exports = ReactDOMIDOperations;
-},{"./DOMChildrenOperations":285,"./ReactDOMComponentTree":318,"./ReactPerf":360}],325:[function(require,module,exports){
+},{"./DOMChildrenOperations":284,"./ReactDOMComponentTree":317,"./ReactPerf":359}],324:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57438,7 +57405,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMInput;
 }).call(this,require('_process'))
-},{"./DOMPropertyOperations":289,"./DisabledInputUtils":292,"./LinkedValueUtils":302,"./ReactDOMComponentTree":318,"./ReactUpdates":371,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138,"object-assign":264}],326:[function(require,module,exports){
+},{"./DOMPropertyOperations":288,"./DisabledInputUtils":291,"./LinkedValueUtils":301,"./ReactDOMComponentTree":317,"./ReactUpdates":370,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137,"object-assign":263}],325:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57455,7 +57422,7 @@ module.exports = ReactDOMInput;
 var ReactDOMDebugTool = require('./ReactDOMDebugTool');
 
 module.exports = { debugTool: ReactDOMDebugTool };
-},{"./ReactDOMDebugTool":320}],327:[function(require,module,exports){
+},{"./ReactDOMDebugTool":319}],326:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57567,7 +57534,7 @@ var ReactDOMOption = {
 
 module.exports = ReactDOMOption;
 }).call(this,require('_process'))
-},{"./ReactChildren":307,"./ReactDOMComponentTree":318,"./ReactDOMSelect":328,"_process":105,"fbjs/lib/warning":138,"object-assign":264}],328:[function(require,module,exports){
+},{"./ReactChildren":306,"./ReactDOMComponentTree":317,"./ReactDOMSelect":327,"_process":104,"fbjs/lib/warning":137,"object-assign":263}],327:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57783,7 +57750,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMSelect;
 }).call(this,require('_process'))
-},{"./DisabledInputUtils":292,"./LinkedValueUtils":302,"./ReactDOMComponentTree":318,"./ReactUpdates":371,"_process":105,"fbjs/lib/warning":138,"object-assign":264}],329:[function(require,module,exports){
+},{"./DisabledInputUtils":291,"./LinkedValueUtils":301,"./ReactDOMComponentTree":317,"./ReactUpdates":370,"_process":104,"fbjs/lib/warning":137,"object-assign":263}],328:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57996,7 +57963,7 @@ var ReactDOMSelection = {
 };
 
 module.exports = ReactDOMSelection;
-},{"./getNodeForCharacterOffset":406,"./getTextContentAccessor":407,"fbjs/lib/ExecutionEnvironment":114}],330:[function(require,module,exports){
+},{"./getNodeForCharacterOffset":405,"./getTextContentAccessor":406,"fbjs/lib/ExecutionEnvironment":113}],329:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58023,7 +57990,7 @@ var ReactDOMServer = {
 };
 
 module.exports = ReactDOMServer;
-},{"./ReactDefaultInjection":337,"./ReactServerRendering":368,"./ReactVersion":372}],331:[function(require,module,exports){
+},{"./ReactDefaultInjection":336,"./ReactServerRendering":367,"./ReactVersion":371}],330:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58195,7 +58162,7 @@ ReactPerf.measureMethods(ReactDOMTextComponent.prototype, 'ReactDOMTextComponent
 
 module.exports = ReactDOMTextComponent;
 }).call(this,require('_process'))
-},{"./DOMChildrenOperations":285,"./DOMLazyTree":286,"./ReactDOMComponentTree":318,"./ReactPerf":360,"./escapeTextContentForBrowser":396,"./validateDOMNesting":419,"_process":105,"fbjs/lib/invariant":128,"object-assign":264}],332:[function(require,module,exports){
+},{"./DOMChildrenOperations":284,"./DOMLazyTree":285,"./ReactDOMComponentTree":317,"./ReactPerf":359,"./escapeTextContentForBrowser":395,"./validateDOMNesting":418,"_process":104,"fbjs/lib/invariant":127,"object-assign":263}],331:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58340,7 +58307,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMTextarea;
 }).call(this,require('_process'))
-},{"./DOMPropertyOperations":289,"./DisabledInputUtils":292,"./LinkedValueUtils":302,"./ReactDOMComponentTree":318,"./ReactUpdates":371,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138,"object-assign":264}],333:[function(require,module,exports){
+},{"./DOMPropertyOperations":288,"./DisabledInputUtils":291,"./LinkedValueUtils":301,"./ReactDOMComponentTree":317,"./ReactUpdates":370,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137,"object-assign":263}],332:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -58477,7 +58444,7 @@ module.exports = {
   traverseEnterLeave: traverseEnterLeave
 };
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],334:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],333:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58544,7 +58511,7 @@ var ReactDOMUnknownPropertyDevtool = {
 
 module.exports = ReactDOMUnknownPropertyDevtool;
 }).call(this,require('_process'))
-},{"./DOMProperty":288,"./EventPluginRegistry":296,"_process":105,"fbjs/lib/warning":138}],335:[function(require,module,exports){
+},{"./DOMProperty":287,"./EventPluginRegistry":295,"_process":104,"fbjs/lib/warning":137}],334:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -58619,7 +58586,7 @@ ReactDebugTool.addDevtool(ReactInvalidSetStateWarningDevTool);
 
 module.exports = ReactDebugTool;
 }).call(this,require('_process'))
-},{"./ReactInvalidSetStateWarningDevTool":351,"_process":105,"fbjs/lib/warning":138}],336:[function(require,module,exports){
+},{"./ReactInvalidSetStateWarningDevTool":350,"_process":104,"fbjs/lib/warning":137}],335:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58688,7 +58655,7 @@ var ReactDefaultBatchingStrategy = {
 };
 
 module.exports = ReactDefaultBatchingStrategy;
-},{"./ReactUpdates":371,"./Transaction":389,"fbjs/lib/emptyFunction":120,"object-assign":264}],337:[function(require,module,exports){
+},{"./ReactUpdates":370,"./Transaction":388,"fbjs/lib/emptyFunction":119,"object-assign":263}],336:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58784,7 +58751,7 @@ module.exports = {
   inject: inject
 };
 }).call(this,require('_process'))
-},{"./BeforeInputEventPlugin":280,"./ChangeEventPlugin":284,"./DefaultEventPluginOrder":291,"./EnterLeaveEventPlugin":293,"./HTMLDOMPropertyConfig":300,"./ReactComponentBrowserEnvironment":310,"./ReactDOMComponent":316,"./ReactDOMComponentTree":318,"./ReactDOMEmptyComponent":321,"./ReactDOMTextComponent":331,"./ReactDOMTreeTraversal":333,"./ReactDefaultBatchingStrategy":336,"./ReactDefaultPerf":338,"./ReactEventListener":345,"./ReactInjection":347,"./ReactReconcileTransaction":364,"./SVGDOMPropertyConfig":373,"./SelectEventPlugin":374,"./SimpleEventPlugin":375,"_process":105,"fbjs/lib/ExecutionEnvironment":114}],338:[function(require,module,exports){
+},{"./BeforeInputEventPlugin":279,"./ChangeEventPlugin":283,"./DefaultEventPluginOrder":290,"./EnterLeaveEventPlugin":292,"./HTMLDOMPropertyConfig":299,"./ReactComponentBrowserEnvironment":309,"./ReactDOMComponent":315,"./ReactDOMComponentTree":317,"./ReactDOMEmptyComponent":320,"./ReactDOMTextComponent":330,"./ReactDOMTreeTraversal":332,"./ReactDefaultBatchingStrategy":335,"./ReactDefaultPerf":337,"./ReactEventListener":344,"./ReactInjection":346,"./ReactReconcileTransaction":363,"./SVGDOMPropertyConfig":372,"./SelectEventPlugin":373,"./SimpleEventPlugin":374,"_process":104,"fbjs/lib/ExecutionEnvironment":113}],337:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -59103,7 +59070,7 @@ var ReactDefaultPerf = {
 
 module.exports = ReactDefaultPerf;
 }).call(this,require('_process'))
-},{"./DOMProperty":288,"./ReactDOMComponentTree":318,"./ReactDefaultPerfAnalysis":339,"./ReactMount":353,"./ReactPerf":360,"_process":105,"fbjs/lib/performanceNow":136,"fbjs/lib/warning":138}],339:[function(require,module,exports){
+},{"./DOMProperty":287,"./ReactDOMComponentTree":317,"./ReactDefaultPerfAnalysis":338,"./ReactMount":352,"./ReactPerf":359,"_process":104,"fbjs/lib/performanceNow":135,"fbjs/lib/warning":137}],338:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -59314,7 +59281,7 @@ var ReactDefaultPerfAnalysis = {
 };
 
 module.exports = ReactDefaultPerfAnalysis;
-},{"object-assign":264}],340:[function(require,module,exports){
+},{"object-assign":263}],339:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -59604,7 +59571,7 @@ ReactElement.isValidElement = function (object) {
 
 module.exports = ReactElement;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":313,"./canDefineProperty":393,"_process":105,"fbjs/lib/warning":138,"object-assign":264}],341:[function(require,module,exports){
+},{"./ReactCurrentOwner":312,"./canDefineProperty":392,"_process":104,"fbjs/lib/warning":137,"object-assign":263}],340:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -59888,7 +59855,7 @@ var ReactElementValidator = {
 
 module.exports = ReactElementValidator;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":313,"./ReactElement":340,"./ReactPropTypeLocationNames":361,"./ReactPropTypeLocations":362,"./canDefineProperty":393,"./getIteratorFn":404,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],342:[function(require,module,exports){
+},{"./ReactCurrentOwner":312,"./ReactElement":339,"./ReactPropTypeLocationNames":360,"./ReactPropTypeLocations":361,"./canDefineProperty":392,"./getIteratorFn":403,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],341:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -59919,7 +59886,7 @@ var ReactEmptyComponent = {
 ReactEmptyComponent.injection = ReactEmptyComponentInjection;
 
 module.exports = ReactEmptyComponent;
-},{}],343:[function(require,module,exports){
+},{}],342:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -59998,7 +59965,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactErrorUtils;
 }).call(this,require('_process'))
-},{"_process":105}],344:[function(require,module,exports){
+},{"_process":104}],343:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60032,7 +59999,7 @@ var ReactEventEmitterMixin = {
 };
 
 module.exports = ReactEventEmitterMixin;
-},{"./EventPluginHub":295}],345:[function(require,module,exports){
+},{"./EventPluginHub":294}],344:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60190,7 +60157,7 @@ var ReactEventListener = {
 };
 
 module.exports = ReactEventListener;
-},{"./PooledClass":303,"./ReactDOMComponentTree":318,"./ReactUpdates":371,"./getEventTarget":403,"fbjs/lib/EventListener":113,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/getUnboundedScrollPosition":125,"object-assign":264}],346:[function(require,module,exports){
+},{"./PooledClass":302,"./ReactDOMComponentTree":317,"./ReactUpdates":370,"./getEventTarget":402,"fbjs/lib/EventListener":112,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/getUnboundedScrollPosition":124,"object-assign":263}],345:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60212,7 +60179,7 @@ var ReactFeatureFlags = {
 };
 
 module.exports = ReactFeatureFlags;
-},{}],347:[function(require,module,exports){
+},{}],346:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60251,7 +60218,7 @@ var ReactInjection = {
 };
 
 module.exports = ReactInjection;
-},{"./DOMProperty":288,"./EventPluginHub":295,"./EventPluginUtils":297,"./ReactBrowserEventEmitter":305,"./ReactClass":308,"./ReactComponentEnvironment":311,"./ReactEmptyComponent":342,"./ReactNativeComponent":356,"./ReactPerf":360,"./ReactUpdates":371}],348:[function(require,module,exports){
+},{"./DOMProperty":287,"./EventPluginHub":294,"./EventPluginUtils":296,"./ReactBrowserEventEmitter":304,"./ReactClass":307,"./ReactComponentEnvironment":310,"./ReactEmptyComponent":341,"./ReactNativeComponent":355,"./ReactPerf":359,"./ReactUpdates":370}],347:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60376,7 +60343,7 @@ var ReactInputSelection = {
 };
 
 module.exports = ReactInputSelection;
-},{"./ReactDOMSelection":329,"fbjs/lib/containsNode":117,"fbjs/lib/focusNode":122,"fbjs/lib/getActiveElement":123}],349:[function(require,module,exports){
+},{"./ReactDOMSelection":328,"fbjs/lib/containsNode":116,"fbjs/lib/focusNode":121,"fbjs/lib/getActiveElement":122}],348:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60425,7 +60392,7 @@ var ReactInstanceMap = {
 };
 
 module.exports = ReactInstanceMap;
-},{}],350:[function(require,module,exports){
+},{}],349:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -60442,7 +60409,7 @@ module.exports = ReactInstanceMap;
 var ReactDebugTool = require('./ReactDebugTool');
 
 module.exports = { debugTool: ReactDebugTool };
-},{"./ReactDebugTool":335}],351:[function(require,module,exports){
+},{"./ReactDebugTool":334}],350:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -60481,7 +60448,7 @@ var ReactInvalidSetStateWarningDevTool = {
 
 module.exports = ReactInvalidSetStateWarningDevTool;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/warning":138}],352:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/warning":137}],351:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60532,7 +60499,7 @@ var ReactMarkupChecksum = {
 };
 
 module.exports = ReactMarkupChecksum;
-},{"./adler32":392}],353:[function(require,module,exports){
+},{"./adler32":391}],352:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61013,7 +60980,7 @@ ReactPerf.measureMethods(ReactMount, 'ReactMount', {
 
 module.exports = ReactMount;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":286,"./DOMProperty":288,"./ReactBrowserEventEmitter":305,"./ReactCurrentOwner":313,"./ReactDOMComponentTree":318,"./ReactDOMContainerInfo":319,"./ReactDOMFeatureFlags":323,"./ReactElement":340,"./ReactFeatureFlags":346,"./ReactInstrumentation":350,"./ReactMarkupChecksum":352,"./ReactPerf":360,"./ReactReconciler":365,"./ReactUpdateQueue":370,"./ReactUpdates":371,"./instantiateReactComponent":409,"./setInnerHTML":415,"./shouldUpdateReactComponent":417,"_process":105,"fbjs/lib/emptyObject":121,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],354:[function(require,module,exports){
+},{"./DOMLazyTree":285,"./DOMProperty":287,"./ReactBrowserEventEmitter":304,"./ReactCurrentOwner":312,"./ReactDOMComponentTree":317,"./ReactDOMContainerInfo":318,"./ReactDOMFeatureFlags":322,"./ReactElement":339,"./ReactFeatureFlags":345,"./ReactInstrumentation":349,"./ReactMarkupChecksum":351,"./ReactPerf":359,"./ReactReconciler":364,"./ReactUpdateQueue":369,"./ReactUpdates":370,"./instantiateReactComponent":408,"./setInnerHTML":414,"./shouldUpdateReactComponent":416,"_process":104,"fbjs/lib/emptyObject":120,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],353:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61418,7 +61385,7 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 }).call(this,require('_process'))
-},{"./ReactChildReconciler":306,"./ReactComponentEnvironment":311,"./ReactCurrentOwner":313,"./ReactMultiChildUpdateTypes":355,"./ReactReconciler":365,"./flattenChildren":398,"_process":105,"fbjs/lib/invariant":128}],355:[function(require,module,exports){
+},{"./ReactChildReconciler":305,"./ReactComponentEnvironment":310,"./ReactCurrentOwner":312,"./ReactMultiChildUpdateTypes":354,"./ReactReconciler":364,"./flattenChildren":397,"_process":104,"fbjs/lib/invariant":127}],354:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -61451,7 +61418,7 @@ var ReactMultiChildUpdateTypes = keyMirror({
 });
 
 module.exports = ReactMultiChildUpdateTypes;
-},{"fbjs/lib/keyMirror":131}],356:[function(require,module,exports){
+},{"fbjs/lib/keyMirror":130}],355:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -61549,7 +61516,7 @@ var ReactNativeComponent = {
 
 module.exports = ReactNativeComponent;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128,"object-assign":264}],357:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127,"object-assign":263}],356:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61589,7 +61556,7 @@ var ReactNodeTypes = {
 
 module.exports = ReactNodeTypes;
 }).call(this,require('_process'))
-},{"./ReactElement":340,"_process":105,"fbjs/lib/invariant":128}],358:[function(require,module,exports){
+},{"./ReactElement":339,"_process":104,"fbjs/lib/invariant":127}],357:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -61687,7 +61654,7 @@ var ReactNoopUpdateQueue = {
 
 module.exports = ReactNoopUpdateQueue;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/warning":138}],359:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/warning":137}],358:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61782,7 +61749,7 @@ var ReactOwner = {
 
 module.exports = ReactOwner;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],360:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],359:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61881,7 +61848,7 @@ function _noMeasure(objName, fnName, func) {
 
 module.exports = ReactPerf;
 }).call(this,require('_process'))
-},{"_process":105}],361:[function(require,module,exports){
+},{"_process":104}],360:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61908,7 +61875,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactPropTypeLocationNames;
 }).call(this,require('_process'))
-},{"_process":105}],362:[function(require,module,exports){
+},{"_process":104}],361:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -61931,7 +61898,7 @@ var ReactPropTypeLocations = keyMirror({
 });
 
 module.exports = ReactPropTypeLocations;
-},{"fbjs/lib/keyMirror":131}],363:[function(require,module,exports){
+},{"fbjs/lib/keyMirror":130}],362:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -62312,7 +62279,7 @@ function getClassName(propValue) {
 }
 
 module.exports = ReactPropTypes;
-},{"./ReactElement":340,"./ReactPropTypeLocationNames":361,"./getIteratorFn":404,"fbjs/lib/emptyFunction":120}],364:[function(require,module,exports){
+},{"./ReactElement":339,"./ReactPropTypeLocationNames":360,"./getIteratorFn":403,"fbjs/lib/emptyFunction":119}],363:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -62475,7 +62442,7 @@ _assign(ReactReconcileTransaction.prototype, Transaction.Mixin, Mixin);
 PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
-},{"./CallbackQueue":283,"./PooledClass":303,"./ReactBrowserEventEmitter":305,"./ReactInputSelection":348,"./Transaction":389,"object-assign":264}],365:[function(require,module,exports){
+},{"./CallbackQueue":282,"./PooledClass":302,"./ReactBrowserEventEmitter":304,"./ReactInputSelection":347,"./Transaction":388,"object-assign":263}],364:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62608,7 +62575,7 @@ var ReactReconciler = {
 
 module.exports = ReactReconciler;
 }).call(this,require('_process'))
-},{"./ReactInstrumentation":350,"./ReactRef":366,"_process":105}],366:[function(require,module,exports){
+},{"./ReactInstrumentation":349,"./ReactRef":365,"_process":104}],365:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -62687,7 +62654,7 @@ ReactRef.detachRefs = function (instance, element) {
 };
 
 module.exports = ReactRef;
-},{"./ReactOwner":359}],367:[function(require,module,exports){
+},{"./ReactOwner":358}],366:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -62710,7 +62677,7 @@ var ReactServerBatchingStrategy = {
 };
 
 module.exports = ReactServerBatchingStrategy;
-},{}],368:[function(require,module,exports){
+},{}],367:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62778,7 +62745,7 @@ module.exports = {
   renderToStaticMarkup: renderToStaticMarkup
 };
 }).call(this,require('_process'))
-},{"./ReactDOMContainerInfo":319,"./ReactDefaultBatchingStrategy":336,"./ReactElement":340,"./ReactMarkupChecksum":352,"./ReactServerBatchingStrategy":367,"./ReactServerRenderingTransaction":369,"./ReactUpdates":371,"./instantiateReactComponent":409,"_process":105,"fbjs/lib/emptyObject":121,"fbjs/lib/invariant":128}],369:[function(require,module,exports){
+},{"./ReactDOMContainerInfo":318,"./ReactDefaultBatchingStrategy":335,"./ReactElement":339,"./ReactMarkupChecksum":351,"./ReactServerBatchingStrategy":366,"./ReactServerRenderingTransaction":368,"./ReactUpdates":370,"./instantiateReactComponent":408,"_process":104,"fbjs/lib/emptyObject":120,"fbjs/lib/invariant":127}],368:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -62848,7 +62815,7 @@ _assign(ReactServerRenderingTransaction.prototype, Transaction.Mixin, Mixin);
 PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
-},{"./PooledClass":303,"./Transaction":389,"object-assign":264}],370:[function(require,module,exports){
+},{"./PooledClass":302,"./Transaction":388,"object-assign":263}],369:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -63066,7 +63033,7 @@ var ReactUpdateQueue = {
 
 module.exports = ReactUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":313,"./ReactInstanceMap":349,"./ReactUpdates":371,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],371:[function(require,module,exports){
+},{"./ReactCurrentOwner":312,"./ReactInstanceMap":348,"./ReactUpdates":370,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],370:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -63310,7 +63277,7 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 }).call(this,require('_process'))
-},{"./CallbackQueue":283,"./PooledClass":303,"./ReactFeatureFlags":346,"./ReactPerf":360,"./ReactReconciler":365,"./Transaction":389,"_process":105,"fbjs/lib/invariant":128,"object-assign":264}],372:[function(require,module,exports){
+},{"./CallbackQueue":282,"./PooledClass":302,"./ReactFeatureFlags":345,"./ReactPerf":359,"./ReactReconciler":364,"./Transaction":388,"_process":104,"fbjs/lib/invariant":127,"object-assign":263}],371:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -63325,7 +63292,7 @@ module.exports = ReactUpdates;
 'use strict';
 
 module.exports = '15.0.2';
-},{}],373:[function(require,module,exports){
+},{}],372:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -63626,7 +63593,7 @@ Object.keys(ATTRS).forEach(function (key) {
 });
 
 module.exports = SVGDOMPropertyConfig;
-},{}],374:[function(require,module,exports){
+},{}],373:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -63823,7 +63790,7 @@ var SelectEventPlugin = {
 };
 
 module.exports = SelectEventPlugin;
-},{"./EventConstants":294,"./EventPropagators":298,"./ReactDOMComponentTree":318,"./ReactInputSelection":348,"./SyntheticEvent":380,"./isTextInputElement":411,"fbjs/lib/ExecutionEnvironment":114,"fbjs/lib/getActiveElement":123,"fbjs/lib/keyOf":132,"fbjs/lib/shallowEqual":137}],375:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPropagators":297,"./ReactDOMComponentTree":317,"./ReactInputSelection":347,"./SyntheticEvent":379,"./isTextInputElement":410,"fbjs/lib/ExecutionEnvironment":113,"fbjs/lib/getActiveElement":122,"fbjs/lib/keyOf":131,"fbjs/lib/shallowEqual":136}],374:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -64453,7 +64420,7 @@ var SimpleEventPlugin = {
 
 module.exports = SimpleEventPlugin;
 }).call(this,require('_process'))
-},{"./EventConstants":294,"./EventPropagators":298,"./ReactDOMComponentTree":318,"./SyntheticAnimationEvent":376,"./SyntheticClipboardEvent":377,"./SyntheticDragEvent":379,"./SyntheticEvent":380,"./SyntheticFocusEvent":381,"./SyntheticKeyboardEvent":383,"./SyntheticMouseEvent":384,"./SyntheticTouchEvent":385,"./SyntheticTransitionEvent":386,"./SyntheticUIEvent":387,"./SyntheticWheelEvent":388,"./getEventCharCode":400,"_process":105,"fbjs/lib/EventListener":113,"fbjs/lib/emptyFunction":120,"fbjs/lib/invariant":128,"fbjs/lib/keyOf":132}],376:[function(require,module,exports){
+},{"./EventConstants":293,"./EventPropagators":297,"./ReactDOMComponentTree":317,"./SyntheticAnimationEvent":375,"./SyntheticClipboardEvent":376,"./SyntheticDragEvent":378,"./SyntheticEvent":379,"./SyntheticFocusEvent":380,"./SyntheticKeyboardEvent":382,"./SyntheticMouseEvent":383,"./SyntheticTouchEvent":384,"./SyntheticTransitionEvent":385,"./SyntheticUIEvent":386,"./SyntheticWheelEvent":387,"./getEventCharCode":399,"_process":104,"fbjs/lib/EventListener":112,"fbjs/lib/emptyFunction":119,"fbjs/lib/invariant":127,"fbjs/lib/keyOf":131}],375:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -64493,7 +64460,7 @@ function SyntheticAnimationEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 
 module.exports = SyntheticAnimationEvent;
-},{"./SyntheticEvent":380}],377:[function(require,module,exports){
+},{"./SyntheticEvent":379}],376:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -64532,7 +64499,7 @@ function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
-},{"./SyntheticEvent":380}],378:[function(require,module,exports){
+},{"./SyntheticEvent":379}],377:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -64569,7 +64536,7 @@ function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, 
 SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface);
 
 module.exports = SyntheticCompositionEvent;
-},{"./SyntheticEvent":380}],379:[function(require,module,exports){
+},{"./SyntheticEvent":379}],378:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -64606,7 +64573,7 @@ function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeE
 SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
-},{"./SyntheticMouseEvent":384}],380:[function(require,module,exports){
+},{"./SyntheticMouseEvent":383}],379:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -64870,7 +64837,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   }
 }
 }).call(this,require('_process'))
-},{"./PooledClass":303,"_process":105,"fbjs/lib/emptyFunction":120,"fbjs/lib/warning":138,"object-assign":264}],381:[function(require,module,exports){
+},{"./PooledClass":302,"_process":104,"fbjs/lib/emptyFunction":119,"fbjs/lib/warning":137,"object-assign":263}],380:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -64907,7 +64874,7 @@ function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
-},{"./SyntheticUIEvent":387}],382:[function(require,module,exports){
+},{"./SyntheticUIEvent":386}],381:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -64945,7 +64912,7 @@ function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 
 module.exports = SyntheticInputEvent;
-},{"./SyntheticEvent":380}],383:[function(require,module,exports){
+},{"./SyntheticEvent":379}],382:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65030,7 +64997,7 @@ function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nat
 SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
-},{"./SyntheticUIEvent":387,"./getEventCharCode":400,"./getEventKey":401,"./getEventModifierState":402}],384:[function(require,module,exports){
+},{"./SyntheticUIEvent":386,"./getEventCharCode":399,"./getEventKey":400,"./getEventModifierState":401}],383:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65103,7 +65070,7 @@ function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
-},{"./SyntheticUIEvent":387,"./ViewportMetrics":390,"./getEventModifierState":402}],385:[function(require,module,exports){
+},{"./SyntheticUIEvent":386,"./ViewportMetrics":389,"./getEventModifierState":401}],384:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65149,7 +65116,7 @@ function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
-},{"./SyntheticUIEvent":387,"./getEventModifierState":402}],386:[function(require,module,exports){
+},{"./SyntheticUIEvent":386,"./getEventModifierState":401}],385:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65189,7 +65156,7 @@ function SyntheticTransitionEvent(dispatchConfig, dispatchMarker, nativeEvent, n
 SyntheticEvent.augmentClass(SyntheticTransitionEvent, TransitionEventInterface);
 
 module.exports = SyntheticTransitionEvent;
-},{"./SyntheticEvent":380}],387:[function(require,module,exports){
+},{"./SyntheticEvent":379}],386:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65249,7 +65216,7 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-},{"./SyntheticEvent":380,"./getEventTarget":403}],388:[function(require,module,exports){
+},{"./SyntheticEvent":379,"./getEventTarget":402}],387:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65304,7 +65271,7 @@ function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
-},{"./SyntheticMouseEvent":384}],389:[function(require,module,exports){
+},{"./SyntheticMouseEvent":383}],388:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -65538,7 +65505,7 @@ var Transaction = {
 
 module.exports = Transaction;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],390:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],389:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65566,7 +65533,7 @@ var ViewportMetrics = {
 };
 
 module.exports = ViewportMetrics;
-},{}],391:[function(require,module,exports){
+},{}],390:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -65628,7 +65595,7 @@ function accumulateInto(current, next) {
 
 module.exports = accumulateInto;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/invariant":128}],392:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/invariant":127}],391:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65672,7 +65639,7 @@ function adler32(data) {
 }
 
 module.exports = adler32;
-},{}],393:[function(require,module,exports){
+},{}],392:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -65699,7 +65666,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = canDefineProperty;
 }).call(this,require('_process'))
-},{"_process":105}],394:[function(require,module,exports){
+},{"_process":104}],393:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65732,7 +65699,7 @@ var createMicrosoftUnsafeLocalFunction = function (func) {
 };
 
 module.exports = createMicrosoftUnsafeLocalFunction;
-},{}],395:[function(require,module,exports){
+},{}],394:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -65812,7 +65779,7 @@ function dangerousStyleValue(name, value, component) {
 
 module.exports = dangerousStyleValue;
 }).call(this,require('_process'))
-},{"./CSSProperty":281,"_process":105,"fbjs/lib/warning":138}],396:[function(require,module,exports){
+},{"./CSSProperty":280,"_process":104,"fbjs/lib/warning":137}],395:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65851,7 +65818,7 @@ function escapeTextContentForBrowser(text) {
 }
 
 module.exports = escapeTextContentForBrowser;
-},{}],397:[function(require,module,exports){
+},{}],396:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -65910,7 +65877,7 @@ function findDOMNode(componentOrElement) {
 
 module.exports = findDOMNode;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":313,"./ReactDOMComponentTree":318,"./ReactInstanceMap":349,"./getNativeComponentFromComposite":405,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],398:[function(require,module,exports){
+},{"./ReactCurrentOwner":312,"./ReactDOMComponentTree":317,"./ReactInstanceMap":348,"./getNativeComponentFromComposite":404,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],397:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -65962,7 +65929,7 @@ function flattenChildren(children) {
 
 module.exports = flattenChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":301,"./traverseAllChildren":418,"_process":105,"fbjs/lib/warning":138}],399:[function(require,module,exports){
+},{"./KeyEscapeUtils":300,"./traverseAllChildren":417,"_process":104,"fbjs/lib/warning":137}],398:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -65993,7 +65960,7 @@ var forEachAccumulated = function (arr, cb, scope) {
 };
 
 module.exports = forEachAccumulated;
-},{}],400:[function(require,module,exports){
+},{}],399:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66044,7 +66011,7 @@ function getEventCharCode(nativeEvent) {
 }
 
 module.exports = getEventCharCode;
-},{}],401:[function(require,module,exports){
+},{}],400:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66147,7 +66114,7 @@ function getEventKey(nativeEvent) {
 }
 
 module.exports = getEventKey;
-},{"./getEventCharCode":400}],402:[function(require,module,exports){
+},{"./getEventCharCode":399}],401:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66191,7 +66158,7 @@ function getEventModifierState(nativeEvent) {
 }
 
 module.exports = getEventModifierState;
-},{}],403:[function(require,module,exports){
+},{}],402:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66227,7 +66194,7 @@ function getEventTarget(nativeEvent) {
 }
 
 module.exports = getEventTarget;
-},{}],404:[function(require,module,exports){
+},{}],403:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66268,7 +66235,7 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-},{}],405:[function(require,module,exports){
+},{}],404:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66299,7 +66266,7 @@ function getNativeComponentFromComposite(inst) {
 }
 
 module.exports = getNativeComponentFromComposite;
-},{"./ReactNodeTypes":357}],406:[function(require,module,exports){
+},{"./ReactNodeTypes":356}],405:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66374,7 +66341,7 @@ function getNodeForCharacterOffset(root, offset) {
 }
 
 module.exports = getNodeForCharacterOffset;
-},{}],407:[function(require,module,exports){
+},{}],406:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66408,7 +66375,7 @@ function getTextContentAccessor() {
 }
 
 module.exports = getTextContentAccessor;
-},{"fbjs/lib/ExecutionEnvironment":114}],408:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":113}],407:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66510,7 +66477,7 @@ function getVendorPrefixedEventName(eventName) {
 }
 
 module.exports = getVendorPrefixedEventName;
-},{"fbjs/lib/ExecutionEnvironment":114}],409:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":113}],408:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -66624,7 +66591,7 @@ function instantiateReactComponent(node) {
 
 module.exports = instantiateReactComponent;
 }).call(this,require('_process'))
-},{"./ReactCompositeComponent":312,"./ReactEmptyComponent":342,"./ReactNativeComponent":356,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138,"object-assign":264}],410:[function(require,module,exports){
+},{"./ReactCompositeComponent":311,"./ReactEmptyComponent":341,"./ReactNativeComponent":355,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137,"object-assign":263}],409:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66685,7 +66652,7 @@ function isEventSupported(eventNameSuffix, capture) {
 }
 
 module.exports = isEventSupported;
-},{"fbjs/lib/ExecutionEnvironment":114}],411:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":113}],410:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66727,7 +66694,7 @@ function isTextInputElement(elem) {
 }
 
 module.exports = isTextInputElement;
-},{}],412:[function(require,module,exports){
+},{}],411:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -66763,7 +66730,7 @@ function onlyChild(children) {
 
 module.exports = onlyChild;
 }).call(this,require('_process'))
-},{"./ReactElement":340,"_process":105,"fbjs/lib/invariant":128}],413:[function(require,module,exports){
+},{"./ReactElement":339,"_process":104,"fbjs/lib/invariant":127}],412:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66790,7 +66757,7 @@ function quoteAttributeValueForBrowser(value) {
 }
 
 module.exports = quoteAttributeValueForBrowser;
-},{"./escapeTextContentForBrowser":396}],414:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":395}],413:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66807,7 +66774,7 @@ module.exports = quoteAttributeValueForBrowser;
 var ReactMount = require('./ReactMount');
 
 module.exports = ReactMount.renderSubtreeIntoContainer;
-},{"./ReactMount":353}],415:[function(require,module,exports){
+},{"./ReactMount":352}],414:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66890,7 +66857,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setInnerHTML;
-},{"./createMicrosoftUnsafeLocalFunction":394,"fbjs/lib/ExecutionEnvironment":114}],416:[function(require,module,exports){
+},{"./createMicrosoftUnsafeLocalFunction":393,"fbjs/lib/ExecutionEnvironment":113}],415:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66931,7 +66898,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setTextContent;
-},{"./escapeTextContentForBrowser":396,"./setInnerHTML":415,"fbjs/lib/ExecutionEnvironment":114}],417:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":395,"./setInnerHTML":414,"fbjs/lib/ExecutionEnvironment":113}],416:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -66974,7 +66941,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 }
 
 module.exports = shouldUpdateReactComponent;
-},{}],418:[function(require,module,exports){
+},{}],417:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -67135,7 +67102,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":301,"./ReactCurrentOwner":313,"./ReactElement":340,"./getIteratorFn":404,"_process":105,"fbjs/lib/invariant":128,"fbjs/lib/warning":138}],419:[function(require,module,exports){
+},{"./KeyEscapeUtils":300,"./ReactCurrentOwner":312,"./ReactElement":339,"./getIteratorFn":403,"_process":104,"fbjs/lib/invariant":127,"fbjs/lib/warning":137}],418:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -67507,12 +67474,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = validateDOMNesting;
 }).call(this,require('_process'))
-},{"_process":105,"fbjs/lib/emptyFunction":120,"fbjs/lib/warning":138,"object-assign":264}],420:[function(require,module,exports){
+},{"_process":104,"fbjs/lib/emptyFunction":119,"fbjs/lib/warning":137,"object-assign":263}],419:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":304}],421:[function(require,module,exports){
+},{"./lib/React":303}],420:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -67528,7 +67495,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],422:[function(require,module,exports){
+},{}],421:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -68237,7 +68204,7 @@ function isNullOrUndefined(arg) {
   return  arg == null;
 }
 
-},{"punycode":268,"querystring":275}],423:[function(require,module,exports){
+},{"punycode":267,"querystring":274}],422:[function(require,module,exports){
 (function (Buffer){
 // Regular expression used for basic parsing of the uuid.
 var pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-4][0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -68338,7 +68305,7 @@ var extractVersion = module.exports.version = function (uuid) {
 };
 
 }).call(this,{"isBuffer":require("../is-buffer/index.js")})
-},{"../is-buffer/index.js":154}],424:[function(require,module,exports){
+},{"../is-buffer/index.js":153}],423:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -68402,7 +68369,7 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"_process":105}],425:[function(require,module,exports){
+},{"_process":104}],424:[function(require,module,exports){
 "use strict";
 var window = require("global/window")
 var once = require("once")
@@ -68623,7 +68590,7 @@ function _createXHR(options) {
 
 function noop() {}
 
-},{"global/window":140,"is-function":155,"once":265,"parse-headers":266,"xtend":426}],426:[function(require,module,exports){
+},{"global/window":139,"is-function":154,"once":264,"parse-headers":265,"xtend":425}],425:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

@@ -2257,7 +2257,7 @@ MetaDatumFormItem = React.createClass({
     ref = arg != null ? arg : this.props, get = ref.get, name = ref.name, error = ref.error;
     name += "[" + get.meta_key.uuid + "][]";
     return React.createElement("fieldset", {
-      "className": cx('ui-form-group', 'columned', {
+      "className": cx('ui-form-group columned prh', {
         'error': error
       })
     }, (error ? React.createElement("div", {
@@ -3176,7 +3176,7 @@ callback = (data)-> alert(data.uuid)
 
 FIXME: fails if even required on server (jQuery)!
  */
-var PropTypes, React, ReactDOM, initTypeahead, jQuery, searchResources;
+var PropTypes, React, ReactDOM, f, initTypeahead, jQuery, searchResources;
 
 React = require('react');
 
@@ -3184,22 +3184,25 @@ ReactDOM = require('react-dom');
 
 PropTypes = React.PropTypes;
 
+f = require('active-lodash');
+
 jQuery = require('jquery');
 
 require('@eins78/typeahead.js/dist/typeahead.jquery.js');
 
 searchResources = require('../../lib/search.coffee');
 
-initTypeahead = function(domNode, resourceType, params, callback) {
-  var $input, dataSource;
-  if (!(dataSource = searchResources(resourceType, params))) {
+initTypeahead = function(domNode, resourceType, params, conf, callback) {
+  var $input, localData, searchBackend, typeahead, typeaheadConfig;
+  console.log('conf', conf);
+  localData = conf.dataSource;
+  if (!(searchBackend = searchResources(resourceType, params, localData))) {
     throw new Error("No search backend for '" + resourceType + "'!");
   }
-  $input = jQuery(domNode);
-  return $input.typeahead({
+  typeaheadConfig = {
     hint: false,
     highlight: true,
-    minLength: 1,
+    minLength: conf.minLength,
     classNames: {
       wrapper: 'ui-autocomplete-holder',
       input: 'ui-typeahead-input',
@@ -3208,12 +3211,16 @@ initTypeahead = function(domNode, resourceType, params, callback) {
       cursor: 'ui-autocomplete-cursor',
       suggestion: 'ui-menu-item'
     }
-  }, dataSource).on('keypress', function(event) {
+  };
+  $input = jQuery(domNode);
+  typeahead = $input.typeahead(typeaheadConfig, searchBackend);
+  typeahead.on('keypress', function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
     }
     return null;
-  }).on('typeahead:select typeahead:autocomplete', function(event, item) {
+  });
+  return typeahead.on('typeahead:select typeahead:autocomplete', function(event, item) {
     event.preventDefault();
     $input.typeahead('val', '');
     return callback(item);
@@ -3230,12 +3237,18 @@ module.exports = React.createClass({
     placeholder: PropTypes.string,
     className: PropTypes.string,
     autoFocus: PropTypes.bool,
-    searchParams: PropTypes.object
+    searchParams: PropTypes.object,
+    config: PropTypes.shape({
+      minLength: PropTypes.number
+    })
   },
   componentDidMount: function(arg) {
-    var autoFocus, onSelect, ref, resourceType, searchParams;
-    ref = arg != null ? arg : this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, onSelect = ref.onSelect;
-    initTypeahead(ReactDOM.findDOMNode(this.refs.InputField), resourceType, searchParams, onSelect);
+    var autoFocus, conf, config, onSelect, ref, resourceType, searchParams;
+    ref = arg != null ? arg : this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, config = ref.config, onSelect = ref.onSelect;
+    conf = f.defaults(config, {
+      minLength: 1
+    });
+    initTypeahead(ReactDOM.findDOMNode(this.refs.InputField), resourceType, searchParams, conf, onSelect);
     if (autoFocus) {
       return this.focus();
     }
@@ -3246,20 +3259,19 @@ module.exports = React.createClass({
   render: function() {
     var className, name, placeholder, ref, value;
     ref = this.props, name = ref.name, value = ref.value, placeholder = ref.placeholder, className = ref.className;
-    name = '___autocomplete_for_' + name;
     return React.createElement("input", {
       "ref": "InputField",
-      "className": className + ' typeahead',
       "type": "text",
+      "className": className + ' typeahead',
       "defaultValue": value || '',
       "placeholder": placeholder || 'search…',
-      "name": name
+      "data-autocomplete-for": name
     });
   }
 });
 
 
-},{"../../lib/search.coffee":6,"@eins78/typeahead.js/dist/typeahead.jquery.js":81,"jquery":265,"react":539,"react-dom":400}],39:[function(require,module,exports){
+},{"../../lib/search.coffee":6,"@eins78/typeahead.js/dist/typeahead.jquery.js":81,"active-lodash":83,"jquery":265,"react":539,"react-dom":400}],39:[function(require,module,exports){
 var decorators, f;
 
 f = require('active-lodash');
@@ -3375,7 +3387,11 @@ React = require('react');
 module.exports = React.createClass({
   displayName: 'InputFieldText',
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string,
+    type: React.PropTypes.string,
+    value: React.PropTypes.string,
+    placeholder: React.PropTypes.string,
+    className: React.PropTypes.string
   },
   render: function(arg) {
     var className, name, placeholder, ref, type, value;
@@ -3411,7 +3427,10 @@ module.exports = React.createClass({
     resourceType: React.PropTypes.string.isRequired,
     values: React.PropTypes.array.isRequired,
     active: React.PropTypes.bool.isRequired,
-    multiple: React.PropTypes.bool.isRequired
+    multiple: React.PropTypes.bool.isRequired,
+    autocompleteConfig: React.PropTypes.shape({
+      minLength: React.PropTypes.number
+    })
   },
   getInitialState: function() {
     return {
@@ -3428,10 +3447,12 @@ module.exports = React.createClass({
     });
   },
   onItemAdd: function(item) {
+    this.setState({
+      adding: true
+    });
     if (!f(this.state.values).map('uuid').includes(item.uuid)) {
       return this.setState({
-        values: this.state.values.concat(item),
-        adding: true
+        values: this.state.values.concat(item)
       });
     }
   },
@@ -3449,8 +3470,8 @@ module.exports = React.createClass({
     }
   },
   render: function(arg, state) {
-    var multiple, name, onItemAdd, onItemRemove, ref, resourceType, searchParams, values;
-    ref = arg != null ? arg : this.props, name = ref.name, resourceType = ref.resourceType, searchParams = ref.searchParams, values = ref.values, multiple = ref.multiple;
+    var autocompleteConfig, multiple, name, onItemAdd, onItemRemove, ref, resourceType, searchParams, values;
+    ref = arg != null ? arg : this.props, name = ref.name, resourceType = ref.resourceType, searchParams = ref.searchParams, values = ref.values, multiple = ref.multiple, autocompleteConfig = ref.autocompleteConfig;
     if (state == null) {
       state = this.state;
     }
@@ -3485,6 +3506,7 @@ module.exports = React.createClass({
       "resourceType": resourceType,
       "searchParams": searchParams,
       "onSelect": onItemAdd,
+      "config": autocompleteConfig,
       "ref": 'ListAdder'
     }), React.createElement("a", {
       "className": 'multi-select-input-toggle icon-arrow-down'
@@ -3541,9 +3563,11 @@ module.exports = React.createClass({
 
 
 },{"../forms/input-field-text.cjsx":42,"active-lodash":83,"react":539}],45:[function(require,module,exports){
-var InputResources, MadekPropTypes, React, Text;
+var InputResources, MadekPropTypes, React, Text, f;
 
 React = require('react');
+
+f = require('active-lodash');
 
 MadekPropTypes = require('../madek-prop-types.coffee');
 
@@ -3571,26 +3595,66 @@ module.exports = {
     }
   }),
   Keywords: React.createClass({
-    propTypes: {
-      metaKey: MadekPropTypes.metaKey.isRequired
-    },
     displayName: 'InputKeywords',
+    propTypes: {
+      name: React.PropTypes.string.isRequired,
+      values: React.PropTypes.array.isRequired,
+      get: React.PropTypes.shape({
+        meta_key: MadekPropTypes.metaKey.isRequired,
+        fixed_selection: React.PropTypes.bool.isRequired,
+        keywords: React.PropTypes.arrayOf(MadekPropTypes.keyword)
+      }).isRequired
+    },
     render: function(arg) {
-      var metaKey, params;
-      metaKey = (arg != null ? arg : this.props).metaKey;
-      params = {
-        meta_key_id: metaKey.uuid
-      };
-      return React.createElement(InputResources, React.__spread({}, this.props, {
-        "resourceType": 'Keywords',
-        "searchParams": params
-      }));
+      var autocompleteConfig, fixed_selection, get, keywords, meta_key, name, params, ref, values;
+      ref = arg != null ? arg : this.props, name = ref.name, values = ref.values, get = ref.get;
+      meta_key = get.meta_key, keywords = get.keywords, fixed_selection = get.fixed_selection;
+      if (fixed_selection && !f.present(keywords)) {
+        throw new Error('Input: No Keywords given for fixed selection!');
+      }
+      if (!fixed_selection) {
+        params = {
+          meta_key_id: meta_key.uuid
+        };
+        if (!meta_key.is_extensible) {
+          autocompleteConfig = {
+            minLength: 0
+          };
+        }
+        return React.createElement(InputResources, React.__spread({}, this.props, {
+          "resourceType": 'Keywords',
+          "searchParams": params,
+          "autocompleteConfig": autocompleteConfig
+        }));
+      } else {
+        return React.createElement("div", {
+          "className": 'form-item'
+        }, React.createElement("input", {
+          "type": 'hidden',
+          "name": name,
+          "value": ''
+        }), keywords.map(function(kw) {
+          var isInitiallySelected;
+          isInitiallySelected = f.any(values, {
+            uuid: kw.uuid
+          });
+          return React.createElement("label", {
+            "className": 'col2of6',
+            "key": kw.uuid
+          }, React.createElement("input", {
+            "type": 'checkbox',
+            "name": name,
+            "defaultChecked": isInitiallySelected,
+            "value": kw.uuid
+          }), kw.label);
+        }));
+      }
     }
   })
 };
 
 
-},{"../madek-prop-types.coffee":48,"./input-resources.cjsx":43,"./input-text.cjsx":44,"react":539}],46:[function(require,module,exports){
+},{"../madek-prop-types.coffee":48,"./input-resources.cjsx":43,"./input-text.cjsx":44,"active-lodash":83,"react":539}],46:[function(require,module,exports){
 var $, React, ReactDOM, f, ui;
 
 React = require('react');
@@ -3672,14 +3736,14 @@ module.exports = React.createClass({
   },
   getInitialState: function() {
     return {
-      active: false
+      isClient: false
     };
   },
   componentDidMount: function(arg) {
     var get;
     get = (arg != null ? arg : this.props).get;
     return this.setState({
-      active: true,
+      isClient: true,
       values: get.values
     });
   },
@@ -3697,11 +3761,11 @@ module.exports = React.createClass({
     resourceType = f.last(get.type.split('::'));
     multiple = !(f.includes(['Text', 'TextDate'], resourceType));
     values = state.values || get.literal_values;
-    InputForType = state.active && InputsByType[resourceType] ? InputsByType[resourceType] : InputsByType.Text;
+    InputForType = state.isClient && InputsByType[resourceType] ? InputsByType[resourceType] : InputsByType.Text;
     return React.createElement(InputForType, {
+      "get": get,
       "name": name,
-      "metaKey": get.meta_key,
-      "active": state.active,
+      "active": state.isClient,
       "multiple": multiple,
       "values": values
     });
@@ -3743,11 +3807,17 @@ M.metaKeyId = function(props, propName, _componentName) {
 M.metaKey = PropTypes.shape({
   label: PropTypes.string.isRequired,
   description: PropTypes.string,
-  hint: PropTypes.string
+  hint: PropTypes.string,
+  is_extensible: PropTypes.bool
 });
 
 M.metaDatum = PropTypes.shape({
   meta_key: M.metaKey
+});
+
+M.keyword = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['Keyword'])
 });
 
 ResourceFiltersMetaData = f.values({

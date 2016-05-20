@@ -3165,9 +3165,8 @@ require('@eins78/typeahead.js/dist/typeahead.jquery.js');
 
 searchResources = require('../../lib/search.coffee');
 
-initTypeahead = function(domNode, resourceType, params, conf, callback) {
+initTypeahead = function(domNode, resourceType, params, conf, onSelect, onAdd) {
   var $input, localData, searchBackend, typeahead, typeaheadConfig;
-  console.log('conf', conf);
   localData = conf.dataSource;
   if (!(searchBackend = searchResources(resourceType, params, localData))) {
     throw new Error("No search backend for '" + resourceType + "'!");
@@ -3188,15 +3187,22 @@ initTypeahead = function(domNode, resourceType, params, conf, callback) {
   $input = jQuery(domNode);
   typeahead = $input.typeahead(typeaheadConfig, searchBackend);
   typeahead.on('keypress', function(event) {
+    var value;
     if (event.keyCode === 13) {
       event.preventDefault();
+      if ((value = f.presence($input.typeahead('val')))) {
+        if (f.isFunction(onAdd)) {
+          onAdd(value);
+          $input.typeahead('val', '');
+        }
+      }
     }
     return null;
   });
   return typeahead.on('typeahead:select typeahead:autocomplete', function(event, item) {
     event.preventDefault();
     $input.typeahead('val', '');
-    return callback(item);
+    return onSelect(item);
   });
 };
 
@@ -3206,6 +3212,7 @@ module.exports = React.createClass({
     name: PropTypes.string.isRequired,
     resourceType: PropTypes.string.isRequired,
     onSelect: PropTypes.func.isRequired,
+    onAddValue: PropTypes.func,
     value: PropTypes.string,
     placeholder: PropTypes.string,
     className: PropTypes.string,
@@ -3215,13 +3222,14 @@ module.exports = React.createClass({
       minLength: PropTypes.number
     })
   },
-  componentDidMount: function(arg) {
-    var autoFocus, conf, config, onSelect, ref, resourceType, searchParams;
-    ref = arg != null ? arg : this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, config = ref.config, onSelect = ref.onSelect;
+  componentDidMount: function() {
+    var autoFocus, conf, config, inputDOM, onAddValue, onSelect, ref, resourceType, searchParams;
+    ref = this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, config = ref.config, onSelect = ref.onSelect, onAddValue = ref.onAddValue;
     conf = f.defaults(config, {
       minLength: 1
     });
-    initTypeahead(ReactDOM.findDOMNode(this.refs.InputField), resourceType, searchParams, conf, onSelect);
+    inputDOM = ReactDOM.findDOMNode(this.refs.InputField);
+    initTypeahead(inputDOM, resourceType, searchParams, conf, onSelect, onAddValue);
     if (autoFocus) {
       return this.focus();
     }
@@ -3401,6 +3409,7 @@ module.exports = React.createClass({
     values: React.PropTypes.array.isRequired,
     active: React.PropTypes.bool.isRequired,
     multiple: React.PropTypes.bool.isRequired,
+    extensible: React.PropTypes.bool,
     autocompleteConfig: React.PropTypes.shape({
       minLength: React.PropTypes.number
     })
@@ -3419,17 +3428,26 @@ module.exports = React.createClass({
       values: values
     });
   },
-  onItemAdd: function(item) {
+  _onItemAdd: function(item) {
+    var is_duplicate;
     this.setState({
       adding: true
     });
-    if (!f(this.state.values).map('uuid').includes(item.uuid)) {
+    is_duplicate = f.present(item.uuid) ? f(this.state.values).map('uuid').includes(item.uuid) : f(this.state.values).map('term').includes(item.term);
+    if (!is_duplicate) {
       return this.setState({
         values: this.state.values.concat(item)
       });
     }
   },
-  onItemRemove: function(item, _event) {
+  _onNewItem: function(value) {
+    return this._onItemAdd({
+      type: 'Keyword',
+      label: "* " + value + " * ",
+      term: value
+    });
+  },
+  _onItemRemove: function(item, _event) {
     return this.setState({
       values: f.reject(this.state.values, item)
     });
@@ -3442,13 +3460,11 @@ module.exports = React.createClass({
       return setTimeout(this.refs.ListAdder.focus, 1);
     }
   },
-  render: function(arg, state) {
-    var autocompleteConfig, multiple, name, onItemAdd, onItemRemove, ref, resourceType, searchParams, values;
-    ref = arg != null ? arg : this.props, name = ref.name, resourceType = ref.resourceType, searchParams = ref.searchParams, values = ref.values, multiple = ref.multiple, autocompleteConfig = ref.autocompleteConfig;
-    if (state == null) {
-      state = this.state;
-    }
-    onItemAdd = this.onItemAdd, onItemRemove = this.onItemRemove;
+  render: function() {
+    var _onItemAdd, _onItemRemove, _onNewItem, addNewValue, autocompleteConfig, extensible, multiple, name, ref, resourceType, searchParams, state, values;
+    _onItemAdd = this._onItemAdd, _onItemRemove = this._onItemRemove, _onNewItem = this._onNewItem;
+    ref = this.props, name = ref.name, resourceType = ref.resourceType, searchParams = ref.searchParams, values = ref.values, multiple = ref.multiple, extensible = ref.extensible, autocompleteConfig = ref.autocompleteConfig;
+    state = this.state;
     values = state.values || values;
     if (!AutoComplete) {
       return null;
@@ -3461,32 +3477,44 @@ module.exports = React.createClass({
       "className": 'multi-select-holder'
     }, values.map(function(item) {
       var remover;
-      remover = f.curry(onItemRemove)(item);
+      remover = f.curry(_onItemRemove)(item);
       return React.createElement("li", {
         "className": 'multi-select-tag',
-        "key": item.uuid
+        "key": item.uuid || (typeof item.getId === "function" ? item.getId() : void 0) || JSON.stringify(item)
       }, decorateResource(item), React.createElement("a", {
         "className": 'multi-select-tag-remove',
         "onClick": remover
       }, React.createElement("i", {
         "className": 'icon-close'
       })));
-    }), (multiple || f.empty(values) ? React.createElement("li", {
+    }), (multiple || f.empty(values) ? (extensible && (resourceType === 'Keywords') ? addNewValue = _onNewItem : void 0, React.createElement("li", {
       "className": 'multi-select-input-holder'
     }, React.createElement(AutoComplete, {
       "className": 'multi-select-input',
       "name": name,
       "resourceType": resourceType,
       "searchParams": searchParams,
-      "onSelect": onItemAdd,
+      "onSelect": _onItemAdd,
       "config": autocompleteConfig,
+      "onAddValue": addNewValue,
       "ref": 'ListAdder'
     }), React.createElement("a", {
       "className": 'multi-select-input-toggle icon-arrow-down'
-    })) : void 0))), f.map(f(values).pluck('uuid').presence() || [''], function(val) {
+    }))) : void 0))), f.map(f(values).presence() || [''], function(item) {
+      var fieldName, val;
+      if (item.uuid) {
+        fieldName = name;
+        val = item.uuid;
+      } else if (item.type === 'Keyword') {
+        fieldName = name + '[term]';
+        val = item.term;
+      } else {
+        fieldName = name;
+        val = item.val;
+      }
       return React.createElement(InputFieldText, {
         "type": 'hidden',
-        "name": name,
+        "name": fieldName,
         "value": val,
         "key": val || 'empty'
       });
@@ -3597,6 +3625,7 @@ module.exports = {
         return React.createElement(InputResources, React.__spread({}, this.props, {
           "resourceType": 'Keywords',
           "searchParams": params,
+          "extensible": meta_key.is_extensible,
           "autocompleteConfig": autocompleteConfig
         }));
       } else {

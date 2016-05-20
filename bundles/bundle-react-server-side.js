@@ -3046,7 +3046,11 @@ xhr = require('xhr');
 
 getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
 
-UILibrary = require('../index.coffee');
+UILibrary = {
+  Deco: {
+    MediaResourcesBox: require('../decorators/MediaResourcesBox.cjsx')
+  }
+};
 
 Preloader = require('../ui-components/Preloader.cjsx');
 
@@ -3066,13 +3070,24 @@ module.exports = React.createClass({
   },
   componentDidMount: function() {
     this.setState({
-      isClient: true
+      isClient: true,
+      fetching: true
     });
     return this._getPropsAsync((function(_this) {
-      return function(props) {
-        return _this.setState({
-          fetchedProps: props
+      return function(err, props) {
+        _this.setState({
+          fetching: false
         });
+        if (err) {
+          console.error('Error while fetching data!\n\n', err);
+          return _this.setState({
+            fetchError: err
+          });
+        } else {
+          return _this.setState({
+            fetchedProps: props
+          });
+        }
       };
     })(this));
   },
@@ -3083,30 +3098,43 @@ module.exports = React.createClass({
     }, (function(_this) {
       return function(err, res, data) {
         var props;
+        if (err || res.statusCode >= 400) {
+          return callback(err || data);
+        }
         props = _this.props.initial_props;
         props.get = _this.props.json_path ? f.get(data, _this.props.json_path) : data;
         props.authToken = getRailsCSRFToken();
-        return callback(props);
+        return callback(null, props);
       };
     })(this));
   },
   render: function() {
-    var UIComponent;
-    UIComponent = f.get(UILibrary, this.props.component);
-    return React.createElement("div", {
+    var UIComponent, errorMessage;
+    if (!(UIComponent = f.get(UILibrary, this.props.component))) {
+      throw new Error('Invalid UI Component! ' + this.props.component);
+    }
+    return errorMessage = React.createElement("div", {
       "className": 'ui_async-view'
-    }, (!this.state.isClient || !f.present(this.state.fetchedProps) ? React.createElement("div", {
+    }, (!this.state.isClient || this.state.fetching ? React.createElement("div", {
       "style": {
         height: '250px'
       }
     }, React.createElement("div", {
       "className": 'pvh mtm'
-    }, React.createElement(Preloader, null))) : UIComponent ? React.createElement(UIComponent, this.state.fetchedProps) : void 0));
+    }, React.createElement(Preloader, null))) : f.present(this.state.fetchedProps) ? React.createElement(UIComponent, this.state.fetchedProps) : React.createElement("div", {
+      "style": {
+        height: '250px'
+      }
+    }, React.createElement("div", {
+      "className": 'pvh mth mbl'
+    }, React.createElement("div", {
+      "className": 'title-l by-center'
+    }, "Error!")))));
   }
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":2,"../index.coffee":35,"../ui-components/Preloader.cjsx":61,"active-lodash":80,"react":419,"react-dom":275,"xhr":424}],37:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2,"../decorators/MediaResourcesBox.cjsx":30,"../ui-components/Preloader.cjsx":61,"active-lodash":80,"react":419,"react-dom":275,"xhr":424}],37:[function(require,module,exports){
 
 /*
 

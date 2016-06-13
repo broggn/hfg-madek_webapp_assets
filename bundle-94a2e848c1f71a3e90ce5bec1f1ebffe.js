@@ -4207,18 +4207,19 @@ module.exports = React.createClass({
     });
   },
   _onItemAdd: function(item) {
-    var is_duplicate;
+    var is_duplicate, newValues;
     this.setState({
       adding: true
     });
     is_duplicate = f.present(item.uuid) ? f(this.state.values).map('uuid').includes(item.uuid) : f(this.state.values).map('term').includes(item.term);
+    newValues = this.state.values.concat(item);
     if (!is_duplicate) {
       this.setState({
-        values: this.state.values.concat(item)
+        values: newValues
       });
     }
     if (this.props.onChange) {
-      return this.props.onChange(this.state.values);
+      return this.props.onChange(newValues);
     }
   },
   _onNewItem: function(value) {
@@ -4229,11 +4230,13 @@ module.exports = React.createClass({
     });
   },
   _onItemRemove: function(item, _event) {
+    var newValues;
+    newValues = f.reject(this.state.values, item);
     this.setState({
-      values: f.reject(this.state.values, item)
+      values: newValues
     });
     if (this.props.onChange) {
-      return this.props.onChange(this.state.values);
+      return this.props.onChange(newValues);
     }
   },
   componentDidUpdate: function() {
@@ -4330,48 +4333,34 @@ module.exports = React.createClass({
     };
   },
   componentWillMount: function() {
-    return this._ensureValues(this.props.values);
-  },
-  _ensureValues: function(values) {
-    values = f.map(values, function(value) {
-      return value;
-    });
-    if (f.last(values) !== '') {
-      if (this.props.multiple || f.isEmpty(values)) {
-        values.push('');
-      }
-    }
     return this.setState({
-      values: values
+      values: this.props.values
     });
   },
-  _onChange: function(n, event) {
-    this.state.values[n] = event.target.value;
-    this._ensureValues(this.state.values);
+  _onChange: function(event) {
+    var newValues;
+    newValues = [event.target.value];
+    this.setState({
+      values: newValues
+    });
     if (this.props.onChange) {
-      return this.props.onChange(this.state.values);
+      return this.props.onChange(newValues);
     }
   },
   render: function(arg) {
-    var active, get, multiple, name, onChange, ref, values;
+    var active, get, multiple, name, onChange, ref, value, values;
     ref = arg != null ? arg : this.props, get = ref.get, name = ref.name, values = ref.values, active = ref.active, multiple = ref.multiple;
     onChange = this.props.onChange ? this._onChange : null;
     return React.createElement("div", {
       "className": 'form-item'
     }, React.createElement("div", {
       "className": 'form-item-values'
-    }, this.state.values.map((function(_this) {
-      return function(textValue, n) {
-        var lc;
-        lc = onChange ? onChange.bind(_this, n) : null;
-        return React.createElement(InputFieldText, {
-          "onChange": lc,
-          "name": name,
-          "value": textValue,
-          "key": get.meta_key_id + '_' + n
-        });
-      };
-    })(this))));
+    }, (this.state.values.length === 0 ? value = '' : value = this.state.values[0], React.createElement(InputFieldText, {
+      "onChange": this._onChange,
+      "name": name,
+      "value": value,
+      "key": get.meta_key_id
+    }))));
   }
 });
 

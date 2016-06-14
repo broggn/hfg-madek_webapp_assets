@@ -168,6 +168,10 @@ en:
   meta_data_delete_confirm_msg: Are you sure you want to delete these values?
   meta_data_header_text: Values
   meta_data_batch_items_selected: entries selected
+  meta_data_edit_media_entry_saved: Entry was saved.
+  meta_data_edit_media_entry_published: Entry was saved and published.
+  meta_data_edit_media_entry_saved_missing: Entry was saved but there are missing mandatory fields.
+  meta_data_edit_collection_saved: Collection was saved.
   people_toolbar_header: Related Resources
   group_edit_form_new_member_login: New group member login
   group_toolbar_header_entrusted_resources: Entrusted Media Entries

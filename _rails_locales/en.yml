@@ -62,6 +62,11 @@ en:
   login_box_login_btn: Log In
   login_box_external: ZHdK Login
   login_box_internal: External
+  login_box_title: Digital Area ZHdK
+  login_box_cite: ''
+  login_box_author: ''
+  login_box_hint_first_line: ''
+  login_box_hint_second_line: ''
   permission_subject_title_users: Users
   permission_subject_title_groups: Groups
   permission_subject_title_apiapps: API Clients

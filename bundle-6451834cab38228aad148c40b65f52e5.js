@@ -7007,7 +7007,7 @@ module.exports = React.createClass({
   },
   componentWillMount: function() {
     return this.setState({
-      showModal: this.props.showModal
+      showModal: this.props.get.new_collection !== null
     });
   },
   componentDidMount: function() {
@@ -7028,10 +7028,8 @@ module.exports = React.createClass({
     return false;
   },
   render: function(arg) {
-    var authToken, dashget, get, newget, ref;
+    var authToken, get, ref;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
-    dashget = get.hash.user_dashboard;
-    newget = get.hash.new_collection;
     return React.createElement("div", {
       "style": {
         margin: '0px',
@@ -7043,14 +7041,14 @@ module.exports = React.createClass({
     }, React.createElement(HeaderPrimaryButton, {
       "icon": null,
       "text": t('dashboard_create_media_entry_btn'),
-      "href": dashget.new_media_entry_url
+      "href": get.new_media_entry_url
     }), React.createElement(HeaderPrimaryButton, {
       "icon": 'plus',
       "text": t('dashboard_create_collection_btn'),
-      "href": dashget.new_collection_url,
+      "href": get.new_collection_url,
       "onClick": this._onCreateSetClick
     })), (this.state.showModal ? React.createElement(CreateCollection, {
-      "get": newget,
+      "get": get.new_collection,
       "async": this.state.mounted,
       "authToken": authToken,
       "onClose": this._onClose
@@ -7488,31 +7486,38 @@ module.exports = React.createClass({
       get: null
     };
   },
+  componentWillMount: function() {
+    return this.setState({
+      get: this.props.get
+    });
+  },
   componentDidMount: function() {
     this.setState({
       mounted: true
     });
-    this.setState({
-      loading: true
-    });
-    return loadXhr({
-      method: 'GET',
-      url: '/my/new_collection?___sparse={"hash":{"new_collection":{}}}'
-    }, (function(_this) {
-      return function(result, json) {
-        if (result === 'success') {
-          return _this.setState({
-            loading: false,
-            get: json.hash.new_collection
-          });
-        } else {
-          console.error('Cannot load dialog: ' + JSON.stringify(json));
-          return _this.setState({
-            loading: false
-          });
-        }
-      };
-    })(this));
+    if (!this.state.get) {
+      this.setState({
+        loading: true
+      });
+      return loadXhr({
+        method: 'GET',
+        url: '/my/new_collection?___sparse={"dashboard_header":{"new_collection":{}}}'
+      }, (function(_this) {
+        return function(result, json) {
+          if (result === 'success') {
+            return _this.setState({
+              loading: false,
+              get: json.dashboard_header.new_collection
+            });
+          } else {
+            console.error('Cannot load dialog: ' + JSON.stringify(json));
+            return _this.setState({
+              loading: false
+            });
+          }
+        };
+      })(this));
+    }
   },
   _onCancel: function(event) {
     event.preventDefault();
@@ -7562,7 +7567,12 @@ module.exports = React.createClass({
   render: function(arg) {
     var alerts, authToken, error, get, onClose, ref;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, onClose = ref.onClose;
-    error = this.state.error || get.error;
+    if (!this.state.get) {
+      return React.createElement(Modal, {
+        "loading": true
+      });
+    }
+    error = this.state.error || this.state.get.error;
     if (this.state.get) {
       get = this.state.get;
     }

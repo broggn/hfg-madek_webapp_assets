@@ -2769,7 +2769,7 @@ module.exports = React.createClass({
 
 
 },{"../../lib/string-translation.js":10,"../views/HeaderButton.cjsx":86,"../views/PageContent.cjsx":92,"../views/PageContentHeader.cjsx":93,"../views/TabContent.cjsx":95,"./ResourceMetaDataForm.cjsx":36,"react":559}],39:[function(require,module,exports){
-var HeaderButton, PageContent, PageContentHeader, React, ResourceMetaDataFormPerContext, Tab, TabContent, Tabs, f, t;
+var HeaderButton, PageContent, PageContentHeader, React, ResourceMetaDataFormPerContext, ResourceThumbnail, Tab, TabContent, Tabs, Thumbnail, f, t;
 
 React = require('react');
 
@@ -2790,6 +2790,10 @@ Tabs = require('../views/Tabs.cjsx');
 Tab = require('../views/Tab.cjsx');
 
 HeaderButton = require('../views/HeaderButton.cjsx');
+
+ResourceThumbnail = require('./ResourceThumbnail.cjsx');
+
+Thumbnail = require('../ui-components/Thumbnail.cjsx');
 
 module.exports = React.createClass({
   displayName: 'ResourceMetaDataPage',
@@ -2908,12 +2912,13 @@ module.exports = React.createClass({
     });
   },
   render: function(arg) {
-    var authToken, currentContext, currentContextId, get, ref;
+    var authToken, className, currentContext, currentContextId, get, ref;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
     currentContextId = this.state.currentContextId;
     if (currentContextId) {
       currentContext = get.meta_data.contexts_by_context_id[currentContextId];
     }
+    className = get.resource_index.type === 'Collection' ? 'media-set ui-thumbnail' : 'image media-entry ui-thumbnail';
     return React.createElement(PageContent, null, React.createElement(PageContentHeader, {
       "icon": 'pen',
       "title": t('media_entry_meta_data_header_prefix') + get.title
@@ -2944,6 +2949,53 @@ module.exports = React.createClass({
       };
     })(this))), React.createElement(TabContent, null, React.createElement("div", {
       "className": "bright pal rounded-bottom rounded-top-right ui-container"
+    }, React.createElement("div", {
+      "className": 'ui-container table'
+    }, React.createElement("div", {
+      "className": "app-body-sidebar table-cell ui-container table-side"
+    }, React.createElement("ul", {
+      "className": "ui-resources grid"
+    }, React.createElement("li", {
+      "className": "ui-resource mrl"
+    }, React.createElement("div", {
+      "className": className
+    }, React.createElement("div", {
+      "className": "ui-thumbnail-privacy"
+    }, React.createElement("i", {
+      "className": "icon-privacy-private",
+      "title": "Diese Inhalte sind nur für Sie zugänglich"
+    })), React.createElement("div", {
+      "className": "ui-thumbnail-image-wrapper"
+    }, React.createElement("div", {
+      "className": "ui-has-magnifier"
+    }, React.createElement("div", {
+      "className": "ui-thumbnail-image-holder"
+    }, React.createElement("div", {
+      "className": "ui-thumbnail-table-image-holder"
+    }, React.createElement("div", {
+      "className": "ui-thumbnail-cell-image-holder"
+    }, React.createElement("div", {
+      "className": "ui-thumbnail-inner-image-holder"
+    }, React.createElement("img", {
+      "className": "ui-thumbnail-image",
+      "src": get.resource_index.image_url
+    }))))), (get.image_url ? React.createElement("a", {
+      "className": "ui-magnifier",
+      "href": get.image_url,
+      "id": "ui-image-zoom",
+      "target": "_blank"
+    }, React.createElement("div", {
+      "className": "icon-magnifier bright"
+    })) : void 0))), React.createElement("div", {
+      "className": "ui-thumbnail-meta"
+    }, React.createElement("h3", {
+      "className": "ui-thumbnail-meta-title"
+    }, get.resource_index.title), React.createElement("h4", {
+      "className": "ui-thumbnail-meta-subtitle"
+    }, get.resource_index.subtitle)))))), React.createElement("div", {
+      "className": "app-body-content table-cell ui-container table-substance ui-container"
+    }, React.createElement("div", {
+      "className": "active"
     }, React.createElement(ResourceMetaDataFormPerContext, {
       "hasAnyChanges": this._changesForAll(),
       "validityForAll": this._validityForAll(),
@@ -2952,12 +3004,12 @@ module.exports = React.createClass({
       "models": this.state.models,
       "authToken": authToken,
       "context": currentContext
-    }))));
+    })))))));
   }
 });
 
 
-},{"../../lib/string-translation.js":10,"../views/HeaderButton.cjsx":86,"../views/PageContent.cjsx":92,"../views/PageContentHeader.cjsx":93,"../views/Tab.cjsx":94,"../views/TabContent.cjsx":95,"../views/Tabs.cjsx":96,"./ResourceMetaDataFormPerContext.cjsx":37,"active-lodash":103,"react":559}],40:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../ui-components/Thumbnail.cjsx":73,"../views/HeaderButton.cjsx":86,"../views/PageContent.cjsx":92,"../views/PageContentHeader.cjsx":93,"../views/Tab.cjsx":94,"../views/TabContent.cjsx":95,"../views/Tabs.cjsx":96,"./ResourceMetaDataFormPerContext.cjsx":37,"./ResourceThumbnail.cjsx":41,"active-lodash":103,"react":559}],40:[function(require,module,exports){
 var ApiClientIndex, AutoComplete, GroupIndex, PermissionsBySubjectType, PermissionsOverview, PermissionsSubject, PermissionsSubjectHeader, React, RemoveButton, UserIndex, ampersandReactMixin, f, t, url;
 
 React = require('react');

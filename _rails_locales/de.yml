@@ -147,10 +147,12 @@ de:
   media_entry_media_import_header: Medien importieren
   media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
   media_entry_media_import_inside: Dateien auf dieses Feld ziehen oder
+  media_entry_media_import_gotodrafts: Gehe zu ungesicherten Einträgen
+  media_entry_media_import_notes_title: Hinweise
+  media_entry_media_import_notes_msg: 'Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.'
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_back_btn: Zurück
   media_entry_upload_btn: Importieren
-  media_entry_notices_title: Hinweise
   media_entry_export_title: Eintrag exportieren
   media_entry_export_close: Schliessen
   media_entry_export_download: Download

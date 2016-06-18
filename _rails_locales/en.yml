@@ -144,11 +144,13 @@ en:
   media_entry_file_information_title: File Information
   media_entry_media_import_header: Media import
   media_entry_media_import_title: 'Add pictures, videos, audio file, or other documents.'
-  media_entry_media_import_inside: Drop files anywhere to upload or
+  media_entry_media_import_inside: Drop files here or
+  media_entry_media_import_gotodrafts: Go to Drafts
+  media_entry_media_import_notes_title: Hints
+  media_entry_media_import_notes_msg: 'Image (TIFF, JPEG, PNG) and audio/video files in the most common formats are directly processed and displayed. Image in the CMYK color model can not be displayed correctly, please convert them to RGB before importing.'
   media_entry_media_import_inside_nojs: Select Files
   media_entry_back_btn: Back
   media_entry_upload_btn: Upload
-  media_entry_notices_title: Notices
   media_entry_export_title: Export Entry
   media_entry_export_close: Close
   media_entry_export_download: Download

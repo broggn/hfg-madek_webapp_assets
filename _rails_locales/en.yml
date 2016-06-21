@@ -179,6 +179,8 @@ en:
   meta_data_edit_media_entry_published: Entry was saved and published.
   meta_data_edit_media_entry_saved_missing: Entry was saved but there are missing mandatory fields.
   meta_data_edit_collection_saved: Collection was saved.
+  meta_data_batch_title_pre: 'Metadaten für '
+  meta_data_batch_title_post: ' Einträge gleichzeitig editieren'
   people_toolbar_header: Related Resources
   group_edit_form_new_member_login: New group member login
   group_toolbar_header_entrusted_resources: Entrusted Media Entries

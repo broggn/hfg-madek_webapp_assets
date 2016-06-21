@@ -181,6 +181,8 @@ de:
   meta_data_edit_media_entry_published: Eintrag wurde gespeichert und publiziert.
   meta_data_edit_media_entry_saved_missing: Eintrag wurde gespeichert aber es wurden nicht alle Pflichtfelder ausgefüllt.
   meta_data_edit_collection_saved: Set wurde gespeichert.
+  meta_data_batch_title_pre: 'Metadaten für '
+  meta_data_batch_title_post: ' Einträge gleichzeitig editieren'
   people_toolbar_header: Ähnliche Inhalte
   group_edit_form_new_member_login: Login des neuen Mitglieds dieser Gruppe
   group_toolbar_header_entrusted_resources: Mir anvertraute Medieneinträge

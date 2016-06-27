@@ -230,6 +230,9 @@ en:
   meta_data_batch_hint_value: Value and text
   meta_data_batch_success: Succesfully updated meta data.
   meta_data_batch_failure: Meta data could not be updated.
+  batch_add_to_collection_pre: ' Add '
+  batch_add_to_collection_post: ' entries to set'
+  batch_add_to_collection_hint: Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.
   resource_select_collection_title: Add to/remove from set
   resource_select_collection_search: Search
   resource_select_collection_search_placeholder: Search

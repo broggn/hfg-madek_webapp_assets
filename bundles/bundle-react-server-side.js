@@ -8735,7 +8735,7 @@ module.exports = React.createClass({
     });
   },
   render: function(arg) {
-    var boxGet, name, onChange, props, ref1, spacerDiv, state;
+    var boxGet, name, props, ref1, spacerDiv, state;
     ref1 = arg != null ? arg : this, props = ref1.props, state = ref1.state;
     name = 'media_entry';
     if (!state.isClient) {
@@ -8780,9 +8780,8 @@ module.exports = React.createClass({
       "style": {
         'display': 'none'
       },
-      "name": (name + '[media_file][]', onChange = {
-        onFilesSelect: this.onFilesSelect
-      })
+      "name": name + '[media_file][]',
+      "onChange": this.onFilesSelect
     })))))), React.createElement(ActionsBar, null, React.createElement(Button, {
       "mod": 'primary',
       "mods": 'large',

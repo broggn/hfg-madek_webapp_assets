@@ -20,7 +20,6 @@ en:
       group:
         update: Update group
         create: Create group
-  '': ''
   authentication_groups: System Groups
   batch_add_to_collection_hint: Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.
   batch_add_to_collection_post: ' entries to set'
@@ -206,7 +205,6 @@ en:
   resource_select_collection_title: Add to/remove from set
   resources_header_show_all: show all
   search_btn_search: Search
-  sitemap_admin: Admin
   sitemap_api: API
   sitemap_collections: Sets
   sitemap_entries: Media Entries
@@ -245,8 +243,11 @@ en:
   sitemap_search: Search
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out
+  user_menu_upload: Upload Media
+  user_menu_admin_ui: Open Admin Interface
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group
   workgroup_members_table_is_member: Member?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Members
+  app_notice_logged_out: You have logged out.

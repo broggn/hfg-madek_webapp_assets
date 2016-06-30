@@ -1380,7 +1380,7 @@ module.exports = AppResource.extend({
 
 
 },{"./person.coffee":26,"./shared/app-resource.coffee":28}],34:[function(require,module,exports){
-var BatchHintBox, Button, HeaderButton, Icon, InputFieldText, PageContent, PageContentHeader, Preloader, RailsForm, React, ResourceThumbnail, ResourcesBatchBox, SelectCollectionDialog, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, formXhr, setUrlParams, t;
+var BatchHintBox, Button, Icon, InputFieldText, PageContent, PageContentHeader, Preloader, RailsForm, React, ResourceThumbnail, ResourcesBatchBox, SelectCollectionDialog, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, formXhr, setUrlParams, t;
 
 React = require('react');
 
@@ -1397,8 +1397,6 @@ TabContent = require('../views/TabContent.cjsx');
 Tabs = require('../views/Tabs.cjsx');
 
 Tab = require('../views/Tab.cjsx');
-
-HeaderButton = require('../views/HeaderButton.cjsx');
 
 ResourceThumbnail = require('./ResourceThumbnail.cjsx');
 
@@ -1599,8 +1597,8 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":2,"../../lib/form-xhr.coffee":3,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../lib/forms/input-field-text.cjsx":56,"../lib/forms/rails-form.cjsx":61,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../ui-components/Preloader.cjsx":78,"../ui-components/Thumbnail.cjsx":80,"../views/Collection/SelectCollectionDialog.cjsx":92,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],35:[function(require,module,exports){
-var AsyncModal, BatchAddToSet, BatchHintBox, HeaderButton, PageContent, PageContentHeader, React, ResourceThumbnail, ResourcesBatchBox, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, setUrlParams, t;
+},{"../../lib/batch-diff.coffee":2,"../../lib/form-xhr.coffee":3,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../lib/forms/input-field-text.cjsx":56,"../lib/forms/rails-form.cjsx":61,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../ui-components/Preloader.cjsx":78,"../ui-components/Thumbnail.cjsx":80,"../views/Collection/SelectCollectionDialog.cjsx":92,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],35:[function(require,module,exports){
+var AsyncModal, BatchAddToSet, BatchHintBox, PageContent, PageContentHeader, React, ResourceThumbnail, ResourcesBatchBox, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, setUrlParams, t;
 
 React = require('react');
 
@@ -1617,8 +1615,6 @@ TabContent = require('../views/TabContent.cjsx');
 Tabs = require('../views/Tabs.cjsx');
 
 Tab = require('../views/Tab.cjsx');
-
-HeaderButton = require('../views/HeaderButton.cjsx');
 
 ResourceThumbnail = require('./ResourceThumbnail.cjsx');
 
@@ -1674,7 +1670,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":2,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Thumbnail.cjsx":80,"../views/Collection/AsyncModal.cjsx":85,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchAddToSet.cjsx":34,"./BatchHintBox.cjsx":36,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],36:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":2,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Thumbnail.cjsx":80,"../views/Collection/AsyncModal.cjsx":85,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchAddToSet.cjsx":34,"./BatchHintBox.cjsx":36,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],36:[function(require,module,exports){
 var React, t;
 
 React = require('react');
@@ -1757,7 +1753,11 @@ module.exports = React.createClass({
       "action": get.submit_url,
       "method": 'put',
       "authToken": authToken
-    }, f.map(get.batch_entries, function(batch_entry) {
+    }, React.createElement("input", {
+      "type": 'hidden',
+      "name": 'return_to',
+      "value": this.props.get.return_to
+    }), f.map(get.batch_entries, function(batch_entry) {
       return React.createElement("input", {
         "name": "batch_resource_meta_data[id][]",
         "key": batch_entry.uuid,
@@ -1959,7 +1959,7 @@ compare_datum_between_entries = function(refernce_vocabulary, reference_datum, a
 
 
 },{"../../lib/string-translation":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/input-meta-datum.cjsx":62,"../lib/madek-prop-types.coffee":63,"./BatchHintBox.cjsx":36,"active-lodash":124,"classnames":343,"react":714}],38:[function(require,module,exports){
-var BatchHintBox, BatchResourceMetaDataForm, HeaderButton, MadekPropTypes, MetaKeyFormLabel, PageContent, PageContentHeader, RailsForm, React, ResourcesBatchBox, TabContent, cx, f, t;
+var BatchHintBox, BatchResourceMetaDataForm, Button, HeaderButton, Icon, MadekPropTypes, MetaKeyFormLabel, PageContent, PageContentHeader, RailsForm, React, ResourcesBatchBox, TabContent, cx, f, setUrlParams, t;
 
 React = require('react');
 
@@ -1968,6 +1968,12 @@ f = require('active-lodash');
 cx = require('classnames');
 
 t = require('../../lib/string-translation')('de');
+
+setUrlParams = require('../../lib/set-params-for-url.coffee');
+
+Button = require('../ui-components/Button.cjsx');
+
+Icon = require('../ui-components/Icon.cjsx');
 
 RailsForm = require('../lib/forms/rails-form.cjsx');
 
@@ -1992,26 +1998,22 @@ PageContentHeader = require('../views/PageContentHeader.cjsx');
 module.exports = React.createClass({
   displayName: 'BatchResourceMetaDataPage',
   render: function(arg) {
-    var authToken, get, pagePath, ref, title;
+    var authToken, editByContextTitle, editByContextUrl, get, pageTitle, ref;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
-    title = t('meta_data_batch_title_pre') + get.batch_entries.length + t('meta_data_batch_title_post');
-    pagePath = '/entries/batch_edit_context_meta_data';
+    pageTitle = t('meta_data_batch_title_pre') + get.batch_entries.length + t('meta_data_batch_title_post');
+    editByContextTitle = t('media_entry_meta_data_edit_by_context_btn');
+    editByContextUrl = setUrlParams('/entries/batch_edit_context_meta_data', {
+      id: f.map(get.batch_entries, 'uuid'),
+      return_to: get.return_to
+    });
     return React.createElement(PageContent, null, React.createElement(PageContentHeader, {
       "icon": 'pen',
-      "title": title
-    }, React.createElement(HeaderButton, {
-      "icon": 'arrow-up',
-      "title": 'TODO',
-      "name": 'TODO',
-      "href": pagePath,
-      "method": 'get',
-      "authToken": authToken
-    }, f.map(get.batch_entries, function(entry) {
-      return React.createElement("input", {
-        "type": 'hidden',
-        "name": 'id[]',
-        "value": entry.uuid
-      });
+      "title": pageTitle
+    }, React.createElement(Button, {
+      "title": editByContextTitle,
+      "href": editByContextUrl
+    }, React.createElement(Icon, {
+      "i": 'arrow-up'
     }))), React.createElement(ResourcesBatchBox, {
       "get": get,
       "authToken": authToken
@@ -2025,7 +2027,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/madek-prop-types.coffee":63,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./BatchHintBox.cjsx":36,"./BatchResourceMetaDataForm.cjsx":37,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"classnames":343,"react":714}],39:[function(require,module,exports){
+},{"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/madek-prop-types.coffee":63,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./BatchHintBox.cjsx":36,"./BatchResourceMetaDataForm.cjsx":37,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"classnames":343,"react":714}],39:[function(require,module,exports){
 var CollageLoggedIn, PrettyThumbs, React, ReactDOM, f, t;
 
 React = require('react');
@@ -2411,14 +2413,18 @@ module.exports = React.createClass({
     }
   },
   _onBatchEdit: function(event) {
-    var newUrl, selected, selection;
+    var batchEditUrl, currentUrl, selected, selection;
     event.preventDefault();
     selection = this.state.selectedResources;
     selected = f.map(selection.serialize(), 'uuid');
-    newUrl = setUrlParams('/entries/batch_edit_context_meta_data', {
-      id: selected
+    currentUrl = setUrlParams(this.props.get.config.for_url, {
+      list: f.omit(this.state.config, 'for_url')
     });
-    return window.location = newUrl;
+    batchEditUrl = setUrlParams('/entries/batch_edit_context_meta_data', {
+      id: selected,
+      return_to: currentUrl
+    });
+    return window.location = batchEditUrl;
   },
   _batchAddToSetIds: function() {
     var selected, selection;
@@ -3229,7 +3235,7 @@ MetaDatumFormItem = React.createClass({
 
 
 },{"../../lib/rails-csrf-token.coffee":7,"../../lib/string-translation.js":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/input-meta-datum.cjsx":62,"../lib/madek-prop-types.coffee":63,"active-lodash":124,"classnames":343,"react":714,"xhr":743}],44:[function(require,module,exports){
-var MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, PropTypes, RailsForm, React, cx, f, getRailsCSRFToken, t, xhr;
+var MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, PropTypes, RailsForm, React, cx, f, getRailsCSRFToken, setUrlParams, t, xhr;
 
 React = require('react');
 
@@ -3242,6 +3248,8 @@ xhr = require('xhr');
 cx = require('classnames');
 
 t = require('../../lib/string-translation.js')('de');
+
+setUrlParams = require('../../lib/set-params-for-url.coffee');
 
 RailsForm = require('../lib/forms/rails-form.cjsx');
 
@@ -3281,7 +3289,10 @@ module.exports = React.createClass({
       actionType = 'save';
       url = this.props.get.submit_url;
     }
-    return url = url + '?actionType=' + actionType;
+    url = url + '?actionType=' + actionType;
+    return url = setUrlParams(url, {
+      return_to: this.props.get.return_to
+    });
   },
   submit: function(actionType) {
     var serialized;
@@ -3357,17 +3368,18 @@ module.exports = React.createClass({
         }
       });
     }
-    cancelUrl = get.url;
-    if (this.props.batch) {
-      cancelUrl = '/my';
-    }
+    cancelUrl = this.props.get.return_to;
     return React.createElement(RailsForm, {
       "ref": 'form',
       "name": 'resource_meta_data',
       "action": this._actionUrl(),
       "method": 'put',
       "authToken": authToken
-    }, (this.state.errors && f.keys(this.state.errors).length > 0 ? React.createElement("div", {
+    }, React.createElement("input", {
+      "type": 'hidden',
+      "name": 'return_to',
+      "value": this.props.get.return_to
+    }), (this.state.errors && f.keys(this.state.errors).length > 0 ? React.createElement("div", {
       "className": "ui-alerts",
       "style": {
         marginBottom: '10px'
@@ -3452,10 +3464,18 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":7,"../../lib/string-translation.js":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/madek-prop-types.coffee":63,"./MetaDatumFormItemPerContext.cjsx":42,"active-lodash":124,"classnames":343,"react":714,"xhr":743}],45:[function(require,module,exports){
-var HeaderButton, PageContent, PageContentHeader, React, ResourceMetaDataForm, TabContent, t;
+},{"../../lib/rails-csrf-token.coffee":7,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/madek-prop-types.coffee":63,"./MetaDatumFormItemPerContext.cjsx":42,"active-lodash":124,"classnames":343,"react":714,"xhr":743}],45:[function(require,module,exports){
+var Button, Icon, PageContent, PageContentHeader, React, ResourceMetaDataForm, TabContent, setUrlParams, t;
 
 React = require('react');
+
+t = require('../../lib/string-translation.js')('de');
+
+setUrlParams = require('../../lib/set-params-for-url.coffee');
+
+Button = require('../ui-components/Button.cjsx');
+
+Icon = require('../ui-components/Icon.cjsx');
 
 ResourceMetaDataForm = require('./ResourceMetaDataForm.cjsx');
 
@@ -3465,26 +3485,24 @@ PageContentHeader = require('../views/PageContentHeader.cjsx');
 
 TabContent = require('../views/TabContent.cjsx');
 
-t = require('../../lib/string-translation.js')('de');
-
-HeaderButton = require('../views/HeaderButton.cjsx');
-
 module.exports = React.createClass({
   displayName: 'ResourceMetaDataPage',
   render: function(arg) {
-    var authToken, get, ref;
+    var authToken, editByContextTitle, editByContextUrl, get, ref;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
+    editByContextUrl = setUrlParams(get.url + '/meta_data/edit_context', {
+      return_to: get.return_to
+    });
+    editByContextTitle = t('media_entry_meta_data_edit_by_context_btn');
     return React.createElement(PageContent, null, React.createElement(PageContentHeader, {
       "icon": 'pen',
       "title": t('media_entry_meta_data_header_prefix') + get.title
-    }, React.createElement(HeaderButton, {
-      "icon": 'arrow-up',
-      "title": 'TODO',
-      "name": 'TODO',
-      "href": get.url + '/meta_data/edit_context',
-      "method": 'get',
-      "authToken": authToken
-    })), React.createElement(TabContent, null, React.createElement("div", {
+    }, React.createElement(Button, {
+      "title": editByContextTitle,
+      "href": editByContextUrl
+    }, React.createElement(Icon, {
+      "i": 'arrow-up'
+    }))), React.createElement(TabContent, null, React.createElement("div", {
       "className": "bright pal rounded-bottom rounded-top-right ui-container"
     }, React.createElement(ResourceMetaDataForm, {
       "get": get,
@@ -3494,8 +3512,8 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":11,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./ResourceMetaDataForm.cjsx":43,"react":714}],46:[function(require,module,exports){
-var BatchHintBox, HeaderButton, PageContent, PageContentHeader, React, ResourceMetaDataFormPerContext, ResourceThumbnail, ResourcesBatchBox, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, t;
+},{"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./ResourceMetaDataForm.cjsx":43,"react":714}],46:[function(require,module,exports){
+var BatchHintBox, Button, Icon, PageContent, PageContentHeader, React, ResourceMetaDataFormPerContext, ResourceThumbnail, ResourcesBatchBox, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, setUrlParams, t;
 
 React = require('react');
 
@@ -3503,7 +3521,21 @@ f = require('active-lodash');
 
 t = require('../../lib/string-translation.js')('de');
 
+setUrlParams = require('../../lib/set-params-for-url.coffee');
+
+Button = require('../ui-components/Button.cjsx');
+
+Icon = require('../ui-components/Icon.cjsx');
+
+Thumbnail = require('../ui-components/Thumbnail.cjsx');
+
 ResourceMetaDataFormPerContext = require('./ResourceMetaDataFormPerContext.cjsx');
+
+BatchHintBox = require('./BatchHintBox.cjsx');
+
+ResourceThumbnail = require('./ResourceThumbnail.cjsx');
+
+ResourcesBatchBox = require('./ResourcesBatchBox.cjsx');
 
 PageContent = require('../views/PageContent.cjsx');
 
@@ -3515,20 +3547,10 @@ Tabs = require('../views/Tabs.cjsx');
 
 Tab = require('../views/Tab.cjsx');
 
-HeaderButton = require('../views/HeaderButton.cjsx');
-
-ResourceThumbnail = require('./ResourceThumbnail.cjsx');
-
-Thumbnail = require('../ui-components/Thumbnail.cjsx');
-
 batchDiff = require('../../lib/batch-diff.coffee');
 
-BatchHintBox = require('./BatchHintBox.cjsx');
-
-ResourcesBatchBox = require('./ResourcesBatchBox.cjsx');
-
 module.exports = React.createClass({
-  displayName: 'ResourceMetaDataPage',
+  displayName: 'ResourceMetaDataPagePerContext',
   _onTabClick: function(context_id, event) {
     event.preventDefault();
     this.setState({
@@ -3656,7 +3678,7 @@ module.exports = React.createClass({
     });
   },
   render: function(arg) {
-    var authToken, className, currentContext, currentContextId, fullPagePath, get, ref, title;
+    var authToken, className, currentContext, currentContextId, editByVocabTitle, editByVocabUrl, get, ref, title;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
     currentContextId = this.state.currentContextId;
     if (currentContextId) {
@@ -3672,30 +3694,20 @@ module.exports = React.createClass({
     } else {
       title = t('media_entry_meta_data_header_prefix') + get.title;
     }
-    fullPagePath = get.url + '/meta_data/edit';
-    if (this.props.batch) {
-      fullPagePath = '/entries/batch_meta_data_edit';
-    }
+    editByVocabTitle = t('media_entry_meta_data_edit_by_vocab_btn');
+    editByVocabUrl = !this.props.batch ? get.url + '/meta_data/edit' : setUrlParams('/entries/batch_meta_data_edit', {
+      id: f.map(get.batch_entries, 'uuid'),
+      return_to: get.return_to
+    });
     return React.createElement(PageContent, null, React.createElement(PageContentHeader, {
       "icon": 'pen',
       "title": title
-    }, React.createElement(HeaderButton, {
-      "icon": 'arrow-down',
-      "title": 'TODO',
-      "name": 'TODO',
-      "href": fullPagePath,
-      "method": 'get',
-      "authToken": authToken
-    }, f.map(get.batch_entries, function(entry) {
-      return React.createElement("input", {
-        "type": 'hidden',
-        "name": 'id[]',
-        "value": entry.uuid
-      });
-    }))), (this.props.batch ? React.createElement(ResourcesBatchBox, {
-      "get": get,
-      "authToken": authToken
-    }) : void 0), React.createElement(Tabs, null, f.map(get.meta_meta_data.context_ids, (function(_this) {
+    }, React.createElement(Button, {
+      "title": editByVocabTitle,
+      "href": editByVocabUrl
+    }, React.createElement(Icon, {
+      "i": 'arrow-down'
+    }))), React.createElement(Tabs, null, f.map(get.meta_meta_data.context_ids, (function(_this) {
       return function(context_id) {
         var context;
         context = get.meta_meta_data.contexts_by_context_id[context_id];
@@ -3777,7 +3789,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":2,"../../lib/string-translation.js":11,"../ui-components/Thumbnail.cjsx":80,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceMetaDataFormPerContext.cjsx":44,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],47:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":2,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../ui-components/Thumbnail.cjsx":80,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceMetaDataFormPerContext.cjsx":44,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],47:[function(require,module,exports){
 var ApiClientIndex, AutoComplete, GroupIndex, PermissionsBySubjectType, PermissionsOverview, PermissionsSubject, PermissionsSubjectHeader, React, RemoveButton, UserIndex, ampersandReactMixin, f, t, url;
 
 React = require('react');
@@ -7963,7 +7975,7 @@ SelectCollectionToolbar = React.createClass({
 
 
 },{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Icon.cjsx":72,"../../ui-components/Modal.cjsx":76,"../../ui-components/Preloader.cjsx":78,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],93:[function(require,module,exports){
-var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, HeaderButton, MediaEntryHeader, MediaResourcesBox, PageContent, PageContentHeader, RailsForm, React, ReactDOM, RightsManagement, Tab, TabContent, Tabs, classnames, f, t;
+var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, MediaEntryHeader, MediaResourcesBox, PageContent, PageContentHeader, RailsForm, React, ReactDOM, RightsManagement, Tab, TabContent, Tabs, classnames, f, t;
 
 React = require('react');
 
@@ -7988,8 +8000,6 @@ PageContentHeader = require('./PageContentHeader.cjsx');
 Tabs = require('./Tabs.cjsx');
 
 Tab = require('./Tab.cjsx');
-
-HeaderButton = require('./HeaderButton.cjsx');
 
 PageContent = require('./PageContent.cjsx');
 
@@ -8056,7 +8066,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":11,"../decorators/MediaResourcesBox.cjsx":41,"../decorators/ResourcePermissions.cjsx":47,"../lib/forms/rails-form.cjsx":61,"./Collection/DetailAdditional.cjsx":86,"./Collection/DetailOverview.cjsx":87,"./Collection/Metadata.cjsx":88,"./Collection/Relations.cjsx":89,"./HeaderButton.cjsx":95,"./MediaEntryHeader.cjsx":98,"./PageContent.cjsx":101,"./PageContentHeader.cjsx":102,"./Tab.cjsx":103,"./TabContent.cjsx":104,"./Tabs.cjsx":105,"active-lodash":124,"classnames":343,"react":714,"react-dom":575}],94:[function(require,module,exports){
+},{"../../lib/string-translation.js":11,"../decorators/MediaResourcesBox.cjsx":41,"../decorators/ResourcePermissions.cjsx":47,"../lib/forms/rails-form.cjsx":61,"./Collection/DetailAdditional.cjsx":86,"./Collection/DetailOverview.cjsx":87,"./Collection/Metadata.cjsx":88,"./Collection/Relations.cjsx":89,"./MediaEntryHeader.cjsx":98,"./PageContent.cjsx":101,"./PageContentHeader.cjsx":102,"./Tab.cjsx":103,"./TabContent.cjsx":104,"./Tabs.cjsx":105,"active-lodash":124,"classnames":343,"react":714,"react-dom":575}],94:[function(require,module,exports){
 var AskModal, CreateCollection, HeaderPrimaryButton, InputFieldText, PageContentHeader, React, ReactDOM, t;
 
 React = require('react');

@@ -3677,7 +3677,10 @@ module.exports = React.createClass({
       "href": editByVocabUrl
     }, React.createElement(Icon, {
       "i": 'arrow-down'
-    }))), React.createElement(Tabs, null, f.map(get.meta_meta_data.context_ids, (function(_this) {
+    }))), (this.props.batch ? React.createElement(ResourcesBatchBox, {
+      "get": get,
+      "authToken": authToken
+    }) : void 0), React.createElement(Tabs, null, f.map(get.meta_meta_data.context_ids, (function(_this) {
       return function(context_id) {
         var context, tabUrl;
         context = get.meta_meta_data.contexts_by_context_id[context_id];

@@ -9507,14 +9507,6 @@ module.exports = React.createClass({
         "hrefUrl": resource.url
       });
     }) : section.type === 'thumbnail' ? f.map(section.data.list.resources, function(resource, n) {
-      return React.createElement(WorthThumbnail, {
-        "key": 'key_' + n,
-        "author": resource.authors_pretty,
-        "label": resource.title,
-        "imageUrl": resource.image_url,
-        "hrefUrl": resource.url
-      });
-    }) : section.type === 'media_resource' ? f.map(section.data.list.resources, function(resource, n) {
       return React.createElement(ResourceThumbnail, {
         "key": 'key_' + n,
         "elm": 'div',

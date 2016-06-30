@@ -3329,7 +3329,16 @@ module.exports = React.createClass({
         }
       });
     }
-    cancelUrl = this.props.get.return_to;
+    cancelUrl = (function() {
+      if (this.props.batch) {
+        if (!get.return_to) {
+          throw new Error('No return_to given for batch edit (ResourceMetaDataFormPerContext).');
+        }
+        return get.return_to;
+      } else {
+        return get.url;
+      }
+    }).call(this);
     return React.createElement(RailsForm, {
       "ref": 'form',
       "name": 'resource_meta_data',
@@ -3670,8 +3679,14 @@ module.exports = React.createClass({
       "i": 'arrow-down'
     }))), React.createElement(Tabs, null, f.map(get.meta_meta_data.context_ids, (function(_this) {
       return function(context_id) {
-        var context;
+        var context, tabUrl;
         context = get.meta_meta_data.contexts_by_context_id[context_id];
+        tabUrl = _this.props.batch ? setUrlParams('/entries/batch_edit_context_meta_data/' + context.uuid, {
+          id: f.map(get.batch_entries, 'uuid'),
+          return_to: get.return_to
+        }) : setUrlParams(get.url + '/meta_data/edit_context/' + context.uuid, {
+          return_to: get.return_to
+        });
         if (!f.isEmpty(get.meta_meta_data.meta_key_ids_by_context_id[context_id])) {
           return React.createElement(Tab, {
             "hasChanges": _this._changesPerContext(context_id),
@@ -3680,7 +3695,7 @@ module.exports = React.createClass({
             "key": context.uuid,
             "iconType": null,
             "onClick": _this._onTabClick.bind(_this, context.uuid),
-            "href": get.url + '/meta_data/edit_context/' + context.uuid,
+            "href": tabUrl,
             "label": context.label,
             "active": context.uuid === currentContextId
           });

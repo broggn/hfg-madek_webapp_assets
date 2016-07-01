@@ -7799,7 +7799,7 @@ module.exports = React.createClass({
           "className": 'title'
         }, collection.title), React.createElement("span", {
           "className": 'owner'
-        }, collection.owner_pretty), React.createElement("span", {
+        }, collection.authors_pretty), React.createElement("span", {
           "className": 'created-at'
         }, collection.created_at_pretty)));
       }) : void 0)));
@@ -9069,7 +9069,7 @@ module.exports = React.createClass({
 
 
 },{"../../lib/forms/rails-form.cjsx":61,"../../lib/ui.coffee":64,"../../ui-components/Dropdown.cjsx":69,"../../ui-components/Icon.cjsx":72,"active-lodash":124,"react":714}],107:[function(require,module,exports){
-var CatalogThumbnailShifted, LoginDialog, React, ReactDOM, classnames, f;
+var CatalogThumbnailShifted, LoginDialog, React, ReactDOM, ResourcesSection, classnames, f;
 
 React = require('react');
 
@@ -9083,6 +9083,8 @@ CatalogThumbnailShifted = require('./partials/CatalogThumbnailShifted.cjsx');
 
 LoginDialog = require('./LoginDialog.cjsx');
 
+ResourcesSection = require('./partials/ResourcesSection.cjsx');
+
 module.exports = React.createClass({
   displayName: 'ExploreLoginPage',
   getInitialState: function() {
@@ -9091,9 +9093,18 @@ module.exports = React.createClass({
     };
   },
   render: function(arg) {
-    var authToken, get, ref;
+    var authToken, get, ref, sectionsElements;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    return React.createElement("div", {
+    sectionsElements = f.map(get.sections, function(section, m) {
+      return React.createElement(ResourcesSection, {
+        "key": 'section_' + m,
+        "label": section.data.title,
+        "hrefUrl": section.data.url,
+        "showAllLink": section.show_all_link,
+        "section": section
+      });
+    });
+    return React.createElement("div", null, React.createElement("div", {
       "className": "ui-collage crooked ui-container overlaid",
       "id": "teaser-set"
     }, f.map(f.chunk(f.slice(get.teaser_entries.resources, 0, 20), 5), function(chunk, row) {
@@ -9107,12 +9118,26 @@ module.exports = React.createClass({
           "imageUrl": resource.image_url
         });
       }));
-    }), React.createElement(LoginDialog, null));
+    }), React.createElement(LoginDialog, null)), React.createElement("div", {
+      "className": "app-body-ui-container pts context-home"
+    }, f.map(sectionsElements, function(section, index) {
+      var list, separator;
+      list = [];
+      separator = React.createElement("hr", {
+        "key": 'separator_' + index,
+        "className": "separator"
+      });
+      if (index > 0) {
+        list.push(separator);
+      }
+      list.push(section);
+      return list;
+    })));
   }
 });
 
 
-},{"./LoginDialog.cjsx":109,"./partials/CatalogThumbnailShifted.cjsx":111,"active-lodash":124,"classnames":343,"react":714,"react-dom":575}],108:[function(require,module,exports){
+},{"./LoginDialog.cjsx":109,"./partials/CatalogThumbnailShifted.cjsx":111,"./partials/ResourcesSection.cjsx":116,"active-lodash":124,"classnames":343,"react":714,"react-dom":575}],108:[function(require,module,exports){
 var ExploreLayout, ExploreMenu, ExploreMenuEntry, ExploreMenuSection, React, ReactDOM, ResourcesSection, f;
 
 React = require('react');
@@ -9505,7 +9530,7 @@ module.exports = React.createClass({
 
 
 },{"react":714}],116:[function(require,module,exports){
-var CatalogThumbnail, Keyword, React, WorthThumbnail, f;
+var CatalogThumbnail, Keyword, React, ResourceThumbnail, WorthThumbnail, f;
 
 React = require('react');
 
@@ -9516,6 +9541,8 @@ Keyword = require('../../../ui-components/Keyword.cjsx');
 CatalogThumbnail = require('./CatalogThumbnail.cjsx');
 
 WorthThumbnail = require('./WorthThumbnail.cjsx');
+
+ResourceThumbnail = require('../../../decorators/ResourceThumbnail.cjsx');
 
 module.exports = React.createClass({
   displayName: 'ResourcesSection',
@@ -9544,12 +9571,10 @@ module.exports = React.createClass({
         "hrefUrl": resource.url
       });
     }) : section.type === 'thumbnail' ? f.map(section.data.list.resources, function(resource, n) {
-      return React.createElement(WorthThumbnail, {
+      return React.createElement(ResourceThumbnail, {
         "key": 'key_' + n,
-        "author": resource.owner_pretty,
-        "label": resource.title,
-        "imageUrl": resource.image_url,
-        "hrefUrl": resource.url
+        "elm": 'div',
+        "get": resource
       });
     }) : section.type === 'keyword' ? f.map(section.data.list, function(resource, n) {
       return React.createElement(Keyword, {
@@ -9563,7 +9588,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../ui-components/Keyword.cjsx":73,"./CatalogThumbnail.cjsx":110,"./WorthThumbnail.cjsx":117,"active-lodash":124,"react":714}],117:[function(require,module,exports){
+},{"../../../decorators/ResourceThumbnail.cjsx":48,"../../../ui-components/Keyword.cjsx":73,"./CatalogThumbnail.cjsx":110,"./WorthThumbnail.cjsx":117,"active-lodash":124,"react":714}],117:[function(require,module,exports){
 var React;
 
 React = require('react');

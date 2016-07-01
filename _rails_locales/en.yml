@@ -20,6 +20,7 @@ en:
       group:
         update: Update group
         create: Create group
+  app_notice_logged_out: You have logged out.
   authentication_groups: System Groups
   batch_add_to_collection_hint: Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.
   batch_add_to_collection_post: ' entries to set'
@@ -241,13 +242,12 @@ en:
   sitemap_my_used_keywords_title: My Keywords
   sitemap_my_used_keywords: My keywords
   sitemap_search: Search
+  user_menu_admin_ui: Open Admin Interface
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out
   user_menu_upload: Upload Media
-  user_menu_admin_ui: Open Admin Interface
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group
   workgroup_members_table_is_member: Member?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Members
-  app_notice_logged_out: You have logged out.

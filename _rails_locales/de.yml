@@ -22,6 +22,7 @@ de:
       meta_data_update:
         success: 'Metadaten von %{resource_name} wurden gespeichert.'
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
+  app_notice_logged_out: Sie haben sich abgemeldet.
   authentication_groups: Systemgruppen
   batch_add_to_collection_hint: Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.
   batch_add_to_collection_post: ' Einträge zu Set hinzufügen'
@@ -243,13 +244,12 @@ de:
   sitemap_my_used_keywords_title: Meine Schlagworte
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
+  user_menu_admin_ui: Admin-Interface öffnen
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden
   user_menu_upload: Medien importieren
-  user_menu_admin_ui: Admin-Interface öffnen
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Mitglieder
-  app_notice_logged_out: Sie haben sich abgemeldet.

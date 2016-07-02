@@ -70,9 +70,13 @@ de:
   external_groups: Abteilungsgruppen
   group_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?'
   group_edit_btn: Bearbeiten
-  group_edit_form_new_member_login: Login des neuen Mitglieds dieser Gruppe
+  group_edit_form_new_member_login_hint: Login des neuen Mitglieds dieser Gruppe
+  group_edit_form_new_member_login_label: User hinzufügen
+  group_edit_form_save_btn: Speichern
+  group_edit_form_title_pre: 'Arbeitsgruppe bearbeiten: '
   group_meta_data_institutional_group_name: Name der Abteilungsgruppe
   group_meta_data_name: Name
+  group_new_form_title: Neue Arbeitsgruppe erstellen
   group_new_group_btn: Neue Arbeitsgruppe
   group_toolbar_header_entrusted_resources: Mir anvertraute Medieneinträge
   internal_groups: Arbeitsgruppen

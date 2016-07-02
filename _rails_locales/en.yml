@@ -68,9 +68,13 @@ en:
   external_groups: Division groups
   group_delete_confirm_msg: Are you sure you want to delete this work group?
   group_edit_btn: Edit
-  group_edit_form_new_member_login: New group member login
+  group_edit_form_new_member_login_hint: New group member login
+  group_edit_form_new_member_login_label: Add a member
+  group_edit_form_save_btn: Save
+  group_edit_form_title_pre: 'Edit Group: '
   group_meta_data_institutional_group_name: Division group name
   group_meta_data_name: Name
+  group_new_form_title: Create Group
   group_new_group_btn: New Work Group
   group_toolbar_header_entrusted_resources: Entrusted Media Entries
   internal_groups: Work groups

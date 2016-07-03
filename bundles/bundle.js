@@ -485,7 +485,7 @@ var parseTranslationsFromCSV = require('./parse-translations-from-csv')
 
 // NOTE: this works with browserify and the 'brfs' transform (embeds as string)
 var path = require('path')
-var translationsCSVText = "key,de,en,comment\r\n,,,\r\napp_notice_logged_out,Sie haben sich abgemeldet.,You have logged out.,\r\nauthentication_groups,Systemgruppen,System Groups,\r\nbatch_add_to_collection_hint,Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.,Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.,\r\nbatch_add_to_collection_post, Einträge zu Set hinzufügen, entries to set,\r\nbatch_add_to_collection_pre, , Add ,\r\nbatch_meta_data_edit,Metadaten für %{media_entry_count} Einträge gleichzeitig editieren,Edit metadata for %{media_entry_count} entries at once.,TODO_cleanup_interpolation\r\nbtn_delete_confirm_msq,\"Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?\",Are you sure you want to delete this item?,\r\nbtn_delete_text,Löschen,Delete,\r\nbtn_publish_confirm_msg,\"Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?\",Are you sure you want to publish this item?,\r\nbtn_publish_text,Speichern,Save,\r\ncollection_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgendes Set löschen möchten: \",Are you sure that you want to delete the following set:,\r\ncollection_ask_delete_title,Set löschen,Delete Set,\r\ncollection_delete_success,Set wurde gelöscht.,Set deleted.,\r\ncollection_edit_cover_submit_btn,Auswahl speichern,Submit,\r\ncollection_edit_cover_submit_btn,Speichern,Submit,\r\ncollection_edit_cover_title,Titelbild für Set festlegen,Define Set Cover,\r\ncollection_edit_highlights_btn,Auswahl speichern,Submit,\r\ncollection_edit_highlights_btn,Bearbeiten,Edit,\r\ncollection_edit_highlights_title,Inhalte hervorheben,Highlight Contents,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_media_resources_title,Medieneintrag im Set:,Media Entries in Sets:,\r\ncollection_new_cancel,Abbrechen,Cancel,\r\ncollection_new_create_set,Set erstellen,Create Set,\r\ncollection_new_dialog_title,Set erstellen,Create Set,\r\ncollection_new_flash_successful,Set wurde erstellt.,Set was created.,\r\ncollection_new_flash_title_needed,Titel ist ein Pflichtfeld.,Title is a mandatory field.,\r\ncollection_new_header,Neues Set,Create Set,\r\ncollection_new_label_title,Titel,Title,\r\ncollection_permissions_btn,Zugriffsberechtigungen ändern,Permissions,\r\ncollection_resource_selection_cancel,Abbrechen,Cancel,\r\ncollection_resource_selection_h_author,Autor/in,Author,\r\ncollection_resource_selection_h_date,Datierung,Dating,\r\ncollection_resource_selection_h_keywords,Schlagworte,Keywords,\r\ncollection_resource_selection_h_responsible,Rechteinhaber,Owner,\r\ncollection_resource_selection_h_selection,Auswahl,Selection,\r\ncollection_resource_selection_h_subtitle,Untertitel,Subtitle,\r\ncollection_resource_selection_h_title,Titel,Title,\r\ncollection_resource_selection_save,Auswahl speichern,Save selection,\r\ncollection_select_collection_flash_result,Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed set from %{removed_count} set(s). Added set to %{added_count} set(s).,TODO_cleanup_interpolation\r\ncollection_tab_main,Set,Set,\r\ncollection_was_disfavored,Das Set wurde von den Favoriten entfernt.,Set was removed from favorites.,\r\ncollection_was_favored,Das Set wurde zu den Favoriten hinzugefügt.,Set was added to favorites.,\r\ndashboard_create_collection_btn,Set erstellen,Create Set,\r\ndashboard_create_collection,Set erstellen,Create set,\r\ndashboard_create_media_entry_btn,Medien importieren,Upload Media,\r\ndashboard_title_head,Mein Archiv,My Archive,\r\ndashboard_welcome_msg,Willkommen im Medienarchiv der Künste!,Welcome to Madek!,\r\nexternal_groups,Abteilungsgruppen,Division groups,\r\ngroup_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?\",Are you sure you want to delete this work group?,\r\ngroup_edit_btn,Bearbeiten,Edit,\r\ngroup_edit_form_new_member_login_hint,Login des neuen Mitglieds dieser Gruppe,New group member login,\r\ngroup_edit_form_new_member_login_label,User hinzufügen,Add a member,\r\ngroup_edit_form_save_btn,Speichern,Save,\r\ngroup_edit_form_title_pre,Arbeitsgruppe bearbeiten: ,Edit Group: ,\r\ngroup_meta_data_institutional_group_name,Name der Abteilungsgruppe,Division group name,\r\ngroup_meta_data_name,Name,Name,\r\ngroup_new_form_title,Neue Arbeitsgruppe erstellen,Create Group,\r\ngroup_new_group_btn,Neue Arbeitsgruppe,New Work Group,\r\ngroup_toolbar_header_entrusted_resources,Mir anvertraute Medieneinträge,Entrusted Media Entries,\r\ninternal_groups,Arbeitsgruppen,Work groups,\r\nlogin_box_author, ,,\r\nlogin_box_cite,Das Medienarchiv der Künste ist die Plattform der ZHdK zum gemeinschaftlichen Arbeiten mit Medien und Teilen von Inhalten.,The Media Archive of the Arts is ZHdK’s plattform for collaborative working with media.,\r\nlogin_box_external,ZHdK-Login,ZHdK Login,\r\nlogin_box_hint_first_line,Alle Funktionen nutzen und auf mehr Inhalte zugreifen.,For using of all function and access to more content.,\r\nlogin_box_hint_second_line, ,,\r\nlogin_box_internal,Externe,External,\r\nlogin_box_login_btn,Anmelden,Log In,\r\nlogin_box_rememberme,Login merken,remember me,\r\nlogin_box_title,Digitales Areal ZHdK,Digital Area ZHdK,\r\nmedia_entry_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgende Eintrag löschen möchten: \",Are you sure that you want to delete the following media entry:,\r\nmedia_entry_ask_delete_title,Eintrag löschen,Delete Entry,\r\nmedia_entry_back_btn,Zurück,Back,\r\nmedia_entry_delete_success,Medieneintrag wurde gelöscht.,Media entry deleted.,\r\nmedia_entry_export_close,Schliessen,Close,\r\nmedia_entry_export_download,Download,Download,\r\nmedia_entry_export_has_no_original,Sie verfügen nicht über die nötigen Berechtigung für den Download der Originaldatei.,You are not allowed to download the original file.,\r\nmedia_entry_export_no_content,Sie haben keine Zugriffsrechte für die Originaldatei und es steht keine Vorschau zur Verfügung.,You have no access to the original file and there is no preview available.,\r\nmedia_entry_export_original_hint,Download original file as it was when it was uploaded.,Download original file as it was uploaded.,\r\nmedia_entry_export_original,Original,Original,\r\nmedia_entry_export_subtitle_audios,Audios,Audios,\r\nmedia_entry_export_subtitle_documents,Dokumente,Dokumente,\r\nmedia_entry_export_subtitle_images,Bilder,Bilder,\r\nmedia_entry_export_subtitle_videos,Videos,Videos,\r\nmedia_entry_export_title,Eintrag exportieren,Download Entry,\r\nmedia_entry_file_information_title,Datei,File Information,\r\nmedia_entry_media_import_gotodrafts,Gehe zu ungesicherten Medieneinträgen,Go to Drafts,\r\nmedia_entry_media_import_header,Medien importieren,Media upload,\r\nmedia_entry_media_import_inside_nojs,Dateien auswählen,Select Files,\r\nmedia_entry_media_import_inside,Dateien auf dieses Feld ziehen oder,Drag & drop files here or,\r\nmedia_entry_media_import_notes_msg,\"Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.\",\"Images (TIFF, JPEG, PNG) and audio/video files in the most common formats are directly processed and displayed. Images in the CMYK color model cannot be displayed correctly, please convert them to RGB before uploading.\",\r\nmedia_entry_media_import_notes_title,Hinweise,Hints,\r\nmedia_entry_media_import_title,\"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.\",\"Add pictures, videos, audio file, or other documents.\",\r\nmedia_entry_meta_data_header_prefix,Medieneintrag editieren: ,Edit Media Entry:,\r\nmedia_entry_more_data_title,Verantwortlichkeit und Aktivität,Responsibility,\r\nmedia_entry_not_published_warning_msg,Dieser Medieneintrag ist noch nicht gesichert!,Media entry is not saved yet!,\r\nmedia_entry_select_collection_flash_result,Eintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed entry from %{removed_count} set(s). Added entry to %{added_count} set(s).,TODO_cleanup_interpolation\r\nmedia_entry_tab_main,Medieneintrag,Media Entry,\r\nmedia_entry_tab_more_data,Alle Daten,All Data,\r\nmedia_entry_tab_permissions,Berechtigungen,Permissions,\r\nmedia_entry_tab_relations,Zusammenhänge,Relations,\r\nmedia_entry_upload_btn,Importieren,Upload,\r\nmedia_entry_was_disfavored,Der Medieneintrag wurde von den Favoriten entfernt.,Media entry was removed from favorites.,\r\nmedia_entry_was_favored,Der Medieneintrag wurde zu den Favoriten hinzugefügt.,Media entry was added to favorites.,\r\nmeta_data_action_delete_btn,Löschen,Delete,\r\nmeta_data_action_edit_btn,Bearbeiten,Edit,\r\nmeta_data_batch_failure,Metadaten konnten nicht aktualisiert werden.,Metadata could not be updated.,\r\nmeta_data_batch_hint_differences_override,\"Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.\",Attention: Changes will replace exiting values. Without changes values will be preserved.,\r\nmeta_data_batch_hint_differences,Unterschiedliche Metadaten vorhanden,Different metadata in place.,\r\nmeta_data_batch_hint_equal_data,Gleiche Metadaten vorhanden,Same metadata in place.,\r\nmeta_data_batch_hint_no_data,Noch keine Metadaten vorhanden,No metadata available yet.,\r\nmeta_data_batch_hint_value,Wert und Text,Value and text,\r\nmeta_data_batch_items_selected,Einträge selektiert,entries selected,\r\nmeta_data_batch_success,Metadaten wurden erfolgreich aktualisiert.,Succesfully updated metadata.,\r\nmeta_data_batch_title_post, Einträge gleichzeitig editieren, Einträge gleichzeitig editieren,\r\nmeta_data_batch_title_pre,Metadaten für ,Metadaten für ,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Werte löschen wollen?\",Are you sure you want to delete these values?,\r\nmeta_data_edit_collection_saved,Set wurde gespeichert.,Collection was saved.,\r\nmeta_data_edit_media_entry_published,Eintrag wurde gespeichert und publiziert.,Entry was saved and published.,\r\nmeta_data_edit_media_entry_saved_missing,Eintrag wurde gespeichert aber es wurden nicht alle Pflichtfelder ausgefüllt.,Entry was saved but there are missing mandatory fields.,\r\nmeta_data_edit_media_entry_saved,Eintrag wurde gespeichert.,Entry was saved.,\r\nmeta_data_form_cancel_link,Abbrechen,Cancel,\r\nmeta_data_form_save_btn,Speichern,Save,\r\nmeta_data_form_submit_btn,Speichern,Submit,\r\nmeta_data_header_text,Werte,Values,\r\nmeta_data_meta_key_label,Schlüssel,Key,\r\nmeta_data_type_label,Typ,Type,\r\nmeta_data_value_label,Wert,Value,\r\nno_content_fallback,(Keine Inhalte vorhanden.),(No content available.),\r\nno_groups_fallback,(Keine Gruppen vorhanden.),(No groups available.),\r\nno_keywords_fallback,(Keine Schlagworte vorhanden.),(No keywords available.),\r\nno_relations_title,Es wurden keine Zusammenhänge gefunden.,No relations found.,\r\npagination_of,von,of,\r\npagination_prefix,Seite,Page,\r\npeople_toolbar_header,Ähnliche Inhalte,Related Resources,\r\npermission_name_edit_metadata_and_relations,Metadaten editieren & Inhalte hinzufügen,Edit Metadata and contents,\r\npermission_name_edit_metadata,Metadaten editieren,Edit metadata,\r\npermission_name_edit_permissions,Zugriffsberechtigungen ändern,Edit permissions,\r\npermission_name_get_full_size,Original exportieren & in PDF blättern,Download original & browse PDF,\r\npermission_name_get_metadata_and_previews,Betrachten,View,\r\npermission_overridden_by_public,(überschrieben durch die öffentlichen Berechtigungen),(overridden by public permissions),\r\npermission_subject_name_public,Internet,Internet,\r\npermission_subject_title_apiapps,API-Applikationen,API Clients,\r\npermission_subject_title_groups,Gruppen,Groups,\r\npermission_subject_title_public,Öffentlichkeit,Public,\r\npermission_subject_title_users,Personen,Users,\r\npermissions_overview_yours_msg_end,\", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen\",\", currently have the following permissions (either directly or as a member of a group):\",\r\npermissions_overview_yours_msg_start,\"Sie, \",\"You, \",\r\npermissions_overview_yours_title,Ihre Berechtigungen,Your Permissions,\r\npermissions_responsible_user_msg,Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.,The responsible user has all permissions for the selected content and can also delete it.,\r\npermissions_responsible_user_title,Verantwortliche Person,Responsible User,\r\npermissions_table_cancel_btn,Abbrechen,Cancel,\r\npermissions_table_edit_btn,Bearbeiten,Edit,\r\npermissions_table_remove_subject_btn,Berechtigung entfernen,Remove Permissions,\r\npermissions_table_save_btn,Speichern,Save,\r\npermissions_table_title,Berechtigungen,Permissions,\r\npicture_alt_fallback,(unbekannt),(unkown),\r\npicture_alt_prefix,Bild: ,Picture:,\r\nrelations_parents_title,Übergeordnete Sets,Parents,\r\nrelations_siblings_title,Benachbarte Sets,Siblings,\r\nrelations_title,Zusammenhänge,Relations,\r\nresource_action_destroy,Medieneintrag löschen,Delete media entry,\r\nresource_action_edit,Editieren,Edit,\r\nresource_action_export,Exportieren,Download,\r\nresource_action_favor,Zu Favoriten hinzufügen/entfernen,Add to/Remove from favorites,\r\nresource_action_set_collection,Zu Sets hinzufügen/Aus Sets entfernen,Add to/Remove from sets,\r\nresource_ask_delete_cancel,Abbrechen,Cancel,\r\nresource_ask_delete_ok,Löschen,Delete,\r\nresource_ask_delete_question_post,?,?,\r\nresource_meta_data_copyright_notice,Rechte am geistigen Eigentum,Copyright notice,\r\nresource_meta_data_date,Datierung,Date,\r\nresource_meta_data_description,Beschreibung,Description,\r\nresource_meta_data_fallback,Es sind keine Metadaten zu diesem Kontext bereitgestellt.,No metadata for this context.,\r\nresource_meta_data_has_validation_errors,Es gibt fehlerhafte Eingabefelder.,Es gibt fehlerhafte Eingabefelder.,\r\nresource_meta_data_keywords,Schlagworte,Keywords,\r\nresource_meta_data_resource_type,Medientyp,Media type,\r\nresource_meta_data_responsible,Verantwortliche Person,Responsible user,\r\nresource_meta_data_saved_filter,Gespeicherter Filter,Saved filter,\r\nresource_meta_data_title,Titel,Title,\r\nresource_select_collection_cancel,Abbrechen,Cancel,\r\nresource_select_collection_clear,Löschen,Clear,\r\nresource_select_collection_hint_more,Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.,Additional sets were found. Please refine your search.,\r\nresource_select_collection_hint_search,\"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.\",Search for and select sets that should hold the media entry.,\r\nresource_select_collection_non_assigned,Inhalt ist noch keinem Set zugewiesen.,Entry is not yet part of any set.,\r\nresource_select_collection_non_found,Zu dieser Suche wurde kein Set gefunden.,No set was found.,\r\nresource_select_collection_save,Speichern,Save,\r\nresource_select_collection_search_placeholder,Suche,Search,\r\nresource_select_collection_search,Suchen,Search,\r\nresource_select_collection_title,Zu Set hinzufügen/entfernen,Add to/remove from set,\r\nresources_header_show_all,alle anzeigen,show all,\r\nsearch_btn_search,Suchen,Search,\r\nsitemap_api,API,API,\r\nsitemap_collections,Sets,Sets,\r\nsitemap_entries,Medieneinträge,Media Entries,\r\nsitemap_explore,Erkunden,Explore,\r\nsitemap_filter_sets,Filtersets,Filter sets,\r\nsitemap_help,Support,Support,\r\nsitemap_media_entries,Medieneinträge,Media entries,\r\nsitemap_my_archive_title,Mein Archiv,My Archive,\r\nsitemap_my_archive,Mein Archiv,My archive,\r\nsitemap_my_content_collections_title,Meine Sets,My Sets,\r\nsitemap_my_content_collections,Meine Sets,My sets,\r\nsitemap_my_content_filter_sets_title,Meine Filtersets,My Filter Sets,\r\nsitemap_my_content_filter_sets,Meine Filtersets,My filter sets,\r\nsitemap_my_content_media_entries_title,Meine Medieneinträge,My Media Entries,\r\nsitemap_my_content_media_entries,Meine Medieneinträge,My media entries,\r\nsitemap_my_entrusted_collections_title,Mir anvertraute Sets,My Entrusted Sets,\r\nsitemap_my_entrusted_collections,Mir anvertraute Sets,My entrusted sets,\r\nsitemap_my_entrusted_filter_sets_title,Mir anvertraute Filtersets,My Entrusted Filter Sets,\r\nsitemap_my_entrusted_filter_sets,Mir anvertraute Filtersets,My entrusted filter sets,\r\nsitemap_my_entrusted_media_entries_title,Mir anvertraute Medieneinträge,My Entrusted Media Entries,\r\nsitemap_my_entrusted_media_entries,Mir anvertraute Medieneinträge,My entrusted media entries,\r\nsitemap_my_favorite_collections_title,Meine Favoriten (Sets),My Favorites (Sets),\r\nsitemap_my_favorite_collections,Meine Favoriten (Sets),My favorites (sets),\r\nsitemap_my_favorite_filter_sets_title,Meine Favoriten (Filtersets),My Favorites (Filter Sets),\r\nsitemap_my_favorite_filter_sets,Meine Favoriten (Filtersets),My favorites (filter sets),\r\nsitemap_my_favorite_media_entries_title,Meine Favoriten (Medieneinträge),My Favorites (Media Entries),\r\nsitemap_my_favorite_media_entries,Meine Favoriten (Medieneinträge),My favorites (media entries),\r\nsitemap_my_groups_title,Meine Arbeitsgruppen,My Work Groups,\r\nsitemap_my_groups,Meine Arbeitsgruppen,My work groups,\r\nsitemap_my_latest_imports_title,Meine letzten Importe,My Latest Uploads,\r\nsitemap_my_latest_imports,Meine letzten Importe,My latest uploads,\r\nsitemap_my_unpublished_title,Meine ungesicherten Medieneinträge,My Unsaved Media Entries,\r\nsitemap_my_unpublished,Meine ungesicherten Medieneinträge,My unsaved media entries,\r\nsitemap_my_used_keywords_title,Meine Schlagworte,My Keywords,\r\nsitemap_my_used_keywords,Meine Schlagworte,My keywords,\r\nsitemap_search,Suche,Search,\r\nuser_menu_admin_ui,Admin-Interface öffnen,Open Admin Interface,\r\nuser_menu_login_btn,Anmelden,Log in,\r\nuser_menu_logout_btn,Abmelden,Log out,\r\nuser_menu_upload,Medien importieren,Upload Media,\r\nworkgroup_link_to_contents_text,Inhalte,Contents,\r\nworkgroup_link_to_contents_title,Inhalte dieser Arbeitsgruppe anzeigen,View contents of this work group,\r\nworkgroup_members_table_is_member,Mitglied?,Member?,\r\nworkgroup_members_table_login,Login,Login,\r\nworkgroup_members_table_title,Mitglieder,Members,\r\n"
+var translationsCSVText = "key,de,en,comment\r\n,,,\r\napp_notice_logged_out,Sie haben sich abgemeldet.,You have logged out.,\r\nauthentication_groups,Systemgruppen,System Groups,\r\nbatch_add_to_collection_hint,Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.,Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.,\r\nbatch_add_to_collection_post, Einträge zu Set hinzufügen, entries to set,\r\nbatch_add_to_collection_pre, , Add ,\r\nbatch_meta_data_edit,Metadaten für %{media_entry_count} Einträge gleichzeitig editieren,Edit metadata for %{media_entry_count} entries at once.,TODO_cleanup_interpolation\r\nbtn_delete_confirm_msq,\"Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?\",Are you sure you want to delete this item?,\r\nbtn_delete_text,Löschen,Delete,\r\nbtn_publish_confirm_msg,\"Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?\",Are you sure you want to publish this item?,\r\nbtn_publish_text,Speichern,Save,\r\ncollection_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgendes Set löschen möchten: \",Are you sure that you want to delete the following set:,\r\ncollection_ask_delete_title,Set löschen,Delete Set,\r\ncollection_delete_success,Set wurde gelöscht.,Set deleted.,\r\ncollection_edit_cover_submit_btn,Auswahl speichern,Submit,\r\ncollection_edit_cover_submit_btn,Speichern,Submit,\r\ncollection_edit_cover_title,Titelbild für Set festlegen,Define Set Cover,\r\ncollection_edit_highlights_btn,Auswahl speichern,Submit,\r\ncollection_edit_highlights_btn,Bearbeiten,Edit,\r\ncollection_edit_highlights_title,Inhalte hervorheben,Highlight Contents,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_media_resources_title,Medieneintrag im Set:,Media Entries in Sets:,\r\ncollection_new_cancel,Abbrechen,Cancel,\r\ncollection_new_create_set,Set erstellen,Create Set,\r\ncollection_new_dialog_title,Set erstellen,Create Set,\r\ncollection_new_flash_successful,Set wurde erstellt.,Set was created.,\r\ncollection_new_flash_title_needed,Titel ist ein Pflichtfeld.,Title is a mandatory field.,\r\ncollection_new_header,Neues Set,Create Set,\r\ncollection_new_label_title,Titel,Title,\r\ncollection_permissions_btn,Zugriffsberechtigungen ändern,Permissions,\r\ncollection_resource_selection_cancel,Abbrechen,Cancel,\r\ncollection_resource_selection_h_author,Autor/in,Author,\r\ncollection_resource_selection_h_date,Datierung,Dating,\r\ncollection_resource_selection_h_keywords,Schlagworte,Keywords,\r\ncollection_resource_selection_h_responsible,Rechteinhaber,Owner,\r\ncollection_resource_selection_h_selection,Auswahl,Selection,\r\ncollection_resource_selection_h_subtitle,Untertitel,Subtitle,\r\ncollection_resource_selection_h_title,Titel,Title,\r\ncollection_resource_selection_save,Auswahl speichern,Save selection,\r\ncollection_select_collection_flash_result,Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed set from %{removed_count} set(s). Added set to %{added_count} set(s).,TODO_cleanup_interpolation\r\ncollection_tab_main,Set,Set,\r\ncollection_was_disfavored,Das Set wurde von den Favoriten entfernt.,Set was removed from favorites.,\r\ncollection_was_favored,Das Set wurde zu den Favoriten hinzugefügt.,Set was added to favorites.,\r\ndashboard_create_collection_btn,Set erstellen,Create Set,\r\ndashboard_create_collection,Set erstellen,Create set,\r\ndashboard_create_media_entry_btn,Medien importieren,Upload Media,\r\ndashboard_title_head,Mein Archiv,My Archive,\r\ndashboard_welcome_msg,Willkommen im Medienarchiv der Künste!,Welcome to Madek!,\r\nexternal_groups,Abteilungsgruppen,Division groups,\r\ngroup_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?\",Are you sure you want to delete this work group?,\r\ngroup_edit_btn,Bearbeiten,Edit,\r\ngroup_edit_form_new_member_login_hint,Login des neuen Mitglieds dieser Gruppe,New group member login,\r\ngroup_edit_form_new_member_login_label,User hinzufügen,Add a member,\r\ngroup_edit_form_save_btn,Speichern,Save,\r\ngroup_edit_form_title_pre,Arbeitsgruppe bearbeiten: ,Edit Group: ,\r\ngroup_meta_data_institutional_group_name,Name der Abteilungsgruppe,Division group name,\r\ngroup_meta_data_name,Name,Name,\r\ngroup_new_form_title,Neue Arbeitsgruppe erstellen,Create Group,\r\ngroup_new_group_btn,Neue Arbeitsgruppe,New Work Group,\r\ngroup_toolbar_header_entrusted_resources,Mir anvertraute Medieneinträge,Entrusted Media Entries,\r\ninternal_groups,Arbeitsgruppen,Work groups,\r\nlogin_box_author, ,,\r\nlogin_box_cite,Das Medienarchiv der Künste ist die Plattform der ZHdK zum gemeinschaftlichen Arbeiten mit Medien und Teilen von Inhalten.,The Media Archive of the Arts is ZHdK’s plattform for collaborative working with media.,\r\nlogin_box_external,ZHdK-Login,ZHdK Login,\r\nlogin_box_hint_first_line,Alle Funktionen nutzen und auf mehr Inhalte zugreifen.,For using of all function and access to more content.,\r\nlogin_box_hint_second_line, ,,\r\nlogin_box_internal,Externe,External,\r\nlogin_box_login_btn,Anmelden,Log In,\r\nlogin_box_rememberme,Login merken,remember me,\r\nlogin_box_title,Digitales Areal ZHdK,Digital Area ZHdK,\r\nmedia_entry_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgende Eintrag löschen möchten: \",Are you sure that you want to delete the following media entry:,\r\nmedia_entry_ask_delete_title,Eintrag löschen,Delete Entry,\r\nmedia_entry_back_btn,Zurück,Back,\r\nmedia_entry_delete_success,Medieneintrag wurde gelöscht.,Media entry deleted.,\r\nmedia_entry_export_close,Schliessen,Close,\r\nmedia_entry_export_download,Download,Download,\r\nmedia_entry_export_has_no_original,Sie verfügen nicht über die nötigen Berechtigung für den Download der Originaldatei.,You are not allowed to download the original file.,\r\nmedia_entry_export_no_content,Sie haben keine Zugriffsrechte für die Originaldatei und es steht keine Vorschau zur Verfügung.,You have no access to the original file and there is no preview available.,\r\nmedia_entry_export_original_hint,Download original file as it was when it was uploaded.,Download original file as it was uploaded.,\r\nmedia_entry_export_original,Original,Original,\r\nmedia_entry_export_subtitle_audios,Audios,Audios,\r\nmedia_entry_export_subtitle_documents,Dokumente,Dokumente,\r\nmedia_entry_export_subtitle_images,Bilder,Bilder,\r\nmedia_entry_export_subtitle_videos,Videos,Videos,\r\nmedia_entry_export_title,Eintrag exportieren,Download Entry,\r\nmedia_entry_file_information_title,Datei,File Information,\r\nmedia_entry_media_import_gotodrafts,Gehe zu ungesicherten Medieneinträgen,Go to Drafts,\r\nmedia_entry_media_import_header,Medien importieren,Media upload,\r\nmedia_entry_media_import_inside_nojs,Dateien auswählen,Select Files,\r\nmedia_entry_media_import_inside,Dateien auf dieses Feld ziehen oder,Drag & drop files here or,\r\nmedia_entry_media_import_notes_msg,\"Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.\",\"Images (TIFF, JPEG, PNG) and audio/video files in the most common formats are directly processed and displayed. Images in the CMYK color model cannot be displayed correctly, please convert them to RGB before uploading.\",\r\nmedia_entry_media_import_notes_title,Hinweise,Hints,\r\nmedia_entry_media_import_title,\"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.\",\"Add pictures, videos, audio file, or other documents.\",\r\nmedia_entry_meta_data_header_prefix,Medieneintrag editieren: ,Edit Media Entry:,\r\nmedia_entry_more_data_title,Verantwortlichkeit und Aktivität,Responsibility,\r\nmedia_entry_not_published_warning_msg,Dieser Medieneintrag ist noch nicht gesichert!,Media entry is not saved yet!,\r\nmedia_entry_select_collection_flash_result,Eintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed entry from %{removed_count} set(s). Added entry to %{added_count} set(s).,TODO_cleanup_interpolation\r\nmedia_entry_tab_main,Medieneintrag,Media Entry,\r\nmedia_entry_tab_more_data,Alle Daten,All Data,\r\nmedia_entry_tab_permissions,Berechtigungen,Permissions,\r\nmedia_entry_tab_relations,Zusammenhänge,Relations,\r\nmedia_entry_upload_btn,Importieren,Upload,\r\nmedia_entry_was_disfavored,Der Medieneintrag wurde von den Favoriten entfernt.,Media entry was removed from favorites.,\r\nmedia_entry_was_favored,Der Medieneintrag wurde zu den Favoriten hinzugefügt.,Media entry was added to favorites.,\r\nmeta_data_action_delete_btn,Löschen,Delete,\r\nmeta_data_action_edit_btn,Bearbeiten,Edit,\r\nmeta_data_batch_failure,Metadaten konnten nicht aktualisiert werden.,Metadata could not be updated.,\r\nmeta_data_batch_hint_differences_override,\"Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.\",Attention: Changes will replace exiting values. Without changes values will be preserved.,\r\nmeta_data_batch_hint_differences,Unterschiedliche Metadaten vorhanden,Different metadata in place.,\r\nmeta_data_batch_hint_equal_data,Gleiche Metadaten vorhanden,Same metadata in place.,\r\nmeta_data_batch_hint_no_data,Noch keine Metadaten vorhanden,No metadata available yet.,\r\nmeta_data_batch_hint_value,Wert und Text,Value and text,\r\nmeta_data_batch_items_selected,Einträge selektiert,entries selected,\r\nmeta_data_batch_success,Metadaten wurden erfolgreich aktualisiert.,Succesfully updated metadata.,\r\nmeta_data_batch_title_post, Einträge gleichzeitig editieren, Einträge gleichzeitig editieren,\r\nmeta_data_batch_title_pre,Metadaten für ,Metadaten für ,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Werte löschen wollen?\",Are you sure you want to delete these values?,\r\nmeta_data_edit_collection_saved,Set wurde gespeichert.,Collection was saved.,\r\nmeta_data_edit_media_entry_published,Eintrag wurde gespeichert und publiziert.,Entry was saved and published.,\r\nmeta_data_edit_media_entry_saved_missing,Eintrag wurde gespeichert aber es wurden nicht alle Pflichtfelder ausgefüllt.,Entry was saved but there are missing mandatory fields.,\r\nmeta_data_edit_media_entry_saved,Eintrag wurde gespeichert.,Entry was saved.,\r\nmeta_data_form_cancel_link,Abbrechen,Cancel,\r\nmeta_data_form_save_btn,Speichern,Save,\r\nmeta_data_form_submit_btn,Speichern,Submit,\r\nmeta_data_header_text,Werte,Values,\r\nmeta_data_meta_key_label,Schlüssel,Key,\r\nmeta_data_type_label,Typ,Type,\r\nmeta_data_value_label,Wert,Value,\r\nno_content_fallback,(Keine Inhalte vorhanden.),(No content available.),\r\nno_groups_fallback,(Keine Gruppen vorhanden.),(No groups available.),\r\nno_keywords_fallback,(Keine Schlagworte vorhanden.),(No keywords available.),\r\nno_relations_title,Es wurden keine Zusammenhänge gefunden.,No relations found.,\r\npagination_of,von,of,\r\npagination_prefix,Seite,Page,\r\npeople_toolbar_header,Ähnliche Inhalte,Related Resources,\r\npermission_name_edit_metadata_and_relations,Metadaten editieren & Inhalte hinzufügen,Edit Metadata and contents,\r\npermission_name_edit_metadata,Metadaten editieren,Edit metadata,\r\npermission_name_edit_permissions,Zugriffsberechtigungen ändern,Edit permissions,\r\npermission_name_get_full_size,Original exportieren & in PDF blättern,Download original & browse PDF,\r\npermission_name_get_metadata_and_previews,Betrachten,View,\r\npermission_overridden_by_public,(überschrieben durch die öffentlichen Berechtigungen),(overridden by public permissions),\r\npermission_subject_name_public,Internet,Internet,\r\npermission_subject_title_apiapps,API-Applikationen,API Clients,\r\npermission_subject_title_groups,Gruppen,Groups,\r\npermission_subject_title_public,Öffentlichkeit,Public,\r\npermission_subject_title_users,Personen,Users,\r\npermissions_overview_yours_msg_end,\", haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen\",\", currently have the following permissions (either directly or as a member of a group):\",\r\npermissions_overview_yours_msg_start,\"Sie, \",\"You, \",\r\npermissions_overview_yours_title,Ihre Berechtigungen,Your Permissions,\r\npermissions_responsible_user_msg,Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.,The responsible user has all permissions for the selected content and can also delete it.,\r\npermissions_responsible_user_title,Verantwortliche Person,Responsible User,\r\npermissions_table_cancel_btn,Abbrechen,Cancel,\r\npermissions_table_edit_btn,Bearbeiten,Edit,\r\npermissions_table_remove_subject_btn,Berechtigung entfernen,Remove Permissions,\r\npermissions_table_save_btn,Speichern,Save,\r\npermissions_table_title,Berechtigungen,Permissions,\r\npicture_alt_fallback,(unbekannt),(unkown),\r\npicture_alt_prefix,Bild: ,Picture:,\r\nrelations_parents_title,Übergeordnete Sets,Parents,\r\nrelations_siblings_title,Benachbarte Sets,Siblings,\r\nrelations_title,Zusammenhänge,Relations,\r\nresource_action_destroy,Medieneintrag löschen,Delete media entry,\r\nresource_action_edit,Editieren,Edit,\r\nresource_action_export,Exportieren,Download,\r\nresource_action_favor,Zu Favoriten hinzufügen/entfernen,Add to/Remove from favorites,\r\nresource_action_set_collection,Zu Sets hinzufügen/Aus Sets entfernen,Add to/Remove from sets,\r\nresource_ask_delete_cancel,Abbrechen,Cancel,\r\nresource_ask_delete_ok,Löschen,Delete,\r\nresource_ask_delete_question_post,?,?,\r\nresource_meta_data_copyright_notice,Rechte am geistigen Eigentum,Copyright notice,\r\nresource_meta_data_date,Datierung,Date,\r\nresource_meta_data_description,Beschreibung,Description,\r\nresource_meta_data_fallback,Es sind keine Metadaten zu diesem Kontext bereitgestellt.,No metadata for this context.,\r\nresource_meta_data_has_validation_errors,Es gibt fehlerhafte Eingabefelder.,Es gibt fehlerhafte Eingabefelder.,\r\nresource_meta_data_keywords,Schlagworte,Keywords,\r\nresource_meta_data_resource_type,Medientyp,Media type,\r\nresource_meta_data_responsible,Verantwortliche Person,Responsible user,\r\nresource_meta_data_saved_filter,Gespeicherter Filter,Saved filter,\r\nresource_meta_data_title,Titel,Title,\r\nresource_select_collection_cancel,Abbrechen,Cancel,\r\nresource_select_collection_clear,Löschen,Clear,\r\nresource_select_collection_hint_more,Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.,Additional sets were found. Please refine your search.,\r\nresource_select_collection_hint_search,\"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.\",Search for and select sets that should hold the media entry.,\r\nresource_select_collection_non_assigned,Inhalt ist noch keinem Set zugewiesen.,Entry is not yet part of any set.,\r\nresource_select_collection_non_found,Zu dieser Suche wurde kein Set gefunden.,No set was found.,\r\nresource_select_collection_save,Speichern,Save,\r\nresource_select_collection_search_placeholder,Suche,Search,\r\nresource_select_collection_search,Suchen,Search,\r\nresource_select_collection_title,Zu Set hinzufügen/entfernen,Add to/remove from set,\r\nresources_box_batch_actions_addtoset,Ausgewählte zu Set hinzufügen,Add selected to Set,\r\nresources_box_batch_actions_delete,Ausgewählte löschen,Delete selected,\r\nresources_box_batch_actions_edit,Metadaten von Medieneinträgen editieren,Edit MetaData,\r\nresources_box_batch_actions_menu_title,Aktionen,Actions,\r\nresources_box_batch_actions_save,Als FilterSet speichern,Save as FilterSet,\r\nresources_box_title_count_post,Inhalte,Items,\r\nresources_header_show_all,alle anzeigen,show all,\r\nsearch_btn_search,Suchen,Search,\r\nsitemap_api,API,API,\r\nsitemap_collections,Sets,Sets,\r\nsitemap_entries,Medieneinträge,Media Entries,\r\nsitemap_explore,Erkunden,Explore,\r\nsitemap_filter_sets,Filtersets,Filter sets,\r\nsitemap_help,Support,Support,\r\nsitemap_media_entries,Medieneinträge,Media entries,\r\nsitemap_my_archive_title,Mein Archiv,My Archive,\r\nsitemap_my_archive,Mein Archiv,My archive,\r\nsitemap_my_content_collections_title,Meine Sets,My Sets,\r\nsitemap_my_content_collections,Meine Sets,My sets,\r\nsitemap_my_content_filter_sets_title,Meine Filtersets,My Filter Sets,\r\nsitemap_my_content_filter_sets,Meine Filtersets,My filter sets,\r\nsitemap_my_content_media_entries_title,Meine Medieneinträge,My Media Entries,\r\nsitemap_my_content_media_entries,Meine Medieneinträge,My media entries,\r\nsitemap_my_entrusted_collections_title,Mir anvertraute Sets,My Entrusted Sets,\r\nsitemap_my_entrusted_collections,Mir anvertraute Sets,My entrusted sets,\r\nsitemap_my_entrusted_filter_sets_title,Mir anvertraute Filtersets,My Entrusted Filter Sets,\r\nsitemap_my_entrusted_filter_sets,Mir anvertraute Filtersets,My entrusted filter sets,\r\nsitemap_my_entrusted_media_entries_title,Mir anvertraute Medieneinträge,My Entrusted Media Entries,\r\nsitemap_my_entrusted_media_entries,Mir anvertraute Medieneinträge,My entrusted media entries,\r\nsitemap_my_favorite_collections_title,Meine Favoriten (Sets),My Favorites (Sets),\r\nsitemap_my_favorite_collections,Meine Favoriten (Sets),My favorites (sets),\r\nsitemap_my_favorite_filter_sets_title,Meine Favoriten (Filtersets),My Favorites (Filter Sets),\r\nsitemap_my_favorite_filter_sets,Meine Favoriten (Filtersets),My favorites (filter sets),\r\nsitemap_my_favorite_media_entries_title,Meine Favoriten (Medieneinträge),My Favorites (Media Entries),\r\nsitemap_my_favorite_media_entries,Meine Favoriten (Medieneinträge),My favorites (media entries),\r\nsitemap_my_groups_title,Meine Arbeitsgruppen,My Work Groups,\r\nsitemap_my_groups,Meine Arbeitsgruppen,My work groups,\r\nsitemap_my_latest_imports_title,Meine letzten Importe,My Latest Uploads,\r\nsitemap_my_latest_imports,Meine letzten Importe,My latest uploads,\r\nsitemap_my_unpublished_title,Meine ungesicherten Medieneinträge,My Unsaved Media Entries,\r\nsitemap_my_unpublished,Meine ungesicherten Medieneinträge,My unsaved media entries,\r\nsitemap_my_used_keywords_title,Meine Schlagworte,My Keywords,\r\nsitemap_my_used_keywords,Meine Schlagworte,My keywords,\r\nsitemap_search,Suche,Search,\r\nuser_menu_admin_ui,Admin-Interface öffnen,Open Admin Interface,\r\nuser_menu_login_btn,Anmelden,Log in,\r\nuser_menu_logout_btn,Abmelden,Log out,\r\nuser_menu_upload,Medien importieren,Upload Media,\r\nworkgroup_link_to_contents_text,Inhalte,Contents,\r\nworkgroup_link_to_contents_title,Inhalte dieser Arbeitsgruppe anzeigen,View contents of this work group,\r\nworkgroup_members_table_is_member,Mitglied?,Member?,\r\nworkgroup_members_table_login,Login,Login,\r\nworkgroup_members_table_title,Mitglieder,Members,\r\n"
 
 // parses CSV and returns list like: [{lang: 'en', mapping: {key: 'value'}}, …]
 var translationsList = parseTranslationsFromCSV(translationsCSVText)
@@ -811,7 +811,12 @@ MediaEntry = require('./media-entry.coffee');
 
 module.exports = AppCollection.extend({
   type: 'MediaEntries',
-  model: MediaEntry
+  model: MediaEntry,
+  getBatchEditableItems: function() {
+    return this.filter(function(item) {
+      return item.isBatchEditable;
+    });
+  }
 });
 
 
@@ -889,6 +894,12 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
         var contentType;
         contentType = f.presence(f.get(this.media_file, 'content_type')) || f.presence(f.get(this.uploading, 'file.type'));
         return getMediaType(contentType);
+      }
+    },
+    isBatchEditable: {
+      deps: ['editable', 'invalid_meta_data'],
+      fn: function() {
+        return this.editable && !this.invalid_meta_data;
       }
     },
     uploadStatus: {
@@ -1597,7 +1608,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":2,"../../lib/form-xhr.coffee":3,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../lib/forms/input-field-text.cjsx":56,"../lib/forms/rails-form.cjsx":61,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../ui-components/Preloader.cjsx":78,"../ui-components/Thumbnail.cjsx":80,"../views/Collection/SelectCollectionDialog.cjsx":92,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],35:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":2,"../../lib/form-xhr.coffee":3,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../lib/forms/input-field-text.cjsx":56,"../lib/forms/rails-form.cjsx":61,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":71,"../ui-components/Preloader.cjsx":77,"../ui-components/Thumbnail.cjsx":80,"../views/Collection/SelectCollectionDialog.cjsx":92,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],35:[function(require,module,exports){
 var AsyncModal, BatchAddToSet, BatchHintBox, PageContent, PageContentHeader, React, ResourceThumbnail, ResourcesBatchBox, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, setUrlParams, t;
 
 React = require('react');
@@ -2027,7 +2038,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/madek-prop-types.coffee":63,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./BatchHintBox.cjsx":36,"./BatchResourceMetaDataForm.cjsx":37,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"classnames":343,"react":714}],39:[function(require,module,exports){
+},{"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation":11,"../lib/forms/form-label.cjsx":55,"../lib/forms/rails-form.cjsx":61,"../lib/madek-prop-types.coffee":63,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":71,"../views/HeaderButton.cjsx":95,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./BatchHintBox.cjsx":36,"./BatchResourceMetaDataForm.cjsx":37,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"classnames":343,"react":714}],39:[function(require,module,exports){
 var CollageLoggedIn, PrettyThumbs, React, ReactDOM, f, t;
 
 React = require('react');
@@ -2192,18 +2203,20 @@ module.exports = React.createClass({
 });
 
 
-},{"../ui-components/Icon.cjsx":72,"../ui-components/Link.cjsx":74,"../ui-components/MediaPlayer.cjsx":75,"../ui-components/Picture.cjsx":77,"active-lodash":124,"classnames":343,"react":714}],41:[function(require,module,exports){
-var ActionsBar, BatchAddToSetModal, Button, ButtonGroup, FallBackMsg, FilterBar, FilterExamples, FilterPreloader, Icon, LAYOUT_MODES, Link, MediaEntriesCollection, PageCounter, Preloader, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, UiToolBar, ampersandReactMixin, classList, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, qs, ref, resourceListParams, router, setUrlParams, viewConfigProps, xhr;
+},{"../ui-components/Icon.cjsx":71,"../ui-components/Link.cjsx":73,"../ui-components/MediaPlayer.cjsx":74,"../ui-components/Picture.cjsx":76,"active-lodash":124,"classnames":343,"react":714}],41:[function(require,module,exports){
+var ActionsBar, BatchAddToSetModal, BoxTitleBar, BoxToolBar, Button, ButtonGroup, Dropdown, FallBackMsg, FilterExamples, FilterPreloader, Icon, LAYOUT_MODES, Link, MediaEntriesCollection, PageCounter, Preloader, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, UiPaginationNav, ampersandReactMixin, cx, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, parseMods, qs, ref, resourceListParams, router, setUrlParams, t, ui, viewConfigProps, xhr;
 
 React = require('react');
 
 f = require('active-lodash');
 
-classList = require('classnames/dedupe');
-
-qs = require('qs');
-
 ampersandReactMixin = require('ampersand-react-mixin');
+
+ui = require('../lib/ui.coffee');
+
+parseMods = ui.parseMods, cx = ui.cx;
+
+t = ui.t('de');
 
 setUrlParams = require('../../lib/set-params-for-url.coffee');
 
@@ -2213,11 +2226,17 @@ RailsForm = require('../lib/forms/rails-form.cjsx');
 
 ResourceThumbnail = require('./ResourceThumbnail.cjsx');
 
-ref = require('../ui-components/index.coffee'), Button = ref.Button, ButtonGroup = ref.ButtonGroup, Icon = ref.Icon, Link = ref.Link, Preloader = ref.Preloader, ActionsBar = ref.ActionsBar, FilterBar = ref.FilterBar, SideFilter = ref.SideFilter;
+ref = require('../ui-components/index.coffee'), Button = ref.Button, ButtonGroup = ref.ButtonGroup, Icon = ref.Icon, Link = ref.Link, Preloader = ref.Preloader, Dropdown = ref.Dropdown, ActionsBar = ref.ActionsBar;
 
-MediaEntriesCollection = require('../../models/media-entries.coffee');
+SideFilter = require('../ui-components/ResourcesBox/SideFilter.cjsx');
+
+BoxToolBar = require('../ui-components/ResourcesBox/BoxToolBar.cjsx');
 
 router = null;
+
+qs = require('qs');
+
+MediaEntriesCollection = require('../../models/media-entries.coffee');
 
 xhr = require('xhr');
 
@@ -2317,6 +2336,15 @@ module.exports = React.createClass({
       batchAddToSet: false
     };
   },
+  componentWillMount: function() {
+    var resources;
+    if (this.props.get.type === 'MediaEntries') {
+      resources = this.props.get.resources.isCollection ? this.props.get.resources : new MediaEntriesCollection(this.props.get.resources);
+    }
+    return this.setState({
+      resources: resources
+    });
+  },
   componentDidMount: function() {
     var selection;
     router = require('../../lib/router.coffee');
@@ -2407,16 +2435,23 @@ module.exports = React.createClass({
     event.preventDefault();
     selection = this.state.selectedResources;
     if (selection.isEmpty()) {
-      return selection.set(this.props.get.resources);
+      return selection.set(this.state.resources.models);
     } else {
       return selection.reset();
     }
   },
+  _onHiglightEditable: function(bool, event) {
+    if (!this.state.selectedResources || this.state.selectedResources.isEmpty()) {
+      return;
+    }
+    return this.setState({
+      higlightBatchEditable: bool
+    });
+  },
   _onBatchEdit: function(event) {
-    var batchEditUrl, currentUrl, selected, selection;
+    var batchEditUrl, currentUrl, selected;
     event.preventDefault();
-    selection = this.state.selectedResources;
-    selected = f.map(selection.serialize(), 'uuid');
+    selected = f.map(this.state.selectedResources.getBatchEditableItems(), 'uuid');
     currentUrl = setUrlParams(this.props.get.config.for_url, {
       list: f.omit(this.state.config, 'for_url')
     });
@@ -2482,7 +2517,7 @@ module.exports = React.createClass({
     });
   },
   render: function() {
-    var BoxFilterBar, BoxToolBar, Sidebar, authToken, baseClass, boxClasses, children, config, currentQuery, currentUrl, fallback, fetchRelations, get, heading, initial, listClasses, listHolderClasses, mods, paginationNav, ref1, resetFilterHref, resetFilterLink, saveable, toolbarClasses, withActions, withBox;
+    var authToken, baseClass, boxClasses, boxTitleBar, boxToolBar, children, config, currentQuery, currentUrl, fallback, fetchRelations, get, heading, initial, listClasses, listHolderClasses, mods, paginationNav, ref1, resetFilterHref, resetFilterLink, resources, saveable, sidebar, toolbarClasses, withActions, withBox;
     ref1 = this.props, get = ref1.get, mods = ref1.mods, initial = ref1.initial, withBox = ref1.withBox, fallback = ref1.fallback, heading = ref1.heading, fetchRelations = ref1.fetchRelations, saveable = ref1.saveable, authToken = ref1.authToken, children = ref1.children;
     get = f.defaultsDeep({
       config: this.state.config
@@ -2494,12 +2529,13 @@ module.exports = React.createClass({
         show_filter: false
       }
     });
+    resources = this.state.resources || get.resources;
     config = get.config;
     withActions = get.with_actions;
     saveable = saveable || false;
     fetchRelations = f.present(fetchRelations) ? fetchRelations : this.state.isClient && withActions && (config.layout === 'grid');
     baseClass = 'ui-polybox';
-    boxClasses = classList({
+    boxClasses = cx({
       'ui-container': true,
       'midtone': withBox,
       'bordered': withBox
@@ -2516,10 +2552,10 @@ module.exports = React.createClass({
           return 'rounded-top';
       }
     })();
-    listHolderClasses = classList('ui-resources-holder', {
+    listHolderClasses = cx('ui-resources-holder', {
       pam: withBox
     });
-    listClasses = classList(config.layout, {
+    listClasses = cx(config.layout, {
       'vertical': config.layout === 'tiles',
       'active': withActions
     }, 'ui-resources');
@@ -2545,9 +2581,9 @@ module.exports = React.createClass({
     }, React.createElement(Icon, {
       "i": 'undo'
     }), " ", 'Filter zurücksetzen') : void 0 : void 0;
-    BoxToolBar = withBox ? (function(_this) {
+    boxTitleBar = (function(_this) {
       return function() {
-        var actions, filter, for_url, isClient, layout, layouts, selection, totalCount;
+        var filter, for_url, isClient, layout, layouts, selection, totalCount;
         filter = config.filter, layout = config.layout, for_url = config.for_url;
         totalCount = f.get(get, 'pagination.total_count');
         isClient = _this.state.isClient;
@@ -2569,74 +2605,133 @@ module.exports = React.createClass({
             onClick: _this._handleChangeInternally
           });
         });
-        actions = withActions ? {
-          save: saveable ? {
-            children: React.createElement(Icon, {
-              "i": 'filter',
-              "mods": 'small',
-              "title": 'Als FilterSet speichern'
-            }),
-            onClick: isClient && f.present(filter) ? f.curry(_this._onCreateFilterSet)(config) : void 0
-          } : void 0,
-          add_to_set: get.type === 'MediaEntries' ? {
-            children: React.createElement(Icon, {
-              "i": 'move',
-              "mods": 'small',
-              "title": 'Zu Set hinzufügen'
-            }),
-            onClick: isClient && selection && !selection.isEmpty() ? _this._onBatchAddToSet : void 0
-          } : void 0,
-          batch_edit: get.type === 'MediaEntries' ? {
-            children: React.createElement(Icon, {
-              "i": 'pen',
-              "mods": 'small',
-              "title": 'Auswahl bearbeiten'
-            }),
-            onClick: isClient && selection && !selection.isEmpty() ? _this._onBatchEdit : void 0
-          } : void 0
-        } : void 0;
-        return React.createElement(UiToolBar, {
-          "heading": heading || (totalCount ? totalCount + " " + 'Inhalte' : void 0),
+        return React.createElement(BoxTitleBar, {
+          "heading": heading || (totalCount ? totalCount + " " + (t('resources_box_title_count_post')) : void 0),
           "mods": toolbarClasses,
-          "actions": actions,
           "layouts": layouts
         });
       };
-    })(this)() : void 0;
-    BoxFilterBar = (function(_this) {
+    })(this);
+    boxToolBar = (function(_this) {
       return function() {
-        var filterToggleLink, props, selection;
-        if (!withBox || !get.can_filter) {
-          return null;
+        var actions, actionsDropdown, batchEditables, checkboxMods, filterBarProps, filterToggleLink, isClient, labelText, selectClass, selectToggle, selection, selector, selectorStyle;
+        if (!withBox) {
+          return false;
         }
+        isClient = _this.state.isClient;
         selection = f.presence(_this.state.selectedResources) || false;
+        if (selection) {
+          batchEditables = selection.getBatchEditableItems();
+        }
         filterToggleLink = setUrlParams(config.for_url, currentQuery, {
           list: {
             show_filter: !config.show_filter
           }
         });
-        props = {
-          filter: {
-            toggle: {
-              name: 'Filtern',
-              mods: config.show_filter ? 'active' : void 0,
-              href: filterToggleLink,
-              onClick: _this._onFilterToggle
-            },
-            reset: f.present(config.filter) ? resetFilterLink : void 0
-          },
-          select: selection ? {
-            active: 'Alle abwählen',
-            inactive: 'Alle auswählen',
-            isActive: selection && !(selection.isEmpty()),
-            isDirty: selection && !(selection.length === get.resources.length),
-            onClick: _this._onSelectionAllToggle
+        actions = withActions ? {
+          addToSet: selection && get.type === 'MediaEntries' ? {
+            click: (!selection.isEmpty() ? _this._onBatchAddToSet : void 0)
+          } : void 0,
+          edit: selection && get.type === 'MediaEntries' ? {
+            click: (f.present(batchEditables) ? _this._onBatchEdit : void 0),
+            hover: f.curry(_this._onHiglightEditable)(true),
+            unhover: f.curry(_this._onHiglightEditable)(false)
+          } : void 0,
+          save: isClient && saveable ? {
+            click: (f.present(config.filter) ? f.curry(_this._onCreateFilterSet)(config) : void 0)
           } : void 0
+        } : void 0;
+        actionsDropdown = f.any(f.values(actions)) ? React.createElement(Dropdown, {
+          "mods": 'stick-right mlm',
+          "toggle": 'Aktionen',
+          "toggleProps": {
+            className: 'button'
+          }
+        }, React.createElement("ul", {
+          "className": "dropdown-menu ui-drop-menu",
+          "role": "menu"
+        }, (actions.addToSet ? React.createElement("li", {
+          "className": "ui-drop-item"
+        }, React.createElement(Link, {
+          "onClick": actions.addToSet.click
+        }, React.createElement(Icon, {
+          "i": "move",
+          "mods": "ui-drop-icon"
+        }), " ", React.createElement("span", {
+          "className": "ui-count"
+        }, selection.length), " ", t('resources_box_batch_actions_addtoset'))) : void 0), (actions.edit ? React.createElement("li", {
+          "className": "ui-drop-item"
+        }, React.createElement(Link, {
+          "onClick": actions.edit.click,
+          "onMouseEnter": actions.edit.hover,
+          "onMouseLeave": actions.edit.unhover
+        }, React.createElement(Icon, {
+          "i": "pen",
+          "mods": "ui-drop-icon"
+        }), " ", React.createElement("span", {
+          "className": "ui-count"
+        }, batchEditables.length), " ", t('resources_box_batch_actions_edit'))) : void 0), (actions["delete"] ? React.createElement("li", {
+          "className": "separator"
+        }) : void 0), (actions["delete"] ? React.createElement("li", {
+          "className": "ui-drop-item"
+        }, React.createElement(Link, {
+          "onClick": actions["delete"].click
+        }, React.createElement(Icon, {
+          "i": "trash",
+          "mods": "ui-drop-icon"
+        }), " ", t('resources_box_batch_actions_delete'))) : void 0), (actions.save ? React.createElement("li", {
+          "className": "separator"
+        }) : void 0), (actions.save ? React.createElement("li", {
+          "className": "ui-drop-item"
+        }, React.createElement(Link, {
+          "onClick": actions.save.click
+        }, React.createElement(Icon, {
+          "i": "filter",
+          "mods": "ui-drop-icon"
+        }), " ", t('resources_box_batch_actions_save'))) : void 0))) : void 0;
+        selectToggle = selection ? (selector = {
+          active: 'Alle abwählen',
+          inactive: 'Alle auswählen',
+          isActive: selection && !(selection.isEmpty()),
+          isDirty: selection && resources && !(selection.length === resources.length),
+          onClick: (selection ? _this._onSelectionAllToggle : void 0)
+        }, labelText = selector.isActive ? selector.active : selector.inactive, selectClass = 'ui-filterbar-select weak', checkboxMods = cx({
+          'active': selector.isActive,
+          'mid': selector.isDirty
+        }), selectorStyle = {
+          top: '2px'
+        }, React.createElement("label", React.__spread({
+          "className": selectClass
+        }, selector, {
+          "style": selectorStyle
+        }), React.createElement("span", {
+          "className": 'js-only'
+        }, React.createElement("span", null, labelText, " "), React.createElement(Icon, {
+          "i": 'checkbox',
+          "mods": checkboxMods
+        })))) : void 0;
+        filterBarProps = {
+          left: get.can_filter ? (function() {
+            var name;
+            name = 'Filtern';
+            return React.createElement("div", null, React.createElement(Button, {
+              "name": name,
+              "mods": {
+                'active': config.show_filter
+              },
+              "href": filterToggleLink,
+              "onClick": _this._onFilterToggle
+            }, React.createElement(Icon, {
+              "i": 'filter',
+              "mods": 'small'
+            }), " ", name), (f.present(config.filter) ? resetFilterLink : void 0));
+          })() : void 0,
+          right: selectToggle || actionsDropdown ? React.createElement("div", null, selectToggle, actionsDropdown) : void 0
         };
-        return React.createElement(FilterBar, React.__spread({}, props));
+        return React.createElement(BoxToolBar, React.__spread({}, filterBarProps));
       };
-    })(this)();
-    Sidebar = (function(_this) {
+    })(this);
+    sidebar = (function(_this) {
       return function(arg, arg1) {
         var config, dynamic_filters, isClient;
         config = arg.config, dynamic_filters = arg.dynamic_filters;
@@ -2708,13 +2803,13 @@ module.exports = React.createClass({
     })(this)(get) : void 0;
     return React.createElement("div", {
       "className": boxClasses
-    }, BoxToolBar, BoxFilterBar, React.createElement("div", {
+    }, (withBox ? boxTitleBar() : void 0), (withBox ? boxToolBar() : void 0), React.createElement("div", {
       "className": listHolderClasses
     }, React.createElement("div", {
       "className": 'ui-container table auto'
-    }, Sidebar, React.createElement("div", {
+    }, sidebar, React.createElement("div", {
       "className": 'ui-container table-cell table-substance'
-    }, children, (!f.present(get.resources) || get.resources.length === 0 ? (function() {
+    }, children, (!f.present(resources) || resources.length === 0 ? (function() {
       if (!fallback) {
         return null;
       }
@@ -2733,9 +2828,9 @@ module.exports = React.createClass({
       "total": get.pagination.total_pages
     }) : void 0 : void 0), React.createElement("ul", {
       "className": 'ui-resources-page-items'
-    }, get.resources.map((function(_this) {
+    }, resources.map((function(_this) {
       return function(item) {
-        var isSelected, key, onClick, onSelect, selection;
+        var isSelected, key, onClick, onSelect, selection, style;
         key = item.uuid || item.cid;
         if (withBox) {
           selection = _this.state.selectedResources;
@@ -2743,10 +2838,14 @@ module.exports = React.createClass({
             isSelected = _this.state.selectedResources.has(item);
             onSelect = f.curry(_this._onSelectResource)(item);
             onClick = config.layout === 'miniature' ? (!selection.isEmpty() ? onSelect : void 0) : void 0;
+            style = _this.state.higlightBatchEditable ? !item.isBatchEditable ? {
+              opacity: 0.35
+            } : void 0 : void 0;
           }
         }
         return React.createElement(ResourceThumbnail, {
           "elm": 'div',
+          "style": style,
           "get": item,
           "isClient": _this.state.isClient,
           "fetchRelations": fetchRelations,
@@ -2804,10 +2903,10 @@ SideFilterFallback = function(arg) {
   }, "Submit")));
 };
 
-UiToolBar = function(arg) {
+BoxTitleBar = function(arg) {
   var actions, classes, heading, layouts, mods, ref1;
   ref1 = arg != null ? arg : this.props, heading = ref1.heading, actions = ref1.actions, layouts = ref1.layouts, mods = ref1.mods;
-  classes = classList('ui-container inverted ui-toolbar pvx', mods);
+  classes = cx('ui-container inverted ui-toolbar pvx', mods);
   return React.createElement("div", {
     "className": classes
   }, React.createElement("h2", {
@@ -2817,7 +2916,7 @@ UiToolBar = function(arg) {
   }, React.createElement(ButtonGroup, {
     "mods": 'tertiary small right mls'
   }, layouts.map(function(btn) {
-    mods = classList('small', 'ui-toolbar-vis-button', btn.mods);
+    mods = cx('small', 'ui-toolbar-vis-button', btn.mods);
     return React.createElement(Button, React.__spread({}, btn, {
       "mods": mods,
       "key": btn.mode
@@ -2930,7 +3029,7 @@ filter_examples = {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":7,"../../lib/router.coffee":8,"../../lib/set-params-for-url.coffee":10,"../../models/media-entries.coffee":20,"../../shared/resource_list_params.coffee":118,"../lib/forms/rails-form.cjsx":61,"../ui-components/index.coffee":82,"./BatchAddToSetModal.cjsx":35,"./ResourceThumbnail.cjsx":48,"active-lodash":124,"ampersand-react-mixin":267,"classnames/dedupe":342,"local-links":441,"qs":567,"react":714,"xhr":743}],42:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":7,"../../lib/router.coffee":8,"../../lib/set-params-for-url.coffee":10,"../../models/media-entries.coffee":20,"../../shared/resource_list_params.coffee":118,"../lib/forms/rails-form.cjsx":61,"../lib/ui.coffee":64,"../ui-components/ResourcesBox/BoxToolBar.cjsx":78,"../ui-components/ResourcesBox/SideFilter.cjsx":79,"../ui-components/index.coffee":82,"./BatchAddToSetModal.cjsx":35,"./ResourceThumbnail.cjsx":48,"active-lodash":124,"ampersand-react-mixin":267,"local-links":441,"qs":567,"react":714,"xhr":743}],42:[function(require,module,exports){
 var InputMetaDatum, MadekPropTypes, MetaKeyFormLabel, PropTypes, RailsForm, React, cx, f, getRailsCSRFToken, t, xhr;
 
 React = require('react');
@@ -3521,7 +3620,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./ResourceMetaDataForm.cjsx":43,"react":714}],46:[function(require,module,exports){
+},{"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":71,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/TabContent.cjsx":104,"./ResourceMetaDataForm.cjsx":43,"react":714}],46:[function(require,module,exports){
 var BatchHintBox, Button, Icon, PageContent, PageContentHeader, React, ResourceMetaDataFormPerContext, ResourceThumbnail, ResourcesBatchBox, Tab, TabContent, Tabs, Thumbnail, batchDiff, f, setUrlParams, t;
 
 React = require('react');
@@ -3807,7 +3906,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":2,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":72,"../ui-components/Thumbnail.cjsx":80,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceMetaDataFormPerContext.cjsx":44,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],47:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":2,"../../lib/set-params-for-url.coffee":10,"../../lib/string-translation.js":11,"../ui-components/Button.cjsx":67,"../ui-components/Icon.cjsx":71,"../ui-components/Thumbnail.cjsx":80,"../views/PageContent.cjsx":101,"../views/PageContentHeader.cjsx":102,"../views/Tab.cjsx":103,"../views/TabContent.cjsx":104,"../views/Tabs.cjsx":105,"./BatchHintBox.cjsx":36,"./ResourceMetaDataFormPerContext.cjsx":44,"./ResourceThumbnail.cjsx":48,"./ResourcesBatchBox.cjsx":49,"active-lodash":124,"react":714}],47:[function(require,module,exports){
 var ApiClientIndex, AutoComplete, GroupIndex, PermissionsBySubjectType, PermissionsOverview, PermissionsSubject, PermissionsSubjectHeader, React, RemoveButton, UserIndex, ampersandReactMixin, f, t, url;
 
 React = require('react');
@@ -4283,7 +4382,7 @@ module.exports = React.createClass({
       }
     }
     return this.setState({
-      model: model
+      model: model || get
     });
   },
   componentDidMount: function() {
@@ -4787,7 +4886,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":7,"../decorators/MediaResourcesBox.cjsx":41,"../ui-components/Preloader.cjsx":78,"active-lodash":124,"react":714,"react-dom":575,"xhr":743}],52:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":7,"../decorators/MediaResourcesBox.cjsx":41,"../ui-components/Preloader.cjsx":77,"active-lodash":124,"react":714,"react-dom":575,"xhr":743}],52:[function(require,module,exports){
 
 /*
 
@@ -5742,7 +5841,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":11,"./FormButton.cjsx":71,"./Modal.cjsx":76,"react":714,"react-dom":575}],67:[function(require,module,exports){
+},{"../../lib/string-translation":11,"./FormButton.cjsx":70,"./Modal.cjsx":75,"react":714,"react-dom":575}],67:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -5834,7 +5933,7 @@ module.exports = React.createClass({
 
 
 },{"../lib/ui.coffee":64,"./Button.cjsx":67,"./propTypes.coffee":83,"active-lodash":124,"react":714}],69:[function(require,module,exports){
-var Icon, MODS, PropTypes, React, ui;
+var Icon, Link, MODS, PropTypes, React, ui;
 
 React = require('react');
 
@@ -5844,6 +5943,8 @@ ui = require('../lib/ui.coffee');
 
 Icon = require('./Icon.cjsx');
 
+Link = require('./Link.cjsx');
+
 MODS = ['stick-right'];
 
 module.exports = React.createClass({
@@ -5851,7 +5952,8 @@ module.exports = React.createClass({
   propTypes: {
     toggle: PropTypes.node.isRequired,
     toggleProps: PropTypes.object,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
+    disabled: PropTypes.bool,
     startOpen: PropTypes.bool
   },
   getInitialState: function() {
@@ -5877,6 +5979,7 @@ module.exports = React.createClass({
   },
   getDefaultProps: function() {
     return {
+      disabled: false,
       startOpen: false,
       fallbackStyles: function() {
         return React.createElement("style", {
@@ -5886,15 +5989,17 @@ module.exports = React.createClass({
     };
   },
   render: function(arg) {
-    var props, ref, state, wrapperClasses;
+    var isDisabled, props, ref, state, wrapperClasses;
     ref = arg != null ? arg : this, props = ref.props, state = ref.state;
+    isDisabled = !props.children ? true : props.disabled;
     wrapperClasses = ui.cx(ui.parseMods(this.props), {
       'open': this.state.isOpen
     }, 'ui-dropdown dropdown');
     return React.createElement("div", {
       "className": wrapperClasses
-    }, (!state.isClient ? props.fallbackStyles() : void 0), React.createElement("a", React.__spread({
+    }, (!state.isClient ? props.fallbackStyles() : void 0), React.createElement(Link, React.__spread({
       "className": "dropdown-toggle ui-drop-toggle",
+      "disabled": isDisabled,
       "onClick": (this.state.isOpen ? this._onMenuClose : this._onMenuOpen)
     }, props.toggleProps), props.toggle, " ", React.createElement(Icon, {
       "i": "arrow-down stand-alone small"
@@ -5903,105 +6008,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":64,"./Icon.cjsx":72,"react":714}],70:[function(require,module,exports){
-var Button, ButtonGroup, Icon, Link, React, SelectionToggle, ToggleButtonGroup, UiPropTypes, cx, f, parseMods, ui;
-
-React = require('react');
-
-f = require('active-lodash');
-
-ui = require('../lib/ui.coffee');
-
-parseMods = ui.parseMods;
-
-cx = ui.classnames;
-
-UiPropTypes = require('./propTypes.coffee');
-
-Button = require('./Button.cjsx');
-
-ButtonGroup = require('./ButtonGroup.cjsx');
-
-Icon = require('./Icon.cjsx');
-
-Link = require('./Link.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'FilterBar',
-  propTypes: {
-    filter: React.PropTypes.shape({
-      toggle: UiPropTypes.Clickable,
-      reset: React.PropTypes.node
-    }),
-    toggles: React.PropTypes.arrayOf(UiPropTypes.Clickable),
-    select: UiPropTypes.Toggleable
-  },
-  render: function(arg) {
-    var classes, filter, filterReset, filterToggle, lastColClass, ref, select, selectionMenu, toggleButtons, toggles;
-    ref = arg != null ? arg : this.props, filter = ref.filter, toggles = ref.toggles, select = ref.select;
-    classes = cx('ui-container separated', parseMods(this.props), 'ui-filterbar');
-    filterReset = filter.reset;
-    filterToggle = filter.toggle ? React.createElement(Button, React.__spread({}, filter.toggle), React.createElement(Icon, {
-      "i": 'filter',
-      "mods": 'small'
-    }), " ", filter.toggle.name) : void 0;
-    toggleButtons = toggles ? React.createElement(ToggleButtonGroup, {
-      "actions": toggles
-    }) : void 0;
-    selectionMenu = select ? React.createElement(SelectionToggle, {
-      "select": select
-    }) : void 0;
-    lastColClass = cx('by-right', {
-      'col4of6': !toggleButtons,
-      'col2of6': toggleButtons
-    });
-    return React.createElement("div", {
-      "className": classes
-    }, React.createElement("div", {
-      "className": 'col2of6 left'
-    }, filterToggle, " ", filterReset), React.createElement("div", {
-      "className": 'col2of6 by-center'
-    }, toggleButtons), React.createElement("div", {
-      "className": lastColClass
-    }, selectionMenu));
-  }
-});
-
-ToggleButtonGroup = function(arg) {
-  var actions;
-  actions = (arg != null ? arg : this.props).actions;
-  if (!f.present(actions)) {
-    return;
-  }
-  return React.createElement(ButtonGroup, null, actions.map(function(btn) {
-    return React.createElement(Button, React.__spread({}, btn, {
-      "key": btn.name,
-      "mods": (btn.isActive ? 'active' : void 0)
-    }), btn.name);
-  }));
-};
-
-SelectionToggle = function(arg) {
-  var checkboxMods, labelText, select, selectClass;
-  select = (arg != null ? arg : this.props).select;
-  labelText = select.isActive ? select.active : select.inactive;
-  selectClass = cx('weak', parseMods(select), 'ui-filterbar-select');
-  checkboxMods = cx({
-    'active': select.isActive,
-    'mid': select.isDirty
-  });
-  return React.createElement("div", null, React.createElement("label", React.__spread({
-    "className": selectClass
-  }, select), React.createElement("span", {
-    "className": 'js-only'
-  }, React.createElement("span", null, labelText, " "), React.createElement(Icon, {
-    "i": 'checkbox',
-    "mods": checkboxMods
-  }))));
-};
-
-
-},{"../lib/ui.coffee":64,"./Button.cjsx":67,"./ButtonGroup.cjsx":68,"./Icon.cjsx":72,"./Link.cjsx":74,"./propTypes.coffee":83,"active-lodash":124,"react":714}],71:[function(require,module,exports){
+},{"../lib/ui.coffee":64,"./Icon.cjsx":71,"./Link.cjsx":73,"react":714}],70:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -6019,7 +6026,7 @@ module.exports = React.createClass({
 });
 
 
-},{"react":714}],72:[function(require,module,exports){
+},{"react":714}],71:[function(require,module,exports){
 var FONT_AWESOME_ICONS, React, f, ui;
 
 React = require('react');
@@ -6047,7 +6054,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":64,"active-lodash":124,"react":714}],73:[function(require,module,exports){
+},{"../lib/ui.coffee":64,"active-lodash":124,"react":714}],72:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -6072,7 +6079,7 @@ module.exports = React.createClass({
 });
 
 
-},{"react":714}],74:[function(require,module,exports){
+},{"react":714}],73:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -6103,7 +6110,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":64,"react":714}],75:[function(require,module,exports){
+},{"../lib/ui.coffee":64,"react":714}],74:[function(require,module,exports){
 var React, f;
 
 React = require('react');
@@ -6139,7 +6146,7 @@ module.exports = React.createClass({
 });
 
 
-},{"active-lodash":124,"react":714}],76:[function(require,module,exports){
+},{"active-lodash":124,"react":714}],75:[function(require,module,exports){
 var Preloader, React, ReactDOM;
 
 React = require('react');
@@ -6234,7 +6241,7 @@ module.exports = React.createClass({
 });
 
 
-},{"./Preloader.cjsx":78,"react":714,"react-dom":575}],77:[function(require,module,exports){
+},{"./Preloader.cjsx":77,"react":714,"react-dom":575}],76:[function(require,module,exports){
 var React, f, t, ui;
 
 React = require('react');
@@ -6268,7 +6275,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":11,"../lib/ui.coffee":64,"active-lodash":124,"react":714}],78:[function(require,module,exports){
+},{"../../lib/string-translation":11,"../lib/ui.coffee":64,"active-lodash":124,"react":714}],77:[function(require,module,exports){
 var React, ui;
 
 React = require('react');
@@ -6287,7 +6294,60 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":64,"react":714}],79:[function(require,module,exports){
+},{"../lib/ui.coffee":64,"react":714}],78:[function(require,module,exports){
+var React, UiPropTypes, cx, f, parseMods, ref;
+
+React = require('react');
+
+f = require('active-lodash');
+
+ref = require('../../lib/ui.coffee'), parseMods = ref.parseMods, cx = ref.cx;
+
+UiPropTypes = require('../propTypes.coffee');
+
+module.exports = React.createClass({
+  displayName: 'BoxToolBar',
+  propTypes: {
+    left: React.PropTypes.node,
+    middle: React.PropTypes.node,
+    right: React.PropTypes.node
+  },
+  render: function(props) {
+    var classes, firstColClass, lastColClass, left, middle, middleColClass, ref1, restProps, right;
+    if (props == null) {
+      props = this.props;
+    }
+    ref1 = this.props, left = ref1.left, middle = ref1.middle, right = ref1.right;
+    restProps = f.omit(props, ['left', 'middle', 'right']);
+    if (!f.any([left, middle, right], f.present)) {
+      return false;
+    }
+    classes = cx('ui-filterbar ui-container separated', parseMods(this.props));
+    firstColClass = 'col2of6 left';
+    middleColClass = cx('by-center', {
+      'col6of6': !left && !right,
+      'col4of6': !left && right,
+      'col2of6': left && right
+    });
+    lastColClass = cx('by-right', {
+      'col6of6': !left && !middle,
+      'col4of6': (!left || !middle) && (left || middle),
+      'col2of6': left && middle
+    });
+    return React.createElement("div", React.__spread({}, restProps, {
+      "className": classes
+    }), React.createElement("div", {
+      "className": firstColClass
+    }, left), React.createElement("div", {
+      "className": middleColClass
+    }, middle), React.createElement("div", {
+      "className": lastColClass
+    }, right));
+  }
+});
+
+
+},{"../../lib/ui.coffee":64,"../propTypes.coffee":83,"active-lodash":124,"react":714}],79:[function(require,module,exports){
 var FilterItem, Icon, Link, MadekPropTypes, React, css, f, forCurrentFiltersSelectItemsInTree, initializeFilterTreeFromProps, initializeItems, initializeSections, initializeSubSections, setUrlParams, ui;
 
 React = require('react');
@@ -6296,15 +6356,15 @@ f = require('active-lodash');
 
 css = require('classnames');
 
-ui = require('../lib/ui.coffee');
+ui = require('../../lib/ui.coffee');
 
-setUrlParams = require('../../lib/set-params-for-url.coffee');
+setUrlParams = require('../../../lib/set-params-for-url.coffee');
 
-MadekPropTypes = require('../lib/madek-prop-types.coffee');
+MadekPropTypes = require('../../lib/madek-prop-types.coffee');
 
-Icon = require('./Icon.cjsx');
+Icon = require('../Icon.cjsx');
 
-Link = require('./Link.cjsx');
+Link = require('../Link.cjsx');
 
 module.exports = React.createClass({
   displayName: 'SideFilter',
@@ -6729,7 +6789,7 @@ initializeItems = function(filters) {
 };
 
 
-},{"../../lib/set-params-for-url.coffee":10,"../lib/madek-prop-types.coffee":63,"../lib/ui.coffee":64,"./Icon.cjsx":72,"./Link.cjsx":74,"active-lodash":124,"classnames":343,"react":714}],80:[function(require,module,exports){
+},{"../../../lib/set-params-for-url.coffee":10,"../../lib/madek-prop-types.coffee":63,"../../lib/ui.coffee":64,"../Icon.cjsx":71,"../Link.cjsx":73,"active-lodash":124,"classnames":343,"react":714}],80:[function(require,module,exports){
 var Icon, Link, Picture, PropTypes, React, f, flyoutProps, ui;
 
 React = require('react');
@@ -6846,7 +6906,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/ui.coffee":64,"./Icon.cjsx":72,"./Link.cjsx":74,"./Picture.cjsx":77,"active-lodash":124,"react":714}],81:[function(require,module,exports){
+},{"../lib/ui.coffee":64,"./Icon.cjsx":71,"./Link.cjsx":73,"./Picture.cjsx":76,"active-lodash":124,"react":714}],81:[function(require,module,exports){
 var React, f;
 
 React = require('react');
@@ -6878,10 +6938,10 @@ var requireBulk;
 
 
 
-module.exports = ({"ActionsBar":require("./ActionsBar.cjsx"),"AskModal":require("./AskModal.cjsx"),"Button":require("./Button.cjsx"),"ButtonGroup":require("./ButtonGroup.cjsx"),"Dropdown":require("./Dropdown.cjsx"),"FilterBar":require("./FilterBar.cjsx"),"FormButton":require("./FormButton.cjsx"),"Icon":require("./Icon.cjsx"),"Keyword":require("./Keyword.cjsx"),"Link":require("./Link.cjsx"),"MediaPlayer":require("./MediaPlayer.cjsx"),"Modal":require("./Modal.cjsx"),"Picture":require("./Picture.cjsx"),"Preloader":require("./Preloader.cjsx"),"SideFilter":require("./SideFilter.cjsx"),"Thumbnail":require("./Thumbnail.cjsx"),"ToggableLink":require("./ToggableLink.cjsx")});
+module.exports = ({"ActionsBar":require("./ActionsBar.cjsx"),"AskModal":require("./AskModal.cjsx"),"Button":require("./Button.cjsx"),"ButtonGroup":require("./ButtonGroup.cjsx"),"Dropdown":require("./Dropdown.cjsx"),"FormButton":require("./FormButton.cjsx"),"Icon":require("./Icon.cjsx"),"Keyword":require("./Keyword.cjsx"),"Link":require("./Link.cjsx"),"MediaPlayer":require("./MediaPlayer.cjsx"),"Modal":require("./Modal.cjsx"),"Picture":require("./Picture.cjsx"),"Preloader":require("./Preloader.cjsx"),"Thumbnail":require("./Thumbnail.cjsx"),"ToggableLink":require("./ToggableLink.cjsx")});
 
 
-},{"./ActionsBar.cjsx":65,"./AskModal.cjsx":66,"./Button.cjsx":67,"./ButtonGroup.cjsx":68,"./Dropdown.cjsx":69,"./FilterBar.cjsx":70,"./FormButton.cjsx":71,"./Icon.cjsx":72,"./Keyword.cjsx":73,"./Link.cjsx":74,"./MediaPlayer.cjsx":75,"./Modal.cjsx":76,"./Picture.cjsx":77,"./Preloader.cjsx":78,"./SideFilter.cjsx":79,"./Thumbnail.cjsx":80,"./ToggableLink.cjsx":81}],83:[function(require,module,exports){
+},{"./ActionsBar.cjsx":65,"./AskModal.cjsx":66,"./Button.cjsx":67,"./ButtonGroup.cjsx":68,"./Dropdown.cjsx":69,"./FormButton.cjsx":70,"./Icon.cjsx":71,"./Keyword.cjsx":72,"./Link.cjsx":73,"./MediaPlayer.cjsx":74,"./Modal.cjsx":75,"./Picture.cjsx":76,"./Preloader.cjsx":77,"./Thumbnail.cjsx":80,"./ToggableLink.cjsx":81}],83:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -6983,7 +7043,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Modal.cjsx":76,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575}],85:[function(require,module,exports){
+},{"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/FormButton.cjsx":70,"../../ui-components/Modal.cjsx":75,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575}],85:[function(require,module,exports){
 var Button, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, ToggableLink, ampersandReactMixin, f, formXhr, getRailsCSRFToken, loadXhr, t, xhr;
 
 React = require('react');
@@ -7089,7 +7149,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Icon.cjsx":72,"../../ui-components/Modal.cjsx":76,"../../ui-components/Preloader.cjsx":78,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],86:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":70,"../../ui-components/Icon.cjsx":71,"../../ui-components/Modal.cjsx":75,"../../ui-components/Preloader.cjsx":77,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],86:[function(require,module,exports){
 var MediaResourcesBox, React, ReactDOM, TabContent, classnames, f, t;
 
 React = require('react');
@@ -7587,7 +7647,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Modal.cjsx":76,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575}],91:[function(require,module,exports){
+},{"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/FormButton.cjsx":70,"../../ui-components/Modal.cjsx":75,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575}],91:[function(require,module,exports){
 var Button, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, SelectCollectionDialog, ToggableLink, ampersandReactMixin, f, formXhr, getRailsCSRFToken, loadXhr, t, xhr;
 
 React = require('react');
@@ -7837,7 +7897,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Icon.cjsx":72,"../../ui-components/Modal.cjsx":76,"../../ui-components/Preloader.cjsx":78,"../../ui-components/ToggableLink.cjsx":81,"./SelectCollectionDialog.cjsx":92,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],92:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":70,"../../ui-components/Icon.cjsx":71,"../../ui-components/Modal.cjsx":75,"../../ui-components/Preloader.cjsx":77,"../../ui-components/ToggableLink.cjsx":81,"./SelectCollectionDialog.cjsx":92,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],92:[function(require,module,exports){
 var Button, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, SelectCollectionBody, SelectCollectionFooter, SelectCollectionForm, SelectCollectionHeader, SelectCollectionToolbar, ToggableLink, ampersandReactMixin, f, formXhr, getRailsCSRFToken, loadXhr, t, xhr;
 
 React = require('react');
@@ -7998,7 +8058,7 @@ SelectCollectionToolbar = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Icon.cjsx":72,"../../ui-components/Modal.cjsx":76,"../../ui-components/Preloader.cjsx":78,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],93:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/Button.cjsx":67,"../../ui-components/FormButton.cjsx":70,"../../ui-components/Icon.cjsx":71,"../../ui-components/Modal.cjsx":75,"../../ui-components/Preloader.cjsx":77,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],93:[function(require,module,exports){
 var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, MediaEntryHeader, MediaResourcesBox, PageContent, PageContentHeader, RailsForm, React, ReactDOM, RightsManagement, Tab, TabContent, Tabs, classnames, f, t;
 
 React = require('react');
@@ -8368,7 +8428,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../ui-components/Modal.cjsx":76,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575}],98:[function(require,module,exports){
+},{"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../ui-components/Modal.cjsx":75,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575}],98:[function(require,module,exports){
 var AsyncModal, HeaderButton, PageContentHeader, React, ReactDOM, SelectCollection, f;
 
 React = require('react');
@@ -8675,7 +8735,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/FormButton.cjsx":71,"../../ui-components/Modal.cjsx":76,"../../ui-components/Preloader.cjsx":78,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],100:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":3,"../../../lib/load-xhr.coffee":5,"../../../lib/rails-csrf-token.coffee":7,"../../../lib/string-translation":11,"../../lib/forms/input-field-text.cjsx":56,"../../lib/forms/rails-form.cjsx":61,"../../ui-components/FormButton.cjsx":70,"../../ui-components/Modal.cjsx":75,"../../ui-components/Preloader.cjsx":77,"../../ui-components/ToggableLink.cjsx":81,"active-lodash":124,"ampersand-react-mixin":267,"react":714,"react-dom":575,"xhr":743}],100:[function(require,module,exports){
 var ActionsBar, Button, FileDropBox, MediaResourcesBox, React, ReactDOM, UPLOAD_CONCURRENCY, UploadQueue, ampersandReactMixin, async, f, ref, t;
 
 React = require('react');
@@ -9074,7 +9134,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/forms/rails-form.cjsx":61,"../../lib/ui.coffee":64,"../../ui-components/Dropdown.cjsx":69,"../../ui-components/Icon.cjsx":72,"active-lodash":124,"react":714}],107:[function(require,module,exports){
+},{"../../lib/forms/rails-form.cjsx":61,"../../lib/ui.coffee":64,"../../ui-components/Dropdown.cjsx":69,"../../ui-components/Icon.cjsx":71,"active-lodash":124,"react":714}],107:[function(require,module,exports){
 var CatalogThumbnailShifted, LoginDialog, React, ReactDOM, ResourcesSection, classnames, f;
 
 React = require('react');
@@ -9594,7 +9654,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../decorators/ResourceThumbnail.cjsx":48,"../../../ui-components/Keyword.cjsx":73,"./CatalogThumbnail.cjsx":110,"./WorthThumbnail.cjsx":117,"active-lodash":124,"react":714}],117:[function(require,module,exports){
+},{"../../../decorators/ResourceThumbnail.cjsx":48,"../../../ui-components/Keyword.cjsx":72,"./CatalogThumbnail.cjsx":110,"./WorthThumbnail.cjsx":117,"active-lodash":124,"react":714}],117:[function(require,module,exports){
 var React;
 
 React = require('react');

@@ -265,6 +265,12 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
         return getMediaType(contentType);
       }
     },
+    isBatchEditable: {
+      deps: ['editable', 'invalid_meta_data'],
+      fn: function() {
+        return this.editable && !this.invalid_meta_data;
+      }
+    },
     uploadStatus: {
       deps: ['uploading'],
       fn: function() {

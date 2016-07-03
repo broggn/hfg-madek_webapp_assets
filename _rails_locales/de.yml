@@ -210,6 +210,12 @@ de:
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_search: Suchen
   resource_select_collection_title: Zu Set hinzufügen/entfernen
+  resources_box_batch_actions_addtoset: Ausgewählte zu Set hinzufügen
+  resources_box_batch_actions_delete: Ausgewählte löschen
+  resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren
+  resources_box_batch_actions_menu_title: Aktionen
+  resources_box_batch_actions_save: Als FilterSet speichern
+  resources_box_title_count_post: Inhalte
   resources_header_show_all: alle anzeigen
   search_btn_search: Suchen
   sitemap_api: API

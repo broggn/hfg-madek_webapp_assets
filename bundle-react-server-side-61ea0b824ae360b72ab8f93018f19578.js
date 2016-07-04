@@ -7813,7 +7813,7 @@ module.exports = React.createClass({
       return function(result, json) {
         if (result === 'success') {
           return _this.setState({
-            get: json.collection_selection,
+            get: json.header.collection_selection,
             searching: false
           });
         }
@@ -8185,7 +8185,7 @@ module.exports = React.createClass({
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, activeTab = ref.activeTab;
     return React.createElement(PageContent, null, React.createElement(MediaEntryHeader, {
       "authToken": authToken,
-      "get": get,
+      "get": get.header,
       "showModal": this.props.showModal,
       "async": this.state.mounted,
       "modalAction": 'select_collection'
@@ -8320,8 +8320,8 @@ module.exports = React.createClass({
     return false;
   },
   render: function(arg) {
-    var authToken, get, href, icon, method, name, onClick, ref, title;
-    ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken, href = ref.href, method = ref.method, icon = ref.icon, title = ref.title, name = ref.name;
+    var authToken, href, icon, method, name, onClick, ref, title;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, href = ref.href, method = ref.method, icon = ref.icon, title = ref.title, name = ref.name;
     if (!method) {
       method = 'post';
     }
@@ -8582,7 +8582,7 @@ module.exports = React.createClass({
     });
   },
   _extractGet: function(json) {
-    return json.collection_selection;
+    return json.header.collection_selection;
   },
   render: function(arg) {
     var authToken, get, getUrl, ref;
@@ -8598,7 +8598,6 @@ module.exports = React.createClass({
     }, f.map(get.buttons, (function(_this) {
       return function(button) {
         return React.createElement(HeaderButton, {
-          "get": get,
           "key": button.action,
           "onAction": _this._onClick,
           "asyncAction": button.async_action,
@@ -8610,7 +8609,7 @@ module.exports = React.createClass({
           "authToken": authToken
         });
       };
-    })(this))), (this.state.showModal ? this.state.modalAction === 'select_collection' ? (getUrl = get.url + '/select_collection?___sparse={"collection_selection":{}}', React.createElement(AsyncModal, {
+    })(this))), (this.state.showModal ? this.state.modalAction === 'select_collection' ? (console.log('GET URL = ' + get.url), getUrl = get.url + '/select_collection?___sparse={"header":{"collection_selection":{}}}', console.log('GET . COLLECTION_SELECTION = ' + get.collection_selection), React.createElement(AsyncModal, {
       "get": get.collection_selection,
       "getUrl": getUrl,
       "contentForGet": this._contentForGet,

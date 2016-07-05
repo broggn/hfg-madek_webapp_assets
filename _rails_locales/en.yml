@@ -140,8 +140,9 @@ en:
   meta_data_edit_media_entry_published: Entry was saved and published.
   meta_data_edit_media_entry_saved_missing: Entry was saved but there are missing mandatory fields.
   meta_data_edit_media_entry_saved: Entry was saved.
-  meta_data_form_cancel_link: Cancel
-  meta_data_form_save_btn: Save
+  meta_data_form_cancel: Cancel
+  meta_data_form_save: Save
+  meta_data_form_publish: Publish
   meta_data_form_submit_btn: Submit
   meta_data_header_text: Values
   meta_data_meta_key_label: Key

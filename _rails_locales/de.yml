@@ -187,7 +187,7 @@ de:
   resource_action_edit: Editieren
   resource_action_export: Exportieren
   resource_action_favor: Zu Favoriten hinzufügen/entfernen
-  resource_action_set_collection: Zu Sets hinzufügen/Aus Sets entfernen
+  resource_action_manage_collections: Zu Sets hinzufügen/Aus Sets entfernen
   resource_ask_delete_cancel: Abbrechen
   resource_ask_delete_ok: Löschen
   resource_ask_delete_question_post: '?'

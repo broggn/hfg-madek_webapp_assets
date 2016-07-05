@@ -3566,7 +3566,7 @@ module.exports = React.createClass({
       return function(model, meta_key_id) {
         if (context_id && (f.includes(_this.props.get.meta_meta_data.meta_key_ids_by_context_id[context_id], meta_key_id)) || !context_id) {
           if (!(model.multiple === false && model.originalValues.length === 0 && model.values.length === 1 && model.values[0].trim() === '')) {
-            if (!f.isEqual(model.values, model.originalValues)) {
+            if (!_this._equalUnordered(model.values, model.originalValues, model.multiple)) {
               return hasChanges = true;
             }
           }
@@ -3574,6 +3574,32 @@ module.exports = React.createClass({
       };
     })(this));
     return hasChanges;
+  },
+  _equalUnordered: function(arr1, arr2, checkUuid) {
+    var equal;
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+    equal = true;
+    f.each(arr1, function(value1) {
+      var found;
+      found = false;
+      f.each(arr2, function(value2) {
+        if (checkUuid === true) {
+          if (value1.uuid === value2.uuid) {
+            return found = true;
+          }
+        } else {
+          if (value1 === value2) {
+            return found = true;
+          }
+        }
+      });
+      if (found === false) {
+        return equal = false;
+      }
+    });
+    return equal;
   },
   _changesForAll: function() {
     return this._changesPerContext(null);
@@ -4987,7 +5013,7 @@ decorators = {
 module.exports = function(o) {
   var decorate;
   if (!(f.isObject(o) && f.isFunction(decorate = decorators[o.type]))) {
-    throw new Error('Decorator: Unknown Resource! ' + o.type);
+    throw new Error('Decorator: Unknown Resource! Type: ' + o.type + ' Object: ' + JSON.stringify(o));
   }
   return decorate(o);
 };

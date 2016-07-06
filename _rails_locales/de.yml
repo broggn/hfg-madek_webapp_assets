@@ -143,8 +143,8 @@ de:
   meta_data_edit_media_entry_saved_missing: Eintrag wurde gespeichert aber es wurden nicht alle Pflichtfelder ausgefüllt.
   meta_data_edit_media_entry_saved: Eintrag wurde gespeichert.
   meta_data_form_cancel: Abbrechen
-  meta_data_form_save: Speichern
   meta_data_form_publish: Publizieren
+  meta_data_form_save: Speichern
   meta_data_form_submit_btn: Speichern
   meta_data_header_text: Werte
   meta_data_meta_key_label: Schlüssel
@@ -255,6 +255,8 @@ de:
   sitemap_my_used_keywords_title: Meine Schlagworte
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
+  usage_terms_accept_btn: Nutzungsbedingungen akzeptieren
+  usage_terms_reject_btn: Ablehnen
   user_menu_admin_ui: Admin-Interface öffnen
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden

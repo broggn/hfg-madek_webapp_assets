@@ -141,8 +141,8 @@ en:
   meta_data_edit_media_entry_saved_missing: Entry was saved but there are missing mandatory fields.
   meta_data_edit_media_entry_saved: Entry was saved.
   meta_data_form_cancel: Cancel
-  meta_data_form_save: Save
   meta_data_form_publish: Publish
+  meta_data_form_save: Save
   meta_data_form_submit_btn: Submit
   meta_data_header_text: Values
   meta_data_meta_key_label: Key
@@ -253,6 +253,8 @@ en:
   sitemap_my_used_keywords_title: My Keywords
   sitemap_my_used_keywords: My keywords
   sitemap_search: Search
+  usage_terms_accept_btn: Accept usage terms
+  usage_terms_reject_btn: Reject usage terms
   user_menu_admin_ui: Open Admin Interface
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out

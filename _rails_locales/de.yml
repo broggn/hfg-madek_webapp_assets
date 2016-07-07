@@ -27,6 +27,13 @@ de:
   batch_add_to_collection_hint: Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.
   batch_add_to_collection_post: ' Einträge zu Set hinzufügen'
   batch_add_to_collection_pre: ' '
+  batch_remove_from_collection_title: Einträge/Sets aus Set entfernen
+  batch_remove_from_collection_hint_pre: 'Möchten Sie die folgenden Einträge/Sets aus dem Set '
+  batch_remove_from_collection_hint_post: ' entfernen?'
+  batch_remove_from_collection_media_entries: ' Eintrag(äge)'
+  batch_remove_from_collection_collections: ' Set(s)'
+  batch_remove_from_collection_remove: Entfernen
+  batch_remove_from_collection_cancel: Abbrechen
   batch_meta_data_edit: 'Metadaten für %{media_entry_count} Einträge gleichzeitig editieren'
   btn_delete_confirm_msq: 'Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?'
   btn_delete_text: Löschen
@@ -216,6 +223,7 @@ de:
   resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren
   resources_box_batch_actions_menu_title: Aktionen
   resources_box_batch_actions_save: Als FilterSet speichern
+  resources_box_batch_actions_removefromset: Aus Set entfernen
   resources_box_title_count_post: Inhalte
   resources_header_show_all: alle anzeigen
   search_btn_search: Suchen

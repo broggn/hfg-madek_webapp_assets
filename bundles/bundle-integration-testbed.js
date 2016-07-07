@@ -567,7 +567,7 @@ Collection = require('ampersand-rest-collection');
 RailsResource = require('./rails-resource-mixin.coffee');
 
 module.exports = Collection.extend(RailsResource, {
-  type: 'AppCollectionBase',
+  type: 'AppCollection',
   mainIndex: ['url'],
   indexes: ['uuid'],
   has: function(index) {
@@ -590,7 +590,7 @@ getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
 RailsResource = require('./rails-resource-mixin.coffee');
 
 module.exports = Model.extend(RailsResource, {
-  type: 'AppResourceBase',
+  type: 'AppResource',
   idAttribute: 'url',
   typeAttribute: 'type',
   props: {

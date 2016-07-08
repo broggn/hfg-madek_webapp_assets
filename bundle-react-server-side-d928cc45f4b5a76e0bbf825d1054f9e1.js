@@ -2309,8 +2309,8 @@ module.exports = React.createClass({
 CollageLoggedIn = React.createClass({
   displayName: 'CollageLoggedIn',
   render: function(arg) {
-    var resources;
-    resources = (arg != null ? arg : this.props).resources;
+    var authToken, ref, resources;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, resources = ref.resources;
     return React.createElement("div", {
       "className": "ui-collage ui-container rounded-top-right",
       "id": "teaser-set"
@@ -2324,7 +2324,8 @@ CollageLoggedIn = React.createClass({
           "label": resource.title,
           "author": resource.authors_pretty,
           "imageUrl": resource.image_url,
-          "hrefUrl": resource.url
+          "hrefUrl": resource.url,
+          "authToken": authToken
         });
       }));
     }));
@@ -9559,7 +9560,7 @@ module.exports = React.createClass({
     return React.createElement("div", null, React.createElement("div", {
       "className": "ui-collage crooked ui-container overlaid",
       "id": "teaser-set"
-    }, f.map(f.chunk(f.slice(get.teaser_entries.resources, 0, 20), 5), function(chunk, row) {
+    }, f.map(f.chunk(f.slice(get.teaser_entries, 0, 20), 5), function(chunk, row) {
       return React.createElement("div", {
         "key": 'row_' + row,
         "className": "ui-collage-row"
@@ -9616,7 +9617,7 @@ module.exports = React.createClass({
     };
   },
   render: function(arg) {
-    var authToken, get, menu, ref, ref1, resourcesSections;
+    var authToken, get, menu, ref, resourcesSections;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
     resourcesSections = f.map(get.sections, function(section, m) {
       return React.createElement(ResourcesSection, {
@@ -9624,10 +9625,13 @@ module.exports = React.createClass({
         "label": section.data.title,
         "hrefUrl": section.data.url,
         "showAllLink": section.show_all_link,
-        "section": section
+        "section": section,
+        "authToken": authToken
       });
     });
-    menu = React.createElement(ExploreMenu, null, f.map(get.nav, function(section) {
+    menu = React.createElement(ExploreMenu, {
+      "authToken": authToken
+    }, f.map(get.nav, function(section) {
       return React.createElement(ExploreMenuSection, {
         "key": section.url,
         "label": section.title,
@@ -9646,7 +9650,8 @@ module.exports = React.createClass({
       "pageTitle": get.page_title,
       "menu": menu,
       "sections": resourcesSections,
-      "collageResources": ((ref1 = get.teaser_entries) != null ? ref1.resources : void 0)
+      "collageResources": get.teaser_entries,
+      "authToken": authToken
     }));
   }
 });
@@ -9999,8 +10004,8 @@ ResourceThumbnail = require('../../../decorators/ResourceThumbnail.cjsx');
 module.exports = React.createClass({
   displayName: 'ResourcesSection',
   render: function(arg) {
-    var hrefUrl, label, ref, section, showAllLink;
-    ref = arg != null ? arg : this.props, label = ref.label, hrefUrl = ref.hrefUrl, showAllLink = ref.showAllLink, section = ref.section;
+    var authToken, hrefUrl, label, ref, section, showAllLink;
+    ref = arg != null ? arg : this.props, label = ref.label, hrefUrl = ref.hrefUrl, showAllLink = ref.showAllLink, section = ref.section, authToken = ref.authToken;
     return React.createElement("div", {
       "className": "ui-resources-holder pal",
       "id": "catalog"
@@ -10026,7 +10031,8 @@ module.exports = React.createClass({
       return React.createElement(ResourceThumbnail, {
         "key": 'key_' + n,
         "elm": 'div',
-        "get": resource
+        "get": resource,
+        "authToken": authToken
       });
     }) : section.type === 'keyword' ? f.map(section.data.list, function(resource, n) {
       return React.createElement(Keyword, {

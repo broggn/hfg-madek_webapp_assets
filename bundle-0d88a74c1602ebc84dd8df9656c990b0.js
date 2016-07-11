@@ -6797,6 +6797,25 @@ module.exports = React.createClass({
       javascript: true
     });
   },
+  componentWillMount: function() {
+    f.each(this.props.current.meta_data, (function(_this) {
+      return function(meta_datum) {
+        return f.each(_this.props.dynamic, function(section) {
+          return f.each(section.children, function(subSection) {
+            return f.each(subSection.children, function(filter) {
+              if (filter.uuid === meta_datum.value) {
+                _this.getAccordionSection(section.uuid).isOpen = true;
+                return _this.getAccordionSubSection(section.uuid, subSection.uuid).isOpen = true;
+              }
+            });
+          });
+        });
+      };
+    })(this));
+    return this.setState({
+      accordion: this.state.accordion
+    });
+  },
   render: function(arg) {
     var accordion, baseClass, current, dynamic, filters, ref;
     ref = arg != null ? arg : this.props, dynamic = ref.dynamic, current = ref.current, accordion = ref.accordion;

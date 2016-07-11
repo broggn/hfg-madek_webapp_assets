@@ -140,6 +140,11 @@ en:
   meta_data_batch_success: Succesfully updated metadata.
   meta_data_batch_title_post: ' Einträge gleichzeitig editieren'
   meta_data_batch_title_pre: 'Metadaten für '
+  meta_data_batch_summary_all_pre: 'All '
+  meta_data_batch_summary_all_post: ' entries have been saved!'
+  meta_data_batch_summary_published: ' have been published'
+  meta_data_batch_summary_were_published: ' were published already'
+  meta_data_batch_summary_missing: ' have missing metadata'
   meta_data_blank_value_for_required_meta_key_post: '!'
   meta_data_blank_value_for_required_meta_key_pre: 'Blank metadatum value for meta key '
   meta_data_delete_confirm_msg: Are you sure you want to delete these values?

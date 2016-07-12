@@ -7674,7 +7674,7 @@ Metadata = React.createClass({
     }, get.title)), React.createElement("tr", null, React.createElement("td", {
       "className": "ui-summary-label"
     }, t('resource_meta_data_description')), React.createElement("td", {
-      "className": "title-l ui-summary-content"
+      "className": "ui-summary-content"
     }, get.description)), React.createElement("tr", null, React.createElement("td", {
       "className": "ui-summary-label"
     }, t('resource_meta_data_keywords')), React.createElement("td", {

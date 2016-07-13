@@ -8125,7 +8125,7 @@ module.exports = React.createClass({
 
 
 },{"../../../lib/string-translation":9,"../../lib/forms/input-field-text.cjsx":57,"../../lib/forms/rails-form.cjsx":62,"../../ui-components/FormButton.cjsx":72,"../../ui-components/Modal.cjsx":77,"active-lodash":127,"ampersand-react-mixin":270,"react":600,"react-dom":456}],95:[function(require,module,exports){
-var Button, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, SelectCollectionDialog, ToggableLink, ampersandReactMixin, f, formXhr, getRailsCSRFToken, loadXhr, t, xhr;
+var Button, ControlledCheckbox, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, SelectCollectionDialog, ToggableLink, ampersandReactMixin, f, formXhr, getRailsCSRFToken, loadXhr, t, xhr;
 
 React = require('react');
 
@@ -8177,10 +8177,11 @@ module.exports = React.createClass({
   },
   lastRequest: null,
   componentWillMount: function() {
-    return this.setState({
+    this.setState({
       searchTerm: this.props.get.search_term,
       get: this.props.get
     });
+    return this.sendTimeoutRef = null;
   },
   componentDidMount: function() {
     return this.setState({
@@ -8208,23 +8209,29 @@ module.exports = React.createClass({
     this.setState({
       searching: true
     });
-    if (this.lastRequest) {
-      this.lastRequest.abort();
+    if (this.sendTimeoutRef !== null) {
+      return;
     }
-    return this.lastRequest = formXhr({
-      method: 'GET',
-      url: this.props.get.select_collection_url,
-      form: this.refs.form
-    }, (function(_this) {
-      return function(result, json) {
-        if (result === 'success') {
-          return _this.setState({
-            get: json.header.collection_selection,
-            searching: false
-          });
+    return this.sendTimeoutRef = setTimeout((function(_this) {
+      return function() {
+        _this.sendTimeoutRef = null;
+        if (_this.lastRequest) {
+          _this.lastRequest.abort();
         }
+        return _this.lastRequest = formXhr({
+          method: 'GET',
+          url: _this.props.get.select_collection_url,
+          form: _this.refs.form
+        }, function(result, json) {
+          if (result === 'success') {
+            return _this.setState({
+              get: json.header.collection_selection,
+              searching: false
+            });
+          }
+        });
       };
-    })(this));
+    })(this), 500);
   },
   render: function(arg) {
     var _content, _search, alerts, authToken, buttonMargins, error, get, onClose, ref, showEntries, showNew;
@@ -8304,12 +8311,11 @@ module.exports = React.createClass({
           "type": 'hidden',
           "name": 'new_collections[new_' + index + '][name]',
           "value": row
-        }), React.createElement("input", {
+        }), React.createElement(ControlledCheckbox, {
           "className": 'ui-set-list-input',
-          "type": 'checkbox',
           "name": 'new_collections[new_' + index + '][checked]',
           "value": 'true',
-          "defaultChecked": true
+          "checked": true
         }), React.createElement("span", {
           "className": 'title'
         }, row), React.createElement("span", {
@@ -8332,12 +8338,11 @@ module.exports = React.createClass({
           "type": 'hidden',
           "name": 'selected_collections[' + collection.uuid + '][]',
           "value": 'false'
-        }), React.createElement("input", {
+        }), React.createElement(ControlledCheckbox, {
           "className": 'ui-set-list-input',
-          "type": 'checkbox',
           "name": 'selected_collections[' + collection.uuid + '][]',
           "value": 'true',
-          "defaultChecked": checked
+          "checked": checked
         }), React.createElement("span", {
           "className": 'title'
         }, collection.title), React.createElement("span", {
@@ -8369,6 +8374,37 @@ module.exports = React.createClass({
       "content": _content,
       "method": 'patch',
       "showSave": true
+    });
+  }
+});
+
+ControlledCheckbox = React.createClass({
+  displayName: 'ControlledCheckbox',
+  getInitialState: function() {
+    return {
+      checked: false
+    };
+  },
+  componentWillMount: function() {
+    return this.setState({
+      checked: this.props.checked
+    });
+  },
+  _onChange: function(event) {
+    return this.setState({
+      checked: event.target.checked
+    });
+  },
+  render: function(arg) {
+    var children;
+    children = (arg != null ? arg : this.props).children;
+    return React.createElement("input", {
+      "className": this.props.className,
+      "type": 'checkbox',
+      "name": this.props.name,
+      "value": this.props.value,
+      "checked": this.state.checked,
+      "onChange": this._onChange
     });
   }
 });
@@ -9603,8 +9639,9 @@ module.exports = React.createClass({
       "mods": "ui-drop-icon"
     }), ' ' + t('user_menu_upload'))), React.createElement("li", {
       "className": "separator"
-    }), myContentItems.map(function(item) {
+    }), myContentItems.map(function(item, index) {
       return React.createElement("li", {
+        "key": 'key_' + index,
         "className": "ui-drop-item"
       }, React.createElement("a", {
         "href": item.url

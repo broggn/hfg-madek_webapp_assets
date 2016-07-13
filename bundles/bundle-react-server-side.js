@@ -2882,7 +2882,7 @@ module.exports = React.createClass({
             click: (f.present(config.filter) ? f.curry(_this._onCreateFilterSet)(config) : void 0)
           } : void 0,
           removeFromSet: selection && f.present(_this.props.collectionUuid) && (get.type === 'MediaEntries' || get.type === 'MediaResources') ? {
-            click: (f.present(selection) ? _this._onBatchRemoveFromSet : void 0)
+            click: (!selection.isEmpty() ? _this._onBatchRemoveFromSet : void 0)
           } : void 0
         } : void 0;
         actionsDropdown = f.any(f.values(actions)) ? React.createElement(Dropdown, {

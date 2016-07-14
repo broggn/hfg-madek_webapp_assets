@@ -6507,7 +6507,7 @@ module.exports = React.createClass({
       return React.createElement("source", {
         "src": vid.url,
         "type": vid.content_type,
-        "key": vid.src
+        "key": vid.content_type + vid.url
       });
     }));
   }

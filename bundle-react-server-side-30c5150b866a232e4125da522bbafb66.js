@@ -9352,7 +9352,8 @@ module.exports = React.createClass({
     return this.addFiles(files);
   },
   onFilesSelect: function(event) {
-    return this.addFiles(f.get(event, 'target.files'));
+    this.addFiles(f.get(event, 'target.files'));
+    return event.target.value = null;
   },
   addFiles: function(files) {
     var added;

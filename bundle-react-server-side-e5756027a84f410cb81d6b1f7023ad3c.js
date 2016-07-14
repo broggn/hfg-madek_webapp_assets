@@ -3955,7 +3955,7 @@ module.exports = React.createClass({
       name = "media_entry[meta_data]";
     }
     meta_data = get.meta_data;
-    disableSave = (this.state.saving || !this._changesForAll() || (this._validityForAll() === 'invalid' && this.props.get.published)) && this.state.mounted === true;
+    disableSave = (this.state.saving || (this._validityForAll() === 'invalid' && this.props.get.published)) && this.state.mounted === true;
     disablePublish = this.state.saving || this._validityForAll() !== 'valid';
     showPublish = !this.props.get.published && this.state.mounted === true;
     showPublish = false;

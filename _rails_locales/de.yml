@@ -28,10 +28,9 @@ de:
   batch_add_to_collection_post: ' Einträge zu Set hinzufügen'
   batch_add_to_collection_pre: ' '
   batch_remove_from_collection_title: Einträge/Sets aus Set entfernen
-  batch_remove_from_collection_hint_pre: 'Möchten Sie die folgenden Einträge/Sets aus dem Set '
-  batch_remove_from_collection_hint_post: ' entfernen?'
-  batch_remove_from_collection_media_entries: ' Eintrag(äge)'
-  batch_remove_from_collection_collections: ' Set(s)'
+  batch_remove_from_collection_question_part_1: 'Möchten Sie die ausgewählten '
+  batch_remove_from_collection_question_part_2: ' Medieneinträge und '
+  batch_remove_from_collection_question_part_3: ' Sets aus dem Set entfernen?'
   batch_remove_from_collection_remove: Entfernen
   batch_remove_from_collection_cancel: Abbrechen
   batch_meta_data_edit: 'Metadaten für %{media_entry_count} Einträge gleichzeitig editieren'

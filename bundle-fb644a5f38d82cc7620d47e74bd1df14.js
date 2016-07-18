@@ -2728,9 +2728,9 @@ module.exports = React.createClass({
     return window.location = batchEditUrl;
   },
   _batchAddToSetIds: function() {
-    var selected, selection;
-    selection = this.state.selectedResources;
-    return selected = f.map(selection.serialize(), 'uuid');
+    return this.state.selectedResources.map(function(model) {
+      return model.uuid;
+    });
   },
   _onBatchAddToSet: function(event) {
     event.preventDefault();
@@ -2740,10 +2740,10 @@ module.exports = React.createClass({
     return false;
   },
   _batchRemoveFromSetIds: function() {
-    return f.map(this.state.selectedResources.serialize(), function(resource) {
+    return this.state.selectedResources.map(function(model) {
       return {
-        uuid: resource.uuid,
-        type: resource.type
+        uuid: model.uuid,
+        type: model.getType()
       };
     });
   },

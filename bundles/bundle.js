@@ -8136,7 +8136,7 @@ module.exports = React.createClass({
       }, resource.authors_pretty)), React.createElement("td", {
         "data-name": 'portrayed object dates',
         "title": 'null'
-      }, resource.created_at_pretty), React.createElement("td", {
+      }, resource.portrayed_object_date_pretty), React.createElement("td", {
         "data-name": 'keywords',
         "title": ''
       }, React.createElement("span", {

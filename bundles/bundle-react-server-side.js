@@ -4055,7 +4055,7 @@ module.exports = React.createClass({
     var currentContextId, diff, models;
     currentContextId = this.props.get.context_id;
     if (currentContextId === null) {
-      currentContextId = this.props.get.meta_meta_data.context_ids[0];
+      currentContextId = this.props.get.meta_meta_data.meta_data_edit_context_ids[0];
     }
     this.setState({
       currentContextId: currentContextId
@@ -4293,7 +4293,7 @@ module.exports = React.createClass({
     }))), (this.props.batch ? React.createElement(ResourcesBatchBox, {
       "get": get,
       "authToken": authToken
-    }) : void 0), React.createElement(Tabs, null, f.map(get.meta_meta_data.context_ids, (function(_this) {
+    }) : void 0), React.createElement(Tabs, null, f.map(get.meta_meta_data.meta_data_edit_context_ids, (function(_this) {
       return function(context_id) {
         var context, tabUrl;
         context = get.meta_meta_data.contexts_by_context_id[context_id];
@@ -6297,7 +6297,6 @@ M.metaDataByAny = PropTypes.oneOfType([M.metaDataByVocabulary, M.metaDataByConte
 M.metaDataListing = PropTypes.arrayOf(M.metaDataByAny);
 
 M.resourceMetaData = PropTypes.shape({
-  by_context: PropTypes.arrayOf(M.metaDataByContext),
   by_vocabulary: PropTypes.arrayOf(M.metaDataByVocabulary)
 });
 
@@ -8034,7 +8033,7 @@ module.exports = React.createClass({
   render: function(arg) {
     var authToken, get, overview, ref, summary_context;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    summary_context = get.meta_data.by_context[0];
+    summary_context = get.meta_data.summary_context;
     overview = {
       content: React.createElement(MetaDataList, {
         "list": summary_context,
@@ -9516,10 +9515,10 @@ module.exports = React.createClass({
     }).isRequired
   },
   render: function(arg) {
-    var get, layout, listContexts, metaData, overview, ref, summaryContext;
+    var get, layout, listContexts, overview, summaryContext;
     get = (arg != null ? arg : this.props).get;
-    metaData = get.meta_data.by_context;
-    ref = [f.first(metaData, 1), f.drop(metaData, 1)], summaryContext = ref[0], listContexts = ref[1];
+    summaryContext = get.meta_data.summary_context;
+    listContexts = get.meta_data.contexts_for_show_extra;
     overview = {
       content: React.createElement(MetaDataList, {
         "mods": 'ui-media-overview-metadata',

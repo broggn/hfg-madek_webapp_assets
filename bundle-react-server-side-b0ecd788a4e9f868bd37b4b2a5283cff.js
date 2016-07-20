@@ -3722,7 +3722,7 @@ module.exports = React.createClass({
   propTypes: {
     get: PropTypes.shape({
       meta_data: PropTypes.shape({
-        by_vocabulary: PropTypes.objectOf(PropTypes.shape({
+        by_vocabulary: PropTypes.arrayOf(PropTypes.shape({
           vocabulary: PropTypes.object.isRequired,
           meta_data: PropTypes.array.isRequired
         }))
@@ -8033,7 +8033,7 @@ module.exports = React.createClass({
   render: function(arg) {
     var authToken, get, overview, ref, summary_context;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    summary_context = get.meta_data.summary_context;
+    summary_context = get.meta_data.collection_summary_context;
     overview = {
       content: React.createElement(MetaDataList, {
         "list": summary_context,
@@ -9517,8 +9517,8 @@ module.exports = React.createClass({
   render: function(arg) {
     var get, layout, listContexts, overview, summaryContext;
     get = (arg != null ? arg : this.props).get;
-    summaryContext = get.meta_data.summary_context;
-    listContexts = get.meta_data.contexts_for_show_extra;
+    summaryContext = get.meta_data.entry_summary_context;
+    listContexts = get.meta_data.contexts_for_entry_extra;
     overview = {
       content: React.createElement(MetaDataList, {
         "mods": 'ui-media-overview-metadata',

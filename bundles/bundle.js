@@ -439,6 +439,7 @@ parseQuery = qs.parse;
 
 formatQuery = function(obj) {
   return qs.stringify(obj, {
+    skipNulls: true,
     arrayFormat: 'brackets'
   });
 };
@@ -449,10 +450,13 @@ module.exports = setUrlParams = function() {
   if (currentUrl == null) {
     currentUrl = '';
   }
+  console.log('url', params, reduce(params, function(a, b) {
+    return merge(a, b);
+  }));
   url = urlFromStringOrObject(currentUrl);
   return formatUrl({
     pathname: url.pathname,
-    search: formatQuery(merge(url.query, reduce(params, function(a, b) {
+    search: formatQuery(merge(parseQuery(url.query), reduce(params, function(a, b) {
       return merge(a, b);
     })))
   });
@@ -467,7 +471,7 @@ urlFromStringOrObject = function(url) {
       };
     case !isString(url):
       return (function(url) {
-        return set(url, 'query', parseQuery(url.query));
+        return set(url, 'query', url.query);
       })(parseUrl(url));
     default:
       throw new Error('Invalid URL!');
@@ -2640,7 +2644,7 @@ module.exports = React.createClass({
   },
   componentDidMount: function() {
     var selection;
-    router = require('../../lib/router.coffee');
+    router = this.props.router ? this.props.router : require('../../lib/router.coffee');
     router.listen((function(_this) {
       return function(location) {
         return _this.setState({
@@ -2648,7 +2652,9 @@ module.exports = React.createClass({
         });
       };
     })(this));
-    router.start();
+    if (!this.props.router) {
+      router.start();
+    }
     if (this.props.get.type === 'MediaResources') {
       selection = new CollectionChildren();
     } else if (this.props.get.type === 'MediaEntries') {
@@ -2667,10 +2673,14 @@ module.exports = React.createClass({
     }
     return this.setState({
       isClient: true,
+      router: router,
       selectedResources: selection
     });
   },
   componentWillUnmount: function() {
+    if (this.state.router) {
+      this.state.router.stop();
+    }
     if (this.state.selectedResources) {
       return this.state.selectedResources.off();
     }
@@ -6500,7 +6510,7 @@ module.exports = React.createClass({
 
 
 },{"../lib/ui.coffee":70,"active-lodash":137,"classnames/dedupe":355,"react":735}],72:[function(require,module,exports){
-var Button, ButtonGroup, React, ResourcesBox, TYPES, f, setUrlParams, t, ui, urlByType;
+var Button, ButtonGroup, React, ResourcesBox, TYPES, f, parseQuery, parseUrl, router, setUrlParams, t, ui, urlByType;
 
 React = require('react');
 
@@ -6510,6 +6520,10 @@ ui = require('../lib/ui.coffee');
 
 t = ui.t('de');
 
+parseUrl = require('url').parse;
+
+parseQuery = require('qs').parse;
+
 setUrlParams = require('../../lib/set-params-for-url.coffee');
 
 Button = require('../ui-components/Button.cjsx');
@@ -6517,6 +6531,8 @@ Button = require('../ui-components/Button.cjsx');
 ButtonGroup = require('../ui-components/ButtonGroup.cjsx');
 
 ResourcesBox = require('../decorators/MediaResourcesBox.cjsx');
+
+router = null;
 
 TYPES = ['entries', 'sets'];
 
@@ -6529,6 +6545,26 @@ module.exports = React.createClass({
     }),
     for_url: React.PropTypes.string.isRequired,
     get: React.PropTypes.object.isRequired
+  },
+  componentDidMount: function() {
+    router = require('../../lib/router.coffee');
+    router.listen((function(_this) {
+      return function(location) {
+        console.log(location);
+        return _this.setState({
+          url: location
+        });
+      };
+    })(this));
+    router.start();
+    return this.setState({
+      router: router
+    });
+  },
+  componentWillUnmount: function() {
+    if (this.state.router) {
+      return this.state.router.stop();
+    }
   },
   render: function(props) {
     var currentType, otherTypes, ref, resourceTypeSwitcher, types;
@@ -6570,18 +6606,36 @@ module.exports = React.createClass({
 });
 
 urlByType = function(currentUrl, currentType, type) {
-  var params;
+  var listParams, params, resetlistParams, searchTerm;
   if (currentType === type) {
     return currentUrl;
   }
-  params = type === 'sets' ? {
-    filter: null
+  params = parseQuery(parseUrl(currentUrl).query);
+  resetlistParams = {
+    list: {
+      page: 1,
+      filter: null
+    }
+  };
+  parseQuery(parseUrl(currentUrl).query);
+  searchTerm = ((function() {
+    try {
+      return JSON.parse(params.list.filter).search;
+    } catch (undefined) {}
+  })());
+  listParams = type === 'sets' ? {
+    list: {
+      accordion: null,
+      filter: JSON.stringify({
+        search: searchTerm
+      })
+    }
   } : void 0;
-  return setUrlParams(currentUrl.replace("/" + currentType, "/" + type), params);
+  return setUrlParams(currentUrl.replace("/" + currentType, "/" + type), resetlistParams, listParams);
 };
 
 
-},{"../../lib/set-params-for-url.coffee":10,"../decorators/MediaResourcesBox.cjsx":44,"../lib/ui.coffee":70,"../ui-components/Button.cjsx":75,"../ui-components/ButtonGroup.cjsx":76,"active-lodash":137,"react":735}],73:[function(require,module,exports){
+},{"../../lib/router.coffee":8,"../../lib/set-params-for-url.coffee":10,"../decorators/MediaResourcesBox.cjsx":44,"../lib/ui.coffee":70,"../ui-components/Button.cjsx":75,"../ui-components/ButtonGroup.cjsx":76,"active-lodash":137,"qs":588,"react":735,"url":759}],73:[function(require,module,exports){
 var React;
 
 React = require('react');

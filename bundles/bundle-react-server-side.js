@@ -1479,7 +1479,7 @@ module.exports = React.createClass({
   },
   _requestUrl: function() {
     return setUrlParams(this.props.get.batch_select_add_to_set_url, {
-      media_entry_id: this.props.get.media_entry_ids,
+      resource_id: this.props.get.resource_ids,
       search_term: this.state.searchTerm,
       return_to: this.state.get.return_to
     });
@@ -1515,13 +1515,20 @@ module.exports = React.createClass({
       "name": 'search_term',
       "value": this.state.searchTerm,
       "onChange": this._onChange
-    }), f.map(this.props.get.media_entry_ids, function(media_entry_id) {
-      return React.createElement("input", {
-        "key": 'hidden_' + media_entry_id,
-        "type": 'hidden',
-        "name": 'media_entry_id[]',
-        "value": media_entry_id
-      });
+    }), f.map(this.props.get.resource_ids, function(resource_id) {
+      return [
+        React.createElement("input", {
+          "key": 'resource_id_' + resource_id.uuid,
+          "type": 'hidden',
+          "name": 'resource_id[][uuid]',
+          "value": resource_id.uuid
+        }), React.createElement("input", {
+          "key": 'resource_id_' + resource_id.type,
+          "type": 'hidden',
+          "name": 'resource_id[][type]',
+          "value": resource_id.type
+        })
+      ];
     }), (!this.state.mounted ? [
       React.createElement(Button, {
         "key": 'search_button',
@@ -1545,13 +1552,20 @@ module.exports = React.createClass({
       "type": 'hidden',
       "name": 'return_to',
       "value": this.state.get.return_to
-    }), f.map(this.props.get.media_entry_ids, function(media_entry_id) {
-      return React.createElement("input", {
-        "key": 'hidden_' + media_entry_id,
-        "type": 'hidden',
-        "name": 'media_entry_id[]',
-        "value": media_entry_id
-      });
+    }), f.map(this.props.get.resource_ids, function(resource_id) {
+      return [
+        React.createElement("input", {
+          "key": 'resource_id_' + resource_id.uuid,
+          "type": 'hidden',
+          "name": 'resource_id[][uuid]',
+          "value": resource_id.uuid
+        }), React.createElement("input", {
+          "key": 'resource_id_' + resource_id.type,
+          "type": 'hidden',
+          "name": 'resource_id[][type]',
+          "value": resource_id.type
+        })
+      ];
     }), React.createElement("table", {
       "className": 'block'
     }, React.createElement("tbody", null, f.map(get.search_results, function(collection, index) {
@@ -1578,7 +1592,7 @@ module.exports = React.createClass({
         "className": "primary-button",
         "type": 'submit',
         "value": collection.uuid,
-        "name": 'collection_id'
+        "name": 'parent_collection_id'
       }, "Zu diesem hinzufügen")));
     }))))) : f.presence(get.search_term) ? React.createElement("h3", {
       "key": 'content3',
@@ -1662,7 +1676,7 @@ module.exports = React.createClass({
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
     getUrl = setUrlParams('/batch_select_add_to_set', {
       search_term: '',
-      media_entry_id: this.props.mediaEntryIds,
+      resource_id: this.props.resourceIds,
       return_to: this.props.returnTo
     });
     return React.createElement(AsyncModal, {
@@ -1785,8 +1799,7 @@ module.exports = React.createClass({
   },
   _requestUrl: function() {
     return setUrlParams(this.props.get.batch_remove_from_set_url, {
-      media_entry_id: this.props.get.media_entry_ids,
-      collection_id: this.props.get.collection_ids,
+      resource_id: this.props.get.resource_ids,
       return_to: this.props.get.return_to,
       parent_collection_id: this.props.get.parent_collection_id
     });
@@ -2710,7 +2723,10 @@ module.exports = React.createClass({
   },
   _batchAddToSetIds: function() {
     return this.state.selectedResources.map(function(model) {
-      return model.uuid;
+      return {
+        uuid: model.uuid,
+        type: model.getType()
+      };
     });
   },
   _onBatchAddToSet: function(event) {
@@ -2891,10 +2907,10 @@ module.exports = React.createClass({
           }
         });
         actions = withActions ? {
-          addToSet: selection && get.type === 'MediaEntries' ? {
+          addToSet: selection && (get.type === 'MediaEntries' || get.type === 'MediaResources') ? {
             click: (!selection.isEmpty() ? _this._onBatchAddToSet : void 0)
           } : void 0,
-          edit: selection && get.type === 'MediaEntries' ? {
+          edit: selection && (get.type === 'MediaEntries' || get.type === 'MediaResources') ? {
             click: (f.present(batchEditables) ? _this._onBatchEdit : void 0),
             hover: f.curry(_this._onHiglightEditable)(true),
             unhover: f.curry(_this._onHiglightEditable)(false)
@@ -3129,7 +3145,7 @@ module.exports = React.createClass({
         });
       };
     })(this)))))), paginationNav))), (this.state.batchAddToSet ? React.createElement(BatchAddToSetModal, {
-      "mediaEntryIds": this._batchAddToSetIds(),
+      "resourceIds": this._batchAddToSetIds(),
       "authToken": this.props.authToken,
       "get": null,
       "onClose": this._onCloseModal,

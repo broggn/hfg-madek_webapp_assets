@@ -6402,7 +6402,7 @@ M.resourceFilter = PropTypes.shape({
   search: PropTypes.string,
   meta_data: PropTypes.arrayOf(PropTypes.oneOfType(ResourceFiltersMetaData)),
   media_files: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string.isRequired,
+    key: PropTypes.oneOf(['media_type', 'extension', 'content_type']).isRequired,
     value: PropTypes.string.isRequired
   })),
   permissions: PropTypes.arrayOf(PropTypes.oneOfType([
@@ -7302,16 +7302,16 @@ module.exports = React.createClass({
     itemClass = 'ui-side-filter-lvl1-item ui-side-filter-item';
     filterType = filter.filterType;
     uuid = filter.uuid;
-    isOpen = this.getAccordionSection(uuid).isOpen;
+    isOpen = this.getAccordionSection(filterType + '/' + uuid).isOpen;
     href = null;
     toggleOnClick = (function(_this) {
       return function() {
-        return _this.toggleSection(filter.uuid);
+        return _this.toggleSection(filterType + '/' + filter.uuid);
       };
     })(this);
     return React.createElement("li", {
       "className": itemClass,
-      "key": filter.uuid
+      "key": filterType + '/' + filter.uuid
     }, React.createElement("a", {
       "className": css('ui-accordion-toggle', 'strong', {
         open: isOpen
@@ -7332,7 +7332,7 @@ module.exports = React.createClass({
   },
   renderSubSection: function(current, filterType, parent, child) {
     var isOpen, keyClass, togglebodyClass;
-    isOpen = this.getAccordionSubSection(parent.uuid, child.uuid).isOpen;
+    isOpen = this.getAccordionSubSection(filterType + '/' + parent.uuid, child.uuid).isOpen;
     keyClass = 'ui-side-filter-lvl2-item';
     togglebodyClass = css('ui-accordion-body', 'ui-side-filter-lvl3', {
       open: isOpen
@@ -7340,7 +7340,7 @@ module.exports = React.createClass({
     return React.createElement("li", {
       "className": keyClass,
       "key": child.uuid
-    }, this.createToggleSubSection(parent, child, isOpen), this.createMultiSelectBox(child, current, filterType), React.createElement("ul", {
+    }, this.createToggleSubSection(filterType, parent, child, isOpen), this.createMultiSelectBox(child, current, filterType), React.createElement("ul", {
       "className": togglebodyClass
     }, (isOpen ? f.map(child.children, (function(_this) {
       return function(item) {
@@ -7365,11 +7365,11 @@ module.exports = React.createClass({
       "onClick": addRemoveClick
     }));
   },
-  createToggleSubSection: function(parent, child, isOpen) {
+  createToggleSubSection: function(filterType, parent, child, isOpen) {
     var href, toggleMarkerClass, toggleOnClick, togglerClass;
     href = null;
     toggleOnClick = (function() {
-      return this.toggleSubSection(parent.uuid, child.uuid);
+      return this.toggleSubSection(filterType + '/' + parent.uuid, child.uuid);
     }).bind(this);
     togglerClass = css('ui-accordion-toggle', 'weak', {
       open: isOpen

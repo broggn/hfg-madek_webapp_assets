@@ -9618,15 +9618,16 @@ module.exports = React.createClass({
     return json.header.collection_selection;
   },
   render: function(arg) {
-    var authToken, get, getUrl, ref;
+    var authToken, get, getUrl, icon, ref;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    icon = get.type === 'Collection' ? 'set' : 'media-entry';
     return React.createElement("div", {
       "style": {
         margin: '0px',
         padding: '0px'
       }
     }, React.createElement(PageContentHeader, {
-      "icon": 'set',
+      "icon": icon,
       "title": get.title
     }, f.map(get.buttons, (function(_this) {
       return function(button) {

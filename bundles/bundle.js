@@ -7022,9 +7022,9 @@ module.exports = React.createClass({
   _ref: function(ref) {
     var maybes;
     maybes = f.filter(this.props.sources, function(source) {
-      return ref.canPlayType(source) !== '';
+      return ref.canPlayType(source.content_type) !== '';
     });
-    if (f.isEmpty(maybes) || true) {
+    if (f.isEmpty(maybes)) {
       return this.setState({
         showHint: true
       });
@@ -7039,7 +7039,13 @@ module.exports = React.createClass({
         margin: '0px',
         padding: '0px'
       }
-    }, React.createElement(MediaTag, {
+    }, (this.state.showHint ? React.createElement("p", {
+      "style": {
+        marginBottom: '40px'
+      }
+    }, t('media_entry_file_format_not_supported_1'), React.createElement("a", {
+      "href": this.props.originalUrl
+    }, t('media_entry_file_format_not_supported_2')), t('media_entry_file_format_not_supported_3')) : void 0), React.createElement(MediaTag, {
       "controls": true,
       "ref": this._ref
     }, f.map(sources, function(vid) {
@@ -7048,16 +7054,7 @@ module.exports = React.createClass({
         "type": vid.content_type,
         "key": vid.content_type + vid.url
       });
-    }), React.createElement("source", {
-      "src": 'audiofile.oggx',
-      "type": 'audio/ogg'
-    })), React.createElement("p", {
-      "style": {
-        marginTop: '40px'
-      }
-    }, t('media_entry_file_format_not_supported_1'), React.createElement("a", {
-      "href": this.props.originalUrl
-    }, t('media_entry_file_format_not_supported_2')), t('media_entry_file_format_not_supported_3')));
+    })));
   }
 });
 

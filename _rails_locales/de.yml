@@ -135,6 +135,9 @@ de:
   media_entry_upload_btn: Importieren
   media_entry_was_disfavored: Der Medieneintrag wurde von den Favoriten entfernt.
   media_entry_was_favored: Der Medieneintrag wurde zu den Favoriten hinzugefügt.
+  media_entry_file_format_not_supported_1: 'Your browser does most likely not support the file format, but you can '
+  media_entry_file_format_not_supported_2: download the file
+  media_entry_file_format_not_supported_3: .
   meta_data_action_delete_btn: Löschen
   meta_data_action_edit_btn: Bearbeiten
   meta_data_batch_failure: Metadaten konnten nicht aktualisiert werden.

@@ -133,6 +133,9 @@ en:
   media_entry_upload_btn: Upload
   media_entry_was_disfavored: Media entry was removed from favorites.
   media_entry_was_favored: Media entry was added to favorites.
+  media_entry_file_format_not_supported_1: 'Your browser does most likely not support the file format, but you can '
+  media_entry_file_format_not_supported_2: download the file
+  media_entry_file_format_not_supported_3: .
   meta_data_action_delete_btn: Delete
   meta_data_action_edit_btn: Edit
   meta_data_batch_failure: Metadata could not be updated.

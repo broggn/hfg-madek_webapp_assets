@@ -43,6 +43,7 @@ en:
   collection_edit_cover_title: Define Set Cover
   collection_edit_highlights_btn: Edit
   collection_edit_highlights_title: Highlight Contents
+  collection_edit_highlights_empty: Dieses Set hat noch keine Inhalte.
   collection_edit_permissions_btn: Submit
   collection_media_resources_title: 'Media Entries in Sets:'
   collection_new_cancel: Cancel

@@ -45,6 +45,7 @@ de:
   collection_edit_cover_title: Titelbild für Set festlegen
   collection_edit_highlights_btn: Bearbeiten
   collection_edit_highlights_title: Inhalte hervorheben
+  collection_edit_highlights_empty: Dieses Set hat noch keine Inhalte.
   collection_edit_permissions_btn: Speichern
   collection_media_resources_title: 'Medieneintrag im Set:'
   collection_new_cancel: Abbrechen

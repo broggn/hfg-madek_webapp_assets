@@ -5305,7 +5305,8 @@ module.exports = React.createClass({
           "mods": 'small'
         }),
         caption: childRelations ? childrenCount + ' Inhalte' : ''
-      } : void 0
+      } : void 0,
+      disableLink: this.props.get.disableLink
     };
     return React.createElement(Element, React.__spread({}, this.props, {
       "className": cx('ui-resource', {
@@ -5392,7 +5393,8 @@ module.exports = React.createClass({
       type: type,
       title: title,
       authors_pretty: authors_pretty,
-      image_url: image_url
+      image_url: image_url,
+      disableLink: true
     };
     return React.createElement(ResourceThumbnail, {
       "authToken": null,
@@ -7798,7 +7800,7 @@ module.exports = React.createClass({
     flyoutBottom: flyoutProps
   },
   render: function() {
-    var actions, actionsLeft, actionsRight, alt, badgeLeft, badgeRight, classes, flyout, flyoutBottom, flyoutTop, href, iconCenter, innerImage, linkProps, meta, onClick, ref, src, type;
+    var actions, actionsLeft, actionsRight, alt, badgeLeft, badgeRight, classes, flyout, flyoutBottom, flyoutTop, href, iconCenter, innerImage, innerPart, linkProps, meta, onClick, ref, src, type;
     ref = this.props, type = ref.type, src = ref.src, alt = ref.alt, href = ref.href, onClick = ref.onClick, meta = ref.meta, iconCenter = ref.iconCenter, badgeRight = ref.badgeRight, badgeLeft = ref.badgeLeft, actionsLeft = ref.actionsLeft, actionsRight = ref.actionsRight, flyoutTop = ref.flyoutTop, flyoutBottom = ref.flyoutBottom;
     classes = ui.cx(type, ui.parseMods(this.props), 'ui-thumbnail');
     innerImage = (function() {
@@ -7853,13 +7855,7 @@ module.exports = React.createClass({
       "className": 'right by-right'
     }, actionsRight));
     linkProps = f.omit(this.props, 'className');
-    return React.createElement("div", {
-      "className": classes
-    }, flyoutTop, badgeLeft, badgeRight, React.createElement(Link, React.__spread({
-      "className": 'ui-thumbnail-image-wrapper'
-    }, linkProps, {
-      "title": alt
-    }), React.createElement("div", {
+    innerPart = React.createElement("div", {
       "className": 'ui-thumbnail-image-holder'
     }, React.createElement("div", {
       "className": 'ui-thumbnail-table-image-holder'
@@ -7867,7 +7863,16 @@ module.exports = React.createClass({
       "className": 'ui-thumbnail-cell-image-holder'
     }, React.createElement("div", {
       "className": 'ui-thumbnail-inner-image-holder'
-    }, innerImage))))), meta, actions, flyoutBottom);
+    }, innerImage))));
+    return React.createElement("div", {
+      "className": classes
+    }, flyoutTop, badgeLeft, badgeRight, (this.props.disableLink ? React.createElement("div", {
+      "className": 'ui-thumbnail-image-wrapper'
+    }, innerPart) : React.createElement(Link, React.__spread({
+      "className": 'ui-thumbnail-image-wrapper'
+    }, linkProps, {
+      "title": alt
+    }), innerPart)), meta, actions, flyoutBottom);
   }
 });
 

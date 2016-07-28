@@ -2707,19 +2707,22 @@ module.exports = React.createClass({
     return handleLinkIfLocal(event, router.goTo);
   },
   _onFilterChange: function(event, newParams) {
-    var currentParams, params;
+    var currentParams, newLocation, params;
     if (event && f.isFunction(event.preventDefault)) {
       event.preventDefault();
     }
-    currentParams = {
+    params = currentParams = {
       list: f.omit(this.state.config, 'for_url')
     };
-    params = f.merge(newParams, {
+    params = f.merge(params, {
       list: {
         page: 1
       }
     });
-    return window.location = setUrlParams(this.props.for_url, currentParams, params);
+    params.list.accordion = JSON.stringify(newParams.list.accordion);
+    params.list.filter = JSON.stringify(newParams.list.filter);
+    newLocation = setUrlParams(this.props.for_url, params);
+    return window.location = newLocation;
   },
   _onFilterToggle: function(event) {
     if (f.present(f.get(this.props, ['get', 'dynamic_filters']))) {
@@ -2731,17 +2734,18 @@ module.exports = React.createClass({
   _onSearch: function(event) {
     return this._onFilterChange(event, {
       list: {
-        filter: JSON.stringify({
+        filter: {
           search: this.refs.filterSearch.value
-        })
+        },
+        accordion: {}
       }
     });
   },
   _onAccordion: function(event) {
     return this._onFilterChange(event, {
       list: {
-        filter: JSON.stringify(event.current),
-        accordion: JSON.stringify(event.accordion)
+        filter: event.current,
+        accordion: event.accordion
       }
     });
   },
@@ -2911,18 +2915,18 @@ module.exports = React.createClass({
       list: f.merge(f.omit(config, 'for_url'))
     }, {
       list: {
-        filter: JSON.stringify(config.filter),
-        accordion: JSON.stringify(config.accordion)
+        filter: config.filter,
+        accordion: config.accordion
       }
     });
     currentUrl = setUrlParams(config.for_url, currentQuery);
-    resetFilterHref = setUrlParams(config.for_url, currentQuery, {
+    resetFilterHref = setUrlParams(config.for_url, f.merge(currentQuery, {
       list: {
         page: 1,
-        filter: {},
-        accordion: {}
+        filter: JSON.stringify({}),
+        accordion: JSON.stringify({})
       }
-    });
+    }));
     resetFilterLink = resetFilterHref ? f.present(config.filter) || f.present(config.accordion) ? React.createElement(Link, {
       "mods": 'mlx weak',
       "href": resetFilterHref
@@ -7312,6 +7316,9 @@ module.exports = React.createClass({
   getAccordionSubSection: function(sectionUuid, subSectionUuid) {
     var section, subSection;
     section = this.getAccordionSection(sectionUuid);
+    if (!section.subSections) {
+      section.subSections = {};
+    }
     subSection = section.subSections[subSectionUuid];
     if (!subSection) {
       subSection = {
@@ -7355,8 +7362,8 @@ module.exports = React.createClass({
           return f.each(section.children, function(subSection) {
             return f.each(subSection.children, function(filter) {
               if (filter.uuid === meta_datum.value) {
-                _this.getAccordionSection(section.uuid).isOpen = true;
-                return _this.getAccordionSubSection(section.uuid, subSection.uuid).isOpen = true;
+                _this.getAccordionSection(section.filter_type + '-' + section.uuid).isOpen = true;
+                return _this.getAccordionSubSection(section.filter_type + '-' + section.uuid, subSection.uuid).isOpen = true;
               }
             });
           });
@@ -7389,16 +7396,16 @@ module.exports = React.createClass({
     itemClass = 'ui-side-filter-lvl1-item ui-side-filter-item';
     filterType = filter.filterType;
     uuid = filter.uuid;
-    isOpen = this.getAccordionSection(filterType + '/' + uuid).isOpen;
+    isOpen = this.getAccordionSection(filterType + '-' + uuid).isOpen;
     href = null;
     toggleOnClick = (function(_this) {
       return function() {
-        return _this.toggleSection(filterType + '/' + filter.uuid);
+        return _this.toggleSection(filterType + '-' + filter.uuid);
       };
     })(this);
     return React.createElement("li", {
       "className": itemClass,
-      "key": filterType + '/' + filter.uuid
+      "key": filterType + '-' + filter.uuid
     }, React.createElement("a", {
       "className": css('ui-accordion-toggle', 'strong', {
         open: isOpen
@@ -7419,7 +7426,7 @@ module.exports = React.createClass({
   },
   renderSubSection: function(current, filterType, parent, child) {
     var isOpen, keyClass, togglebodyClass;
-    isOpen = this.getAccordionSubSection(filterType + '/' + parent.uuid, child.uuid).isOpen;
+    isOpen = this.getAccordionSubSection(filterType + '-' + parent.uuid, child.uuid).isOpen;
     keyClass = 'ui-side-filter-lvl2-item';
     togglebodyClass = css('ui-accordion-body', 'ui-side-filter-lvl3', {
       open: isOpen
@@ -7429,7 +7436,9 @@ module.exports = React.createClass({
       "key": child.uuid
     }, this.createToggleSubSection(filterType, parent, child, isOpen), this.createMultiSelectBox(child, current, filterType), React.createElement("ul", {
       "className": togglebodyClass
-    }, (isOpen ? f.map(child.children, (function(_this) {
+    }, (isOpen ? f.map(f.sortBy(child.children, function(child) {
+      return child.label;
+    }), (function(_this) {
       return function(item) {
         return _this.renderItem(current, child, item, filterType);
       };
@@ -7456,7 +7465,7 @@ module.exports = React.createClass({
     var href, toggleMarkerClass, toggleOnClick, togglerClass;
     href = null;
     toggleOnClick = (function() {
-      return this.toggleSubSection(filterType + '/' + parent.uuid, child.uuid);
+      return this.toggleSubSection(filterType + '-' + parent.uuid, child.uuid);
     }).bind(this);
     togglerClass = css('ui-accordion-toggle', 'weak', {
       open: isOpen

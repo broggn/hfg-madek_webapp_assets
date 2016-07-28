@@ -3050,7 +3050,7 @@ module.exports = React.createClass({
           "i": "filter",
           "mods": "ui-drop-icon"
         }), " ", t('resources_box_batch_actions_save'))) : void 0))) : void 0;
-        selectToggle = selection ? (selector = {
+        selectToggle = selection && withActions ? (selector = {
           active: 'Alle abwählen',
           inactive: 'Alle auswählen',
           isActive: selection && !(selection.isEmpty()),

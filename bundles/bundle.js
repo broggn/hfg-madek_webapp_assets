@@ -3466,7 +3466,7 @@ MetaDatumValues = require('./MetaDatumValues.cjsx');
 module.exports = React.createClass({
   displayName: 'Deco.MetaDataList',
   propTypes: {
-    list: MadekPropTypes.metaDataByAny.isRequired,
+    list: MadekPropTypes.metaDataByAny,
     tagMods: React.PropTypes.any,
     type: React.PropTypes.oneOf(['list', 'table']),
     showTitle: React.PropTypes.bool,
@@ -3483,19 +3483,28 @@ module.exports = React.createClass({
     var fallbackMsg, isEmpty, list, listing, listingData, listingType, metaData, ref, showFallback, showTitle, tagMods, title, type, wrapperClass;
     ref = arg != null ? arg : this.props, list = ref.list, tagMods = ref.tagMods, type = ref.type, showTitle = ref.showTitle, showFallback = ref.showFallback;
     wrapperClass = classList(parseMods(this.props), 'ui-metadata-box');
-    metaData = list.meta_data;
-    listing = list.context || list.vocabulary;
-    listingType = listing.type;
-    if (!f.include(['Context', 'Vocabulary'], listingType)) {
+    metaData = f.get(list, 'meta_data');
+    listing = f.get(list, 'context') || f.get(list, 'vocabulary');
+    listingType = f.get(listing, 'type');
+    if (listingType && !f.include(['Context', 'Vocabulary'], listingType)) {
       throw new Error('Invalid Data!');
     }
     if (showTitle && !f.present(listing.label)) {
       throw new Error('No title!');
     }
-    title = listing.label;
-    isEmpty = listingType === 'Vocabulary' ? !f.some(metaData, f.present) : !f.some(metaData, function(i) {
-      return f.present(i.meta_datum);
-    });
+    title = f.get(listing, 'label');
+    isEmpty = (function() {
+      switch (false) {
+        case !!f.present(listing):
+          return true;
+        case listingType !== 'Vocabulary':
+          return !f.some(metaData, f.present);
+        default:
+          return !f.some(metaData, function(i) {
+            return f.present(i.meta_datum);
+          });
+      }
+    })();
     fallbackMsg = isEmpty && showFallback ? t('resource_meta_data_fallback') : void 0;
     listingData = f.map(metaData, function(dat) {
       var datum, key, ref1;
@@ -8247,12 +8256,13 @@ module.exports = React.createClass({
     var authToken, get, overview, ref, summary_context;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
     summary_context = get.meta_data.collection_summary_context;
+    console.log('summary_context', summary_context);
     overview = {
       content: React.createElement(MetaDataList, {
         "list": summary_context,
         "type": 'table',
         "showTitle": false,
-        "showFallback": false
+        "showFallback": true
       }),
       preview: React.createElement("div", {
         "className": 'ui-set-preview'

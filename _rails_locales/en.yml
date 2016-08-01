@@ -175,6 +175,11 @@ en:
   no_relations_title: No relations found.
   pagination_of: of
   pagination_prefix: Page
+  pagination_nav_nextpage: Next page »
+  pagination_nav_prevpage: « Previous page
+  pagination_nav_thispage: This page
+  pagination_nav_loadnext: Load more
+  pagination_nav_nextloading: Loading…
   people_toolbar_header: Related Resources
   permission_name_edit_metadata_and_relations: Edit Metadata and contents
   permission_name_edit_metadata: Edit metadata

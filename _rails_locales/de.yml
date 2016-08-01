@@ -177,6 +177,11 @@ de:
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
   pagination_of: von
   pagination_prefix: Seite
+  pagination_nav_nextpage: Vor »
+  pagination_nav_prevpage: « Zurück
+  pagination_nav_thispage: Hier
+  pagination_nav_loadnext: Mehr laden
+  pagination_nav_nextloading: Lädt…
   people_toolbar_header: Ähnliche Inhalte
   permission_name_edit_metadata_and_relations: 'Metadaten editieren & Inhalte hinzufügen'
   permission_name_edit_metadata: Metadaten editieren

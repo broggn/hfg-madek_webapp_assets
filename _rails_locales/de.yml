@@ -24,16 +24,16 @@ de:
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
   app_notice_logged_out: Sie haben sich abgemeldet.
   authentication_groups: Systemgruppen
-  batch_add_to_collection_hint: Nach Sets suchen zu denen Sie die Einträge hinzufügen möchten.
-  batch_add_to_collection_post: ' Einträge zu Set hinzufügen'
+  batch_add_to_collection_hint: Nach Sets suchen
+  batch_add_to_collection_post: ' Medieneinträge zu Set hinzufügen'
   batch_add_to_collection_pre: ' '
-  batch_remove_from_collection_title: Einträge/Sets aus Set entfernen
+  batch_meta_data_edit: 'Metadaten für %{media_entry_count} Medieneinträge gleichzeitig editieren'
+  batch_remove_from_collection_cancel: Abbrechen
   batch_remove_from_collection_question_part_1: 'Möchten Sie die ausgewählten '
   batch_remove_from_collection_question_part_2: ' Medieneinträge und '
   batch_remove_from_collection_question_part_3: ' Sets aus dem Set entfernen?'
   batch_remove_from_collection_remove: Entfernen
-  batch_remove_from_collection_cancel: Abbrechen
-  batch_meta_data_edit: 'Metadaten für %{media_entry_count} Einträge gleichzeitig editieren'
+  batch_remove_from_collection_title: Medieinträge/Sets aus Set entfernen
   btn_delete_confirm_msq: 'Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?'
   btn_delete_text: Löschen
   btn_publish_confirm_msg: 'Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?'
@@ -44,9 +44,10 @@ de:
   collection_edit_cover_submit_btn: Speichern
   collection_edit_cover_title: Titelbild für Set festlegen
   collection_edit_highlights_btn: Bearbeiten
-  collection_edit_highlights_title: Inhalte hervorheben
   collection_edit_highlights_empty: Dieses Set hat noch keine Inhalte.
+  collection_edit_highlights_title: Inhalte hervorheben
   collection_edit_permissions_btn: Speichern
+  collection_highlighted_contents: Hervorgehobene Inhalte
   collection_media_resources_title: 'Medieneintrag im Set:'
   collection_new_cancel: Abbrechen
   collection_new_create_set: Set erstellen
@@ -69,7 +70,6 @@ de:
   collection_tab_main: Set
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
-  collection_highlighted_contents: Hervorgehobene Inhalte
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
@@ -97,9 +97,15 @@ de:
   login_box_login_btn: Anmelden
   login_box_rememberme: Login merken
   login_box_title: Digitales Areal ZHdK
-  media_entry_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgende Eintrag löschen möchten: '
-  media_entry_ask_delete_title: Eintrag löschen
+  media_entry_all_metadata_title: Alle MetaDaten nach Vokabularen
+  media_entry_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgenden Medienintrag löschen möchten: '
+  media_entry_ask_delete_title: Medieneintrag löschen
   media_entry_back_btn: Zurück
+  media_entry_conversion_hint: 'Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.'
+  media_entry_conversion_reload: 'Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.'
+  media_entry_conversion_status_failed: The video conversion failed. Please contact support.
+  media_entry_conversion_status_initialized: The media file is converting. Please try later.
+  media_entry_conversion_status_submitted: The media file is converting. Please try later.
   media_entry_delete_success: Medieneintrag wurde gelöscht.
   media_entry_export_close: Schliessen
   media_entry_export_download: Download
@@ -111,24 +117,22 @@ de:
   media_entry_export_subtitle_documents: Dokumente
   media_entry_export_subtitle_images: Bilder
   media_entry_export_subtitle_videos: Videos
-  media_entry_export_title: Eintrag exportieren
+  media_entry_export_title: Medieneintrag exportieren
+  media_entry_file_format_not_supported_1: 'Your browser does most likely not support the file format, but you can '
+  media_entry_file_format_not_supported_2: download the file
+  media_entry_file_format_not_supported_3: .
   media_entry_file_information_title: Datei
-  media_entry_media_import_gotodrafts: Gehe zu ungesicherten Medieneinträgen
+  media_entry_media_import_gotodrafts: Gehe zu aktuellen Importen
   media_entry_media_import_header: Medien importieren
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_inside: Dateien auf dieses Feld ziehen oder
   media_entry_media_import_notes_msg: 'Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.'
   media_entry_media_import_notes_title: Hinweise
   media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
-  media_entry_conversion_status_initialized: The media file is converting. Please try later.
-  media_entry_conversion_status_submitted: The media file is converting. Please try later.
-  media_entry_conversion_status_failed: The video conversion failed. Please contact support.
-  media_entry_conversion_hint: 'Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.'
-  media_entry_conversion_reload: 'Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.'
   media_entry_meta_data_header_prefix: 'Medieneintrag editieren: '
   media_entry_more_data_title: Verantwortlichkeit und Aktivität
-  media_entry_not_published_warning_msg: 'Dieser Medieneintrag ist noch nicht gesichert!'
-  media_entry_select_collection_flash_result: 'Eintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.'
+  media_entry_not_published_warning_msg: 'Diesem Medieneintrag fehlen noch Pflichtangaben!'
+  media_entry_select_collection_flash_result: 'Medieneintrag aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.'
   media_entry_tab_main: Medieneintrag
   media_entry_tab_more_data: Alle Daten
   media_entry_tab_permissions: Berechtigungen
@@ -136,9 +140,6 @@ de:
   media_entry_upload_btn: Importieren
   media_entry_was_disfavored: Der Medieneintrag wurde von den Favoriten entfernt.
   media_entry_was_favored: Der Medieneintrag wurde zu den Favoriten hinzugefügt.
-  media_entry_file_format_not_supported_1: 'Your browser does most likely not support the file format, but you can '
-  media_entry_file_format_not_supported_2: download the file
-  media_entry_file_format_not_supported_3: .
   meta_data_action_delete_btn: Löschen
   meta_data_action_edit_btn: Bearbeiten
   meta_data_batch_failure: Metadaten konnten nicht aktualisiert werden.
@@ -147,22 +148,22 @@ de:
   meta_data_batch_hint_equal_data: Gleiche Metadaten vorhanden
   meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
   meta_data_batch_hint_value: Wert und Text
-  meta_data_batch_items_selected: Einträge selektiert
+  meta_data_batch_items_selected: Medieneinträge selektiert
   meta_data_batch_success: Metadaten wurden erfolgreich aktualisiert.
-  meta_data_batch_title_post: ' Einträge gleichzeitig editieren'
-  meta_data_batch_title_pre: 'Metadaten für '
+  meta_data_batch_summary_all_post: ' Medieneinträge wurden gespeichert.'
   meta_data_batch_summary_all_pre: 'Alle '
-  meta_data_batch_summary_all_post: ' Einträge wurden gespeichert!'
-  meta_data_batch_summary_published: ' wurden publiziert'
-  meta_data_batch_summary_were_published: ' waren schon publiziert'
-  meta_data_batch_summary_missing: ' haben fehlende Meta Daten'
+  meta_data_batch_summary_missing: ' haben fehlende Angaben'
+  meta_data_batch_summary_published: ' haben ausgefüllte Pflichtfelder'
+  meta_data_batch_summary_were_published: ' hatten bereits ausgefüllte Pflichtfelder'
+  meta_data_batch_title_post: ' Medieneinträge gleichzeitig editieren'
+  meta_data_batch_title_pre: 'Metadaten für '
   meta_data_blank_value_for_required_meta_key_post: '!'
   meta_data_blank_value_for_required_meta_key_pre: 'Metadatum-Wert nicht vorhanden für Meta-Key '
   meta_data_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Werte löschen wollen?'
   meta_data_edit_collection_saved: Set wurde gespeichert.
-  meta_data_edit_media_entry_published: Eintrag wurde gespeichert und publiziert.
-  meta_data_edit_media_entry_saved_missing: Eintrag wurde gespeichert aber es wurden nicht alle Pflichtfelder ausgefüllt.
-  meta_data_edit_media_entry_saved: Eintrag wurde gespeichert.
+  meta_data_edit_media_entry_published: Medieneintrag wurde gespeichert und alle Pflichtfelder sind ausgefüllt.
+  meta_data_edit_media_entry_saved_missing: Medieneintrag wurde gespeichert aber es wurden nicht alle Pflichtfelder ausgefüllt.
+  meta_data_edit_media_entry_saved: Medieneintrag wurde gespeichert.
   meta_data_form_cancel: Abbrechen
   meta_data_form_publish: Publizieren
   meta_data_form_save: Speichern
@@ -175,13 +176,13 @@ de:
   no_groups_fallback: (Keine Gruppen vorhanden.)
   no_keywords_fallback: (Keine Schlagworte vorhanden.)
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
-  pagination_of: von
-  pagination_prefix: Seite
+  pagination_nav_loadnext: Mehr laden
+  pagination_nav_nextloading: Lädt…
   pagination_nav_nextpage: Vor »
   pagination_nav_prevpage: « Zurück
   pagination_nav_thispage: Hier
-  pagination_nav_loadnext: Mehr laden
-  pagination_nav_nextloading: Lädt…
+  pagination_of: von
+  pagination_prefix: Seite
   people_toolbar_header: Ähnliche Inhalte
   permission_name_edit_metadata_and_relations: 'Metadaten editieren & Inhalte hinzufügen'
   permission_name_edit_metadata: Metadaten editieren
@@ -241,8 +242,8 @@ de:
   resources_box_batch_actions_delete: Ausgewählte löschen
   resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren
   resources_box_batch_actions_menu_title: Aktionen
-  resources_box_batch_actions_save: Als FilterSet speichern
   resources_box_batch_actions_removefromset: Aus Set entfernen
+  resources_box_batch_actions_save: Als Filterset speichern
   resources_box_title_count_post: Inhalte
   resources_header_show_all: alle anzeigen
   search_btn_search: Suchen
@@ -277,8 +278,8 @@ de:
   sitemap_my_groups: Meine Arbeitsgruppen
   sitemap_my_latest_imports_title: Meine letzten Importe
   sitemap_my_latest_imports: Meine letzten Importe
-  sitemap_my_unpublished_title: Meine ungesicherten Medieneinträge
-  sitemap_my_unpublished: Meine ungesicherten Medieneinträge
+  sitemap_my_unpublished_title: Meine aktuelle Importe
+  sitemap_my_unpublished: Meine aktuelle Importe
   sitemap_my_used_keywords_title: Meine Schlagworte
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
@@ -293,4 +294,3 @@ de:
   workgroup_members_table_is_member: Mitglied?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Mitglieder
-  media_entry_all_metadata_title: Alle MetaDaten nach Vokabularen

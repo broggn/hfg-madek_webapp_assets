@@ -3183,10 +3183,8 @@ module.exports = React.createClass({
         } : void 0;
         actionsDropdown = f.any(f.values(actions)) ? React.createElement(Dropdown, {
           "mods": 'stick-right mlm',
-          "toggle": 'Aktionen',
-          "toggleProps": {
-            className: 'button'
-          }
+          "buttonClass": 'button',
+          "label": 'Aktionen'
         }, React.createElement("ul", {
           "className": "dropdown-menu ui-drop-menu",
           "role": "menu"
@@ -7062,7 +7060,7 @@ module.exports = React.createClass({
 
 
 },{"../lib/ui.coffee":71,"./Button.cjsx":76,"./propTypes.coffee":93,"active-lodash":136,"react":618}],78:[function(require,module,exports){
-var Icon, Link, MODS, PropTypes, React, ui;
+var Icon, Link, PropTypes, React, ui;
 
 React = require('react');
 
@@ -7074,21 +7072,17 @@ Icon = require('./Icon.cjsx');
 
 Link = require('./Link.cjsx');
 
-MODS = ['stick-right'];
-
 module.exports = React.createClass({
   displayName: 'UI.Dropdown',
   propTypes: {
     toggle: PropTypes.node.isRequired,
     toggleProps: PropTypes.object,
     children: PropTypes.node,
-    disabled: PropTypes.bool,
-    startOpen: PropTypes.bool
+    disabled: PropTypes.bool
   },
   getInitialState: function() {
     return {
-      isClient: false,
-      isOpen: this.props.startOpen
+      isClient: false
     };
   },
   componentDidMount: function() {
@@ -7096,41 +7090,36 @@ module.exports = React.createClass({
       isClient: true
     });
   },
-  _onMenuOpen: function() {
-    return this.setState({
-      isOpen: true
-    });
-  },
-  _onMenuClose: function() {
-    return this.setState({
-      isOpen: false
-    });
-  },
   getDefaultProps: function() {
     return {
-      disabled: false,
-      startOpen: false,
-      fallbackStyles: function() {
-        return React.createElement("style", {
-          "type": "text/css"
-        }, '.ui-dropdown .ui-drop-toggle { padding-bottom: 7px }\n.dropdown:hover .dropdown-menu { display: block }');
-      }
+      disabled: false
     };
   },
+  fallbackStyles: function() {
+    return React.createElement("style", {
+      "type": "text/css"
+    }, '.ui-dropdown .ui-drop-toggle { padding-bottom: 7px }\n.dropdown:hover .dropdown-menu { display: block }');
+  },
   render: function(arg) {
-    var isDisabled, props, ref, state, wrapperClasses;
+    var buttonClass, isDisabled, props, ref, state, wrapperClasses;
     ref = arg != null ? arg : this, props = ref.props, state = ref.state;
     isDisabled = !props.children ? true : props.disabled;
-    wrapperClasses = ui.cx(ui.parseMods(this.props), {
-      'open': this.state.isOpen
-    }, 'ui-dropdown dropdown');
+    wrapperClasses = ui.cx(ui.parseMods(this.props), 'ui-dropdown dropdown');
+    buttonClass = 'dropdown-toggle ui-drop-toggle';
+    if (this.props.buttonClass) {
+      buttonClass += ' ' + this.props.buttonClass;
+    }
     return React.createElement("div", {
       "className": wrapperClasses
-    }, (!state.isClient ? props.fallbackStyles() : void 0), React.createElement(Link, React.__spread({
-      "className": "dropdown-toggle ui-drop-toggle",
+    }, (!state.isClient ? this.fallbackStyles() : void 0), React.createElement(Link, {
       "disabled": isDisabled,
-      "onClick": (this.state.isOpen ? this._onMenuClose : this._onMenuOpen)
-    }, props.toggleProps), props.toggle, " ", React.createElement(Icon, {
+      "className": buttonClass,
+      "data-toggle": "dropdown",
+      "href": "#",
+      "role": "button",
+      "aria-haspopup": "true",
+      "aria-expanded": "false"
+    }, props.label, " ", React.createElement(Icon, {
       "i": "arrow-down stand-alone small"
     })), props.children);
   }
@@ -10539,7 +10528,7 @@ module.exports = React.createClass({
     ];
     return React.createElement(Dropdown, {
       "mods": 'stick-right',
-      "toggle": props.user_name
+      "label": props.user_name
     }, React.createElement("ul", {
       "className": "dropdown-menu ui-drop-menu",
       "role": "menu"

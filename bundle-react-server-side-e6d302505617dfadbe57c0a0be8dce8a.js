@@ -6132,7 +6132,8 @@ module.exports = React.createClass({
   _onNewItem: function(value) {
     return this._onItemAdd({
       type: 'Keyword',
-      label: "* " + value + " * ",
+      label: value,
+      isNew: true,
       term: value
     });
   },
@@ -6170,10 +6171,14 @@ module.exports = React.createClass({
     }, React.createElement("ul", {
       "className": 'multi-select-holder'
     }, values.map(function(item) {
-      var remover;
+      var remover, style;
       remover = f.curry(_onItemRemove)(item);
+      style = item.isNew ? {
+        fontStyle: 'italic'
+      } : {};
       return React.createElement("li", {
         "className": 'multi-select-tag',
+        "style": style,
         "key": item.uuid || (typeof item.getId === "function" ? item.getId() : void 0) || JSON.stringify(item)
       }, decorateResource(item), React.createElement("a", {
         "className": 'multi-select-tag-remove',

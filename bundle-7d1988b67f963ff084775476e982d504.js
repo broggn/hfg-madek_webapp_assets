@@ -1693,10 +1693,12 @@ module.exports = React.createClass({
     }, (function(_this) {
       return function(result, json) {
         if (result === 'success') {
-          return _this.setState({
-            get: json,
-            searching: false
-          });
+          if (_this.isMounted()) {
+            return _this.setState({
+              get: json,
+              searching: false
+            });
+          }
         }
       };
     })(this));
@@ -2830,6 +2832,16 @@ module.exports = React.createClass({
       batchRemoveFromSet: false
     };
   },
+  doOnUnmount: [],
+  componentWillUnmount: function() {
+    return f.each(f.compact(this.doOnUnmount), function(fn) {
+      if (f.isFunction(fn)) {
+        return fn();
+      } else {
+        return console.error("Not a Function!", fn);
+      }
+    });
+  },
   componentWillMount: function() {
     var collectionClass, isPaginated, resources;
     isPaginated = this.props.withBox && f.present(f.get(this.props, 'get.pagination.total_count'));
@@ -2862,15 +2874,16 @@ module.exports = React.createClass({
     });
   },
   componentDidMount: function() {
-    var selection;
+    var selection, unlistenFn;
     router = this.props.router ? this.props.router : require('../../lib/router.coffee');
-    router.listen((function(_this) {
+    unlistenFn = router.listen((function(_this) {
       return function(location) {
         return _this.setState({
           config: f.merge(_this.state.config, resourceListParams(location))
         });
       };
     })(this));
+    this.doOnUnmount.push(unlistenFn);
     if (!this.props.router) {
       router.start();
     }
@@ -2879,40 +2892,31 @@ module.exports = React.createClass({
     } else if (this.props.get.type === 'MediaEntries') {
       selection = new MediaEntries();
     }
-    f.each([this.state.resources, selection], (function(_this) {
-      return function(m) {
-        return f.each(['add', 'remove', 'reset', 'change'], function(eventName) {
-          if (m && f.isFunction(m.on)) {
-            return m.on(eventName, function() {
+    if (selection) {
+      f.each(['add', 'remove', 'reset', 'change'], (function(_this) {
+        return function(eventName) {
+          return selection.on(eventName, function() {
+            if (_this.isMounted()) {
               return _this.forceUpdate();
-            });
-          }
-        });
-      };
-    })(this));
+            }
+          });
+        };
+      })(this));
+      this.doOnUnmount.push(selection.off);
+    }
     if (this.state.resources) {
       this.fetchNextPage = f.throttle(((function(_this) {
         return function(c) {
           return _this.state.resources.fetchNext(c);
         };
       })(this)), 1000);
+      this.doOnUnmount.push(this.fetchNextPage.cancel());
     }
     return this.setState({
       isClient: true,
       router: router,
       selectedResources: selection
     });
-  },
-  componentWillUnmount: function() {
-    if (this.fetchNextPage) {
-      this.fetchNextPage.cancel();
-    }
-    if (this.state.router) {
-      this.state.router.stop();
-    }
-    if (this.state.selectedResources) {
-      return this.state.selectedResources.off();
-    }
   },
   _handleChangeInternally: function(event) {
     return handleLinkIfLocal(event, router.goTo);
@@ -2929,9 +2933,11 @@ module.exports = React.createClass({
         if (err) {
           console.error(err);
         }
-        return _this.setState({
-          loadingNextPage: false
-        });
+        if (_this.isMounted()) {
+          return _this.setState({
+            loadingNextPage: false
+          });
+        }
       };
     })(this));
   },
@@ -4129,9 +4135,11 @@ module.exports = React.createClass({
     }, (function(_this) {
       return function(err, res, body) {
         var data, error, error1, errors, forward_url;
-        _this.setState({
-          saving: false
-        });
+        if (_this.isMounted()) {
+          _this.setState({
+            saving: false
+          });
+        }
         try {
           data = JSON.parse(body);
         } catch (error1) {
@@ -4145,9 +4153,11 @@ module.exports = React.createClass({
           } else {
             window.scrollTo(0, 0);
           }
-          return _this.setState({
-            errors: errors
-          });
+          if (_this.isMounted()) {
+            return _this.setState({
+              errors: errors
+            });
+          }
         } else {
           forward_url = data['forward_url'];
           if (!forward_url) {
@@ -4579,18 +4589,22 @@ module.exports = React.createClass({
           console.error('Cannot parse body of answer for meta data update', error);
         }
         if (res.statusCode === 400) {
-          _this.setState({
-            saving: false
-          });
+          if (_this.isMounted()) {
+            _this.setState({
+              saving: false
+            });
+          }
           errors = f.presence(f.get(data, 'errors')) || {};
           if (!f.present(errors)) {
             console.error('Cannot get errors from meta data update');
           } else {
             window.scrollTo(0, 0);
           }
-          return _this.setState({
-            errors: errors
-          });
+          if (_this.isMounted()) {
+            return _this.setState({
+              errors: errors
+            });
+          }
         } else {
           forward_url = data['forward_url'];
           if (!forward_url) {
@@ -4891,7 +4905,7 @@ module.exports = React.createClass({
         });
       };
     })(this));
-    router.listen((function(_this) {
+    this.stopRouter = router.listen((function(_this) {
       return function(location) {
         return _this.setState({
           editing: f.isEqual(location.pathname, editUrl)
@@ -4903,6 +4917,11 @@ module.exports = React.createClass({
       router: router
     });
     return router.start();
+  },
+  componentWillUnMount: function() {
+    if (this.stopRouter) {
+      return this.stopRouter();
+    }
   },
   startEditing: function(event) {
     if (event != null) {
@@ -5337,17 +5356,21 @@ module.exports = React.createClass({
     return async.each(typesToFetch, ((function(_this) {
       return function(typeToFetch, next) {
         return model.fetchRelations(typeToFetch, function(err, res) {
-          _this.setState({
-            fetchingRelations: f.without(_this.state.fetchingRelations, typeToFetch)
-          });
+          if (_this.isMounted()) {
+            _this.setState({
+              fetchingRelations: f.without(_this.state.fetchingRelations, typeToFetch)
+            });
+          }
           return next(err, res);
         });
       };
     })(this)), (function(_this) {
       return function(err) {
-        return _this.setState({
-          fetchingRelations: false
-        });
+        if (_this.isMounted()) {
+          return _this.setState({
+            fetchingRelations: false
+          });
+        }
       };
     })(this));
   },
@@ -5364,9 +5387,11 @@ module.exports = React.createClass({
     action = this.state.model.favored ? 'disfavor' : 'favor';
     return this.state.model.setFavoredStatus(action, (function(_this) {
       return function(err, res) {
-        return _this.setState({
-          pendingFavorite: false
-        });
+        if (_this.isMounted()) {
+          return _this.setState({
+            pendingFavorite: false
+          });
+        }
       };
     })(this));
   },
@@ -5778,6 +5803,9 @@ module.exports = React.createClass({
     });
     return this._getPropsAsync((function(_this) {
       return function(err, props) {
+        if (!_this.isMounted()) {
+          return;
+        }
         _this.setState({
           fetching: false
         });
@@ -5795,7 +5823,7 @@ module.exports = React.createClass({
     })(this));
   },
   _getPropsAsync: function(callback) {
-    return xhr({
+    return this._runningRequest = xhr({
       url: this.props.url,
       json: true
     }, (function(_this) {
@@ -5810,6 +5838,11 @@ module.exports = React.createClass({
         return callback(null, props);
       };
     })(this));
+  },
+  componentWillUnmount: function() {
+    if (this._runningRequest) {
+      return this._runningRequest.abort();
+    }
   },
   render: function() {
     var UIComponent, errorMessage;
@@ -6152,9 +6185,7 @@ module.exports = React.createClass({
   },
   _onItemAdd: function(item) {
     var is_duplicate, newValues;
-    this.setState({
-      adding: true
-    });
+    this._adding = true;
     is_duplicate = f.present(item.uuid) ? f(this.state.values).map('uuid').includes(item.uuid) : f(this.state.values).map('term').includes(item.term);
     newValues = this.state.values.concat(item);
     if (!is_duplicate) {
@@ -6185,10 +6216,8 @@ module.exports = React.createClass({
     }
   },
   componentDidUpdate: function() {
-    if (this.state.adding) {
-      this.setState({
-        adding: false
-      });
+    if (this._adding) {
+      this._adding = false;
       return setTimeout(this.refs.ListAdder.focus, 1);
     }
   },
@@ -6844,21 +6873,18 @@ module.exports = React.createClass({
   },
   componentDidMount: function() {
     router = require('../../lib/router.coffee');
-    router.listen((function(_this) {
+    this.stopRouter = router.listen((function(_this) {
       return function(location) {
         return _this.setState({
           url: location
         });
       };
     })(this));
-    router.start();
-    return this.setState({
-      router: router
-    });
+    return router.start();
   },
   componentWillUnmount: function() {
-    if (this.state.router) {
-      return this.state.router.stop();
+    if (this.stopRouter) {
+      return this.stopRouter();
     }
   },
   render: function(props) {
@@ -8395,9 +8421,7 @@ module.exports = React.createClass({
   componentDidMount: function() {
     this.setState({
       ready: true,
-      mounted: true
-    });
-    this.setState({
+      mounted: true,
       loading: true
     });
     return loadXhr({
@@ -8406,6 +8430,9 @@ module.exports = React.createClass({
     }, (function(_this) {
       return function(result, json) {
         var get;
+        if (!_this.isMounted()) {
+          return;
+        }
         if (result === 'success') {
           get = _this.props.extractGet(json);
           return _this.setState({
@@ -9091,6 +9118,9 @@ module.exports = React.createClass({
           url: _this.props.get.select_collection_url,
           form: _this.refs.form
         }, function(result, json) {
+          if (!_this.isMounted()) {
+            return;
+          }
           if (result === 'success') {
             return _this.setState({
               get: json.header.collection_selection,
@@ -10069,6 +10099,9 @@ module.exports = React.createClass({
         url: '/my/new_collection?___sparse={"dashboard_header":{"new_collection":{}}}'
       }, (function(_this) {
         return function(result, json) {
+          if (!_this.isMounted()) {
+            return;
+          }
           if (result === 'success') {
             return _this.setState({
               loading: false,
@@ -10104,6 +10137,9 @@ module.exports = React.createClass({
     }, (function(_this) {
       return function(result, json) {
         var forward_url;
+        if (!_this.isMounted()) {
+          return;
+        }
         if (result === 'failure') {
           _this.setState({
             saving: false

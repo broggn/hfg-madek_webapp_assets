@@ -1620,10 +1620,13 @@ module.exports = React.createClass({
     return {
       mounted: false,
       searchTerm: '',
-      results: [],
-      searching: false
+      searching: false,
+      newSets: [],
+      results: []
     };
   },
+  lastRequest: null,
+  sendTimeoutRef: null,
   componentWillMount: function() {
     return this.setState({
       get: this.props.get,
@@ -1636,33 +1639,37 @@ module.exports = React.createClass({
     });
   },
   _onChange: function(event) {
-    var url;
     this.setState({
       searchTerm: event.target.value
     });
     this.setState({
       searching: true
     });
-    if (this.lastRequest) {
-      this.lastRequest.abort();
+    if (this.sendTimeoutRef !== null) {
+      return;
     }
-    url = this._requestUrl();
-    return this.lastRequest = formXhr({
-      method: 'GET',
-      url: url,
-      form: this.refs.form
-    }, (function(_this) {
-      return function(result, json) {
-        if (result === 'success') {
-          if (_this.isMounted()) {
-            return _this.setState({
-              get: json,
-              searching: false
-            });
-          }
+    return this.sendTimeoutRef = setTimeout((function(_this) {
+      return function() {
+        _this.sendTimeoutRef = null;
+        if (_this.lastRequest) {
+          _this.lastRequest.abort();
         }
+        return _this.lastRequest = formXhr({
+          method: 'GET',
+          url: _this._requestUrl(),
+          form: _this.refs.form
+        }, function(result, json) {
+          if (result === 'success') {
+            if (_this.isMounted()) {
+              return _this.setState({
+                get: json,
+                searching: false
+              });
+            }
+          }
+        });
       };
-    })(this));
+    })(this), 500);
   },
   _requestUrl: function() {
     return setUrlParams(this.props.get.batch_select_add_to_set_url, {
@@ -1671,14 +1678,30 @@ module.exports = React.createClass({
       return_to: this.state.get.return_to
     });
   },
+  _onClickNew: function(event) {
+    var trimmed;
+    event.preventDefault();
+    if (this.state.searchTerm) {
+      trimmed = this.state.searchTerm.trim();
+      if (trimmed.length > 0) {
+        this.state.newSets.push(trimmed);
+        this.setState({
+          newSets: this.state.newSets
+        });
+      }
+    }
+    return false;
+  },
   render: function(arg) {
-    var _content, _search, authToken, buttonMargins, get;
+    var _content, _search, authToken, buttonMargins, get, hasNew, hasResultEntries;
     authToken = (arg != null ? arg : this.props).authToken;
     get = this.state.get;
     buttonMargins = {
       marginTop: '5px',
       marginRight: '5px'
     };
+    hasNew = this.state.newSets.length > 0;
+    hasResultEntries = get.search_results.length > 0;
     _search = React.createElement("div", {
       "className": 'ui-search'
     }, React.createElement(RailsForm, {
@@ -1730,64 +1753,122 @@ module.exports = React.createClass({
         "type": 'submit',
         "name": 'clear'
       }, t('resource_select_collection_clear'))
-    ] : void 0)));
-    _content = this.state.searching ? React.createElement(Preloader, null) : get.search_results.length > 0 ? React.createElement("div", {
-      "className": 'ui-resources-table'
-    }, React.createElement("div", {
-      "className": 'ui-resources-table'
-    }, React.createElement("input", {
-      "type": 'hidden',
-      "name": 'return_to',
-      "value": this.state.get.return_to
-    }), f.map(this.props.get.resource_ids, function(resource_id) {
-      return [
-        React.createElement("input", {
-          "key": 'resource_id_' + resource_id.uuid,
-          "type": 'hidden',
-          "name": 'resource_id[][uuid]',
-          "value": resource_id.uuid
-        }), React.createElement("input", {
-          "key": 'resource_id_' + resource_id.type,
-          "type": 'hidden',
-          "name": 'resource_id[][type]',
-          "value": resource_id.type
-        })
-      ];
-    }), React.createElement("table", {
-      "className": 'block'
-    }, React.createElement("tbody", null, f.map(get.search_results, function(collection, index) {
-      return React.createElement("tr", {
-        "key": 'result_' + index
-      }, React.createElement("td", {
-        "data-name": 'title',
-        "title": ''
-      }, React.createElement("img", {
-        "className": 'ui-thumbnail micro',
-        "src": collection.image_url
-      })), React.createElement("td", {
-        "data-name": 'title',
-        "title": ''
-      }, React.createElement("span", {
-        "className": 'ui-resources-table-cell-content'
-      }, collection.title)), React.createElement("td", {
-        "data-name": 'title',
-        "title": ''
-      }, React.createElement(Button, {
+    ] : React.createElement("button", {
+      "onClick": this._onClickNew,
+      "className": "button ui-search-button"
+    }, "Neues Set erstellen"))));
+    _content = [];
+    if (this.state.searching && !(hasNew || hasResultEntries)) {
+      _content.push(React.createElement(Preloader, {
+        "key": 'content1'
+      }));
+    }
+    if (hasNew || hasResultEntries) {
+      _content.push(React.createElement("ol", {
+        "key": 'content2',
+        "className": 'ui-set-list pbs'
+      }, React.createElement("input", {
+        "type": 'hidden',
+        "name": 'return_to',
+        "value": this.state.get.return_to
+      }), f.map(this.props.get.resource_ids, function(resource_id) {
+        return [
+          React.createElement("input", {
+            "key": 'resource_id_' + resource_id.uuid,
+            "type": 'hidden',
+            "name": 'resource_id[][uuid]',
+            "value": resource_id.uuid
+          }), React.createElement("input", {
+            "key": 'resource_id_' + resource_id.type,
+            "type": 'hidden',
+            "name": 'resource_id[][type]',
+            "value": resource_id.type
+          })
+        ];
+      }), (hasNew ? f.map(this.state.newSets, function(row, index) {
+        return React.createElement("li", {
+          "style": {
+            paddingLeft: '60px',
+            paddingRight: '200px'
+          },
+          "key": 'new_' + index,
+          "className": 'ui-set-list-item'
+        }, React.createElement("img", {
+          "style": {
+            margin: '0px',
+            position: 'absolute',
+            left: '10px',
+            top: '10px'
+          },
+          "className": 'ui-thumbnail micro',
+          "src": null
+        }), React.createElement("span", {
+          "className": 'title'
+        }, row), React.createElement("span", {
+          "className": 'owner'
+        }, 'New'), React.createElement(Button, {
+          "style": {
+            position: 'absolute',
+            right: '0px',
+            top: '10px'
+          },
+          "className": "primary-button",
+          "type": 'submit',
+          "value": row,
+          "name": 'parent_collection_id[new]'
+        }, "Neues Set erstellen und Einträge hinzufügen"));
+      }) : void 0), (this.state.searching ? React.createElement(Preloader, {
         "style": {
-          float: 'right'
-        },
-        "className": "primary-button",
-        "type": 'submit',
-        "value": collection.uuid,
-        "name": 'parent_collection_id'
-      }, "Zu diesem hinzufügen")));
-    }))))) : f.presence(get.search_term) ? React.createElement("h3", {
-      "key": 'content3',
-      "className": "by-center title-m"
-    }, t('resource_select_collection_non_found')) : React.createElement("h3", {
-      "key": 'content3',
-      "className": "by-center title-m"
-    }, t('batch_add_to_collection_hint'));
+          marginTop: '20px'
+        }
+      }) : hasResultEntries ? f.map(get.search_results, function(collection, index) {
+        return React.createElement("li", {
+          "style": {
+            paddingLeft: '60px',
+            paddingRight: '200px'
+          },
+          "key": collection.uuid,
+          "className": 'ui-set-list-item'
+        }, React.createElement("img", {
+          "style": {
+            margin: '0px',
+            position: 'absolute',
+            left: '10px',
+            top: '10px'
+          },
+          "className": 'ui-thumbnail micro',
+          "src": collection.image_url
+        }), React.createElement("span", {
+          "className": 'title'
+        }, collection.title), React.createElement("span", {
+          "className": 'owner'
+        }, collection.responsible.name), React.createElement("span", {
+          "className": 'created-at'
+        }, collection.created_at_pretty), React.createElement(Button, {
+          "style": {
+            position: 'absolute',
+            right: '0px',
+            top: '10px'
+          },
+          "className": "primary-button",
+          "type": 'submit',
+          "value": collection.uuid,
+          "name": 'parent_collection_id[existing]'
+        }, "Zu diesem hinzufügen"));
+      }) : void 0)));
+    }
+    if (!hasResultEntries && f.presence(get.search_term) && !this.state.searching) {
+      _content.push(React.createElement("h3", {
+        "key": 'content3',
+        "className": "by-center title-m"
+      }, t('resource_select_collection_non_found')));
+    }
+    if (!hasResultEntries && !f.presence(get.search_term) && !this.state.searching) {
+      _content.push(React.createElement("h3", {
+        "key": 'content4',
+        "className": "by-center title-m"
+      }, t('batch_add_to_collection_hint')));
+    }
     return React.createElement(SelectCollectionDialog, {
       "onCancel": this.props.onClose,
       "cancelUrl": this.state.get.return_to,
@@ -8974,39 +9055,25 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       mounted: false,
-      errors: null,
-      searching: false,
       searchTerm: '',
+      searching: false,
       newSets: [],
-      get: null
+      get: null,
+      errors: null
     };
   },
   lastRequest: null,
+  sendTimeoutRef: null,
   componentWillMount: function() {
-    this.setState({
-      searchTerm: this.props.get.search_term,
-      get: this.props.get
+    return this.setState({
+      get: this.props.get,
+      searchTerm: this.props.get.search_term
     });
-    return this.sendTimeoutRef = null;
   },
   componentDidMount: function() {
     return this.setState({
       mounted: true
     });
-  },
-  _onClickNew: function(event) {
-    var trimmed;
-    event.preventDefault();
-    if (this.state.searchTerm) {
-      trimmed = this.state.searchTerm.trim();
-      if (trimmed.length > 0) {
-        this.state.newSets.push(trimmed);
-        this.setState({
-          newSets: this.state.newSets
-        });
-      }
-    }
-    return false;
   },
   _onChange: function(event) {
     this.setState({
@@ -9026,7 +9093,7 @@ module.exports = React.createClass({
         }
         return _this.lastRequest = formXhr({
           method: 'GET',
-          url: _this.props.get.select_collection_url,
+          url: _this._requestUrl(),
           form: _this.refs.form
         }, function(result, json) {
           if (!_this.isMounted()) {
@@ -9042,8 +9109,25 @@ module.exports = React.createClass({
       };
     })(this), 500);
   },
+  _requestUrl: function() {
+    return this.props.get.select_collection_url;
+  },
+  _onClickNew: function(event) {
+    var trimmed;
+    event.preventDefault();
+    if (this.state.searchTerm) {
+      trimmed = this.state.searchTerm.trim();
+      if (trimmed.length > 0) {
+        this.state.newSets.push(trimmed);
+        this.setState({
+          newSets: this.state.newSets
+        });
+      }
+    }
+    return false;
+  },
   render: function(arg) {
-    var _content, _search, alerts, authToken, buttonMargins, error, get, onClose, ref, showEntries, showNew;
+    var _content, _search, alerts, authToken, buttonMargins, error, get, hasNew, hasResultEntries, onClose, ref;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, onClose = ref.onClose;
     error = this.state.error || get.error;
     if (this.state.get) {
@@ -9059,8 +9143,8 @@ module.exports = React.createClass({
       marginTop: '5px',
       marginRight: '5px'
     };
-    showNew = this.state.newSets.length > 0;
-    showEntries = get.collection_rows.length !== 0;
+    hasNew = this.state.newSets.length > 0;
+    hasResultEntries = get.collection_rows.length !== 0;
     _search = React.createElement("div", {
       "className": 'ui-search'
     }, React.createElement(RailsForm, {
@@ -9099,16 +9183,16 @@ module.exports = React.createClass({
       "className": "button ui-search-button"
     }, "Neues Set erstellen"))));
     _content = [];
-    if (this.state.searching && !(showNew || showEntries)) {
+    if (this.state.searching && !(hasNew || hasResultEntries)) {
       _content.push(React.createElement(Preloader, {
         "key": 'content1'
       }));
     }
-    if (showNew || showEntries) {
+    if (hasNew || hasResultEntries) {
       _content.push(React.createElement("ol", {
         "key": 'content2',
         "className": 'ui-set-list pbs'
-      }, (showNew ? f.map(this.state.newSets, function(row, index) {
+      }, (hasNew ? f.map(this.state.newSets, function(row, index) {
         return React.createElement("li", {
           "key": 'new_' + index,
           "className": 'ui-set-list-item'
@@ -9136,7 +9220,7 @@ module.exports = React.createClass({
         "style": {
           marginTop: '20px'
         }
-      }) : showEntries ? f.map(get.collection_rows, function(row) {
+      }) : hasResultEntries ? f.map(get.collection_rows, function(row) {
         var checked, collection;
         collection = row.collection;
         checked = row.contains_media_entry;
@@ -9161,13 +9245,13 @@ module.exports = React.createClass({
         }, collection.created_at_pretty)));
       }) : void 0)));
     }
-    if (get.collection_rows.length === 0 && f.presence(get.search_term) && !this.state.searching) {
+    if (!hasResultEntries && f.presence(get.search_term) && !this.state.searching) {
       _content.push(React.createElement("h3", {
         "key": 'content3',
         "className": "by-center title-m"
       }, t('resource_select_collection_non_found')));
     }
-    if (get.collection_rows.length === 0 && !f.presence(get.search_term) && !this.state.searching) {
+    if (!hasResultEntries && !f.presence(get.search_term) && !this.state.searching) {
       _content.push(React.createElement("h3", {
         "key": 'content4',
         "className": "by-center title-m"

@@ -3971,7 +3971,7 @@ module.exports = React.createClass({
     }
   },
   render: function(arg) {
-    var batchConflict, className, context_key, error, meta_key, name, newget, ref, style, validErr;
+    var batchConflict, className, error, meta_key, name, newget, ref, style, validErr;
     ref = arg != null ? arg : this.props, name = ref.name, error = ref.error;
     if (this.props.batch) {
       name += "[" + this.props.metaKeyId + "][values][]";
@@ -3979,7 +3979,6 @@ module.exports = React.createClass({
       name += "[" + this.props.metaKeyId + "][]";
     }
     meta_key = this.props.allMetaMetaData.meta_key_by_meta_key_id[this.props.metaKeyId];
-    context_key = this.props.allMetaMetaData.context_keys_by_meta_key_id[this.props.metaKeyId];
     newget = f.mapValues(this.props.get, function(value) {
       return value;
     });
@@ -4013,13 +4012,12 @@ module.exports = React.createClass({
     }, error)) : void 0), null, React.createElement(MetaKeyFormLabel, {
       "name": name,
       "metaKey": meta_key,
-      "contextKey": context_key,
+      "contextKey": this.props.contextKey,
       "mandatory": this.props.requiredMetaKeyIds[this.props.metaKeyId]
     }), React.createElement(InputMetaDatum, {
       "onChange": this._onChange,
       "name": name,
-      "get": newget,
-      "contextKey": context_key
+      "get": newget
     }));
   }
 });
@@ -4565,6 +4563,15 @@ module.exports = React.createClass({
       }
     }
   },
+  _meta_key_ids_by_context_id: function(context_id) {
+    var res;
+    res = f.map(this.props.get.meta_meta_data.context_key_ids_by_context_id[context_id], (function(_this) {
+      return function(context_key_id) {
+        return _this.props.get.meta_meta_data.meta_key_id_by_context_key_id[context_key_id];
+      };
+    })(this));
+    return res;
+  },
   _validityForContext: function(context_id) {
     var hasInvalid, hasMandatory;
     hasMandatory = false;
@@ -4572,7 +4579,7 @@ module.exports = React.createClass({
     f.each(this.props.get.meta_meta_data.mandatory_by_meta_key_id, (function(_this) {
       return function(mandatory) {
         var model;
-        if (context_id && (f.includes(_this.props.get.meta_meta_data.meta_key_ids_by_context_id[context_id], mandatory.meta_key_id)) || !context_id) {
+        if (context_id && (f.includes(_this._meta_key_ids_by_context_id(context_id), mandatory.meta_key_id)) || !context_id) {
           hasMandatory = true;
           model = _this.state.models[mandatory.meta_key_id];
           if (model && !_this._validModel(model)) {
@@ -4594,7 +4601,7 @@ module.exports = React.createClass({
     hasChanges = false;
     f.each(this.state.models, (function(_this) {
       return function(model, meta_key_id) {
-        if (context_id && (f.includes(_this.props.get.meta_meta_data.meta_key_ids_by_context_id[context_id], meta_key_id)) || !context_id) {
+        if (context_id && (f.includes(_this._meta_key_ids_by_context_id(context_id), meta_key_id)) || !context_id) {
           if (!(model.multiple === false && model.originalValues.length === 0 && model.values.length === 1 && model.values[0].trim() === '')) {
             if (!_this._equalUnordered(model.values, model.originalValues, model.multiple)) {
               return hasChanges = true;
@@ -4702,7 +4709,7 @@ module.exports = React.createClass({
     return false;
   },
   render: function(arg) {
-    var authToken, cancelUrl, className, currentContext, currentContextId, disablePublish, disableSave, editByVocabTitle, editByVocabUrl, get, hidden_meta_key_ids, meta_data, name, published, ref, showPublish, title;
+    var all_meta_key_ids, authToken, cancelUrl, className, currentContext, currentContextId, disablePublish, disableSave, editByVocabTitle, editByVocabUrl, get, hidden_meta_key_ids, meta_data, meta_key_ids_in_current_context, name, published, ref, showPublish, title;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
     currentContextId = this.state.currentContextId;
     if (currentContextId) {
@@ -4772,7 +4779,7 @@ module.exports = React.createClass({
         }) : setUrlParams(get.url + '/meta_data/edit_context/' + context.uuid, {
           return_to: get.return_to
         });
-        if (!f.isEmpty(get.meta_meta_data.meta_key_ids_by_context_id[context_id])) {
+        if (!f.isEmpty(get.meta_meta_data.context_key_ids_by_context_id[context_id])) {
           return React.createElement(Tab, {
             "hasChanges": _this._changesPerContext(context_id),
             "validity": _this._validityForContext(context_id),
@@ -4859,9 +4866,10 @@ module.exports = React.createClass({
         "name": 'batch_resource_meta_data[id][]',
         "value": entry.uuid
       });
-    }), f.map(get.meta_meta_data.meta_key_ids_by_context_id[currentContext.uuid], (function(_this) {
-      return function(meta_key_id) {
-        var datum;
+    }), f.map(get.meta_meta_data.context_key_ids_by_context_id[currentContext.uuid], (function(_this) {
+      return function(context_key_id) {
+        var datum, meta_key_id;
+        meta_key_id = get.meta_meta_data.meta_key_id_by_context_key_id[context_key_id];
         datum = get.meta_data.meta_datum_by_meta_key_id[meta_key_id];
         return React.createElement(MetaDatumFormItem, {
           "batch": _this.props.batch,
@@ -4872,6 +4880,7 @@ module.exports = React.createClass({
           "allMetaMetaData": get.meta_meta_data,
           "name": name,
           "get": datum,
+          "contextKey": get.meta_meta_data.context_key_by_context_key_id[context_key_id],
           "metaKeyId": meta_key_id,
           "model": _this.state.models[meta_key_id],
           "requiredMetaKeyIds": get.meta_meta_data.mandatory_by_meta_key_id,
@@ -4879,8 +4888,11 @@ module.exports = React.createClass({
           "key": meta_key_id
         });
       };
-    })(this)), (hidden_meta_key_ids = f.select(f.keys(get.meta_meta_data.meta_key_by_meta_key_id), function(meta_key_id) {
-      return !(f.includes(get.meta_meta_data.meta_key_ids_by_context_id[currentContext.uuid], meta_key_id));
+    })(this)), (meta_key_ids_in_current_context = f.map(get.meta_meta_data.context_key_ids_by_context_id[currentContext.uuid], function(context_key_id) {
+      var meta_key_id;
+      return meta_key_id = get.meta_meta_data.meta_key_id_by_context_key_id[context_key_id];
+    }), all_meta_key_ids = f.keys(get.meta_meta_data.meta_key_by_meta_key_id), hidden_meta_key_ids = f.select(all_meta_key_ids, function(meta_key_id) {
+      return !(f.includes(meta_key_ids_in_current_context, meta_key_id));
     }), f.map(hidden_meta_key_ids, (function(_this) {
       return function(meta_key_id) {
         var datum;
@@ -4894,6 +4906,7 @@ module.exports = React.createClass({
             "allMetaMetaData": get.meta_meta_data,
             "name": name,
             "get": datum,
+            "contextKey": null,
             "metaKeyId": meta_key_id,
             "model": _this.state.models[meta_key_id],
             "requiredMetaKeyIds": get.meta_meta_data.mandatory_by_meta_key_id,
@@ -6659,8 +6672,7 @@ module.exports = React.createClass({
       "name": name,
       "active": state.isClient,
       "multiple": multiple,
-      "values": values,
-      "contextKey": this.props.contextKey
+      "values": values
     });
   }
 });

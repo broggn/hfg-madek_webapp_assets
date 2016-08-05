@@ -3826,7 +3826,7 @@ module.exports = React.createClass({
 
 
 },{"../../lib/string-translation":9,"../lib/madek-prop-types.coffee":69,"./MetaDataList.cjsx":47,"active-lodash":139,"react":621}],47:[function(require,module,exports){
-var Link, MadekPropTypes, MetaDataDefinitionList, MetaDataTable, MetaDatumValues, React, classList, f, parseMods, t;
+var MadekPropTypes, MetaDataDefinitionList, MetaDataTable, MetaDatumValues, React, classList, f, parseMods, t;
 
 React = require('react');
 
@@ -3837,8 +3837,6 @@ classList = require('classnames/dedupe');
 parseMods = require('../lib/ui.coffee').parseMods;
 
 t = require('../../lib/string-translation')('de');
-
-Link = require('../ui-components/Link.cjsx');
 
 MadekPropTypes = require('../lib/madek-prop-types.coffee');
 
@@ -3891,12 +3889,7 @@ module.exports = React.createClass({
       var datum, key, ref1;
       ref1 = listingType === 'Vocabulary' ? [dat, dat.meta_key] : [dat.meta_datum, dat.context_key], datum = ref1[0], key = ref1[1];
       return {
-        key: React.createElement(Link, {
-          "mods": 'weak',
-          "href": datum.url,
-          "title": key.uuid,
-          "key": key.uuid
-        }, key.label),
+        key: key.label,
         value: React.createElement(MetaDatumValues, {
           "metaDatum": datum,
           "tagMods": tagMods
@@ -3960,7 +3953,7 @@ MetaDataTable = function(arg) {
 };
 
 
-},{"../../lib/string-translation":9,"../lib/madek-prop-types.coffee":69,"../lib/ui.coffee":70,"../ui-components/Link.cjsx":82,"./MetaDatumValues.cjsx":49,"active-lodash":139,"classnames/dedupe":297,"react":621}],48:[function(require,module,exports){
+},{"../../lib/string-translation":9,"../lib/madek-prop-types.coffee":69,"../lib/ui.coffee":70,"./MetaDatumValues.cjsx":49,"active-lodash":139,"classnames/dedupe":297,"react":621}],48:[function(require,module,exports){
 var InputMetaDatum, MadekPropTypes, MetaKeyFormLabel, PropTypes, RailsForm, React, cx, f, getRailsCSRFToken, t, xhr;
 
 React = require('react');

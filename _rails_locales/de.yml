@@ -23,6 +23,7 @@ de:
         success: 'Metadaten von %{resource_name} wurden gespeichert.'
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
   app_notice_logged_out: Sie haben sich abgemeldet.
+  app_warning_jsonly: 'Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert!'
   authentication_groups: Systemgruppen
   batch_add_to_collection_hint: Nach Sets suchen
   batch_add_to_collection_post: ' Medieneinträge zu Set hinzufügen'
@@ -195,6 +196,9 @@ de:
   permission_subject_title_groups: Gruppen
   permission_subject_title_public: Öffentlichkeit
   permission_subject_title_users: Personen
+  permissions_batch_success: Berechtigungen wurden erfolgreich aktualisiert.
+  permissions_batch_title_post: ' Inhalten'
+  permissions_batch_title_pre: 'Zugriffsberechtigungen ändern von '
   permissions_overview_yours_msg_end: ', haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen'
   permissions_overview_yours_msg_start: 'Sie, '
   permissions_overview_yours_title: Ihre Berechtigungen
@@ -241,6 +245,7 @@ de:
   resources_box_batch_actions_addtoset: Ausgewählte zu Set hinzufügen
   resources_box_batch_actions_delete: Ausgewählte löschen
   resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren
+  resources_box_batch_actions_managepermissions: Berechtigungen editieren
   resources_box_batch_actions_menu_title: Aktionen
   resources_box_batch_actions_removefromset: Aus Set entfernen
   resources_box_batch_actions_save: Als Filterset speichern

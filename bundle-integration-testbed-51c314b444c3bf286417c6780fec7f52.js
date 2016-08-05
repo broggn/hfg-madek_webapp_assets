@@ -369,8 +369,8 @@ ApiClient = require('../api-client.coffee');
 MediaEntryPublicPermission = AppResource.extend({
   type: 'MediaEntryPublicPermission',
   props: {
-    get_metadata_and_previews: ['boolean'],
-    get_full_size: ['boolean']
+    get_metadata_and_previews: ['trilean'],
+    get_full_size: ['trilean']
   }
 });
 
@@ -381,10 +381,10 @@ MediaEntryUserPermissions = Collection.extend({
       subject: User
     },
     props: {
-      get_metadata_and_previews: ['boolean', false, false],
-      get_full_size: ['boolean', false, false],
-      edit_metadata: ['boolean', false, false],
-      edit_permissions: ['boolean', false, false]
+      get_metadata_and_previews: ['trilean', false, false],
+      get_full_size: ['trilean', false, false],
+      edit_metadata: ['trilean', false, false],
+      edit_permissions: ['trilean', false, false]
     }
   })
 });
@@ -397,9 +397,9 @@ MediaEntryGroupPermissions = Collection.extend({
       subject: Group
     },
     props: {
-      get_metadata_and_previews: ['boolean', false, false],
-      get_full_size: ['boolean', false, false],
-      edit_metadata: ['boolean', false, false]
+      get_metadata_and_previews: ['trilean', false, false],
+      get_full_size: ['trilean', false, false],
+      edit_metadata: ['trilean', false, false]
     }
   })
 });
@@ -412,8 +412,8 @@ MediaEntryApiClientPermissions = Collection.extend({
       subject: ApiClient
     },
     props: {
-      get_metadata_and_previews: ['boolean', false, false],
-      get_full_size: ['boolean', false, false]
+      get_metadata_and_previews: ['trilean', false, false],
+      get_full_size: ['trilean', false, false]
     }
   })
 });
@@ -577,7 +577,7 @@ module.exports = Collection.extend(RailsResource, {
 
 
 },{"./rails-resource-mixin.coffee":17,"active-lodash":23,"ampersand-rest-collection":166}],15:[function(require,module,exports){
-var Model, RailsResource, f, getRailsCSRFToken, xhr;
+var Model, RailsResource, customDataTypes, f, getRailsCSRFToken, xhr;
 
 Model = require('ampersand-model');
 
@@ -589,10 +589,32 @@ getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
 
 RailsResource = require('./rails-resource-mixin.coffee');
 
+customDataTypes = {
+  trilean: {
+    compare: function(a, b) {
+      return a === b;
+    },
+    set: function(newVal) {
+      if (f.includes([true, false, 'mixed'], newVal)) {
+        return {
+          val: newVal,
+          type: 'trilean'
+        };
+      } else {
+        return {
+          val: newVal,
+          type: "'" + newVal + "' (" + (typeof newVal) + ")"
+        };
+      }
+    }
+  }
+};
+
 module.exports = Model.extend(RailsResource, {
   type: 'AppResource',
   idAttribute: 'url',
   typeAttribute: 'type',
+  dataTypes: customDataTypes,
   props: {
     url: 'string',
     uuid: 'string'

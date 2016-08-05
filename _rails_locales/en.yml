@@ -21,6 +21,7 @@ en:
         update: Update group
         create: Create group
   app_notice_logged_out: You have logged out.
+  app_warning_jsonly: "This feature needs Javascript, but it's not activated!"
   authentication_groups: System Groups
   batch_add_to_collection_hint: ' zu denen Sie die Medieneinträge hinzufügen möchten.'
   batch_add_to_collection_post: ' media entries to set'
@@ -193,6 +194,9 @@ en:
   permission_subject_title_groups: Groups
   permission_subject_title_public: Public
   permission_subject_title_users: Users
+  permissions_batch_success: Succesfully updated permissions.
+  permissions_batch_title_post: ' Resources'
+  permissions_batch_title_pre: 'Edit Permissions of '
   permissions_overview_yours_msg_end: ', currently have the following permissions (either directly or as a member of a group):'
   permissions_overview_yours_msg_start: 'You, '
   permissions_overview_yours_title: Your Permissions
@@ -239,6 +243,7 @@ en:
   resources_box_batch_actions_addtoset: Add selected to Set
   resources_box_batch_actions_delete: Delete selected
   resources_box_batch_actions_edit: Edit MetaData
+  resources_box_batch_actions_managepermissions: Edit Permissions
   resources_box_batch_actions_menu_title: Actions
   resources_box_batch_actions_removefromset: Remove from set
   resources_box_batch_actions_save: Save as filter set

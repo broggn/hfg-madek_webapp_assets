@@ -6073,24 +6073,33 @@ module.exports = React.createClass({
     metaKey: MadekPropTypes.metaKey
   },
   render: function(arg) {
-    var contextKey, description, label, metaKey, ref;
+    var contextKey, description, hint, label, metaKey, ref;
     ref = arg != null ? arg : this.props, metaKey = ref.metaKey, contextKey = ref.contextKey;
     label = metaKey.label;
-    if (contextKey && contextKey.label) {
-      label = contextKey.label;
+    hint = metaKey.hint;
+    description = metaKey.description;
+    if (contextKey) {
+      if (contextKey.label) {
+        label = contextKey.label;
+      }
+      if (contextKey.hint) {
+        hint = contextKey.hint;
+      }
+      if (contextKey.description) {
+        description = contextKey.description;
+      }
     }
     if (this.props.mandatory) {
       label = label + ' *';
     }
-    return React.createElement("label", {
+    return React.createElement("div", {
       "className": 'form-label'
-    }, label, ((description = metaKey.description) ? React.createElement("span", {
+    }, label, (description ? React.createElement("span", {
       "className": 'ui-form-ui-ttip-toggle ui-ttip-toggle',
-      "rel": 'tooltip',
       "title": description
     }, React.createElement("i", {
       "className": 'icon-question'
-    })) : void 0), React.createElement("small", null, metaKey.hint));
+    })) : void 0), React.createElement("small", null, hint));
   }
 });
 

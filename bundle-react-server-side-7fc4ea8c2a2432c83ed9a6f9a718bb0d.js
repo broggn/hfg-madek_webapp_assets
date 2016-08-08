@@ -7880,9 +7880,7 @@ module.exports = React.createClass({
       "key": child.uuid
     }, this.createToggleSubSection(filterType, parent, child, isOpen), this.createMultiSelectBox(child, current, filterType), React.createElement("ul", {
       "className": togglebodyClass
-    }, (isOpen ? f.map(f.sortBy(child.children, function(child) {
-      return child.label;
-    }), (function(_this) {
+    }, (isOpen ? f.map(child.children, (function(_this) {
       return function(item) {
         return _this.renderItem(current, child, item, filterType);
       };

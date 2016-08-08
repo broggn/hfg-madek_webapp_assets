@@ -4085,7 +4085,8 @@ module.exports = React.createClass({
     }), React.createElement(InputMetaDatum, {
       "onChange": this._onChange,
       "name": name,
-      "get": newget
+      "get": newget,
+      "contextKey": this.props.contextKey
     }));
   }
 });
@@ -6658,7 +6659,8 @@ module.exports = React.createClass({
       "name": name,
       "active": state.isClient,
       "multiple": multiple,
-      "values": values
+      "values": values,
+      "contextKey": this.props.contextKey
     });
   }
 });

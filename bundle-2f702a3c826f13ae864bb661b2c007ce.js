@@ -4540,7 +4540,8 @@ module.exports = React.createClass({
       batchDiff: {},
       editing: false,
       errors: {},
-      saving: false
+      saving: false,
+      systemError: false
     };
   },
   _actionUrl: function() {
@@ -4715,7 +4716,8 @@ module.exports = React.createClass({
   submit: function(actionType) {
     var serialized;
     this.setState({
-      saving: true
+      saving: true,
+      systemError: false
     });
     serialized = this.refs.form.serialize();
     return xhr({
@@ -4730,35 +4732,60 @@ module.exports = React.createClass({
     }, (function(_this) {
       return function(err, res, body) {
         var data, error, error1, errors, forward_url;
+        if (err) {
+          window.scrollTo(0, 0);
+          if (_this.isMounted()) {
+            _this.setState({
+              saving: false,
+              systemError: 'Connection error. Please try again.'
+            });
+          }
+          return;
+        }
         try {
           data = JSON.parse(body);
         } catch (error1) {
           error = error1;
-          console.error('Cannot parse body of answer for meta data update', error);
-        }
-        if (res.statusCode === 400) {
+          window.scrollTo(0, 0);
           if (_this.isMounted()) {
             _this.setState({
-              saving: false
+              saving: false,
+              systemError: 'System error. Cannot parse server answer. Please try again.'
             });
           }
+          return;
+        }
+        if (res.statusCode === 400) {
           errors = f.presence(f.get(data, 'errors')) || {};
           if (!f.present(errors)) {
-            console.error('Cannot get errors from meta data update');
+            window.scrollTo(0, 0);
+            if (_this.isMounted()) {
+              return _this.setState({
+                saving: false,
+                systemError: 'System error. Cannot read server errors. Please try again.'
+              });
+            }
           } else {
             window.scrollTo(0, 0);
-          }
-          if (_this.isMounted()) {
-            return _this.setState({
-              errors: errors
-            });
+            if (_this.isMounted()) {
+              return _this.setState({
+                saving: false
+              });
+            }
           }
         } else {
           forward_url = data['forward_url'];
           if (!forward_url) {
-            console.error('Cannot get forward url of answer of meta data update');
+            window.scrollTo(0, 0);
+            if (_this.isMounted()) {
+              return _this.setState({
+                saving: false,
+                systemError: 'Cannot read forward url. Please try again.'
+              });
+            }
+          } else {
+            return window.location = forward_url;
           }
-          return window.location = forward_url;
         }
       };
     })(this));
@@ -4910,7 +4937,14 @@ module.exports = React.createClass({
       "className": "app-body-content table-cell ui-container table-substance ui-container"
     }, React.createElement("div", {
       "className": (true ? 'active' : 'active tab-pane')
-    }, (this.state.errors && f.keys(this.state.errors).length > 0 ? React.createElement("div", {
+    }, (this.state.systemError ? React.createElement("div", {
+      "className": "ui-alerts",
+      "style": {
+        marginBottom: '10px'
+      }
+    }, React.createElement("div", {
+      "className": "error ui-alert"
+    }, this.state.systemError)) : void 0), (this.state.errors && f.keys(this.state.errors).length > 0 ? React.createElement("div", {
       "className": "ui-alerts",
       "style": {
         marginBottom: '10px'

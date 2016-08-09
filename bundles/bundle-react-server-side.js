@@ -11562,9 +11562,9 @@ module.exports = React.createClass({
     }, label, (showAllLink ? React.createElement("a", {
       "className": "strong",
       "href": hrefUrl
-    }, "Alle anzeigen") : void 0))), React.createElement("ul", {
+    }, "Alle anzeigen") : void 0))), (section.type === 'catalog' || section.type === 'catalog_category' ? React.createElement("ul", {
       "className": "grid ui-resources"
-    }, (section.type === 'catalog' || section.type === 'catalog_category' ? f.map(section.data.list, function(resource, n) {
+    }, f.map(section.data.list, function(resource, n) {
       return React.createElement(CatalogThumbnail, {
         "key": 'key_' + n,
         "usageCount": resource.usage_count,
@@ -11573,21 +11573,27 @@ module.exports = React.createClass({
         "imageUrl": resource.image_url,
         "hrefUrl": resource.url
       });
-    }) : section.type === 'thumbnail' ? f.map(section.data.list.resources, function(resource, n) {
+    })) : section.type === 'thumbnail' ? React.createElement("ul", {
+      "className": "grid ui-resources"
+    }, f.map(section.data.list.resources, function(resource, n) {
       return React.createElement(ResourceThumbnail, {
         "key": 'key_' + n,
         "elm": 'div',
         "get": resource,
         "authToken": authToken
       });
-    }) : section.type === 'keyword' ? f.map(section.data.list, function(resource, n) {
+    })) : section.type === 'keyword' ? React.createElement("ul", {
+      "className": "ui-tag-cloud"
+    }, f.map(section.data.list, function(resource, n) {
       return React.createElement(Keyword, {
         "key": 'key_' + n,
         "label": resource.keyword.label,
         "hrefUrl": resource.keyword.url,
         "count": resource.keyword.usage_count
       });
-    }) : [])));
+    })) : React.createElement("ul", {
+      "className": "grid ui-resources"
+    })));
   }
 });
 

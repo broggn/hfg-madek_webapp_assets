@@ -300,3 +300,5 @@ en:
   workgroup_members_table_is_member: Member?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Members
+  meta_data_input_new_person_add: Add Person
+  meta_data_input_new_bunch_add: Add Group

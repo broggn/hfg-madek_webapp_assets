@@ -173,6 +173,9 @@ de:
   meta_data_form_save: Speichern
   meta_data_form_submit_btn: Speichern
   meta_data_header_text: Werte
+  meta_data_input_new_bunch_add: Gruppe einfügen
+  meta_data_input_new_person_add: Person einfügen
+  meta_data_input_new_person_toggle: Neue Person oder Gruppe einfügen
   meta_data_meta_key_label: Schlüssel
   meta_data_type_label: Typ
   meta_data_value_label: Wert
@@ -302,5 +305,3 @@ de:
   workgroup_members_table_is_member: Mitglied?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Mitglieder
-  meta_data_input_new_person_add: Person einfügen
-  meta_data_input_new_bunch_add: Gruppe einfügen

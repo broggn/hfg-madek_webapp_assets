@@ -171,6 +171,9 @@ en:
   meta_data_form_save: Save
   meta_data_form_submit_btn: Submit
   meta_data_header_text: Values
+  meta_data_input_new_bunch_add: Add Group
+  meta_data_input_new_person_add: Add Person
+  meta_data_input_new_person_toggle: Add new Person or Group
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value
@@ -300,5 +303,3 @@ en:
   workgroup_members_table_is_member: Member?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Members
-  meta_data_input_new_person_add: Add Person
-  meta_data_input_new_bunch_add: Add Group

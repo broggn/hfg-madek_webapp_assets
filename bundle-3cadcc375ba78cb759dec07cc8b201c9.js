@@ -3518,7 +3518,7 @@ module.exports = React.createClass({
         if (!withBox || !f.present(pagination)) {
           return;
         }
-        if (pagination.totalPages <= pagination.page) {
+        if (!(pagination.totalPages > pagination.page)) {
           return;
         }
         if (_this.state.isClient) {

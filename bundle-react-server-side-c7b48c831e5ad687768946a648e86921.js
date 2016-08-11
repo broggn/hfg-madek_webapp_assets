@@ -289,7 +289,9 @@ resourcesConfig = {
     url: '/users'
   },
   Groups: {
-    url: '/my/groups'
+    url: '/my/groups',
+    key: 'detailed_name',
+    params: ['scope']
   },
   ApiClients: {
     url: '/api_clients',
@@ -5049,7 +5051,10 @@ module.exports = React.createClass({
       "permissionsList": get.group_permissions,
       "permissionTypes": get.permission_types,
       "overriddenBy": get.public_permission,
-      "editing": editing
+      "editing": editing,
+      "searchParams": {
+        scope: 'permissions'
+      }
     }), (editing || get.api_client_permissions.length > 0 ? React.createElement(PermissionsBySubjectType, {
       "type": 'ApiClients',
       "title": t('permission_subject_title_apiapps'),
@@ -5105,8 +5110,8 @@ PermissionsBySubjectType = React.createClass({
     });
   },
   render: function() {
-    var SubjectDeco, editing, icon, overriddenBy, permissionTypes, permissionsList, ref, showTitles, subjectName, title, type;
-    ref = this.props, type = ref.type, title = ref.title, icon = ref.icon, permissionsList = ref.permissionsList, SubjectDeco = ref.SubjectDeco, subjectName = ref.subjectName, permissionTypes = ref.permissionTypes, overriddenBy = ref.overriddenBy, editing = ref.editing, showTitles = ref.showTitles;
+    var SubjectDeco, editing, icon, overriddenBy, permissionTypes, permissionsList, ref, searchParams, showTitles, subjectName, title, type;
+    ref = this.props, type = ref.type, title = ref.title, icon = ref.icon, permissionsList = ref.permissionsList, SubjectDeco = ref.SubjectDeco, subjectName = ref.subjectName, permissionTypes = ref.permissionTypes, overriddenBy = ref.overriddenBy, editing = ref.editing, showTitles = ref.showTitles, searchParams = ref.searchParams;
     showTitles || (showTitles = false);
     return React.createElement("div", {
       "className": 'ui-rights-management-users'
@@ -5138,7 +5143,8 @@ PermissionsBySubjectType = React.createClass({
     }, (type != null ? React.createElement(AutoComplete, {
       "name": "add_" + type,
       "resourceType": type,
-      "onSelect": this.onAddSubject
+      "onSelect": this.onAddSubject,
+      "searchParams": searchParams
     }) : void 0))) : void 0)));
   }
 });
@@ -6071,6 +6077,9 @@ decorators = {
     return o.label;
   },
   InstitutionalGroup: function(o) {
+    return o.detailed_name;
+  },
+  Group: function(o) {
     return o.name;
   }
 };
@@ -6643,7 +6652,10 @@ module.exports = {
     displayName: 'InputGroups',
     render: function() {
       return React.createElement(InputResources, React.__spread({}, this.props, {
-        "resourceType": 'Groups'
+        "resourceType": 'Groups',
+        "searchParams": {
+          scope: 'metadata'
+        }
       }));
     }
   }),

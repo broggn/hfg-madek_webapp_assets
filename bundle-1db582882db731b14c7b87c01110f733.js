@@ -3241,8 +3241,8 @@ module.exports = React.createClass({
     });
   },
   render: function() {
-    var authToken, baseClass, boxClasses, boxTitleBar, boxToolBar, children, config, currentQuery, currentUrl, fallback, fetchRelations, get, heading, initial, listClasses, listHolderClasses, mods, paginationNav, ref1, resetFilterHref, resetFilterLink, resources, saveable, sidebar, toolbarClasses, withActions, withBox;
-    ref1 = this.props, get = ref1.get, mods = ref1.mods, initial = ref1.initial, withBox = ref1.withBox, fallback = ref1.fallback, heading = ref1.heading, fetchRelations = ref1.fetchRelations, saveable = ref1.saveable, authToken = ref1.authToken, children = ref1.children;
+    var authToken, baseClass, boxClasses, boxTitleBar, boxToolBar, children, config, currentQuery, currentUrl, fallback, fetchRelations, get, heading, initial, listClasses, listHolderClasses, listMods, mods, paginationNav, ref1, resetFilterHref, resetFilterLink, resources, saveable, sidebar, toolbarClasses, withActions, withBox;
+    ref1 = this.props, get = ref1.get, mods = ref1.mods, initial = ref1.initial, withBox = ref1.withBox, fallback = ref1.fallback, heading = ref1.heading, listMods = ref1.listMods, fetchRelations = ref1.fetchRelations, saveable = ref1.saveable, authToken = ref1.authToken, children = ref1.children;
     get = f.defaultsDeep({
       config: this.state.config
     }, get, {
@@ -3282,7 +3282,7 @@ module.exports = React.createClass({
     listClasses = cx(config.layout, {
       'vertical': config.layout === 'tiles',
       'active': withActions
-    }, 'ui-resources');
+    }, listMods, 'ui-resources');
     currentQuery = f.merge({
       list: f.merge(f.omit(config, 'for_url'))
     }, {
@@ -10878,6 +10878,11 @@ module.exports = React.createClass({
       "ref": 'polybox',
       "className": 'ui-uploader-uploads',
       "mods": 'rounded mvl',
+      "listMods": [
+        'show_permissions', {
+          active: !state.uploading
+        }
+      ],
       "authToken": props.authToken,
       "fetchRelations": false,
       "withBox": true,

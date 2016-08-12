@@ -11339,6 +11339,7 @@ module.exports = React.createClass({
       return React.createElement(ResourcesSection, {
         "key": 'section_' + m,
         "label": section.data.title,
+        "id": section.id,
         "hrefUrl": section.data.url,
         "showAllLink": section.show_all_link,
         "section": section
@@ -11412,6 +11413,7 @@ module.exports = React.createClass({
       return React.createElement(ResourcesSection, {
         "key": 'section_' + m,
         "label": section.data.title,
+        "id": section.id,
         "hrefUrl": section.data.url,
         "showAllLink": section.show_all_link,
         "section": section,
@@ -11785,11 +11787,11 @@ ResourceThumbnail = require('../../../decorators/ResourceThumbnail.cjsx');
 module.exports = React.createClass({
   displayName: 'ResourcesSection',
   render: function(arg) {
-    var authToken, hrefUrl, label, ref, section, showAllLink;
-    ref = arg != null ? arg : this.props, label = ref.label, hrefUrl = ref.hrefUrl, showAllLink = ref.showAllLink, section = ref.section, authToken = ref.authToken;
+    var authToken, hrefUrl, id, label, ref, section, showAllLink;
+    ref = arg != null ? arg : this.props, label = ref.label, hrefUrl = ref.hrefUrl, showAllLink = ref.showAllLink, section = ref.section, id = ref.id, authToken = ref.authToken;
     return React.createElement("div", {
       "className": "ui-resources-holder pal",
-      "id": "catalog"
+      "id": id
     }, React.createElement("div", {
       "className": "ui-resources-header"
     }, React.createElement("h2", {

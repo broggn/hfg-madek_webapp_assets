@@ -2606,7 +2606,7 @@ module.exports = React.createClass({
       "className": "title-xl"
     }, React.createElement("i", {
       "className": "icon-catalog"
-    }), pageTitle)))), React.createElement("div", {
+    }), ' ' + pageTitle)))), React.createElement("div", {
       "className": "app-body-ui-container"
     }, React.createElement("div", {
       "className": "bordered ui-container midtone table rounded-right rounded-bottom"
@@ -11412,8 +11412,8 @@ module.exports = React.createClass({
     };
   },
   render: function(arg) {
-    var authToken, get, menu, ref, resourcesSections;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    var authToken, get, menu, ref, resourcesSections, showThumbDesc;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, showThumbDesc = ref.showThumbDesc;
     resourcesSections = f.map(get.sections, function(section, m) {
       return React.createElement(ResourcesSection, {
         "key": 'section_' + m,
@@ -11422,7 +11422,8 @@ module.exports = React.createClass({
         "hrefUrl": section.data.url,
         "showAllLink": section.show_all_link,
         "section": section,
-        "authToken": authToken
+        "authToken": authToken,
+        "showThumbDesc": showThumbDesc
       });
     });
     menu = React.createElement(ExploreMenu, {
@@ -11604,9 +11605,9 @@ module.exports = React.createClass({
       "className": "ui-thumbnail-meta"
     }, React.createElement("h3", {
       "className": "ui-thumbnail-meta-title"
-    }, label), React.createElement("p", {
+    }, label), (this.props.showThumbDesc ? React.createElement("p", {
       "className": "ui-thumbnail-meta-subtitle"
-    }, description), React.createElement("span", {
+    }, description) : void 0), React.createElement("span", {
       "className": "ui-thumbnail-meta-extension"
     }, usageCount))));
   }
@@ -11806,16 +11807,19 @@ module.exports = React.createClass({
       "href": hrefUrl
     }, "Alle anzeigen") : void 0))), (section.type === 'catalog' || section.type === 'catalog_category' ? React.createElement("ul", {
       "className": "grid ui-resources"
-    }, f.map(section.data.list, function(resource, n) {
-      return React.createElement(CatalogThumbnail, {
-        "key": 'key_' + n,
-        "usageCount": resource.usage_count,
-        "label": resource.label,
-        "description": resource.description,
-        "imageUrl": resource.image_url,
-        "hrefUrl": resource.url
-      });
-    })) : section.type === 'thumbnail' ? React.createElement("ul", {
+    }, f.map(section.data.list, (function(_this) {
+      return function(resource, n) {
+        return React.createElement(CatalogThumbnail, {
+          "key": 'key_' + n,
+          "usageCount": resource.usage_count,
+          "label": resource.label,
+          "description": resource.description,
+          "imageUrl": resource.image_url,
+          "hrefUrl": resource.url,
+          "showThumbDesc": _this.props.showThumbDesc
+        });
+      };
+    })(this))) : section.type === 'thumbnail' ? React.createElement("ul", {
       "className": "grid ui-resources"
     }, f.map(section.data.list.resources, function(resource, n) {
       return React.createElement(ResourceThumbnail, {

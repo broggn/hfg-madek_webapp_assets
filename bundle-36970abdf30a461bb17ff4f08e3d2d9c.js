@@ -5210,7 +5210,7 @@ PermissionsSubject = React.createClass({displayName: "PermissionsSubject",
     results = [];
     for (i in ref) {
       permissionType = ref[i];
-      isEnabled = f.isBoolean(this.props.permissions[permissionType]);
+      isEnabled = f.present(this.props.permissions[permissionType]);
       isCurrent = permissionType === name;
       if (isCurrent) {
         beforeCurrent = false;
@@ -5346,6 +5346,17 @@ TristateCheckbox = React.createClass({displayName: "TristateCheckbox",
       onChange: function() {}
     };
   },
+  _setIndeterminate: function() {
+    var isMixed;
+    isMixed = !f.isBoolean(this.props.checked);
+    if (this._inputNode) {
+      return this._inputNode.indeterminate = isMixed;
+    }
+  },
+  _inputNode: null,
+  componentDidUpdate: function() {
+    return this._setIndeterminate();
+  },
   render: function(props) {
     var isMixed, restProps;
     if (props == null) {
@@ -5357,13 +5368,12 @@ TristateCheckbox = React.createClass({displayName: "TristateCheckbox",
       "type": 'checkbox'
     }, restProps, {
       "checked": (isMixed ? false : props.checked),
-      "ref": (function(inputNode) {
-        if (inputNode) {
-          if (isMixed) {
-            return inputNode.indeterminate = true;
-          }
-        }
-      })
+      "ref": ((function(_this) {
+        return function(inputNode) {
+          _this._inputNode = inputNode;
+          return _this._setIndeterminate();
+        };
+      })(this))
     }));
   }
 });
@@ -6448,7 +6458,6 @@ NewPersonWidget = React.createClass({
     }
   },
   _onTabChange: function(eventKey) {
-    console.log('tab', eventKey);
     return this.setState({
       newPerson: {
         is_bunch: eventKey === 'group'
@@ -11327,7 +11336,6 @@ module.exports = React.createClass({
     if (props == null) {
       props = this.props;
     }
-    console.log(props);
     batchResources = props.get.batch_resources.resources;
     pageTitle = t('permissions_batch_title_pre') + batchResources.length + t('permissions_batch_title_post');
     return React.createElement(PageContent, null, React.createElement(PageContentHeader, {

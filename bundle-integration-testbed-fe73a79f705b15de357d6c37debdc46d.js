@@ -129,16 +129,21 @@ buildParams = require('qs').stringify;
 
 module.exports = {
   props: {
-    parent_media_resources: ['object'],
-    sibling_media_resources: ['object']
+    parent_collections: ['object'],
+    sibling_collections: ['object']
   },
   fetchRelations: function(type, callback) {
-    var relType, relationsUrl, sparseSpec, validTypes;
+    var relType, relTypes, relationsUrl, sparseSpec, validTypes;
     validTypes = ['parent', 'sibling', 'child'];
     if (!f.include(validTypes, type)) {
       throw new Error('Invalid Relations type!');
     }
-    relType = type + '_media_resources';
+    relTypes = {
+      parent: 'parent_collections',
+      sibling: 'sibling_collections',
+      child: 'child_media_resources'
+    };
+    relType = relTypes[type];
     if (f.present(this.get(relType))) {
       return;
     }

@@ -71,6 +71,7 @@ en:
   collection_was_favored: Set was added to favorites.
   collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
   collection_relations_current_set: Current set
+  collection_relations_current_media_entry: Current entry
   collection_relations_parent_sets: Parent sets
   collection_relations_no_parent_sets: No parent sets
   collection_relations_sibling_sets: Sibling sets

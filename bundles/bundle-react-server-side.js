@@ -7759,6 +7759,7 @@ module.exports = React.createClass({
       }
     }, React.createElement(MediaTag, {
       "controls": true,
+      "poster": poster,
       "ref": this._ref
     }, f.map(sources, function(vid) {
       return React.createElement("source", {

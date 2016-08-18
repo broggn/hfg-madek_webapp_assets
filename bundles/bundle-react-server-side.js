@@ -9139,118 +9139,29 @@ module.exports = React.createClass({
 
 
 },{"../../templates/ResourcesBoxWithSwitch.cjsx":73,"react":786}],101:[function(require,module,exports){
-var Bubbles, MediaResourcesBox, MetaDatum, RailsForm, React, ReactDOM, Text, classnames, f, t;
+var MetaDataByListing, React;
 
 React = require('react');
 
-ReactDOM = require('react-dom');
-
-f = require('active-lodash');
-
-t = require('../../../lib/string-translation.js')('de');
-
-RailsForm = require('../../lib/forms/rails-form.cjsx');
-
-MediaResourcesBox = require('../../decorators/MediaResourcesBox.cjsx');
-
-classnames = require('classnames');
+MetaDataByListing = require('../../decorators/MetaDataByListing.cjsx');
 
 module.exports = React.createClass({
   displayName: 'CollectionMetadata',
   render: function(arg) {
-    var authToken, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    var get;
+    get = (arg != null ? arg : this.props).get;
     return React.createElement("div", {
       "className": "bright pal rounded-bottom rounded-top-right ui-container"
     }, React.createElement("div", {
-      "className": "col2of3"
-    }, React.createElement("div", {
       "className": "ui-container plm"
-    }, React.createElement("div", {
-      "className": "meta-data-summary mbl"
-    }, React.createElement("div", {
-      "className": "ui-container media-entry-metadata"
-    }, React.createElement("div", {
-      "className": "col1of4"
-    }, f.map(get.meta_data.by_vocabulary, function(wrapper, key) {
-      return React.createElement("div", {
-        "key": key,
-        "className": "prm ui-metadata-box"
-      }, React.createElement("h3", {
-        "className": "separated mbm title-l"
-      }, wrapper.vocabulary.label), f.map(wrapper.meta_data, function(meta_datum) {
-        return React.createElement(MetaDatum, {
-          "key": meta_datum.meta_key_id,
-          "metaDatum": meta_datum
-        });
-      }));
-    })))))));
-  }
-});
-
-Text = React.createClass({
-  displayName: 'Text',
-  render: function(arg) {
-    var metaDatum;
-    metaDatum = (arg != null ? arg : this.props).metaDatum;
-    return React.createElement("ul", {
-      "className": "inline"
-    }, f.map(metaDatum.values, function(value, index) {
-      return React.createElement("li", {
-        "key": 'value_' + index
-      }, value);
-    }));
-  }
-});
-
-Bubbles = React.createClass({
-  displayName: 'Bubbles',
-  render: function(arg) {
-    var metaDatum;
-    metaDatum = (arg != null ? arg : this.props).metaDatum;
-    return React.createElement("ul", {
-      "className": "ellipsed small tag-cloud-label ui-tag-cloud"
-    }, f.map(metaDatum.values, function(value, index) {
-      return React.createElement("li", {
-        "key": 'value_' + index,
-        "className": "ui-tag-cloud-item"
-      }, React.createElement("a", {
-        "className": "ui-tag-button small ellipsed",
-        "href": value.url
-      }, React.createElement("i", {
-        "className": "ui-tag-icon icon-tag-mini"
-      }), value.label));
-    }));
-  }
-});
-
-MetaDatum = React.createClass({
-  displayName: 'MetaDatum',
-  render: function(arg) {
-    var isBubble, metaDatum, ref;
-    metaDatum = (arg != null ? arg : this.props).metaDatum;
-    return React.createElement("div", {
-      "className": "tmp"
-    }, React.createElement("dl", {
-      "className": "media-data mbs"
-    }, React.createElement("dl", {
-      "className": "media-data mbs",
-      "data-reactid": ".0"
-    }, React.createElement("dt", {
-      "className": "media-data-title"
-    }, React.createElement("span", null, metaDatum.meta_key.label)), React.createElement("dd", {
-      "className": "media-data-content",
-      "data-reactid": ".0.1"
-    }, (isBubble = (ref = metaDatum.type) === 'MetaDatum::Keywords' || ref === 'MetaDatum::People', isBubble ? React.createElement(Bubbles, {
-      "metaDatum": metaDatum
-    }) : React.createElement(Text, {
-      "metaDatum": metaDatum
-    }))))));
+    }, React.createElement(MetaDataByListing, {
+      "list": get.meta_data.by_vocabulary
+    })));
   }
 });
 
 
-},{"../../../lib/string-translation.js":9,"../../decorators/MediaResourcesBox.cjsx":45,"../../lib/forms/rails-form.cjsx":67,"active-lodash":140,"classnames":299,"react":786,"react-dom":625}],102:[function(require,module,exports){
+},{"../../decorators/MetaDataByListing.cjsx":46,"react":786}],102:[function(require,module,exports){
 var MediaResourcesBox, RailsForm, React, ReactDOM, ResourceThumbnail, TabContent, classnames, f, t;
 
 React = require('react');

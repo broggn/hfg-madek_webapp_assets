@@ -10079,43 +10079,54 @@ module.exports = React.createClass({
     });
   },
   render: function(arg) {
-    var activeTab, authToken, get, ref;
-    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get, activeTab = ref.activeTab;
+    var authToken, get, ref;
+    ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
     return React.createElement(PageContent, null, React.createElement(MediaEntryHeader, {
       "authToken": authToken,
       "get": get.header,
       "showModal": this.props.showModal,
       "async": this.state.mounted,
       "modalAction": 'select_collection'
-    }), React.createElement(Tabs, null, f.map(get.tabs, function(tab, index) {
+    }), React.createElement(Tabs, null, f.map(get.tabs, function(tab) {
       return React.createElement(Tab, {
-        "privacyStatus": get.privacy_status,
+        "href": tab.href,
         "key": tab.href,
         "iconType": tab.icon_type,
-        "href": tab.href,
+        "privacyStatus": get.privacy_status,
         "label": tab.label,
-        "active": index === activeTab
+        "active": tab.id === get.active_tab
       });
-    })), (activeTab === 0 ? React.createElement(TabContent, null, React.createElement(CollectionDetailOverview, {
-      "get": get,
-      "authToken": authToken
-    }), React.createElement(HighlightedContents, {
-      "get": get,
-      "authToken": authToken
-    }), React.createElement(CollectionDetailAdditional, {
-      "get": get,
-      "authToken": authToken
-    })) : void 0), (activeTab === 1 ? React.createElement(CollectionRelations, {
-      "get": get,
-      "authToken": authToken
-    }) : void 0), (activeTab === 2 ? React.createElement(TabContent, null, React.createElement(CollectionMetadata, {
-      "get": get,
-      "authToken": authToken
-    })) : void 0), (activeTab === 3 ? React.createElement(TabContent, null, React.createElement("div", {
-      "className": "bright pal rounded-bottom rounded-top-right ui-container"
-    }, React.createElement(RightsManagement, {
-      "get": get.permissions
-    }))) : void 0));
+    })), ((function() {
+      switch (get.active_tab) {
+        case 'relations':
+          return React.createElement(CollectionRelations, {
+            "get": get,
+            "authToken": authToken
+          });
+        case 'more_data':
+          return React.createElement(TabContent, null, React.createElement(CollectionMetadata, {
+            "get": get,
+            "authToken": authToken
+          }));
+        case 'permissions':
+          return React.createElement(TabContent, null, React.createElement("div", {
+            "className": "bright pal rounded-bottom rounded-top-right ui-container"
+          }, React.createElement(RightsManagement, {
+            "get": get.permissions
+          })));
+        default:
+          return React.createElement(TabContent, null, React.createElement(CollectionDetailOverview, {
+            "get": get,
+            "authToken": authToken
+          }), React.createElement(HighlightedContents, {
+            "get": get,
+            "authToken": authToken
+          }), React.createElement(CollectionDetailAdditional, {
+            "get": get,
+            "authToken": authToken
+          }));
+      }
+    })()));
   }
 });
 

@@ -75,11 +75,11 @@ de:
   collection_relations_current_set: Aktuelles Set
   collection_relations_current_media_entry: Aktueller Eintrag
   collection_relations_parent_sets: Übergeordnete Sets
-  collection_relations_no_parent_sets: Keine übergeordneten Sets
+  collection_relations_no_parent_sets: ' '
   collection_relations_sibling_sets: Benachbarte Sets
-  collection_relations_no_sibling_sets: Keine benachbarten Sets
+  collection_relations_no_sibling_sets: ' '
   collection_relations_child_sets: Untergeordnete Sets
-  collection_relations_no_child_sets: Keine untergeordneten Sets
+  collection_relations_no_child_sets: ' '
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren

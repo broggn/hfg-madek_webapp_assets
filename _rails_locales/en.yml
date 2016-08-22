@@ -73,11 +73,11 @@ en:
   collection_relations_current_set: Current set
   collection_relations_current_media_entry: Current entry
   collection_relations_parent_sets: Parent sets
-  collection_relations_no_parent_sets: No parent sets
+  collection_relations_no_parent_sets: ' '
   collection_relations_sibling_sets: Sibling sets
-  collection_relations_no_sibling_sets: No sibling sets
+  collection_relations_no_sibling_sets: ' '
   collection_relations_child_sets: Child sets
-  collection_relations_no_child_sets: No child sets
+  collection_relations_no_child_sets: ' '
   dashboard_create_collection_btn: Create Set
   dashboard_create_collection: Create set
   dashboard_create_media_entry_btn: Upload Media

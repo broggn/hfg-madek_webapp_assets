@@ -4838,6 +4838,13 @@ module.exports = React.createClass({
   render: function(arg) {
     var all_meta_key_ids, authToken, cancelUrl, className, currentContext, currentContextId, disablePublish, disableSave, editByVocabTitle, editByVocabUrl, get, hidden_meta_key_ids, meta_data, meta_key_ids_in_current_context, name, published, ref, showPublish, title;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
+    if (get.meta_meta_data.meta_data_edit_context_ids.length === 0) {
+      return React.createElement("div", {
+        "className": "ui-alerts"
+      }, React.createElement("div", {
+        "className": "ui-alert warning"
+      }, "There are no contexts defined. Please configure them in the admin tool."));
+    }
     currentContextId = this.state.currentContextId;
     if (currentContextId) {
       currentContext = get.meta_meta_data.contexts_by_context_id[currentContextId];

@@ -309,6 +309,22 @@ de:
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden
   user_menu_upload: Medien importieren
+  group_edit_name: Name
+  group_edit_member: Mitglieder
+  group_edit_person: Person
+  group_edit_username: Benutzername
+  group_edit_save: Speichern
+  group_edit_cancel: Abbrechen
+  group_ask_delete_title: Gruppe Löschen
+  group_ask_delete_question_pre: 'Möchten sie die Gruppe '
+  group_ask_delete_question_post: ' löschen?'
+  group_ask_delete_delete: Löschen
+  group_ask_delete_cancel: Abbrechen
+  group_was_deleted: Gruppe wurde gelöscht.
+  group_edit_at_least_one_member_pre: 'Eine Gruppe muss mindestens eine Person enthalten. Ganze Gruppe '
+  group_edit_at_least_one_member_delete: löschen
+  group_edit_at_least_one_member_post: .
+  group_edit_hint_remove_yourself: 'Achtung: Sie entfernen sich selbst aus der Gruppe!'
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?

@@ -307,6 +307,22 @@ en:
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out
   user_menu_upload: Upload Media
+  group_edit_name: Name
+  group_edit_member: Members
+  group_edit_person: Person
+  group_edit_username: Username
+  group_edit_save: Save
+  group_edit_cancel: Cancel
+  group_ask_delete_title: Delete Group
+  group_ask_delete_question_pre: 'Would you like to delete group '
+  group_ask_delete_question_post: '?'
+  group_ask_delete_delete: Delete
+  group_ask_delete_cancel: Cancel
+  group_was_deleted: Group has been deleted.
+  group_edit_at_least_one_member_pre: 'Eine Gruppe muss mindestens eine Person enthalten. Ganze Gruppe '
+  group_edit_at_least_one_member_delete: löschen
+  group_edit_at_least_one_member_post: .
+  group_edit_hint_remove_yourself: 'Achtung: Sie entfernen sich selbst aus der Gruppe!'
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group
   workgroup_members_table_is_member: Member?

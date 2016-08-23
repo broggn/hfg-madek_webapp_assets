@@ -9998,7 +9998,7 @@ SelectCollectionToolbar = React.createClass({
 
 
 },{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/rails-csrf-token.coffee":5,"../../../lib/string-translation":9,"../../lib/forms/input-field-text.cjsx":62,"../../lib/forms/rails-form.cjsx":67,"../../ui-components/Button.cjsx":76,"../../ui-components/FormButton.cjsx":79,"../../ui-components/Icon.cjsx":80,"../../ui-components/Modal.cjsx":84,"../../ui-components/Preloader.cjsx":86,"../../ui-components/ToggableLink.cjsx":91,"active-lodash":141,"ampersand-react-mixin":284,"react":788,"react-dom":627,"xhr":796}],106:[function(require,module,exports){
-var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, HighlightedContents, MediaEntryHeader, MediaResourcesBox, PageContent, PageContentHeader, RailsForm, React, ReactDOM, RightsManagement, Tab, TabContent, Tabs, classnames, f, t;
+var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, HighlightedContents, MediaEntryHeader, PageContent, PageContentHeader, React, ReactDOM, RightsManagement, Tab, TabContent, Tabs, f, parseUrl, t, tabIdByLocation;
 
 React = require('react');
 
@@ -10006,13 +10006,11 @@ ReactDOM = require('react-dom');
 
 f = require('active-lodash');
 
+parseUrl = require('url').parse;
+
 t = require('../../lib/string-translation.js')('de');
 
-RailsForm = require('../lib/forms/rails-form.cjsx');
-
-MediaResourcesBox = require('../decorators/MediaResourcesBox.cjsx');
-
-RightsManagement = require('../templates//ResourcePermissions.cjsx');
+RightsManagement = require('../templates/ResourcePermissions.cjsx');
 
 CollectionRelations = require('./Collection/Relations.cjsx');
 
@@ -10026,8 +10024,6 @@ Tab = require('./Tab.cjsx');
 
 PageContent = require('./PageContent.cjsx');
 
-classnames = require('classnames');
-
 TabContent = require('./TabContent.cjsx');
 
 CollectionDetailOverview = require('./Collection/DetailOverview.cjsx');
@@ -10038,38 +10034,70 @@ HighlightedContents = require('./Collection/HighlightedContents.cjsx');
 
 MediaEntryHeader = require('./MediaEntryHeader.cjsx');
 
+tabIdByLocation = function(tabs, location) {
+  var path, tab;
+  path = parseUrl(location).pathname.replace(/\/edit(\/)?$/, '');
+  tab = f.find(tabs, {
+    href: path
+  });
+  return f.get(tab, 'id');
+};
+
 module.exports = React.createClass({
   displayName: 'CollectionShow',
   getInitialState: function() {
     return {
-      mounted: false
+      isMounted: false,
+      activeTab: tabIdByLocation(this.props.get.tabs, this.props.for_url)
     };
   },
   componentDidMount: function() {
     return this.setState({
-      mounted: true
+      isMounted: true
     });
   },
-  render: function(arg) {
-    var authToken, get, ref;
+  componentWillReceiveProps: function(nextProps) {
+    if (nextProps.for_url === this.props.for_url) {
+      return;
+    }
+    return this.setState({
+      activeTab: tabIdByLocation(this.props.get.tabs, this.props.for_url)
+    });
+  },
+  _setActiveTab: function(currentLocation) {
+    var tabId;
+    if ((tabId = tabIdByLocation(this.props.get.tabs, currentLocation))) {
+      if (!(tabId === this.state.activeTab)) {
+        return this.setState({
+          activeTab: tabId
+        });
+      }
+    }
+  },
+  render: function(arg, arg1) {
+    var activeTab, authToken, get, isMounted, ref, ref1;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    ref1 = arg1 != null ? arg1 : this.state, isMounted = ref1.isMounted, activeTab = ref1.activeTab;
     return React.createElement(PageContent, null, React.createElement(MediaEntryHeader, {
       "authToken": authToken,
       "get": get.header,
       "showModal": this.props.showModal,
-      "async": this.state.mounted,
+      "async": isMounted,
       "modalAction": 'select_collection'
-    }), React.createElement(Tabs, null, f.map(get.tabs, function(tab) {
-      return React.createElement(Tab, {
-        "href": tab.href,
-        "key": tab.href,
-        "iconType": tab.icon_type,
-        "privacyStatus": get.privacy_status,
-        "label": tab.label,
-        "active": tab.id === get.active_tab
-      });
-    })), ((function() {
-      switch (get.active_tab) {
+    }), React.createElement(Tabs, null, f.map(get.tabs, (function(_this) {
+      return function(tab) {
+        return React.createElement(Tab, {
+          "key": tab.id,
+          "href": tab.href,
+          "onClick": _this._onTabClick,
+          "iconType": tab.icon_type,
+          "privacyStatus": get.privacy_status,
+          "label": tab.label,
+          "active": tab.id === activeTab
+        });
+      };
+    })(this))), ((function() {
+      switch (activeTab) {
         case 'relations':
           return React.createElement(CollectionRelations, {
             "get": get,
@@ -10103,7 +10131,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":9,"../decorators/MediaResourcesBox.cjsx":45,"../lib/forms/rails-form.cjsx":67,"../templates//ResourcePermissions.cjsx":71,"./Collection/DetailAdditional.cjsx":97,"./Collection/DetailOverview.cjsx":98,"./Collection/HighlightedContents.cjsx":99,"./Collection/Metadata.cjsx":101,"./Collection/Relations.cjsx":102,"./MediaEntryHeader.cjsx":114,"./PageContent.cjsx":118,"./PageContentHeader.cjsx":119,"./Tab.cjsx":120,"./TabContent.cjsx":121,"./Tabs.cjsx":122,"active-lodash":141,"classnames":300,"react":788,"react-dom":627}],107:[function(require,module,exports){
+},{"../../lib/string-translation.js":9,"../templates/ResourcePermissions.cjsx":71,"./Collection/DetailAdditional.cjsx":97,"./Collection/DetailOverview.cjsx":98,"./Collection/HighlightedContents.cjsx":99,"./Collection/Metadata.cjsx":101,"./Collection/Relations.cjsx":102,"./MediaEntryHeader.cjsx":114,"./PageContent.cjsx":118,"./PageContentHeader.cjsx":119,"./Tab.cjsx":120,"./TabContent.cjsx":121,"./Tabs.cjsx":122,"active-lodash":141,"react":788,"react-dom":627,"url":793}],107:[function(require,module,exports){
 var CreateCollection, HeaderPrimaryButton, InputFieldText, PageContentHeader, React, ReactDOM, t;
 
 React = require('react');

@@ -10379,11 +10379,11 @@ module.exports = React.createClass({
       "name": 'group[user][login][]',
       "resourceType": 'Users',
       "onSelect": this._onSelect
-    }))) : void 0)), React.createElement("div", {
+    }))) : void 0)), (false ? React.createElement("div", {
       "className": "ui-form-group rowed"
     }, t('group_edit_at_least_one_member_pre'), React.createElement("a", {
       "onClick": this._onDelete
-    }, t('group_edit_at_least_one_member_delete')), t('group_edit_at_least_one_member_post')), (!f.includes(this.state.data.userIdList, get.current_user_id) ? React.createElement("div", {
+    }, t('group_edit_at_least_one_member_delete')), t('group_edit_at_least_one_member_post')) : void 0), (!f.includes(this.state.data.userIdList, get.current_user_id) ? React.createElement("div", {
       "className": "form-head"
     }, React.createElement("div", {
       "className": "ui-alerts"

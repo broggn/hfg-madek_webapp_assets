@@ -20,7 +20,7 @@ en:
       group:
         update: Update group
         create: Create group
-  app_confirm_form_leave_msg: "Please confirm that you want to leave this page –\_entered data might not be saved!"
+  app_confirm_form_leave_msg: 'Please confirm that you want to leave this page – entered data might not be saved!'
   app_notice_logged_out: You have logged out.
   app_warning_jsonly: "This feature needs Javascript, but it's not activated!"
   authentication_groups: System Groups
@@ -49,6 +49,7 @@ en:
   collection_edit_permissions_btn: Submit
   collection_highlighted_contents: Highlighted Contents
   collection_media_resources_title: 'Media Entries in Sets:'
+  collection_meta_data_header_prefix: 'Edit Set:'
   collection_new_cancel: Cancel
   collection_new_create_set: Create Set
   collection_new_dialog_title: Create Set
@@ -57,6 +58,15 @@ en:
   collection_new_header: Create Set
   collection_new_label_title: Title
   collection_permissions_btn: Change Permissions
+  collection_relations_child_sets: Child sets
+  collection_relations_current_media_entry: Current entry
+  collection_relations_current_set: Current set
+  collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
+  collection_relations_no_child_sets: ' '
+  collection_relations_no_parent_sets: ' '
+  collection_relations_no_sibling_sets: ' '
+  collection_relations_parent_sets: Parent sets
+  collection_relations_sibling_sets: Sibling sets
   collection_resource_selection_cancel: Cancel
   collection_resource_selection_h_author: Author
   collection_resource_selection_h_date: Dating
@@ -70,32 +80,39 @@ en:
   collection_tab_main: Set
   collection_was_disfavored: Set was removed from favorites.
   collection_was_favored: Set was added to favorites.
-  collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
-  collection_relations_current_set: Current set
-  collection_relations_current_media_entry: Current entry
-  collection_relations_parent_sets: Parent sets
-  collection_relations_no_parent_sets: ' '
-  collection_relations_sibling_sets: Sibling sets
-  collection_relations_no_sibling_sets: ' '
-  collection_relations_child_sets: Child sets
-  collection_relations_no_child_sets: ' '
   dashboard_create_collection_btn: Create Set
   dashboard_create_collection: Create set
   dashboard_create_media_entry_btn: Upload Media
   dashboard_title_head: My Archive
   dashboard_welcome_msg: 'Welcome to Madek!'
   external_groups: Division groups
+  group_ask_delete_cancel: Cancel
+  group_ask_delete_delete: Delete
+  group_ask_delete_question_post: '?'
+  group_ask_delete_question_pre: 'Would you like to delete work group '
+  group_ask_delete_title: Delete Work Group
   group_delete_confirm_msg: Are you sure you want to delete this work group?
+  group_edit_at_least_one_member_delete: löschen
+  group_edit_at_least_one_member_post: .
+  group_edit_at_least_one_member_pre: 'Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe '
   group_edit_btn: Edit
-  group_edit_form_new_member_login_hint: New group member login
+  group_edit_cancel: Cancel
+  group_edit_form_new_member_login_hint: New work group member login
   group_edit_form_new_member_login_label: Add a member
   group_edit_form_save_btn: Save
-  group_edit_form_title_pre: 'Edit Group: '
+  group_edit_form_title_pre: 'Edit Work Group: '
+  group_edit_hint_remove_yourself: 'Attention: You are about to remove yourself from teh work group!'
+  group_edit_member: Members
+  group_edit_name: Name
+  group_edit_person: Person
+  group_edit_save: Save
+  group_edit_username: Username
   group_meta_data_institutional_group_name: Division group name
   group_meta_data_name: Name
   group_new_form_title: Create Group
   group_new_group_btn: New Work Group
   group_toolbar_header_entrusted_resources: Entrusted Media Entries
+  group_was_deleted: Work group has been deleted.
   home_page_new_contents: New Contents
   internal_groups: Work groups
   login_box_author: ''
@@ -142,7 +159,6 @@ en:
   media_entry_media_import_notes_title: Hints
   media_entry_media_import_title: 'Add pictures, videos, audio file, or other documents.'
   media_entry_meta_data_header_prefix: 'Edit Media Entry:'
-  collection_meta_data_header_prefix: 'Edit Set:'
   media_entry_more_data_title: Responsibility
   media_entry_not_published_warning_msg: 'Media entry still needs mandatory data!'
   media_entry_select_collection_flash_result: 'Removed media entry from %{removed_count} set(s). Added media entry to %{added_count} set(s).'
@@ -182,15 +198,15 @@ en:
   meta_data_form_save: Save
   meta_data_form_submit_btn: Submit
   meta_data_header_text: Values
-  meta_data_input_new_bunch_add: Add Group
+  meta_data_input_new_bunch_add: Add Work Group
   meta_data_input_new_person_add: Add Person
-  meta_data_input_new_person_toggle: Add new Person or Group
+  meta_data_input_new_person_toggle: Add new Person or Work Group
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value
-  no_content_fallback: (No content available.)
-  no_groups_fallback: (No groups available.)
-  no_keywords_fallback: (No keywords available.)
+  no_content_fallback: No content available.
+  no_groups_fallback: No groups available.
+  no_keywords_fallback: No keywords available.
   no_relations_title: No relations found.
   pagination_nav_loadnext: Load more
   pagination_nav_nextloading: Loading…
@@ -214,7 +230,7 @@ en:
   permissions_batch_success: Succesfully updated permissions.
   permissions_batch_title_post: ' Resources'
   permissions_batch_title_pre: 'Edit Permissions of '
-  permissions_overview_yours_msg_end: ', currently have the following permissions (either directly or as a member of a group):'
+  permissions_overview_yours_msg_end: ', currently have the following permissions (either directly or as a member of a work group):'
   permissions_overview_yours_msg_start: 'You, '
   permissions_overview_yours_title: Your Permissions
   permissions_responsible_user_msg: The responsible user has all permissions for the selected content and can also delete it.
@@ -230,9 +246,12 @@ en:
   relations_siblings_title: Siblings
   relations_title: Relations
   resource_action_destroy: Delete media entry
+  resource_action_disfavor: Remove from favorites
+  resource_action_edit_cover: Define cover
+  resource_action_edit_highlights: Highlight contents
   resource_action_edit: Edit
   resource_action_export: Download
-  resource_action_favor: Add to/Remove from favorites
+  resource_action_favor: Add to favorites
   resource_action_manage_collections: Add to/Remove from sets
   resource_ask_delete_cancel: Cancel
   resource_ask_delete_ok: Delete
@@ -309,22 +328,6 @@ en:
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out
   user_menu_upload: Upload Media
-  group_edit_name: Name
-  group_edit_member: Members
-  group_edit_person: Person
-  group_edit_username: Username
-  group_edit_save: Save
-  group_edit_cancel: Cancel
-  group_ask_delete_title: Delete Group
-  group_ask_delete_question_pre: 'Would you like to delete group '
-  group_ask_delete_question_post: '?'
-  group_ask_delete_delete: Delete
-  group_ask_delete_cancel: Cancel
-  group_was_deleted: Group has been deleted.
-  group_edit_at_least_one_member_pre: 'Eine Gruppe muss mindestens eine Person enthalten. Ganze Gruppe '
-  group_edit_at_least_one_member_delete: löschen
-  group_edit_at_least_one_member_post: .
-  group_edit_hint_remove_yourself: 'Achtung: Sie entfernen sich selbst aus der Gruppe!'
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group
   workgroup_members_table_is_member: Member?

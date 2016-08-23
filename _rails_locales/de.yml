@@ -51,6 +51,7 @@ de:
   collection_edit_permissions_btn: Speichern
   collection_highlighted_contents: Hervorgehobene Inhalte
   collection_media_resources_title: 'Medieneintrag im Set:'
+  collection_meta_data_header_prefix: 'Set editieren: '
   collection_new_cancel: Abbrechen
   collection_new_create_set: Set erstellen
   collection_new_dialog_title: Set erstellen
@@ -59,6 +60,15 @@ de:
   collection_new_header: Neues Set
   collection_new_label_title: Titel
   collection_permissions_btn: Zugriffsberechtigungen ändern
+  collection_relations_child_sets: Untergeordnete Sets
+  collection_relations_current_media_entry: Aktueller Eintrag
+  collection_relations_current_set: Aktuelles Set
+  collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
+  collection_relations_no_child_sets: ' '
+  collection_relations_no_parent_sets: ' '
+  collection_relations_no_sibling_sets: ' '
+  collection_relations_parent_sets: Übergeordnete Sets
+  collection_relations_sibling_sets: Benachbarte Sets
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_h_author: Autor/in
   collection_resource_selection_h_date: Datierung
@@ -72,32 +82,39 @@ de:
   collection_tab_main: Set
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
-  collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
-  collection_relations_current_set: Aktuelles Set
-  collection_relations_current_media_entry: Aktueller Eintrag
-  collection_relations_parent_sets: Übergeordnete Sets
-  collection_relations_no_parent_sets: ' '
-  collection_relations_sibling_sets: Benachbarte Sets
-  collection_relations_no_sibling_sets: ' '
-  collection_relations_child_sets: Untergeordnete Sets
-  collection_relations_no_child_sets: ' '
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_title_head: Mein Archiv
   dashboard_welcome_msg: 'Willkommen im Medienarchiv der Künste!'
   external_groups: Abteilungsgruppen
+  group_ask_delete_cancel: Abbrechen
+  group_ask_delete_delete: Löschen
+  group_ask_delete_question_post: ' löschen?'
+  group_ask_delete_question_pre: 'Möchten sie die Arbeitsgruppe '
+  group_ask_delete_title: Arbeitsgruppe Löschen
   group_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?'
+  group_edit_at_least_one_member_delete: löschen
+  group_edit_at_least_one_member_post: .
+  group_edit_at_least_one_member_pre: 'Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe '
   group_edit_btn: Bearbeiten
-  group_edit_form_new_member_login_hint: Login des neuen Mitglieds dieser Gruppe
+  group_edit_cancel: Abbrechen
+  group_edit_form_new_member_login_hint: Login des neuen Mitglieds dieser Arbeitsgruppe
   group_edit_form_new_member_login_label: User hinzufügen
   group_edit_form_save_btn: Speichern
   group_edit_form_title_pre: 'Arbeitsgruppe bearbeiten: '
+  group_edit_hint_remove_yourself: 'Achtung: Sie entfernen sich selbst aus der Arbeitsgruppe!'
+  group_edit_member: Mitglieder
+  group_edit_name: Name
+  group_edit_person: Person
+  group_edit_save: Speichern
+  group_edit_username: Benutzername
   group_meta_data_institutional_group_name: Name der Abteilungsgruppe
   group_meta_data_name: Name
   group_new_form_title: Neue Arbeitsgruppe erstellen
   group_new_group_btn: Neue Arbeitsgruppe
   group_toolbar_header_entrusted_resources: Mir anvertraute Medieneinträge
+  group_was_deleted: Arbeitsgruppe wurde gelöscht.
   home_page_new_contents: Neue Inhalte
   internal_groups: Arbeitsgruppen
   login_box_author: ' '
@@ -144,7 +161,6 @@ de:
   media_entry_media_import_notes_title: Hinweise
   media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
   media_entry_meta_data_header_prefix: 'Medieneintrag editieren: '
-  collection_meta_data_header_prefix: 'Set editieren: '
   media_entry_more_data_title: Verantwortlichkeit und Aktivität
   media_entry_not_published_warning_msg: 'Diesem Medieneintrag fehlen noch Pflichtangaben!'
   media_entry_select_collection_flash_result: 'Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu %{added_count} Set(s) hinzugefügt.'
@@ -184,15 +200,15 @@ de:
   meta_data_form_save: Speichern
   meta_data_form_submit_btn: Speichern
   meta_data_header_text: Werte
-  meta_data_input_new_bunch_add: Gruppe einfügen
+  meta_data_input_new_bunch_add: Arbeitsgruppe einfügen
   meta_data_input_new_person_add: Person einfügen
-  meta_data_input_new_person_toggle: Neue Person oder Gruppe einfügen
+  meta_data_input_new_person_toggle: Neue Person oder Arbeitsgruppe einfügen
   meta_data_meta_key_label: Schlüssel
   meta_data_type_label: Typ
   meta_data_value_label: Wert
-  no_content_fallback: (Keine Inhalte vorhanden.)
-  no_groups_fallback: (Keine Gruppen vorhanden.)
-  no_keywords_fallback: (Keine Schlagworte vorhanden.)
+  no_content_fallback: Keine Inhalte vorhanden.
+  no_groups_fallback: Keine Arbeitsgruppen vorhanden.
+  no_keywords_fallback: Keine Schlagworte vorhanden.
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
   pagination_nav_loadnext: Mehr laden
   pagination_nav_nextloading: Lädt…
@@ -216,7 +232,7 @@ de:
   permissions_batch_success: Berechtigungen wurden erfolgreich aktualisiert.
   permissions_batch_title_post: ' Inhalten'
   permissions_batch_title_pre: 'Zugriffsberechtigungen ändern von '
-  permissions_overview_yours_msg_end: ', haben gegenwärtig als Person oder als Mitglied einer Gruppe folgende Berechtigungen'
+  permissions_overview_yours_msg_end: ', haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe folgende Berechtigungen'
   permissions_overview_yours_msg_start: 'Sie, '
   permissions_overview_yours_title: Ihre Berechtigungen
   permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.
@@ -232,9 +248,12 @@ de:
   relations_siblings_title: Benachbarte Sets
   relations_title: Zusammenhänge
   resource_action_destroy: Medieneintrag löschen
+  resource_action_disfavor: Aus Favoriten entfernen
+  resource_action_edit_cover: Titelbild festlegen
+  resource_action_edit_highlights: Inhalte hervorheben
   resource_action_edit: Editieren
   resource_action_export: Exportieren
-  resource_action_favor: Zu Favoriten hinzufügen/entfernen
+  resource_action_favor: Zu Favoriten hinzufügen
   resource_action_manage_collections: Zu Sets hinzufügen/Aus Sets entfernen
   resource_ask_delete_cancel: Abbrechen
   resource_ask_delete_ok: Löschen
@@ -311,22 +330,6 @@ de:
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden
   user_menu_upload: Medien importieren
-  group_edit_name: Name
-  group_edit_member: Mitglieder
-  group_edit_person: Person
-  group_edit_username: Benutzername
-  group_edit_save: Speichern
-  group_edit_cancel: Abbrechen
-  group_ask_delete_title: Gruppe Löschen
-  group_ask_delete_question_pre: 'Möchten sie die Gruppe '
-  group_ask_delete_question_post: ' löschen?'
-  group_ask_delete_delete: Löschen
-  group_ask_delete_cancel: Abbrechen
-  group_was_deleted: Gruppe wurde gelöscht.
-  group_edit_at_least_one_member_pre: 'Eine Gruppe muss mindestens eine Person enthalten. Ganze Gruppe '
-  group_edit_at_least_one_member_delete: löschen
-  group_edit_at_least_one_member_post: .
-  group_edit_hint_remove_yourself: 'Achtung: Sie entfernen sich selbst aus der Gruppe!'
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?

@@ -11742,7 +11742,8 @@ module.exports = React.createClass({
         "id": section.id,
         "hrefUrl": section.data.url,
         "showAllLink": section.show_all_link,
-        "section": section
+        "section": section,
+        "showThumbDesc": true
       });
     });
     return React.createElement("div", null, React.createElement("div", {

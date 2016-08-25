@@ -2963,6 +2963,7 @@ module.exports = React.createClass({
     heading: React.PropTypes.node,
     toolBarMiddle: React.PropTypes.node,
     authToken: React.PropTypes.string.isRequired,
+    disablePermissionsEdit: React.PropTypes.bool,
     get: React.PropTypes.shape({
       type: React.PropTypes.oneOf(['MediaEntries', 'Collections', 'FilterSets', 'MediaResources']),
       with_actions: React.PropTypes.bool,
@@ -3392,7 +3393,7 @@ module.exports = React.createClass({
             hover: f.curry(_this._onHiglightEditable)(true),
             unhover: f.curry(_this._onHiglightEditable)(false)
           } : void 0,
-          managePermissions: selection && (get.type === 'MediaEntries' || get.type === 'MediaResources') ? {
+          managePermissions: !_this.props.disablePermissionsEdit && selection && (get.type === 'MediaEntries' || get.type === 'MediaResources') ? {
             click: (f.present(batchPermissionEditables) ? _this._onBatchPermissionsEdit : void 0),
             hover: f.curry(_this._onHiglightPermissionsEditable)(true),
             unhover: f.curry(_this._onHiglightPermissionsEditable)(false)

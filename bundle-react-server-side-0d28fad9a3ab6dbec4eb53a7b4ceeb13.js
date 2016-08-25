@@ -11248,7 +11248,7 @@ module.exports = React.createClass({
     });
   },
   render: function(arg) {
-    var boxGet, name, props, ref1, spacerDiv, state;
+    var boxGet, name, props, ref1, show_hover, spacerDiv, state;
     ref1 = arg != null ? arg : this, props = ref1.props, state = ref1.state;
     name = 'media_entry';
     if (!state.isClient) {
@@ -11258,6 +11258,7 @@ module.exports = React.createClass({
       resources: props.appCollection,
       with_actions: true
     };
+    show_hover = false;
     spacerDiv = React.createElement("div", {
       "style": {
         height: '250px'
@@ -11274,7 +11275,7 @@ module.exports = React.createClass({
       "mods": 'rounded mvl',
       "listMods": [
         'show_permissions', {
-          active: !state.uploading
+          active: show_hover
         }
       ],
       "authToken": props.authToken,

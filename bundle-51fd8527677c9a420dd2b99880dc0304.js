@@ -425,7 +425,8 @@ module.exports = function(resourceType, parameters) {
     name: resourceType + "Search",
     key: baseConfig.key || 'name',
     displayKey: baseConfig.displayKey || baseConfig.key || 'name',
-    source: BloodhoundFactory(baseConfig, parameters)
+    source: BloodhoundFactory(baseConfig, parameters),
+    limit: 100
   };
 };
 

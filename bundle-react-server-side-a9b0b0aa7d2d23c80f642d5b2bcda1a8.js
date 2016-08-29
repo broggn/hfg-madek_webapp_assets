@@ -10387,6 +10387,9 @@ module.exports = React.createClass({
     }, t('group_edit_name')), React.createElement("input", {
       "type": 'text',
       "className": 'form-item',
+      "style": {
+        width: '100%'
+      },
       "name": 'group[name]',
       "defaultValue": get.name,
       "placeholder": ''
@@ -10415,12 +10418,7 @@ module.exports = React.createClass({
       "style": {
         borderColor: '#f3f3f3'
       }
-    }, t('group_edit_person')), React.createElement("td", {
-      "className": 'ui-rights-user-title',
-      "style": {
-        borderColor: '#f3f3f3'
-      }
-    }, t('group_edit_username')))), React.createElement("tbody", null, f.map(this.state.data.userIdList, (function(_this) {
+    }, t('group_edit_person')))), React.createElement("tbody", null, f.map(this.state.data.userIdList, (function(_this) {
       return function(userId) {
         var user;
         user = _this.state.data.users[userId];
@@ -10505,14 +10503,7 @@ MemberRow = React.createClass({displayName: "MemberRow",
       "enabledClasses": 'button small ui-rights-remove icon-close small'
     }), React.createElement("span", {
       "className": 'text'
-    }, user.name)), React.createElement("td", {
-      "className": 'ui-rights-user',
-      "style": {
-        borderColor: '#f3f3f3'
-      }
-    }, React.createElement("span", {
-      "className": 'text'
-    }, user.login)));
+    }, user.name)));
   }
 });
 

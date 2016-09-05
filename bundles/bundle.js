@@ -7267,9 +7267,13 @@ module.exports = React.createClass({
     className: React.PropTypes.string
   },
   render: function(arg) {
-    var Element, className, contextKey, name, placeholder, ref, type, value;
+    var Element, className, contextKey, name, placeholder, ref, style, type, value;
     ref = arg != null ? arg : this.props, name = ref.name, type = ref.type, value = ref.value, placeholder = ref.placeholder, className = ref.className, contextKey = ref.contextKey;
     Element = contextKey && contextKey.text_element && contextKey.text_element === 'textarea' ? 'textarea' : 'input';
+    style = {
+      textIndent: '0em',
+      paddingLeft: '8px'
+    };
     if (this.props.onChange) {
       return React.createElement(Element, {
         "type": type || 'text',
@@ -7277,7 +7281,8 @@ module.exports = React.createClass({
         "name": name,
         "value": value || '',
         "placeholder": placeholder,
-        "onChange": this.props.onChange
+        "onChange": this.props.onChange,
+        "style": style
       });
     } else {
       return React.createElement(Element, {
@@ -7285,7 +7290,8 @@ module.exports = React.createClass({
         "className": className + ' block',
         "name": name,
         "defaultValue": value || '',
-        "placeholder": placeholder
+        "placeholder": placeholder,
+        "style": style
       });
     }
   }

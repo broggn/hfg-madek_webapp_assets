@@ -3467,7 +3467,6 @@ module.exports = React.createClass({
     toolBarMiddle: React.PropTypes.node,
     authToken: React.PropTypes.string.isRequired,
     disablePermissionsEdit: React.PropTypes.bool,
-    allowPinThumbs: React.PropTypes.bool,
     allowListMode: React.PropTypes.bool,
     get: React.PropTypes.shape({
       type: React.PropTypes.oneOf(['MediaEntries', 'Collections', 'FilterSets', 'MediaResources']),
@@ -3501,14 +3500,12 @@ module.exports = React.createClass({
         mode: 'grid',
         title: 'Raster-Ansicht',
         icon: 'vis-grid'
-      }
-    ].concat(this.props.allowPinThumbs ? [
-      {
+      }, {
         mode: 'tiles',
         title: 'Kachel-Ansicht',
         icon: 'vis-pins'
       }
-    ] : []).concat(this.props.allowListMode ? [
+    ].concat(this.props.allowListMode ? [
       {
         mode: 'list',
         title: 'Listen-Ansicht',
@@ -4889,18 +4886,6 @@ module.exports = React.createClass({
     });
     actionsLeft = [];
     actionsRight = [];
-    if (selectProps && selectProps.onSelect) {
-      selectAction = React.createElement("a", {
-        "onClick": selectProps.onSelect,
-        "className": 'ui-tile__action-link',
-        "title": (selectProps.isSelected ? 'Auswahl entfernen' : 'auswählen')
-      }, React.createElement("i", {
-        "className": c('icon-checkbox', {
-          'active': selectProps.isSelected
-        })
-      }));
-      actionsLeft.push(selectAction);
-    }
     if (favoriteProps && favoriteProps.favoritePolicy) {
       favorButton = React.createElement(FavoriteButton, {
         "modelFavored": favoriteProps.modelFavored,
@@ -4912,6 +4897,18 @@ module.exports = React.createClass({
         "buttonClass": 'ui-tile__action-link'
       });
       actionsLeft.push(favorButton);
+    }
+    if (selectProps && selectProps.onSelect) {
+      selectAction = React.createElement("a", {
+        "onClick": selectProps.onSelect,
+        "className": 'ui-tile__action-link',
+        "title": (selectProps.isSelected ? 'Auswahl entfernen' : 'auswählen')
+      }, React.createElement("i", {
+        "className": c('icon-checkbox', {
+          'active': selectProps.isSelected
+        })
+      }));
+      actionsLeft.push(selectAction);
     }
     if (editable) {
       actionsRight.push(React.createElement(Button, {
@@ -4958,7 +4955,13 @@ module.exports = React.createClass({
       })
     }, React.createElement("div", {
       "className": 'ui-tile__head'
-    }, React.createElement("ul", {
+    }, (favoriteProps ? React.createElement("i", {
+      "className": (favoriteProps.modelFavored ? 'icon-star' : 'icon-star-empty'),
+      "style": {
+        position: 'absolute',
+        padding: '7px'
+      }
+    }) : void 0), React.createElement("ul", {
       "className": 'ui-tile__actions left by-left'
     }, f.map(actionsLeft, function(action, index) {
       return React.createElement("li", {
@@ -6441,7 +6444,7 @@ module.exports = React.createClass({
     if (this.props.pinThumb) {
       return React.createElement(PinThumbnail, {
         "resourceType": model.type,
-        "imageUrl": get.image_url,
+        "imageUrl": f.get(get, 'media_file.previews.images.large.url', get.image_url),
         "mediaType": model.mediaType,
         "title": textProps.title,
         "subtitle": textProps.subtitle,
@@ -10100,7 +10103,6 @@ module.exports = React.createClass({
           bordered: false
         }, 'rounded-bottom'
       ],
-      "allowPinThumbs": true,
       "allowListMode": true,
       "collectionData": {
         uuid: get.uuid,

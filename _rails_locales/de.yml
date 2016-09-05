@@ -82,6 +82,8 @@ de:
   collection_tab_main: Set
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
+  collection_layout_save: Darstellung festlegen
+  collection_layout_saved: Darstellung gespeichert
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren

@@ -80,6 +80,8 @@ en:
   collection_tab_main: Set
   collection_was_disfavored: Set was removed from favorites.
   collection_was_favored: Set was added to favorites.
+  collection_layout_save: Save layout
+  collection_layout_saved: Layout saved
   dashboard_create_collection_btn: Create Set
   dashboard_create_collection: Create set
   dashboard_create_media_entry_btn: Upload Media

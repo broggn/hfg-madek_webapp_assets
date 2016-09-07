@@ -3525,9 +3525,8 @@ module.exports = React.createClass({
       }
     });
   },
-  componentWillMount: function() {
-    var collectionClass, isPaginated, resources;
-    isPaginated = this.props.withBox && f.present(f.get(this.props, 'get.pagination.total_count'));
+  _createResourcesModel: function() {
+    var collectionClass;
     collectionClass = (function() {
       switch (this.props.get.type) {
         case 'MediaResources':
@@ -3538,20 +3537,20 @@ module.exports = React.createClass({
           return Collections;
       }
     }).call(this);
-    resources = (function() {
-      if (f.get(this.props, 'get.resources.isCollection')) {
-        return this.props.get.resources;
-      } else if (collectionClass) {
-        if (isPaginated) {
-          if (!collectionClass.Paginated) {
-            throw new Error('Collection has no Pagination!');
-          }
-          return new collectionClass.Paginated(this.props.get);
-        } else {
-          return new collectionClass(this.props.get.resources);
+    if (collectionClass) {
+      if (this.props.withBox && f.present(f.get(this.props, 'get.pagination.total_count'))) {
+        if (!collectionClass.Paginated) {
+          throw new Error('Collection has no Pagination!');
         }
+        return new collectionClass.Paginated(this.props.get);
+      } else {
+        return new collectionClass(this.props.get.resources);
       }
-    }).call(this);
+    }
+  },
+  componentWillMount: function() {
+    var resources;
+    resources = f.get(this.props, 'get.resources.isCollection') ? this.props.get.resources : this._createResourcesModel();
     return this.setState({
       resources: resources
     });
@@ -4873,7 +4872,7 @@ StatusIcon = require('./thumbnail/StatusIcon.cjsx');
 module.exports = React.createClass({
   displayName: 'PinThumbnail',
   render: function(arg) {
-    var actionsLeft, actionsRight, badgeLeft, badgeRight, deleteProps, editable, favorButton, favoriteProps, imageUrl, innerImage, isCollection, mediaType, mediaUrl, ref, resourceType, selectAction, selectProps, statusProps, subtitle, title;
+    var actionsLeft, actionsRight, badgeLeft, badgeRight, deleteProps, editable, favorButton, favoriteProps, imageUrl, innerImage, isCollection, mediaType, mediaUrl, ref, resourceType, selectAction, selectProps, starShadow, statusProps, subtitle, title;
     ref = arg != null ? arg : this.props, resourceType = ref.resourceType, imageUrl = ref.imageUrl, mediaType = ref.mediaType, title = ref.title, subtitle = ref.subtitle, mediaUrl = ref.mediaUrl, selectProps = ref.selectProps, favoriteProps = ref.favoriteProps, editable = ref.editable, deleteProps = ref.deleteProps, statusProps = ref.statusProps;
     isCollection = resourceType === 'Collection';
     innerImage = imageUrl ? React.createElement(Picture, {
@@ -4943,6 +4942,10 @@ module.exports = React.createClass({
         "className": 'ui-tile__flag ui-tile__flag--typ icon-filter'
       });
     }
+    starShadow = '1px 0px 1px rgba(255, 255, 255, 0.5)';
+    starShadow += ', 0px 1px 1px rgba(255, 255, 255, 0.5)';
+    starShadow += ', -1px 0px 1px rgba(255, 255, 255, 0.5)';
+    starShadow += ', 0px -1px 1px rgba(255, 255, 255, 0.5)';
     return React.createElement("li", {
       "className": c('ui-resource', {
         'ui-selected': selectProps && selectProps.isSelected
@@ -4958,11 +4961,12 @@ module.exports = React.createClass({
       })
     }, React.createElement("div", {
       "className": 'ui-tile__head'
-    }, (favoriteProps ? React.createElement("i", {
-      "className": (favoriteProps.modelFavored ? 'icon-star' : 'icon-star-empty'),
+    }, (favoriteProps && favoriteProps.favoritePolicy && favoriteProps.modelFavored ? React.createElement("i", {
+      "className": 'icon-star',
       "style": {
         position: 'absolute',
-        padding: '7px'
+        padding: '7px',
+        textShadow: starShadow
       }
     }) : void 0), React.createElement("ul", {
       "className": 'ui-tile__actions left by-left'

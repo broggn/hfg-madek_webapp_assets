@@ -2818,23 +2818,25 @@ module.exports = React.createClass({
     var imageUrl, innerImage, listsWithClasses, mediaType, mediaUrl, metaData, ref, resourceType, subtitle, title;
     ref = arg != null ? arg : this.props, resourceType = ref.resourceType, imageUrl = ref.imageUrl, mediaType = ref.mediaType, title = ref.title, subtitle = ref.subtitle, mediaUrl = ref.mediaUrl, metaData = ref.metaData;
     listsWithClasses = [];
-    if (metaData.contexts_for_list_details.length > 0) {
-      listsWithClasses.push({
-        className: 'ui-resource-meta',
-        list: metaData.contexts_for_list_details[0]
-      });
-    }
-    if (metaData.contexts_for_list_details.length > 1) {
-      listsWithClasses.push({
-        className: 'ui-resource-description',
-        list: metaData.contexts_for_list_details[1]
-      });
-    }
-    if (metaData.contexts_for_list_details.length > 2) {
-      listsWithClasses.push({
-        className: 'ui-resource-extension',
-        list: metaData.contexts_for_list_details[2]
-      });
+    if (metaData) {
+      if (metaData.contexts_for_list_details.length > 0) {
+        listsWithClasses.push({
+          className: 'ui-resource-meta',
+          list: metaData.contexts_for_list_details[0]
+        });
+      }
+      if (metaData.contexts_for_list_details.length > 1) {
+        listsWithClasses.push({
+          className: 'ui-resource-description',
+          list: metaData.contexts_for_list_details[1]
+        });
+      }
+      if (metaData.contexts_for_list_details.length > 2) {
+        listsWithClasses.push({
+          className: 'ui-resource-extension',
+          list: metaData.contexts_for_list_details[2]
+        });
+      }
     }
     innerImage = imageUrl ? React.createElement(Picture, {
       "mods": 'ui-thumbnail-image',
@@ -3904,7 +3906,7 @@ module.exports = React.createClass({
     }), " ", 'Filter zurücksetzen') : void 0 : void 0;
     boxTitleBar = (function(_this) {
       return function() {
-        var actions, filter, for_url, isClient, layout, layoutOnClick, layouts, totalCount;
+        var actions, filter, for_url, isClient, layout, layoutSave, layouts, totalCount;
         filter = config.filter, layout = config.layout, for_url = config.for_url;
         totalCount = f.get(get, 'pagination.total_count');
         isClient = _this.state.isClient;
@@ -3920,10 +3922,10 @@ module.exports = React.createClass({
               'active': layoutMode.mode === layout
             },
             href: href,
-            onClick: _this._handleChangeInternally
+            onClick: layoutMode.mode !== 'list' ? _this._handleChangeInternally : void 0
           });
         });
-        layoutOnClick = function(event) {
+        layoutSave = function(event) {
           event.preventDefault();
           simpleXhr({
             method: 'PATCH',
@@ -3941,8 +3943,9 @@ module.exports = React.createClass({
           return false;
         };
         actions = _this.props.collectionData && _this.props.collectionData.editable ? (function() {
-          var layoutChanged;
+          var layoutChanged, text;
           layoutChanged = _this.state.savedLayout !== layout;
+          text = layoutChanged ? t('collection_layout_save') : t('collection_layout_saved');
           return [
             React.createElement("div", {
               "id": "ui-save-display-settings",
@@ -3952,13 +3955,13 @@ module.exports = React.createClass({
               "className": cx('tertiary-button small', {
                 disabled: !layoutChanged
               }),
-              "title": "Sortierung und Darstellung der Inhalte dieses Sets festlegen",
-              "onClick": (layoutChanged ? layoutOnClick : void 0)
+              "title": text,
+              "onClick": (layoutChanged ? layoutSave : void 0)
             }, React.createElement("i", {
               "className": "icon-fixed-width icon-eye bright"
             }), React.createElement("span", {
               "className": "text"
-            }, (layoutChanged ? t('collection_layout_save') : t('collection_layout_saved')))))
+            }, text)))
           ];
         })() : [];
         return React.createElement(BoxTitleBar, {

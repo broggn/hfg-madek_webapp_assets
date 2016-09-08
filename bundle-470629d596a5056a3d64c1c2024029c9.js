@@ -11678,7 +11678,7 @@ module.exports = React.createClass({
 
 
 },{"../lib/forms/rails-form.cjsx":75,"react":902,"react-dom":746}],120:[function(require,module,exports){
-var InputFieldText, Modal, React, ReactDOM, ampersandReactMixin, f, t;
+var InputFieldText, Modal, React, ReactDOM, ampersandReactMixin, f, forceDownload, parseUrl, t;
 
 React = require('react');
 
@@ -11688,11 +11688,20 @@ ampersandReactMixin = require('ampersand-react-mixin');
 
 f = require('active-lodash');
 
+parseUrl = require('url').parse;
+
 t = require('../../../lib/string-translation')('de');
 
 InputFieldText = require('../../lib/forms/input-field-text.cjsx');
 
 Modal = require('../../ui-components/Modal.cjsx');
+
+forceDownload = function(url) {
+  if ((parseUrl(url).query)) {
+    throw new Error('URL should not have params!');
+  }
+  return url + '?download';
+};
 
 module.exports = React.createClass({
   displayName: 'MediaEntryExport',
@@ -11718,9 +11727,7 @@ module.exports = React.createClass({
       "className": 'ui-modal-head'
     }, React.createElement("a", {
       "href": get.url,
-      "aria-hidden": 'true',
       "className": 'ui-modal-close',
-      "data-dismiss": 'modal',
       "title": 'Close',
       "type": 'button',
       "style": {
@@ -11756,10 +11763,9 @@ module.exports = React.createClass({
       }, React.createElement("p", null, t('media_entry_export_original_hint'))), React.createElement("div", {
         "className": "col1of2 by-right"
       }, React.createElement("a", {
-        "href": get.media_file.original_file_url,
-        "aria-hidden": 'true',
-        "className": 'primary-button',
-        "data-dismiss": 'modal'
+        "href": forceDownload(get.media_file.original_file_url),
+        "target": '_blank',
+        "className": 'primary-button'
       }, t('media_entry_export_download')))
     ] : React.createElement("div", {
       "className": "col1of2"
@@ -11780,14 +11786,12 @@ module.exports = React.createClass({
         return React.createElement("tr", {
           "key": key
         }, (image.width && image.height ? React.createElement("td", null, image.width + 'x' + image.height) : React.createElement("td", null, "-")), React.createElement("td", null, image.extension), React.createElement("td", null, React.createElement("a", {
-          "href": image.url,
-          "aria-hidden": 'true',
+          "href": forceDownload(image.url),
           "target": '_blank',
           "className": 'primary-button',
           "style": {
             float: 'right'
-          },
-          "data-dismiss": 'modal'
+          }
         }, React.createElement("i", {
           "className": "icon-dload"
         }))));
@@ -11798,15 +11802,13 @@ module.exports = React.createClass({
       "className": 'ui-actions'
     }, React.createElement("a", {
       "href": get.url,
-      "aria-hidden": 'true',
-      "className": 'primary-button',
-      "data-dismiss": 'modal'
+      "className": 'primary-button'
     }, t('media_entry_export_close')))));
   }
 });
 
 
-},{"../../../lib/string-translation":12,"../../lib/forms/input-field-text.cjsx":70,"../../ui-components/Modal.cjsx":92,"active-lodash":152,"ampersand-react-mixin":295,"react":902,"react-dom":746}],121:[function(require,module,exports){
+},{"../../../lib/string-translation":12,"../../lib/forms/input-field-text.cjsx":70,"../../ui-components/Modal.cjsx":92,"active-lodash":152,"ampersand-react-mixin":295,"react":902,"react-dom":746,"url":929}],121:[function(require,module,exports){
 var React, ResourcesBoxWithSwitch;
 
 React = require('react');

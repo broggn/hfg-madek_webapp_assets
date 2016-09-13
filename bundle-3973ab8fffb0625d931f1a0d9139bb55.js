@@ -3540,17 +3540,13 @@ module.exports = React.createClass({
   _allowedLayoutModes: function() {
     return [
       {
-        mode: 'miniature',
-        title: 'Miniatur-Ansicht',
-        icon: 'vis-miniature'
+        mode: 'tiles',
+        title: 'Kachel-Ansicht',
+        icon: 'vis-pins'
       }, {
         mode: 'grid',
         title: 'Raster-Ansicht',
         icon: 'vis-grid'
-      }, {
-        mode: 'tiles',
-        title: 'Kachel-Ansicht',
-        icon: 'vis-pins'
       }
     ].concat(this.props.allowListMode ? [
       {
@@ -3558,7 +3554,11 @@ module.exports = React.createClass({
         title: 'Listen-Ansicht',
         icon: 'vis-list'
       }
-    ] : []);
+    ] : []).concat({
+      mode: 'miniature',
+      title: 'Miniatur-Ansicht',
+      icon: 'vis-miniature'
+    });
   },
   doOnUnmount: [],
   componentWillUnmount: function() {
@@ -3933,7 +3933,7 @@ module.exports = React.createClass({
     }), " ", 'Filter zurücksetzen') : void 0 : void 0;
     boxTitleBar = (function(_this) {
       return function() {
-        var actions, filter, for_url, isClient, layout, layoutSave, layouts, totalCount;
+        var centerActions, filter, for_url, isClient, layout, layoutSave, layouts, totalCount;
         filter = config.filter, layout = config.layout, for_url = config.for_url;
         totalCount = f.get(get, 'pagination.total_count');
         isClient = _this.state.isClient;
@@ -3969,18 +3969,16 @@ module.exports = React.createClass({
           });
           return false;
         };
-        actions = _this.props.collectionData && _this.props.collectionData.editable ? (function() {
+        centerActions = _this.props.collectionData && _this.props.collectionData.editable ? (function() {
           var layoutChanged, text;
           layoutChanged = _this.state.savedLayout !== layout;
           text = layoutChanged ? t('collection_layout_save') : t('collection_layout_saved');
           return [
-            React.createElement("div", {
-              "id": "ui-save-display-settings",
-              "key": "collection_layout"
-            }, React.createElement("a", {
+            React.createElement("a", {
+              "key": "collection_layout",
               "disabled": (!layoutChanged ? 'disabled' : void 0),
-              "className": cx('tertiary-button small', {
-                disabled: !layoutChanged
+              "className": cx('small ui-toolbar-vis-button button', {
+                active: !layoutChanged
               }),
               "title": text,
               "onClick": (layoutChanged ? layoutSave : void 0)
@@ -3988,14 +3986,14 @@ module.exports = React.createClass({
               "className": "icon-fixed-width icon-eye bright"
             }), React.createElement("span", {
               "className": "text"
-            }, text)))
+            }, ' ' + text))
           ];
         })() : [];
         return React.createElement(BoxTitleBar, {
           "heading": heading || (totalCount ? totalCount + " " + (t('resources_box_title_count_post')) : void 0),
           "mods": toolbarClasses,
           "layouts": layouts,
-          "actions": actions
+          "centerActions": centerActions
         });
       };
     })(this);
@@ -4358,18 +4356,23 @@ SideFilterFallback = function(arg) {
 };
 
 BoxTitleBar = function(arg) {
-  var actions, classes, heading, layouts, mods, ref1;
-  ref1 = arg != null ? arg : this.props, heading = ref1.heading, actions = ref1.actions, layouts = ref1.layouts, mods = ref1.mods;
+  var centerActions, classes, heading, layouts, mods, ref1;
+  ref1 = arg != null ? arg : this.props, heading = ref1.heading, centerActions = ref1.centerActions, layouts = ref1.layouts, mods = ref1.mods;
   classes = cx('ui-container inverted ui-toolbar pvx', mods);
   return React.createElement("div", {
     "className": classes
   }, React.createElement("h2", {
-    "className": 'ui-toolbar-header pls'
+    "className": 'ui-toolbar-header pls col2of6'
   }, heading), React.createElement("div", {
-    "className": 'ui-toolbar-controls by-right'
-  }, (f.any(actions) ? React.createElement(ButtonGroup, {
-    "mods": 'small right mls'
-  }, actions) : void 0), React.createElement(ButtonGroup, {
+    "className": 'col2of6',
+    "style": {
+      textAlign: 'center'
+    }
+  }, (f.any(centerActions) ? React.createElement(ButtonGroup, {
+    "mods": 'tertiary small center mls'
+  }, centerActions) : void 0)), React.createElement("div", {
+    "className": 'ui-toolbar-controls by-right col2of6'
+  }, React.createElement(ButtonGroup, {
     "mods": 'tertiary small right mls'
   }, layouts.map(function(layout) {
     mods = cx('small', 'ui-toolbar-vis-button', layout.mods);

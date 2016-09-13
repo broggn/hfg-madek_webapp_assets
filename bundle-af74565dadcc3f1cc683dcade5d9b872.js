@@ -2757,7 +2757,7 @@ CollageLoggedIn = React.createClass({
 
 
 },{"../../lib/string-translation.js":12,"../views/explore/partials/PrettyThumbs.cjsx":143,"active-lodash":152,"react":902,"react-dom":746}],46:[function(require,module,exports){
-var Button, DeleteModal, Description, Dropdown, Extension, FavoriteButton, Image, LevelDown, LevelUp, ListThumbnail, Meta, MetaDataList, MetaDatumValues, Models, Picture, RailsForm, React, ResourceActions, ResourceIcon, StatusIcon, ThumbnailActions, Titles, async, c, f, getRailsCSRFToken, t;
+var Button, DeleteModal, Description, Dropdown, Extension, FavoriteButton, Image, LevelDown, LevelUp, ListThumbnail, LoadXhr, Meta, MetaDataList, MetaDatumValues, Models, Picture, Preloader, RailsForm, React, ResourceActions, ResourceIcon, StatusIcon, ThumbnailActions, Titles, async, c, f, getRailsCSRFToken, t;
 
 React = require('react');
 
@@ -2792,6 +2792,10 @@ ListThumbnail = require('./ListThumbnail.cjsx');
 MetaDataList = require('./MetaDataList.cjsx');
 
 MetaDatumValues = require('./MetaDatumValues.cjsx');
+
+LoadXhr = require('../../lib/load-xhr.coffee');
+
+Preloader = require('../ui-components/Preloader.cjsx');
 
 module.exports = React.createClass({
   displayName: 'ListThumbnail',
@@ -2868,7 +2872,7 @@ module.exports = React.createClass({
     })), React.createElement(Image, {
       "innerImage": innerImage,
       "mediaUrl": mediaUrl
-    }), React.createElement(Titles, null), React.createElement(ThumbnailActions, null), React.createElement(Dropdown, null), React.createElement(LevelDown, null))), (true ? f.map(listsWithClasses, (function(_this) {
+    }), React.createElement(Titles, null), React.createElement(ThumbnailActions, null), React.createElement(Dropdown, null), React.createElement(LevelDown, null))), (true ? this.props.loadingMetadata ? React.createElement(Preloader, null) : f.map(listsWithClasses, (function(_this) {
       return function(item, index) {
         return React.createElement("div", {
           "className": item.className,
@@ -3268,7 +3272,7 @@ Extension = React.createClass({
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":7,"../../lib/string-translation":12,"../../models/index.coffee":23,"../lib/forms/rails-form.cjsx":75,"../ui-components/Button.cjsx":84,"../ui-components/Picture.cjsx":93,"../ui-components/ResourceIcon.cjsx":95,"./ListThumbnail.cjsx":46,"./MetaDataList.cjsx":50,"./MetaDatumValues.cjsx":52,"./thumbnail/DeleteModal.cjsx":62,"./thumbnail/FavoriteButton.cjsx":63,"./thumbnail/StatusIcon.cjsx":64,"active-lodash":152,"async":320,"classnames":358,"react":902}],47:[function(require,module,exports){
+},{"../../lib/load-xhr.coffee":5,"../../lib/rails-csrf-token.coffee":7,"../../lib/string-translation":12,"../../models/index.coffee":23,"../lib/forms/rails-form.cjsx":75,"../ui-components/Button.cjsx":84,"../ui-components/Picture.cjsx":93,"../ui-components/Preloader.cjsx":94,"../ui-components/ResourceIcon.cjsx":95,"./ListThumbnail.cjsx":46,"./MetaDataList.cjsx":50,"./MetaDatumValues.cjsx":52,"./thumbnail/DeleteModal.cjsx":62,"./thumbnail/FavoriteButton.cjsx":63,"./thumbnail/StatusIcon.cjsx":64,"active-lodash":152,"async":320,"classnames":358,"react":902}],47:[function(require,module,exports){
 var Icon, Link, MediaPlayer, Picture, PropTypes, React, ResourceIcon, cx, f, t;
 
 React = require('react');
@@ -3394,7 +3398,7 @@ module.exports = React.createClass({
 
 
 },{"../../lib/string-translation.js":12,"../ui-components/Icon.cjsx":88,"../ui-components/Link.cjsx":90,"../ui-components/MediaPlayer.cjsx":91,"../ui-components/Picture.cjsx":93,"../ui-components/ResourceIcon.cjsx":95,"active-lodash":152,"classnames":358,"react":902}],48:[function(require,module,exports){
-var ActionsBar, BatchAddToSetModal, BatchRemoveFromSetModal, BoxTitleBar, BoxToolBar, Button, ButtonGroup, CollectionChildren, Collections, Dropdown, FallBackMsg, FilterExamples, FilterPreloader, Icon, Link, MediaEntries, MenuItem, PageCounter, PaginationNavFallback, Preloader, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, Waypoint, ampersandReactMixin, cx, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, parseMods, qs, ref, resourceListParams, router, setUrlParams, simpleXhr, t, ui, viewConfigProps, xhr;
+var ActionsBar, BatchAddToSetModal, BatchRemoveFromSetModal, BoxTitleBar, BoxToolBar, Button, ButtonGroup, CollectionChildren, Collections, Dropdown, FallBackMsg, FilterExamples, FilterPreloader, Icon, Link, LoadXhr, MediaEntries, MenuItem, PageCounter, PaginationNavFallback, Preloader, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, Waypoint, ampersandReactMixin, cx, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, parseMods, qs, ref, resourceListParams, router, setUrlParams, simpleXhr, t, ui, viewConfigProps, xhr;
 
 React = require('react');
 
@@ -3445,6 +3449,10 @@ BatchAddToSetModal = require('./BatchAddToSetModal.cjsx');
 BatchRemoveFromSetModal = require('./BatchRemoveFromSetModal.cjsx');
 
 simpleXhr = require('../../lib/simple-xhr.coffee');
+
+LoadXhr = require('../../lib/load-xhr.coffee');
+
+Preloader = require('../ui-components/Preloader.cjsx');
 
 handleLinkIfLocal = function(event, callback) {
   var internalLink, localLinks;
@@ -3524,7 +3532,9 @@ module.exports = React.createClass({
       config: {},
       batchAddToSet: false,
       batchRemoveFromSet: false,
-      savedLayout: this.props.collectionData ? this.props.collectionData.layout : void 0
+      savedLayout: this.props.collectionData ? this.props.collectionData.layout : void 0,
+      listMetadata: {},
+      loadingListMetadataResource: null
     };
   },
   _allowedLayoutModes: function() {
@@ -3581,6 +3591,24 @@ module.exports = React.createClass({
       } else {
         return new collectionClass(this.props.get.resources);
       }
+    }
+  },
+  _tryLoadListMetadata: function(resourceType, resourceUuid) {
+    if (!this.state.loadingListMetadataResource) {
+      this.setState({
+        loadingListMetadataResource: resourceUuid
+      });
+      return LoadXhr({
+        method: 'GET',
+        url: resourceType === 'Collection' ? '/sets/' + resourceUuid + '.json?___sparse={"meta_data":{}}' : resourceType === 'MediaEntry' ? '/entries/' + resourceUuid + '.json?___sparse={"meta_data":{}}' : console.error('Unknown resource type for loading meta data: ' + resourceType)
+      }, (function(_this) {
+        return function(result, json) {
+          _this.state.listMetadata[resourceUuid] = json.meta_data;
+          return _this.setState({
+            loadingListMetadataResource: null
+          });
+        };
+      })(this));
     }
   },
   componentWillMount: function() {
@@ -3921,7 +3949,7 @@ module.exports = React.createClass({
               'active': layoutMode.mode === layout
             },
             href: href,
-            onClick: layoutMode.mode !== 'list' ? _this._handleChangeInternally : void 0
+            onClick: _this._handleChangeInternally
           });
         });
         layoutSave = function(event) {
@@ -4235,7 +4263,7 @@ module.exports = React.createClass({
         }) : void 0 : void 0), React.createElement("ul", {
           "className": 'ui-resources-page-items'
         }, page.resources.map(function(item) {
-          var isSelected, key, onClick, onSelect, selection, style;
+          var isSelected, key, listMetadata, onClick, onSelect, selection, style;
           key = item.uuid || item.cid;
           if (withBox) {
             selection = _this.state.selectedResources;
@@ -4246,6 +4274,15 @@ module.exports = React.createClass({
               style = _this.state.higlightBatchEditable && (!item.isBatchEditable) || _this.state.higlightPermissionsBatchEditable && (!item.isBatchPermissionsEditable) ? {
                 opacity: 0.35
               } : void 0;
+            }
+          }
+          listMetadata = null;
+          if (_this.state.isClient) {
+            listMetadata = _this.state.listMetadata[item.uuid];
+            if (!listMetadata) {
+              setTimeout(function() {
+                return _this._tryLoadListMetadata(item.type, item.uuid);
+              }, 10);
             }
           }
           return React.createElement(ResourceThumbnail, {
@@ -4260,7 +4297,9 @@ module.exports = React.createClass({
             "authToken": authToken,
             "key": key,
             "pinThumb": config.layout === 'tiles',
-            "listThumb": config.layout === 'list'
+            "listThumb": config.layout === 'list',
+            "indexMetaData": listMetadata,
+            "loadingMetadata": _this.state.loadingListMetadataResource === item.uuid
           });
         })));
       };
@@ -4448,7 +4487,7 @@ filter_examples = {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":7,"../../lib/router.coffee":8,"../../lib/set-params-for-url.coffee":10,"../../lib/simple-xhr.coffee":11,"../../models/collection-children.coffee":15,"../../models/collections.coffee":18,"../../models/media-entries.coffee":24,"../../shared/resource_list_params.coffee":146,"../lib/forms/rails-form.cjsx":75,"../lib/ui.coffee":78,"../ui-components/ResourcesBox/BoxToolBar.cjsx":96,"../ui-components/ResourcesBox/SideFilter.cjsx":97,"../ui-components/index.coffee":102,"./BatchAddToSetModal.cjsx":40,"./BatchRemoveFromSetModal.cjsx":43,"./ResourceThumbnail.cjsx":58,"active-lodash":152,"ampersand-react-mixin":295,"local-links":486,"qs":612,"react":902,"react-waypoint":764,"xhr":934}],49:[function(require,module,exports){
+},{"../../lib/load-xhr.coffee":5,"../../lib/rails-csrf-token.coffee":7,"../../lib/router.coffee":8,"../../lib/set-params-for-url.coffee":10,"../../lib/simple-xhr.coffee":11,"../../models/collection-children.coffee":15,"../../models/collections.coffee":18,"../../models/media-entries.coffee":24,"../../shared/resource_list_params.coffee":146,"../lib/forms/rails-form.cjsx":75,"../lib/ui.coffee":78,"../ui-components/Preloader.cjsx":94,"../ui-components/ResourcesBox/BoxToolBar.cjsx":96,"../ui-components/ResourcesBox/SideFilter.cjsx":97,"../ui-components/index.coffee":102,"./BatchAddToSetModal.cjsx":40,"./BatchRemoveFromSetModal.cjsx":43,"./ResourceThumbnail.cjsx":58,"active-lodash":152,"ampersand-react-mixin":295,"local-links":486,"qs":612,"react":902,"react-waypoint":764,"xhr":934}],49:[function(require,module,exports){
 var MadekPropTypes, MetaDataList, React, f, t;
 
 React = require('react');
@@ -6505,7 +6544,8 @@ module.exports = React.createClass({
         "title": textProps.title,
         "subtitle": textProps.subtitle,
         "mediaUrl": get.url,
-        "metaData": get.index_meta_data
+        "metaData": this.props.indexMetaData,
+        "loadingMetadata": this.props.loadingMetadata
       });
     } else {
       return React.createElement(ResourceThumbnailRenderer, {

@@ -2819,7 +2819,7 @@ module.exports = React.createClass({
     }))));
   },
   render: function(arg) {
-    var imageUrl, innerImage, listsWithClasses, mediaType, mediaUrl, metaData, ref, resourceType, subtitle, title;
+    var imageUrl, innerImage, listsWithClasses, mediaType, mediaUrl, metaData, ref, resourceType, subtitle, thumbnailClass, title;
     ref = arg != null ? arg : this.props, resourceType = ref.resourceType, imageUrl = ref.imageUrl, mediaType = ref.mediaType, title = ref.title, subtitle = ref.subtitle, mediaUrl = ref.mediaUrl, metaData = ref.metaData;
     listsWithClasses = [];
     if (metaData) {
@@ -2853,6 +2853,7 @@ module.exports = React.createClass({
       "type": resourceType,
       "overrideClasses": 'ui-thumbnail-image'
     });
+    thumbnailClass = f.kebabCase(resourceType.replace(/Collection/, 'MediaSet'));
     return React.createElement("li", {
       "className": "ui-resource"
     }, React.createElement("div", {
@@ -2864,7 +2865,7 @@ module.exports = React.createClass({
     }, React.createElement("div", {
       "className": "ui-resource-thumbnail"
     }, React.createElement("div", {
-      "className": "ui-thumbnail media-set"
+      "className": c('ui-thumbnail', thumbnailClass)
     }, React.createElement(LevelUp, null), React.createElement("div", {
       "className": "ui-thumbnail-privacy"
     }, React.createElement("i", {
@@ -4356,13 +4357,17 @@ SideFilterFallback = function(arg) {
 };
 
 BoxTitleBar = function(arg) {
-  var centerActions, classes, heading, layouts, mods, ref1;
+  var centerActions, classes, heading, layouts, mods, ref1, style;
   ref1 = arg != null ? arg : this.props, heading = ref1.heading, centerActions = ref1.centerActions, layouts = ref1.layouts, mods = ref1.mods;
   classes = cx('ui-container inverted ui-toolbar pvx', mods);
+  style = {
+    minHeight: '1px'
+  };
   return React.createElement("div", {
     "className": classes
   }, React.createElement("h2", {
-    "className": 'ui-toolbar-header pls col2of6'
+    "className": 'ui-toolbar-header pls col2of6',
+    "style": style
   }, heading), React.createElement("div", {
     "className": 'col2of6',
     "style": {

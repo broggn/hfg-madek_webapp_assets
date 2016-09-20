@@ -17,7 +17,15 @@ app.extend({
   config: require('global').APP_CONFIG
 });
 
-ujs = [require('./ujs/hashviz.coffee'), require('./ujs/react.coffee')];
+ujs = [
+  require('./ujs/hashviz.coffee'), require('./ujs/react.coffee'), (function() {
+    return Array.prototype.slice.call(document.querySelectorAll('[data-confirm]')).map(function(node) {
+      return node.onclick = function() {
+        return confirm(node.dataset.confirm || 'Sind sie sicher?');
+      };
+    });
+  })
+];
 
 $(document).ready(function() {
   return each(ujs, function(init) {

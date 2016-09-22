@@ -284,6 +284,8 @@ de:
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_search: Suchen
   resource_select_collection_title: Zu Set hinzufügen/entfernen
+  resource_last_changes: Letzte Änderungen
+  resource_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
   resources_box_batch_actions_addtoset: Ausgewählte zu Set hinzufügen
   resources_box_batch_actions_delete: Ausgewählte löschen
   resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren

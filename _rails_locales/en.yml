@@ -282,6 +282,8 @@ en:
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
   resource_select_collection_title: Add to/remove from set
+  resource_last_changes: Last Changes
+  resource_last_changes_empty: No changes recorded yet.
   resources_box_batch_actions_addtoset: Add selected to Set
   resources_box_batch_actions_delete: Delete selected
   resources_box_batch_actions_edit: Edit MetaData

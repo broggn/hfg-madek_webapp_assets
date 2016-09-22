@@ -11468,7 +11468,7 @@ module.exports = React.createClass({
         case 'more_data':
           return React.createElement(TabContent, null, React.createElement("div", {
             "className": "bright pal rounded-bottom rounded-top-right ui-container"
-          }, React.createElement("div", {
+          }, (get.logged_in ? React.createElement("div", {
             "className": 'col1of3'
           }, React.createElement("div", {
             "className": 'ui-container prm'
@@ -11499,7 +11499,7 @@ module.exports = React.createClass({
               "mods": 'small',
               "list": list
             })));
-          }))))))), React.createElement("div", {
+          }))))))) : void 0), React.createElement("div", {
             "className": 'col2of3'
           }, React.createElement("div", {
             "className": "ui-container plm"

@@ -82,9 +82,9 @@ en:
   collection_was_favored: Set was added to favorites.
   collection_layout_save: Save layout
   collection_layout_saved: Layout saved
-  collection_sorting_created_at_asc: Sortieren nach Erstelldatum aufsteigend
-  collection_sorting_created_at_desc: Sortieren nach Erstelldatum absteigend
-  collection_sorting_title_asc: Sortieren nach Titel aufsteigend
+  collection_sorting_created_at_asc: Sortieren nach Importierdatum aufsteigend
+  collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
+  collection_sorting_title_asc: Sortieren nach Titel alphabetisch
   collection_sorting_title_desc: Sortieren nach Titel absteigend
   dashboard_create_collection_btn: Create Set
   dashboard_create_collection: Create set

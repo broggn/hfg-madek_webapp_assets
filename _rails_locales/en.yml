@@ -121,8 +121,6 @@ en:
   group_was_deleted: Work group has been deleted.
   home_page_new_contents: New Contents
   internal_groups: Work groups
-  login_box_author: ''
-  login_box_cite: The Media Archive of the Arts is ZHdK’s plattform for collaborative working with media.
   login_box_external: ZHdK Login
   login_box_hint_first_line: For using of all function and access to more content.
   login_box_hint_second_line: ''
@@ -130,7 +128,6 @@ en:
   login_box_login_btn: Log In
   login_box_password: Password
   login_box_rememberme: remember me
-  login_box_title: Digital Area ZHdK
   login_box_username: Username
   media_entry_all_metadata_title: All Metadata by Vocabulary
   media_entry_ask_delete_question_pre: 'Are you sure that you want to delete the following media entry:'

@@ -658,6 +658,8 @@ module.exports = Model.extend(RailsResource, {
 
 
 },{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":17,"active-lodash":23,"ampersand-model":165,"xhr":301}],16:[function(require,module,exports){
+'use strict';
+
 // get the mediaType from the contentType
 
 // NOTE: Careful! "mediaType" is just Madek-internal definition
@@ -665,25 +667,26 @@ module.exports = Model.extend(RailsResource, {
 // - for client-side, logic is copied to here
 // - therefore, keep in sync with `datalayer/app/models/concerns/media_type.rb`
 
-module.exports = function mediaTypeFromContentType (contentType) {
+module.exports = function mediaTypeFromContentType(contentType) {
   if (/^image/.test(contentType)) {
-    return 'image'
+    return 'image';
   }
   if (/^video/.test(contentType)) {
-    return 'video'
+    return 'video';
   }
   if (/^audio/.test(contentType)) {
-    return 'audio'
+    return 'audio';
   }
   if (/^text/.test(contentType)) {
-    return 'document'
+    return 'document';
   }
-  if (/^application/.test(contentType)) { // FIXME: shouldn't this only match PDF?
-    return 'document'
+  if (/^application/.test(contentType)) {
+    // FIXME: shouldn't this only match PDF?
+    return 'document';
   }
   // fallback
-  return 'other'
-}
+  return 'other';
+};
 
 },{}],17:[function(require,module,exports){
 var getRailsCSRFToken;

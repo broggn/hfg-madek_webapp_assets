@@ -2574,6 +2574,7 @@ MetaDatumFormItem = React.createClass({
       "metaKey": datum.meta_key,
       "contextKey": null
     }), React.createElement(InputMetaDatum, {
+      "id": datum.meta_key.uuid,
       "name": new_name,
       "get": copy
     }));
@@ -4810,7 +4811,7 @@ module.exports = React.createClass({
     }
   },
   render: function(arg) {
-    var batchConflict, className, error, meta_key, name, newget, ref, style, validErr;
+    var batchConflict, className, error, inputID, meta_key, name, newget, ref, style, validErr;
     ref = arg != null ? arg : this.props, name = ref.name, error = ref.error;
     if (this.props.batch) {
       name += "[" + this.props.metaKeyId + "][values][]";
@@ -4838,6 +4839,7 @@ module.exports = React.createClass({
     }, {
       'highlight': batchConflict
     });
+    inputID = f.get(this.props, 'contextKey.uuid') || this.props.metaKeyId;
     return React.createElement("fieldset", {
       "style": style,
       "className": className
@@ -4854,10 +4856,10 @@ module.exports = React.createClass({
       "contextKey": this.props.contextKey,
       "mandatory": this.props.requiredMetaKeyIds[this.props.metaKeyId]
     }), React.createElement(InputMetaDatum, {
+      "id": inputID,
       "onChange": this._onChange,
       "name": name,
-      "get": newget,
-      "contextKey": this.props.contextKey
+      "get": newget
     }));
   }
 });
@@ -5353,6 +5355,7 @@ MetaDatumFormItem = React.createClass({
       "metaKey": get.meta_key,
       "contextKey": null
     }), React.createElement(InputMetaDatum, {
+      "id": get.meta_key.uuid,
       "name": name,
       "get": get
     }));
@@ -8124,6 +8127,7 @@ InputText = require('./forms/input-text.cjsx');
 module.exports = React.createClass({
   displayName: 'InputMetaDatum',
   propTypes: {
+    id: React.PropTypes.string.isRequired,
     name: React.PropTypes.string.isRequired,
     get: MadekPropTypes.metaDatum.isRequired
   },
@@ -8140,8 +8144,8 @@ module.exports = React.createClass({
     });
   },
   render: function(arg, state) {
-    var InputForType, get, multiple, name, ref, resourceType, values;
-    ref = arg != null ? arg : this.props, get = ref.get, name = ref.name;
+    var InputForType, get, id, multiple, name, ref, resourceType, values;
+    ref = arg != null ? arg : this.props, get = ref.get, id = ref.id, name = ref.name;
     if (state == null) {
       state = this.state;
     }
@@ -8161,6 +8165,7 @@ module.exports = React.createClass({
     return React.createElement(InputForType, {
       "onChange": this.props.onChange,
       "get": get,
+      "id": id,
       "name": name,
       "active": state.isClient,
       "multiple": multiple,

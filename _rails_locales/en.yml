@@ -204,6 +204,13 @@ en:
   meta_data_input_new_group_add: Add Work Group
   meta_data_input_new_person_add: Add Person
   meta_data_input_new_person_toggle: Add new Person or Work Group
+  meta_data_input_date_type_text: Free-text entry
+  meta_data_input_date_placeholder_text: Free-text entry
+  meta_data_input_date_type_timestamp: 'on'
+  meta_data_input_date_placeholder_timestamp: 'on'
+  meta_data_input_date_type_duration: from/to
+  meta_data_input_date_placeholder_duration_from: from
+  meta_data_input_date_placeholder_duration_to: to
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value

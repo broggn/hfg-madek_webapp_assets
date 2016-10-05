@@ -20,6 +20,7 @@ en:
       group:
         update: Update group
         create: Create group
+  '': ''
   app_confirm_form_leave_msg: 'Please confirm that you want to leave this page – entered data might not be saved!'
   app_notice_logged_out: You have logged out.
   app_warning_jsonly: "This feature needs Javascript, but it's not activated!"

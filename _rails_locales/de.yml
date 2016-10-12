@@ -22,7 +22,6 @@ de:
       meta_data_update:
         success: 'Metadaten von %{resource_name} wurden gespeichert.'
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
-  '': ''
   app_confirm_form_leave_msg: 'Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten – Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.'
   app_notice_logged_out: Sie haben sich abgemeldet.
   app_warning_jsonly: 'Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert!'
@@ -51,6 +50,8 @@ de:
   collection_edit_highlights_title: Inhalte hervorheben
   collection_edit_permissions_btn: Speichern
   collection_highlighted_contents: Hervorgehobene Inhalte
+  collection_layout_save: Darstellung festlegen
+  collection_layout_saved: Darstellung gespeichert
   collection_media_resources_title: 'Medieneintrag im Set:'
   collection_meta_data_header_prefix: 'Set editieren: '
   collection_new_cancel: Abbrechen
@@ -80,15 +81,13 @@ de:
   collection_resource_selection_h_title: Titel
   collection_resource_selection_save: Auswahl speichern
   collection_select_collection_flash_result: 'Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.'
-  collection_tab_main: Set
-  collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
-  collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
-  collection_layout_save: Darstellung festlegen
-  collection_layout_saved: Darstellung gespeichert
   collection_sorting_created_at_asc: Sortieren nach Importierdatum aufsteigend
   collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
   collection_sorting_title_asc: Sortieren nach Titel alphabetisch
   collection_sorting_title_desc: Sortieren nach Titel absteigend
+  collection_tab_main: Set
+  collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
+  collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
@@ -204,16 +203,16 @@ de:
   meta_data_form_save: Speichern
   meta_data_form_submit_btn: Speichern
   meta_data_header_text: Werte
+  meta_data_input_date_placeholder_duration_from: von
+  meta_data_input_date_placeholder_duration_to: bis
+  meta_data_input_date_placeholder_text: Freie Eingabe
+  meta_data_input_date_placeholder_timestamp: wird als Text gespeichert
+  meta_data_input_date_type_duration: von/bis
+  meta_data_input_date_type_text: Freie Eingabe
+  meta_data_input_date_type_timestamp: am
   meta_data_input_new_group_add: Arbeitsgruppe einfügen
   meta_data_input_new_person_add: Person einfügen
   meta_data_input_new_person_toggle: Neue Person oder Arbeitsgruppe einfügen
-  meta_data_input_date_type_text: Freie Eingabe
-  meta_data_input_date_placeholder_text: Freie Eingabe
-  meta_data_input_date_type_timestamp: am
-  meta_data_input_date_placeholder_timestamp: wird als Text gespeichert
-  meta_data_input_date_type_duration: von/bis
-  meta_data_input_date_placeholder_duration_from: von
-  meta_data_input_date_placeholder_duration_to: bis
   meta_data_meta_key_label: Schlüssel
   meta_data_type_label: Typ
   meta_data_value_label: Wert
@@ -269,6 +268,8 @@ de:
   resource_ask_delete_cancel: Abbrechen
   resource_ask_delete_ok: Löschen
   resource_ask_delete_question_post: '?'
+  resource_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
+  resource_last_changes: Letzte Änderungen
   resource_meta_data_copyright_notice: Rechte am geistigen Eigentum
   resource_meta_data_date: Datierung
   resource_meta_data_description: Beschreibung
@@ -289,8 +290,6 @@ de:
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_search: Suchen
   resource_select_collection_title: Zu Set hinzufügen/entfernen
-  resource_last_changes: Letzte Änderungen
-  resource_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
   resources_box_batch_actions_addtoset: Ausgewählte zu Set hinzufügen
   resources_box_batch_actions_delete: Ausgewählte löschen
   resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren
@@ -308,33 +307,19 @@ de:
   sitemap_filter_sets: Filtersets
   sitemap_help: Support
   sitemap_media_entries: Medieneinträge
-  sitemap_my_archive_title: Mein Archiv
   sitemap_my_archive: Mein Archiv
-  sitemap_my_content_collections_title: Meine Sets
   sitemap_my_content_collections: Meine Sets
-  sitemap_my_content_filter_sets_title: Meine Filtersets
   sitemap_my_content_filter_sets: Meine Filtersets
-  sitemap_my_content_media_entries_title: Meine Medieneinträge
   sitemap_my_content_media_entries: Meine Medieneinträge
-  sitemap_my_entrusted_collections_title: Mir anvertraute Sets
   sitemap_my_entrusted_collections: Mir anvertraute Sets
-  sitemap_my_entrusted_filter_sets_title: Mir anvertraute Filtersets
   sitemap_my_entrusted_filter_sets: Mir anvertraute Filtersets
-  sitemap_my_entrusted_media_entries_title: Mir anvertraute Medieneinträge
   sitemap_my_entrusted_media_entries: Mir anvertraute Medieneinträge
-  sitemap_my_favorite_collections_title: Meine Favoriten (Sets)
   sitemap_my_favorite_collections: Meine Favoriten (Sets)
-  sitemap_my_favorite_filter_sets_title: Meine Favoriten (Filtersets)
   sitemap_my_favorite_filter_sets: Meine Favoriten (Filtersets)
-  sitemap_my_favorite_media_entries_title: Meine Favoriten (Medieneinträge)
   sitemap_my_favorite_media_entries: Meine Favoriten (Medieneinträge)
-  sitemap_my_groups_title: Meine Arbeitsgruppen
   sitemap_my_groups: Meine Arbeitsgruppen
-  sitemap_my_latest_imports_title: Meine letzten Importe
   sitemap_my_latest_imports: Meine letzten Importe
-  sitemap_my_unpublished_title: Meine aktuellen Importe
-  sitemap_my_unpublished: Meine aktuellen Importe
-  sitemap_my_used_keywords_title: Meine Schlagworte
+  sitemap_my_unpublished: Meine Entwürfe
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
   usage_terms_accept_btn: Nutzungsbedingungen akzeptieren

@@ -20,7 +20,6 @@ en:
       group:
         update: Update group
         create: Create group
-  '': ''
   app_confirm_form_leave_msg: 'Please confirm that you want to leave this page – entered data might not be saved!'
   app_notice_logged_out: You have logged out.
   app_warning_jsonly: "This feature needs Javascript, but it's not activated!"
@@ -49,6 +48,8 @@ en:
   collection_edit_highlights_title: Highlight Items
   collection_edit_permissions_btn: Submit
   collection_highlighted_contents: Highlighted Contents
+  collection_layout_save: Save layout
+  collection_layout_saved: Layout saved
   collection_media_resources_title: 'Media Entries in Sets:'
   collection_meta_data_header_prefix: 'Edit Set:'
   collection_new_cancel: Cancel
@@ -78,15 +79,13 @@ en:
   collection_resource_selection_h_title: Title
   collection_resource_selection_save: Save selection
   collection_select_collection_flash_result: 'Removed set from %{removed_count} set(s). Added set to %{added_count} set(s).'
-  collection_tab_main: Set
-  collection_was_disfavored: Set was removed from favorites.
-  collection_was_favored: Set was added to favorites.
-  collection_layout_save: Save layout
-  collection_layout_saved: Layout saved
   collection_sorting_created_at_asc: Sortieren nach Importierdatum aufsteigend
   collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
   collection_sorting_title_asc: Sortieren nach Titel alphabetisch
   collection_sorting_title_desc: Sortieren nach Titel absteigend
+  collection_tab_main: Set
+  collection_was_disfavored: Set was removed from favorites.
+  collection_was_favored: Set was added to favorites.
   dashboard_create_collection_btn: Create Set
   dashboard_create_collection: Create set
   dashboard_create_media_entry_btn: Upload Media
@@ -202,16 +201,16 @@ en:
   meta_data_form_save: Save
   meta_data_form_submit_btn: Submit
   meta_data_header_text: Values
+  meta_data_input_date_placeholder_duration_from: from
+  meta_data_input_date_placeholder_duration_to: to
+  meta_data_input_date_placeholder_text: Free-text entry
+  meta_data_input_date_placeholder_timestamp: 'on'
+  meta_data_input_date_type_duration: from/to
+  meta_data_input_date_type_text: Free-text entry
+  meta_data_input_date_type_timestamp: 'on'
   meta_data_input_new_group_add: Add Work Group
   meta_data_input_new_person_add: Add Person
   meta_data_input_new_person_toggle: Add new Person or Work Group
-  meta_data_input_date_type_text: Free-text entry
-  meta_data_input_date_placeholder_text: Free-text entry
-  meta_data_input_date_type_timestamp: 'on'
-  meta_data_input_date_placeholder_timestamp: 'on'
-  meta_data_input_date_type_duration: from/to
-  meta_data_input_date_placeholder_duration_from: from
-  meta_data_input_date_placeholder_duration_to: to
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value
@@ -267,6 +266,8 @@ en:
   resource_ask_delete_cancel: Cancel
   resource_ask_delete_ok: Delete
   resource_ask_delete_question_post: '?'
+  resource_last_changes_empty: No changes recorded yet.
+  resource_last_changes: Last Changes
   resource_meta_data_copyright_notice: Copyright notice
   resource_meta_data_date: Date
   resource_meta_data_description: Description
@@ -287,8 +288,6 @@ en:
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
   resource_select_collection_title: Add to/remove from set
-  resource_last_changes: Last Changes
-  resource_last_changes_empty: No changes recorded yet.
   resources_box_batch_actions_addtoset: Add selected to Set
   resources_box_batch_actions_delete: Delete selected
   resources_box_batch_actions_edit: Edit MetaData
@@ -306,33 +305,19 @@ en:
   sitemap_filter_sets: Filter sets
   sitemap_help: Support
   sitemap_media_entries: Media Entries
-  sitemap_my_archive_title: My Archive
   sitemap_my_archive: My archive
-  sitemap_my_content_collections_title: My Sets
   sitemap_my_content_collections: My sets
-  sitemap_my_content_filter_sets_title: My Filter Sets
   sitemap_my_content_filter_sets: My filter sets
-  sitemap_my_content_media_entries_title: My Media Entries
   sitemap_my_content_media_entries: My media entries
-  sitemap_my_entrusted_collections_title: My Entrusted Sets
   sitemap_my_entrusted_collections: My entrusted sets
-  sitemap_my_entrusted_filter_sets_title: My Entrusted Filter Sets
   sitemap_my_entrusted_filter_sets: My entrusted filter sets
-  sitemap_my_entrusted_media_entries_title: My Entrusted Media Entries
   sitemap_my_entrusted_media_entries: My entrusted media entries
-  sitemap_my_favorite_collections_title: My Favorites (Sets)
   sitemap_my_favorite_collections: My favorites (sets)
-  sitemap_my_favorite_filter_sets_title: My Favorites (Filter Sets)
   sitemap_my_favorite_filter_sets: My favorites (filter sets)
-  sitemap_my_favorite_media_entries_title: My Favorites (Media Entries)
   sitemap_my_favorite_media_entries: My favorites (media entries)
-  sitemap_my_groups_title: My Work Groups
   sitemap_my_groups: My work groups
-  sitemap_my_latest_imports_title: My Latest Uploads
   sitemap_my_latest_imports: My latest uploads
-  sitemap_my_unpublished_title: My Current Uploads
-  sitemap_my_unpublished: My current uploads
-  sitemap_my_used_keywords_title: My Keywords
+  sitemap_my_unpublished: My drafts
   sitemap_my_used_keywords: My keywords
   sitemap_search: Search
   usage_terms_accept_btn: Accept usage terms

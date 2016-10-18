@@ -4018,6 +4018,7 @@ module.exports = React.createClass({
           "mods": toolbarClasses,
           "layouts": layouts,
           "centerActions": centerActions,
+          "showSort": (_this.props.loadChildMediaResources ? true : void 0),
           "onSortItemClick": onSortItemClick,
           "dropdownItems": dropdownItems,
           "selectedSort": order
@@ -4383,8 +4384,8 @@ SideFilterFallback = function(arg) {
 };
 
 BoxTitleBar = function(arg) {
-  var centerActions, classes, dropdownItems, heading, layouts, mods, onSortItemClick, ref1, selectedSort, style;
-  ref1 = arg != null ? arg : this.props, heading = ref1.heading, centerActions = ref1.centerActions, layouts = ref1.layouts, mods = ref1.mods, onSortItemClick = ref1.onSortItemClick, dropdownItems = ref1.dropdownItems, selectedSort = ref1.selectedSort;
+  var centerActions, classes, dropdownItems, heading, layouts, mods, onSortItemClick, ref1, selectedSort, showSort, style;
+  ref1 = arg != null ? arg : this.props, heading = ref1.heading, centerActions = ref1.centerActions, layouts = ref1.layouts, mods = ref1.mods, showSort = ref1.showSort, onSortItemClick = ref1.onSortItemClick, dropdownItems = ref1.dropdownItems, selectedSort = ref1.selectedSort;
   style = {
     minHeight: '1px'
   };
@@ -4422,11 +4423,11 @@ BoxTitleBar = function(arg) {
       "i": layout.icon,
       "title": layout.title
     }));
-  })), React.createElement(SortDropdown, {
+  })), (showSort ? React.createElement(SortDropdown, {
     "items": dropdownItems,
     "selectedKey": selectedSort,
     "onItemClick": onSortItemClick
-  })));
+  }) : void 0)));
 };
 
 PaginationNavFallback = function(arg) {

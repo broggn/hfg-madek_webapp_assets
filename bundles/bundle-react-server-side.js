@@ -6928,14 +6928,7 @@ module.exports = React.createClass({
   render: function(arg) {
     var modalTitle, onModalCancel, onModalOk, ref, resourceType, type;
     ref = arg != null ? arg : this.props, resourceType = ref.resourceType, onModalOk = ref.onModalOk, onModalCancel = ref.onModalCancel, modalTitle = ref.modalTitle;
-    type = (function() {
-      switch (resourceType) {
-        case 'Collection':
-          return 'collection';
-        case 'MediaEntry':
-          return 'media_entry';
-      }
-    })();
+    type = f.snakeCase(resourceType);
     return React.createElement(AskModal, {
       "title": t(type + '_ask_delete_title'),
       "onCancel": onModalCancel,
@@ -10729,8 +10722,9 @@ module.exports = React.createClass({
     };
   },
   render: function(arg) {
-    var authToken, get, ref;
+    var authToken, get, ref, type;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
+    type = f.snakeCase(get.type);
     return React.createElement(Modal, {
       "widthInPixel": '400'
     }, React.createElement(RailsForm, {
@@ -10756,14 +10750,14 @@ module.exports = React.createClass({
       "className": 'icon-close'
     })), React.createElement("h3", {
       "className": 'title-l'
-    }, t(get.type_underscore + '_ask_delete_title'))), React.createElement("div", {
+    }, t(type + '_ask_delete_title'))), React.createElement("div", {
       "className": 'ui-modal-body',
       "style": {
         maxHeight: 'none'
       }
     }, React.createElement("p", {
       "className": "pam by-center"
-    }, t(get.type_underscore + '_ask_delete_question_pre'), React.createElement("strong", null, get.title), t('resource_ask_delete_question_post'))), React.createElement("div", {
+    }, t(type + '_ask_delete_question_pre'), React.createElement("strong", null, get.title), t('resource_ask_delete_question_post'))), React.createElement("div", {
       "className": "ui-modal-footer"
     }, React.createElement("div", {
       "className": "ui-actions"

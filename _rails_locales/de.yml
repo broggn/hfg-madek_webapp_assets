@@ -85,6 +85,7 @@ de:
   collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
   collection_sorting_title_asc: Sortieren nach Titel alphabetisch
   collection_sorting_title_desc: Sortieren nach Titel absteigend
+  collection_sorting_last_change: Sortieren nach letzter Änderung
   collection_tab_main: Set
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.

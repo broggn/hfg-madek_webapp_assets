@@ -5722,13 +5722,13 @@ module.exports = React.createClass({
     }
     className = null;
     if (!this.props.batch) {
-      className = get.resource_index.type === 'Collection' ? 'media-set ui-thumbnail' : 'image media-entry ui-thumbnail';
+      className = get.resource.type === 'Collection' ? 'media-set ui-thumbnail' : 'image media-entry ui-thumbnail';
     }
     title = null;
     if (this.props.batch) {
       title = t('meta_data_batch_title_pre') + get.batch_entries.length + t('meta_data_batch_title_post');
     } else {
-      if (get.type === 'Collection') {
+      if (get.resource.type === 'Collection') {
         title = t('collection_meta_data_header_prefix') + get.title;
       } else {
         title = t('media_entry_meta_data_header_prefix') + get.title;
@@ -5739,7 +5739,7 @@ module.exports = React.createClass({
       id: f.map(get.batch_entries, 'uuid'),
       return_to: get.return_to
     });
-    name = (f.snakeCase(get.type)) + "[meta_data]";
+    name = (f.snakeCase(get.resource.type)) + "[meta_data]";
     if (this.props.batch) {
       name = "media_entry[meta_data]";
     }
@@ -5814,14 +5814,14 @@ module.exports = React.createClass({
       "value": this.props.get.return_to
     }), React.createElement("div", {
       "className": "ui-container phl ptl"
-    }, (!this.props.batch ? (src = get.resource_index.image_url, alt = '', image = src ? React.createElement(Picture, {
+    }, (!this.props.batch ? (src = get.resource.image_url, alt = '', image = src ? React.createElement(Picture, {
       "mods": 'ui-thumbnail-image',
       "src": src,
       "alt": alt
     }) : React.createElement(ResourceIcon, {
-      "mediaType": get.resource_index.media_type,
       "thumbnail": true,
-      "type": get.type
+      "mediaType": get.resource.media_type,
+      "type": get.resource.type
     }), React.createElement("div", {
       "className": "app-body-sidebar table-cell ui-container table-side"
     }, React.createElement("ul", {
@@ -5847,20 +5847,13 @@ module.exports = React.createClass({
       "className": "ui-thumbnail-cell-image-holder"
     }, React.createElement("div", {
       "className": "ui-thumbnail-inner-image-holder"
-    }, image)))), (get.image_url ? React.createElement("a", {
-      "className": "ui-magnifier",
-      "href": get.image_url,
-      "id": "ui-image-zoom",
-      "target": "_blank"
-    }, React.createElement("div", {
-      "className": "icon-magnifier bright"
-    })) : void 0))), React.createElement("div", {
+    }, image)))))), React.createElement("div", {
       "className": "ui-thumbnail-meta"
     }, React.createElement("h3", {
       "className": "ui-thumbnail-meta-title"
-    }, get.resource_index.title), React.createElement("h4", {
+    }, get.resource.title), React.createElement("h4", {
       "className": "ui-thumbnail-meta-subtitle"
-    }, get.resource_index.subtitle))))))) : void 0), React.createElement("div", {
+    }, get.resource.subtitle))))))) : void 0), React.createElement("div", {
       "className": "app-body-content table-cell ui-container table-substance ui-container"
     }, React.createElement("div", {
       "className": (true ? 'active' : 'active tab-pane')
@@ -5940,7 +5933,7 @@ module.exports = React.createClass({
       "className": "ui-actions phl pbl mtl"
     }, React.createElement("a", {
       "className": "link weak",
-      "href": (get.return_to ? get.return_to : get.url)
+      "href": get.return_to || get.resource.url
     }, ' ' + t('meta_data_form_cancel') + ' '), React.createElement("button", {
       "className": "primary-button large",
       "type": "submit",
@@ -11244,7 +11237,7 @@ module.exports = React.createClass({
     }, React.createElement(ResourceThumbnail, {
       "authToken": authToken,
       "elm": 'li',
-      "get": get.resource_index,
+      "get": get,
       "style": {
         verticalAlign: 'top'
       }

@@ -10893,7 +10893,7 @@ classnames = require('classnames');
 module.exports = React.createClass({
   displayName: 'CollectionDetailAdditional',
   _loadChildMediaResources: function(itemKey, callback) {
-    var get, listParam, sparseParam, url, urlBase;
+    var get, listParam, sparseParam, url;
     get = this.props.get;
     sparseParam = {
       ___sparse: {
@@ -10905,16 +10905,7 @@ module.exports = React.createClass({
         order: itemKey
       }
     };
-    urlBase = (function() {
-      if (get.type === 'Collection') {
-        return '/sets';
-      } else if (get.type === 'MediaEntry') {
-        return '/entries';
-      } else {
-        throw new Error('Unknown resource type for loading meta data: ' + get.type);
-      }
-    })();
-    url = setUrlParams(urlBase + '/' + get.uuid + '.json', sparseParam, listParam);
+    url = setUrlParams(get.url + '.json', sparseParam, listParam);
     return LoadXhr({
       method: 'GET',
       url: url

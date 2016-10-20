@@ -12966,6 +12966,9 @@ module.exports = React.createClass({
             });
           }
         } else {
+          if (_this.props.onClose) {
+            _this.props.onClose();
+          }
           forward_url = json['forward_url'];
           return window.location = forward_url;
         }

@@ -133,22 +133,23 @@ module.exports = {
     sibling_collections: ['object']
   },
   fetchRelations: function(type, callback) {
-    var relType, relTypes, relationsUrl, sparseSpec, validTypes;
+    var jsonPath, modelAttr, ref, relationsUrl, sparseSpec, subPath, supportedRelations, validTypes;
     validTypes = ['parent', 'sibling', 'child'];
     if (!f.include(validTypes, type)) {
       throw new Error('Invalid Relations type!');
     }
-    relTypes = {
-      parent: 'parent_collections',
-      sibling: 'sibling_collections',
-      child: 'child_media_resources'
+    supportedRelations = {
+      parent: ['relations', 'relations.parent_collections'],
+      sibling: ['relations', 'relations.sibling_collections'],
+      child: ['', 'child_media_resources']
     };
-    relType = relTypes[type];
-    if (f.present(this.get(relType))) {
+    ref = supportedRelations[type], subPath = ref[0], jsonPath = ref[1];
+    modelAttr = f.last(jsonPath.split('.'));
+    if (f.present(this.get(jsonPath))) {
       return;
     }
-    sparseSpec = '{"relations":{"' + relType + '":{}}}';
-    relationsUrl = buildUrl(f.merge(parseUrl(this.url), {
+    sparseSpec = JSON.stringify(f.set({}, jsonPath, {}));
+    relationsUrl = buildUrl(f.merge(parseUrl(this.url + '/' + subPath), {
       search: buildParams({
         list: {
           page: 1,
@@ -161,16 +162,17 @@ module.exports = {
       url: relationsUrl,
       json: true
     }, (function(_this) {
-      return function(err, res, data) {
+      return function(err, res, json) {
+        var data;
         if (err || res.statusCode >= 400) {
-          console.error('Error fetching relations!', err || data);
+          console.error('Error fetching relations!', err || json);
           if (f.isFunction(callback)) {
-            return callback(err || data);
+            return callback(err || json);
           }
         }
-        data = f.get(data, ['relations', relType]);
+        data = f.get(json, jsonPath);
         if (f.present(data)) {
-          _this.set(relType, data);
+          _this.set(modelAttr, data);
         }
         if (f.isFunction(callback)) {
           return callback(err, data);

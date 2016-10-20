@@ -665,7 +665,7 @@ CollectionChildren = AppCollection.extend({
 });
 
 CollectionChildren.Paginated = PaginatedCollection(CollectionChildren, {
-  jsonPath: 'relations.child_media_resources.resources'
+  jsonPath: 'child_media_resources.resources'
 });
 
 module.exports = CollectionChildren;
@@ -902,22 +902,23 @@ module.exports = {
     sibling_collections: ['object']
   },
   fetchRelations: function(type, callback) {
-    var relType, relTypes, relationsUrl, sparseSpec, validTypes;
+    var jsonPath, modelAttr, ref, relationsUrl, sparseSpec, subPath, supportedRelations, validTypes;
     validTypes = ['parent', 'sibling', 'child'];
     if (!f.include(validTypes, type)) {
       throw new Error('Invalid Relations type!');
     }
-    relTypes = {
-      parent: 'parent_collections',
-      sibling: 'sibling_collections',
-      child: 'child_media_resources'
+    supportedRelations = {
+      parent: ['relations', 'relations.parent_collections'],
+      sibling: ['relations', 'relations.sibling_collections'],
+      child: ['', 'child_media_resources']
     };
-    relType = relTypes[type];
-    if (f.present(this.get(relType))) {
+    ref = supportedRelations[type], subPath = ref[0], jsonPath = ref[1];
+    modelAttr = f.last(jsonPath.split('.'));
+    if (f.present(this.get(jsonPath))) {
       return;
     }
-    sparseSpec = '{"relations":{"' + relType + '":{}}}';
-    relationsUrl = buildUrl(f.merge(parseUrl(this.url), {
+    sparseSpec = JSON.stringify(f.set({}, jsonPath, {}));
+    relationsUrl = buildUrl(f.merge(parseUrl(this.url + '/' + subPath), {
       search: buildParams({
         list: {
           page: 1,
@@ -930,16 +931,17 @@ module.exports = {
       url: relationsUrl,
       json: true
     }, (function(_this) {
-      return function(err, res, data) {
+      return function(err, res, json) {
+        var data;
         if (err || res.statusCode >= 400) {
-          console.error('Error fetching relations!', err || data);
+          console.error('Error fetching relations!', err || json);
           if (f.isFunction(callback)) {
-            return callback(err || data);
+            return callback(err || json);
           }
         }
-        data = f.get(data, ['relations', relType]);
+        data = f.get(json, jsonPath);
         if (f.present(data)) {
-          _this.set(relType, data);
+          _this.set(modelAttr, data);
         }
         if (f.isFunction(callback)) {
           return callback(err, data);
@@ -10902,9 +10904,7 @@ module.exports = React.createClass({
     get = this.props.get;
     sparseParam = {
       ___sparse: {
-        relations: {
-          child_media_resources: {}
-        }
+        child_media_resources: {}
       }
     };
     listParam = {
@@ -10926,7 +10926,7 @@ module.exports = React.createClass({
       method: 'GET',
       url: url
     }, function(result, json) {
-      return callback(json.relations.child_media_resources);
+      return callback(json.child_media_resources);
     });
   },
   render: function(arg) {
@@ -10936,7 +10936,7 @@ module.exports = React.createClass({
       "className": "ui-container rounded-bottom"
     }, React.createElement(MediaResourcesBox, {
       "withBox": true,
-      "get": get.relations.child_media_resources,
+      "get": get.child_media_resources,
       "authToken": authToken,
       "initial": {
         show_filter: true
@@ -10987,7 +10987,7 @@ module.exports = React.createClass({
   render: function(arg) {
     var authToken, get, overview, ref, summary_context;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    summary_context = get.meta_data.collection_summary_context;
+    summary_context = get.summary_meta_data;
     overview = {
       content: React.createElement(MetaDataList, {
         "list": summary_context,
@@ -12075,7 +12075,7 @@ module.exports = React.createClass({
           }, React.createElement("div", {
             "className": "ui-container plm"
           }, React.createElement(MetaDataByListing, {
-            "list": get.meta_data.by_vocabulary
+            "list": get.all_meta_data
           })))));
         case 'permissions':
           return React.createElement(TabContent, null, React.createElement("div", {

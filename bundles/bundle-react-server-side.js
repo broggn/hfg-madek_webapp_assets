@@ -5701,13 +5701,16 @@ module.exports = React.createClass({
       };
     })(this));
   },
-  _onClick: function(event) {
+  _onImplicitSumbit: function(event) {
+    return event.preventDefault();
+  },
+  _onExplicitSubmit: function(event) {
     event.preventDefault();
     this.submit(event.target.value);
     return false;
   },
   render: function(arg) {
-    var all_meta_key_ids, alt, authToken, cancelUrl, className, currentContext, currentContextId, disablePublish, disableSave, editByVocabTitle, editByVocabUrl, get, hidden_meta_key_ids, image, meta_data, meta_key_ids_in_current_context, name, published, ref, showPublish, src, title;
+    var all_meta_key_ids, alt, authToken, cancelUrl, className, currentContext, currentContextId, disablePublish, disableSave, editByVocabTitle, editByVocabUrl, get, hidden_meta_key_ids, image, meta_data, meta_key_ids_in_current_context, name, published, ref, showPublish, src, submitButtonType, title;
     ref = arg != null ? arg : this.props, get = ref.get, authToken = ref.authToken;
     if (get.meta_meta_data.meta_data_edit_context_ids.length === 0) {
       return React.createElement("div", {
@@ -5741,6 +5744,7 @@ module.exports = React.createClass({
     });
     name = this.props.batch ? "media_entry[meta_data]" : (f.snakeCase(get.resource.type)) + "[meta_data]";
     meta_data = get.meta_data;
+    submitButtonType = this.state.mounted ? 'button' : 'submit';
     disableSave = (this.state.saving || (this._validityForAll() === 'invalid' && this.props.get.published)) && this.state.mounted === true;
     disablePublish = this.state.saving || this._validityForAll() !== 'valid';
     showPublish = !this.props.get.published && this.state.mounted === true;
@@ -5803,6 +5807,7 @@ module.exports = React.createClass({
       "ref": 'form',
       "name": 'resource_meta_data',
       "action": this._actionUrl(),
+      "onSubmit": this._onImplicitSumbit,
       "method": 'put',
       "authToken": authToken
     }, React.createElement("input", {
@@ -5933,19 +5938,19 @@ module.exports = React.createClass({
       "href": get.return_to || get.resource.url
     }, ' ' + t('meta_data_form_cancel') + ' '), React.createElement("button", {
       "className": "primary-button large",
-      "type": "submit",
+      "type": submitButtonType,
       "name": 'actionType',
       "value": 'save',
-      "onClick": this._onClick,
+      "onClick": this._onExplicitSubmit,
       "disabled": disableSave
-    }, ' ' + t('meta_data_form_save') + ' '), (showPublish ? React.createElement("button", {
+    }, t('meta_data_form_save')), (showPublish ? React.createElement("button", {
       "className": 'primary-button large',
+      "type": submitButtonType,
       "name": 'actionType',
       "value": 'publish',
-      "type": 'submit',
-      "onClick": this._onClick,
+      "onClick": this._onExplicitSubmit,
       "disabled": disablePublish
-    }, " ", t('meta_data_form_publish'), " ") : void 0)))));
+    }, t('meta_data_form_publish')) : void 0)))));
   }
 });
 

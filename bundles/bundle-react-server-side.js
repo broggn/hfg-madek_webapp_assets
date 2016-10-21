@@ -6091,10 +6091,14 @@ PermissionsBySubjectType = React.createClass({
         "editing": editing
       });
     }))), (editing && permissionsList.isCollection ? React.createElement("div", {
-      "className": 'ui-add-subject ptx row'
+      "className": 'ui-add-subject ptx'
     }, React.createElement("div", {
-      "className": 'col1of3'
+      "className": 'col1of3',
+      "style": {
+        position: 'relative'
+      }
     }, (type != null ? React.createElement(AutoComplete, {
+      "className": 'block',
       "name": "add_" + type,
       "resourceType": type,
       "onSelect": this.onAddSubject,
@@ -7178,7 +7182,7 @@ callback = (data)-> alert(data.uuid)
 
 FIXME: fails if even required on server (jQuery)!
  */
-var PropTypes, React, ReactDOM, f, initTypeahead, jQuery, searchResources;
+var PropTypes, React, ReactDOM, cx, f, initTypeahead, jQuery, searchResources;
 
 React = require('react');
 
@@ -7187,6 +7191,8 @@ ReactDOM = require('react-dom');
 PropTypes = React.PropTypes;
 
 f = require('active-lodash');
+
+cx = require('classnames');
 
 jQuery = require('jquery');
 
@@ -7272,7 +7278,7 @@ module.exports = React.createClass({
     return React.createElement("input", {
       "ref": "InputField",
       "type": "text",
-      "className": className + ' typeahead',
+      "className": cx('typeahead', className),
       "defaultValue": value || '',
       "placeholder": placeholder || 'search…',
       "data-autocomplete-for": name
@@ -7281,7 +7287,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/search.coffee":7,"@eins78/typeahead.js/dist/typeahead.jquery.js":153,"active-lodash":155,"jquery":254,"react":850,"react-dom":684}],68:[function(require,module,exports){
+},{"../../lib/search.coffee":7,"@eins78/typeahead.js/dist/typeahead.jquery.js":153,"active-lodash":155,"classnames":184,"jquery":254,"react":850,"react-dom":684}],68:[function(require,module,exports){
 var buildPersonName, decorators, f;
 
 f = require('active-lodash');

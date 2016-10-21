@@ -8322,9 +8322,9 @@ module.exports = React.createClass({
     return $(form).serialize();
   },
   render: function(arg) {
-    var action, authToken, authTokenParam, children, emulateHTTP, formMethod, maybeAuthToken, method, name, onSubmit, ownProps, ref, restMethod, restProps;
-    ref = arg != null ? arg : this.props, name = ref.name, action = ref.action, method = ref.method, authToken = ref.authToken, onSubmit = ref.onSubmit, children = ref.children;
-    ownProps = ['name', 'action', 'method', 'authToken', 'onSubmit', 'children'];
+    var authToken, authTokenParam, children, emulateHTTP, formMethod, maybeAuthToken, method, name, ownProps, ref, restMethod, restProps;
+    ref = arg != null ? arg : this.props, name = ref.name, method = ref.method, authToken = ref.authToken, children = ref.children;
+    ownProps = ['name', 'method', 'authToken', 'children'];
     restProps = f.omit(this.props, ownProps);
     restMethod = (method || 'post').toLowerCase();
     emulateHTTP = !f.includes(['get', 'post'], restMethod);
@@ -8339,10 +8339,8 @@ module.exports = React.createClass({
     }
     return React.createElement("form", React.__spread({}, restProps, {
       "ref": 'form',
-      "onSubmit": onSubmit,
       "name": name,
       "method": formMethod,
-      "action": action,
       "className": ui.cx(ui.parseMods(this.props)),
       "acceptCharset": 'UTF-8'
     }), React.createElement("input", {

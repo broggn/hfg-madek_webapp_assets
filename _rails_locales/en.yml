@@ -135,6 +135,8 @@ en:
   media_entry_ask_delete_title: Delete Media Entry
   media_entry_back_btn: Back
   media_entry_conversion_hint: 'Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.'
+  media_entry_conversion_progress_post: '%'
+  media_entry_conversion_progress_pre: 'Conversion completed at '
   media_entry_conversion_reload: 'Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.'
   media_entry_conversion_status_failed: The video conversion failed. Please contact support.
   media_entry_conversion_status_initialized: The media file is converting. Please try later.

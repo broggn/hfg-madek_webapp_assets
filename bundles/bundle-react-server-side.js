@@ -4362,6 +4362,9 @@ PageCounter = function(arg) {
   ref1 = arg != null ? arg : this.props, href = ref1.href, page = ref1.page, total = ref1.total;
   return React.createElement(Link, {
     "href": href,
+    "onClick": (function(e) {
+      return e.preventDefault();
+    }),
     "className": 'ui-resources-page-counter ui-pager small'
   }, "Seite ", page, " von ", total);
 };

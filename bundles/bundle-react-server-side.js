@@ -10951,7 +10951,7 @@ module.exports = React.createClass({
 
 
 },{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"xhr":860}],109:[function(require,module,exports){
-var Button, ButtonGroup, LoadXhr, MediaResourcesBox, React, ReactDOM, TabContent, classnames, f, libUrl, setUrlParams, t;
+var Button, ButtonGroup, LoadXhr, MediaResourcesBox, React, ReactDOM, TabContent, classnames, f, libUrl, qs, setUrlParams, t;
 
 React = require('react');
 
@@ -10977,22 +10977,21 @@ ButtonGroup = require('../../ui-components/ButtonGroup.cjsx');
 
 libUrl = require('url');
 
+qs = require('qs');
+
 module.exports = React.createClass({
   displayName: 'CollectionDetailAdditional',
   getInitialState: function() {
-    return {};
+    return {
+      forUrl: libUrl.format(this.props.get.child_media_resources.config.for_url)
+    };
   },
   componentDidMount: function() {
     this.router = require('../../../lib/router.coffee');
-    this.setState({
-      forUrl: this.props.get.child_media_resources.config.for_url
-    });
     this.unlistenRouter = this.router.listen((function(_this) {
       return function(location) {
-        var forUrl;
-        forUrl = libUrl.parse(libUrl.format(location));
         return _this.setState({
-          forUrl: forUrl
+          forUrl: libUrl.format(location)
         });
       };
     })(this));
@@ -11010,6 +11009,7 @@ module.exports = React.createClass({
       }
     };
     listParam = {
+      type: get.child_media_resources.config.for_url.query.type,
       list: {
         order: itemKey
       }
@@ -11029,7 +11029,7 @@ module.exports = React.createClass({
       return function() {
         var currentType, listConfig, typeBbtns;
         listConfig = get.child_media_resources.config;
-        currentType = listConfig.for_url.query.type;
+        currentType = qs.parse(libUrl.parse(_this.state.forUrl).query).type;
         typeBbtns = f.compact([
           {
             key: 'all',
@@ -11048,7 +11048,6 @@ module.exports = React.createClass({
           btnUrl = setUrlParams(_this.state.forUrl, {
             type: btn.key
           });
-          console.log('btnUrl', btnUrl, _this.state.forUrl);
           return React.createElement(Button, React.__spread({}, btn, {
             "onClick": _this._onResourceSwitch,
             "href": btnUrl,
@@ -11086,7 +11085,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/load-xhr.coffee":3,"../../../lib/router.coffee":6,"../../../lib/set-params-for-url.coffee":8,"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../ui-components/Button.cjsx":85,"../../ui-components/ButtonGroup.cjsx":86,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852,"react-dom":686,"url":857}],110:[function(require,module,exports){
+},{"../../../lib/load-xhr.coffee":3,"../../../lib/router.coffee":6,"../../../lib/set-params-for-url.coffee":8,"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../ui-components/Button.cjsx":85,"../../ui-components/ButtonGroup.cjsx":86,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"qs":538,"react":852,"react-dom":686,"url":857}],110:[function(require,module,exports){
 var MediaResourcesBox, MetaDataList, React, ReactDOM, ResourceShowOverview, SimpleResourceThumbnail, TabContent, classnames, f, t;
 
 React = require('react');

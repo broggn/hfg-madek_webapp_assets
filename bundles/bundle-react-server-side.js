@@ -3572,19 +3572,21 @@ module.exports = React.createClass({
       }
     }
   },
-  _tryLoadListMetadata: function(resourceType, resourceUuid) {
+  _tryLoadListMetadata: function(resource) {
+    var type, url, uuid;
+    type = resource.type, uuid = resource.uuid, url = resource.url;
     if (!this.state.loadingListMetadataResource) {
       this.setState({
-        loadingListMetadataResource: resourceUuid
+        loadingListMetadataResource: uuid
       });
       return LoadXhr({
         method: 'GET',
-        url: resourceType === 'Collection' ? '/sets/' + resourceUuid + '.json?___sparse={"meta_data":{}}' : resourceType === 'MediaEntry' ? '/entries/' + resourceUuid + '.json?___sparse={"meta_data":{}}' : console.error('Unknown resource type for loading meta data: ' + resourceType)
+        url: type === 'Collection' ? url + '.json?___sparse={"meta_data":{}}' : type === 'MediaEntry' ? url + '.json?___sparse={"meta_data":{}}' : console.error('Unknown resource type for loading meta data: ' + resourceType)
       }, (function(_this) {
         return function(result, json) {
-          _this.state.listMetadata[resourceUuid] = json.meta_data;
           return _this.setState({
-            loadingListMetadataResource: null
+            loadingListMetadataResource: null,
+            listMetadata: f.assign(_this.state.listMetadata, f.set({}, uuid, json.meta_data))
           });
         };
       })(this));
@@ -4318,7 +4320,7 @@ module.exports = React.createClass({
             listMetadata = _this.state.listMetadata[item.uuid];
             if (!listMetadata) {
               setTimeout(function() {
-                return _this._tryLoadListMetadata(item.type, item.uuid);
+                return _this._tryLoadListMetadata(item);
               }, 10);
             }
           }

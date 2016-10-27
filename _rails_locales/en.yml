@@ -67,8 +67,10 @@ en:
   collection_relations_no_child_sets: ' '
   collection_relations_no_parent_sets: ' '
   collection_relations_no_sibling_sets: ' '
+  collection_relations_show_all: Show all
   collection_relations_parent_sets: Parent sets
   collection_relations_sibling_sets: Sibling sets
+  collection_relations_show_all_relations: Show all relations
   collection_resource_selection_cancel: Cancel
   collection_resource_selection_h_author: Author
   collection_resource_selection_h_date: Dating

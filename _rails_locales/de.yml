@@ -69,8 +69,10 @@ de:
   collection_relations_no_child_sets: ' '
   collection_relations_no_parent_sets: ' '
   collection_relations_no_sibling_sets: ' '
+  collection_relations_show_all: Alle anzeigen
   collection_relations_parent_sets: Übergeordnete Sets
   collection_relations_sibling_sets: Benachbarte Sets
+  collection_relations_show_all_relations: Alle Zusammenhänge anzeigen
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_h_author: Autor/in
   collection_resource_selection_h_date: Datierung

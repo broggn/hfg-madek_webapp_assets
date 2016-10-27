@@ -9974,7 +9974,7 @@ module.exports = React.createClass({
     right: React.PropTypes.node
   },
   render: function(props) {
-    var classes, firstColClass, lastColClass, left, middle, middleColClass, ref1, restProps, right;
+    var classes, firstColClass, lastColClass, left, middle, middleColClass, ref1, restProps, right, setminHeight;
     if (props == null) {
       props = this.props;
     }
@@ -9985,25 +9985,22 @@ module.exports = React.createClass({
     }
     classes = cx('ui-filterbar ui-container separated', parseMods(this.props));
     firstColClass = 'col2of6 left';
-    middleColClass = cx('by-center', {
-      'col6of6': !left && !right,
-      'col4of6': !left && right,
-      'col2of6': (left && right) || (left && !right)
-    });
-    lastColClass = cx('by-right', {
-      'col6of6': !left && !middle,
-      'col4of6': (left && !middle) || (!left && middle),
-      'col2of6': left && middle
-    });
+    middleColClass = 'by-center col2of6';
+    lastColClass = 'by-right col2of6';
+    setminHeight = {
+      style: {
+        minHeight: '1px'
+      }
+    };
     return React.createElement("div", React.__spread({}, restProps, {
       "className": classes
-    }), React.createElement("div", {
+    }), React.createElement("div", React.__spread({}, setminHeight, {
       "className": firstColClass
-    }, left), React.createElement("div", {
+    }), left), React.createElement("div", React.__spread({}, setminHeight, {
       "className": middleColClass
-    }, middle), React.createElement("div", {
+    }), middle), React.createElement("div", React.__spread({}, setminHeight, {
       "className": lastColClass
-    }, right));
+    }), right));
   }
 });
 

@@ -354,7 +354,7 @@ resourcesConfig = {
   }
 };
 
-module.exports = function(resourceType, parameters) {
+module.exports = function(resourceType, parameters, localData) {
   var baseConfig, missing;
   if (parameters == null) {
     parameters = null;
@@ -372,7 +372,7 @@ module.exports = function(resourceType, parameters) {
     name: resourceType + "Search",
     key: baseConfig.key || 'name',
     displayKey: baseConfig.displayKey || baseConfig.key || 'name',
-    source: BloodhoundFactory(baseConfig, parameters),
+    source: BloodhoundFactory(baseConfig, parameters, localData),
     limit: 100
   };
 };
@@ -381,13 +381,12 @@ tokenizer = function(string) {
   return Bloodhound.tokenizers.whitespace(f.trim(string));
 };
 
-BloodhoundFactory = function(config, parameters) {
-  if (parameters == null) {
-    parameters = null;
-  }
-  return new Bloodhound({
+BloodhoundFactory = function(config, parameters, localData) {
+  var engine;
+  engine = new Bloodhound({
     datumTokenizer: tokenizer,
     queryTokenizer: tokenizer,
+    local: localData,
     remote: {
       wildcard: '__QUERY__',
       url: url.format({
@@ -398,6 +397,17 @@ BloodhoundFactory = function(config, parameters) {
       })
     }
   });
+  if (!localData) {
+    return engine;
+  } else {
+    return function(query, callback) {
+      if (query === '') {
+        return callback(engine.all());
+      } else {
+        return engine.search(query, callback);
+      }
+    };
+  }
 };
 
 
@@ -511,7 +521,7 @@ var parseTranslationsFromCSV = require('./parse-translations-from-csv');
 
 // NOTE: this works with browserify and the 'brfs' transform (embeds as string)
 var path = require('path');
-var translationsCSVText = "key,de,en,comment\r\n,,,\r\napp_confirm_form_leave_msg,\"Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten – Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.\",Please confirm that you want to leave this page – entered data might not be saved!,NOTE: German version copied from Firefox default message\r\napp_notice_logged_out,Sie haben sich abgemeldet.,You have logged out.,\r\napp_warning_jsonly,\"Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert!\",\"This feature needs Javascript, but it's not activated!\",\r\nauthentication_groups,Systemgruppen,System Groups,\r\nbatch_add_to_collection_hint,Nach Sets suchen, zu denen Sie die Medieneinträge hinzufügen möchten.,Seach for sets to add media entries.\r\nbatch_add_to_collection_post, Medieneinträge zu Set hinzufügen, media entries to set,\r\nbatch_add_to_collection_pre, , Add ,\r\nbatch_meta_data_edit,Metadaten für %{media_entry_count} Medieneinträge gleichzeitig editieren,Edit metadata for %{media_entry_count} media entries at once.,TODO_cleanup_interpolation\r\nbatch_remove_from_collection_cancel,Abbrechen,Cancel,\r\nbatch_remove_from_collection_question_part_1,Möchten Sie die ausgewählten ,Do you want to remove the selected ,\r\nbatch_remove_from_collection_question_part_2, Medieneinträge und , media entries and ,\r\nbatch_remove_from_collection_question_part_3, Sets aus dem Set entfernen?, sets from this set?,\r\nbatch_remove_from_collection_remove,Entfernen,Remove,\r\nbatch_remove_from_collection_title,Medieinträge/Sets aus Set entfernen,Remove media entries/sets from sets,\r\nbtn_delete_confirm_msq,\"Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?\",Are you sure you want to delete this item?,\r\nbtn_delete_text,Löschen,Delete,\r\nbtn_publish_confirm_msg,\"Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?\",Are you sure you want to publish this item?,\r\nbtn_publish_text,Speichern,Save,\r\ncollection_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgendes Set löschen möchten: \",Are you sure that you want to delete the following set:,\r\ncollection_ask_delete_title,Set löschen,Delete Set,\r\ncollection_delete_success,Set wurde gelöscht.,Set deleted.,\r\ncollection_edit_cover_submit_btn,Auswahl speichern,Submit,\r\ncollection_edit_cover_submit_btn,Speichern,Submit,\r\ncollection_edit_cover_title,Titelbild für Set festlegen,Define Set Cover,\r\ncollection_edit_highlights_btn,Auswahl speichern,Submit,\r\ncollection_edit_highlights_btn,Bearbeiten,Edit,\r\ncollection_edit_highlights_empty,Dieses Set hat noch keine Inhalte.,Dieses Set hat noch keine Inhalte.,\r\ncollection_edit_highlights_title,Inhalte hervorheben,Highlight Items,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_highlighted_contents,Hervorgehobene Inhalte,Highlighted Contents,\r\ncollection_layout_save,Darstellung festlegen,Save layout,\r\ncollection_layout_saved,Darstellung gespeichert,Layout saved,\r\ncollection_media_resources_title,Medieneintrag im Set:,Media Entries in Sets:,\r\ncollection_meta_data_header_prefix,Set editieren: ,Edit Set:,\r\ncollection_new_cancel,Abbrechen,Cancel,\r\ncollection_new_create_set,Set erstellen,Create Set,\r\ncollection_new_dialog_title,Set erstellen,Create Set,\r\ncollection_new_flash_successful,Set wurde erstellt.,Set was created.,\r\ncollection_new_flash_title_needed,Titel ist ein Pflichtfeld.,Title is a mandatory field.,\r\ncollection_new_header,Neues Set,Create Set,\r\ncollection_new_label_title,Titel,Title,\r\ncollection_permissions_btn,Zugriffsberechtigungen ändern,Change Permissions,\r\ncollection_relations_child_sets,Untergeordnete Sets,Child sets,\r\ncollection_relations_current_media_entry,Aktueller Eintrag,Current entry,\r\ncollection_relations_current_set,Aktuelles Set,Current set,\r\ncollection_relations_hint_text,\"Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.\",\"Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.\",\r\ncollection_relations_no_child_sets, , ,\r\ncollection_relations_no_parent_sets, , ,\r\ncollection_relations_no_sibling_sets, , ,\r\ncollection_relations_show_all,Alle anzeigen,Show all,\r\ncollection_relations_parent_sets,Übergeordnete Sets,Parent sets,\r\ncollection_relations_sibling_sets,Benachbarte Sets,Sibling sets,\r\ncollection_relations_show_all_relations,Alle Zusammenhänge anzeigen,Show all relations,\r\ncollection_resource_selection_cancel,Abbrechen,Cancel,\r\ncollection_resource_selection_h_author,Autor/in,Author,\r\ncollection_resource_selection_h_date,Datierung,Dating,\r\ncollection_resource_selection_h_keywords,Schlagworte,Keywords,\r\ncollection_resource_selection_h_responsible,Rechteinhaber,Owner,\r\ncollection_resource_selection_h_selection,Auswahl,Selection,\r\ncollection_resource_selection_h_subtitle,Untertitel,Subtitle,\r\ncollection_resource_selection_h_title,Titel,Title,\r\ncollection_resource_selection_save,Auswahl speichern,Save selection,\r\ncollection_select_collection_flash_result,Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed set from %{removed_count} set(s). Added set to %{added_count} set(s).,TODO_cleanup_interpolation\r\ncollection_sorting_created_at_asc,Sortieren nach Importierdatum aufsteigend,Sortieren nach Importierdatum aufsteigend,\r\ncollection_sorting_created_at_desc,Sortieren nach Importierdatum absteigend,Sortieren nach Importierdatum absteigend,\r\ncollection_sorting_title_asc,Sortieren nach Titel alphabetisch,Sortieren nach Titel alphabetisch,\r\ncollection_sorting_title_desc,Sortieren nach Titel absteigend,Sortieren nach Titel absteigend,\r\ncollection_sorting_last_change,Sortieren nach letzter Änderung,Sortieren nach letzter Änderung,\r\ncollection_tab_main,Set,Set,\r\ncollection_was_disfavored,Das Set wurde von den Favoriten entfernt.,Set was removed from favorites.,\r\ncollection_was_favored,Das Set wurde zu den Favoriten hinzugefügt.,Set was added to favorites.,\r\ndashboard_create_collection_btn,Set erstellen,Create Set,\r\ndashboard_create_collection,Set erstellen,Create set,\r\ndashboard_create_media_entry_btn,Medien importieren,Upload Media,\r\ndashboard_title_head,Mein Archiv,My Archive,\r\ndashboard_welcome_msg,Willkommen im Medienarchiv der Künste!,Welcome to Madek!,\r\nexternal_groups,Abteilungsgruppen,Division groups,\r\ngroup_ask_delete_cancel,Abbrechen,Cancel,\r\ngroup_ask_delete_delete,Löschen,Delete,\r\ngroup_ask_delete_question_post, löschen?,?,\r\ngroup_ask_delete_question_pre,Möchten sie die Arbeitsgruppe ,Would you like to delete work group ,\r\ngroup_ask_delete_title,Arbeitsgruppe Löschen,Delete Work Group,\r\ngroup_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?\",Are you sure you want to delete this work group?,\r\ngroup_edit_at_least_one_member_delete,löschen,löschen,\r\ngroup_edit_at_least_one_member_post,.,.,\r\ngroup_edit_at_least_one_member_pre,Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe ,Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe ,\r\ngroup_edit_btn,Bearbeiten,Edit,\r\ngroup_edit_cancel,Abbrechen,Cancel,\r\ngroup_edit_form_new_member_login_hint,Login des neuen Mitglieds dieser Arbeitsgruppe,New work group member login,\r\ngroup_edit_form_new_member_login_label,User hinzufügen,Add a member,\r\ngroup_edit_form_save_btn,Speichern,Save,\r\ngroup_edit_form_title_pre,Arbeitsgruppe bearbeiten: ,Edit Work Group: ,\r\ngroup_edit_hint_remove_yourself,Achtung: Sie entfernen sich selbst aus der Arbeitsgruppe!,Attention: You are about to remove yourself from teh work group!,\r\ngroup_edit_member,Mitglieder,Members,\r\ngroup_edit_name,Name,Name,\r\ngroup_edit_person,Person,Person,\r\ngroup_edit_save,Speichern,Save,\r\ngroup_edit_username,Benutzername,Username,\r\ngroup_meta_data_institutional_group_name,Name der Abteilungsgruppe,Division group name,\r\ngroup_meta_data_name,Name,Name,\r\ngroup_new_form_title,Neue Arbeitsgruppe erstellen,Create Group,\r\ngroup_new_group_btn,Neue Arbeitsgruppe,New Work Group,\r\ngroup_toolbar_header_entrusted_resources,Mir anvertraute Medieneinträge,Entrusted Media Entries,\r\ngroup_was_deleted,Arbeitsgruppe wurde gelöscht.,Work group has been deleted.,\r\nhome_page_new_contents,Neue Inhalte,New Contents,\r\ninternal_groups,Arbeitsgruppen,Work groups,\r\nlogin_box_external,ZHdK-Login,ZHdK Login,\r\nlogin_box_hint_first_line,Alle Funktionen nutzen und auf mehr Inhalte zugreifen.,For using of all function and access to more content.,\r\nlogin_box_hint_second_line, ,,\r\nlogin_box_internal,Externe,External,\r\nlogin_box_login_btn,Anmelden,Log In,\r\nlogin_box_password,Passwort,Password,\r\nlogin_box_rememberme,Login merken,remember me,\r\nlogin_box_username,Benutzername,Username,\r\nmedia_entry_all_metadata_title,Alle MetaDaten nach Vokabularen,All Metadata by Vocabulary,\r\nmedia_entry_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgenden Medienintrag löschen möchten: \",Are you sure that you want to delete the following media entry:,\r\nmedia_entry_ask_delete_title,Medieneintrag löschen,Delete Media Entry,\r\nmedia_entry_back_btn,Zurück,Back,\r\nmedia_entry_conversion_hint,\"Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.\",\"Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.\",\r\nmedia_entry_conversion_progress_post,\"% abgeschlossen.\",\"%\",\r\nmedia_entry_conversion_progress_pre,\"Konvertierung zu \",\"Conversion completed at \",\r\nmedia_entry_conversion_reload,\"Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.\",\"Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.\",\r\nmedia_entry_conversion_status_failed,Die Konvertierung ist fehlgeschlagen. Bitte wenden Sie sich an den Support.,The video conversion failed. Please contact support.,\r\nmedia_entry_conversion_status_initialized,Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.,The media file is converting. Please try later.,\r\nmedia_entry_conversion_status_submitted,Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.,The media file is converting. Please try later.,\r\nmedia_entry_delete_success,Der Medieneintrag wurde gelöscht.,Media entry deleted.,\r\nmedia_entry_export_close,Schliessen,Close,\r\nmedia_entry_export_download,Download,Download,\r\nmedia_entry_export_has_no_original,Sie verfügen nicht über die nötigen Berechtigung für den Download der Originaldatei.,You are not allowed to download the original file.,\r\nmedia_entry_export_no_content,Sie haben keine Zugriffsrechte für die Originaldatei und es steht keine Vorschau zur Verfügung.,You have no access to the original file and there is no preview available.,\r\nmedia_entry_export_original_hint,Originaldatei herunterladen.,Download original file as it was uploaded.,\r\nmedia_entry_export_original,Original,Original,\r\nmedia_entry_export_subtitle_audios,Audios,Audios,\r\nmedia_entry_export_subtitle_documents,Dokumente,Documents,\r\nmedia_entry_export_subtitle_images,Bilder,Images,\r\nmedia_entry_export_subtitle_videos,Videos,Videos,\r\nmedia_entry_export_title,Medieneintrag exportieren,Download Media Entry,\r\nmedia_entry_file_format_not_supported_1,\"Your browser does most likely not support the file format, but you can \",\"Your browser does most likely not support the file format, but you can \",\r\nmedia_entry_file_format_not_supported_2,download the file,download the file,\r\nmedia_entry_file_format_not_supported_3,.,.,\r\nmedia_entry_file_information_title,Datei,File Information,\r\nmedia_entry_media_import_gotodrafts,Gehe zu aktuellen Importen,Go to Current Imports,\r\nmedia_entry_media_import_header,Medien importieren,Media upload,\r\nmedia_entry_media_import_inside_nojs,Dateien auswählen,Select Files,\r\nmedia_entry_media_import_inside,Dateien auf dieses Feld ziehen oder,Drag & drop files here or,\r\nmedia_entry_media_import_notes_msg,\"Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.\",\"Images (TIFF, JPEG, PNG) and audio/video files in the most common formats are directly processed and displayed. Images in the CMYK color model cannot be displayed correctly, please convert them to RGB before uploading.\",\r\nmedia_entry_media_import_notes_title,Hinweise,Hints,\r\nmedia_entry_media_import_title,\"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.\",\"Add pictures, videos, audio file, or other documents.\",\r\nmedia_entry_meta_data_header_prefix,Medieneintrag editieren: ,Edit Media Entry:,\r\nmedia_entry_more_data_title,Verantwortlichkeit und Aktivität,Responsibility,\r\nmedia_entry_not_published_warning_msg,Diesem Medieneintrag fehlen noch Pflichtangaben!,Media entry still needs mandatory data!,\r\nmedia_entry_select_collection_flash_result,Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu %{added_count} Set(s) hinzugefügt.,Removed media entry from %{removed_count} set(s). Added media entry to %{added_count} set(s).,TODO_cleanup_interpolation\r\nmedia_entry_tab_main,Medieneintrag,Media Entry,\r\nmedia_entry_tab_more_data,Alle Daten,All Data,\r\nmedia_entry_tab_permissions,Berechtigungen,Permissions,\r\nmedia_entry_tab_relations,Zusammenhänge,Relations,\r\nmedia_entry_upload_btn,Importieren,Upload,\r\nmedia_entry_was_disfavored,Der Medieneintrag wurde von den Favoriten entfernt.,Media entry was removed from favorites.,\r\nmedia_entry_was_favored,Der Medieneintrag wurde zu den Favoriten hinzugefügt.,Media entry was added to favorites.,\r\nmeta_data_action_delete_btn,Löschen,Delete,\r\nmeta_data_action_edit_btn,Bearbeiten,Edit,\r\nmeta_data_batch_failure,Metadaten konnten nicht aktualisiert werden.,Metadata could not be updated.,\r\nmeta_data_batch_hint_differences_override,\"Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.\",Attention: Changes will replace exiting values. Without changes values will be preserved.,\r\nmeta_data_batch_hint_differences,Unterschiedliche Metadaten vorhanden,Different metadata in place.,\r\nmeta_data_batch_hint_equal_data,Gleiche Metadaten vorhanden,Same metadata in place.,\r\nmeta_data_batch_hint_no_data,Noch keine Metadaten vorhanden,No metadata available yet.,\r\nmeta_data_batch_hint_value,Wert und Text,Value and text,\r\nmeta_data_batch_items_selected,Medieneinträge selektiert,media entries selected,\r\nmeta_data_batch_success,Metadaten wurden erfolgreich aktualisiert.,Succesfully updated metadata.,\r\nmeta_data_batch_summary_all_post, Medieneinträge wurden gespeichert., media entries have been saved.,\r\nmeta_data_batch_summary_all_pre,Alle ,All ,\r\nmeta_data_batch_summary_missing, haben fehlende Angaben, have missing metadata,\r\nmeta_data_batch_summary_published, haben ausgefüllte Pflichtfelder, have mandatory data,\r\nmeta_data_batch_summary_were_published, hatten bereits ausgefüllte Pflichtfelder, already had mandatory data,\r\nmeta_data_batch_title_post, Medieneinträge gleichzeitig editieren, media entries at once,\r\nmeta_data_batch_title_pre,Metadaten für ,Edit metadata for ,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Werte löschen wollen?\",Are you sure you want to delete these values?,\r\nmeta_data_edit_collection_saved,Set wurde gespeichert.,Set was saved.,\r\nmeta_data_edit_media_entry_published,Der Medieneintrag wurde gespeichert und alle Pflichtfelder sind ausgefüllt.,Media entry was saved and mandatory data is complete.,\r\nmeta_data_edit_media_entry_saved_missing,\"Der Medieneintrag wurde gespeichert, aber es wurden nicht alle Pflichtfelder ausgefüllt.\",Media entry was saved but there is missing mandatory data.,\r\nmeta_data_edit_media_entry_saved,Der Medieneintrag wurde gespeichert.,Media entry was saved.,\r\nmeta_data_form_cancel,Abbrechen,Cancel,\r\nmeta_data_form_publish,Publizieren,Publish,\r\nmeta_data_form_save,Speichern,Save,\r\nmeta_data_form_submit_btn,Speichern,Submit,\r\nmeta_data_header_text,Werte,Values,\r\nmeta_data_input_date_placeholder_duration_from,von,from,\r\nmeta_data_input_date_placeholder_duration_to,bis,to,\r\nmeta_data_input_date_placeholder_text,Freie Eingabe,Free-text entry,\r\nmeta_data_input_date_placeholder_timestamp,wird als Text gespeichert,on,\r\nmeta_data_input_date_type_duration,von/bis,from/to,\r\nmeta_data_input_date_type_text,Freie Eingabe,Free-text entry,\r\nmeta_data_input_date_type_timestamp,am,on,\r\nmeta_data_input_new_group_add,Arbeitsgruppe einfügen,Add Work Group,\r\nmeta_data_input_new_person_add,Person einfügen,Add Person,\r\nmeta_data_input_new_person_toggle,Neue Person oder Arbeitsgruppe einfügen,Add new Person or Work Group,\r\nmeta_data_meta_key_label,Schlüssel,Key,\r\nmeta_data_type_label,Typ,Type,\r\nmeta_data_value_label,Wert,Value,\r\nno_content_fallback,Keine Inhalte vorhanden.,No content available.,\r\nno_groups_fallback,Keine Arbeitsgruppen vorhanden.,No groups available.,\r\nno_keywords_fallback,Keine Schlagworte vorhanden.,No keywords available.,\r\nno_relations_title,Es wurden keine Zusammenhänge gefunden.,No relations found.,\r\npagination_nav_loadnext,Mehr laden,Load more,\r\npagination_nav_nextloading,Lädt…,Loading…,\r\npagination_nav_nextpage,Vor »,Next page »,\r\npagination_nav_prevpage,« Zurück,« Previous page,\r\npagination_nav_thispage,Hier,This page,\r\npagination_of,von,of,\r\npagination_prefix,Seite,Page,\r\npeople_toolbar_header,Ähnliche Inhalte,Related Resources,\r\npermission_name_edit_metadata_and_relations,Metadaten editieren & Inhalte hinzufügen,Edit Metadata and add items,\r\npermission_name_edit_metadata,Metadaten editieren,Edit metadata,\r\npermission_name_edit_permissions,Zugriffsberechtigungen ändern,Edit permissions,\r\npermission_name_get_full_size,Original exportieren & in PDF blättern,Download original & browse PDF,\r\npermission_name_get_metadata_and_previews,Betrachten,View,\r\npermission_overridden_by_public,(überschrieben durch die öffentlichen Berechtigungen),(overridden by public permissions),\r\npermission_subject_name_public,Internet,Internet,\r\npermission_subject_title_apiapps,API-Applikationen,API Clients,\r\npermission_subject_title_groups,Gruppen,Groups,\r\npermission_subject_title_public,Öffentlichkeit,Public,\r\npermission_subject_title_users,Personen,Users,\r\npermissions_batch_success,Berechtigungen wurden erfolgreich aktualisiert.,Succesfully updated permissions.,\r\npermissions_batch_title_post, Inhalten, Resources,\r\npermissions_batch_title_pre,Zugriffsberechtigungen ändern von ,Edit Permissions of ,\r\npermissions_overview_yours_msg_end,\", haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe folgende Berechtigungen\",\", currently have the following permissions (either directly or as a member of a work group):\",\r\npermissions_overview_yours_msg_start,\"Sie, \",\"You, \",\r\npermissions_overview_yours_title,Ihre Berechtigungen,Your Permissions,\r\npermissions_responsible_user_msg,Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.,The responsible user has all permissions for the selected content and can also delete it.,\r\npermissions_responsible_user_title,Verantwortliche Person,Responsible User,\r\npermissions_table_cancel_btn,Abbrechen,Cancel,\r\npermissions_table_edit_btn,Bearbeiten,Edit,\r\npermissions_table_remove_subject_btn,Berechtigung entfernen,Remove Permissions,\r\npermissions_table_save_btn,Speichern,Save,\r\npermissions_table_title,Berechtigungen,Permissions,\r\npicture_alt_fallback,(unbekannt),(unkown),\r\npicture_alt_prefix,Bild: ,Picture:,\r\nrelations_parents_title,Übergeordnete Sets,Parents,\r\nrelations_siblings_title,Benachbarte Sets,Siblings,\r\nrelations_title,Zusammenhänge,Relations,\r\nresource_action_destroy,Medieneintrag löschen,Delete media entry,\r\nresource_action_disfavor,Aus Favoriten entfernen,Remove from favorites,\r\nresource_action_edit_cover,Titelbild festlegen,Define cover,\r\nresource_action_edit_highlights,Inhalte hervorheben,Highlight contents,\r\nresource_action_edit,Editieren,Edit,\r\nresource_action_export,Exportieren,Download,\r\nresource_action_favor,Zu Favoriten hinzufügen,Add to favorites,\r\nresource_action_manage_collections,Zu Sets hinzufügen/Aus Sets entfernen,Add to/Remove from sets,\r\nresource_ask_delete_cancel,Abbrechen,Cancel,\r\nresource_ask_delete_ok,Löschen,Delete,\r\nresource_ask_delete_question_post,?,?,\r\nresource_last_changes_empty,Es wurden noch keine Änderungen festgehalten.,No changes recorded yet.,\r\nresource_last_changes,Letzte Änderungen,Last Changes,\r\nresource_meta_data_copyright_notice,Rechte am geistigen Eigentum,Copyright notice,\r\nresource_meta_data_date,Datierung,Date,\r\nresource_meta_data_description,Beschreibung,Description,\r\nresource_meta_data_fallback,Es sind keine Metadaten zu diesem Kontext bereitgestellt.,No metadata for this context.,\r\nresource_meta_data_has_validation_errors,Es gibt fehlerhafte Eingabefelder.,Es gibt fehlerhafte Eingabefelder.,\r\nresource_meta_data_keywords,Schlagworte,Keywords,\r\nresource_meta_data_resource_type,Medientyp,Media type,\r\nresource_meta_data_responsible,Verantwortliche Person,Responsible user,\r\nresource_meta_data_saved_filter,Gespeicherter Filter,Saved filter,\r\nresource_meta_data_title,Titel,Title,\r\nresource_select_collection_cancel,Abbrechen,Cancel,\r\nresource_select_collection_clear,Löschen,Clear,\r\nresource_select_collection_hint_more,Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.,Additional sets were found. Please refine your search.,\r\nresource_select_collection_hint_search,\"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.\",Search for and select sets that should hold the media entry.,\r\nresource_select_collection_non_assigned,Inhalt ist noch keinem Set zugewiesen.,Item is not yet part of any set.,\r\nresource_select_collection_non_found,Zu dieser Suche wurde kein Set gefunden.,No set was found.,\r\nresource_select_collection_save,Speichern,Save,\r\nresource_select_collection_search_placeholder,Suche,Search,\r\nresource_select_collection_search,Suchen,Search,\r\nresource_select_collection_title,Zu Set hinzufügen/entfernen,Add to/remove from set,\r\nresources_box_batch_actions_addtoset,Ausgewählte zu Set hinzufügen,Add selected to Set,\r\nresources_box_batch_actions_delete,Ausgewählte löschen,Delete selected,\r\nresources_box_batch_actions_edit,Metadaten von Medieneinträgen editieren,Edit MetaData,\r\nresources_box_batch_actions_managepermissions,Berechtigungen editieren,Edit Permissions,\r\nresources_box_batch_actions_menu_title,Aktionen,Actions,\r\nresources_box_batch_actions_removefromset,Aus Set entfernen,Remove from set,\r\nresources_box_batch_actions_save,Als Filterset speichern,Save as filter set,\r\nresources_box_title_count_post,Inhalte,Items,\r\nresources_header_show_all,alle anzeigen,show all,\r\nsearch_btn_search,Suchen,Search,\r\nsitemap_api,API,API,\r\nsitemap_collections,Sets,Sets,\r\nsitemap_entries,Medieneinträge,Media Entries,\r\nsitemap_explore,Erkunden,Explore,\r\nsitemap_filter_sets,Filtersets,Filter sets,\r\nsitemap_help,Support,Support,\r\nsitemap_media_entries,Medieneinträge,Media Entries,\r\nsitemap_my_archive,Mein Archiv,My archive,\r\nsitemap_my_content_collections,Meine Sets,My sets,\r\nsitemap_my_content_filter_sets,Meine Filtersets,My filter sets,\r\nsitemap_my_content_media_entries,Meine Medieneinträge,My media entries,\r\nsitemap_my_entrusted_collections,Mir anvertraute Sets,My entrusted sets,\r\nsitemap_my_entrusted_filter_sets,Mir anvertraute Filtersets,My entrusted filter sets,\r\nsitemap_my_entrusted_media_entries,Mir anvertraute Medieneinträge,My entrusted media entries,\r\nsitemap_my_favorite_collections,Meine Favoriten (Sets),My favorites (sets),\r\nsitemap_my_favorite_filter_sets,Meine Favoriten (Filtersets),My favorites (filter sets),\r\nsitemap_my_favorite_media_entries,Meine Favoriten (Medieneinträge),My favorites (media entries),\r\nsitemap_my_groups,Meine Arbeitsgruppen,My work groups,\r\nsitemap_my_latest_imports,Meine letzten Importe,My latest uploads,\r\nsitemap_my_unpublished,Meine Entwürfe,My drafts,\r\nsitemap_my_used_keywords,Meine Schlagworte,My keywords,\r\nsitemap_search,Suche,Search,\r\nsitemap_vocabularies,Vokabulare,Vocabularies,\r\nusage_terms_accept_btn,Nutzungsbedingungen akzeptieren,Accept usage terms,\r\nusage_terms_reject_btn,Ablehnen,Reject usage terms,\r\nuser_menu_admin_ui,Admin-Interface öffnen,Open Admin Interface,\r\nuser_menu_login_btn,Anmelden,Log in,\r\nuser_menu_logout_btn,Abmelden,Log out,\r\nuser_menu_upload,Medien importieren,Upload Media,\r\nworkgroup_link_to_contents_text,Inhalte,Contents,\r\nworkgroup_link_to_contents_title,Inhalte dieser Arbeitsgruppe anzeigen,View contents of this work group,\r\nworkgroup_members_table_is_member,Mitglied?,Member?,\r\nworkgroup_members_table_login,Login,Login,\r\nworkgroup_members_table_title,Mitglieder,Members,\r\n";
+var translationsCSVText = "key,de,en,comment\r\n,,,\r\napp_autocomplete_no_results,\"Keine Ergebnisse.\",\"No Results.\"\r\napp_confirm_form_leave_msg,\"Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten – Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.\",Please confirm that you want to leave this page – entered data might not be saved!,NOTE: German version copied from Firefox default message\r\napp_notice_logged_out,Sie haben sich abgemeldet.,You have logged out.,\r\napp_warning_jsonly,\"Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert!\",\"This feature needs Javascript, but it's not activated!\",\r\nauthentication_groups,Systemgruppen,System Groups,\r\nbatch_add_to_collection_hint,Nach Sets suchen, zu denen Sie die Medieneinträge hinzufügen möchten.,Seach for sets to add media entries.\r\nbatch_add_to_collection_post, Medieneinträge zu Set hinzufügen, media entries to set,\r\nbatch_add_to_collection_pre, , Add ,\r\nbatch_meta_data_edit,Metadaten für %{media_entry_count} Medieneinträge gleichzeitig editieren,Edit metadata for %{media_entry_count} media entries at once.,TODO_cleanup_interpolation\r\nbatch_remove_from_collection_cancel,Abbrechen,Cancel,\r\nbatch_remove_from_collection_question_part_1,Möchten Sie die ausgewählten ,Do you want to remove the selected ,\r\nbatch_remove_from_collection_question_part_2, Medieneinträge und , media entries and ,\r\nbatch_remove_from_collection_question_part_3, Sets aus dem Set entfernen?, sets from this set?,\r\nbatch_remove_from_collection_remove,Entfernen,Remove,\r\nbatch_remove_from_collection_title,Medieinträge/Sets aus Set entfernen,Remove media entries/sets from sets,\r\nbtn_delete_confirm_msq,\"Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?\",Are you sure you want to delete this item?,\r\nbtn_delete_text,Löschen,Delete,\r\nbtn_publish_confirm_msg,\"Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?\",Are you sure you want to publish this item?,\r\nbtn_publish_text,Speichern,Save,\r\ncollection_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgendes Set löschen möchten: \",Are you sure that you want to delete the following set:,\r\ncollection_ask_delete_title,Set löschen,Delete Set,\r\ncollection_delete_success,Set wurde gelöscht.,Set deleted.,\r\ncollection_edit_cover_submit_btn,Auswahl speichern,Submit,\r\ncollection_edit_cover_submit_btn,Speichern,Submit,\r\ncollection_edit_cover_title,Titelbild für Set festlegen,Define Set Cover,\r\ncollection_edit_highlights_btn,Auswahl speichern,Submit,\r\ncollection_edit_highlights_btn,Bearbeiten,Edit,\r\ncollection_edit_highlights_empty,Dieses Set hat noch keine Inhalte.,Dieses Set hat noch keine Inhalte.,\r\ncollection_edit_highlights_title,Inhalte hervorheben,Highlight Items,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_edit_permissions_btn,Speichern,Submit,\r\ncollection_highlighted_contents,Hervorgehobene Inhalte,Highlighted Contents,\r\ncollection_layout_save,Darstellung festlegen,Save layout,\r\ncollection_layout_saved,Darstellung gespeichert,Layout saved,\r\ncollection_media_resources_title,Medieneintrag im Set:,Media Entries in Sets:,\r\ncollection_meta_data_header_prefix,Set editieren: ,Edit Set:,\r\ncollection_new_cancel,Abbrechen,Cancel,\r\ncollection_new_create_set,Set erstellen,Create Set,\r\ncollection_new_dialog_title,Set erstellen,Create Set,\r\ncollection_new_flash_successful,Set wurde erstellt.,Set was created.,\r\ncollection_new_flash_title_needed,Titel ist ein Pflichtfeld.,Title is a mandatory field.,\r\ncollection_new_header,Neues Set,Create Set,\r\ncollection_new_label_title,Titel,Title,\r\ncollection_permissions_btn,Zugriffsberechtigungen ändern,Change Permissions,\r\ncollection_relations_child_sets,Untergeordnete Sets,Child sets,\r\ncollection_relations_current_media_entry,Aktueller Eintrag,Current entry,\r\ncollection_relations_current_set,Aktuelles Set,Current set,\r\ncollection_relations_hint_text,\"Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.\",\"Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.\",\r\ncollection_relations_no_child_sets, , ,\r\ncollection_relations_no_parent_sets, , ,\r\ncollection_relations_no_sibling_sets, , ,\r\ncollection_relations_show_all,Alle anzeigen,Show all,\r\ncollection_relations_parent_sets,Übergeordnete Sets,Parent sets,\r\ncollection_relations_sibling_sets,Benachbarte Sets,Sibling sets,\r\ncollection_relations_show_all_relations,Alle Zusammenhänge anzeigen,Show all relations,\r\ncollection_resource_selection_cancel,Abbrechen,Cancel,\r\ncollection_resource_selection_h_author,Autor/in,Author,\r\ncollection_resource_selection_h_date,Datierung,Dating,\r\ncollection_resource_selection_h_keywords,Schlagworte,Keywords,\r\ncollection_resource_selection_h_responsible,Rechteinhaber,Owner,\r\ncollection_resource_selection_h_selection,Auswahl,Selection,\r\ncollection_resource_selection_h_subtitle,Untertitel,Subtitle,\r\ncollection_resource_selection_h_title,Titel,Title,\r\ncollection_resource_selection_save,Auswahl speichern,Save selection,\r\ncollection_select_collection_flash_result,Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed set from %{removed_count} set(s). Added set to %{added_count} set(s).,TODO_cleanup_interpolation\r\ncollection_sorting_created_at_asc,Sortieren nach Importierdatum aufsteigend,Sortieren nach Importierdatum aufsteigend,\r\ncollection_sorting_created_at_desc,Sortieren nach Importierdatum absteigend,Sortieren nach Importierdatum absteigend,\r\ncollection_sorting_title_asc,Sortieren nach Titel alphabetisch,Sortieren nach Titel alphabetisch,\r\ncollection_sorting_title_desc,Sortieren nach Titel absteigend,Sortieren nach Titel absteigend,\r\ncollection_sorting_last_change,Sortieren nach letzter Änderung,Sortieren nach letzter Änderung,\r\ncollection_tab_main,Set,Set,\r\ncollection_was_disfavored,Das Set wurde von den Favoriten entfernt.,Set was removed from favorites.,\r\ncollection_was_favored,Das Set wurde zu den Favoriten hinzugefügt.,Set was added to favorites.,\r\ndashboard_create_collection_btn,Set erstellen,Create Set,\r\ndashboard_create_collection,Set erstellen,Create set,\r\ndashboard_create_media_entry_btn,Medien importieren,Upload Media,\r\ndashboard_title_head,Mein Archiv,My Archive,\r\ndashboard_welcome_msg,Willkommen im Medienarchiv der Künste!,Welcome to Madek!,\r\nexternal_groups,Abteilungsgruppen,Division groups,\r\ngroup_ask_delete_cancel,Abbrechen,Cancel,\r\ngroup_ask_delete_delete,Löschen,Delete,\r\ngroup_ask_delete_question_post, löschen?,?,\r\ngroup_ask_delete_question_pre,Möchten sie die Arbeitsgruppe ,Would you like to delete work group ,\r\ngroup_ask_delete_title,Arbeitsgruppe Löschen,Delete Work Group,\r\ngroup_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?\",Are you sure you want to delete this work group?,\r\ngroup_edit_at_least_one_member_delete,löschen,löschen,\r\ngroup_edit_at_least_one_member_post,.,.,\r\ngroup_edit_at_least_one_member_pre,Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe ,Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe ,\r\ngroup_edit_btn,Bearbeiten,Edit,\r\ngroup_edit_cancel,Abbrechen,Cancel,\r\ngroup_edit_form_new_member_login_hint,Login des neuen Mitglieds dieser Arbeitsgruppe,New work group member login,\r\ngroup_edit_form_new_member_login_label,User hinzufügen,Add a member,\r\ngroup_edit_form_save_btn,Speichern,Save,\r\ngroup_edit_form_title_pre,Arbeitsgruppe bearbeiten: ,Edit Work Group: ,\r\ngroup_edit_hint_remove_yourself,Achtung: Sie entfernen sich selbst aus der Arbeitsgruppe!,Attention: You are about to remove yourself from teh work group!,\r\ngroup_edit_member,Mitglieder,Members,\r\ngroup_edit_name,Name,Name,\r\ngroup_edit_person,Person,Person,\r\ngroup_edit_save,Speichern,Save,\r\ngroup_edit_username,Benutzername,Username,\r\ngroup_meta_data_institutional_group_name,Name der Abteilungsgruppe,Division group name,\r\ngroup_meta_data_name,Name,Name,\r\ngroup_new_form_title,Neue Arbeitsgruppe erstellen,Create Group,\r\ngroup_new_group_btn,Neue Arbeitsgruppe,New Work Group,\r\ngroup_toolbar_header_entrusted_resources,Mir anvertraute Medieneinträge,Entrusted Media Entries,\r\ngroup_was_deleted,Arbeitsgruppe wurde gelöscht.,Work group has been deleted.,\r\nhome_page_new_contents,Neue Inhalte,New Contents,\r\ninternal_groups,Arbeitsgruppen,Work groups,\r\nlogin_box_external,ZHdK-Login,ZHdK Login,\r\nlogin_box_hint_first_line,Alle Funktionen nutzen und auf mehr Inhalte zugreifen.,For using of all function and access to more content.,\r\nlogin_box_hint_second_line, ,,\r\nlogin_box_internal,Externe,External,\r\nlogin_box_login_btn,Anmelden,Log In,\r\nlogin_box_password,Passwort,Password,\r\nlogin_box_rememberme,Login merken,remember me,\r\nlogin_box_username,Benutzername,Username,\r\nmedia_entry_all_metadata_title,Alle MetaDaten nach Vokabularen,All Metadata by Vocabulary,\r\nmedia_entry_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgenden Medienintrag löschen möchten: \",Are you sure that you want to delete the following media entry:,\r\nmedia_entry_ask_delete_title,Medieneintrag löschen,Delete Media Entry,\r\nmedia_entry_back_btn,Zurück,Back,\r\nmedia_entry_conversion_hint,\"Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.\",\"Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.\",\r\nmedia_entry_conversion_progress_post,\"% abgeschlossen.\",\"%\",\r\nmedia_entry_conversion_progress_pre,\"Konvertierung zu \",\"Conversion completed at \",\r\nmedia_entry_conversion_reload,\"Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.\",\"Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.\",\r\nmedia_entry_conversion_status_failed,Die Konvertierung ist fehlgeschlagen. Bitte wenden Sie sich an den Support.,The video conversion failed. Please contact support.,\r\nmedia_entry_conversion_status_initialized,Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.,The media file is converting. Please try later.,\r\nmedia_entry_conversion_status_submitted,Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.,The media file is converting. Please try later.,\r\nmedia_entry_delete_success,Der Medieneintrag wurde gelöscht.,Media entry deleted.,\r\nmedia_entry_export_close,Schliessen,Close,\r\nmedia_entry_export_download,Download,Download,\r\nmedia_entry_export_has_no_original,Sie verfügen nicht über die nötigen Berechtigung für den Download der Originaldatei.,You are not allowed to download the original file.,\r\nmedia_entry_export_no_content,Sie haben keine Zugriffsrechte für die Originaldatei und es steht keine Vorschau zur Verfügung.,You have no access to the original file and there is no preview available.,\r\nmedia_entry_export_original_hint,Originaldatei herunterladen.,Download original file as it was uploaded.,\r\nmedia_entry_export_original,Original,Original,\r\nmedia_entry_export_subtitle_audios,Audios,Audios,\r\nmedia_entry_export_subtitle_documents,Dokumente,Documents,\r\nmedia_entry_export_subtitle_images,Bilder,Images,\r\nmedia_entry_export_subtitle_videos,Videos,Videos,\r\nmedia_entry_export_title,Medieneintrag exportieren,Download Media Entry,\r\nmedia_entry_file_format_not_supported_1,\"Your browser does most likely not support the file format, but you can \",\"Your browser does most likely not support the file format, but you can \",\r\nmedia_entry_file_format_not_supported_2,download the file,download the file,\r\nmedia_entry_file_format_not_supported_3,.,.,\r\nmedia_entry_file_information_title,Datei,File Information,\r\nmedia_entry_media_import_gotodrafts,Gehe zu aktuellen Importen,Go to Current Imports,\r\nmedia_entry_media_import_header,Medien importieren,Media upload,\r\nmedia_entry_media_import_inside_nojs,Dateien auswählen,Select Files,\r\nmedia_entry_media_import_inside,Dateien auf dieses Feld ziehen oder,Drag & drop files here or,\r\nmedia_entry_media_import_notes_msg,\"Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.\",\"Images (TIFF, JPEG, PNG) and audio/video files in the most common formats are directly processed and displayed. Images in the CMYK color model cannot be displayed correctly, please convert them to RGB before uploading.\",\r\nmedia_entry_media_import_notes_title,Hinweise,Hints,\r\nmedia_entry_media_import_title,\"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.\",\"Add pictures, videos, audio file, or other documents.\",\r\nmedia_entry_meta_data_header_prefix,Medieneintrag editieren: ,Edit Media Entry:,\r\nmedia_entry_more_data_title,Verantwortlichkeit und Aktivität,Responsibility,\r\nmedia_entry_not_published_warning_msg,Diesem Medieneintrag fehlen noch Pflichtangaben!,Media entry still needs mandatory data!,\r\nmedia_entry_select_collection_flash_result,Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu %{added_count} Set(s) hinzugefügt.,Removed media entry from %{removed_count} set(s). Added media entry to %{added_count} set(s).,TODO_cleanup_interpolation\r\nmedia_entry_tab_main,Medieneintrag,Media Entry,\r\nmedia_entry_tab_more_data,Alle Daten,All Data,\r\nmedia_entry_tab_permissions,Berechtigungen,Permissions,\r\nmedia_entry_tab_relations,Zusammenhänge,Relations,\r\nmedia_entry_upload_btn,Importieren,Upload,\r\nmedia_entry_was_disfavored,Der Medieneintrag wurde von den Favoriten entfernt.,Media entry was removed from favorites.,\r\nmedia_entry_was_favored,Der Medieneintrag wurde zu den Favoriten hinzugefügt.,Media entry was added to favorites.,\r\nmeta_data_action_delete_btn,Löschen,Delete,\r\nmeta_data_action_edit_btn,Bearbeiten,Edit,\r\nmeta_data_batch_failure,Metadaten konnten nicht aktualisiert werden.,Metadata could not be updated.,\r\nmeta_data_batch_hint_differences_override,\"Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.\",Attention: Changes will replace exiting values. Without changes values will be preserved.,\r\nmeta_data_batch_hint_differences,Unterschiedliche Metadaten vorhanden,Different metadata in place.,\r\nmeta_data_batch_hint_equal_data,Gleiche Metadaten vorhanden,Same metadata in place.,\r\nmeta_data_batch_hint_no_data,Noch keine Metadaten vorhanden,No metadata available yet.,\r\nmeta_data_batch_hint_value,Wert und Text,Value and text,\r\nmeta_data_batch_items_selected,Medieneinträge selektiert,media entries selected,\r\nmeta_data_batch_success,Metadaten wurden erfolgreich aktualisiert.,Succesfully updated metadata.,\r\nmeta_data_batch_summary_all_post, Medieneinträge wurden gespeichert., media entries have been saved.,\r\nmeta_data_batch_summary_all_pre,Alle ,All ,\r\nmeta_data_batch_summary_missing, haben fehlende Angaben, have missing metadata,\r\nmeta_data_batch_summary_published, haben ausgefüllte Pflichtfelder, have mandatory data,\r\nmeta_data_batch_summary_were_published, hatten bereits ausgefüllte Pflichtfelder, already had mandatory data,\r\nmeta_data_batch_title_post, Medieneinträge gleichzeitig editieren, media entries at once,\r\nmeta_data_batch_title_pre,Metadaten für ,Edit metadata for ,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_post,!,!,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_blank_value_for_required_meta_key_pre,Metadatum-Wert nicht vorhanden für Meta-Key ,Blank metadatum value for meta key ,\r\nmeta_data_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Werte löschen wollen?\",Are you sure you want to delete these values?,\r\nmeta_data_edit_collection_saved,Set wurde gespeichert.,Set was saved.,\r\nmeta_data_edit_media_entry_published,Der Medieneintrag wurde gespeichert und alle Pflichtfelder sind ausgefüllt.,Media entry was saved and mandatory data is complete.,\r\nmeta_data_edit_media_entry_saved_missing,\"Der Medieneintrag wurde gespeichert, aber es wurden nicht alle Pflichtfelder ausgefüllt.\",Media entry was saved but there is missing mandatory data.,\r\nmeta_data_edit_media_entry_saved,Der Medieneintrag wurde gespeichert.,Media entry was saved.,\r\nmeta_data_form_cancel,Abbrechen,Cancel,\r\nmeta_data_form_publish,Publizieren,Publish,\r\nmeta_data_form_save,Speichern,Save,\r\nmeta_data_form_submit_btn,Speichern,Submit,\r\nmeta_data_header_text,Werte,Values,\r\nmeta_data_input_date_placeholder_duration_from,von,from,\r\nmeta_data_input_date_placeholder_duration_to,bis,to,\r\nmeta_data_input_date_placeholder_text,Freie Eingabe,Free-text entry,\r\nmeta_data_input_date_placeholder_timestamp,wird als Text gespeichert,on,\r\nmeta_data_input_date_type_duration,von/bis,from/to,\r\nmeta_data_input_date_type_text,Freie Eingabe,Free-text entry,\r\nmeta_data_input_date_type_timestamp,am,on,\r\nmeta_data_input_new_group_add,Arbeitsgruppe einfügen,Add Work Group,\r\nmeta_data_input_new_person_add,Person einfügen,Add Person,\r\nmeta_data_input_new_person_toggle,Neue Person oder Arbeitsgruppe einfügen,Add new Person or Work Group,\r\nmeta_data_input_keywords_existing,Schlagwort ist bereits vergeben!,Keyword already set!,\r\nmeta_data_meta_key_label,Schlüssel,Key,\r\nmeta_data_type_label,Typ,Type,\r\nmeta_data_value_label,Wert,Value,\r\nno_content_fallback,Keine Inhalte vorhanden.,No content available.,\r\nno_groups_fallback,Keine Arbeitsgruppen vorhanden.,No groups available.,\r\nno_keywords_fallback,Keine Schlagworte vorhanden.,No keywords available.,\r\nno_relations_title,Es wurden keine Zusammenhänge gefunden.,No relations found.,\r\npagination_nav_loadnext,Mehr laden,Load more,\r\npagination_nav_nextloading,Lädt…,Loading…,\r\npagination_nav_nextpage,Vor »,Next page »,\r\npagination_nav_prevpage,« Zurück,« Previous page,\r\npagination_nav_thispage,Hier,This page,\r\npagination_of,von,of,\r\npagination_prefix,Seite,Page,\r\npeople_toolbar_header,Ähnliche Inhalte,Related Resources,\r\npermission_name_edit_metadata_and_relations,Metadaten editieren & Inhalte hinzufügen,Edit Metadata and add items,\r\npermission_name_edit_metadata,Metadaten editieren,Edit metadata,\r\npermission_name_edit_permissions,Zugriffsberechtigungen ändern,Edit permissions,\r\npermission_name_get_full_size,Original exportieren & in PDF blättern,Download original & browse PDF,\r\npermission_name_get_metadata_and_previews,Betrachten,View,\r\npermission_overridden_by_public,(überschrieben durch die öffentlichen Berechtigungen),(overridden by public permissions),\r\npermission_subject_name_public,Internet,Internet,\r\npermission_subject_title_apiapps,API-Applikationen,API Clients,\r\npermission_subject_title_groups,Gruppen,Groups,\r\npermission_subject_title_public,Öffentlichkeit,Public,\r\npermission_subject_title_users,Personen,Users,\r\npermissions_batch_success,Berechtigungen wurden erfolgreich aktualisiert.,Succesfully updated permissions.,\r\npermissions_batch_title_post, Inhalten, Resources,\r\npermissions_batch_title_pre,Zugriffsberechtigungen ändern von ,Edit Permissions of ,\r\npermissions_overview_yours_msg_end,\", haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe folgende Berechtigungen\",\", currently have the following permissions (either directly or as a member of a work group):\",\r\npermissions_overview_yours_msg_start,\"Sie, \",\"You, \",\r\npermissions_overview_yours_title,Ihre Berechtigungen,Your Permissions,\r\npermissions_responsible_user_msg,Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.,The responsible user has all permissions for the selected content and can also delete it.,\r\npermissions_responsible_user_title,Verantwortliche Person,Responsible User,\r\npermissions_table_cancel_btn,Abbrechen,Cancel,\r\npermissions_table_edit_btn,Bearbeiten,Edit,\r\npermissions_table_remove_subject_btn,Berechtigung entfernen,Remove Permissions,\r\npermissions_table_save_btn,Speichern,Save,\r\npermissions_table_title,Berechtigungen,Permissions,\r\npicture_alt_fallback,(unbekannt),(unkown),\r\npicture_alt_prefix,Bild: ,Picture:,\r\nrelations_parents_title,Übergeordnete Sets,Parents,\r\nrelations_siblings_title,Benachbarte Sets,Siblings,\r\nrelations_title,Zusammenhänge,Relations,\r\nresource_action_destroy,Medieneintrag löschen,Delete media entry,\r\nresource_action_disfavor,Aus Favoriten entfernen,Remove from favorites,\r\nresource_action_edit_cover,Titelbild festlegen,Define cover,\r\nresource_action_edit_highlights,Inhalte hervorheben,Highlight contents,\r\nresource_action_edit,Editieren,Edit,\r\nresource_action_export,Exportieren,Download,\r\nresource_action_favor,Zu Favoriten hinzufügen,Add to favorites,\r\nresource_action_manage_collections,Zu Sets hinzufügen/Aus Sets entfernen,Add to/Remove from sets,\r\nresource_ask_delete_cancel,Abbrechen,Cancel,\r\nresource_ask_delete_ok,Löschen,Delete,\r\nresource_ask_delete_question_post,?,?,\r\nresource_last_changes_empty,Es wurden noch keine Änderungen festgehalten.,No changes recorded yet.,\r\nresource_last_changes,Letzte Änderungen,Last Changes,\r\nresource_meta_data_copyright_notice,Rechte am geistigen Eigentum,Copyright notice,\r\nresource_meta_data_date,Datierung,Date,\r\nresource_meta_data_description,Beschreibung,Description,\r\nresource_meta_data_fallback,Es sind keine Metadaten zu diesem Kontext bereitgestellt.,No metadata for this context.,\r\nresource_meta_data_has_validation_errors,Es gibt fehlerhafte Eingabefelder.,Es gibt fehlerhafte Eingabefelder.,\r\nresource_meta_data_keywords,Schlagworte,Keywords,\r\nresource_meta_data_resource_type,Medientyp,Media type,\r\nresource_meta_data_responsible,Verantwortliche Person,Responsible user,\r\nresource_meta_data_saved_filter,Gespeicherter Filter,Saved filter,\r\nresource_meta_data_title,Titel,Title,\r\nresource_select_collection_cancel,Abbrechen,Cancel,\r\nresource_select_collection_clear,Löschen,Clear,\r\nresource_select_collection_hint_more,Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.,Additional sets were found. Please refine your search.,\r\nresource_select_collection_hint_search,\"Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.\",Search for and select sets that should hold the media entry.,\r\nresource_select_collection_non_assigned,Inhalt ist noch keinem Set zugewiesen.,Item is not yet part of any set.,\r\nresource_select_collection_non_found,Zu dieser Suche wurde kein Set gefunden.,No set was found.,\r\nresource_select_collection_save,Speichern,Save,\r\nresource_select_collection_search_placeholder,Suche,Search,\r\nresource_select_collection_search,Suchen,Search,\r\nresource_select_collection_title,Zu Set hinzufügen/entfernen,Add to/remove from set,\r\nresources_box_batch_actions_addtoset,Ausgewählte zu Set hinzufügen,Add selected to Set,\r\nresources_box_batch_actions_delete,Ausgewählte löschen,Delete selected,\r\nresources_box_batch_actions_edit,Metadaten von Medieneinträgen editieren,Edit MetaData,\r\nresources_box_batch_actions_managepermissions,Berechtigungen editieren,Edit Permissions,\r\nresources_box_batch_actions_menu_title,Aktionen,Actions,\r\nresources_box_batch_actions_removefromset,Aus Set entfernen,Remove from set,\r\nresources_box_batch_actions_save,Als Filterset speichern,Save as filter set,\r\nresources_box_title_count_post,Inhalte,Items,\r\nresources_header_show_all,alle anzeigen,show all,\r\nsearch_btn_search,Suchen,Search,\r\nsitemap_api,API,API,\r\nsitemap_collections,Sets,Sets,\r\nsitemap_entries,Medieneinträge,Media Entries,\r\nsitemap_explore,Erkunden,Explore,\r\nsitemap_filter_sets,Filtersets,Filter sets,\r\nsitemap_help,Support,Support,\r\nsitemap_media_entries,Medieneinträge,Media Entries,\r\nsitemap_my_archive,Mein Archiv,My archive,\r\nsitemap_my_content_collections,Meine Sets,My sets,\r\nsitemap_my_content_filter_sets,Meine Filtersets,My filter sets,\r\nsitemap_my_content_media_entries,Meine Medieneinträge,My media entries,\r\nsitemap_my_entrusted_collections,Mir anvertraute Sets,My entrusted sets,\r\nsitemap_my_entrusted_filter_sets,Mir anvertraute Filtersets,My entrusted filter sets,\r\nsitemap_my_entrusted_media_entries,Mir anvertraute Medieneinträge,My entrusted media entries,\r\nsitemap_my_favorite_collections,Meine Favoriten (Sets),My favorites (sets),\r\nsitemap_my_favorite_filter_sets,Meine Favoriten (Filtersets),My favorites (filter sets),\r\nsitemap_my_favorite_media_entries,Meine Favoriten (Medieneinträge),My favorites (media entries),\r\nsitemap_my_groups,Meine Arbeitsgruppen,My work groups,\r\nsitemap_my_latest_imports,Meine letzten Importe,My latest uploads,\r\nsitemap_my_unpublished,Meine Entwürfe,My drafts,\r\nsitemap_my_used_keywords,Meine Schlagworte,My keywords,\r\nsitemap_search,Suche,Search,\r\nsitemap_vocabularies,Vokabulare,Vocabularies,\r\nusage_terms_accept_btn,Nutzungsbedingungen akzeptieren,Accept usage terms,\r\nusage_terms_reject_btn,Ablehnen,Reject usage terms,\r\nuser_menu_admin_ui,Admin-Interface öffnen,Open Admin Interface,\r\nuser_menu_login_btn,Anmelden,Log in,\r\nuser_menu_logout_btn,Abmelden,Log out,\r\nuser_menu_upload,Medien importieren,Upload Media,\r\nworkgroup_link_to_contents_text,Inhalte,Contents,\r\nworkgroup_link_to_contents_title,Inhalte dieser Arbeitsgruppe anzeigen,View contents of this work group,\r\nworkgroup_members_table_is_member,Mitglied?,Member?,\r\nworkgroup_members_table_login,Login,Login,\r\nworkgroup_members_table_title,Mitglieder,Members,\r\n";
 
 // parses CSV and returns list like: [{lang: 'en', mapping: {key: 'value'}}, …]
 var translationsList = parseTranslationsFromCSV(translationsCSVText);
@@ -1783,7 +1793,7 @@ global.ReactDOM = ReactDOM;
 global.UI = UI;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./react/index.coffee":65,"react":852,"react-dom":686,"react-dom/server":687}],38:[function(require,module,exports){
+},{"./react/index.coffee":66,"react":852,"react-dom":686,"react-dom/server":687}],38:[function(require,module,exports){
 var BatchHintBox, Button, Icon, InputFieldText, PageContent, PageContentHeader, Preloader, RailsForm, React, SelectCollectionDialog, Tab, TabContent, Tabs, batchDiff, f, formXhr, setUrlParams, t;
 
 React = require('react');
@@ -2092,7 +2102,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":1,"../../lib/form-xhr.coffee":2,"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../lib/forms/input-field-text.cjsx":71,"../lib/forms/rails-form.cjsx":76,"../ui-components/Button.cjsx":85,"../ui-components/Icon.cjsx":90,"../ui-components/Preloader.cjsx":97,"../views/Collection/SelectCollectionDialog.cjsx":118,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/Tab.cjsx":134,"../views/TabContent.cjsx":135,"../views/Tabs.cjsx":136,"./BatchHintBox.cjsx":40,"active-lodash":157,"react":852}],39:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":1,"../../lib/form-xhr.coffee":2,"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../lib/forms/input-field-text.cjsx":72,"../lib/forms/rails-form.cjsx":77,"../ui-components/Button.cjsx":85,"../ui-components/Icon.cjsx":90,"../ui-components/Preloader.cjsx":97,"../views/Collection/SelectCollectionDialog.cjsx":118,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/Tab.cjsx":134,"../views/TabContent.cjsx":135,"../views/Tabs.cjsx":136,"./BatchHintBox.cjsx":40,"active-lodash":157,"react":852}],39:[function(require,module,exports){
 var AsyncModal, BatchAddToSet, BatchHintBox, PageContent, PageContentHeader, React, Tab, TabContent, Tabs, batchDiff, f, setUrlParams, t;
 
 React = require('react');
@@ -2340,7 +2350,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":1,"../../lib/form-xhr.coffee":2,"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../lib/forms/input-field-text.cjsx":71,"../lib/forms/rails-form.cjsx":76,"../ui-components/Button.cjsx":85,"../ui-components/FormButton.cjsx":89,"../ui-components/Icon.cjsx":90,"../ui-components/Preloader.cjsx":97,"../views/Collection/SelectCollectionDialog.cjsx":118,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/Tab.cjsx":134,"../views/TabContent.cjsx":135,"../views/Tabs.cjsx":136,"./BatchHintBox.cjsx":40,"active-lodash":157,"react":852}],42:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":1,"../../lib/form-xhr.coffee":2,"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../lib/forms/input-field-text.cjsx":72,"../lib/forms/rails-form.cjsx":77,"../ui-components/Button.cjsx":85,"../ui-components/FormButton.cjsx":89,"../ui-components/Icon.cjsx":90,"../ui-components/Preloader.cjsx":97,"../views/Collection/SelectCollectionDialog.cjsx":118,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/Tab.cjsx":134,"../views/TabContent.cjsx":135,"../views/Tabs.cjsx":136,"./BatchHintBox.cjsx":40,"active-lodash":157,"react":852}],42:[function(require,module,exports){
 var AsyncModal, BatchHintBox, BatchRemoveFromSet, PageContent, PageContentHeader, React, Tab, TabContent, Tabs, batchDiff, f, setUrlParams, t;
 
 React = require('react');
@@ -2418,11 +2428,11 @@ cx = require('classnames');
 
 t = require('../../lib/string-translation')('de');
 
+InputMetaDatum = require('../decorators/InputMetaDatum.cjsx');
+
 RailsForm = require('../lib/forms/rails-form.cjsx');
 
 MetaKeyFormLabel = require('../lib/forms/form-label.cjsx');
-
-InputMetaDatum = require('../lib/input-meta-datum.cjsx');
 
 MadekPropTypes = require('../lib/madek-prop-types.coffee');
 
@@ -2655,7 +2665,7 @@ compare_datum_between_entries = function(reference_vocabulary, reference_datum, 
 };
 
 
-},{"../../lib/string-translation":10,"../lib/forms/form-label.cjsx":70,"../lib/forms/rails-form.cjsx":76,"../lib/input-meta-datum.cjsx":77,"../lib/madek-prop-types.coffee":78,"./BatchHintBox.cjsx":40,"active-lodash":157,"classnames":186,"react":852}],44:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../decorators/InputMetaDatum.cjsx":45,"../lib/forms/form-label.cjsx":71,"../lib/forms/rails-form.cjsx":77,"../lib/madek-prop-types.coffee":78,"./BatchHintBox.cjsx":40,"active-lodash":157,"classnames":186,"react":852}],44:[function(require,module,exports){
 var CollageLoggedIn, PrettyThumbs, React, ReactDOM, f, t;
 
 React = require('react');
@@ -2740,6 +2750,71 @@ CollageLoggedIn = React.createClass({
 
 
 },{"../../lib/string-translation.js":10,"../views/explore/partials/PrettyThumbs.cjsx":150,"active-lodash":157,"react":852,"react-dom":686}],45:[function(require,module,exports){
+var InputText, InputsByType, MadekPropTypes, React, f;
+
+React = require('react');
+
+f = require('active-lodash');
+
+MadekPropTypes = require('../lib/madek-prop-types.coffee');
+
+InputsByType = require('../lib/forms/inputs-by-type.cjsx');
+
+InputText = require('../lib/forms/input-text.cjsx');
+
+module.exports = React.createClass({
+  displayName: 'InputMetaDatum',
+  propTypes: {
+    id: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    get: MadekPropTypes.metaDatum.isRequired
+  },
+  getInitialState: function() {
+    return {
+      isClient: false
+    };
+  },
+  componentDidMount: function(arg) {
+    var get;
+    get = (arg != null ? arg : this.props).get;
+    return this.setState({
+      isClient: true
+    });
+  },
+  render: function(arg, state) {
+    var InputForType, get, id, multiple, name, ref, resourceType, values;
+    ref = arg != null ? arg : this.props, get = ref.get, id = ref.id, name = ref.name;
+    if (state == null) {
+      state = this.state;
+    }
+    resourceType = f.last(get.type.split('::'));
+    multiple = !(f.includes(['Text', 'TextDate'], resourceType));
+    if (state.isClient) {
+      InputForType = InputsByType[resourceType];
+      values = f.map(get.values, function(value) {
+        return value;
+      });
+    } else {
+      InputForType = InputText;
+      values = f.map(get.literal_values, function(value) {
+        return value;
+      });
+    }
+    return React.createElement(InputForType, {
+      "onChange": this.props.onChange,
+      "get": get,
+      "id": id,
+      "name": name,
+      "active": state.isClient,
+      "multiple": multiple,
+      "values": values,
+      "contextKey": this.props.contextKey
+    });
+  }
+});
+
+
+},{"../lib/forms/input-text.cjsx":75,"../lib/forms/inputs-by-type.cjsx":76,"../lib/madek-prop-types.coffee":78,"active-lodash":157,"react":852}],46:[function(require,module,exports){
 var Button, DeleteModal, Description, Dropdown, Extension, FavoriteButton, Image, LevelDown, LevelUp, ListThumbnail, LoadXhr, Meta, MetaDataList, MetaDatumValues, Picture, Preloader, React, ResourceActions, ResourceIcon, StatusIcon, ThumbnailActions, Titles, async, c, f, t;
 
 React = require('react');
@@ -3251,7 +3326,7 @@ Extension = React.createClass({
 });
 
 
-},{"../../lib/load-xhr.coffee":3,"../../lib/string-translation":10,"../ui-components/Button.cjsx":85,"../ui-components/Picture.cjsx":96,"../ui-components/Preloader.cjsx":97,"../ui-components/ResourceIcon.cjsx":98,"./ListThumbnail.cjsx":45,"./MetaDataList.cjsx":49,"./MetaDatumValues.cjsx":51,"./thumbnail/DeleteModal.cjsx":62,"./thumbnail/FavoriteButton.cjsx":63,"./thumbnail/StatusIcon.cjsx":64,"active-lodash":157,"async":180,"classnames":186,"react":852}],46:[function(require,module,exports){
+},{"../../lib/load-xhr.coffee":3,"../../lib/string-translation":10,"../ui-components/Button.cjsx":85,"../ui-components/Picture.cjsx":96,"../ui-components/Preloader.cjsx":97,"../ui-components/ResourceIcon.cjsx":98,"./ListThumbnail.cjsx":46,"./MetaDataList.cjsx":50,"./MetaDatumValues.cjsx":52,"./thumbnail/DeleteModal.cjsx":63,"./thumbnail/FavoriteButton.cjsx":64,"./thumbnail/StatusIcon.cjsx":65,"active-lodash":157,"async":180,"classnames":186,"react":852}],47:[function(require,module,exports){
 var Icon, Link, MediaPlayer, Picture, PropTypes, React, ResourceIcon, cx, f, t;
 
 React = require('react');
@@ -3377,7 +3452,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":10,"../ui-components/Icon.cjsx":90,"../ui-components/Link.cjsx":92,"../ui-components/MediaPlayer.cjsx":93,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"active-lodash":157,"classnames":186,"react":852}],47:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../ui-components/Icon.cjsx":90,"../ui-components/Link.cjsx":92,"../ui-components/MediaPlayer.cjsx":93,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"active-lodash":157,"classnames":186,"react":852}],48:[function(require,module,exports){
 var ActionsBar, BatchAddToSetModal, BatchRemoveFromSetModal, BoxTitleBar, BoxToolBar, Button, ButtonGroup, CollectionChildren, Collections, Dropdown, FallBackMsg, FilterExamples, FilterPreloader, Icon, Link, LoadXhr, MediaEntries, MenuItem, PageCounter, PaginationNavFallback, Preloader, RailsForm, React, ResourceThumbnail, SideFilter, SideFilterFallback, SortDropdown, Waypoint, ampersandReactMixin, cx, f, filterConfigProps, filter_examples, getRailsCSRFToken, handleLinkIfLocal, parseMods, qs, ref, resourceListParams, router, setUrlParams, simpleXhr, t, ui, viewConfigProps, xhr;
 
 React = require('react');
@@ -4550,7 +4625,7 @@ filter_examples = {
 };
 
 
-},{"../../lib/load-xhr.coffee":3,"../../lib/rails-csrf-token.coffee":5,"../../lib/router.coffee":6,"../../lib/set-params-for-url.coffee":8,"../../lib/simple-xhr.coffee":9,"../../models/collection-children.coffee":13,"../../models/collections.coffee":16,"../../models/media-entries.coffee":22,"../../shared/resource_list_params.coffee":153,"../lib/forms/rails-form.cjsx":76,"../lib/ui.coffee":79,"../ui-components/Preloader.cjsx":97,"../ui-components/ResourcesBox/BoxToolBar.cjsx":99,"../ui-components/ResourcesBox/SideFilter.cjsx":100,"../ui-components/index.coffee":105,"./BatchAddToSetModal.cjsx":39,"./BatchRemoveFromSetModal.cjsx":42,"./ResourceThumbnail.cjsx":57,"./resourcesbox/SortDropdown.cjsx":61,"active-lodash":157,"ampersand-react-mixin":170,"local-links":267,"qs":538,"react":852,"react-waypoint":705,"xhr":860}],48:[function(require,module,exports){
+},{"../../lib/load-xhr.coffee":3,"../../lib/rails-csrf-token.coffee":5,"../../lib/router.coffee":6,"../../lib/set-params-for-url.coffee":8,"../../lib/simple-xhr.coffee":9,"../../models/collection-children.coffee":13,"../../models/collections.coffee":16,"../../models/media-entries.coffee":22,"../../shared/resource_list_params.coffee":153,"../lib/forms/rails-form.cjsx":77,"../lib/ui.coffee":79,"../ui-components/Preloader.cjsx":97,"../ui-components/ResourcesBox/BoxToolBar.cjsx":99,"../ui-components/ResourcesBox/SideFilter.cjsx":100,"../ui-components/index.coffee":105,"./BatchAddToSetModal.cjsx":39,"./BatchRemoveFromSetModal.cjsx":42,"./ResourceThumbnail.cjsx":58,"./resourcesbox/SortDropdown.cjsx":62,"active-lodash":157,"ampersand-react-mixin":170,"local-links":267,"qs":538,"react":852,"react-waypoint":705,"xhr":860}],49:[function(require,module,exports){
 var MadekPropTypes, MetaDataList, React, f, t;
 
 React = require('react');
@@ -4599,7 +4674,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":10,"../lib/madek-prop-types.coffee":78,"./MetaDataList.cjsx":49,"active-lodash":157,"react":852}],49:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../lib/madek-prop-types.coffee":78,"./MetaDataList.cjsx":50,"active-lodash":157,"react":852}],50:[function(require,module,exports){
 var MadekPropTypes, MetaDataDefinitionList, MetaDataTable, MetaDatumValues, React, classList, f, parseMods, t;
 
 React = require('react');
@@ -4747,7 +4822,7 @@ MetaDataTable = function(arg) {
 };
 
 
-},{"../../lib/string-translation":10,"../lib/madek-prop-types.coffee":78,"../lib/ui.coffee":79,"./MetaDatumValues.cjsx":51,"active-lodash":157,"classnames/dedupe":185,"react":852}],50:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../lib/madek-prop-types.coffee":78,"../lib/ui.coffee":79,"./MetaDatumValues.cjsx":52,"active-lodash":157,"classnames/dedupe":185,"react":852}],51:[function(require,module,exports){
 var InputMetaDatum, MadekPropTypes, MetaKeyFormLabel, PropTypes, React, cx, f, t, xhr;
 
 React = require('react');
@@ -4762,9 +4837,9 @@ cx = require('classnames');
 
 t = require('../../lib/string-translation.js')('de');
 
-MetaKeyFormLabel = require('../lib/forms/form-label.cjsx');
+InputMetaDatum = require('../decorators/InputMetaDatum.cjsx');
 
-InputMetaDatum = require('../lib/input-meta-datum.cjsx');
+MetaKeyFormLabel = require('../lib/forms/form-label.cjsx');
 
 MadekPropTypes = require('../lib/madek-prop-types.coffee');
 
@@ -4844,7 +4919,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":10,"../lib/forms/form-label.cjsx":70,"../lib/input-meta-datum.cjsx":77,"../lib/madek-prop-types.coffee":78,"active-lodash":157,"classnames":186,"react":852,"xhr":860}],51:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../decorators/InputMetaDatum.cjsx":45,"../lib/forms/form-label.cjsx":71,"../lib/madek-prop-types.coffee":78,"active-lodash":157,"classnames":186,"react":852,"xhr":860}],52:[function(require,module,exports){
 var DecoratorsByType, MadekPropTypes, React, UI, f, labelize, linkifyInnerHtml, linkifyStr, resourceName;
 
 React = require('react');
@@ -4972,7 +5047,7 @@ linkifyInnerHtml = function(string) {
 };
 
 
-},{"../lib/decorate-resource-names.coffee":68,"../lib/madek-prop-types.coffee":78,"../ui-components/index.coffee":105,"active-lodash":157,"linkifyjs/string":266,"react":852}],52:[function(require,module,exports){
+},{"../lib/decorate-resource-names.coffee":69,"../lib/madek-prop-types.coffee":78,"../ui-components/index.coffee":105,"active-lodash":157,"linkifyjs/string":266,"react":852}],53:[function(require,module,exports){
 var Button, DeleteModal, FavoriteButton, Models, Picture, React, ResourceIcon, StatusIcon, async, c, f, getRailsCSRFToken, t;
 
 React = require('react');
@@ -5133,7 +5208,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":5,"../../lib/string-translation":10,"../../models/index.coffee":21,"../ui-components/Button.cjsx":85,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"./thumbnail/DeleteModal.cjsx":62,"./thumbnail/FavoriteButton.cjsx":63,"./thumbnail/StatusIcon.cjsx":64,"active-lodash":157,"async":180,"classnames":186,"react":852}],53:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":5,"../../lib/string-translation":10,"../../models/index.coffee":21,"../ui-components/Button.cjsx":85,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"./thumbnail/DeleteModal.cjsx":63,"./thumbnail/FavoriteButton.cjsx":64,"./thumbnail/StatusIcon.cjsx":65,"active-lodash":157,"async":180,"classnames":186,"react":852}],54:[function(require,module,exports){
 var InputMetaDatum, MadekPropTypes, MetaDatumFormItem, MetaKeyFormLabel, PropTypes, RailsForm, React, VocabularyFormItem, VocabularyHeader, cx, f, getRailsCSRFToken, t, xhr;
 
 React = require('react');
@@ -5150,11 +5225,11 @@ t = require('../../lib/string-translation.js')('de');
 
 RailsForm = require('../lib/forms/rails-form.cjsx');
 
+InputMetaDatum = require('../decorators/InputMetaDatum.cjsx');
+
 getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
 
 MetaKeyFormLabel = require('../lib/forms/form-label.cjsx');
-
-InputMetaDatum = require('../lib/input-meta-datum.cjsx');
 
 MadekPropTypes = require('../lib/madek-prop-types.coffee');
 
@@ -5341,7 +5416,7 @@ MetaDatumFormItem = React.createClass({
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":5,"../../lib/string-translation.js":10,"../lib/forms/form-label.cjsx":70,"../lib/forms/rails-form.cjsx":76,"../lib/input-meta-datum.cjsx":77,"../lib/madek-prop-types.coffee":78,"active-lodash":157,"classnames":186,"react":852,"xhr":860}],54:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":5,"../../lib/string-translation.js":10,"../decorators/InputMetaDatum.cjsx":45,"../lib/forms/form-label.cjsx":71,"../lib/forms/rails-form.cjsx":77,"../lib/madek-prop-types.coffee":78,"active-lodash":157,"classnames":186,"react":852,"xhr":860}],55:[function(require,module,exports){
 var Button, Icon, PageContent, PageContentHeader, React, ResourceMetaDataForm, TabContent, setUrlParams, t;
 
 React = require('react');
@@ -5389,7 +5464,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../ui-components/Button.cjsx":85,"../ui-components/Icon.cjsx":90,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/TabContent.cjsx":135,"./ResourceMetaDataForm.cjsx":53,"react":852}],55:[function(require,module,exports){
+},{"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../ui-components/Button.cjsx":85,"../ui-components/Icon.cjsx":90,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/TabContent.cjsx":135,"./ResourceMetaDataForm.cjsx":54,"react":852}],56:[function(require,module,exports){
 var BatchHintBox, Button, Icon, MadekPropTypes, MetaDatumFormItem, PageContent, PageContentHeader, Picture, PropTypes, RailsForm, React, ResourceIcon, ResourcesBatchBox, Tab, TabContent, Tabs, batchDiff, cx, f, getRailsCSRFToken, setUrlParams, t, xhr;
 
 React = require('react');
@@ -5967,7 +6042,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/batch-diff.coffee":1,"../../lib/rails-csrf-token.coffee":5,"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../lib/forms/rails-form.cjsx":76,"../lib/madek-prop-types.coffee":78,"../ui-components/Button.cjsx":85,"../ui-components/Icon.cjsx":90,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/Tab.cjsx":134,"../views/TabContent.cjsx":135,"../views/Tabs.cjsx":136,"./BatchHintBox.cjsx":40,"./MetaDatumFormItemPerContext.cjsx":50,"./ResourcesBatchBox.cjsx":59,"active-lodash":157,"classnames":186,"react":852,"xhr":860}],56:[function(require,module,exports){
+},{"../../lib/batch-diff.coffee":1,"../../lib/rails-csrf-token.coffee":5,"../../lib/set-params-for-url.coffee":8,"../../lib/string-translation.js":10,"../lib/forms/rails-form.cjsx":77,"../lib/madek-prop-types.coffee":78,"../ui-components/Button.cjsx":85,"../ui-components/Icon.cjsx":90,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"../views/PageContent.cjsx":132,"../views/PageContentHeader.cjsx":133,"../views/Tab.cjsx":134,"../views/TabContent.cjsx":135,"../views/Tabs.cjsx":136,"./BatchHintBox.cjsx":40,"./MetaDatumFormItemPerContext.cjsx":51,"./ResourcesBatchBox.cjsx":60,"active-lodash":157,"classnames":186,"react":852,"xhr":860}],57:[function(require,module,exports){
 var ApiClientIndex, AutoComplete, GroupIndex, PermissionsBySubjectType, PermissionsSubject, PermissionsSubjectHeader, React, RemoveButton, TristateCheckbox, UserIndex, ampersandReactMixin, f, t;
 
 React = require('react');
@@ -6319,7 +6394,7 @@ TristateCheckbox = React.createClass({displayName: "TristateCheckbox",
 });
 
 
-},{"../../lib/string-translation":10,"../lib/autocomplete.cjsx":67,"active-lodash":157,"ampersand-react-mixin":170,"react":852}],57:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../lib/autocomplete.cjsx":68,"active-lodash":157,"ampersand-react-mixin":170,"react":852}],58:[function(require,module,exports){
 var AskModal, Button, CURSOR_SELECT_STYLE, FlyoutImage, Icon, Link, ListThumbnail, Models, Picture, PinThumbnail, Preloader, React, ResourceIcon, ResourceThumbnailRenderer, Thumbnail, ampersandReactMixin, async, cx, f, ref, t;
 
 React = require('react');
@@ -6646,7 +6721,7 @@ FlyoutImage = React.createClass({
 });
 
 
-},{"../../lib/string-translation":10,"../../models/index.coffee":21,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"../ui-components/index.coffee":105,"./ListThumbnail.cjsx":45,"./PinThumbnail.cjsx":52,"./ResourceThumbnailRenderer.cjsx":58,"active-lodash":157,"ampersand-react-mixin":170,"async":180,"classnames":186,"react":852}],58:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../../models/index.coffee":21,"../ui-components/Picture.cjsx":96,"../ui-components/ResourceIcon.cjsx":98,"../ui-components/index.coffee":105,"./ListThumbnail.cjsx":46,"./PinThumbnail.cjsx":53,"./ResourceThumbnailRenderer.cjsx":59,"active-lodash":157,"ampersand-react-mixin":170,"async":180,"classnames":186,"react":852}],59:[function(require,module,exports){
 var AskModal, Button, DeleteModal, FavoriteButton, Icon, Link, Models, Preloader, React, StatusIcon, Thumbnail, ampersandReactMixin, async, cx, f, ref, t;
 
 React = require('react');
@@ -6794,7 +6869,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":10,"../../models/index.coffee":21,"../ui-components/index.coffee":105,"./thumbnail/DeleteModal.cjsx":62,"./thumbnail/FavoriteButton.cjsx":63,"./thumbnail/StatusIcon.cjsx":64,"active-lodash":157,"ampersand-react-mixin":170,"async":180,"classnames":186,"react":852}],59:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../../models/index.coffee":21,"../ui-components/index.coffee":105,"./thumbnail/DeleteModal.cjsx":63,"./thumbnail/FavoriteButton.cjsx":64,"./thumbnail/StatusIcon.cjsx":65,"active-lodash":157,"ampersand-react-mixin":170,"async":180,"classnames":186,"react":852}],60:[function(require,module,exports){
 var React, ResourceThumbnail, f, t;
 
 React = require('react');
@@ -6840,7 +6915,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":10,"../decorators/ResourceThumbnail.cjsx":57,"active-lodash":157,"react":852}],60:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../decorators/ResourceThumbnail.cjsx":58,"active-lodash":157,"react":852}],61:[function(require,module,exports){
 var React, ResourceThumbnail;
 
 React = require('react');
@@ -6867,7 +6942,7 @@ module.exports = React.createClass({
 });
 
 
-},{"./ResourceThumbnail.cjsx":57,"react":852}],61:[function(require,module,exports){
+},{"./ResourceThumbnail.cjsx":58,"react":852}],62:[function(require,module,exports){
 var Dropdown, MenuItem, React, cx, f;
 
 React = require('react');
@@ -6923,7 +6998,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../ui-components/Dropdown.cjsx":88,"active-lodash":157,"classnames":186,"react":852}],62:[function(require,module,exports){
+},{"../../ui-components/Dropdown.cjsx":88,"active-lodash":157,"classnames":186,"react":852}],63:[function(require,module,exports){
 var AskModal, Button, React, classList, f, parseMods, t;
 
 React = require('react');
@@ -6959,7 +7034,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../lib/ui.coffee":79,"../../ui-components/AskModal.cjsx":84,"../../ui-components/Button.cjsx":85,"active-lodash":157,"classnames/dedupe":185,"react":852}],63:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../lib/ui.coffee":79,"../../ui-components/AskModal.cjsx":84,"../../ui-components/Button.cjsx":85,"active-lodash":157,"classnames/dedupe":185,"react":852}],64:[function(require,module,exports){
 var Button, RailsForm, React, classList, f, parseMods, t;
 
 React = require('react');
@@ -7007,7 +7082,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../lib/forms/rails-form.cjsx":76,"../../lib/ui.coffee":79,"../../ui-components/Button.cjsx":85,"active-lodash":157,"classnames/dedupe":185,"react":852}],64:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../lib/forms/rails-form.cjsx":77,"../../lib/ui.coffee":79,"../../ui-components/Button.cjsx":85,"active-lodash":157,"classnames/dedupe":185,"react":852}],65:[function(require,module,exports){
 var Icon, React, c, f, parseMods, t;
 
 React = require('react');
@@ -7061,14 +7136,14 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../lib/ui.coffee":79,"../../ui-components/Icon.cjsx":90,"active-lodash":157,"classnames":186,"react":852}],65:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../lib/ui.coffee":79,"../../ui-components/Icon.cjsx":90,"active-lodash":157,"classnames":186,"react":852}],66:[function(require,module,exports){
 var requireBulk;
 
 
 
 module.exports = {
   UI: require('./ui-components/index.coffee'),
-  Deco: ({"decorators":({"BatchAddToSet":require("./decorators/BatchAddToSet.cjsx"),"BatchAddToSetModal":require("./decorators/BatchAddToSetModal.cjsx"),"BatchHintBox":require("./decorators/BatchHintBox.cjsx"),"BatchRemoveFromSet":require("./decorators/BatchRemoveFromSet.cjsx"),"BatchRemoveFromSetModal":require("./decorators/BatchRemoveFromSetModal.cjsx"),"BatchResourceMetaDataForm":require("./decorators/BatchResourceMetaDataForm.cjsx"),"ExploreLayout":require("./decorators/ExploreLayout.cjsx"),"ListThumbnail":require("./decorators/ListThumbnail.cjsx"),"MediaEntryPreview":require("./decorators/MediaEntryPreview.cjsx"),"MediaResourcesBox":require("./decorators/MediaResourcesBox.cjsx"),"MetaDataByListing":require("./decorators/MetaDataByListing.cjsx"),"MetaDataList":require("./decorators/MetaDataList.cjsx"),"MetaDatumFormItemPerContext":require("./decorators/MetaDatumFormItemPerContext.cjsx"),"MetaDatumValues":require("./decorators/MetaDatumValues.cjsx"),"PinThumbnail":require("./decorators/PinThumbnail.cjsx"),"ResourceMetaDataForm":require("./decorators/ResourceMetaDataForm.cjsx"),"ResourceMetaDataPage":require("./decorators/ResourceMetaDataPage.cjsx"),"ResourceMetaDataPagePerContext":require("./decorators/ResourceMetaDataPagePerContext.cjsx"),"ResourcePermissionsForm":require("./decorators/ResourcePermissionsForm.cjsx"),"ResourceThumbnail":require("./decorators/ResourceThumbnail.cjsx"),"ResourceThumbnailRenderer":require("./decorators/ResourceThumbnailRenderer.cjsx"),"ResourcesBatchBox":require("./decorators/ResourcesBatchBox.cjsx"),"SimpleResourceThumbnail":require("./decorators/SimpleResourceThumbnail.cjsx")})}).decorators,
+  Deco: ({"decorators":({"BatchAddToSet":require("./decorators/BatchAddToSet.cjsx"),"BatchAddToSetModal":require("./decorators/BatchAddToSetModal.cjsx"),"BatchHintBox":require("./decorators/BatchHintBox.cjsx"),"BatchRemoveFromSet":require("./decorators/BatchRemoveFromSet.cjsx"),"BatchRemoveFromSetModal":require("./decorators/BatchRemoveFromSetModal.cjsx"),"BatchResourceMetaDataForm":require("./decorators/BatchResourceMetaDataForm.cjsx"),"ExploreLayout":require("./decorators/ExploreLayout.cjsx"),"InputMetaDatum":require("./decorators/InputMetaDatum.cjsx"),"ListThumbnail":require("./decorators/ListThumbnail.cjsx"),"MediaEntryPreview":require("./decorators/MediaEntryPreview.cjsx"),"MediaResourcesBox":require("./decorators/MediaResourcesBox.cjsx"),"MetaDataByListing":require("./decorators/MetaDataByListing.cjsx"),"MetaDataList":require("./decorators/MetaDataList.cjsx"),"MetaDatumFormItemPerContext":require("./decorators/MetaDatumFormItemPerContext.cjsx"),"MetaDatumValues":require("./decorators/MetaDatumValues.cjsx"),"PinThumbnail":require("./decorators/PinThumbnail.cjsx"),"ResourceMetaDataForm":require("./decorators/ResourceMetaDataForm.cjsx"),"ResourceMetaDataPage":require("./decorators/ResourceMetaDataPage.cjsx"),"ResourceMetaDataPagePerContext":require("./decorators/ResourceMetaDataPagePerContext.cjsx"),"ResourcePermissionsForm":require("./decorators/ResourcePermissionsForm.cjsx"),"ResourceThumbnail":require("./decorators/ResourceThumbnail.cjsx"),"ResourceThumbnailRenderer":require("./decorators/ResourceThumbnailRenderer.cjsx"),"ResourcesBatchBox":require("./decorators/ResourcesBatchBox.cjsx"),"SimpleResourceThumbnail":require("./decorators/SimpleResourceThumbnail.cjsx")})}).decorators,
   Views: ({"views":({"CollectionShow":require("./views/CollectionShow.cjsx"),"DashboardHeader":require("./views/DashboardHeader.cjsx"),"GroupSearch":require("./views/GroupSearch.cjsx"),"HeaderButton":require("./views/HeaderButton.cjsx"),"HeaderPrimaryButton":require("./views/HeaderPrimaryButton.cjsx"),"MediaEntryHeader":require("./views/MediaEntryHeader.cjsx"),"MediaEntryShow":require("./views/MediaEntryShow.cjsx"),"PageContent":require("./views/PageContent.cjsx"),"PageContentHeader":require("./views/PageContentHeader.cjsx"),"Tab":require("./views/Tab.cjsx"),"TabContent":require("./views/TabContent.cjsx"),"Tabs":require("./views/Tabs.cjsx"),"Collection":({"AskDelete":require("./views/Collection/AskDelete.cjsx"),"AsyncModal":require("./views/Collection/AsyncModal.cjsx"),"DetailAdditional":require("./views/Collection/DetailAdditional.cjsx"),"DetailOverview":require("./views/Collection/DetailOverview.cjsx"),"HighlightedContents":require("./views/Collection/HighlightedContents.cjsx"),"Index":require("./views/Collection/Index.cjsx"),"Metadata":require("./views/Collection/Metadata.cjsx"),"RelationResources":require("./views/Collection/RelationResources.cjsx"),"Relations":require("./views/Collection/Relations.cjsx"),"ResourceSelection":require("./views/Collection/ResourceSelection.cjsx"),"SelectCollection":require("./views/Collection/SelectCollection.cjsx"),"SelectCollectionDialog":require("./views/Collection/SelectCollectionDialog.cjsx")}),"MediaEntry":({"Export":require("./views/MediaEntry/Export.cjsx"),"Index":require("./views/MediaEntry/Index.cjsx"),"MediaEntryPermissions":require("./views/MediaEntry/MediaEntryPermissions.cjsx"),"Relations":require("./views/MediaEntry/Relations.cjsx")}),"My":({"CreateCollection":require("./views/My/CreateCollection.cjsx"),"Uploader":require("./views/My/Uploader.cjsx")}),"Vocabularies":({"VocabulariesIndex":require("./views/Vocabularies/VocabulariesIndex.js"),"VocabularyShow":require("./views/Vocabularies/VocabularyShow.js")}),"_layouts":({"UserMenu":require("./views/_layouts/UserMenu.cjsx")}),"batch":({"BatchResourceMetaData":require("./views/batch/BatchResourceMetaData.cjsx"),"BatchResourcePermissions":require("./views/batch/BatchResourcePermissions.cjsx")}),"explore":({"ExploreLoginPage":require("./views/explore/ExploreLoginPage.cjsx"),"ExploreMainPage":require("./views/explore/ExploreMainPage.cjsx"),"LoginDialog":require("./views/explore/LoginDialog.cjsx"),"partials":({"CatalogThumbnail":require("./views/explore/partials/CatalogThumbnail.cjsx"),"CatalogThumbnailShifted":require("./views/explore/partials/CatalogThumbnailShifted.cjsx"),"ExploreMenu":require("./views/explore/partials/ExploreMenu.cjsx"),"ExploreMenuEntry":require("./views/explore/partials/ExploreMenuEntry.cjsx"),"ExploreMenuSection":require("./views/explore/partials/ExploreMenuSection.cjsx"),"PrettyThumbs":require("./views/explore/partials/PrettyThumbs.cjsx"),"ResourcesSection":require("./views/explore/partials/ResourcesSection.cjsx"),"WorthThumbnail":require("./views/explore/partials/WorthThumbnail.cjsx")})})})}).views,
   App: {
     UserMenu: require('../react/views/_layouts/UserMenu.cjsx')
@@ -7077,7 +7152,7 @@ module.exports = {
 };
 
 
-},{"../react/views/_layouts/UserMenu.cjsx":139,"./decorators/BatchAddToSet.cjsx":38,"./decorators/BatchAddToSetModal.cjsx":39,"./decorators/BatchHintBox.cjsx":40,"./decorators/BatchRemoveFromSet.cjsx":41,"./decorators/BatchRemoveFromSetModal.cjsx":42,"./decorators/BatchResourceMetaDataForm.cjsx":43,"./decorators/ExploreLayout.cjsx":44,"./decorators/ListThumbnail.cjsx":45,"./decorators/MediaEntryPreview.cjsx":46,"./decorators/MediaResourcesBox.cjsx":47,"./decorators/MetaDataByListing.cjsx":48,"./decorators/MetaDataList.cjsx":49,"./decorators/MetaDatumFormItemPerContext.cjsx":50,"./decorators/MetaDatumValues.cjsx":51,"./decorators/PinThumbnail.cjsx":52,"./decorators/ResourceMetaDataForm.cjsx":53,"./decorators/ResourceMetaDataPage.cjsx":54,"./decorators/ResourceMetaDataPagePerContext.cjsx":55,"./decorators/ResourcePermissionsForm.cjsx":56,"./decorators/ResourceThumbnail.cjsx":57,"./decorators/ResourceThumbnailRenderer.cjsx":58,"./decorators/ResourcesBatchBox.cjsx":59,"./decorators/SimpleResourceThumbnail.cjsx":60,"./lib/AsyncDashboardSection.cjsx":66,"./ui-components/index.coffee":105,"./views/Collection/AskDelete.cjsx":107,"./views/Collection/AsyncModal.cjsx":108,"./views/Collection/DetailAdditional.cjsx":109,"./views/Collection/DetailOverview.cjsx":110,"./views/Collection/HighlightedContents.cjsx":111,"./views/Collection/Index.cjsx":112,"./views/Collection/Metadata.cjsx":113,"./views/Collection/RelationResources.cjsx":114,"./views/Collection/Relations.cjsx":115,"./views/Collection/ResourceSelection.cjsx":116,"./views/Collection/SelectCollection.cjsx":117,"./views/Collection/SelectCollectionDialog.cjsx":118,"./views/CollectionShow.cjsx":119,"./views/DashboardHeader.cjsx":120,"./views/GroupSearch.cjsx":121,"./views/HeaderButton.cjsx":122,"./views/HeaderPrimaryButton.cjsx":123,"./views/MediaEntry/Export.cjsx":124,"./views/MediaEntry/Index.cjsx":125,"./views/MediaEntry/MediaEntryPermissions.cjsx":126,"./views/MediaEntry/Relations.cjsx":127,"./views/MediaEntryHeader.cjsx":128,"./views/MediaEntryShow.cjsx":129,"./views/My/CreateCollection.cjsx":130,"./views/My/Uploader.cjsx":131,"./views/PageContent.cjsx":132,"./views/PageContentHeader.cjsx":133,"./views/Tab.cjsx":134,"./views/TabContent.cjsx":135,"./views/Tabs.cjsx":136,"./views/Vocabularies/VocabulariesIndex.js":137,"./views/Vocabularies/VocabularyShow.js":138,"./views/_layouts/UserMenu.cjsx":139,"./views/batch/BatchResourceMetaData.cjsx":140,"./views/batch/BatchResourcePermissions.cjsx":141,"./views/explore/ExploreLoginPage.cjsx":142,"./views/explore/ExploreMainPage.cjsx":143,"./views/explore/LoginDialog.cjsx":144,"./views/explore/partials/CatalogThumbnail.cjsx":145,"./views/explore/partials/CatalogThumbnailShifted.cjsx":146,"./views/explore/partials/ExploreMenu.cjsx":147,"./views/explore/partials/ExploreMenuEntry.cjsx":148,"./views/explore/partials/ExploreMenuSection.cjsx":149,"./views/explore/partials/PrettyThumbs.cjsx":150,"./views/explore/partials/ResourcesSection.cjsx":151,"./views/explore/partials/WorthThumbnail.cjsx":152}],66:[function(require,module,exports){
+},{"../react/views/_layouts/UserMenu.cjsx":139,"./decorators/BatchAddToSet.cjsx":38,"./decorators/BatchAddToSetModal.cjsx":39,"./decorators/BatchHintBox.cjsx":40,"./decorators/BatchRemoveFromSet.cjsx":41,"./decorators/BatchRemoveFromSetModal.cjsx":42,"./decorators/BatchResourceMetaDataForm.cjsx":43,"./decorators/ExploreLayout.cjsx":44,"./decorators/InputMetaDatum.cjsx":45,"./decorators/ListThumbnail.cjsx":46,"./decorators/MediaEntryPreview.cjsx":47,"./decorators/MediaResourcesBox.cjsx":48,"./decorators/MetaDataByListing.cjsx":49,"./decorators/MetaDataList.cjsx":50,"./decorators/MetaDatumFormItemPerContext.cjsx":51,"./decorators/MetaDatumValues.cjsx":52,"./decorators/PinThumbnail.cjsx":53,"./decorators/ResourceMetaDataForm.cjsx":54,"./decorators/ResourceMetaDataPage.cjsx":55,"./decorators/ResourceMetaDataPagePerContext.cjsx":56,"./decorators/ResourcePermissionsForm.cjsx":57,"./decorators/ResourceThumbnail.cjsx":58,"./decorators/ResourceThumbnailRenderer.cjsx":59,"./decorators/ResourcesBatchBox.cjsx":60,"./decorators/SimpleResourceThumbnail.cjsx":61,"./lib/AsyncDashboardSection.cjsx":67,"./ui-components/index.coffee":105,"./views/Collection/AskDelete.cjsx":107,"./views/Collection/AsyncModal.cjsx":108,"./views/Collection/DetailAdditional.cjsx":109,"./views/Collection/DetailOverview.cjsx":110,"./views/Collection/HighlightedContents.cjsx":111,"./views/Collection/Index.cjsx":112,"./views/Collection/Metadata.cjsx":113,"./views/Collection/RelationResources.cjsx":114,"./views/Collection/Relations.cjsx":115,"./views/Collection/ResourceSelection.cjsx":116,"./views/Collection/SelectCollection.cjsx":117,"./views/Collection/SelectCollectionDialog.cjsx":118,"./views/CollectionShow.cjsx":119,"./views/DashboardHeader.cjsx":120,"./views/GroupSearch.cjsx":121,"./views/HeaderButton.cjsx":122,"./views/HeaderPrimaryButton.cjsx":123,"./views/MediaEntry/Export.cjsx":124,"./views/MediaEntry/Index.cjsx":125,"./views/MediaEntry/MediaEntryPermissions.cjsx":126,"./views/MediaEntry/Relations.cjsx":127,"./views/MediaEntryHeader.cjsx":128,"./views/MediaEntryShow.cjsx":129,"./views/My/CreateCollection.cjsx":130,"./views/My/Uploader.cjsx":131,"./views/PageContent.cjsx":132,"./views/PageContentHeader.cjsx":133,"./views/Tab.cjsx":134,"./views/TabContent.cjsx":135,"./views/Tabs.cjsx":136,"./views/Vocabularies/VocabulariesIndex.js":137,"./views/Vocabularies/VocabularyShow.js":138,"./views/_layouts/UserMenu.cjsx":139,"./views/batch/BatchResourceMetaData.cjsx":140,"./views/batch/BatchResourcePermissions.cjsx":141,"./views/explore/ExploreLoginPage.cjsx":142,"./views/explore/ExploreMainPage.cjsx":143,"./views/explore/LoginDialog.cjsx":144,"./views/explore/partials/CatalogThumbnail.cjsx":145,"./views/explore/partials/CatalogThumbnailShifted.cjsx":146,"./views/explore/partials/ExploreMenu.cjsx":147,"./views/explore/partials/ExploreMenuEntry.cjsx":148,"./views/explore/partials/ExploreMenuSection.cjsx":149,"./views/explore/partials/PrettyThumbs.cjsx":150,"./views/explore/partials/ResourcesSection.cjsx":151,"./views/explore/partials/WorthThumbnail.cjsx":152}],67:[function(require,module,exports){
 var Preloader, PropTypes, React, ReactDOM, UILibrary, f, getRailsCSRFToken, xhr;
 
 React = require('react');
@@ -7188,7 +7263,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":5,"../decorators/MediaResourcesBox.cjsx":47,"../ui-components/Preloader.cjsx":97,"active-lodash":157,"react":852,"react-dom":686,"xhr":860}],67:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":5,"../decorators/MediaResourcesBox.cjsx":48,"../ui-components/Preloader.cjsx":97,"active-lodash":157,"react":852,"react-dom":686,"xhr":860}],68:[function(require,module,exports){
 
 /*
 
@@ -7203,7 +7278,7 @@ callback = (data)-> alert(data.uuid)
 
 FIXME: fails if even required on server (jQuery)!
  */
-var PropTypes, React, ReactDOM, cx, f, initTypeahead, jQuery, searchResources;
+var PropTypes, React, ReactDOM, cx, f, initTypeahead, jQuery, searchResources, t, ui;
 
 React = require('react');
 
@@ -7213,24 +7288,28 @@ PropTypes = React.PropTypes;
 
 f = require('active-lodash');
 
-cx = require('classnames');
-
 jQuery = require('jquery');
 
 require('@eins78/typeahead.js/dist/typeahead.jquery.js');
 
+ui = require('../lib/ui.coffee');
+
+cx = ui.cx;
+
+t = ui.t('de');
+
 searchResources = require('../../lib/search.coffee');
 
-initTypeahead = function(domNode, resourceType, params, conf, onSelect, onAdd) {
-  var $input, localData, searchBackend, typeahead, typeaheadConfig;
-  localData = conf.dataSource;
+initTypeahead = function(domNode, resourceType, params, conf, existingValues, onSelect, onAdd) {
+  var $input, dataSet, localData, minLength, searchBackend, typeahead, typeaheadConfig;
+  minLength = conf.minLength, localData = conf.localData;
   if (!(searchBackend = searchResources(resourceType, params, localData))) {
     throw new Error("No search backend for '" + resourceType + "'!");
   }
   typeaheadConfig = {
     hint: false,
     highlight: true,
-    minLength: conf.minLength,
+    minLength: minLength,
     classNames: {
       wrapper: 'ui-autocomplete-holder',
       input: 'ui-typeahead-input',
@@ -7240,8 +7319,22 @@ initTypeahead = function(domNode, resourceType, params, conf, onSelect, onAdd) {
       suggestion: 'ui-menu-item'
     }
   };
+  dataSet = f.merge(searchBackend, {
+    templates: {
+      pending: '<div class="ui-preloader small" style="height: 1.5em"></div>',
+      notFound: '<div class="paragraph-l by-center">' + t('app_autocomplete_no_results') + '</div>',
+      suggestion: function(value) {
+        var line;
+        line = f.get(value, searchBackend.displayKey);
+        if (f.includes(f.map(existingValues(), 'uuid'), value.uuid)) {
+          line = '<span class="ui-autocomplete-disabled" title="' + +t('meta_data_input_keywords_existing') + '">' + line + "</span>";
+        }
+        return '<div>' + line + '</div>';
+      }
+    }
+  });
   $input = jQuery(domNode);
-  typeahead = $input.typeahead(typeaheadConfig, searchBackend);
+  typeahead = $input.typeahead(typeaheadConfig, dataSet);
   typeahead.on('keypress', function(event) {
     var value;
     if (event.keyCode === 13) {
@@ -7279,13 +7372,13 @@ module.exports = React.createClass({
     })
   },
   componentDidMount: function() {
-    var autoFocus, conf, config, inputDOM, onAddValue, onSelect, ref, resourceType, searchParams;
-    ref = this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, config = ref.config, onSelect = ref.onSelect, onAddValue = ref.onAddValue;
+    var autoFocus, conf, config, existingValues, inputDOM, onAddValue, onSelect, ref, resourceType, searchParams;
+    ref = this.props, resourceType = ref.resourceType, searchParams = ref.searchParams, autoFocus = ref.autoFocus, config = ref.config, existingValues = ref.existingValues, onSelect = ref.onSelect, onAddValue = ref.onAddValue;
     conf = f.defaults(config, {
       minLength: 1
     });
     inputDOM = ReactDOM.findDOMNode(this.refs.InputField);
-    initTypeahead(inputDOM, resourceType, searchParams, conf, onSelect, onAddValue);
+    initTypeahead(inputDOM, resourceType, searchParams, conf, existingValues, onSelect, onAddValue);
     if (autoFocus) {
       return this.focus();
     }
@@ -7308,7 +7401,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/search.coffee":7,"@eins78/typeahead.js/dist/typeahead.jquery.js":155,"active-lodash":157,"classnames":186,"jquery":256,"react":852,"react-dom":686}],68:[function(require,module,exports){
+},{"../../lib/search.coffee":7,"../lib/ui.coffee":79,"@eins78/typeahead.js/dist/typeahead.jquery.js":155,"active-lodash":157,"jquery":256,"react":852,"react-dom":686}],69:[function(require,module,exports){
 var buildPersonName, decorators, f;
 
 f = require('active-lodash');
@@ -7355,7 +7448,7 @@ buildPersonName = function(o) {
 };
 
 
-},{"active-lodash":157}],69:[function(require,module,exports){
+},{"active-lodash":157}],70:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7630,7 +7723,7 @@ InputTextDate.defaultProps = {
 
 exports.default = InputTextDate;
 
-},{"../../ui-components/DatePicker":87,"../ui.coffee":79,"lodash/compact":496,"lodash/isString":514,"react":852}],70:[function(require,module,exports){
+},{"../../ui-components/DatePicker":87,"../ui.coffee":79,"lodash/compact":496,"lodash/isString":514,"react":852}],71:[function(require,module,exports){
 var Icon, MadekPropTypes, React, Tooltipped;
 
 React = require('react');
@@ -7681,7 +7774,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../ui-components/Icon.cjsx":90,"../../ui-components/Tooltipped.cjsx":104,"../madek-prop-types.coffee":78,"react":852}],71:[function(require,module,exports){
+},{"../../ui-components/Icon.cjsx":90,"../../ui-components/Tooltipped.cjsx":104,"../madek-prop-types.coffee":78,"react":852}],72:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -7727,7 +7820,7 @@ module.exports = React.createClass({
 });
 
 
-},{"react":852}],72:[function(require,module,exports){
+},{"react":852}],73:[function(require,module,exports){
 var AutoComplete, Icon, InputFieldText, MadekPropTypes, Nav, NavItem, NewPersonWidget, PEOPLE_SUBTYPES, React, SUPPORTED_PEOPLE_SUBTYPES, Tab, Tabs, Tooltipped, decorateResource, f, ref, t, ui;
 
 React = require('react');
@@ -7880,6 +7973,11 @@ module.exports = React.createClass({
       "searchParams": searchParams,
       "onSelect": _onItemAdd,
       "config": autocompleteConfig,
+      "existingValues": ((function(_this) {
+        return function() {
+          return _this.state.values;
+        };
+      })(this)),
       "onAddValue": addNewValue,
       "ref": 'ListAdder'
     }), React.createElement("a", {
@@ -8071,7 +8169,7 @@ NewPersonWidget = React.createClass({
 });
 
 
-},{"../../lib/madek-prop-types.coffee":78,"../../lib/ui.coffee":79,"../../ui-components/index.coffee":105,"../autocomplete.cjsx":67,"../decorate-resource-names.coffee":68,"../forms/input-field-text.cjsx":71,"active-lodash":157,"react":852,"react-bootstrap/lib/Nav":552,"react-bootstrap/lib/NavItem":553,"react-bootstrap/lib/Tab":557,"react-bootstrap/lib/Tabs":561}],73:[function(require,module,exports){
+},{"../../lib/madek-prop-types.coffee":78,"../../lib/ui.coffee":79,"../../ui-components/index.coffee":105,"../autocomplete.cjsx":68,"../decorate-resource-names.coffee":69,"../forms/input-field-text.cjsx":72,"active-lodash":157,"react":852,"react-bootstrap/lib/Nav":552,"react-bootstrap/lib/NavItem":553,"react-bootstrap/lib/Tab":557,"react-bootstrap/lib/Tabs":561}],74:[function(require,module,exports){
 var InputFieldText, React, f;
 
 React = require('react');
@@ -8127,7 +8225,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../forms/input-field-text.cjsx":71,"active-lodash":157,"react":852}],74:[function(require,module,exports){
+},{"../forms/input-field-text.cjsx":72,"active-lodash":157,"react":852}],75:[function(require,module,exports){
 var InputFieldText, React, f;
 
 React = require('react');
@@ -8167,7 +8265,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../forms/input-field-text.cjsx":71,"active-lodash":157,"react":852}],75:[function(require,module,exports){
+},{"../forms/input-field-text.cjsx":72,"active-lodash":157,"react":852}],76:[function(require,module,exports){
 var InputResources, InputTextDate, MadekPropTypes, React, Text, f;
 
 React = require('react');
@@ -8246,9 +8344,10 @@ module.exports = {
         params = {
           meta_key_id: meta_key.uuid
         };
-        if (!meta_key.is_extensible) {
+        if (keywords) {
           autocompleteConfig = {
-            minLength: 0
+            minLength: 0,
+            localData: keywords
           };
         }
         return React.createElement(InputResources, React.__spread({}, this.props, {
@@ -8273,18 +8372,13 @@ module.exports = {
             return React.createElement("label", {
               "className": 'col2of6',
               "key": kw.uuid
-            }, (_this.props.onChange ? React.createElement("input", {
+            }, React.createElement("input", {
               "type": 'checkbox',
-              "onChange": _this._onChange,
+              "onChange": (_this.props.onChange ? _this._onChange : null),
               "name": name,
               "checked": isInitiallySelected,
               "value": kw.uuid
-            }) : React.createElement("input", {
-              "type": 'checkbox',
-              "name": name,
-              "defaultChecked": isInitiallySelected,
-              "value": kw.uuid
-            })), kw.label);
+            }), kw.label);
           };
         })(this)));
       }
@@ -8293,7 +8387,7 @@ module.exports = {
 };
 
 
-},{"../madek-prop-types.coffee":78,"./InputTextDate.js":69,"./input-resources.cjsx":72,"./input-text-async.cjsx":73,"active-lodash":157,"react":852}],76:[function(require,module,exports){
+},{"../madek-prop-types.coffee":78,"./InputTextDate.js":70,"./input-resources.cjsx":73,"./input-text-async.cjsx":74,"active-lodash":157,"react":852}],77:[function(require,module,exports){
 var $, React, ReactDOM, checkForAuthToken, f, ui;
 
 React = require('react');
@@ -8381,72 +8475,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/ui.coffee":79,"active-lodash":157,"jquery":256,"react":852,"react-dom":686}],77:[function(require,module,exports){
-var InputText, InputsByType, MadekPropTypes, React, f;
-
-React = require('react');
-
-f = require('active-lodash');
-
-MadekPropTypes = require('./madek-prop-types.coffee');
-
-InputsByType = require('./forms/inputs-by-type.cjsx');
-
-InputText = require('./forms/input-text.cjsx');
-
-module.exports = React.createClass({
-  displayName: 'InputMetaDatum',
-  propTypes: {
-    id: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string.isRequired,
-    get: MadekPropTypes.metaDatum.isRequired
-  },
-  getInitialState: function() {
-    return {
-      isClient: false
-    };
-  },
-  componentDidMount: function(arg) {
-    var get;
-    get = (arg != null ? arg : this.props).get;
-    return this.setState({
-      isClient: true
-    });
-  },
-  render: function(arg, state) {
-    var InputForType, get, id, multiple, name, ref, resourceType, values;
-    ref = arg != null ? arg : this.props, get = ref.get, id = ref.id, name = ref.name;
-    if (state == null) {
-      state = this.state;
-    }
-    resourceType = f.last(get.type.split('::'));
-    multiple = !(f.includes(['Text', 'TextDate'], resourceType));
-    if (state.isClient) {
-      InputForType = InputsByType[resourceType];
-      values = f.map(get.values, function(value) {
-        return value;
-      });
-    } else {
-      InputForType = InputText;
-      values = f.map(get.literal_values, function(value) {
-        return value;
-      });
-    }
-    return React.createElement(InputForType, {
-      "onChange": this.props.onChange,
-      "get": get,
-      "id": id,
-      "name": name,
-      "active": state.isClient,
-      "multiple": multiple,
-      "values": values,
-      "contextKey": this.props.contextKey
-    });
-  }
-});
-
-
-},{"./forms/input-text.cjsx":74,"./forms/inputs-by-type.cjsx":75,"./madek-prop-types.coffee":78,"active-lodash":157,"react":852}],78:[function(require,module,exports){
+},{"../../lib/ui.coffee":79,"active-lodash":157,"jquery":256,"react":852,"react-dom":686}],78:[function(require,module,exports){
 var M, META_DATUM_TYPES, MKEY_REGEX, MadekPropTypes, NAMESPACE_MATCH, PEOPLE_SUBTYPES, PropTypes, ResourceFiltersMetaData, VOCABULARY_REGEX, f, metaKey, validateUUID;
 
 f = require('active-lodash');
@@ -8793,7 +8822,7 @@ PermissionsOverview = React.createClass({displayName: "PermissionsOverview",
 });
 
 
-},{"../../lib/router.coffee":6,"../../lib/string-translation":10,"../../models/collection/permissions.coffee":15,"../../models/media-entry/permissions.coffee":24,"../decorators/ResourcePermissionsForm.cjsx":56,"../lib/autocomplete.cjsx":67,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"url":857}],81:[function(require,module,exports){
+},{"../../lib/router.coffee":6,"../../lib/string-translation":10,"../../models/collection/permissions.coffee":15,"../../models/media-entry/permissions.coffee":24,"../decorators/ResourcePermissionsForm.cjsx":57,"../lib/autocomplete.cjsx":68,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"url":857}],81:[function(require,module,exports){
 var React, classList, f, parseMods;
 
 React = require('react');
@@ -8943,7 +8972,7 @@ urlByType = function(currentUrl, currentType, type) {
 };
 
 
-},{"../../lib/router.coffee":6,"../../lib/set-params-for-url.coffee":8,"../decorators/MediaResourcesBox.cjsx":47,"../lib/ui.coffee":79,"../ui-components/Button.cjsx":85,"../ui-components/ButtonGroup.cjsx":86,"active-lodash":157,"qs":538,"react":852,"url":857}],83:[function(require,module,exports){
+},{"../../lib/router.coffee":6,"../../lib/set-params-for-url.coffee":8,"../decorators/MediaResourcesBox.cjsx":48,"../lib/ui.coffee":79,"../ui-components/Button.cjsx":85,"../ui-components/ButtonGroup.cjsx":86,"active-lodash":157,"qs":538,"react":852,"url":857}],83:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -10849,7 +10878,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../lib/forms/rails-form.cjsx":76,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Modal.cjsx":94,"active-lodash":157,"ampersand-react-mixin":170,"react":852}],108:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../lib/forms/rails-form.cjsx":77,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Modal.cjsx":94,"active-lodash":157,"ampersand-react-mixin":170,"react":852}],108:[function(require,module,exports){
 var Button, FormButton, Icon, InputFieldText, Modal, Preloader, React, ToggableLink, ampersandReactMixin, f, formXhr, loadXhr, t, xhr;
 
 React = require('react');
@@ -10950,7 +10979,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"xhr":860}],109:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"xhr":860}],109:[function(require,module,exports){
 var Button, ButtonGroup, LoadXhr, MediaResourcesBox, React, ReactDOM, TabContent, classnames, f, libUrl, qs, setUrlParams, t;
 
 React = require('react');
@@ -11085,7 +11114,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/load-xhr.coffee":3,"../../../lib/router.coffee":6,"../../../lib/set-params-for-url.coffee":8,"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../ui-components/Button.cjsx":85,"../../ui-components/ButtonGroup.cjsx":86,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"qs":538,"react":852,"react-dom":686,"url":857}],110:[function(require,module,exports){
+},{"../../../lib/load-xhr.coffee":3,"../../../lib/router.coffee":6,"../../../lib/set-params-for-url.coffee":8,"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":48,"../../ui-components/Button.cjsx":85,"../../ui-components/ButtonGroup.cjsx":86,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"qs":538,"react":852,"react-dom":686,"url":857}],110:[function(require,module,exports){
 var MediaResourcesBox, MetaDataList, React, ReactDOM, ResourceShowOverview, SimpleResourceThumbnail, TabContent, classnames, f, t;
 
 React = require('react');
@@ -11137,7 +11166,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../decorators/MetaDataList.cjsx":49,"../../decorators/SimpleResourceThumbnail.cjsx":60,"../../templates/ResourceShowOverview.cjsx":81,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852,"react-dom":686}],111:[function(require,module,exports){
+},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":48,"../../decorators/MetaDataList.cjsx":50,"../../decorators/SimpleResourceThumbnail.cjsx":61,"../../templates/ResourceShowOverview.cjsx":81,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852,"react-dom":686}],111:[function(require,module,exports){
 var HighlightedContent, MediaResourcesBox, React, ReactDOM, TabContent, cx, f, t;
 
 React = require('react');
@@ -11236,7 +11265,7 @@ HighlightedContent = React.createClass({
 });
 
 
-},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852,"react-dom":686}],112:[function(require,module,exports){
+},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":48,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852,"react-dom":686}],112:[function(require,module,exports){
 var React, ResourcesBoxWithSwitch;
 
 React = require('react');
@@ -11288,7 +11317,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../decorators/MetaDataByListing.cjsx":48,"react":852}],114:[function(require,module,exports){
+},{"../../decorators/MetaDataByListing.cjsx":49,"react":852}],114:[function(require,module,exports){
 var MediaResourcesBox, React, ResourceThumbnail, TabContent, classnames, f, t;
 
 React = require('react');
@@ -11349,7 +11378,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../decorators/ResourceThumbnail.cjsx":57,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],115:[function(require,module,exports){
+},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":48,"../../decorators/ResourceThumbnail.cjsx":58,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],115:[function(require,module,exports){
 var MediaResourcesBox, React, ResourceThumbnail, TabContent, classnames, f, t;
 
 React = require('react');
@@ -11503,7 +11532,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../decorators/ResourceThumbnail.cjsx":57,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],116:[function(require,module,exports){
+},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":48,"../../decorators/ResourceThumbnail.cjsx":58,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],116:[function(require,module,exports){
 var FormButton, InputFieldText, Modal, RailsForm, React, ampersandReactMixin, f, t;
 
 React = require('react');
@@ -11676,7 +11705,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../lib/forms/rails-form.cjsx":76,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Modal.cjsx":94,"active-lodash":157,"ampersand-react-mixin":170,"react":852}],117:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../lib/forms/rails-form.cjsx":77,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Modal.cjsx":94,"active-lodash":157,"ampersand-react-mixin":170,"react":852}],117:[function(require,module,exports){
 var Button, ControlledCheckbox, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, SelectCollectionDialog, ToggableLink, ampersandReactMixin, f, formXhr, loadXhr, t, xhr;
 
 React = require('react');
@@ -11964,7 +11993,7 @@ ControlledCheckbox = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../lib/forms/rails-form.cjsx":76,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"./SelectCollectionDialog.cjsx":118,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"xhr":860}],118:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../lib/forms/rails-form.cjsx":77,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"./SelectCollectionDialog.cjsx":118,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"xhr":860}],118:[function(require,module,exports){
 var Button, FormButton, Icon, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, SelectCollectionBody, SelectCollectionFooter, SelectCollectionForm, SelectCollectionHeader, SelectCollectionToolbar, ToggableLink, ampersandReactMixin, f, formXhr, loadXhr, t, xhr;
 
 React = require('react');
@@ -12123,7 +12152,7 @@ SelectCollectionToolbar = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../lib/forms/rails-form.cjsx":76,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"xhr":860}],119:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../lib/forms/rails-form.cjsx":77,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"xhr":860}],119:[function(require,module,exports){
 var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, HighlightedContents, MediaEntryHeader, MetaDataByListing, PageContent, PageContentHeader, React, ReactDOM, RelationResources, RightsManagement, Tab, TabContent, Tabs, TagCloud, activeTabId, contentTestId, f, parseUrl, parseUrlState, resourceName, t, tabTestId;
 
 React = require('react');
@@ -12359,7 +12388,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":10,"../decorators/MetaDataByListing.cjsx":48,"../decorators/MetaDataList.cjsx":49,"../lib/decorate-resource-names.coffee":68,"../templates/ResourcePermissions.cjsx":80,"../ui-components/TagCloud.cjsx":101,"./Collection/DetailAdditional.cjsx":109,"./Collection/DetailOverview.cjsx":110,"./Collection/HighlightedContents.cjsx":111,"./Collection/Metadata.cjsx":113,"./Collection/RelationResources.cjsx":114,"./Collection/Relations.cjsx":115,"./MediaEntryHeader.cjsx":128,"./PageContent.cjsx":132,"./PageContentHeader.cjsx":133,"./Tab.cjsx":134,"./TabContent.cjsx":135,"./Tabs.cjsx":136,"classnames":186,"lodash":518,"react":852,"react-dom":686,"url":857}],120:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../decorators/MetaDataByListing.cjsx":49,"../decorators/MetaDataList.cjsx":50,"../lib/decorate-resource-names.coffee":69,"../templates/ResourcePermissions.cjsx":80,"../ui-components/TagCloud.cjsx":101,"./Collection/DetailAdditional.cjsx":109,"./Collection/DetailOverview.cjsx":110,"./Collection/HighlightedContents.cjsx":111,"./Collection/Metadata.cjsx":113,"./Collection/RelationResources.cjsx":114,"./Collection/Relations.cjsx":115,"./MediaEntryHeader.cjsx":128,"./PageContent.cjsx":132,"./PageContentHeader.cjsx":133,"./Tab.cjsx":134,"./TabContent.cjsx":135,"./Tabs.cjsx":136,"classnames":186,"lodash":518,"react":852,"react-dom":686,"url":857}],120:[function(require,module,exports){
 var CreateCollection, HeaderPrimaryButton, InputFieldText, PageContentHeader, React, ReactDOM, t;
 
 React = require('react');
@@ -12437,7 +12466,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":10,"../lib/forms/input-field-text.cjsx":71,"./HeaderPrimaryButton.cjsx":123,"./My/CreateCollection.cjsx":130,"./PageContentHeader.cjsx":133,"react":852,"react-dom":686}],121:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../lib/forms/input-field-text.cjsx":72,"./HeaderPrimaryButton.cjsx":123,"./My/CreateCollection.cjsx":130,"./PageContentHeader.cjsx":133,"react":852,"react-dom":686}],121:[function(require,module,exports){
 var AskModal, AutoComplete, Link, MemberRow, RailsForm, React, ReactDOM, classnames, f, loadXhr, t;
 
 React = require('react');
@@ -12700,7 +12729,7 @@ MemberRow = React.createClass({displayName: "MemberRow",
 });
 
 
-},{"../../lib/load-xhr.coffee":3,"../../lib/string-translation.js":10,"../lib/autocomplete.cjsx":67,"../lib/forms/rails-form.cjsx":76,"../ui-components/AskModal.cjsx":84,"classnames":186,"lodash":518,"react":852,"react-dom":686}],122:[function(require,module,exports){
+},{"../../lib/load-xhr.coffee":3,"../../lib/string-translation.js":10,"../lib/autocomplete.cjsx":68,"../lib/forms/rails-form.cjsx":77,"../ui-components/AskModal.cjsx":84,"classnames":186,"lodash":518,"react":852,"react-dom":686}],122:[function(require,module,exports){
 var RailsForm, React, ReactDOM;
 
 React = require('react');
@@ -12744,7 +12773,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../lib/forms/rails-form.cjsx":76,"react":852,"react-dom":686}],123:[function(require,module,exports){
+},{"../lib/forms/rails-form.cjsx":77,"react":852,"react-dom":686}],123:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -12896,7 +12925,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../ui-components/Modal.cjsx":94,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"url":857}],125:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../ui-components/Modal.cjsx":94,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"url":857}],125:[function(require,module,exports){
 var React, ResourcesBoxWithSwitch;
 
 React = require('react');
@@ -13090,7 +13119,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../decorators/ResourceThumbnail.cjsx":57,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],128:[function(require,module,exports){
+},{"../../../lib/string-translation.js":10,"../../decorators/MediaResourcesBox.cjsx":48,"../../decorators/ResourceThumbnail.cjsx":58,"../TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],128:[function(require,module,exports){
 var AsyncModal, HeaderButton, PageContentHeader, React, ReactDOM, SelectCollection, f;
 
 React = require('react');
@@ -13253,7 +13282,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation":10,"../decorators/MediaEntryPreview.cjsx":46,"../decorators/MetaDataByListing.cjsx":48,"../decorators/MetaDataList.cjsx":49,"../lib/madek-prop-types.coffee":78,"../templates/ResourceShowOverview.cjsx":81,"../ui-components/index.coffee":105,"active-lodash":157,"classnames":186,"react":852}],130:[function(require,module,exports){
+},{"../../lib/string-translation":10,"../decorators/MediaEntryPreview.cjsx":47,"../decorators/MetaDataByListing.cjsx":49,"../decorators/MetaDataList.cjsx":50,"../lib/madek-prop-types.coffee":78,"../templates/ResourceShowOverview.cjsx":81,"../ui-components/index.coffee":105,"active-lodash":157,"classnames":186,"react":852}],130:[function(require,module,exports){
 var FormButton, InputFieldText, Modal, Preloader, RailsForm, React, ReactDOM, ToggableLink, ampersandReactMixin, f, formXhr, getRailsCSRFToken, loadXhr, t, xhr;
 
 React = require('react');
@@ -13477,7 +13506,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/rails-csrf-token.coffee":5,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../lib/forms/rails-form.cjsx":76,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"xhr":860}],131:[function(require,module,exports){
+},{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/rails-csrf-token.coffee":5,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":72,"../../lib/forms/rails-form.cjsx":77,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"xhr":860}],131:[function(require,module,exports){
 var ActionsBar, Button, FileDrop, MediaResourcesBox, React, ReactDOM, UPLOAD_CONCURRENCY, UploadQueue, ampersandReactMixin, async, f, ref, t;
 
 React = require('react');
@@ -13640,7 +13669,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation":10,"../../decorators/MediaResourcesBox.cjsx":47,"../../ui-components/index.coffee":105,"active-lodash":157,"ampersand-react-mixin":170,"async":180,"react":852,"react-dom":686,"react-file-drop":688}],132:[function(require,module,exports){
+},{"../../../lib/string-translation":10,"../../decorators/MediaResourcesBox.cjsx":48,"../../ui-components/index.coffee":105,"active-lodash":157,"ampersand-react-mixin":170,"async":180,"react":852,"react-dom":686,"react-file-drop":688}],132:[function(require,module,exports){
 var React, ReactDOM;
 
 React = require('react');
@@ -14177,7 +14206,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/forms/rails-form.cjsx":76,"../../lib/ui.coffee":79,"../../ui-components/Dropdown.cjsx":88,"../../ui-components/Icon.cjsx":90,"active-lodash":157,"react":852}],140:[function(require,module,exports){
+},{"../../lib/forms/rails-form.cjsx":77,"../../lib/ui.coffee":79,"../../ui-components/Dropdown.cjsx":88,"../../ui-components/Icon.cjsx":90,"active-lodash":157,"react":852}],140:[function(require,module,exports){
 var BatchResourceMetaDataForm, Button, Icon, PageContent, PageContentHeader, React, ResourcesBatchBox, TabContent, cx, f, setUrlParams, t;
 
 React = require('react');
@@ -14236,7 +14265,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/set-params-for-url.coffee":8,"../../../lib/string-translation":10,"../../decorators/BatchResourceMetaDataForm.cjsx":43,"../../decorators/ResourcesBatchBox.cjsx":59,"../../ui-components/Button.cjsx":85,"../../ui-components/Icon.cjsx":90,"../../views/PageContent.cjsx":132,"../../views/PageContentHeader.cjsx":133,"../../views/TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],141:[function(require,module,exports){
+},{"../../../lib/set-params-for-url.coffee":8,"../../../lib/string-translation":10,"../../decorators/BatchResourceMetaDataForm.cjsx":43,"../../decorators/ResourcesBatchBox.cjsx":60,"../../ui-components/Button.cjsx":85,"../../ui-components/Icon.cjsx":90,"../../views/PageContent.cjsx":132,"../../views/PageContentHeader.cjsx":133,"../../views/TabContent.cjsx":135,"active-lodash":157,"classnames":186,"react":852}],141:[function(require,module,exports){
 var MediaEntryBatchPermissions, PageContent, PageContentHeader, Preloader, React, ResourcePermissionsForm, ResourcesBatchBox, TabContent, f, t, ui, xhr;
 
 React = require('react');
@@ -14364,7 +14393,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../models/batch/batch-media-entry-permissions.coffee":12,"../../decorators/ResourcePermissionsForm.cjsx":56,"../../decorators/ResourcesBatchBox.cjsx":59,"../../lib/ui.coffee":79,"../../ui-components/Preloader.cjsx":97,"../../views/PageContent.cjsx":132,"../../views/PageContentHeader.cjsx":133,"../../views/TabContent.cjsx":135,"active-lodash":157,"react":852,"xhr":860}],142:[function(require,module,exports){
+},{"../../../models/batch/batch-media-entry-permissions.coffee":12,"../../decorators/ResourcePermissionsForm.cjsx":57,"../../decorators/ResourcesBatchBox.cjsx":60,"../../lib/ui.coffee":79,"../../ui-components/Preloader.cjsx":97,"../../views/PageContent.cjsx":132,"../../views/PageContentHeader.cjsx":133,"../../views/TabContent.cjsx":135,"active-lodash":157,"react":852,"xhr":860}],142:[function(require,module,exports){
 var CatalogThumbnailShifted, LoginDialog, React, ReactDOM, ResourcesSection, classnames, f;
 
 React = require('react');
@@ -14620,7 +14649,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../lib/string-translation.js":10,"../../lib/forms/rails-form.cjsx":76,"active-lodash":157,"react":852,"react-bootstrap/lib/Nav":552,"react-bootstrap/lib/NavItem":553,"react-bootstrap/lib/Tab":557}],145:[function(require,module,exports){
+},{"../../../lib/string-translation.js":10,"../../lib/forms/rails-form.cjsx":77,"active-lodash":157,"react":852,"react-bootstrap/lib/Nav":552,"react-bootstrap/lib/NavItem":553,"react-bootstrap/lib/Tab":557}],145:[function(require,module,exports){
 var React;
 
 React = require('react');
@@ -14896,7 +14925,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../../decorators/ResourceThumbnail.cjsx":57,"../../../ui-components/Keyword.cjsx":91,"./CatalogThumbnail.cjsx":145,"./WorthThumbnail.cjsx":152,"active-lodash":157,"react":852}],152:[function(require,module,exports){
+},{"../../../decorators/ResourceThumbnail.cjsx":58,"../../../ui-components/Keyword.cjsx":91,"./CatalogThumbnail.cjsx":145,"./WorthThumbnail.cjsx":152,"active-lodash":157,"react":852}],152:[function(require,module,exports){
 var React;
 
 React = require('react');

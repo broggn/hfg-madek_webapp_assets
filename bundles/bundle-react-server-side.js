@@ -11316,7 +11316,8 @@ module.exports = React.createClass({
       siblings: 'collection_relations_sibling_sets'
     };
     return React.createElement("div", {
-      "className": "ui-container tab-content bordered rounded-right rounded-bottom mbh"
+      "className": "ui-container tab-content bordered rounded-right rounded-bottom mbh",
+      "data-test-id": this.props.testId
     }, React.createElement("div", {
       "className": "ui-container bright rounded-right rounded-bottom phl ptl"
     }, React.createElement("h2", {
@@ -11373,7 +11374,8 @@ module.exports = React.createClass({
     parentCount = get.relations.parent_collections.pagination.total_count;
     siblingCount = get.relations.sibling_collections.pagination.total_count;
     return React.createElement("div", {
-      "className": "ui-container tab-content bordered rounded-right rounded-bottom mbh"
+      "className": "ui-container tab-content bordered rounded-right rounded-bottom mbh",
+      "data-test-id": this.props.testId
     }, React.createElement("div", {
       "className": "ui-container bright rounded-right rounded-bottom pal"
     }, React.createElement("div", {
@@ -12122,13 +12124,13 @@ SelectCollectionToolbar = React.createClass({
 
 
 },{"../../../lib/form-xhr.coffee":2,"../../../lib/load-xhr.coffee":3,"../../../lib/string-translation":10,"../../lib/forms/input-field-text.cjsx":71,"../../lib/forms/rails-form.cjsx":76,"../../ui-components/Button.cjsx":85,"../../ui-components/FormButton.cjsx":89,"../../ui-components/Icon.cjsx":90,"../../ui-components/Modal.cjsx":94,"../../ui-components/Preloader.cjsx":97,"../../ui-components/ToggableLink.cjsx":103,"active-lodash":157,"ampersand-react-mixin":170,"react":852,"react-dom":686,"xhr":860}],119:[function(require,module,exports){
-var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, HighlightedContents, MediaEntryHeader, MetaDataByListing, PageContent, PageContentHeader, React, ReactDOM, RelationResources, RightsManagement, Tab, TabContent, Tabs, TagCloud, f, parseUrl, resourceName, t, tabIdByLocation;
+var CollectionDetailAdditional, CollectionDetailOverview, CollectionMetadata, CollectionRelations, HighlightedContents, MediaEntryHeader, MetaDataByListing, PageContent, PageContentHeader, React, ReactDOM, RelationResources, RightsManagement, Tab, TabContent, Tabs, TagCloud, activeTabId, contentTestId, f, parseUrl, parseUrlState, resourceName, t, tabTestId;
 
 React = require('react');
 
 ReactDOM = require('react-dom');
 
-f = require('active-lodash');
+f = require('lodash');
 
 parseUrl = require('url').parse;
 
@@ -12166,16 +12168,36 @@ TagCloud = require('../ui-components/TagCloud.cjsx');
 
 resourceName = require('../lib/decorate-resource-names.coffee');
 
-tabIdByLocation = function(tabs, location) {
-  var path, tab;
-  path = parseUrl(location).pathname.replace(/\/edit(\/)?$/, '');
-  path = path.replace(/\/parents(\/)?$/, '');
-  path = path.replace(/\/children(\/)?$/, '');
-  path = path.replace(/\/siblings(\/)?$/, '');
-  tab = f.find(tabs, {
-    href: path
-  });
-  return f.get(tab, 'id');
+parseUrlState = function(location) {
+  var urlParts;
+  urlParts = f.slice(parseUrl(location).pathname.split('/'), 1);
+  if (urlParts.length < 3) {
+    return {
+      action: 'show',
+      argument: null
+    };
+  } else {
+    return {
+      action: urlParts[2],
+      argument: urlParts.length > 3 ? urlParts[3] : void 0
+    };
+  }
+};
+
+activeTabId = function(urlState) {
+  if (urlState.action === 'context') {
+    return urlState.action + '/' + urlState.argument;
+  } else {
+    return urlState.action;
+  }
+};
+
+contentTestId = function(id) {
+  return 'set_tab_content_' + id;
+};
+
+tabTestId = function(id) {
+  return 'set_tab_' + id;
 };
 
 module.exports = React.createClass({
@@ -12183,7 +12205,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       isMounted: false,
-      activeTab: tabIdByLocation(this.props.get.tabs, this.props.for_url)
+      urlState: parseUrlState(this.props.for_url)
     };
   },
   componentDidMount: function() {
@@ -12196,72 +12218,66 @@ module.exports = React.createClass({
       return;
     }
     return this.setState({
-      activeTab: tabIdByLocation(this.props.get.tabs, this.props.for_url)
+      urlState: parseUrlState(this.props.for_url)
     });
   },
-  _setActiveTab: function(currentLocation) {
-    var tabId;
-    if ((tabId = tabIdByLocation(this.props.get.tabs, currentLocation))) {
-      if (!(tabId === this.state.activeTab)) {
-        return this.setState({
-          activeTab: tabId
-        });
-      }
-    }
-  },
   render: function(arg, arg1) {
-    var activeTab, authToken, get, isMounted, ref, ref1;
+    var MetaDataList, authToken, cx, get, isMounted, ref, ref1, urlState;
     ref = arg != null ? arg : this.props, authToken = ref.authToken, get = ref.get;
-    ref1 = arg1 != null ? arg1 : this.state, isMounted = ref1.isMounted, activeTab = ref1.activeTab;
+    ref1 = arg1 != null ? arg1 : this.state, isMounted = ref1.isMounted, urlState = ref1.urlState;
     return React.createElement(PageContent, null, React.createElement(MediaEntryHeader, {
       "authToken": authToken,
       "get": get.header,
       "showModal": this.props.showModal,
       "async": isMounted,
       "modalAction": 'select_collection'
-    }), React.createElement(Tabs, null, f.map(get.tabs, (function(_this) {
-      return function(tab) {
-        return React.createElement(Tab, {
-          "key": tab.id,
-          "href": tab.href,
-          "onClick": _this._onTabClick,
-          "iconType": tab.icon_type,
-          "privacyStatus": get.privacy_status,
-          "label": tab.label,
-          "active": tab.id === activeTab
-        });
-      };
-    })(this))), ((function() {
-      switch (activeTab) {
+    }), React.createElement(Tabs, null, f.map(get.tabs, function(tab) {
+      return React.createElement(Tab, {
+        "key": tab.id,
+        "href": tab.href,
+        "testId": tabTestId(tab.id),
+        "iconType": tab.icon_type,
+        "privacyStatus": get.privacy_status,
+        "label": tab.label,
+        "active": tab.id === activeTabId(urlState)
+      });
+    })), ((function() {
+      switch (urlState.action) {
         case 'relations':
           switch (get.action) {
             case 'relations':
               return React.createElement(CollectionRelations, {
                 "get": get,
-                "authToken": authToken
+                "authToken": authToken,
+                "testId": contentTestId('relations')
               });
             case 'relation_parents':
               return React.createElement(RelationResources, {
                 "get": get,
                 "authToken": authToken,
-                "scope": 'parents'
+                "scope": 'parents',
+                "testId": contentTestId('relations_parents')
               });
             case 'relation_children':
               return React.createElement(RelationResources, {
                 "get": get,
                 "authToken": authToken,
-                "scope": 'children'
+                "scope": 'children',
+                "testId": contentTestId('relations_children')
               });
             case 'relation_siblings':
               return React.createElement(RelationResources, {
                 "get": get,
                 "authToken": authToken,
-                "scope": 'siblings'
+                "scope": 'siblings',
+                "testId": contentTestId('relations_siblings')
               });
           }
           break;
         case 'more_data':
-          return React.createElement(TabContent, null, React.createElement("div", {
+          return React.createElement(TabContent, {
+            "testId": contentTestId('more_data')
+          }, React.createElement("div", {
             "className": "bright pal rounded-bottom rounded-top-right ui-container"
           }, (get.logged_in ? React.createElement("div", {
             "className": 'col1of3'
@@ -12302,13 +12318,32 @@ module.exports = React.createClass({
             "list": get.all_meta_data
           })))));
         case 'permissions':
-          return React.createElement(TabContent, null, React.createElement("div", {
+          return React.createElement(TabContent, {
+            "testId": contentTestId('permissions')
+          }, React.createElement("div", {
             "className": "bright pal rounded-bottom rounded-top-right ui-container"
           }, React.createElement(RightsManagement, {
             "get": get.permissions
           })));
+        case 'context':
+          MetaDataList = require('../decorators/MetaDataList.cjsx');
+          cx = require('classnames');
+          return React.createElement(TabContent, {
+            "testId": contentTestId('context_' + urlState.argument)
+          }, React.createElement("div", {
+            "className": "bright  pal rounded-top-right ui-container"
+          }, React.createElement("div", {
+            "className": cx('ui-resource-overview')
+          }, React.createElement(MetaDataList, {
+            "list": get.context_meta_data,
+            "type": 'table',
+            "showTitle": false,
+            "showFallback": true
+          }))));
         default:
-          return React.createElement(TabContent, null, React.createElement(CollectionDetailOverview, {
+          return React.createElement(TabContent, {
+            "testId": contentTestId('show')
+          }, React.createElement(CollectionDetailOverview, {
             "get": get,
             "authToken": authToken
           }), React.createElement(HighlightedContents, {
@@ -12324,7 +12359,7 @@ module.exports = React.createClass({
 });
 
 
-},{"../../lib/string-translation.js":10,"../decorators/MetaDataByListing.cjsx":48,"../lib/decorate-resource-names.coffee":68,"../templates/ResourcePermissions.cjsx":80,"../ui-components/TagCloud.cjsx":101,"./Collection/DetailAdditional.cjsx":109,"./Collection/DetailOverview.cjsx":110,"./Collection/HighlightedContents.cjsx":111,"./Collection/Metadata.cjsx":113,"./Collection/RelationResources.cjsx":114,"./Collection/Relations.cjsx":115,"./MediaEntryHeader.cjsx":128,"./PageContent.cjsx":132,"./PageContentHeader.cjsx":133,"./Tab.cjsx":134,"./TabContent.cjsx":135,"./Tabs.cjsx":136,"active-lodash":157,"react":852,"react-dom":686,"url":857}],120:[function(require,module,exports){
+},{"../../lib/string-translation.js":10,"../decorators/MetaDataByListing.cjsx":48,"../decorators/MetaDataList.cjsx":49,"../lib/decorate-resource-names.coffee":68,"../templates/ResourcePermissions.cjsx":80,"../ui-components/TagCloud.cjsx":101,"./Collection/DetailAdditional.cjsx":109,"./Collection/DetailOverview.cjsx":110,"./Collection/HighlightedContents.cjsx":111,"./Collection/Metadata.cjsx":113,"./Collection/RelationResources.cjsx":114,"./Collection/Relations.cjsx":115,"./MediaEntryHeader.cjsx":128,"./PageContent.cjsx":132,"./PageContentHeader.cjsx":133,"./Tab.cjsx":134,"./TabContent.cjsx":135,"./Tabs.cjsx":136,"classnames":186,"lodash":518,"react":852,"react-dom":686,"url":857}],120:[function(require,module,exports){
 var CreateCollection, HeaderPrimaryButton, InputFieldText, PageContentHeader, React, ReactDOM, t;
 
 React = require('react');
@@ -13670,7 +13705,8 @@ module.exports = React.createClass({
       "className": 'icon-privacy-' + icon_map[privacyStatus]
     })) : void 0 : void 0;
     return React.createElement("li", {
-      "className": classes
+      "className": classes,
+      "data-test-id": this.props.testId
     }, React.createElement("a", {
       "href": href,
       "onClick": this.props.onClick
@@ -13684,23 +13720,26 @@ module.exports = React.createClass({
 
 
 },{"classnames":186,"react":852,"react-dom":686}],135:[function(require,module,exports){
-var React, ReactDOM;
+var React, ReactDOM, cx;
 
 React = require('react');
 
 ReactDOM = require('react-dom');
 
+cx = require('classnames');
+
 module.exports = React.createClass({
   displayName: 'TabContent',
   render: function() {
     return React.createElement("div", {
-      "className": "ui-container tab-content bordered bright rounded-right rounded-bottom"
+      "className": 'ui-container tab-content bordered bright rounded-right rounded-bottom',
+      "data-test-id": this.props.testId
     }, this.props.children);
   }
 });
 
 
-},{"react":852,"react-dom":686}],136:[function(require,module,exports){
+},{"classnames":186,"react":852,"react-dom":686}],136:[function(require,module,exports){
 var React, ReactDOM;
 
 React = require('react');

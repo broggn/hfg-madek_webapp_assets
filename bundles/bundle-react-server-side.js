@@ -354,7 +354,7 @@ resourcesConfig = {
   }
 };
 
-module.exports = function(resourceType, parameters) {
+module.exports = function(resourceType, parameters, localData) {
   var baseConfig, missing;
   if (parameters == null) {
     parameters = null;
@@ -372,7 +372,7 @@ module.exports = function(resourceType, parameters) {
     name: resourceType + "Search",
     key: baseConfig.key || 'name',
     displayKey: baseConfig.displayKey || baseConfig.key || 'name',
-    source: BloodhoundFactory(baseConfig, parameters),
+    source: BloodhoundFactory(baseConfig, parameters, localData),
     limit: 100
   };
 };
@@ -381,13 +381,12 @@ tokenizer = function(string) {
   return Bloodhound.tokenizers.whitespace(f.trim(string));
 };
 
-BloodhoundFactory = function(config, parameters) {
-  if (parameters == null) {
-    parameters = null;
-  }
-  return new Bloodhound({
+BloodhoundFactory = function(config, parameters, localData) {
+  var engine;
+  engine = new Bloodhound({
     datumTokenizer: tokenizer,
     queryTokenizer: tokenizer,
+    local: localData,
     remote: {
       wildcard: '__QUERY__',
       url: url.format({
@@ -398,6 +397,17 @@ BloodhoundFactory = function(config, parameters) {
       })
     }
   });
+  if (!localData) {
+    return engine;
+  } else {
+    return function(query, syncCallback, asyncCallback) {
+      if (query === '') {
+        return syncCallback(engine.all());
+      } else {
+        return engine.search(query, syncCallback, asyncCallback);
+      }
+    };
+  }
 };
 
 
@@ -7297,15 +7307,15 @@ t = ui.t('de');
 searchResources = require('../../lib/search.coffee');
 
 initTypeahead = function(domNode, resourceType, params, conf, existingValues, onSelect, onAdd) {
-  var $input, dataSet, localData, searchBackend, typeahead, typeaheadConfig;
-  localData = conf.dataSource;
+  var $input, dataSet, localData, minLength, searchBackend, typeahead, typeaheadConfig;
+  minLength = conf.minLength, localData = conf.localData;
   if (!(searchBackend = searchResources(resourceType, params, localData))) {
     throw new Error("No search backend for '" + resourceType + "'!");
   }
   typeaheadConfig = {
     hint: false,
     highlight: true,
-    minLength: conf.minLength,
+    minLength: minLength,
     classNames: {
       wrapper: 'ui-autocomplete-holder',
       input: 'ui-typeahead-input',
@@ -8340,9 +8350,10 @@ module.exports = {
         params = {
           meta_key_id: meta_key.uuid
         };
-        if (!meta_key.is_extensible) {
+        if (keywords) {
           autocompleteConfig = {
-            minLength: 0
+            minLength: 0,
+            localData: keywords
           };
         }
         return React.createElement(InputResources, React.__spread({}, this.props, {
@@ -8367,18 +8378,13 @@ module.exports = {
             return React.createElement("label", {
               "className": 'col2of6',
               "key": kw.uuid
-            }, (_this.props.onChange ? React.createElement("input", {
+            }, React.createElement("input", {
               "type": 'checkbox',
-              "onChange": _this._onChange,
+              "onChange": (_this.props.onChange ? _this._onChange : null),
               "name": name,
               "checked": isInitiallySelected,
               "value": kw.uuid
-            }) : React.createElement("input", {
-              "type": 'checkbox',
-              "name": name,
-              "defaultChecked": isInitiallySelected,
-              "value": kw.uuid
-            })), kw.label);
+            }), kw.label);
           };
         })(this)));
       }

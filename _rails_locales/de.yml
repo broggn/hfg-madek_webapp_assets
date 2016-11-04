@@ -219,6 +219,7 @@ de:
   meta_data_input_new_group_add: Arbeitsgruppe einfügen
   meta_data_input_new_person_add: Person einfügen
   meta_data_input_new_person_toggle: Neue Person oder Arbeitsgruppe einfügen
+  meta_data_input_keywords_existing: 'Schlagwort ist bereits vergeben!'
   meta_data_meta_key_label: Schlüssel
   meta_data_type_label: Typ
   meta_data_value_label: Wert

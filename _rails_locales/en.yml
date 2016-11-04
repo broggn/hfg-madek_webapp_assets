@@ -217,6 +217,7 @@ en:
   meta_data_input_new_group_add: Add Work Group
   meta_data_input_new_person_add: Add Person
   meta_data_input_new_person_toggle: Add new Person or Work Group
+  meta_data_input_keywords_existing: 'Keyword already set!'
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value

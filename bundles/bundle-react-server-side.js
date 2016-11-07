@@ -458,10 +458,7 @@ module.exports = setUrlParams = function() {
 urlFromStringOrObject = function(url) {
   switch (false) {
     case !(isObject(url) && (isString(url.path) || isString(url.pathname))):
-      return {
-        pathname: url.path || url.pathname,
-        query: url.query
-      };
+      return url;
     case !isString(url):
       return (function(url) {
         return set(url, 'query', url.query);
@@ -1634,7 +1631,7 @@ module.exports = function(collectionClass, arg) {
       if (!this.currentPage) {
         return callback(null);
       }
-      path = this.url.path;
+      path = this.url.pathname;
       if (path.indexOf('/relations/children') > 0 || path.indexOf('/relations/siblings') > 0 || path.indexOf('/relations/parents') > 0) {
         jsonPath = 'relation_resources.resources';
       }
@@ -3553,7 +3550,7 @@ viewConfigProps = React.PropTypes.shape({
     })
   }),
   for_url: React.PropTypes.shape({
-    path: React.PropTypes.string.isRequired,
+    pathname: React.PropTypes.string.isRequired,
     query: React.PropTypes.object
   })
 });
@@ -4427,14 +4424,14 @@ module.exports = React.createClass({
       "authToken": this.props.authToken,
       "get": null,
       "onClose": this._onCloseModal,
-      "returnTo": this.state.config.for_url.path
+      "returnTo": this.state.config.for_url.pathname
     }) : void 0), (this.state.batchRemoveFromSet ? React.createElement(BatchRemoveFromSetModal, {
       "collectionUuid": this.props.collectionData.uuid,
       "resourceIds": this._batchRemoveFromSetIds(),
       "authToken": this.props.authToken,
       "get": null,
       "onClose": this._onCloseModal,
-      "returnTo": this.state.config.for_url.path
+      "returnTo": this.state.config.for_url.pathname
     }) : void 0));
   }
 });
@@ -14998,7 +14995,7 @@ module.exports = resourceListParams = function(location) {
   };
   return f.chain(query).get(base).pick(allowed).map(f.curry(coerceTypes)(coerced_types)).object().merge({
     for_url: {
-      path: location.pathname,
+      pathname: location.pathname,
       query: query
     }
   }).value();

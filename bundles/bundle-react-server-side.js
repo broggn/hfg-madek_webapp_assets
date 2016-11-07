@@ -373,7 +373,7 @@ module.exports = function(resourceType, parameters, localData) {
     key: baseConfig.key || 'name',
     displayKey: baseConfig.displayKey || baseConfig.key || 'name',
     source: BloodhoundFactory(baseConfig, parameters, localData),
-    limit: 100
+    limit: 1000
   };
 };
 

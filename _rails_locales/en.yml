@@ -190,10 +190,13 @@ en:
   meta_data_batch_success: Succesfully updated metadata.
   meta_data_batch_summary_all_post: ' media entries have been saved.'
   meta_data_batch_summary_all_pre: 'All '
+  meta_data_collection_batch_summary_all_post: ' sets have been saved.'
+  meta_data_collection_batch_summary_all_pre: 'All '
   meta_data_batch_summary_missing: ' have missing metadata'
   meta_data_batch_summary_published: ' have mandatory data'
   meta_data_batch_summary_were_published: ' already had mandatory data'
-  meta_data_batch_title_post: ' media entries at once'
+  meta_data_batch_title_post_media_entries: ' media entries at once'
+  meta_data_batch_title_post_collections: ' sets at once'
   meta_data_batch_title_pre: 'Edit metadata for '
   meta_data_blank_value_for_required_meta_key_post: '!'
   meta_data_blank_value_for_required_meta_key_pre: 'Blank metadatum value for meta key '
@@ -297,8 +300,10 @@ en:
   resource_select_collection_title: Add to/remove from set
   resources_box_batch_actions_addtoset: Add selected to Set
   resources_box_batch_actions_delete: Delete selected
-  resources_box_batch_actions_edit: Edit MetaData
-  resources_box_batch_actions_managepermissions: Edit Permissions
+  resources_box_batch_actions_edit: Edit Meta Data for media entries
+  resources_box_batch_actions_edit_sets: Edit MetaData for sets
+  resources_box_batch_actions_managepermissions: Edit Permissions for media entries
+  resources_box_batch_actions_sets_managepermissions: Edit Permissions for collections
   resources_box_batch_actions_menu_title: Actions
   resources_box_batch_actions_removefromset: Remove from set
   resources_box_batch_actions_save: Save as filter set

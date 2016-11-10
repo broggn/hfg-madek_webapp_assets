@@ -341,3 +341,8 @@ de:
   workgroup_members_table_is_member: Mitglied?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Mitglieder
+  vocabularies_all: Alle Vokabulare
+  vocabularies_tabs_vocabulary: Vokabular
+  vocabularies_tabs_keywords: Schlagwörter
+  vocabularies_keywords_hint_1: 'Alle im Vokabular '
+  vocabularies_keywords_hint_2: ' enthaltenen MetaKeys vom Typ Keyword mit den enthaltenen Schlagwörtern.'

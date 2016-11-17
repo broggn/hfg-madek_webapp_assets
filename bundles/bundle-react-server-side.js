@@ -4857,7 +4857,7 @@ module.exports = React.createClass({
     }
   },
   render: function(arg) {
-    var batchConflict, className, error, inputID, meta_key, name, newget, ref, style, validErr;
+    var batchConflict, className, error, meta_key, name, newget, ref, style, validErr;
     ref = arg != null ? arg : this.props, name = ref.name, error = ref.error;
     if (this.props.batch) {
       name += "[" + this.props.metaKeyId + "][values][]";
@@ -4885,7 +4885,6 @@ module.exports = React.createClass({
     }, {
       'highlight': batchConflict
     });
-    inputID = f.get(this.props, 'contextKey.uuid') || this.props.metaKeyId;
     return React.createElement("fieldset", {
       "style": style,
       "className": className
@@ -4902,10 +4901,11 @@ module.exports = React.createClass({
       "contextKey": this.props.contextKey,
       "mandatory": this.props.requiredMetaKeyIds[this.props.metaKeyId]
     }), React.createElement(InputMetaDatum, {
-      "id": inputID,
+      "id": this.props.metaKeyId,
       "onChange": this._onChange,
       "name": name,
-      "get": newget
+      "get": newget,
+      "contextKey": this.props.contextKey
     }));
   }
 });

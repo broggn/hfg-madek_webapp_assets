@@ -224,6 +224,7 @@ en:
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value
+  meta_data_edit_more_data: More Data
   no_content_fallback: No content available.
   no_groups_fallback: No groups available.
   no_keywords_fallback: No keywords available.

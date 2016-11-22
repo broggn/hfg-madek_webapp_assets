@@ -226,6 +226,7 @@ de:
   meta_data_meta_key_label: Schlüssel
   meta_data_type_label: Typ
   meta_data_value_label: Wert
+  meta_data_edit_more_data: Weitere Angaben
   no_content_fallback: Keine Inhalte vorhanden.
   no_groups_fallback: Keine Arbeitsgruppen vorhanden.
   no_keywords_fallback: Keine Schlagworte vorhanden.

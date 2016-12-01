@@ -62,10 +62,9 @@ en:
   collection_new_label_title: Title
   collection_permissions_btn: Change Permissions
   collection_relations_child_sets: Child sets
-  media_entry_relations_current: Current entry
-  collection_relations_current: Current set
+  collection_relations_current_media_entry: Current entry
+  collection_relations_current_set: Current set
   collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
-  media_entry_relations_hint_text: 'Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
   collection_relations_no_child_sets: ' '
   collection_relations_no_parent_sets: ' '
   collection_relations_no_sibling_sets: ' '

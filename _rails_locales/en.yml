@@ -73,6 +73,9 @@ en:
   collection_relations_show_all_relations: Show all relations
   collection_relations_show_all: Show all
   collection_relations_sibling_sets: Sibling sets
+  collection_relations_parents_hint: Das ausgewählte Set wurde diesen Sets hinzugefügt.
+  collection_relations_siblings_hint: ' wie das ausgewählte Set.'
+  collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
   collection_resource_selection_cancel: Cancel
   collection_resource_selection_h_author: Author
   collection_resource_selection_h_date: Dating

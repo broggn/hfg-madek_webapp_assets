@@ -75,6 +75,9 @@ de:
   collection_relations_show_all_relations: Alle Zusammenhänge anzeigen
   collection_relations_show_all: Alle anzeigen
   collection_relations_sibling_sets: Benachbarte Sets
+  collection_relations_parents_hint: Das ausgewählte Set wurde diesen Sets hinzugefügt.
+  collection_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt
+  collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_h_author: Autor/in
   collection_resource_selection_h_date: Datierung

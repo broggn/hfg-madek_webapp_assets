@@ -351,6 +351,9 @@ en:
   vocabularies_keywords_hint_2: ' enthaltenen MetaKeys vom Typ Keyword mit den enthaltenen Schlagwörtern.'
   vocabularies_tabs_keywords: Keywords
   vocabularies_tabs_vocabulary: Vocabulary
+  vocabularies_tabs_contents: Contents
+  vocabularies_contents_hint_1: 'Alle Einträge, welche Medadaten haben die im Vokabular '
+  vocabularies_contents_hint_2: ' definiert sind.'
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group
   workgroup_members_table_is_member: Member?

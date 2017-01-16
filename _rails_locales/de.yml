@@ -78,8 +78,8 @@ de:
   collection_relations_parents_hint: Das ausgewählte Set wurde diesen Sets hinzugefügt.
   collection_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie das ausgewählte Set.
   collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
-  media_entry_relations_parents_hint: Der ausgewählte Eintrag wurde diesen Sets hinzugefügt.
-  media_entry_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte Eintrag.
+  media_entry_relations_parents_hint: Der ausgewählte Medieneintrag wurde diesen Sets hinzugefügt.
+  media_entry_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte Medieneintrag.
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_h_author: Autor/in
   collection_resource_selection_h_date: Datierung

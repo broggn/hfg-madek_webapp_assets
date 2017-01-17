@@ -346,6 +346,8 @@ de:
   sitemap_vocabularies: Vokabulare
   usage_terms_accept_btn: Nutzungsbedingungen akzeptieren
   usage_terms_reject_btn: Ablehnen
+  user_menu_admin_mode_toogle_on: In Admin-Modus wechseln
+  user_menu_admin_mode_toogle_off: Admin-Modus beenden
   user_menu_admin_ui: Admin-Interface öffnen
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden

@@ -344,6 +344,8 @@ en:
   sitemap_vocabularies: Vocabularies
   usage_terms_accept_btn: Accept usage terms
   usage_terms_reject_btn: Reject usage terms
+  user_menu_admin_mode_toogle_on: Switch to Admin-Mode
+  user_menu_admin_mode_toogle_off: Stop Admin-Mode
   user_menu_admin_ui: Open Admin Interface
   user_menu_login_btn: Log in
   user_menu_logout_btn: Log out

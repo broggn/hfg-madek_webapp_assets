@@ -217,6 +217,7 @@ en:
   meta_data_form_publish: Publish
   meta_data_form_save: Save
   meta_data_form_submit_btn: Submit
+  meta_data_form_all_data: Alle Daten
   meta_data_header_text: Values
   meta_data_input_date_placeholder_duration_from: from
   meta_data_input_date_placeholder_duration_to: to

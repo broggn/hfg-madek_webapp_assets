@@ -272,6 +272,15 @@ de:
   permissions_table_remove_subject_btn: Berechtigung entfernen
   permissions_table_save_btn: Speichern
   permissions_table_title: Berechtigungen
+  permissions_transfer_responsibility_link: Verantwortung übertragen
+  transfer_responsibility_title: Verantwortlichkeit auf folgende Person übertragen
+  transfer_responsibility_person_will_receive: Die vorherige verantwortliche Person erhält folgende Berechtigungen
+  transfer_responsibility_permission_view: Betrachten
+  transfer_responsibility_permission_download: Herunterladen
+  transfer_responsibility_permission_edit: Editieren
+  transfer_responsibility_permission_manage: Verwalten
+  transfer_responsibility_submit: Übertragen
+  transfer_responsibility_cancel: Abbrechen
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '
   relations_parents_title: Übergeordnete Sets
@@ -320,6 +329,8 @@ de:
   resources_box_batch_actions_removefromset: Aus Set entfernen
   resources_box_batch_actions_save: Als Filterset speichern
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
+  resources_box_batch_actions_transfer_responsibility_entries: Verantwortung von Medieneinträgen übertragen
+  resources_box_batch_actions_transfer_responsibility_sets: Verantwortung von Sets übertragen
   resources_box_title_count_post: Inhalte
   resources_header_show_all: alle anzeigen
   search_btn_search: Suchen
@@ -429,3 +440,10 @@ de:
   custom_urls_flash_transfer_confirmation_media_entry_4: ' übertragen?'
   custom_urls_flash_primary_url_set_1: ''
   custom_urls_flash_primary_url_set_2: ' wurde als Primäre Adresse gesetzt.'
+  ajax_form_connection_error: Connection error. Please try again.
+  ajax_form_successful_but_unparsable: Request successful but cannot parse answer.
+  ajax_form_validation_error_unparsable: Validation error with unparsable errors.
+  ajax_form_validation_error_without_any_data: Validation error without any data.
+  ajax_form_validation_error_without_error_data: Validation error without error data.
+  ajax_form_no_longer_authorized: You are no longer authorized to do this.
+  ajax_form_unexpected_error: "'There was an unexpected server error.'"

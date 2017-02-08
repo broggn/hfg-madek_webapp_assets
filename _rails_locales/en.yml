@@ -270,6 +270,15 @@ en:
   permissions_table_remove_subject_btn: Remove Permissions
   permissions_table_save_btn: Save
   permissions_table_title: Permissions
+  permissions_transfer_responsibility_link: Verantwortung übertragen
+  transfer_responsibility_title: Verantwortlichkeit auf folgende Person übertragen
+  transfer_responsibility_person_will_receive: Die vorherige verantwortliche Person erhält folgende Berechtigungen
+  transfer_responsibility_permission_view: Betrachten
+  transfer_responsibility_permission_download: Herunterladen
+  transfer_responsibility_permission_edit: Editieren
+  transfer_responsibility_permission_manage: Verwalten
+  transfer_responsibility_submit: Übertragen
+  transfer_responsibility_cancel: Abbrechen
   picture_alt_fallback: (unkown)
   picture_alt_prefix: 'Picture:'
   relations_parents_title: Parents
@@ -318,6 +327,8 @@ en:
   resources_box_batch_actions_removefromset: Remove from set
   resources_box_batch_actions_save: Save as filter set
   resources_box_batch_actions_sets_managepermissions: Edit Permissions for collections
+  resources_box_batch_actions_transfer_responsibility_entries: Verantwortung von Medieneinträgen übertragen
+  resources_box_batch_actions_transfer_responsibility_sets: Verantwortung von Sets übertragen
   resources_box_title_count_post: Items
   resources_header_show_all: show all
   search_btn_search: Search
@@ -427,3 +438,10 @@ en:
   custom_urls_flash_transfer_confirmation_media_entry_4: ' übertragen?'
   custom_urls_flash_primary_url_set_1: ''
   custom_urls_flash_primary_url_set_2: ' wurde als Primäre Adresse gesetzt.'
+  ajax_form_connection_error: Connection error. Please try again.
+  ajax_form_successful_but_unparsable: Request successful but cannot parse answer.
+  ajax_form_validation_error_unparsable: Validation error with unparsable errors.
+  ajax_form_validation_error_without_any_data: Validation error without any data.
+  ajax_form_validation_error_without_error_data: Validation error without error data.
+  ajax_form_no_longer_authorized: You are no longer authorized to do this.
+  ajax_form_unexpected_error: There was an unexpected server error.

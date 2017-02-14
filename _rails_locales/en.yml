@@ -180,12 +180,20 @@ en:
   media_entry_not_published_warning_msg: 'Media entry still needs mandatory data!'
   media_entry_select_collection_flash_result: 'Removed media entry from %{removed_count} set(s). Added media entry to %{added_count} set(s).'
   media_entry_tab_main: Media Entry
-  media_entry_tab_more_data: All Data
+  media_entry_tab_usage_data: Nutzung
+  media_entry_tab_more_data: All Metadata
   media_entry_tab_permissions: Permissions
   media_entry_tab_relations: Relations
   media_entry_upload_btn: Upload
   media_entry_was_disfavored: Media entry was removed from favorites.
   media_entry_was_favored: Media entry was added to favorites.
+  usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
+  usage_data_responsible: Verantwortlich im Medienarchiv
+  usage_data_import_by: Importiert durch
+  usage_data_import_at: Importiert am
+  usage_data_created_at: Erstellt am
+  usage_data_last_changes_title: Letzte Änderungen der Metadaten
+  usage_data_last_changes_empty: No changes recorded yet.
   meta_data_action_delete_btn: Delete
   meta_data_action_edit_btn: Edit
   meta_data_batch_failure: Metadata could not be updated.
@@ -303,8 +311,6 @@ en:
   resource_ask_delete_cancel: Cancel
   resource_ask_delete_ok: Delete
   resource_ask_delete_question_post: '?'
-  resource_last_changes_empty: No changes recorded yet.
-  resource_last_changes: Last Changes
   resource_meta_data_copyright_notice: Copyright notice
   resource_meta_data_date: Date
   resource_meta_data_description: Description

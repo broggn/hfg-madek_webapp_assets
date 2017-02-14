@@ -182,12 +182,20 @@ de:
   media_entry_not_published_warning_msg: 'Diesem Medieneintrag fehlen noch Pflichtangaben!'
   media_entry_select_collection_flash_result: 'Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu %{added_count} Set(s) hinzugefügt.'
   media_entry_tab_main: Medieneintrag
-  media_entry_tab_more_data: Alle Daten
+  media_entry_tab_usage_data: Nutzung
+  media_entry_tab_more_data: Alle Metadaten
   media_entry_tab_permissions: Berechtigungen
   media_entry_tab_relations: Zusammenhänge
   media_entry_upload_btn: Importieren
   media_entry_was_disfavored: Der Medieneintrag wurde von den Favoriten entfernt.
   media_entry_was_favored: Der Medieneintrag wurde zu den Favoriten hinzugefügt.
+  usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
+  usage_data_responsible: Verantwortlich im Medienarchiv
+  usage_data_import_by: Importiert durch
+  usage_data_import_at: Importiert am
+  usage_data_created_at: Erstellt am
+  usage_data_last_changes_title: Letzte Änderungen der Metadaten
+  usage_data_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
   meta_data_action_delete_btn: Löschen
   meta_data_action_edit_btn: Bearbeiten
   meta_data_batch_failure: Metadaten konnten nicht aktualisiert werden.
@@ -305,8 +313,6 @@ de:
   resource_ask_delete_cancel: Abbrechen
   resource_ask_delete_ok: Löschen
   resource_ask_delete_question_post: '?'
-  resource_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
-  resource_last_changes: Letzte Änderungen
   resource_meta_data_copyright_notice: Rechte am geistigen Eigentum
   resource_meta_data_date: Datierung
   resource_meta_data_description: Beschreibung

@@ -380,6 +380,7 @@ de:
   vocabularies_tabs_contents: Inhalte
   vocabularies_contents_hint_1: 'Alle Inhalte mit Metadaten des Vokabulars '
   vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
+  vocabularies_no_keywords: Keine Schlagworte vorhanden.
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?

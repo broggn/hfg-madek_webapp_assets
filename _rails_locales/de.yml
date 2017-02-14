@@ -23,7 +23,9 @@ de:
         success: 'Metadaten von %{resource_name} wurden gespeichert.'
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
   app_autocomplete_no_results: Keine Ergebnisse.
-  app_confirm_form_leave_msg: 'Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten – Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.'
+  app_confirm_form_leave_msg: >-
+    Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten –
+    Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.
   app_notice_logged_out: Sie haben sich abgemeldet.
   app_warning_jsonly: 'Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert!'
   authentication_groups: Systemgruppen
@@ -66,8 +68,16 @@ de:
   collection_relations_child_sets: Untergeordnete Sets
   media_entry_relations_current: Aktueller Eintrag
   collection_relations_current: Aktuelles Set
-  collection_relations_hint_text: 'Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
-  media_entry_relations_hint_text: 'Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.'
+  collection_relations_hint_text: >-
+    Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge
+    wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie
+    sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit
+    Ihnen teilen.
+  media_entry_relations_hint_text: >-
+    Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge
+    wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier
+    sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen
+    teilen.
   collection_relations_no_child_sets: ' '
   collection_relations_no_parent_sets: ' '
   collection_relations_no_sibling_sets: ' '
@@ -79,7 +89,9 @@ de:
   collection_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie das ausgewählte Set.
   collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
   media_entry_relations_parents_hint: Der ausgewählte Medieneintrag wurde diesen Sets hinzugefügt.
-  media_entry_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte Medieneintrag.
+  media_entry_relations_siblings_hint: >-
+    Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte
+    Medieneintrag.
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_h_author: Autor/in
   collection_resource_selection_h_date: Datierung
@@ -89,7 +101,9 @@ de:
   collection_resource_selection_h_subtitle: Untertitel
   collection_resource_selection_h_title: Titel
   collection_resource_selection_save: Auswahl speichern
-  collection_select_collection_flash_result: 'Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.'
+  collection_select_collection_flash_result: >-
+    Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s)
+    hinzugefügt.
   collection_sorting_created_at_asc: Sortieren nach Importierdatum aufsteigend
   collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
   collection_sorting_last_change: Sortieren nach letzter Änderung
@@ -102,7 +116,7 @@ de:
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_title_head: Mein Archiv
-  dashboard_welcome_msg: 'Willkommen im Medienarchiv der Künste!'
+  dashboard_welcome_msg: Willkommen im Medienarchiv der Künste!
   external_groups: Abteilungsgruppen
   group_ask_delete_cancel: Abbrechen
   group_ask_delete_delete: Löschen
@@ -112,7 +126,9 @@ de:
   group_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?'
   group_edit_at_least_one_member_delete: löschen
   group_edit_at_least_one_member_post: .
-  group_edit_at_least_one_member_pre: 'Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe '
+  group_edit_at_least_one_member_pre: >-
+    Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze
+    Arbeitsgruppe 
   group_edit_btn: Bearbeiten
   group_edit_cancel: Abbrechen
   group_edit_form_new_member_login_hint: Login des neuen Mitglieds dieser Arbeitsgruppe
@@ -145,7 +161,9 @@ de:
   media_entry_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgenden Medienintrag löschen möchten: '
   media_entry_ask_delete_title: Medieneintrag löschen
   media_entry_back_btn: Zurück
-  media_entry_conversion_hint: 'Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.'
+  media_entry_conversion_hint: >-
+    Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies
+    abgeschlossen ist, finden Sie hier eine abspielbare Version.
   media_entry_conversion_progress_post: '% abgeschlossen.'
   media_entry_conversion_progress_pre: 'Konvertierung zu '
   media_entry_conversion_reload: 'Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.'
@@ -155,8 +173,12 @@ de:
   media_entry_delete_success: Der Medieneintrag wurde gelöscht.
   media_entry_export_close: Schliessen
   media_entry_export_download: Download
-  media_entry_export_has_no_original: Sie verfügen nicht über die nötigen Berechtigung für den Download der Originaldatei.
-  media_entry_export_no_content: Sie haben keine Zugriffsrechte für die Originaldatei und es steht keine Vorschau zur Verfügung.
+  media_entry_export_has_no_original: >-
+    Sie verfügen nicht über die nötigen Berechtigung für den Download der
+    Originaldatei.
+  media_entry_export_no_content: >-
+    Sie haben keine Zugriffsrechte für die Originaldatei und es steht keine
+    Vorschau zur Verfügung.
   media_entry_export_original_hint: Originaldatei herunterladen.
   media_entry_export_original: Original
   media_entry_export_subtitle_audios: Audios
@@ -172,15 +194,21 @@ de:
   media_entry_media_import_header: Medien importieren
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_inside: Dateien auf dieses Feld ziehen oder
-  media_entry_media_import_notes_msg: 'Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB um.'
+  media_entry_media_import_notes_msg: >-
+    Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten
+    Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum
+    werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB
+    um.
   media_entry_media_import_notes_title: Hinweise
   media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
   media_entry_meta_data_edit_by_vocab_btn: Metadaten nach Vokabularen editieren
   media_entry_meta_data_edit_by_context_btn: Metadaten nach Kontexten editieren
   media_entry_meta_data_header_prefix: 'Medieneintrag editieren: '
   media_entry_more_data_title: Verantwortlichkeit und Aktivität
-  media_entry_not_published_warning_msg: 'Diesem Medieneintrag fehlen noch Pflichtangaben!'
-  media_entry_select_collection_flash_result: 'Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu %{added_count} Set(s) hinzugefügt.'
+  media_entry_not_published_warning_msg: Diesem Medieneintrag fehlen noch Pflichtangaben!
+  media_entry_select_collection_flash_result: >-
+    Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu
+    %{added_count} Set(s) hinzugefügt.
   media_entry_tab_main: Medieneintrag
   media_entry_tab_usage_data: Nutzung
   media_entry_tab_more_data: Alle Metadaten
@@ -199,7 +227,9 @@ de:
   meta_data_action_delete_btn: Löschen
   meta_data_action_edit_btn: Bearbeiten
   meta_data_batch_failure: Metadaten konnten nicht aktualisiert werden.
-  meta_data_batch_hint_differences_override: 'Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.'
+  meta_data_batch_hint_differences_override: >-
+    Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine
+    Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.
   meta_data_batch_hint_differences: Unterschiedliche Metadaten vorhanden
   meta_data_batch_hint_equal_data: Gleiche Metadaten vorhanden
   meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
@@ -221,7 +251,9 @@ de:
   meta_data_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Werte löschen wollen?'
   meta_data_edit_collection_saved: Set wurde gespeichert.
   meta_data_edit_media_entry_published: Der Medieneintrag wurde gespeichert und alle Pflichtfelder sind ausgefüllt.
-  meta_data_edit_media_entry_saved_missing: 'Der Medieneintrag wurde gespeichert, aber es wurden nicht alle Pflichtfelder ausgefüllt.'
+  meta_data_edit_media_entry_saved_missing: >-
+    Der Medieneintrag wurde gespeichert, aber es wurden nicht alle Pflichtfelder
+    ausgefüllt.
   meta_data_edit_media_entry_saved: Der Medieneintrag wurde gespeichert.
   meta_data_form_cancel: Abbrechen
   meta_data_form_publish: Publizieren
@@ -236,7 +268,7 @@ de:
   meta_data_input_date_type_duration: von/bis
   meta_data_input_date_type_text: Freie Eingabe
   meta_data_input_date_type_timestamp: am
-  meta_data_input_keywords_existing: 'Schlagwort ist bereits vergeben!'
+  meta_data_input_keywords_existing: Schlagwort ist bereits vergeben!
   meta_data_input_new_group_add: Arbeitsgruppe einfügen
   meta_data_input_new_person_add: Person einfügen
   meta_data_input_new_person_toggle: Neue Person oder Gruppe anlegen
@@ -256,10 +288,10 @@ de:
   pagination_of: von
   pagination_prefix: Seite
   people_toolbar_header: Ähnliche Inhalte
-  permission_name_edit_metadata_and_relations: 'Metadaten editieren & Inhalte hinzufügen'
+  permission_name_edit_metadata_and_relations: Metadaten editieren & Inhalte hinzufügen
   permission_name_edit_metadata: Metadaten editieren
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
-  permission_name_get_full_size: 'Original exportieren & in PDF blättern'
+  permission_name_get_full_size: Original exportieren & in PDF blättern
   permission_name_get_metadata_and_previews: Betrachten
   permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
   permission_subject_name_public: Internet
@@ -270,10 +302,14 @@ de:
   permissions_batch_success: Berechtigungen wurden erfolgreich aktualisiert.
   permissions_batch_title_post: ' Inhalten'
   permissions_batch_title_pre: 'Zugriffsberechtigungen ändern von '
-  permissions_overview_yours_msg_end: ', haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe folgende Berechtigungen'
+  permissions_overview_yours_msg_end: >-
+    , haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe
+    folgende Berechtigungen
   permissions_overview_yours_msg_start: 'Sie, '
   permissions_overview_yours_title: Ihre Berechtigungen
-  permissions_responsible_user_msg: Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.
+  permissions_responsible_user_msg: >-
+    Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten
+    Inhalten und kann diese auch löschen.
   permissions_responsible_user_title: Verantwortliche Person
   permissions_table_cancel_btn: Abbrechen
   permissions_table_edit_btn: Bearbeiten
@@ -286,7 +322,9 @@ de:
   transfer_responsibility_person_will_receive_2: ', behalten folgende Berechtigungen:'
   transfer_responsibility_submit: Übertragen
   transfer_responsibility_cancel: Abbrechen
-  transfer_responsibility_success_media_entry: Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich übertragen.
+  transfer_responsibility_success_media_entry: >-
+    Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
+    übertragen.
   transfer_responsibility_success_collection: Sie haben die Verantwortlichkeit für das Set erfolgreich übertragen.
   transfer_responsibility_batch_success_media_entry_1: 'Sie haben für '
   transfer_responsibility_batch_success_media_entry_1a: ' Medieneintrag '
@@ -326,7 +364,9 @@ de:
   resource_select_collection_cancel: Abbrechen
   resource_select_collection_clear: Löschen
   resource_select_collection_hint_more: Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.
-  resource_select_collection_hint_search: 'Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag enthalten sein soll.'
+  resource_select_collection_hint_search: >-
+    Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag
+    enthalten sein soll.
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
   resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
   resource_select_collection_save: Speichern
@@ -396,9 +436,17 @@ de:
   custom_urls_title: 'Adressen für '
   custom_urls_new: Adresse anlegen / übertragen
   custom_urls_primary_title: Primäre Adresse
-  custom_urls_primary_hint: 'Für jeden Inhalt (egal ob Medieneintrag oder Set) gibt es immer genau eine primäre Adresse. Diese ist in der Adressleiste des Browsers sichtbar, wenn der Inhalt angezeigt wird. Neben der primären Adresse können weitere gesetzt werden, die auf die primäre Adresse weiterleiten.'
+  custom_urls_primary_hint: >-
+    Für jeden Inhalt (egal ob Medieneintrag oder Set) gibt es immer genau eine
+    primäre Adresse. Diese ist in der Adressleiste des Browsers sichtbar, wenn
+    der Inhalt angezeigt wird. Neben der primären Adresse können weitere gesetzt
+    werden, die auf die primäre Adresse weiterleiten.
   custom_urls_canonical_title: Kanonische Adresse (UUID)
-  custom_urls_canonical_hint: 'Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese Adresse kann nicht übertragen oder entfernt werden und ist deshalb immer an erster Stelle aufgelistet.'
+  custom_urls_canonical_hint: >-
+    Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus
+    Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese
+    Adresse kann nicht übertragen oder entfernt werden und ist deshalb immer an
+    erster Stelle aufgelistet.
   custom_urls_manage_address_title: Adressverwaltung
   custom_urls_table_header_address: Adresse
   custom_urls_table_header_date: Datum
@@ -408,9 +456,20 @@ de:
   custom_urls_no_addresses_defined: Noch keine Adressen definiert
   edit_custom_urls_title: Anforderungen
   edit_custom_urls_requirements_title: Anforderungen
-  edit_custom_urls_requirements_hint: 'Eine Adresse darf nur genau einmal im System vorkommen – entweder für einen Medieneintrag oder für ein Set. Sie beginnt immer mit einem Kleinbuchstaben, gefolgt von (mindestens einem) weiteren Zeichen aus Kleinbuchstaben, Nummern, Bindestrichen ( - ) und Grundstrichen ( _ ) in beliebiger Reihenfolge.'
+  edit_custom_urls_requirements_hint: >-
+    Eine Adresse darf nur genau einmal im System vorkommen – entweder für einen
+    Medieneintrag oder für ein Set. Sie beginnt immer mit einem Kleinbuchstaben,
+    gefolgt von (mindestens einem) weiteren Zeichen aus Kleinbuchstaben,
+    Nummern, Bindestrichen ( - ) und Grundstrichen ( _ ) in beliebiger
+    Reihenfolge.
   edit_custom_urls_transfer_title: Übertragen
-  edit_custom_urls_transfer_hint: "Eine bereits bestehende Adresse kann von einem Medieneintrag auf einen anderen oder von einem Set auf ein anderes übertragen werden. Bestehende Adressen können nicht von einem Medieneintrag auf ein Set und umgekehrt übertragen werden. Wollen Sie eine Adresse übertragen, dann geben Sie diese hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung 'Verwalten' verfügen."
+  edit_custom_urls_transfer_hint: >-
+    Eine bereits bestehende Adresse kann von einem Medieneintrag auf einen
+    anderen oder von einem Set auf ein anderes übertragen werden. Bestehende
+    Adressen können nicht von einem Medieneintrag auf ein Set und umgekehrt
+    übertragen werden. Wollen Sie eine Adresse übertragen, dann geben Sie diese
+    hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung
+    'Verwalten' verfügen.
   edit_custom_urls_preferred_address: 'Gewünschte Adresse:'
   edit_custom_urls_cancel: Abbrechen
   edit_custom_urls_transfer: Übertragen

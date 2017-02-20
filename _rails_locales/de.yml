@@ -22,6 +22,13 @@ de:
       meta_data_update:
         success: 'Metadaten von %{resource_name} wurden gespeichert.'
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
+  ajax_form_connection_error: Connection error. Please try again.
+  ajax_form_no_longer_authorized: You are no longer authorized to do this.
+  ajax_form_successful_but_unparsable: Request successful but cannot parse answer.
+  ajax_form_unexpected_error: There was an unexpected server error.
+  ajax_form_validation_error_unparsable: Validation error with unparsable errors.
+  ajax_form_validation_error_without_any_data: Validation error without any data.
+  ajax_form_validation_error_without_error_data: Validation error without error data.
   app_autocomplete_no_results: Keine Ergebnisse.
   app_confirm_form_leave_msg: >-
     Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten –
@@ -66,32 +73,22 @@ de:
   collection_new_label_title: Titel
   collection_permissions_btn: Zugriffsberechtigungen ändern
   collection_relations_child_sets: Untergeordnete Sets
-  media_entry_relations_current: Aktueller Eintrag
+  collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
   collection_relations_current: Aktuelles Set
   collection_relations_hint_text: >-
     Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge
     wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie
     sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit
     Ihnen teilen.
-  media_entry_relations_hint_text: >-
-    Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge
-    wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier
-    sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen
-    teilen.
   collection_relations_no_child_sets: ' '
   collection_relations_no_parent_sets: ' '
   collection_relations_no_sibling_sets: ' '
   collection_relations_parent_sets: Übergeordnete Sets
+  collection_relations_parents_hint: Das ausgewählte Set wurde diesen Sets hinzugefügt.
   collection_relations_show_all_relations: Alle Zusammenhänge anzeigen
   collection_relations_show_all: Alle anzeigen
   collection_relations_sibling_sets: Benachbarte Sets
-  collection_relations_parents_hint: Das ausgewählte Set wurde diesen Sets hinzugefügt.
   collection_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie das ausgewählte Set.
-  collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
-  media_entry_relations_parents_hint: Der ausgewählte Medieneintrag wurde diesen Sets hinzugefügt.
-  media_entry_relations_siblings_hint: >-
-    Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte
-    Medieneintrag.
   collection_resource_selection_cancel: Abbrechen
   collection_resource_selection_h_author: Autor/in
   collection_resource_selection_h_date: Datierung
@@ -112,11 +109,91 @@ de:
   collection_tab_main: Set
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
+  custom_urls_canonical_hint: >-
+    Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus
+    Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese
+    Adresse kann nicht übertragen oder entfernt werden und ist deshalb immer an
+    erster Stelle aufgelistet.
+  custom_urls_canonical_title: Kanonische Adresse (UUID)
+  custom_urls_flash_create_successful_1: 'Adresse '
+  custom_urls_flash_create_successful_2: ' wurde erstellt.'
+  custom_urls_flash_empty: Adresse darf nicht leer sein.
+  custom_urls_flash_exists_on_itself_collection_1: 'Adresse '
+  custom_urls_flash_exists_on_itself_collection_2: ' existiert bereits für dieses Set.'
+  custom_urls_flash_exists_on_itself_media_entry_1: 'Adresse '
+  custom_urls_flash_exists_on_itself_media_entry_2: ' existiert bereits für diesen Medieneintrag.'
+  custom_urls_flash_not_allowed_collection_1: 'Die Adresse '
+  custom_urls_flash_not_allowed_collection_2: ' kann nicht übertragen werden. Sie haben nicht die Berechtigung das Set zu verwalten, auf welches die Adresse '
+  custom_urls_flash_not_allowed_collection_3: ' im Moment verweist.'
+  custom_urls_flash_not_allowed_media_entry_1: 'Die Adresse '
+  custom_urls_flash_not_allowed_media_entry_2: ' kann nicht übertragen werden. Sie haben nicht die Berechtigung den Medieneintrag zu verwalten, auf welchen die Adresse '
+  custom_urls_flash_not_allowed_media_entry_3: ' im Moment verweist.'
+  custom_urls_flash_not_same_type_collection_1: 'Adresse '
+  custom_urls_flash_not_same_type_collection_2: ' kann nicht übertragen werden. Adressen von Medieneinträgen können nicht auf Sets übertragen werden.'
+  custom_urls_flash_not_same_type_media_entry_1: 'Adresse '
+  custom_urls_flash_not_same_type_media_entry_2: ' kann nicht übertragen werden. Adressen von Sets können nicht auf Medieneinträge übertragen werden.'
+  custom_urls_flash_primary_url_set_1: ''
+  custom_urls_flash_primary_url_set_2: ' wurde als Primäre Adresse gesetzt.'
+  custom_urls_flash_transfer_confirmation_collection_1: 'Die Adresse '
+  custom_urls_flash_transfer_confirmation_collection_2: ' ist gegenwärtig dem Set '
+  custom_urls_flash_transfer_confirmation_collection_3: ' zugewiesen. Wollen Sie diese Adresse auf das Set '
+  custom_urls_flash_transfer_confirmation_collection_4: ' übertragen?'
+  custom_urls_flash_transfer_confirmation_media_entry_1: 'Die Adresse '
+  custom_urls_flash_transfer_confirmation_media_entry_2: ' ist gegenwärtig dem Medieneintrag '
+  custom_urls_flash_transfer_confirmation_media_entry_3: ' zugewiesen. Wollen Sie diese Adresse auf den Medieneintrag '
+  custom_urls_flash_transfer_confirmation_media_entry_4: ' übertragen?'
+  custom_urls_flash_transfer_successful_1: 'Adresse '
+  custom_urls_flash_transfer_successful_2: ' wurde von '
+  custom_urls_flash_transfer_successful_3: ' auf '
+  custom_urls_flash_transfer_successful_4: ' übertragen.'
+  custom_urls_flash_wrong_format_1: 'Adresse '
+  custom_urls_flash_wrong_format_2: ' erfüllt die Anforderungen nicht.'
+  custom_urls_manage_address_title: Adressverwaltung
+  custom_urls_new: Adresse anlegen / übertragen
+  custom_urls_no_addresses_defined: Noch keine Adressen definiert
+  custom_urls_primary_hint: >-
+    Für jeden Inhalt (egal ob Medieneintrag oder Set) gibt es immer genau eine
+    primäre Adresse. Diese ist in der Adressleiste des Browsers sichtbar, wenn
+    der Inhalt angezeigt wird. Neben der primären Adresse können weitere gesetzt
+    werden, die auf die primäre Adresse weiterleiten.
+  custom_urls_primary_title: Primäre Adresse
+  custom_urls_table_header_actions: Aktionen
+  custom_urls_table_header_address: Adresse
+  custom_urls_table_header_created_by: erstellt durch
+  custom_urls_table_header_date: Datum
+  custom_urls_table_header_type: Typ
+  custom_urls_title: 'Adressen für '
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_collection: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_title_head: Mein Archiv
   dashboard_welcome_msg: Willkommen im Medienarchiv der Künste!
+  edit_custom_urls_back_to_collection: Zurück zum Set
+  edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
+  edit_custom_urls_cancel: Abbrechen
+  edit_custom_urls_confirmation: Bestätigung
+  edit_custom_urls_create_or_transfer: Adresse anlegen / übertragen
+  edit_custom_urls_preferred_address: 'Gewünschte Adresse:'
+  edit_custom_urls_requirements_hint: >-
+    Eine Adresse darf nur genau einmal im System vorkommen – entweder für einen
+    Medieneintrag oder für ein Set. Sie beginnt immer mit einem Kleinbuchstaben,
+    gefolgt von (mindestens einem) weiteren Zeichen aus Kleinbuchstaben,
+    Nummern, Bindestrichen ( - ) und Grundstrichen ( _ ) in beliebiger
+    Reihenfolge.
+  edit_custom_urls_requirements_title: Anforderungen
+  edit_custom_urls_set_primary: Als primäre Adresse setzen
+  edit_custom_urls_state_primary: Primäre Adresse
+  edit_custom_urls_state_transfer: Weiterleitung
+  edit_custom_urls_title: Anforderungen
+  edit_custom_urls_transfer_hint: >-
+    Eine bereits bestehende Adresse kann von einem Medieneintrag auf einen
+    anderen oder von einem Set auf ein anderes übertragen werden. Bestehende
+    Adressen können nicht von einem Medieneintrag auf ein Set und umgekehrt
+    übertragen werden. Wollen Sie eine Adresse übertragen, dann geben Sie diese
+    hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung
+    'Verwalten' verfügen.
+  edit_custom_urls_transfer_title: Übertragen
+  edit_custom_urls_transfer: Übertragen
   external_groups: Abteilungsgruppen
   group_ask_delete_cancel: Abbrechen
   group_ask_delete_delete: Löschen
@@ -201,29 +278,32 @@ de:
     um.
   media_entry_media_import_notes_title: Hinweise
   media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
-  media_entry_meta_data_edit_by_vocab_btn: Metadaten nach Vokabularen editieren
   media_entry_meta_data_edit_by_context_btn: Metadaten nach Kontexten editieren
+  media_entry_meta_data_edit_by_vocab_btn: Metadaten nach Vokabularen editieren
   media_entry_meta_data_header_prefix: 'Medieneintrag editieren: '
   media_entry_more_data_title: Verantwortlichkeit und Aktivität
   media_entry_not_published_warning_msg: Diesem Medieneintrag fehlen noch Pflichtangaben!
+  media_entry_relations_current: Aktueller Eintrag
+  media_entry_relations_hint_text: >-
+    Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge
+    wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier
+    sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen
+    teilen.
+  media_entry_relations_parents_hint: Der ausgewählte Medieneintrag wurde diesen Sets hinzugefügt.
+  media_entry_relations_siblings_hint: >-
+    Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte
+    Medieneintrag.
   media_entry_select_collection_flash_result: >-
     Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu
     %{added_count} Set(s) hinzugefügt.
   media_entry_tab_main: Medieneintrag
-  media_entry_tab_usage_data: Nutzung
   media_entry_tab_more_data: Alle Metadaten
   media_entry_tab_permissions: Berechtigungen
   media_entry_tab_relations: Zusammenhänge
+  media_entry_tab_usage_data: Nutzung
   media_entry_upload_btn: Importieren
   media_entry_was_disfavored: Der Medieneintrag wurde von den Favoriten entfernt.
   media_entry_was_favored: Der Medieneintrag wurde zu den Favoriten hinzugefügt.
-  usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
-  usage_data_responsible: Verantwortlich im Medienarchiv
-  usage_data_import_by: Importiert durch
-  usage_data_import_at: Importiert am
-  usage_data_created_at: Erstellt am
-  usage_data_last_changes_title: Letzte Änderungen der Metadaten
-  usage_data_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
   meta_data_action_delete_btn: Löschen
   meta_data_action_edit_btn: Bearbeiten
   meta_data_batch_failure: Metadaten konnten nicht aktualisiert werden.
@@ -255,11 +335,12 @@ de:
     Der Medieneintrag wurde gespeichert, aber es wurden nicht alle Pflichtfelder
     ausgefüllt.
   meta_data_edit_media_entry_saved: Der Medieneintrag wurde gespeichert.
+  meta_data_edit_more_data: Weitere Angaben
+  meta_data_form_all_data: Alle Daten
   meta_data_form_cancel: Abbrechen
   meta_data_form_publish: Publizieren
   meta_data_form_save: Speichern
   meta_data_form_submit_btn: Speichern
-  meta_data_form_all_data: Alle Daten
   meta_data_header_text: Werte
   meta_data_input_date_placeholder_duration_from: von
   meta_data_input_date_placeholder_duration_to: bis
@@ -275,7 +356,6 @@ de:
   meta_data_meta_key_label: Schlüssel
   meta_data_type_label: Typ
   meta_data_value_label: Wert
-  meta_data_edit_more_data: Weitere Angaben
   no_content_fallback: Keine Inhalte vorhanden.
   no_groups_fallback: Keine Arbeitsgruppen vorhanden.
   no_keywords_fallback: Keine Schlagworte vorhanden.
@@ -317,33 +397,17 @@ de:
   permissions_table_save_btn: Speichern
   permissions_table_title: Berechtigungen
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
-  transfer_responsibility_title: Verantwortlichkeit auf folgende Person übertragen
-  transfer_responsibility_person_will_receive_1: 'Sie, '
-  transfer_responsibility_person_will_receive_2: ', behalten folgende Berechtigungen:'
-  transfer_responsibility_submit: Übertragen
-  transfer_responsibility_cancel: Abbrechen
-  transfer_responsibility_success_media_entry: >-
-    Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
-    übertragen.
-  transfer_responsibility_success_collection: Sie haben die Verantwortlichkeit für das Set erfolgreich übertragen.
-  transfer_responsibility_batch_success_media_entry_1: 'Sie haben für '
-  transfer_responsibility_batch_success_media_entry_1a: ' Medieneintrag '
-  transfer_responsibility_batch_success_media_entry_1b: ' Medieneinträge'
-  transfer_responsibility_batch_success_media_entry_2: ' die Verantwortlichkeit erfolgreich übertragen.'
-  transfer_responsibility_batch_success_collection_1: 'Sie haben für '
-  transfer_responsibility_batch_success_collection_1a: ' Set '
-  transfer_responsibility_batch_success_collection_1b: ' Sets '
-  transfer_responsibility_batch_success_collection_2: ' die Verantwortlichkeit erfolgreich übertragen.'
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '
   relations_parents_title: Übergeordnete Sets
   relations_siblings_title: Benachbarte Sets
   relations_title: Zusammenhänge
+  release_info: Release Info
   resource_action_destroy: Medieneintrag löschen
   resource_action_disfavor: Aus Favoriten entfernen
   resource_action_edit_cover: Titelbild festlegen
-  resource_action_edit_highlights: Inhalte hervorheben
   resource_action_edit_custom_urls: Sprechende Adressesn
+  resource_action_edit_highlights: Inhalte hervorheben
   resource_action_edit: Editieren
   resource_action_export: Exportieren
   resource_action_favor: Zu Favoriten hinzufügen
@@ -410,113 +474,49 @@ de:
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
   sitemap_vocabularies: Vokabulare
+  transfer_responsibility_batch_success_collection_1: 'Sie haben für '
+  transfer_responsibility_batch_success_collection_1a: ' Set '
+  transfer_responsibility_batch_success_collection_1b: ' Sets '
+  transfer_responsibility_batch_success_collection_2: ' die Verantwortlichkeit erfolgreich übertragen.'
+  transfer_responsibility_batch_success_media_entry_1: 'Sie haben für '
+  transfer_responsibility_batch_success_media_entry_1a: ' Medieneintrag '
+  transfer_responsibility_batch_success_media_entry_1b: ' Medieneinträge'
+  transfer_responsibility_batch_success_media_entry_2: ' die Verantwortlichkeit erfolgreich übertragen.'
+  transfer_responsibility_cancel: Abbrechen
+  transfer_responsibility_person_will_receive_1: 'Sie, '
+  transfer_responsibility_person_will_receive_2: ', behalten folgende Berechtigungen:'
+  transfer_responsibility_submit: Übertragen
+  transfer_responsibility_success_collection: Sie haben die Verantwortlichkeit für das Set erfolgreich übertragen.
+  transfer_responsibility_success_media_entry: >-
+    Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
+    übertragen.
+  transfer_responsibility_title: Verantwortlichkeit auf folgende Person übertragen
+  usage_data_created_at: Erstellt am
+  usage_data_import_at: Importiert am
+  usage_data_import_by: Importiert durch
+  usage_data_last_changes_empty: Es wurden noch keine Änderungen festgehalten.
+  usage_data_last_changes_title: Letzte Änderungen der Metadaten
+  usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
+  usage_data_responsible: Verantwortlich im Medienarchiv
   usage_terms_accept_btn: Nutzungsbedingungen akzeptieren
   usage_terms_reject_btn: Ablehnen
-  user_menu_admin_mode_toogle_on: In Admin-Modus wechseln
   user_menu_admin_mode_toogle_off: Admin-Modus beenden
+  user_menu_admin_mode_toogle_on: In Admin-Modus wechseln
   user_menu_admin_ui: Admin-Interface öffnen
   user_menu_login_btn: Anmelden
   user_menu_logout_btn: Abmelden
   user_menu_upload: Medien importieren
   vocabularies_all: Alle Vokabulare
-  vocabularies_keywords_hint_1: 'Alle im Vokabular '
-  vocabularies_keywords_hint_2: ' enthaltenen Schlagwörter und die dazugehörenden Metadatenfelder.'
-  vocabularies_tabs_keywords: Schlagwörter
-  vocabularies_tabs_vocabulary: Vokabular
-  vocabularies_tabs_contents: Inhalte
   vocabularies_contents_hint_1: 'Alle Inhalte mit Metadaten des Vokabulars '
   vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
+  vocabularies_keywords_hint_1: 'Alle im Vokabular '
+  vocabularies_keywords_hint_2: ' enthaltenen Schlagwörter und die dazugehörenden Metadatenfelder.'
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
+  vocabularies_tabs_contents: Inhalte
+  vocabularies_tabs_keywords: Schlagwörter
+  vocabularies_tabs_vocabulary: Vokabular
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Mitglieder
-  release_info: Release Info
-  custom_urls_title: 'Adressen für '
-  custom_urls_new: Adresse anlegen / übertragen
-  custom_urls_primary_title: Primäre Adresse
-  custom_urls_primary_hint: >-
-    Für jeden Inhalt (egal ob Medieneintrag oder Set) gibt es immer genau eine
-    primäre Adresse. Diese ist in der Adressleiste des Browsers sichtbar, wenn
-    der Inhalt angezeigt wird. Neben der primären Adresse können weitere gesetzt
-    werden, die auf die primäre Adresse weiterleiten.
-  custom_urls_canonical_title: Kanonische Adresse (UUID)
-  custom_urls_canonical_hint: >-
-    Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus
-    Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese
-    Adresse kann nicht übertragen oder entfernt werden und ist deshalb immer an
-    erster Stelle aufgelistet.
-  custom_urls_manage_address_title: Adressverwaltung
-  custom_urls_table_header_address: Adresse
-  custom_urls_table_header_date: Datum
-  custom_urls_table_header_created_by: erstellt durch
-  custom_urls_table_header_type: Typ
-  custom_urls_table_header_actions: Aktionen
-  custom_urls_no_addresses_defined: Noch keine Adressen definiert
-  edit_custom_urls_title: Anforderungen
-  edit_custom_urls_requirements_title: Anforderungen
-  edit_custom_urls_requirements_hint: >-
-    Eine Adresse darf nur genau einmal im System vorkommen – entweder für einen
-    Medieneintrag oder für ein Set. Sie beginnt immer mit einem Kleinbuchstaben,
-    gefolgt von (mindestens einem) weiteren Zeichen aus Kleinbuchstaben,
-    Nummern, Bindestrichen ( - ) und Grundstrichen ( _ ) in beliebiger
-    Reihenfolge.
-  edit_custom_urls_transfer_title: Übertragen
-  edit_custom_urls_transfer_hint: >-
-    Eine bereits bestehende Adresse kann von einem Medieneintrag auf einen
-    anderen oder von einem Set auf ein anderes übertragen werden. Bestehende
-    Adressen können nicht von einem Medieneintrag auf ein Set und umgekehrt
-    übertragen werden. Wollen Sie eine Adresse übertragen, dann geben Sie diese
-    hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung
-    'Verwalten' verfügen.
-  edit_custom_urls_preferred_address: 'Gewünschte Adresse:'
-  edit_custom_urls_cancel: Abbrechen
-  edit_custom_urls_transfer: Übertragen
-  edit_custom_urls_confirmation: Bestätigung
-  edit_custom_urls_create_or_transfer: Adresse anlegen / übertragen
-  edit_custom_urls_set_primary: Als primäre Adresse setzen
-  edit_custom_urls_state_transfer: Weiterleitung
-  edit_custom_urls_state_primary: Primäre Adresse
-  edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
-  edit_custom_urls_back_to_collection: Zurück zum Set
-  custom_urls_flash_empty: Adresse darf nicht leer sein.
-  custom_urls_flash_wrong_format_1: 'Adresse '
-  custom_urls_flash_wrong_format_2: ' erfüllt die Anforderungen nicht.'
-  custom_urls_flash_exists_on_itself_media_entry_1: 'Adresse '
-  custom_urls_flash_exists_on_itself_media_entry_2: ' existiert bereits für diesen Medieneintrag.'
-  custom_urls_flash_exists_on_itself_collection_1: 'Adresse '
-  custom_urls_flash_exists_on_itself_collection_2: ' existiert bereits für dieses Set.'
-  custom_urls_flash_not_allowed_media_entry_1: 'Die Adresse '
-  custom_urls_flash_not_allowed_media_entry_2: ' kann nicht übertragen werden. Sie haben nicht die Berechtigung den Medieneintrag zu verwalten, auf welchen die Adresse '
-  custom_urls_flash_not_allowed_media_entry_3: ' im Moment verweist.'
-  custom_urls_flash_not_allowed_collection_1: 'Die Adresse '
-  custom_urls_flash_not_allowed_collection_2: ' kann nicht übertragen werden. Sie haben nicht die Berechtigung das Set zu verwalten, auf welches die Adresse '
-  custom_urls_flash_not_allowed_collection_3: ' im Moment verweist.'
-  custom_urls_flash_not_same_type_media_entry_1: 'Adresse '
-  custom_urls_flash_not_same_type_media_entry_2: ' kann nicht übertragen werden. Adressen von Sets können nicht auf Medieneinträge übertragen werden.'
-  custom_urls_flash_not_same_type_collection_1: 'Adresse '
-  custom_urls_flash_not_same_type_collection_2: ' kann nicht übertragen werden. Adressen von Medieneinträgen können nicht auf Sets übertragen werden.'
-  custom_urls_flash_create_successful_1: 'Adresse '
-  custom_urls_flash_create_successful_2: ' wurde erstellt.'
-  custom_urls_flash_transfer_successful_1: 'Adresse '
-  custom_urls_flash_transfer_successful_2: ' wurde von '
-  custom_urls_flash_transfer_successful_3: ' auf '
-  custom_urls_flash_transfer_successful_4: ' übertragen.'
-  custom_urls_flash_transfer_confirmation_collection_1: 'Die Adresse '
-  custom_urls_flash_transfer_confirmation_collection_2: ' ist gegenwärtig dem Set '
-  custom_urls_flash_transfer_confirmation_collection_3: ' zugewiesen. Wollen Sie diese Adresse auf das Set '
-  custom_urls_flash_transfer_confirmation_collection_4: ' übertragen?'
-  custom_urls_flash_transfer_confirmation_media_entry_1: 'Die Adresse '
-  custom_urls_flash_transfer_confirmation_media_entry_2: ' ist gegenwärtig dem Medieneintrag '
-  custom_urls_flash_transfer_confirmation_media_entry_3: ' zugewiesen. Wollen Sie diese Adresse auf den Medieneintrag '
-  custom_urls_flash_transfer_confirmation_media_entry_4: ' übertragen?'
-  custom_urls_flash_primary_url_set_1: ''
-  custom_urls_flash_primary_url_set_2: ' wurde als Primäre Adresse gesetzt.'
-  ajax_form_connection_error: Connection error. Please try again.
-  ajax_form_successful_but_unparsable: Request successful but cannot parse answer.
-  ajax_form_validation_error_unparsable: Validation error with unparsable errors.
-  ajax_form_validation_error_without_any_data: Validation error without any data.
-  ajax_form_validation_error_without_error_data: Validation error without error data.
-  ajax_form_no_longer_authorized: You are no longer authorized to do this.
-  ajax_form_unexpected_error: There was an unexpected server error.

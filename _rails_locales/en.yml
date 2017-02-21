@@ -364,6 +364,8 @@ en:
   permission_name_edit_permissions: Edit permissions
   permission_name_get_full_size: Download original & browse PDF
   permission_name_get_metadata_and_previews: View
+  permission_name_view: View
+  permission_name_use: Use
   permission_overridden_by_public: (overridden by public permissions)
   permission_subject_name_public: Internet
   permission_subject_title_apiapps: API Clients
@@ -504,6 +506,8 @@ en:
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
   vocabularies_tabs_contents: Contents
   vocabularies_tabs_keywords: Keywords
+  vocabularies_tabs_permissions: Permissions
+  vocabulary_permissions_hint: ''
   vocabularies_tabs_vocabulary: Vocabulary
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group

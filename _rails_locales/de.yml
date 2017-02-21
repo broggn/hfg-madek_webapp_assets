@@ -373,6 +373,8 @@ de:
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
   permission_name_get_full_size: Original exportieren & in PDF blättern
   permission_name_get_metadata_and_previews: Betrachten
+  permission_name_view: Betrachten
+  permission_name_use: Anwenden
   permission_overridden_by_public: (überschrieben durch die öffentlichen Berechtigungen)
   permission_subject_name_public: Internet
   permission_subject_title_apiapps: API-Applikationen
@@ -515,6 +517,13 @@ de:
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
   vocabularies_tabs_contents: Inhalte
   vocabularies_tabs_keywords: Schlagwörter
+  vocabularies_tabs_permissions: Berechtigungen
+  vocabulary_permissions_hint: >-
+    Für dieses Vokabular sind die Berechtigungen "Betrachten" und "Anwenden"
+    vergeben. Wenn sie Mitglied einer berechtigten Arbeitsgruppe sind, können
+    sie Personen zu dieser hinzufügen. Weitere Berechtigungen für Personen,
+    Arbeitsgruppen, API-Applikationen oder die Öffentlichkeit werden durch den
+    Administrator vergeben – bitte wenden sie sich an den Support.
   vocabularies_tabs_vocabulary: Vokabular
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen

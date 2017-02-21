@@ -395,7 +395,8 @@ de:
   permissions_table_edit_btn: Bearbeiten
   permissions_table_remove_subject_btn: Berechtigung entfernen
   permissions_table_save_btn: Speichern
-  permissions_table_title: Berechtigungen
+  permissions_responsibility_title: Verantwortlichkeit
+  permissions_table_title: Zugriffsberechtigungen
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '

@@ -510,7 +510,14 @@ en:
   vocabularies_tabs_contents: Contents
   vocabularies_tabs_keywords: Keywords
   vocabularies_tabs_permissions: Permissions
-  vocabulary_permissions_hint: ''
+  vocabulary_permissions_hint1: >-
+    Für dieses Vokabular sind die Berechtigungen "Betrachten" und "Anwenden"
+    vergeben. Wenn Sie Mitglied einer berechtigten Arbeitsgruppe sind, können
+    Sie Personen zu dieser hinzufügen.
+  vocabulary_permissions_hint2: >-
+    Weitere Berechtigungen für Personen, Arbeitsgruppen, API-Applikationen oder
+    die Öffentlichkeit werden durch den Administrator vergeben – bitte wenden
+    Sie sich an den Support.
   vocabularies_tabs_vocabulary: Vocabulary
   workgroup_link_to_contents_text: Contents
   workgroup_link_to_contents_title: View contents of this work group

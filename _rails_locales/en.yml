@@ -489,6 +489,9 @@ en:
   usage_data_last_changes_empty: No changes recorded yet.
   usage_data_last_changes_title: Letzte Änderungen der Metadaten
   usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
+  usage_data_relations_title: Zusammenhänge
+  usage_data_relations_parents: Übergeordnete Sets
+  usage_data_relations_children: Set enthält
   usage_data_responsible: Verantwortlich im Medienarchiv
   usage_terms_accept_btn: Accept usage terms
   usage_terms_reject_btn: Reject usage terms

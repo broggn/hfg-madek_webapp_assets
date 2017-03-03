@@ -183,7 +183,7 @@ module.exports = {
 };
 
 
-},{"active-lodash":23,"qs":340,"url":348}],7:[function(require,module,exports){
+},{"active-lodash":23,"qs":339,"url":347}],7:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -660,7 +660,7 @@ module.exports = Model.extend(RailsResource, {
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":17,"active-lodash":23,"ampersand-model":35,"xhr":350}],16:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":17,"active-lodash":23,"ampersand-model":35,"xhr":349}],16:[function(require,module,exports){
 'use strict';
 
 // get the mediaType from the contentType
@@ -14988,7 +14988,7 @@ module.exports = Base;
 var xhr = require('xhr');
 module.exports = require('./core')(xhr);
 
-},{"./core":39,"xhr":350}],39:[function(require,module,exports){
+},{"./core":39,"xhr":349}],39:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-sync"] = window.ampersand["ampersand-sync"] || [];  window.ampersand["ampersand-sync"].push("4.0.2");}
 var result = require('lodash.result');
 var defaults = require('lodash.defaults');
@@ -39647,27 +39647,6 @@ exports.fromString = function(str) {
 };
 
 },{}],337:[function(require,module,exports){
-module.exports = once
-
-once.proto = once(function () {
-  Object.defineProperty(Function.prototype, 'once', {
-    value: function () {
-      return once(this)
-    },
-    configurable: true
-  })
-})
-
-function once (fn) {
-  var called = false
-  return function () {
-    if (called) return
-    called = true
-    return fn.apply(this, arguments)
-  }
-}
-
-},{}],338:[function(require,module,exports){
 var trim = require('trim')
   , forEach = require('for-each')
   , isArray = function(arg) {
@@ -39699,7 +39678,7 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":83,"trim":347}],339:[function(require,module,exports){
+},{"for-each":83,"trim":346}],338:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -40236,7 +40215,7 @@ module.exports = function (headers) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],340:[function(require,module,exports){
+},{}],339:[function(require,module,exports){
 'use strict';
 
 var Stringify = require('./stringify');
@@ -40247,7 +40226,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":341,"./stringify":342}],341:[function(require,module,exports){
+},{"./parse":340,"./stringify":341}],340:[function(require,module,exports){
 'use strict';
 
 var Utils = require('./utils');
@@ -40413,7 +40392,7 @@ module.exports = function (str, opts) {
     return Utils.compact(obj);
 };
 
-},{"./utils":343}],342:[function(require,module,exports){
+},{"./utils":342}],341:[function(require,module,exports){
 'use strict';
 
 var Utils = require('./utils');
@@ -40546,7 +40525,7 @@ module.exports = function (object, opts) {
     return keys.join(delimiter);
 };
 
-},{"./utils":343}],343:[function(require,module,exports){
+},{"./utils":342}],342:[function(require,module,exports){
 'use strict';
 
 var hexTable = (function () {
@@ -40710,7 +40689,7 @@ exports.isBuffer = function (obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
-},{}],344:[function(require,module,exports){
+},{}],343:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -40796,7 +40775,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],345:[function(require,module,exports){
+},{}],344:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -40883,13 +40862,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],346:[function(require,module,exports){
+},{}],345:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":344,"./encode":345}],347:[function(require,module,exports){
+},{"./decode":343,"./encode":344}],346:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -40905,7 +40884,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],348:[function(require,module,exports){
+},{}],347:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -41639,7 +41618,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":349,"punycode":339,"querystring":346}],349:[function(require,module,exports){
+},{"./util":348,"punycode":338,"querystring":345}],348:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -41657,10 +41636,9 @@ module.exports = {
   }
 };
 
-},{}],350:[function(require,module,exports){
+},{}],349:[function(require,module,exports){
 "use strict";
 var window = require("global/window")
-var once = require("once")
 var isFunction = require("is-function")
 var parseHeaders = require("parse-headers")
 var xtend = require("xtend")
@@ -41712,11 +41690,17 @@ function createXHR(uri, options, callback) {
 }
 
 function _createXHR(options) {
-    var callback = options.callback
-    if(typeof callback === "undefined"){
+    if(typeof options.callback === "undefined"){
         throw new Error("callback argument missing")
     }
-    callback = once(callback)
+
+    var called = false
+    var callback = function cbOnce(err, response, body){
+        if(!called){
+            called = true
+            options.callback(err, response, body)
+        }
+    }
 
     function readystatechange() {
         if (xhr.readyState === 4) {
@@ -41730,8 +41714,8 @@ function _createXHR(options) {
 
         if (xhr.response) {
             body = xhr.response
-        } else if (xhr.responseType === "text" || !xhr.responseType) {
-            body = xhr.responseText || xhr.responseXML
+        } else {
+            body = xhr.responseText || getXml(xhr)
         }
 
         if (isJson) {
@@ -41743,22 +41727,13 @@ function _createXHR(options) {
         return body
     }
 
-    var failureResponse = {
-                body: undefined,
-                headers: {},
-                statusCode: 0,
-                method: method,
-                url: uri,
-                rawRequest: xhr
-            }
-
     function errorFunc(evt) {
         clearTimeout(timeoutTimer)
         if(!(evt instanceof Error)){
             evt = new Error("" + (evt || "Unknown XMLHttpRequest Error") )
         }
         evt.statusCode = 0
-        callback(evt, failureResponse)
+        return callback(evt, failureResponse)
     }
 
     // will load the data & process the response in a special response object
@@ -41790,8 +41765,7 @@ function _createXHR(options) {
         } else {
             err = new Error("Internal XMLHttpRequest Error")
         }
-        callback(err, response, response.body)
-
+        return callback(err, response, response.body)
     }
 
     var xhr = options.xhr || null
@@ -41808,18 +41782,26 @@ function _createXHR(options) {
     var aborted
     var uri = xhr.url = options.uri || options.url
     var method = xhr.method = options.method || "GET"
-    var body = options.body || options.data || null
+    var body = options.body || options.data
     var headers = xhr.headers = options.headers || {}
     var sync = !!options.sync
     var isJson = false
     var timeoutTimer
+    var failureResponse = {
+        body: undefined,
+        headers: {},
+        statusCode: 0,
+        method: method,
+        url: uri,
+        rawRequest: xhr
+    }
 
-    if ("json" in options) {
+    if ("json" in options && options.json !== false) {
         isJson = true
         headers["accept"] || headers["Accept"] || (headers["Accept"] = "application/json") //Don't override existing accept header declared by user
         if (method !== "GET" && method !== "HEAD") {
             headers["content-type"] || headers["Content-Type"] || (headers["Content-Type"] = "application/json") //Don't override existing accept header declared by user
-            body = JSON.stringify(options.json)
+            body = JSON.stringify(options.json === true ? body : options.json)
         }
     }
 
@@ -41829,6 +41811,9 @@ function _createXHR(options) {
     // IE9 must have onprogress be set to a unique function.
     xhr.onprogress = function () {
         // IE must die
+    }
+    xhr.onabort = function(){
+        aborted = true;
     }
     xhr.ontimeout = errorFunc
     xhr.open(method, uri, !sync, options.username, options.password)
@@ -41841,7 +41826,8 @@ function _createXHR(options) {
     // both npm's request and jquery 1.x use this kind of timeout, so this is being consistent
     if (!sync && options.timeout > 0 ) {
         timeoutTimer = setTimeout(function(){
-            aborted=true//IE9 may still call readystatechange
+            if (aborted) return
+            aborted = true//IE9 may still call readystatechange
             xhr.abort("timeout")
             var e = new Error("XMLHttpRequest timeout")
             e.code = "ETIMEDOUT"
@@ -41869,16 +41855,31 @@ function _createXHR(options) {
         options.beforeSend(xhr)
     }
 
-    xhr.send(body)
+    // Microsoft Edge browser sends "undefined" when send is called with undefined value.
+    // XMLHttpRequest spec says to pass null as body to indicate no body
+    // See https://github.com/naugtur/xhr/issues/100.
+    xhr.send(body || null)
 
     return xhr
 
 
 }
 
+function getXml(xhr) {
+    if (xhr.responseType === "document") {
+        return xhr.responseXML
+    }
+    var firefoxBugTakenEffect = xhr.status === 204 && xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
+    if (xhr.responseType === "" && !firefoxBugTakenEffect) {
+        return xhr.responseXML
+    }
+
+    return null
+}
+
 function noop() {}
 
-},{"global/window":84,"is-function":85,"once":337,"parse-headers":338,"xtend":351}],351:[function(require,module,exports){
+},{"global/window":84,"is-function":85,"parse-headers":337,"xtend":350}],350:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

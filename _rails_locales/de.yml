@@ -440,6 +440,10 @@ de:
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_search: Suchen
   resource_select_collection_title: Zu Set hinzufügen/entfernen
+  resources_box_batch_actions_addalltoclipboard: Alle zu Zwischenablage hinzufügen
+  resources_box_batch_actions_removeallfromclipboard: Alle aus Zwischenablage entfernen
+  resources_box_batch_actions_addselectedtoclipboard: Ausgewählte zu Zwischenablage hinzufügen
+  resources_box_batch_actions_removefromclipboard: Ausgewählte aus Zwischenablage entfernen
   resources_box_batch_actions_addtoset: Ausgewählte zu Set hinzufügen
   resources_box_batch_actions_delete: Ausgewählte löschen
   resources_box_batch_actions_edit_sets: Metadaten von Sets editieren
@@ -454,6 +458,16 @@ de:
   resources_box_title_count_post: Inhalte
   resources_header_show_all: alle anzeigen
   search_btn_search: Suchen
+  clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
+  clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
+  clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
+  clipboard_fetching_resources: Lade Inhalte...
+  clipboard_adding_resources: Füge Inhalte zur Stapelverarbeitung hinzu...
+  clipboard_removing_resources: Entferne Inhalte aus Stapelverarbeitung...
+  clipboard_ask_add_all_1: 'Möchten sie alle '
+  clipboard_ask_add_all_2: ' Inhalte zur Stapelverarbeitung hinzufügen?'
+  clipboard_ask_add_all_ok: Ok
+  clipboard_ask_add_all_cancel: Abbrechen
   sitemap_api: API
   sitemap_collections: Sets
   sitemap_entries: Medieneinträge
@@ -477,6 +491,7 @@ de:
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
   sitemap_vocabularies: Vokabulare
+  sitemap_clipboard: Stapelverarbeitung
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

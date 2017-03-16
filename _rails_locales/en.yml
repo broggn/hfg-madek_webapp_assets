@@ -429,6 +429,10 @@ en:
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
   resource_select_collection_title: Add to/remove from set
+  resources_box_batch_actions_addalltoclipboard: 'Alle zu Zwischenablage hinzufügen '
+  resources_box_batch_actions_removeallfromclipboard: Alle aus Zwischenablage entfernen
+  resources_box_batch_actions_addselectedtoclipboard: Add selected to Clipboard
+  resources_box_batch_actions_removefromclipboard: Remove selected from Clipboard
   resources_box_batch_actions_addtoset: Add selected to Set
   resources_box_batch_actions_delete: Delete selected
   resources_box_batch_actions_edit_sets: Edit MetaData for sets
@@ -443,6 +447,16 @@ en:
   resources_box_title_count_post: Items
   resources_header_show_all: show all
   search_btn_search: Search
+  clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
+  clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
+  clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
+  clipboard_fetching_resources: Lade Inhalte...
+  clipboard_adding_resources: Füge Inhalte zur Stapelverarbeitung hinzu...
+  clipboard_removing_resources: Entferne Inhalte aus Stapelverarbeitung...
+  clipboard_ask_add_all_1: 'Möchten Sie alle '
+  clipboard_ask_add_all_2: ' Inhalte zur Stapelverarbeitung hinzufügen?'
+  clipboard_ask_add_all_ok: Ok
+  clipboard_ask_add_all_cancel: Abbrechen
   sitemap_api: API
   sitemap_collections: Sets
   sitemap_entries: Media Entries
@@ -466,6 +480,7 @@ en:
   sitemap_my_used_keywords: My keywords
   sitemap_search: Search
   sitemap_vocabularies: Vocabularies
+  sitemap_clipboard: Stapelverarbeitung
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

@@ -429,8 +429,8 @@ en:
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
   resource_select_collection_title: Add to/remove from set
-  resources_box_batch_actions_addalltoclipboard: 'Alle zu Zwischenablage hinzufügen '
-  resources_box_batch_actions_removeallfromclipboard: Alle aus Zwischenablage entfernen
+  resources_box_batch_actions_addalltoclipboard: Add all to Clipboard
+  resources_box_batch_actions_removeallfromclipboard: Remove all from Clipboard
   resources_box_batch_actions_addselectedtoclipboard: Add selected to Clipboard
   resources_box_batch_actions_removefromclipboard: Remove selected from Clipboard
   resources_box_batch_actions_addtoset: Add selected to Set

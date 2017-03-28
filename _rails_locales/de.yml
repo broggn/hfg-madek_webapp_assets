@@ -46,6 +46,11 @@ de:
   batch_remove_from_collection_question_part_3: ' Sets aus dem Set entfernen?'
   batch_remove_from_collection_remove: Entfernen
   batch_remove_from_collection_title: Medieinträge/Sets aus Set entfernen
+  batch_destroy_resources_ask_1: 'Möchten Sie alle '
+  batch_destroy_resources_ask_2: ' ausgewählten Inhalte unwiderruflich löschen?'
+  batch_destroy_resources_ok: Ok
+  batch_destroy_resources_cancel: Abbrechen
+  batch_destroy_resources_success: Inhalte wurden erfolgreich gelöscht.
   btn_delete_confirm_msq: 'Sind Sie sicher, dass Sie diesen Inhalt löschen wollen?'
   btn_delete_text: Löschen
   btn_publish_confirm_msg: 'Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?'

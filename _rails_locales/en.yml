@@ -354,6 +354,10 @@ en:
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
   meta_data_value_label: Value
+  meta_key_order_alphabetical: a-z
+  meta_key_order_alphabetical_hint: 'The Keywords of this MetaKey are alphabetically sorted '
+  meta_key_order_custom: editorial
+  meta_key_order_custom_hint: 'The Keywords of this MetaKey are editorially sorted '
   no_content_fallback: No content available.
   no_groups_fallback: No groups available.
   no_keywords_fallback: No keywords available.

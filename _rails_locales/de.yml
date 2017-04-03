@@ -49,7 +49,7 @@ de:
   batch_destroy_resources_ask_1: 'Möchten Sie folgende Inhalte löschen:'
   batch_destroy_resources_ask_2: ' Einträge'
   batch_destroy_resources_ask_3: ' Sets'
-  batch_destroy_resources_ask_4: (Einträge in Sets werden nicht automatisch mit dem Set gelöscht)
+  batch_destroy_resources_ask_4: (Die Inhalte von Sets werden nicht automatisch mit dem Set gelöscht.)
   batch_destroy_resources_ok: Ok
   batch_destroy_resources_cancel: Abbrechen
   batch_destroy_resources_success: Inhalte wurden erfolgreich gelöscht.

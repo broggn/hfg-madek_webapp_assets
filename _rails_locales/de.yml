@@ -233,10 +233,10 @@ de:
   group_was_deleted: Arbeitsgruppe wurde gelöscht.
   home_page_new_contents: Neue Inhalte
   internal_groups: Arbeitsgruppen
-  login_box_external: ZHdK-Login
-  login_box_hint_first_line: Alle Funktionen nutzen und auf mehr Inhalte zugreifen.
-  login_box_hint_second_line: ' '
+  login_provider_zhdk_title: ZHdK-Login
+  login_provider_zhdk_hint: Alle Funktionen nutzen und auf mehr Inhalte zugreifen.
   login_box_internal: Externe
+  login_box_internal_only: Login
   login_box_login_btn: Anmelden
   login_box_password: Passwort
   login_box_rememberme: Login merken

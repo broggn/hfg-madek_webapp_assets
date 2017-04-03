@@ -231,9 +231,8 @@ en:
   group_was_deleted: Work group has been deleted.
   home_page_new_contents: New Contents
   internal_groups: Work groups
-  login_box_external: ZHdK Login
-  login_box_hint_first_line: For using of all function and access to more content.
-  login_box_hint_second_line: ''
+  login_provider_zhdk_title: ZHdK Login
+  login_provider_zhdk_hint: For using of all function and access to more content.
   login_box_internal: External
   login_box_login_btn: Log In
   login_box_password: Password

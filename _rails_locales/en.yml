@@ -440,8 +440,10 @@ en:
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
   resource_select_collection_title: Add to/remove from set
-  resources_box_batch_actions_addalltoclipboard: Add all to Clipboard
-  resources_box_batch_actions_removeallfromclipboard: Remove all from Clipboard
+  resources_box_batch_actions_addalltoclipboard_1: 'Add all '
+  resources_box_batch_actions_addalltoclipboard_2: ' to Clipboard'
+  resources_box_batch_actions_removeallfromclipboard_1: 'Remove all '
+  resources_box_batch_actions_removeallfromclipboard_2: ' from Clipboard'
   resources_box_batch_actions_addselectedtoclipboard: Add selected to Clipboard
   resources_box_batch_actions_removefromclipboard: Remove selected from Clipboard
   resources_box_batch_actions_addtoset: Add selected to Set

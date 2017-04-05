@@ -489,6 +489,8 @@ de:
   sitemap_explore: Erkunden
   sitemap_filter_sets: Filtersets
   sitemap_help: Support
+  sitemap_metakey: Metakey
+  sitemap_metakey_id: Metakey-ID
   sitemap_media_entries: Medieneinträge
   sitemap_my_archive: Mein Archiv
   sitemap_my_content_collections: Meine Sets
@@ -505,6 +507,7 @@ de:
   sitemap_my_unpublished: Meine Entwürfe
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
+  sitemap_vocabulary: Vokabular
   sitemap_vocabularies: Vokabulare
   sitemap_clipboard: Stapelverarbeitung
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
@@ -560,6 +563,8 @@ de:
     die Öffentlichkeit werden durch den Administrator vergeben – bitte wenden
     Sie sich an den Support.
   vocabularies_tabs_vocabulary: Vokabular
+  vocabulary_term_info_term: Term
+  vocabulary_term_info_contents: Inhalte
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?

@@ -232,9 +232,9 @@ en:
   home_page_new_contents: New Contents
   internal_groups: Work groups
   login_provider_zhdk_title: ZHdK Login
-  login_provider_zhdk_hint: For using of all function and access to more content.
-  login_provider_aai_title: Login
-  login_provider_aai_hint: Login with Switch AAI.
+  login_provider_zhdk_hint: Log In to use all features and access more content.
+  login_provider_aai_title: AAI-Login
+  login_provider_aai_hint: Log In to use all features and access more content.
   login_box_internal: External
   login_box_internal_only: Login
   login_box_login_btn: Log In

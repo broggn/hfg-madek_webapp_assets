@@ -235,8 +235,8 @@ de:
   internal_groups: Arbeitsgruppen
   login_provider_zhdk_title: ZHdK-Login
   login_provider_zhdk_hint: Alle Funktionen nutzen und auf mehr Inhalte zugreifen.
-  login_provider_aai_title: Login
-  login_provider_aai_hint: Anmelden mit Switch AAI.
+  login_provider_aai_title: AAI-Login
+  login_provider_aai_hint: Alle Funktionen nutzen und auf mehr Inhalte zugreifen.
   login_box_internal: Externe
   login_box_internal_only: Login
   login_box_login_btn: Anmelden

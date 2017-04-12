@@ -478,6 +478,15 @@ de:
   clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
   clipboard_fetching_resources: Lade Inhalte...
   clipboard_adding_resources: Füge Inhalte zur Stapelverarbeitung hinzu...
+  clipboard_adding_all_resources_error: >-
+    Es konnten nicht alle Inhalte zur Stapelverarbeitung hinzugefügt werden.
+    Bitte versuchen Sie es noch einmal. Schon hinzugefügte Inhalte werden nicht
+    dupliziert.
+  clipboard_adding_all_resources_cancelled: >-
+    Das Hinzufügen zur Stapelverarbeitung wurde abgebrochen. Ein Teil der
+    Inhalte wurde schon hinzugefügt. Wenn Sie alle hinzufügen möchten, versuchen
+    Sie es noch einmal. Schon hinzugefügte Inhalte werden nicht dupliziert.
+  clipboard_adding_all_resources_retry: Nochmals
   clipboard_removing_resources: Entferne Inhalte aus Stapelverarbeitung...
   clipboard_ask_add_all_1: 'Möchten sie alle '
   clipboard_ask_add_all_2: ' Inhalte zur Stapelverarbeitung hinzufügen?'

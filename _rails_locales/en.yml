@@ -270,7 +270,7 @@ en:
   media_entry_file_format_not_supported_2: download the file
   media_entry_file_format_not_supported_3: .
   media_entry_file_information_title: File Information
-  media_entry_media_import_gotodrafts: Go to Drafts
+  media_entry_media_import_gotodrafts: Vervollständige Medieneinträge
   media_entry_media_import_header: Media upload
   media_entry_media_import_inside_nojs: Select Files
   media_entry_media_import_inside: Drag & drop files here or
@@ -502,7 +502,7 @@ en:
   sitemap_my_favorite_media_entries: My favorites (media entries)
   sitemap_my_groups: My work groups
   sitemap_my_latest_imports: My latest uploads
-  sitemap_my_unpublished: My drafts
+  sitemap_my_unpublished: Unvollständige Medieneinträge
   sitemap_my_used_keywords: My keywords
   sitemap_search: Search
   sitemap_vocabulary: Vocabulary

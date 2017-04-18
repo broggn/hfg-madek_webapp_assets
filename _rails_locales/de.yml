@@ -276,7 +276,7 @@ de:
   media_entry_file_format_not_supported_2: download the file
   media_entry_file_format_not_supported_3: .
   media_entry_file_information_title: Datei
-  media_entry_media_import_gotodrafts: Gehe zu Entwürfen
+  media_entry_media_import_gotodrafts: Vervollständige Medieneinträge
   media_entry_media_import_header: Medien importieren
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_inside: Dateien auf dieses Feld ziehen oder
@@ -513,7 +513,7 @@ de:
   sitemap_my_favorite_media_entries: Meine Favoriten (Medieneinträge)
   sitemap_my_groups: Meine Arbeitsgruppen
   sitemap_my_latest_imports: Meine letzten Importe
-  sitemap_my_unpublished: Meine Entwürfe
+  sitemap_my_unpublished: Unvollständige Medieneinträge
   sitemap_my_used_keywords: Meine Schlagworte
   sitemap_search: Suche
   sitemap_vocabulary: Vokabular

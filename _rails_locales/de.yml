@@ -573,6 +573,9 @@ de:
     Sie sich an den Support.
   vocabularies_tabs_vocabulary: Vokabular
   vocabulary_term_info_term: Term
+  vocabulary_term_info_rdfclass: Typ
+  vocabulary_term_info_description: Beschreibung
+  vocabulary_term_info_url: URL
   vocabulary_term_info_contents: Inhalte
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen

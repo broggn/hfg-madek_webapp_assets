@@ -629,9 +629,6 @@ module.exports = {
   }),
   Keywords: MetaDatum.extend({
     type: 'MetaDatumKeywords'
-  }),
-  Licenses: MetaDatum.extend({
-    type: 'MetaDatumLicenses'
   })
 };
 

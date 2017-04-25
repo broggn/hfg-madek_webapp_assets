@@ -236,7 +236,6 @@ en:
   login_provider_aai_title: AAI-Login
   login_provider_aai_hint: Log In to use all features and access more content.
   login_box_internal: External
-  login_box_internal_only: Login
   login_box_login_btn: Log In
   login_box_password: Password
   login_box_rememberme: remember me

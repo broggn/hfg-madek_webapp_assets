@@ -469,6 +469,10 @@ de:
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
+  resources_box_no_content: Keine Inhalte verfügbar
+  resources_box_no_content_but_sets_1: 'Es gibt keine Medieneinträge für diese Suche. Es wurden aber '
+  resources_box_no_content_but_sets_2: Sets
+  resources_box_no_content_but_sets_3: ' gefunden.'
   resources_box_title_count_post: Inhalte
   resources_header_show_all: alle anzeigen
   search_btn_search: Suchen

@@ -480,6 +480,7 @@ de:
   clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
   clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
   clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
+  clipboard_empty_message: Sie haben keine Inhalte für die Stapelverarbeitung ausgewählt.
   clipboard_fetching_resources: Lade Inhalte...
   clipboard_adding_resources: Füge Inhalte zur Stapelverarbeitung hinzu...
   clipboard_adding_all_resources_error: >-

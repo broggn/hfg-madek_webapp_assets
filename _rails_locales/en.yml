@@ -505,24 +505,29 @@ en:
   sitemap_metakey_id: MetaKey-ID
   sitemap_media_entries: Media Entries
   sitemap_my_archive: My archive
-  sitemap_my_content_collections: My sets
-  sitemap_my_content_filter_sets: My filter sets
-  sitemap_my_content_media_entries: My media entries
+  sitemap_my_content_collections: Sets
+  sitemap_my_content_filter_sets: Filter sets
+  sitemap_my_content_media_entries: Media entries
   sitemap_my_entrusted_collections: My entrusted sets
   sitemap_my_entrusted_filter_sets: My entrusted filter sets
   sitemap_my_entrusted_media_entries: My entrusted media entries
-  sitemap_my_favorite_collections: My favorites (sets)
-  sitemap_my_favorite_filter_sets: My favorites (filter sets)
-  sitemap_my_favorite_media_entries: My favorites (media entries)
-  sitemap_my_groups: My work groups
-  sitemap_my_latest_imports: My latest uploads
+  sitemap_my_favorite_collections: Favorites - sets
+  sitemap_my_favorite_filter_sets: Favorites - filter sets
+  sitemap_my_favorite_media_entries: Favorites - media entries
+  sitemap_my_groups: Work groups
+  sitemap_my_latest_imports: Latest uploads
   sitemap_my_unpublished: Unvollständige Medieneinträge
   sitemap_my_clipboard: Stapelverarbeitung
-  sitemap_my_used_keywords: My keywords
+  sitemap_my_used_keywords: Keywords
   sitemap_search: Search
   sitemap_vocabulary: Vocabulary
   sitemap_vocabularies: Vocabularies
   sitemap_clipboard: Stapelverarbeitung
+  user_menu_my_content_collections: My sets
+  user_menu_my_content_media_entries: My media entries
+  user_menu_my_favorite_collections: My favorites - sets
+  user_menu_my_favorite_media_entries: My favorites - media entries
+  user_menu_my_groups: My work groups
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

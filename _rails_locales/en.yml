@@ -228,6 +228,11 @@ en:
   group_edit_save: Save
   group_edit_username: Username
   group_meta_data_institutional_group_name: Division group name
+  group_show_members: Mitglieder
+  group_show_vocabulary_permissions: Berechtigungen Vokabulare
+  group_show_permissions_view_use: (betrachten und anwenden)
+  group_show_permissions_view: (betrachten)
+  group_show_permissions_use: (anwenden)
   group_meta_data_name: Name
   group_new_form_title: Create Group
   group_new_group_btn: New Work Group

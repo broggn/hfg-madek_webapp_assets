@@ -196,6 +196,21 @@ de:
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_title_head: Mein Archiv
   dashboard_welcome_msg: Willkommen im Medienarchiv der Künste!
+  share_title_media_entry: Medieneintrag teilen
+  share_title_collection: Set teilen
+  share_uuid_url_subtitle: URL teilen
+  share_uuid_url_hint: >-
+    Wenn Sie explizit diesen Medieneintrag / dieses Set teilen möchten, nutzen
+    Sie folgende URL.
+  share_custom_url_subtitle: Sprechende Adresse teilen
+  share_custom_url_hint: >-
+    Wenn Sie eine sprechende Adresse nutzen oder unter einem Link wechselnde
+    Medieneinträge/Sets teilen möchten (z.B. .../roberts_neueste_arbeiten), dann
+    verwenden Sie folgende URL.
+  share_custom_url_none_available: Es ist keine sprechende Adresse angelegt.
+  share_back_to_collection: Zurück zum Set
+  share_back_to_media_entry: Zurück zum Medieneintrag
+  share_close: Schliessen
   edit_custom_urls_back_to_collection: Zurück zum Set
   edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
   edit_custom_urls_cancel: Abbrechen
@@ -454,6 +469,7 @@ de:
   resource_action_export: Exportieren
   resource_action_favor: Zu Favoriten hinzufügen
   resource_action_manage_collections: Zu Sets hinzufügen/Aus Sets entfernen
+  resource_action_share: Teilen
   resource_ask_delete_cancel: Abbrechen
   resource_ask_delete_ok: Löschen
   resource_ask_delete_question_post: '?'

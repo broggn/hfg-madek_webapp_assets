@@ -194,6 +194,21 @@ en:
   dashboard_create_media_entry_btn: Upload Media
   dashboard_title_head: My Archive
   dashboard_welcome_msg: Welcome to Madek!
+  share_title_media_entry: Medieneintrag teilen
+  share_title_collection: Set teilen
+  share_uuid_url_subtitle: URL teilen
+  share_uuid_url_hint: >-
+    Wenn Sie explizit diesen Medieneintrag / dieses Set teilen möchten, nutzen
+    Sie folgende URL.
+  share_custom_url_subtitle: Sprechende Adresse teilen
+  share_custom_url_hint: >-
+    Wenn Sie eine sprechende Adresse nutzen oder unter einem Link wechselnde
+    Medieneinträge/Sets teilen möchten (z.B. .../roberts_neueste_arbeiten), dann
+    verwenden Sie folgende URL.
+  share_custom_url_none_available: Es ist keine sprechende Adresse angelegt.
+  share_back_to_collection: Zurück zum Set
+  share_back_to_media_entry: Zurück zum Medieneintrag
+  share_close: Close
   edit_custom_urls_back_to_collection: Zurück zum Set
   edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
   edit_custom_urls_cancel: Abbrechen
@@ -445,6 +460,7 @@ en:
   resource_action_export: Download
   resource_action_favor: Add to favorites
   resource_action_manage_collections: Add to/Remove from sets
+  resource_action_share: Share
   resource_ask_delete_cancel: Cancel
   resource_ask_delete_ok: Delete
   resource_ask_delete_question_post: '?'

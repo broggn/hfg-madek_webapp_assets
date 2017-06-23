@@ -512,6 +512,11 @@ en:
   resources_box_no_content_but_sets_2: Sets
   resources_box_no_content_but_sets_3: ' gefunden.'
   resources_box_title_count_post: Items
+  resources_box_selection_limit_page_1: 'Die Seite kann nicht selektiert werden, da sonst die maximale Anzahl von '
+  resources_box_selection_limit_page_2: ' ausgewählten Inhalten überstiegen würde.'
+  resources_box_selection_limit_single_1: 'Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von '
+  resources_box_selection_limit_single_2: ' ausgewählten Inhalten überstiegen würde.'
+  resources_box_selection_limit_ok: Ok
   resources_header_show_all: show all
   search_btn_search: Search
   clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.

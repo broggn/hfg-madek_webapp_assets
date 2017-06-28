@@ -456,10 +456,11 @@ en:
   relations_siblings_title: Siblings
   relations_title: Relations
   release_info: Release Info
+  resource_action_more_actions: Weitere Aktionen
   resource_action_media_entry_edit_metadata: Metadaten editieren
   resource_action_media_entry_favor: Zu Favoriten hinzufügen
   resource_action_media_entry_disfavor: Aus Favoriten entfernen
-  resource_action_media_entry_select_collection: Zu Set hinzufügen/entfernen
+  resource_action_media_entry_select_collection: Zu Sets hinzufügen / Aus Sets entfernen
   resource_action_media_entry_share: Medieneintrag teilen
   resource_action_media_entry_edit_custom_urls: Sprechende Adressen verwalten
   resource_action_media_entry_export: Medieneintrag exportieren

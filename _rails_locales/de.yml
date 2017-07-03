@@ -196,6 +196,8 @@ de:
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_title_head: Mein Archiv
   dashboard_welcome_msg: Willkommen im Medienarchiv der Künste!
+  dashboard_none_exist: Keine vorhanden.
+  dashboard_show_all: Alle anzeigen
   share_title_media_entry: Medieneintrag teilen
   share_title_collection: Set teilen
   share_uuid_url_subtitle: URL teilen
@@ -535,7 +537,6 @@ de:
   resources_box_selection_limit_single_1: 'Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von '
   resources_box_selection_limit_single_2: ' ausgewählten Inhalten überstiegen würde.'
   resources_box_selection_limit_ok: Ok
-  resources_header_show_all: alle anzeigen
   search_btn_search: Suchen
   clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
   clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.

@@ -503,6 +503,10 @@ en:
   resources_box_batch_actions_addalltoclipboard_2: ' to Clipboard'
   resources_box_batch_actions_removeallfromclipboard_1: 'Remove all '
   resources_box_batch_actions_removeallfromclipboard_2: ' from Clipboard'
+  resources_box_batch_actions_edit_all_media_entries_1: 'Alle '
+  resources_box_batch_actions_edit_all_media_entries_2: ' Metadaten von Medieneinträgen editieren'
+  resources_box_batch_actions_edit_all_collections_1: 'Alle '
+  resources_box_batch_actions_edit_all_collections_2: ' Metadaten von Sets editieren'
   resources_box_batch_actions_addselectedtoclipboard: Add selected to Clipboard
   resources_box_batch_actions_removefromclipboard: Remove selected from Clipboard
   resources_box_batch_actions_addtoset: Add selected to Set

@@ -579,10 +579,17 @@ en:
   sitemap_vocabulary: Vocabulary
   sitemap_vocabularies: Vocabularies
   sitemap_clipboard: Stapelverarbeitung
+  sitemap_activities: Aktivitäten
+  sitemap_tokens: Tokens
+  section_title_media_entries: Meine Medieneinträge
+  section_title_collections: Meine Sets
+  section_title_groups: Meine Arbeitsgruppen
+  section_title_keywords: Meine Schlagworte
+  section_title_tokens: Meine Tokens
   user_menu_my_content_collections: My sets
   user_menu_my_content_media_entries: My media entries
-  user_menu_my_favorite_collections: My favorites - sets
-  user_menu_my_favorite_media_entries: My favorites - media entries
+  user_menu_my_favorite_collections: Favorites - sets
+  user_menu_my_favorite_media_entries: Favorites - media entries
   user_menu_my_groups: My work groups
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '

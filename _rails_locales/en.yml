@@ -374,6 +374,8 @@ en:
   meta_data_batch_title_post_collections: ' sets at once'
   meta_data_batch_title_post_media_entries: ' media entries at once'
   meta_data_batch_title_pre: 'Edit metadata for '
+  meta_data_batch_some_ignored_1: (
+  meta_data_batch_some_ignored_2: ' Einträge wurden ignoriert, da Sie nicht über die nötige Berechtigung verfügen)'
   meta_data_blank_value_for_required_meta_key_post: '!'
   meta_data_blank_value_for_required_meta_key_pre: 'Blank metadatum value for meta key '
   meta_data_collection_batch_summary_all_post: ' sets have been saved.'
@@ -503,10 +505,8 @@ en:
   resources_box_batch_actions_addalltoclipboard_2: ' to Clipboard'
   resources_box_batch_actions_removeallfromclipboard_1: 'Remove all '
   resources_box_batch_actions_removeallfromclipboard_2: ' from Clipboard'
-  resources_box_batch_actions_edit_all_media_entries_1: 'Alle '
-  resources_box_batch_actions_edit_all_media_entries_2: ' Metadaten von Medieneinträgen editieren'
-  resources_box_batch_actions_edit_all_collections_1: 'Alle '
-  resources_box_batch_actions_edit_all_collections_2: ' Metadaten von Sets editieren'
+  resources_box_batch_actions_edit_all_media_entries: Metadaten von allen Medieneinträgen editieren
+  resources_box_batch_actions_edit_all_collections: Metadaten von allen Sets editieren
   resources_box_batch_actions_addselectedtoclipboard: Add selected to Clipboard
   resources_box_batch_actions_removefromclipboard: Remove selected from Clipboard
   resources_box_batch_actions_addtoset: Add selected to Set

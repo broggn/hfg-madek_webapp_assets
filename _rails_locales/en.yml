@@ -72,6 +72,10 @@ en:
   batch_destroy_resources_ok: Ok
   batch_destroy_resources_cancel: Abbrechen
   batch_destroy_resources_success: Inhalte wurden erfolgreich gelöscht.
+  batch_warning_no_contents_media_entry: Sie haben keine Einträge.
+  batch_warning_no_contents_collection: Sie haben keine Sets.
+  batch_warning_no_authorized_contents_media_entry: Sie haben für keinen der Einträge die nötige Berechtigung.
+  batch_warning_no_authorized_contents_collection: Sie haben für keines der Sets die nötige Berechtigung.
   btn_delete_confirm_msq: Are you sure you want to delete this item?
   btn_delete_text: Delete
   btn_publish_confirm_msg: Are you sure you want to publish this item?

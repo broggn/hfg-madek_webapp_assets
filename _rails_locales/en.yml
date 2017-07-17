@@ -324,7 +324,7 @@ en:
   media_entry_file_format_not_supported_2: download the file
   media_entry_file_format_not_supported_3: .
   media_entry_file_information_title: File Information
-  media_entry_media_import_gotodrafts: Vervollständige Medieneinträge
+  media_entry_media_import_gotodrafts: Medieneinträge vervollständigen
   media_entry_media_import_header: Media upload
   media_entry_media_import_inside_nojs: Select Files
   media_entry_media_import_inside: Drag & drop files here or
@@ -539,6 +539,7 @@ en:
   resources_box_selection_limit_single_1: 'Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von '
   resources_box_selection_limit_single_2: ' ausgewählten Inhalten überstiegen würde.'
   resources_box_selection_limit_ok: Ok
+  resources_box_new_search: Neue Suche
   search_btn_search: Search
   clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
   clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
@@ -639,9 +640,9 @@ en:
   vocabularies_contents_hint_1: 'Alle Inhalte mit Metadaten des Vokabulars '
   vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
   vocabularies_keywords_hint_1: 'Alle im Vokabular '
-  vocabularies_keywords_hint_2: ' enthaltenen Schlagwörter und die dazugehörenden Metadatenfelder.'
+  vocabularies_keywords_hint_2: ' enthaltenen Schlagworte und die dazugehörenden Metadatenfelder.'
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
-  vocabularies_tabs_contents: Contents
+  vocabularies_tabs_contents: Content
   vocabularies_tabs_keywords: Keywords
   vocabularies_tabs_permissions: Permissions
   vocabulary_permissions_hint1: >-

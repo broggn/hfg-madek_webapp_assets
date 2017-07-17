@@ -207,6 +207,7 @@ en:
   share_uuid_url_hint_media_entry: >-
     Wenn Sie explizit diesen Medieneintrag teilen möchten, nutzen Sie folgende
     URL.
+  share_uuid_url_hint_exporter: Auch für den Madek-Exporter kopieren Sie diese URL.
   share_uuid_url_hint_collection: 'Wenn Sie explizit dieses Set teilen möchten, nutzen Sie folgende URL.'
   share_custom_url_subtitle: Sprechende Adresse teilen
   share_custom_url_hint_media_entry: >-

@@ -403,6 +403,9 @@ de:
   meta_data_form_cancel: Abbrechen
   meta_data_form_publish: Publizieren
   meta_data_form_save: Speichern
+  meta_data_form_saving: >-
+    Die Metadaten werden gerade gespeichert. Dies kann einige Zeit in Anspruch
+    nehmen. Bitte gedulden Sie sich und schliessen Sie das Fenster nicht.
   meta_data_form_submit_btn: Speichern
   meta_data_header_text: Werte
   meta_data_input_date_placeholder_duration_from: von

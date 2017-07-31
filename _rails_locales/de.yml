@@ -523,8 +523,7 @@ de:
   resource_select_collection_title: Zu Set hinzufügen/entfernen
   resources_box_batch_actions_addalltoclipboard_1: 'Alle '
   resources_box_batch_actions_addalltoclipboard_2: ' zur Stapelverarbeitung hinzufügen'
-  resources_box_batch_actions_removeallfromclipboard_1: 'Alle '
-  resources_box_batch_actions_removeallfromclipboard_2: ' aus der Stapelverarbeitung entfernen'
+  resources_box_batch_actions_clear_clipboard: Stapelverarbeitung leeren
   resources_box_batch_actions_edit_all_media_entries: Metadaten von allen Medieneinträgen editieren
   resources_box_batch_actions_edit_all_collections: Metadaten von allen Sets editieren
   resources_box_batch_actions_addselectedtoclipboard: Ausgewählte zur Stapelverarbeitung hinzufügen

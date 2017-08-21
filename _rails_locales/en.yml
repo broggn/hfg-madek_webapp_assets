@@ -463,6 +463,8 @@ en:
   permissions_responsibility_title: Verantwortlichkeit
   permissions_table_title: Zugriffsberechtigungen
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
+  person_show_first_name: First name
+  person_show_last_name: Last name
   picture_alt_fallback: (unkown)
   picture_alt_prefix: 'Picture:'
   relations_parents_title: Parents

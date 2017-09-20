@@ -41,6 +41,7 @@ en:
   api_tokens_list_scope_on: Ja
   api_tokens_list_scope_off: Nein
   api_tokens_list_new_button: Neuen Token erstellen
+  api_tokens_create_description: Description
   api_tokens_create_title: Neuen Token hinzufügen
   api_tokens_create_submit: Token anlegen
   api_tokens_create_cancel: Abbrechen
@@ -81,6 +82,8 @@ en:
   btn_delete_text: Delete
   btn_publish_confirm_msg: Are you sure you want to publish this item?
   btn_publish_text: Save
+  bubble_batch_label: Batch
+  bubble_draft_label: Draft
   collection_ask_delete_question_pre: 'Are you sure that you want to delete the following set:'
   collection_ask_delete_title: Delete Set
   collection_delete_success: Set deleted.
@@ -140,6 +143,8 @@ en:
   collection_tab_main: Set
   collection_was_disfavored: Set was removed from favorites.
   collection_was_favored: Set was added to favorites.
+  contents_privacy_public: These contents are publicly accessible
+  contents_privacy_private: These contents are only accessible to you
   custom_urls_canonical_hint: >-
     Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus
     Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese
@@ -201,6 +206,10 @@ en:
   dashboard_welcome_msg: Welcome to Madek!
   dashboard_none_exist: Keine vorhanden.
   dashboard_show_all: Show all
+  dynamic_filters_authorization: Authorization
+  dynamic_filters_visibility: Visibility
+  dynamic_filters_visibility_private: Just for me
+  dynamic_filters_visibility_user_or_group: Shared with people and work groups
   share_title_media_entry: Medieneintrag teilen
   share_title_collection: Set teilen
   share_uuid_url_subtitle: URL teilen
@@ -248,6 +257,10 @@ en:
     'Verwalten' verfügen.
   edit_custom_urls_transfer_title: Übertragen
   edit_custom_urls_transfer: Übertragen
+  explore_keywords_section_title: Frequent Keywords
+  explore_show_more: Show more
+  explore_vocabulary_section_show_details: View details
+  explore_vovabulary_section_title: Vocabularies
   external_groups: Division groups
   group_ask_delete_cancel: Cancel
   group_ask_delete_delete: Delete
@@ -286,6 +299,10 @@ en:
   group_show_edit_button: Arbeitsgruppe bearbeiten
   home_page_new_contents: New Contents
   internal_groups: Work groups
+  layout_mode_grid: Raster-Ansicht
+  layout_mode_list: Listen-Ansicht
+  layout_mode_miniature: Miniatur-Ansicht
+  layout_mode_tiles: Kachel-Ansicht
   login_provider_zhdk_title: ZHdK Login
   login_provider_zhdk_hint: Log In to use all features and access more content.
   login_provider_aai_title: AAI-Login
@@ -333,6 +350,7 @@ en:
     are directly processed and displayed. Images in the CMYK color model cannot
     be displayed correctly, please convert them to RGB before uploading.
   media_entry_media_import_notes_title: Hints
+  media_entry_media_import_select_media: Select media
   media_entry_media_import_title: 'Add pictures, videos, audio file, or other documents.'
   media_entry_meta_data_edit_by_context_btn: Edit Metadata by Context
   media_entry_meta_data_edit_by_vocab_btn: Edit Metadata by Vocabulary
@@ -371,6 +389,7 @@ en:
   meta_data_batch_hint_no_data: No metadata available yet.
   meta_data_batch_hint_value: Value and text
   meta_data_batch_items_selected: media entries selected
+  meta_data_batch_more: more
   meta_data_batch_success: Succesfully updated metadata.
   meta_data_batch_summary_all_post: ' media entries have been saved.'
   meta_data_batch_summary_all_pre: 'All '
@@ -431,6 +450,8 @@ en:
   pagination_of: of
   pagination_prefix: Page
   people_toolbar_header: Related Resources
+  permission_entrusted_to_group: Entrusted to group
+  permission_entrusted_to_user: Entrusted to user
   permission_name_edit_metadata_and_relations: Edit Metadata and add items
   permission_name_edit_metadata: Edit metadata
   permission_name_edit_permissions: Edit permissions
@@ -470,7 +491,10 @@ en:
   relations_parents_title: Parents
   relations_siblings_title: Siblings
   relations_title: Relations
+  release_changes_since_release: Changes since the last release
   release_info: Release Info
+  release_local_git_version: Local Git version
+  release_version: Development version
   resource_action_more_actions: Weitere Aktionen
   resource_action_media_entry_edit_metadata: Metadaten editieren
   resource_action_media_entry_favor: Zu Favoriten hinzufügen
@@ -495,6 +519,7 @@ en:
   resource_meta_data_copyright_notice: Copyright notice
   resource_meta_data_date: Date
   resource_meta_data_description: Description
+  resource_meta_data_document_type: Document type
   resource_meta_data_fallback: No metadata for this context.
   resource_meta_data_has_validation_errors: Es gibt fehlerhafte Eingabefelder.
   resource_meta_data_keywords: Keywords
@@ -506,12 +531,15 @@ en:
   resource_select_collection_clear: Clear
   resource_select_collection_hint_more: Additional sets were found. Please refine your search.
   resource_select_collection_hint_search: Search for and select sets that should hold the media entry.
+  resource_select_collection_new: New
   resource_select_collection_non_assigned: Item is not yet part of any set.
   resource_select_collection_non_found: No set was found.
   resource_select_collection_save: Save
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
   resource_select_collection_title: Add to/remove from set
+  resource_thumbnail_contents: Contents
+  resource_thumbnail_sets: Sets
   resources_box_batch_actions_addalltoclipboard_1: 'Add all '
   resources_box_batch_actions_addalltoclipboard_2: ' to Clipboard'
   resources_box_batch_actions_clear_clipboard: Stapelverarbeitung leeren
@@ -530,6 +558,7 @@ en:
   resources_box_batch_actions_sets_managepermissions: Edit Permissions for collections
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
+  resources_box_filter: Filter
   resources_box_no_content: Keine Inhalte verfügbar
   resources_box_no_content_but_sets_1: 'Es gibt keine Medieneinträge für diese Suche. Es wurden aber '
   resources_box_no_content_but_sets_2: Sets
@@ -538,10 +567,18 @@ en:
   resources_box_selection_limit_page_1: 'Die Seite kann nicht selektiert werden, da sonst die maximale Anzahl von '
   resources_box_selection_limit_page_2: ' ausgewählten Inhalten überstiegen würde.'
   resources_box_selection_limit_single_1: 'Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von '
+  resources_box_reset_filter: Reset filter
   resources_box_selection_limit_single_2: ' ausgewählten Inhalten überstiegen würde.'
   resources_box_selection_limit_ok: Ok
-  resources_box_new_search: Neue Suche
+  resources_box_deselect_all: Deselect all
+  resources_box_select_all: Select all
+  resources_box_selection_remove_selection: Remove selection
+  resources_box_selection_select: Select
+  resources_box_new_search: New Search
+  resources_section_show_all: Show all
   search_btn_search: Search
+  search_filename: Filename
+  search_full_text: Full text
   clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
   clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
   clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
@@ -589,8 +626,8 @@ en:
   sitemap_search: Search
   sitemap_vocabulary: Vocabulary
   sitemap_vocabularies: Vocabularies
-  sitemap_clipboard: Stapelverarbeitung
-  sitemap_activities: Aktivitäten
+  sitemap_clipboard: Clipboard
+  sitemap_activities: Activities
   sitemap_tokens: Tokens
   section_title_media_entries: Meine Medieneinträge
   section_title_collections: Meine Sets
@@ -642,8 +679,9 @@ en:
   vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
   vocabularies_keywords_hint_1: 'Alle im Vokabular '
   vocabularies_keywords_hint_2: ' enthaltenen Schlagworte und die dazugehörenden Metadatenfelder.'
+  vocabularies_no_description: (No description available)
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
-  vocabularies_tabs_contents: Content
+  vocabularies_tabs_contents: Contents
   vocabularies_tabs_keywords: Keywords
   vocabularies_tabs_permissions: Permissions
   vocabulary_permissions_hint1: >-
@@ -668,3 +706,4 @@ en:
   browse_entries_title: Browse similar entries
   browse_entries_filter_link: Filter this →
   browse_entries_browse_link_title: Browse in this direction
+  browse_entries_loading_error: Loading error!

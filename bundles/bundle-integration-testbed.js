@@ -157,13 +157,13 @@ module.exports = {
     }
   },
   setFavoredStatus: function(action, callback) {
-    if (!f.include(['favor', 'disfavor'], action)) {
+    if (!f.include(['favor', 'disfavor'], action.name) || !action.url) {
       throw new Error('ArgumentError!');
     }
     this.set('favored', (action === 'favor' ? true : false));
     return this._runRequest({
       method: 'PATCH',
-      url: this.url + '/' + action
+      url: action.url
     }, (function(_this) {
       return function(err, res, data) {
         _this.set('favored', data.isFavored);
@@ -194,9 +194,11 @@ module.exports = {
     list_meta_data: 'object'
   },
   loadListMetadata: function(callback) {
-    var currentQuery, url;
+    var currentQuery, parsedUrl, url;
     currentQuery = parseQuery(parseUrl(window.location.toString()).query);
-    url = setUrlParams(this.url + '/list_meta_data', currentQuery);
+    parsedUrl = parseUrl(this.list_meta_data_url, true);
+    delete parsedUrl.search;
+    url = setUrlParams(buildUrl(parsedUrl), currentQuery);
     return this._runRequest({
       url: url,
       json: true
@@ -215,7 +217,7 @@ module.exports = {
 
 
 },{"../../lib/set-params-for-url.coffee":3,"active-lodash":24,"qs":284,"url":292}],8:[function(require,module,exports){
-var buildParams, buildUrl, f, parseUrl;
+var buildUrl, f, parseUrl;
 
 f = require('active-lodash');
 
@@ -223,15 +225,13 @@ parseUrl = require('url').parse;
 
 buildUrl = require('url').format;
 
-buildParams = require('qs').stringify;
-
 module.exports = {
   props: {
     parent_collections: ['object'],
     sibling_collections: ['object']
   },
   fetchRelations: function(type, callback) {
-    var jsonPath, modelAttr, ref, relationsUrl, sparseSpec, subPath, supportedRelations, validTypes;
+    var jsonPath, modelAttr, parsedUrl, ref, relationsUrl, sparseSpec, subPath, supportedRelations, validTypes;
     validTypes = ['parent', 'sibling', 'child'];
     if (!f.include(validTypes, type)) {
       throw new Error('Invalid Relations type!');
@@ -247,15 +247,13 @@ module.exports = {
       return;
     }
     sparseSpec = JSON.stringify(f.set({}, jsonPath, {}));
-    relationsUrl = buildUrl(f.merge(parseUrl(this.url + '/' + subPath), {
-      search: buildParams({
-        list: {
-          page: 1,
-          per_page: 2
-        },
-        ___sparse: sparseSpec
-      })
-    }));
+    parsedUrl = parseUrl(this.url, true);
+    delete parsedUrl.search;
+    parsedUrl.pathname += '/' + subPath;
+    parsedUrl.query['list[page]'] = 1;
+    parsedUrl.query['list[per_page]'] = 2;
+    parsedUrl.query['___sparse'] = sparseSpec;
+    relationsUrl = buildUrl(parsedUrl);
     return this._runRequest({
       url: relationsUrl,
       json: true
@@ -281,7 +279,7 @@ module.exports = {
 };
 
 
-},{"active-lodash":24,"qs":284,"url":292}],9:[function(require,module,exports){
+},{"active-lodash":24,"url":292}],9:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');

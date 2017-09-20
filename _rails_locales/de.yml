@@ -43,6 +43,7 @@ de:
   api_tokens_list_scope_on: Ja
   api_tokens_list_scope_off: Nein
   api_tokens_list_new_button: Neuen Token erstellen
+  api_tokens_create_description: Beschreibung
   api_tokens_create_title: Neuen Token hinzufügen
   api_tokens_create_submit: Token anlegen
   api_tokens_create_cancel: Abbrechen
@@ -83,6 +84,8 @@ de:
   btn_delete_text: Löschen
   btn_publish_confirm_msg: 'Sind Sie sicher, dass Sie diesen Inhalt sichern wollen?'
   btn_publish_text: Speichern
+  bubble_batch_label: Stapel
+  bubble_draft_label: Entwurf
   collection_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgendes Set löschen möchten: '
   collection_ask_delete_title: Set löschen
   collection_delete_success: Set wurde gelöscht.
@@ -142,6 +145,8 @@ de:
   collection_tab_main: Set
   collection_was_disfavored: Das Set wurde von den Favoriten entfernt.
   collection_was_favored: Das Set wurde zu den Favoriten hinzugefügt.
+  contents_privacy_public: Diese Inhalte sind öffentlich zugänglich
+  contents_privacy_private: Diese Inhalte sind nur für Sie zugänglich
   custom_urls_canonical_hint: >-
     Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus
     Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese
@@ -203,6 +208,10 @@ de:
   dashboard_welcome_msg: Willkommen im Medienarchiv der Künste!
   dashboard_none_exist: Keine vorhanden.
   dashboard_show_all: Alle anzeigen
+  dynamic_filters_authorization: Berechtigung
+  dynamic_filters_visibility: Sichtbarkeit
+  dynamic_filters_visibility_private: Nur für mich
+  dynamic_filters_visibility_user_or_group: Geteilt mit Personen und Arbeitsgruppen
   share_title_media_entry: Medieneintrag teilen
   share_title_collection: Set teilen
   share_uuid_url_subtitle: URL teilen
@@ -250,6 +259,10 @@ de:
     'Verwalten' verfügen.
   edit_custom_urls_transfer_title: Übertragen
   edit_custom_urls_transfer: Übertragen
+  explore_keywords_section_title: Häufige Schlagworte
+  explore_show_more: Weitere anzeigen
+  explore_vocabulary_section_show_details: Details anzeigen
+  explore_vovabulary_section_title: Vokabulare
   external_groups: Abteilungsgruppen
   group_ask_delete_cancel: Abbrechen
   group_ask_delete_delete: Löschen
@@ -288,6 +301,10 @@ de:
   group_show_edit_button: Arbeitsgruppe bearbeiten
   home_page_new_contents: Neue Inhalte
   internal_groups: Arbeitsgruppen
+  layout_mode_grid: Raster-Ansicht
+  layout_mode_list: Listen-Ansicht
+  layout_mode_miniature: Miniatur-Ansicht
+  layout_mode_tiles: Kachel-Ansicht
   login_provider_zhdk_title: ZHdK-Login
   login_provider_zhdk_hint: Alle Funktionen nutzen und auf mehr Inhalte zugreifen.
   login_provider_aai_title: AAI-Login
@@ -340,6 +357,7 @@ de:
     werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Import in RGB
     um.
   media_entry_media_import_notes_title: Hinweise
+  media_entry_media_import_select_media: Medien auswählen
   media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
   media_entry_meta_data_edit_by_context_btn: Metadaten nach Kontexten editieren
   media_entry_meta_data_edit_by_vocab_btn: Metadaten nach Vokabularen editieren
@@ -378,6 +396,7 @@ de:
   meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
   meta_data_batch_hint_value: Wert und Text
   meta_data_batch_items_selected: Medieneinträge selektiert
+  meta_data_batch_more: weitere
   meta_data_batch_success: Metadaten wurden erfolgreich aktualisiert.
   meta_data_batch_summary_all_post: ' Medieneinträge wurden gespeichert.'
   meta_data_batch_summary_all_pre: 'Alle '
@@ -440,6 +459,8 @@ de:
   pagination_of: von
   pagination_prefix: Seite
   people_toolbar_header: Ähnliche Inhalte
+  permission_entrusted_to_group: Sichtbar für Arbeitsgruppen
+  permission_entrusted_to_user: Sichtbar für Personen
   permission_name_edit_metadata_and_relations: Metadaten editieren & Inhalte hinzufügen
   permission_name_edit_metadata: Metadaten editieren
   permission_name_edit_permissions: Zugriffsberechtigungen ändern
@@ -479,7 +500,10 @@ de:
   relations_parents_title: Übergeordnete Sets
   relations_siblings_title: Benachbarte Sets
   relations_title: Zusammenhänge
+  release_changes_since_release: Änderungen seit dem letzen Release
   release_info: Release Info
+  release_local_git_version: Lokale Git Version
+  release_version: Entwicklungs-Version
   resource_action_more_actions: Weitere Aktionen
   resource_action_media_entry_edit_metadata: Metadaten editieren
   resource_action_media_entry_favor: Zu Favoriten hinzufügen
@@ -504,6 +528,7 @@ de:
   resource_meta_data_copyright_notice: Rechte am geistigen Eigentum
   resource_meta_data_date: Datierung
   resource_meta_data_description: Beschreibung
+  resource_meta_data_document_type: Dokumenttyp
   resource_meta_data_fallback: Es sind keine Metadaten zu diesem Kontext bereitgestellt.
   resource_meta_data_has_validation_errors: Es gibt fehlerhafte Eingabefelder.
   resource_meta_data_keywords: Schlagworte
@@ -517,12 +542,15 @@ de:
   resource_select_collection_hint_search: >-
     Suchen Sie Sets und markieren Sie diejenigen, in denen der Medieneintrag
     enthalten sein soll.
+  resource_select_collection_new: Neue
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
   resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
   resource_select_collection_save: Speichern
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_search: Suchen
   resource_select_collection_title: Zu Set hinzufügen/entfernen
+  resource_thumbnail_contents: Inhalte
+  resource_thumbnail_sets: Sets
   resources_box_batch_actions_addalltoclipboard_1: 'Alle '
   resources_box_batch_actions_addalltoclipboard_2: ' zur Stapelverarbeitung hinzufügen'
   resources_box_batch_actions_clear_clipboard: Stapelverarbeitung leeren
@@ -541,6 +569,7 @@ de:
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
+  resources_box_filter: Filtern
   resources_box_no_content: Keine Inhalte verfügbar
   resources_box_no_content_but_sets_1: 'Es gibt keine Medieneinträge für diese Suche. Es wurden aber '
   resources_box_no_content_but_sets_2: Sets
@@ -549,10 +578,18 @@ de:
   resources_box_selection_limit_page_1: 'Die Seite kann nicht selektiert werden, da sonst die maximale Anzahl von '
   resources_box_selection_limit_page_2: ' ausgewählten Inhalten überstiegen würde.'
   resources_box_selection_limit_single_1: 'Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von '
+  resources_box_reset_filter: Filter zurücksetzen
   resources_box_selection_limit_single_2: ' ausgewählten Inhalten überstiegen würde.'
   resources_box_selection_limit_ok: Ok
+  resources_box_deselect_all: Alle abwählen
+  resources_box_select_all: Alle auswählen
+  resources_box_selection_remove_selection: Auswahl entfernen
+  resources_box_selection_select: Auswählen
   resources_box_new_search: Neue Suche
+  resources_section_show_all: Alle anzeigen
   search_btn_search: Suchen
+  search_filename: Filename
+  search_full_text: Volltext
   clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
   clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
   clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
@@ -653,6 +690,7 @@ de:
   vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
   vocabularies_keywords_hint_1: 'Alle im Vokabular '
   vocabularies_keywords_hint_2: ' enthaltenen Schlagworte und die dazugehörenden Metadatenfelder.'
+  vocabularies_no_description: (Keine Beschreibung)
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
   vocabularies_tabs_contents: Inhalte
   vocabularies_tabs_keywords: Schlagworte
@@ -679,3 +717,4 @@ de:
   browse_entries_title: Nach ähnlichen Inhalten stöbern
   browse_entries_filter_link: Weiter filtern →
   browse_entries_browse_link_title: In diese Richtung weiterstöbern
+  browse_entries_loading_error: Ladefehler!

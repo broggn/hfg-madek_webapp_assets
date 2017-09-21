@@ -45,6 +45,11 @@ de:
   api_tokens_list_new_button: Neuen Token erstellen
   api_tokens_create_description: Beschreibung
   api_tokens_create_title: Neuen Token hinzufügen
+  api_tokens_callback_description: Token wird für eine externe Applikation erstellt!
+  api_tokens_created_callback_btn: Weiter zur Applikation
+  api_tokens_created_callback_description: >-
+    Falls die Weiterleitung nicht funktioniert, kann der Token auch manuell
+    kopiert werden:
   api_tokens_create_submit: Token anlegen
   api_tokens_create_cancel: Abbrechen
   api_tokens_head_id: ID

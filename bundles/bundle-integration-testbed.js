@@ -86,12 +86,13 @@ module.exports = setUrlParams = function() {
     currentUrl = '';
   }
   url = urlFromStringOrObject(currentUrl);
-  return formatUrl({
-    pathname: url.pathname,
+  return formatUrl(merge(url, {
+    path: null,
+    pathname: url.pathname || url.path,
     search: formatQuery(merge(parseQuery(url.query), reduce(params, function(a, b) {
       return merge(a, b);
     })))
-  });
+  }));
 };
 
 urlFromStringOrObject = function(url) {

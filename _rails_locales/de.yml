@@ -292,7 +292,7 @@ de:
   group_edit_person: Person
   group_edit_save: Speichern
   group_edit_username: Benutzername
-  group_meta_data_institutional_group_name: Name der Abteilungsgruppe
+  group_meta_data_institutional_name: Name der Abteilungsgruppe
   group_show_members: Mitglieder
   group_show_vocabulary_permissions: Berechtigungen Vokabulare
   group_show_permissions_view_use: (betrachten und anwenden)

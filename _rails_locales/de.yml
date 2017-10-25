@@ -551,6 +551,7 @@ de:
   resource_select_collection_new: Neue
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
   resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
+  resource_select_collection_has_more: Es gibt noch weitere Resultate. Bitte Suche verfeinern.
   resource_select_collection_save: Speichern
   resource_select_collection_search_placeholder: Suche
   resource_select_collection_search: Suchen

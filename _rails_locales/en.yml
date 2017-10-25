@@ -538,6 +538,7 @@ en:
   resource_select_collection_new: New
   resource_select_collection_non_assigned: Item is not yet part of any set.
   resource_select_collection_non_found: No set was found.
+  resource_select_collection_has_more: There are more results. Please refine the search.
   resource_select_collection_save: Save
   resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search

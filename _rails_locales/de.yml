@@ -528,6 +528,7 @@ de:
   resource_action_collection_edit_highlight: Inhalte hervorheben
   resource_action_collection_edit_custom_urls: Sprechende Adressen verwalten
   resource_action_collection_destroy: Set löschen
+  resource_action_show_in_admin: Zeige im Admin-Interface
   resource_ask_delete_cancel: Abbrechen
   resource_ask_delete_ok: Löschen
   resource_ask_delete_question_post: '?'

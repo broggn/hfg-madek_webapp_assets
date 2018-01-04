@@ -699,10 +699,14 @@ de:
   vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
   vocabularies_keywords_hint_1: 'Alle im Vokabular '
   vocabularies_keywords_hint_2: ' enthaltenen Schlagworte und die dazugehörenden Metadatenfelder.'
+  vocabularies_people_hint_1: 'Alle im Vokabular '
+  vocabularies_people_hint_2: ' enthaltenen Personen und die dazugehörenden Metadatenfelder.'
   vocabularies_no_description: (Keine Beschreibung)
   vocabularies_no_keywords: Keine Schlagworte vorhanden.
+  vocabularies_no_people: Keine Personen vorhanden.
   vocabularies_tabs_contents: Inhalte
   vocabularies_tabs_keywords: Schlagworte
+  vocabularies_tabs_people: Personen
   vocabularies_tabs_permissions: Berechtigungen
   vocabulary_permissions_hint1: >-
     Für dieses Vokabular sind die Berechtigungen "Betrachten" und "Anwenden"

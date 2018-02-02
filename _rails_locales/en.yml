@@ -718,3 +718,12 @@ en:
   browse_entries_filter_link: Filter this →
   browse_entries_browse_link_title: Browse in this direction
   browse_entries_loading_error: Loading error!
+  error_401_title: To get access please login below with your user data.
+  error_403_title: You don’t have the necessary permissions to access this resource.
+  error_403_message: Please contact the responsible user who has the right alllow access.
+  error_404_title: The requested page cannot be found.
+  error_500_title: A server error occurred.
+  error_500_message: >-
+    If you require help in this matter, please contact the support
+    (support.medienarchiv@zhdk.ch) with a description of your last working steps
+    and a screen shot of this page.

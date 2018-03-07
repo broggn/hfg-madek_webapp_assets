@@ -501,6 +501,8 @@ de:
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
   person_show_first_name: Vorname
   person_show_last_name: Nachname
+  person_show_external_uri: URI
+  person_show_description: Beschreibung
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '
   relations_parents_title: Übergeordnete Sets

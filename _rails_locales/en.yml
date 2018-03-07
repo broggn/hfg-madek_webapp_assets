@@ -490,6 +490,8 @@ en:
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
   person_show_first_name: First name
   person_show_last_name: Last name
+  person_show_external_uri: URI
+  person_show_description: Description
   picture_alt_fallback: (unkown)
   picture_alt_prefix: 'Picture:'
   relations_parents_title: Parents

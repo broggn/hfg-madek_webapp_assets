@@ -648,6 +648,24 @@ en:
   user_menu_my_favorite_media_entries: Favorites - media entries
   user_menu_my_groups: My work groups
   user_name_deactivated: Deleted user
+  temporary_urls_create_title: Create a new Temporary URL
+  temporary_urls_create_description: Description
+  temporary_urls_create_submit: Add Temporary URL
+  temporary_urls_create_cancel: Cancel
+  temporary_urls_created_title: New Temporary URL created
+  temporary_urls_created_back_btn: Go back to all Temporary URLs
+  temporary_urls_created_notice: 'This Temporary URL will be displayed only once, please save it now.'
+  temporary_urls_list_created_hint_pre: 'Created: '
+  temporary_urls_list_expires_hint_pre: 'Expires at: '
+  temporary_urls_list_new_button: Add a new Temporary URL
+  temporary_urls_list_no_description: (No description)
+  temporary_urls_list_revoke_btn_hint: Revoke Temporary URL
+  temporary_urls_list_revoke_confirm: Are you sure you want to revoke this Temporary URL?
+  temporary_urls_list_revoked_title: Revoked Temporary URLs
+  temporary_urls_head_id: ID
+  temporary_urls_head_name: Name
+  temporary_urls_head_valid_since: Valid since
+  temporary_urls_head_valid_until: Expires at
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

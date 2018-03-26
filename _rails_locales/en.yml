@@ -22,115 +22,141 @@ en:
         create: Create group
   ajax_form_connection_error: Connection error. Please try again.
   ajax_form_no_longer_authorized: You are no longer authorized to do this.
-  ajax_form_successful_but_unparsable: Request successful but cannot parse answer.
+  ajax_form_successful_but_unparsable: '---'
   ajax_form_unexpected_error: There was an unexpected server error.
   ajax_form_validation_error_unparsable: Validation error with unparsable errors.
   ajax_form_validation_error_without_any_data: Validation error without any data.
   ajax_form_validation_error_without_error_data: Validation error without error data.
-  api_tokens_created_title: Neuer Token erstellt
-  api_tokens_created_notice: 'Dieser Token wird nur einmalig angezeigt, bitte speichern Sie ihn jetzt.'
-  api_tokens_created_back_btn: Zurück zu allen Tokens
-  api_tokens_list_revoke_btn_hint: Token zurückziehen
-  api_tokens_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Token zurückziehen wollen?'
-  api_tokens_list_no_description: (Keine Beschreibung)
-  api_tokens_list_created_hint_pre: 'Erstellt: '
-  api_tokens_list_expires_hint_pre: 'Ablaufdatum: '
-  api_tokens_list_revoked_title: Zurückgezogene Tokens
-  api_tokens_list_scope_read: Lesen
-  api_tokens_list_scope_write: Schreiben
-  api_tokens_list_scope_on: Ja
-  api_tokens_list_scope_off: Nein
-  api_tokens_list_new_button: Neuen Token erstellen
+  api_tokens_callback_description: Token is being created for an external application.
+  api_tokens_create_cancel: Cancel
   api_tokens_create_description: Description
-  api_tokens_create_title: Neuen Token hinzufügen
-  api_tokens_callback_description: Token is created for an external application!
-  api_tokens_created_callback_btn: Continue to Applikation
+  api_tokens_create_submit: Create token
+  api_tokens_create_title: Add new token
+  api_tokens_created_back_btn: Back to all tokens.
+  api_tokens_created_callback_btn: Continue to the application
   api_tokens_created_callback_description: 'If the redirect does not work, the token can also be copied manually:'
-  api_tokens_create_submit: Token anlegen
-  api_tokens_create_cancel: Abbrechen
+  api_tokens_created_notice: This token is displayed only once. Please save it now.
+  api_tokens_created_title: A new token was created.
   api_tokens_head_id: ID
   api_tokens_head_name: Name
-  api_tokens_head_valid_since: Gültig seit
-  api_tokens_head_valid_until: Gültig bis
-  api_tokens_head_permissions: Berechtigungen
-  app_autocomplete_no_results: No Results.
+  api_tokens_head_permissions: Permissions
+  api_tokens_head_valid_since: Valid from
+  api_tokens_head_valid_until: Valid to
+  api_tokens_list_created_hint_pre: 'Created: '
+  api_tokens_list_expires_hint_pre: 'Expiration date: '
+  api_tokens_list_new_button: Create new tolken
+  api_tokens_list_no_description: No description)
+  api_tokens_list_revoke_btn_hint: Revoke token.
+  api_tokens_list_revoke_confirm: Are you sure you want to revoke the token?
+  api_tokens_list_revoked_title: Revoked tokens
+  api_tokens_list_scope_off: 'No'
+  api_tokens_list_scope_on: 'Yes'
+  api_tokens_list_scope_read: Read
+  api_tokens_list_scope_write: Write
+  app_autocomplete_no_results: No results.
   app_confirm_form_leave_msg: >-
-    Please confirm that you want to leave this page – entered data might not be
-    saved!
+    Please confirm that you wish to leave this page – entered data might not be
+    saved.
   app_notice_logged_out: You have logged out.
-  app_warning_jsonly: 'This feature needs Javascript, but it''s not activated!'
-  authentication_groups: Systemgruppen
-  batch_add_to_collection_hint: ' zu denen Sie die Medieneinträge hinzufügen möchten.'
-  batch_add_to_collection_post: ' media entries to set'
-  batch_add_to_collection_pre: ' Add '
-  batch_meta_data_edit: 'Edit metadata for %{media_entry_count} media entries at once.'
+  app_warning_jsonly: 'This feature requires Javascript, but it is not activated.'
+  authentication_groups: System groups
+  batch_add_to_collection_hint: Seach for sets to add media entries.
+  batch_add_to_collection_post: Add media entries to set
+  batch_add_to_collection_pre: ''
+  batch_destroy_resources_ask_1: 'Do you want to delete the following items:'
+  batch_destroy_resources_ask_2: ' Media entries'
+  batch_destroy_resources_ask_3: ' Sets'
+  batch_destroy_resources_ask_4: >-
+    (When a set is deleted, the items of this set are not deleted at the same
+    time.)
+  batch_destroy_resources_cancel: Cancel
+  batch_destroy_resources_ok: OK
+  batch_destroy_resources_success: Items are deleted successfully.
+  batch_meta_data_edit: 'Edit metadata for %{media_entry_count} media entries at the same time.'
   batch_remove_from_collection_cancel: Cancel
   batch_remove_from_collection_question_part_1: 'Do you want to remove the selected '
   batch_remove_from_collection_question_part_2: ' media entries and '
   batch_remove_from_collection_question_part_3: ' sets from this set?'
   batch_remove_from_collection_remove: Remove
   batch_remove_from_collection_title: Remove media entries/sets from sets
-  batch_destroy_resources_ask_1: 'Möchten Sie folgende Inhalte löschen:'
-  batch_destroy_resources_ask_2: ' Einträge'
-  batch_destroy_resources_ask_3: ' Sets'
-  batch_destroy_resources_ask_4: (Die Inhalte von Sets werden nicht automatisch mit dem Set gelöscht.)
-  batch_destroy_resources_ok: Ok
-  batch_destroy_resources_cancel: Abbrechen
-  batch_destroy_resources_success: Inhalte wurden erfolgreich gelöscht.
-  batch_warning_no_contents_media_entry: Sie haben keine Einträge.
-  batch_warning_no_contents_collection: Sie haben keine Sets.
-  batch_warning_no_authorized_contents_media_entry: Sie haben für keinen der Einträge die nötige Berechtigung.
-  batch_warning_no_authorized_contents_collection: Sie haben für keines der Sets die nötige Berechtigung.
-  btn_delete_confirm_msq: Are you sure you want to delete this item?
-  btn_delete_text: Delete
-  btn_publish_confirm_msg: Are you sure you want to publish this item?
-  btn_publish_text: Save
+  batch_warning_no_authorized_contents_collection: You have no permissions for these sets.
+  batch_warning_no_authorized_contents_media_entry: You have no permissions for these media entries.
+  batch_warning_no_contents_collection: You have no sets.
+  batch_warning_no_contents_media_entry: You have no media entries.
+  browse_entries_browse_link_title: Browse further in this direction
+  browse_entries_filter_link: Apply additional filter →
+  browse_entries_loading_error: Loading error
+  browse_entries_title: Browse similar items
+  btn_delete_confirm_msq: '---'
+  btn_delete_text: '---'
+  btn_publish_confirm_msg: '---'
+  btn_publish_text: '---'
   bubble_batch_label: Batch
   bubble_draft_label: Draft
-  collection_ask_delete_question_pre: 'Are you sure that you want to delete the following set:'
-  collection_ask_delete_title: Delete Set
+  clipboard_add_hint: Add to batch processing
+  clipboard_adding_all_resources_cancelled: >-
+    The process of adding items to batch processing was interrupted. Some items
+    were successfully added to batch processing. If you wish to add all items,
+    please try again.Those items already added will not be duplicated.
+  clipboard_adding_all_resources_error: >-
+    It was not possible to add all items to batch processing. Please try again.
+    Those items already added will not be duplicated.
+  clipboard_adding_all_resources_retry: ' Again'
+  clipboard_adding_resources: Add items to batch processing …
+  clipboard_ask_add_all_1: 'Would you like to add all '
+  clipboard_ask_add_all_2: ' items to batch processing?'
+  clipboard_ask_add_all_cancel: Cancel
+  clipboard_ask_add_all_ok: OK
+  clipboard_batch_add_success: Items were added to batch processing.
+  clipboard_batch_remove_success: Items wer removed from batch processing.
+  clipboard_empty_message: Batch processing is empty
+  clipboard_fetching_resources: Items loading …
+  clipboard_removing_resources: Remove items from batch processing ...
+  collection_ask_delete_question_pre: 'Are you sure you want to delete the following set:'
+  collection_ask_delete_title: Delete set
   collection_delete_success: Set deleted.
   collection_edit_cover_submit_btn: Submit
-  collection_edit_cover_title: Define Set Cover
-  collection_edit_highlights_btn: Edit
-  collection_edit_highlights_empty: Dieses Set hat noch keine Inhalte.
-  collection_edit_highlights_title: Highlight Items
+  collection_edit_cover_title: Define set cover
+  collection_edit_highlights_btn: Submit selection
+  collection_edit_highlights_empty: This set has no items yet.
+  collection_edit_highlights_title: Highlight items
   collection_edit_permissions_btn: Submit
-  collection_highlighted_contents: Highlighted Contents
-  collection_layout_save: Save layout
-  collection_layout_saved: Layout saved
-  collection_media_resources_title: 'Media Entries in Sets:'
-  collection_meta_data_header_prefix: 'Edit Set:'
+  collection_highlighted_contents: Highlighted items
+  collection_layout_save: Save type of display
+  collection_layout_saved: Type of display saved
+  collection_media_resources_title: '---'
+  collection_meta_data_header_prefix: 'Edit set:'
   collection_new_cancel: Cancel
-  collection_new_create_set: Create Set
-  collection_new_dialog_title: Create Set
+  collection_new_create_set: Create set
+  collection_new_dialog_title: Create set
   collection_new_flash_successful: Set was created.
   collection_new_flash_title_needed: Title is a mandatory field.
-  collection_new_header: Create Set
+  collection_new_header: New set
   collection_new_label_title: Title
-  collection_permissions_btn: Change Permissions
+  collection_permissions_btn: Change permissions
   collection_relations_child_sets: Child sets
-  collection_relations_children_hint: Diese Sets wurden dem ausgewählten Set hinzugefügt.
+  collection_relations_children_hint: These sets are now related to the selected set.
   collection_relations_current: Current set
   collection_relations_hint_text: >-
-    Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge
-    wurden aktiv festgelegt als übergeordnet, benachbart oder untergeordnet. Sie
-    sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit
-    Ihnen teilen.
+    The selected set is related to other sets. The relationship between these
+    sets was actively defined by you or another user. The type of relationship
+    to the other sets could be described as parent, siblings or children
+    relationship. The displayed sets are owned by yourself or shared by other
+    users with you.
   collection_relations_no_child_sets: ' '
   collection_relations_no_parent_sets: ' '
   collection_relations_no_sibling_sets: ' '
   collection_relations_parent_sets: Parent sets
-  collection_relations_parents_hint: Das ausgewählte Set wurde diesen Sets hinzugefügt.
+  collection_relations_parents_hint: The selected set is now related to this set.
+  collection_relations_show_all: Show all →
   collection_relations_show_all_relations: Show all relations
-  collection_relations_show_all: Show all
   collection_relations_sibling_sets: Sibling sets
-  collection_relations_siblings_hint: Diese Sets wurden den gleichen Sets hinzugefügt wie das ausgewählte Set.
+  collection_relations_siblings_hint: This set is related to the same sets as the selected set.
   collection_resource_selection_cancel: Cancel
   collection_resource_selection_h_author: Author
   collection_resource_selection_h_date: Dating
   collection_resource_selection_h_keywords: Keywords
-  collection_resource_selection_h_responsible: Owner
+  collection_resource_selection_h_responsible: Holder of rights
   collection_resource_selection_h_selection: Selection
   collection_resource_selection_h_subtitle: Subtitle
   collection_resource_selection_h_title: Title
@@ -138,129 +164,115 @@ en:
   collection_select_collection_flash_result: >-
     Removed set from %{removed_count} set(s). Added set to %{added_count}
     set(s).
-  collection_sorting_created_at_asc: Sortieren nach Importierdatum aufsteigend
-  collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
-  collection_sorting_last_change: Sortieren nach letzter Änderung
-  collection_sorting_title_asc: Sortieren nach Titel alphabetisch
-  collection_sorting_title_desc: Sortieren nach Titel absteigend
+  collection_sorting_created_at_asc: Sort by import date ascending
+  collection_sorting_created_at_desc: Sort by import date descending
+  collection_sorting_last_change: Sort by date of update
+  collection_sorting_title_asc: Sort by title alphabetically
+  collection_sorting_title_desc: 'Sort by title alphabetically, but descending'
   collection_tab_main: Set
   collection_was_disfavored: Set was removed from favorites.
   collection_was_favored: Set was added to favorites.
-  contents_privacy_public: These contents are publicly accessible
-  contents_privacy_private: These contents are only accessible to you
+  contents_privacy_private: These items are only accessible to you.
+  contents_privacy_public: These items are accessible to the public.
   custom_urls_canonical_hint: >-
-    Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus
-    Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese
-    Adresse kann nicht übertragen oder entfernt werden und ist deshalb immer an
-    erster Stelle aufgelistet.
-  custom_urls_canonical_title: Kanonische Adresse (UUID)
-  custom_urls_flash_create_successful_1: 'Adresse '
-  custom_urls_flash_create_successful_2: ' wurde erstellt.'
-  custom_urls_flash_empty: Adresse darf nicht leer sein.
-  custom_urls_flash_exists_on_itself_collection_1: 'Adresse '
-  custom_urls_flash_exists_on_itself_collection_2: ' existiert bereits für dieses Set.'
-  custom_urls_flash_exists_on_itself_media_entry_1: 'Adresse '
-  custom_urls_flash_exists_on_itself_media_entry_2: ' existiert bereits für diesen Medieneintrag.'
-  custom_urls_flash_not_allowed_collection_1: 'Die Adresse '
-  custom_urls_flash_not_allowed_collection_2: ' kann nicht übertragen werden. Sie haben nicht die Berechtigung das Set zu verwalten, auf welches die Adresse '
-  custom_urls_flash_not_allowed_collection_3: ' im Moment verweist.'
-  custom_urls_flash_not_allowed_media_entry_1: 'Die Adresse '
-  custom_urls_flash_not_allowed_media_entry_2: ' kann nicht übertragen werden. Sie haben nicht die Berechtigung den Medieneintrag zu verwalten, auf welchen die Adresse '
-  custom_urls_flash_not_allowed_media_entry_3: ' im Moment verweist.'
-  custom_urls_flash_not_same_type_collection_1: 'Adresse '
-  custom_urls_flash_not_same_type_collection_2: ' kann nicht übertragen werden. Adressen von Medieneinträgen können nicht auf Sets übertragen werden.'
-  custom_urls_flash_not_same_type_media_entry_1: 'Adresse '
-  custom_urls_flash_not_same_type_media_entry_2: ' kann nicht übertragen werden. Adressen von Sets können nicht auf Medieneinträge übertragen werden.'
+    Every item has a canonical address consisting of numbers und letters which
+    is created automatically, a so- called UUID (Universally Unique Identifier).
+    This address can not be transferred or deleted. For this reason it is always
+    listed first.
+  custom_urls_canonical_title: Canonical address (UUID)
+  custom_urls_flash_create_successful_1: 'Address '
+  custom_urls_flash_create_successful_2: ' was created.'
+  custom_urls_flash_empty: Address is not allowed to be empty.
+  custom_urls_flash_exists_on_itself_collection_1: 'The address '
+  custom_urls_flash_exists_on_itself_collection_2: ' already exists for this set.'
+  custom_urls_flash_exists_on_itself_media_entry_1: 'The address '
+  custom_urls_flash_exists_on_itself_media_entry_2: ' already exists for this media entry.'
+  custom_urls_flash_not_allowed_collection_1: 'The address '
+  custom_urls_flash_not_allowed_collection_2: ' can not be transferred. You do not have permission to manage the set to which the address '
+  custom_urls_flash_not_allowed_collection_3: ' is related to.'
+  custom_urls_flash_not_allowed_media_entry_1: 'The address '
+  custom_urls_flash_not_allowed_media_entry_2: ' cannot be transferred. You do not have  permission to manage the media entry to which the address '
+  custom_urls_flash_not_allowed_media_entry_3: ' is related to.'
+  custom_urls_flash_not_same_type_collection_1: 'The address '
+  custom_urls_flash_not_same_type_collection_2: ' can not be transferred. Addresses from media entries can not be transferred to sets.'
+  custom_urls_flash_not_same_type_media_entry_1: 'The address '
+  custom_urls_flash_not_same_type_media_entry_2: ' cannot be transferred. Addresses from sets cannot be transferred to media entries.'
   custom_urls_flash_primary_url_set_1: ''
-  custom_urls_flash_primary_url_set_2: ' wurde als Primäre Adresse gesetzt.'
-  custom_urls_flash_transfer_confirmation_collection_1: 'Die Adresse '
-  custom_urls_flash_transfer_confirmation_collection_2: ' ist gegenwärtig dem Set '
-  custom_urls_flash_transfer_confirmation_collection_3: ' zugewiesen. Wollen Sie diese Adresse auf das Set '
-  custom_urls_flash_transfer_confirmation_collection_4: ' übertragen?'
-  custom_urls_flash_transfer_confirmation_media_entry_1: 'Die Adresse '
-  custom_urls_flash_transfer_confirmation_media_entry_2: ' ist gegenwärtig dem Medieneintrag '
-  custom_urls_flash_transfer_confirmation_media_entry_3: ' zugewiesen. Wollen Sie diese Adresse auf den Medieneintrag '
-  custom_urls_flash_transfer_confirmation_media_entry_4: ' übertragen?'
-  custom_urls_flash_transfer_successful_1: 'Adresse '
-  custom_urls_flash_transfer_successful_2: ' wurde von '
-  custom_urls_flash_transfer_successful_3: ' auf '
-  custom_urls_flash_transfer_successful_4: ' übertragen.'
-  custom_urls_flash_wrong_format_1: 'Adresse '
-  custom_urls_flash_wrong_format_2: ' erfüllt die Anforderungen nicht.'
-  custom_urls_manage_address_title: Adressverwaltung
-  custom_urls_new: Adresse anlegen / übertragen
-  custom_urls_no_addresses_defined: Noch keine Adressen definiert
+  custom_urls_flash_primary_url_set_2: ' was set as primary address.'
+  custom_urls_flash_transfer_confirmation_collection_1: 'The address '
+  custom_urls_flash_transfer_confirmation_collection_2: ' is currently related to the set  '
+  custom_urls_flash_transfer_confirmation_collection_3: '. Would you like to transfer this address to the set '
+  custom_urls_flash_transfer_confirmation_collection_4: '?'
+  custom_urls_flash_transfer_confirmation_media_entry_1: 'The address '
+  custom_urls_flash_transfer_confirmation_media_entry_2: ' is currently related to the media entry  '
+  custom_urls_flash_transfer_confirmation_media_entry_3: '. Would you like to transfer this address to the media entry '
+  custom_urls_flash_transfer_confirmation_media_entry_4: '?'
+  custom_urls_flash_transfer_successful_1: 'Address  '
+  custom_urls_flash_transfer_successful_2: ' was transferred from  '
+  custom_urls_flash_transfer_successful_3: ' to '
+  custom_urls_flash_transfer_successful_4: '0'
+  custom_urls_flash_wrong_format_1: 'Address '
+  custom_urls_flash_wrong_format_2: ' does not meet the requirements.'
+  custom_urls_manage_address_title: Address administration
+  custom_urls_new: Create / transfer address
+  custom_urls_no_addresses_defined: No address defined yet.
   custom_urls_primary_hint: >-
-    Für jeden Inhalt (egal ob Medieneintrag oder Set) gibt es immer genau eine
-    primäre Adresse. Diese ist in der Adressleiste des Browsers sichtbar, wenn
-    der Inhalt angezeigt wird. Neben der primären Adresse können weitere gesetzt
-    werden, die auf die primäre Adresse weiterleiten.
-  custom_urls_primary_title: Primäre Adresse
-  custom_urls_table_header_actions: Aktionen
-  custom_urls_table_header_address: Adresse
-  custom_urls_table_header_created_by: erstellt durch
-  custom_urls_table_header_date: Datum
-  custom_urls_table_header_type: Typ
-  custom_urls_title: 'Adressen für '
-  dashboard_create_collection_btn: Create Set
+    Each item (media entry or set) has exactly one primary address. This address
+    is displayed in the browsersaddress bar when the item is accessed.You have
+    the option to create other addresses which are forwarded to the primary
+    address.
+  custom_urls_primary_title: Primary address
+  custom_urls_table_header_actions: Actions
+  custom_urls_table_header_address: 'Address '
+  custom_urls_table_header_created_by: Created by
+  custom_urls_table_header_date: Date
+  custom_urls_table_header_type: Type
+  custom_urls_title: 'Addresses for '
   dashboard_create_collection: Create set
-  dashboard_create_media_entry_btn: Upload Media
-  dashboard_title_head: My Archive
-  dashboard_welcome_msg: Welcome to Madek!
-  dashboard_none_exist: Keine vorhanden.
-  dashboard_show_all: Show all
+  dashboard_create_collection_btn: Create set
+  dashboard_create_media_entry_btn: Upload media
+  dashboard_none_exist: There are none.
+  dashboard_show_all: Show all →
+  dashboard_title_head: My archive
+  dashboard_welcome_msg: '---'
   dynamic_filters_authorization: Authorization
-  dynamic_filters_visibility: Visibility
-  dynamic_filters_visibility_private: Just for me
+  dynamic_filters_visibility: Accessability
+  dynamic_filters_visibility_private: Only for me
   dynamic_filters_visibility_user_or_group: Shared with people and work groups
-  share_title_media_entry: Medieneintrag teilen
-  share_title_collection: Set teilen
-  share_uuid_url_subtitle: URL teilen
-  share_uuid_url_hint_media_entry: >-
-    Wenn Sie explizit diesen Medieneintrag teilen möchten, nutzen Sie folgende
-    URL.
-  share_uuid_url_hint_exporter: Auch für den Madek-Exporter kopieren Sie diese URL.
-  share_uuid_url_hint_collection: 'Wenn Sie explizit dieses Set teilen möchten, nutzen Sie folgende URL.'
-  share_custom_url_subtitle: Sprechende Adresse teilen
-  share_custom_url_hint_media_entry: >-
-    Wenn Sie eine sprechende Adresse nutzen oder unter einem Link wechselnde
-    Medieneinträge teilen möchten (z.B. .../roberts_neueste_arbeiten), dann
-    verwenden Sie folgende URL.
-  share_custom_url_hint_collection: >-
-    Wenn Sie eine sprechende Adresse nutzen oder unter einem Link wechselnde
-    Sets teilen möchten (z.B. .../roberts_neueste_arbeiten), dann verwenden Sie
-    folgende URL.
-  share_custom_url_none_available: Es ist keine sprechende Adresse angelegt.
-  share_back_to_collection: Zurück zum Set
-  share_back_to_media_entry: Zurück zum Medieneintrag
-  share_close: Close
-  edit_custom_urls_back_to_collection: Zurück zum Set
-  edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
-  edit_custom_urls_cancel: Abbrechen
-  edit_custom_urls_confirmation: Bestätigung
-  edit_custom_urls_create_or_transfer: Adresse anlegen / übertragen
-  edit_custom_urls_preferred_address: 'Gewünschte Adresse:'
+  edit_custom_urls_back_to_collection: Back to the set
+  edit_custom_urls_back_to_media_entry: Back to the media entry
+  edit_custom_urls_cancel: Cancel
+  edit_custom_urls_confirmation: Confirmation
+  edit_custom_urls_create_or_transfer: Create / transfer address
+  edit_custom_urls_preferred_address: 'Preferred address:'
   edit_custom_urls_requirements_hint: >-
-    Eine Adresse darf nur genau einmal im System vorkommen – entweder für einen
-    Medieneintrag oder für ein Set. Sie beginnt immer mit einem Kleinbuchstaben,
-    gefolgt von (mindestens einem) weiteren Zeichen aus Kleinbuchstaben,
-    Nummern, Bindestrichen ( - ) und Grundstrichen ( _ ) in beliebiger
-    Reihenfolge.
-  edit_custom_urls_requirements_title: Anforderungen
-  edit_custom_urls_set_primary: Als primäre Adresse setzen
-  edit_custom_urls_state_primary: Primäre Adresse
-  edit_custom_urls_state_transfer: Weiterleitung
-  edit_custom_urls_title: Anforderungen
+    Each comprehensible address is unique in the system – either for a media
+    entry or for a set. The address always begins with a lower case letter,
+    followed by at least one other character. The following characters can bei
+    lower case letters, numbers, hyphens ( - ) or low lines ( _ ) in any order.
+  edit_custom_urls_requirements_title: Requirements
+  edit_custom_urls_set_primary: Set as primary address
+  edit_custom_urls_state_primary: Primary address
+  edit_custom_urls_state_transfer: Forwarding
+  edit_custom_urls_title: Requirements
+  edit_custom_urls_transfer: Transfer
   edit_custom_urls_transfer_hint: >-
-    Eine bereits bestehende Adresse kann von einem Medieneintrag auf einen
-    anderen oder von einem Set auf ein anderes übertragen werden. Bestehende
-    Adressen können nicht von einem Medieneintrag auf ein Set und umgekehrt
-    übertragen werden. Wollen Sie eine Adresse übertragen, dann geben Sie diese
-    hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung
-    'Verwalten' verfügen.
-  edit_custom_urls_transfer_title: Übertragen
-  edit_custom_urls_transfer: Übertragen
-  explore_keywords_section_title: Frequent Keywords
+    An existing address can be transferred from one media entry to another or
+    from one set to another. Existing addresses cannfot be transferred from a
+    media entry to a set or vice versa. If you want to transfer an address,
+    please enter this address here. You have to have manage permissions for both
+    items.
+  edit_custom_urls_transfer_title: Transfer
+  error_401_title: To get access please login below with your user data.
+  error_403_message: Please contact the responsible user who has the right alllow access.
+  error_403_title: You don’t have the necessary permissions to access this resource.
+  error_404_title: The requested page cannot be found.
+  error_500_message: >-
+    If you require help in this matter, please contact the support
+    (support.medienarchiv@zhdk.ch) with a description of your last working steps
+    and a screen shot of this page.
+  error_500_title: A server error occurred.
+  explore_keywords_section_title: Frequent keywords
   explore_show_more: Show more
   explore_vocabulary_section_show_details: View details
   explore_vovabulary_section_title: Vocabularies
@@ -269,256 +281,255 @@ en:
   group_ask_delete_delete: Delete
   group_ask_delete_question_post: '?'
   group_ask_delete_question_pre: 'Would you like to delete work group '
-  group_ask_delete_title: Delete Work Group
+  group_ask_delete_title: Delete work group
   group_delete_confirm_msg: Are you sure you want to delete this work group?
-  group_edit_at_least_one_member_delete: löschen
-  group_edit_at_least_one_member_post: .
-  group_edit_at_least_one_member_pre: >-
-    Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze
-    Arbeitsgruppe 
+  group_edit_at_least_one_member_delete: delete
+  group_edit_at_least_one_member_post: '0'
+  group_edit_at_least_one_member_pre: A work group has at least one member. Whole work group
   group_edit_btn: Edit
   group_edit_cancel: Cancel
   group_edit_form_new_member_login_hint: New work group member login
   group_edit_form_new_member_login_label: Add a member
   group_edit_form_save_btn: Save
-  group_edit_form_title_pre: 'Edit Work Group: '
-  group_edit_hint_remove_yourself: 'Attention: You are about to remove yourself from teh work group!'
+  group_edit_form_title_pre: 'Edit work group: '
+  group_edit_hint_remove_yourself: 'Attention: You are about to remove yourself from the work group!'
   group_edit_member: Members
   group_edit_name: Name
   group_edit_person: Person
   group_edit_save: Save
   group_edit_username: Username
   group_meta_data_institutional_name: Division group name
-  group_show_members: Mitglieder
-  group_show_vocabulary_permissions: Berechtigungen Vokabulare
-  group_show_permissions_view_use: (betrachten und anwenden)
-  group_show_permissions_view: (betrachten)
-  group_show_permissions_use: (anwenden)
   group_meta_data_name: Name
-  group_new_form_title: Create Group
-  group_new_group_btn: New Work Group
-  group_toolbar_header_entrusted_resources: Entrusted Media Entries
+  group_new_form_title: Create group
+  group_new_group_btn: New work group
+  group_show_edit_button: Edit work group
+  group_show_members: Members
+  group_show_permissions_use: (execute)
+  group_show_permissions_view: (view)
+  group_show_permissions_view_use: (view and execute)
+  group_show_vocabulary_permissions: Permissions vocabularies
+  group_toolbar_header_entrusted_resources: Entrusted media entries
   group_was_deleted: Work group has been deleted.
-  group_show_edit_button: Arbeitsgruppe bearbeiten
-  home_page_new_contents: New Contents
+  home_page_new_contents: New items
   internal_groups: Work groups
-  layout_mode_grid: Raster-Ansicht
-  layout_mode_list: Listen-Ansicht
-  layout_mode_miniature: Miniatur-Ansicht
-  layout_mode_tiles: Kachel-Ansicht
-  login_provider_zhdk_title: ZHdK Login
-  login_provider_zhdk_hint: Log In to use all features and access more content.
-  login_provider_aai_title: AAI-Login
-  login_provider_aai_hint: Log In to use all features and access more content.
-  login_box_internal: External
-  login_box_login_btn: Log In
+  layout_mode_grid: Grid view
+  layout_mode_list: List view
+  layout_mode_miniature: Miniature view
+  layout_mode_tiles: Tile view
+  login_box_internal: External users
+  login_box_login_btn: Log in
   login_box_password: Password
-  login_box_rememberme: remember me
-  login_box_username: Username
-  media_entry_all_metadata_title: All Metadata by Vocabulary
-  media_entry_ask_delete_question_pre: 'Are you sure that you want to delete the following media entry:'
-  media_entry_ask_delete_title: Delete Media Entry
+  login_box_rememberme: Remember me
+  login_box_username: User name
+  login_provider_aai_hint: Log in to use all features and access more items.
+  login_provider_aai_title: AAI login
+  login_provider_zhdk_hint: Log in to use all features and access more items.
+  login_provider_zhdk_title: ZHdK login
+  media_entry_all_metadata_title: All metadata by vocabulary
+  media_entry_ask_delete_question_pre: 'Are you sure you want to delete the following media entry:'
+  media_entry_ask_delete_title: Delete media entry
   media_entry_back_btn: Back
   media_entry_conversion_hint: >-
-    Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies
-    abgeschlossen ist, finden Sie hier eine abspielbare Version.
-  media_entry_conversion_progress_post: '%'
-  media_entry_conversion_progress_pre: 'Conversion completed at '
-  media_entry_conversion_reload: 'Laden Sie diese Seite neu, um den aktuellsten Stand zu erfahren.'
-  media_entry_conversion_status_failed: The video conversion failed. Please contact support.
+    Currently the system is converting this file to a preview. As soon as the
+    conversion is finished, you will be able to play the file here.
+  media_entry_conversion_progress_post: '% completed.'
+  media_entry_conversion_progress_pre: 'Conversion '
+  media_entry_conversion_reload: Reload this page to display the current state of conversion.
+  media_entry_conversion_status_failed: The file conversion has failed. Please contact support.
   media_entry_conversion_status_initialized: The media file is converting. Please try later.
   media_entry_conversion_status_submitted: The media file is converting. Please try later.
-  media_entry_delete_success: Media entry deleted.
+  media_entry_delete_success: Media entry has been deleted.
   media_entry_export_close: Close
   media_entry_export_download: Download
   media_entry_export_has_no_original: You are not allowed to download the original file.
-  media_entry_export_no_content: You have no access to the original file and there is no preview available.
-  media_entry_export_original_hint: Download original file as it was uploaded.
+  media_entry_export_no_content: >-
+    You do not have permission to access the original file and there is no
+    preview available.
   media_entry_export_original: Original
-  media_entry_export_subtitle_audios: Audios
+  media_entry_export_original_hint: Download original file.
+  media_entry_export_subtitle_audios: Audio files
   media_entry_export_subtitle_documents: Documents
   media_entry_export_subtitle_images: Images
-  media_entry_export_subtitle_videos: Videos
-  media_entry_export_title: Download Media Entry
-  media_entry_file_format_not_supported_1: 'Your browser does most likely not support the file format, but you can '
+  media_entry_export_subtitle_videos: Video files
+  media_entry_export_title: Download media entry
+  media_entry_file_format_not_supported_1: 'Your browser probably does not support the file format, but you can '
   media_entry_file_format_not_supported_2: download the file
-  media_entry_file_format_not_supported_3: .
-  media_entry_file_information_title: File Information
-  media_entry_media_import_gotodrafts: Medieneinträge vervollständigen
+  media_entry_file_format_not_supported_3: '0'
+  media_entry_file_information_title: File information
+  media_entry_media_import_gotodrafts: Complete media entries
   media_entry_media_import_header: Media upload
-  media_entry_media_import_inside_nojs: Select Files
-  media_entry_media_import_inside: Drag & drop files here or
+  media_entry_media_import_inside: 'Add files by drag and drop in this field or '
+  media_entry_media_import_inside_nojs: Select files
   media_entry_media_import_notes_msg: >-
     Images (TIFF, JPEG, PNG) and audio/video files in the most common formats
-    are directly processed and displayed. Images in the CMYK color model cannot
-    be displayed correctly, please convert them to RGB before uploading.
+    are processed and displayed directly. Images in the CMYK color model cannot
+    be displayed correctly, please convert to RGB before uploading.
   media_entry_media_import_notes_title: Hints
-  media_entry_media_import_select_media: Select media
-  media_entry_media_import_title: 'Add pictures, videos, audio file, or other documents.'
-  media_entry_meta_data_edit_by_context_btn: Edit Metadata by Context
-  media_entry_meta_data_edit_by_vocab_btn: Edit Metadata by Vocabulary
-  media_entry_meta_data_header_prefix: 'Edit Media Entry:'
-  media_entry_more_data_title: Responsibility
-  media_entry_not_published_warning_msg: Media entry still needs mandatory data!
+  media_entry_media_import_select_media: Select media files
+  media_entry_media_import_title: 'Add images, video or audio files, or other documents.'
+  media_entry_meta_data_edit_by_context_btn: Edit metadata by context
+  media_entry_meta_data_edit_by_vocab_btn: Edit metadata by vocabulary
+  media_entry_meta_data_header_prefix: 'Edit media entry:'
+  media_entry_more_data_title: Responsibility and activities
+  media_entry_not_published_warning_msg: Media entry still needs mandatory data.
   media_entry_relations_current: Current entry
   media_entry_relations_hint_text: >-
-    Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge
-    wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier
-    sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen
-    teilen.
-  media_entry_relations_parents_hint: Der ausgewählte Medieneintrag wurde diesen Sets hinzugefügt.
-  media_entry_relations_siblings_hint: >-
-    Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte
-    Medieneintrag.
+    The selected media entry is connected to sets. These relations are actively
+    defined as a parent, a sibling or a child relationship. The sets displayed
+    here are your own or are shared with you by other users.
+  media_entry_relations_parents_hint: The selected media entry was added to these sets.
+  media_entry_relations_siblings_hint: These sets were added to the same sets as the selected media entry.
   media_entry_select_collection_flash_result: >-
-    Removed media entry from %{removed_count} set(s). Added media entry to
-    %{added_count} set(s).
-  media_entry_tab_main: Media Entry
-  media_entry_tab_more_data: All Metadata
+    Media entry removed from %{removed_count} set(s) and added to %{added_count}
+    set(s).
+  media_entry_tab_main: Media entry
+  media_entry_tab_more_data: All metadata
   media_entry_tab_permissions: Permissions
   media_entry_tab_relations: Relations
-  media_entry_tab_usage_data: Nutzung
+  media_entry_tab_usage_data: Usage
   media_entry_upload_btn: Upload
   media_entry_was_disfavored: Media entry was removed from favorites.
   media_entry_was_favored: Media entry was added to favorites.
   meta_data_action_delete_btn: Delete
   meta_data_action_edit_btn: Edit
+  meta_data_batch_action_remove_meta_data: Delete data for all content
   meta_data_batch_failure: Metadata could not be updated.
-  meta_data_batch_hint_differences_override: >-
-    Attention: Changes will replace exiting values. Without changes values will
-    be preserved.
   meta_data_batch_hint_differences: Different metadata in place.
+  meta_data_batch_hint_differences_override: >-
+    Attention: Changes will replace exiting data. If not changes are made, data
+    will be preserved.
   meta_data_batch_hint_equal_data: Same metadata in place.
   meta_data_batch_hint_no_data: No metadata available yet.
-  meta_data_batch_hint_value: Value and text
-  meta_data_batch_items_selected: media entries selected
-  meta_data_batch_more: more
-  meta_data_batch_success: Succesfully updated metadata.
-  meta_data_batch_summary_all_post: ' media entries have been saved.'
+  meta_data_batch_hint_value: Values or text
+  meta_data_batch_items_selected: Media entries selected
+  meta_data_batch_more: More
+  meta_data_batch_some_ignored_1: (
+  meta_data_batch_some_ignored_2: >-
+    Media entries were ignored, because you do not have the required
+    permissions.)
+  meta_data_batch_success: metadata have been updated successfully.
+  meta_data_batch_summary_all_post: ' Media entries have been saved.'
   meta_data_batch_summary_all_pre: 'All '
-  meta_data_batch_summary_missing: ' have missing metadata'
+  meta_data_batch_summary_missing: ' have missing mandatory data'
   meta_data_batch_summary_published: ' have mandatory data'
   meta_data_batch_summary_were_published: ' already had mandatory data'
-  meta_data_batch_title_post_collections: ' sets at once'
+  meta_data_batch_title_post_collections: Edit sets at the same time
   meta_data_batch_title_post_media_entries: ' media entries at once'
   meta_data_batch_title_pre: 'Edit metadata for '
-  meta_data_batch_some_ignored_1: (
-  meta_data_batch_some_ignored_2: ' Einträge wurden ignoriert, da Sie nicht über die nötige Berechtigung verfügen)'
-  meta_data_batch_action_remove_meta_data: Werte für alle Inhalte löschen
-  meta_data_blank_value_for_required_meta_key_post: '!'
-  meta_data_blank_value_for_required_meta_key_pre: 'Blank metadatum value for meta key '
-  meta_data_collection_batch_summary_all_post: ' sets have been saved.'
+  meta_data_blank_value_for_required_meta_key_post: '0'
+  meta_data_blank_value_for_required_meta_key_pre: No value available for
+  meta_data_collection_batch_summary_all_post: ' Sets were saved.'
   meta_data_collection_batch_summary_all_pre: 'All '
-  meta_data_delete_confirm_msg: Are you sure you want to delete these values?
+  meta_data_delete_confirm_msg: Are you sure you want to delete these data?
   meta_data_edit_collection_saved: Set was saved.
-  meta_data_edit_media_entry_published: Media entry was saved and mandatory data is complete.
-  meta_data_edit_media_entry_saved_missing: Media entry was saved but there is missing mandatory data.
+  meta_data_edit_media_entry_published: Media entry was saved and mandatory data have been entered.
   meta_data_edit_media_entry_saved: Media entry was saved.
-  meta_data_edit_more_data: More Data
-  meta_data_form_all_data: Alle Daten
+  meta_data_edit_media_entry_saved_missing: Media entry was saved but there some mandatory data are missing.
+  meta_data_edit_more_data: More data
+  meta_data_form_all_data: Alle daten
   meta_data_form_cancel: Cancel
-  meta_data_form_publish: Publish
+  meta_data_form_publish: '---'
   meta_data_form_save: Save
   meta_data_form_saving: >-
-    Die Metadaten werden gerade gespeichert. Dies kann einige Zeit in Anspruch
-    nehmen. Bitte gedulden Sie sich und schliessen Sie das Fenster nicht.
-  meta_data_form_submit_btn: Submit
-  meta_data_header_text: Values
+    Meta data are currently being saved. This will take some time. Please be
+    patient and do not close the browser.
+  meta_data_form_submit_btn: Save
+  meta_data_header_text: Data
   meta_data_input_date_placeholder_duration_from: from
   meta_data_input_date_placeholder_duration_to: to
-  meta_data_input_date_placeholder_text: Free-text entry
+  meta_data_input_date_placeholder_text: Free text entry
   meta_data_input_date_placeholder_timestamp: 'on'
   meta_data_input_date_type_duration: from/to
-  meta_data_input_date_type_text: Free-text entry
+  meta_data_input_date_type_text: Free text entry
   meta_data_input_date_type_timestamp: 'on'
-  meta_data_input_keywords_existing: Keyword already set!
-  meta_data_input_new_group_add: Add Work Group
-  meta_data_input_new_person_add: Add Person
-  meta_data_input_new_person_toggle: Add new Person or Work Group
+  meta_data_input_keywords_existing: Keyword already assigned.
+  meta_data_input_new_group_add: Add work group
+  meta_data_input_new_person_add: Add person
+  meta_data_input_new_person_toggle: Add new person or work group
   meta_data_meta_key_label: Key
   meta_data_type_label: Type
-  meta_data_value_label: Value
+  meta_data_value_label: Data
   meta_key_order_alphabetical: a-z
-  meta_key_order_alphabetical_hint: 'The Keywords of this MetaKey are alphabetically sorted '
+  meta_key_order_alphabetical_hint: The keywords of this metakey are sorted alphabetically.
   meta_key_order_custom: editorial
-  meta_key_order_custom_hint: 'The Keywords of this MetaKey are editorially sorted '
-  no_content_fallback: No content available.
-  no_groups_fallback: No groups available.
+  meta_key_order_custom_hint: The keywords of this metakey are sorted editorially.
+  no_content_fallback: No items available.
+  no_groups_fallback: No work groups available.
   no_keywords_fallback: No keywords available.
   no_relations_title: No relations found.
   pagination_nav_loadnext: Load more
-  pagination_nav_nextloading: Loading…
-  pagination_nav_nextpage: Next page »
-  pagination_nav_prevpage: « Previous page
+  pagination_nav_nextloading: More items are being loaded.
+  pagination_nav_nextpage: Next page
+  pagination_nav_prevpage: Previous page
   pagination_nav_thispage: This page
   pagination_of: of
   pagination_prefix: Page
-  people_toolbar_header: Related Resources
-  permission_entrusted_to_group: Entrusted to group
-  permission_entrusted_to_user: Entrusted to user
-  permission_name_edit_metadata_and_relations: Edit Metadata and add items
+  people_toolbar_header: Related items
+  permission_entrusted_to_group: Visible to work groups
+  permission_entrusted_to_user: Visible to users
   permission_name_edit_metadata: Edit metadata
+  permission_name_edit_metadata_and_relations: Edit metadata and add items
   permission_name_edit_permissions: Edit permissions
   permission_name_get_full_size: Download original & browse PDF
   permission_name_get_metadata_and_previews: View
+  permission_name_use: Execute
   permission_name_view: View
-  permission_name_use: Use
-  permission_overridden_by_public: (overridden by public permissions)
+  permission_overridden_by_public: (overruled by public permissions)
   permission_subject_name_public: Internet
-  permission_subject_title_apiapps: API Clients
+  permission_subject_title_apiapps: API clients
   permission_subject_title_groups: Groups
   permission_subject_title_public: Public
   permission_subject_title_users: Users
-  permissions_batch_success: Succesfully updated permissions.
-  permissions_batch_title_post: ' Resources'
-  permissions_batch_title_pre: 'Edit Permissions of '
+  permissions_batch_success: Permissions have been updated succesfully.
+  permissions_batch_title_post: ' Items.'
+  permissions_batch_title_pre: 'Edit permissions of '
   permissions_overview_yours_msg_end: >-
     , currently have the following permissions (either directly or as a member
     of a work group):
   permissions_overview_yours_msg_start: 'You, '
-  permissions_overview_yours_title: Your Permissions
+  permissions_overview_yours_title: Your permissions
+  permissions_responsibility_title: Responsibility
   permissions_responsible_user_msg: >-
     The responsible user has all permissions for the selected content and can
     also delete it.
-  permissions_responsible_user_title: Responsible User
+  permissions_responsible_user_title: Responsible user
   permissions_table_cancel_btn: Cancel
   permissions_table_edit_btn: Edit
-  permissions_table_remove_subject_btn: Remove Permissions
+  permissions_table_remove_subject_btn: Remove permission
   permissions_table_save_btn: Save
-  permissions_responsibility_title: Verantwortlichkeit
-  permissions_table_title: Zugriffsberechtigungen
-  permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
+  permissions_table_title: Permissions
+  permissions_transfer_responsibility_link: Transfer responisibility
+  person_show_description: Description
+  person_show_external_uri: URI
   person_show_first_name: First name
   person_show_last_name: Last name
-  person_show_external_uri: URI
-  person_show_description: Description
   picture_alt_fallback: (unkown)
   picture_alt_prefix: 'Picture:'
   relations_parents_title: Parents
   relations_siblings_title: Siblings
   relations_title: Relations
-  release_changes_since_release: Changes since the last release
-  release_info: Release Info
+  release_changes_since_release: Changes since last release
+  release_info: Release info
   release_local_git_version: Local Git version
   release_version: Development version
-  resource_action_more_actions: Weitere Aktionen
-  resource_action_media_entry_edit_metadata: Metadaten editieren
-  resource_action_media_entry_favor: Zu Favoriten hinzufügen
-  resource_action_media_entry_disfavor: Aus Favoriten entfernen
-  resource_action_media_entry_select_collection: Zu Sets hinzufügen / Aus Sets entfernen
-  resource_action_media_entry_share: Medieneintrag teilen
-  resource_action_media_entry_edit_custom_urls: Sprechende Adressen verwalten
-  resource_action_media_entry_export: Medieneintrag exportieren
-  resource_action_media_entry_destroy: Medieneintrag löschen
-  resource_action_collection_edit_metadata: Metadaten editieren
-  resource_action_collection_favor: Zu Favoriten hinzufügen
-  resource_action_collection_disfavor: Aus Favoriten entfernen
-  resource_action_collection_select_collection: Zu Set hinzufügen/entfernen
-  resource_action_collection_share: Set teilen
-  resource_action_collection_edit_cover: Titelbild festlegen
-  resource_action_collection_edit_highlight: Inhalte hervorheben
-  resource_action_collection_edit_custom_urls: Sprechende Adressen verwalten
-  resource_action_collection_destroy: Set löschen
+  resource_action_collection_destroy: Delete set
+  resource_action_collection_disfavor: Remove from favorites
+  resource_action_collection_edit_cover: Define set cover
+  resource_action_collection_edit_custom_urls: Manage comprehensible address
+  resource_action_collection_edit_highlight: Highlight items
+  resource_action_collection_edit_metadata: Edit metadata
+  resource_action_collection_favor: Add to favorites
+  resource_action_collection_select_collection: Add to/remove from set
+  resource_action_collection_share: Share set
+  resource_action_media_entry_destroy: Delete media entry
+  resource_action_media_entry_disfavor: Remove from favorites
+  resource_action_media_entry_edit_custom_urls: Manage comprehensible address
+  resource_action_media_entry_edit_metadata: Edit metadata
+  resource_action_media_entry_export: Export media entry
+  resource_action_media_entry_favor: Add to favorites
+  resource_action_media_entry_select_collection: Add to/remove from set
+  resource_action_media_entry_share: Share media entry
+  resource_action_more_actions: Further actions
   resource_action_show_in_admin: Show in Admin Interface
   resource_ask_delete_cancel: Cancel
   resource_ask_delete_ok: Delete
@@ -526,9 +537,9 @@ en:
   resource_meta_data_copyright_notice: Copyright notice
   resource_meta_data_date: Date
   resource_meta_data_description: Description
-  resource_meta_data_document_type: Document type
-  resource_meta_data_fallback: No metadata for this context.
-  resource_meta_data_has_validation_errors: Es gibt fehlerhafte Eingabefelder.
+  resource_meta_data_document_type: Type of document
+  resource_meta_data_fallback: There are no metadata related to this context.
+  resource_meta_data_has_validation_errors: There are erroneously entry fields.
   resource_meta_data_keywords: Keywords
   resource_meta_data_resource_type: Media type
   resource_meta_data_responsible: Responsible user
@@ -536,196 +547,180 @@ en:
   resource_meta_data_title: Title
   resource_select_collection_cancel: Cancel
   resource_select_collection_clear: Clear
-  resource_select_collection_hint_more: Additional sets were found. Please refine your search.
-  resource_select_collection_hint_search: Search for and select sets that should hold the media entry.
-  resource_select_collection_new: New
-  resource_select_collection_non_assigned: Item is not yet part of any set.
-  resource_select_collection_non_found: No set was found.
   resource_select_collection_has_more: There are more results. Please refine the search.
+  resource_select_collection_hint_more: Additional sets were found. Please refine your search.
+  resource_select_collection_hint_search: '---'
+  resource_select_collection_new: New
+  resource_select_collection_non_assigned: Item is not yet related to any set.
+  resource_select_collection_non_found: No set was found.
   resource_select_collection_save: Save
-  resource_select_collection_search_placeholder: Search
   resource_select_collection_search: Search
+  resource_select_collection_search_placeholder: Search
   resource_select_collection_title: Add to/remove from set
-  resource_thumbnail_contents: Contents
+  resource_thumbnail_contents: Items
   resource_thumbnail_sets: Sets
   resources_box_batch_actions_addalltoclipboard_1: 'Add all '
-  resources_box_batch_actions_addalltoclipboard_2: ' to Clipboard'
-  resources_box_batch_actions_clear_clipboard: Stapelverarbeitung leeren
-  resources_box_batch_actions_edit_all_media_entries: Metadaten von allen Medieneinträgen editieren
-  resources_box_batch_actions_edit_all_collections: Metadaten von allen Sets editieren
-  resources_box_batch_actions_addselectedtoclipboard: Add selected to Clipboard
-  resources_box_batch_actions_removefromclipboard: Remove selected from Clipboard
-  resources_box_batch_actions_addtoset: Add selected to Set
+  resources_box_batch_actions_addalltoclipboard_2: ' to batch processing'
+  resources_box_batch_actions_addselectedtoclipboard: Add selected to batch processing
+  resources_box_batch_actions_addtoset: Add selected to set
+  resources_box_batch_actions_clear_clipboard: Empty batch processing
   resources_box_batch_actions_delete: Delete selected
-  resources_box_batch_actions_edit_sets: Edit MetaData for sets
-  resources_box_batch_actions_edit: Edit Meta Data for media entries
-  resources_box_batch_actions_managepermissions: Edit Permissions for media entries
+  resources_box_batch_actions_edit: Edit metadata for media entries
+  resources_box_batch_actions_edit_all_collections: Edit metadata of all sets at once
+  resources_box_batch_actions_edit_all_media_entries: Edit metadata of all media entries at once
+  resources_box_batch_actions_edit_sets: Edit metadata of sets
+  resources_box_batch_actions_managepermissions: Edit permissions for media entries
   resources_box_batch_actions_menu_title: Actions
+  resources_box_batch_actions_removefromclipboard: Remove selected from batch processing
   resources_box_batch_actions_removefromset: Remove from set
-  resources_box_batch_actions_save: Save as filter set
-  resources_box_batch_actions_sets_managepermissions: Edit Permissions for collections
-  resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
-  resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
-  resources_box_filter: Filter
-  resources_box_no_content: Keine Inhalte verfügbar
-  resources_box_no_content_but_sets_1: 'Es gibt keine Medieneinträge für diese Suche. Es wurden aber '
-  resources_box_no_content_but_sets_2: Sets
-  resources_box_no_content_but_sets_3: ' gefunden.'
-  resources_box_title_count_post: Items
-  resources_box_selection_limit_page_1: 'Die Seite kann nicht selektiert werden, da sonst die maximale Anzahl von '
-  resources_box_selection_limit_page_2: ' ausgewählten Inhalten überstiegen würde.'
-  resources_box_selection_limit_single_1: 'Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von '
-  resources_box_reset_filter: Reset filter
-  resources_box_selection_limit_single_2: ' ausgewählten Inhalten überstiegen würde.'
-  resources_box_selection_limit_ok: Ok
+  resources_box_batch_actions_save: '---'
+  resources_box_batch_actions_sets_managepermissions: Edit permissions for sets
+  resources_box_batch_actions_transfer_responsibility_entries: Transfer responsibility of media entries
+  resources_box_batch_actions_transfer_responsibility_sets: Transfer responsibility of sets
   resources_box_deselect_all: Deselect all
+  resources_box_filter: Filter
+  resources_box_new_search: New search
+  resources_box_no_content: No items available.
+  resources_box_no_content_but_sets_1: 'There are no media entries related to this search process. But '
+  resources_box_no_content_but_sets_2: sets
+  resources_box_no_content_but_sets_3: ' have been found.'
+  resources_box_reset_filter: Reset filter
   resources_box_select_all: Select all
+  resources_box_selection_limit_ok: Ok
+  resources_box_selection_limit_page_1: This page cannot be selected because otherwise the maximum number of
+  resources_box_selection_limit_page_2: ' pages would be exceeded.'
+  resources_box_selection_limit_single_1: 'This item can not be selected, because otherwise the maximum number of'
+  resources_box_selection_limit_single_2: selected items would be exceeded.
   resources_box_selection_remove_selection: Remove selection
   resources_box_selection_select: Select
-  resources_box_new_search: New Search
-  resources_section_show_all: Show all
+  resources_box_title_count_post: Items
+  resources_section_show_all: Show all →
   search_btn_search: Search
-  search_filename: Filename
+  search_filename: File name
   search_full_text: Full text
-  clipboard_batch_add_success: Die Inhalte wurden der Stapelverarbeitung hinzugefügt.
-  clipboard_batch_remove_success: Die Inhalte wurden aus der Stapelverarbeitung entfernt.
-  clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
-  clipboard_empty_message: Clipboard is empty
-  clipboard_fetching_resources: Lade Inhalte...
-  clipboard_adding_resources: Füge Inhalte zur Stapelverarbeitung hinzu...
-  clipboard_adding_all_resources_error: >-
-    Es konnten nicht alle Inhalte zur Stapelverarbeitung hinzugefügt werden.
-    Bitte versuchen Sie es noch einmal. Schon hinzugefügte Inhalte werden nicht
-    dupliziert.
-  clipboard_adding_all_resources_cancelled: >-
-    Das Hinzufügen zur Stapelverarbeitung wurde abgebrochen. Ein Teil der
-    Inhalte wurde schon hinzugefügt. Wenn Sie alle hinzufügen möchten, versuchen
-    Sie es noch einmal. Schon hinzugefügte Inhalte werden nicht dupliziert.
-  clipboard_adding_all_resources_retry: ' Nochmals'
-  clipboard_removing_resources: Entferne Inhalte aus Stapelverarbeitung...
-  clipboard_ask_add_all_1: 'Möchten Sie alle '
-  clipboard_ask_add_all_2: ' Inhalte zur Stapelverarbeitung hinzufügen?'
-  clipboard_ask_add_all_ok: Ok
-  clipboard_ask_add_all_cancel: Abbrechen
+  section_title_collections: My sets
+  section_title_groups: My work groups
+  section_title_keywords: My keywords
+  section_title_media_entries: My media entries
+  section_title_tokens: My tokens
+  share_back_to_collection: Back to the set
+  share_back_to_media_entry: Back to the media entry
+  share_close: Close
+  share_custom_url_hint_collection: >-
+    If you are using comprehensible addresses or if you want to share
+    alternating sets by means of one internet link (such as
+    …/newest_works_of_robert), use the following URL.
+  share_custom_url_hint_media_entry: >-
+    If you are using comprehensible addresses or if you want to share
+    alternating media entries by means of one internet link (such as
+    …/newest_work_of_robert), use the following URL.
+  share_custom_url_none_available: No comprehensible address has been defined.
+  share_custom_url_subtitle: Share comprehensible address
+  share_title_collection: Share set
+  share_title_media_entry: Share media entry
+  share_uuid_url_hint_collection: If you explicitly want to share this set use the following address.
+  share_uuid_url_hint_exporter: Copy this address for the Madek Exporter as well.
+  share_uuid_url_hint_media_entry: 'If you explicitly want to share this media entry, use the following address.'
+  share_uuid_url_subtitle: Share URL
+  sitemap_activities: Activities
   sitemap_api: API
+  sitemap_clipboard: Batch processing
   sitemap_collections: Sets
-  sitemap_entries: Media Entries
+  sitemap_entries: Media entries
   sitemap_explore: Explore
   sitemap_filter_sets: Filter sets
   sitemap_help: Support
-  sitemap_metakey: MetaKey
-  sitemap_metakey_id: MetaKey-ID
-  sitemap_media_entries: Media Entries
+  sitemap_media_entries: Media entries
+  sitemap_metakey: Metakey
+  sitemap_metakey_id: Metakey ID
   sitemap_my_archive: My archive
+  sitemap_my_clipboard: Batch processing
   sitemap_my_content_collections: Sets
-  sitemap_my_content_filter_sets: Filter sets
+  sitemap_my_content_filter_sets: '---'
   sitemap_my_content_media_entries: Media entries
   sitemap_my_entrusted_collections: My entrusted sets
   sitemap_my_entrusted_filter_sets: My entrusted filter sets
   sitemap_my_entrusted_media_entries: My entrusted media entries
-  sitemap_my_favorite_collections: Favorites-sets
-  sitemap_my_favorite_filter_sets: Favorites-filter sets
-  sitemap_my_favorite_media_entries: Favorites-media entries
+  sitemap_my_favorite_collections: Favorite sets
+  sitemap_my_favorite_filter_sets: '---'
+  sitemap_my_favorite_media_entries: Favorite media entries
   sitemap_my_groups: Work groups
-  sitemap_my_latest_imports: Latest uploads
-  sitemap_my_unpublished: Unvollständige Medieneinträge
-  sitemap_my_clipboard: Stapelverarbeitung
+  sitemap_my_latest_imports: Last imports
+  sitemap_my_unpublished: Incomplete media entries
   sitemap_my_used_keywords: Keywords
   sitemap_search: Search
-  sitemap_vocabulary: Vocabulary
-  sitemap_vocabularies: Vocabularies
-  sitemap_clipboard: Clipboard
-  sitemap_activities: Activities
   sitemap_tokens: Tokens
-  section_title_media_entries: Meine Medieneinträge
-  section_title_collections: Meine Sets
-  section_title_groups: Meine Arbeitsgruppen
-  section_title_keywords: Meine Schlagworte
-  section_title_tokens: Meine Tokens
+  sitemap_vocabularies: Vocabularies
+  sitemap_vocabulary: Vocabulary
+  transfer_responsibility_batch_success_collection_1: 'You have successfully transferred responsibility for '
+  transfer_responsibility_batch_success_collection_1a: ' set '
+  transfer_responsibility_batch_success_collection_1b: ' sets '
+  transfer_responsibility_batch_success_collection_2: '0'
+  transfer_responsibility_batch_success_media_entry_1: 'You have successfully transferred responsibility for '
+  transfer_responsibility_batch_success_media_entry_1a: ' media entry'
+  transfer_responsibility_batch_success_media_entry_1b: ' media entries'
+  transfer_responsibility_batch_success_media_entry_2: '0'
+  transfer_responsibility_cancel: Cancel
+  transfer_responsibility_person_will_receive_1: 'You, '
+  transfer_responsibility_person_will_receive_2: ', are retaining the following permissions:'
+  transfer_responsibility_submit: Transfer
+  transfer_responsibility_success_collection: You have successfully transferred responsibility for the set.
+  transfer_responsibility_success_media_entry: You have successfully transferred responsibility for the media entry.
+  transfer_responsibility_title: Transfer responsibility to the following user
+  usage_data_created_at: Created on
+  usage_data_import_at: Imported on
+  usage_data_import_by: Imported by
+  usage_data_last_changes_empty: No changes have been recorded yet.
+  usage_data_last_changes_title: Last change of metadata
+  usage_data_relations_children: Set is related to
+  usage_data_relations_parents: Parent sets
+  usage_data_relations_title: Relations
+  usage_data_responsibility_title: Responsibility and activities
+  usage_data_responsible: Responsible user
+  usage_terms_accept_btn: Accept usage terms
+  usage_terms_reject_btn: Reject usage terms
+  user_menu_admin_mode_toogle_off: Stop admin mode
+  user_menu_admin_mode_toogle_on: Switch to admin mode
+  user_menu_admin_ui: Open admin interface
+  user_menu_login_btn: Log in
+  user_menu_logout_btn: Log out
   user_menu_my_content_collections: My sets
   user_menu_my_content_media_entries: My media entries
   user_menu_my_favorite_collections: Favorites - sets
   user_menu_my_favorite_media_entries: Favorites - media entries
   user_menu_my_groups: My work groups
+  user_menu_upload: Upload media
   user_name_deactivated: '[Deleted user]'
-  transfer_responsibility_batch_success_collection_1: 'Sie haben für '
-  transfer_responsibility_batch_success_collection_1a: ' Set '
-  transfer_responsibility_batch_success_collection_1b: ' Sets '
-  transfer_responsibility_batch_success_collection_2: ' Sets die Verantwortlichkeit erfolgreich übertragen.'
-  transfer_responsibility_batch_success_media_entry_1: 'Sie haben für '
-  transfer_responsibility_batch_success_media_entry_1a: ''
-  transfer_responsibility_batch_success_media_entry_1b: ''
-  transfer_responsibility_batch_success_media_entry_2: ' Medieneinträge die Verantwortlichkeit erfolgreich übertragen.'
-  transfer_responsibility_cancel: Abbrechen
-  transfer_responsibility_person_will_receive_1: 'Sie, '
-  transfer_responsibility_person_will_receive_2: ', behalten folgende Berechtigungen:'
-  transfer_responsibility_submit: Übertragen
-  transfer_responsibility_success_collection: Sie haben die Verantwortlichkeit für das Set erfolgreich übertragen.
-  transfer_responsibility_success_media_entry: >-
-    Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
-    übertragen.
-  transfer_responsibility_title: Verantwortlichkeit auf folgende Person übertragen
-  usage_data_created_at: Erstellt am
-  usage_data_import_at: Importiert am
-  usage_data_import_by: Importiert durch
-  usage_data_last_changes_empty: No changes recorded yet.
-  usage_data_last_changes_title: Letzte Änderungen der Metadaten
-  usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
-  usage_data_relations_title: Zusammenhänge
-  usage_data_relations_parents: Übergeordnete Sets
-  usage_data_relations_children: Set enthält
-  usage_data_responsible: Verantwortlich im Medienarchiv
-  usage_terms_accept_btn: Accept usage terms
-  usage_terms_reject_btn: Reject usage terms
-  user_menu_admin_mode_toogle_off: Stop Admin-Mode
-  user_menu_admin_mode_toogle_on: Switch to Admin-Mode
-  user_menu_admin_ui: Open Admin Interface
-  user_menu_login_btn: Log in
-  user_menu_logout_btn: Log out
-  user_menu_upload: Upload Media
-  vocabularies_all: All Vocabularies
-  vocabularies_contents_hint_1: 'Alle Inhalte mit Metadaten des Vokabulars '
-  vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
-  vocabularies_keywords_hint_1: 'Alle im Vokabular '
-  vocabularies_keywords_hint_2: ' enthaltenen Schlagworte und die dazugehörenden Metadatenfelder.'
+  vocabularies_all: All vocabularies
+  vocabularies_contents_hint_1: All items with metadata related to the vocabulary
+  vocabularies_contents_hint_2: . You can see only items you have permissions for.
+  vocabularies_keywords_hint_1: 'All keywords contained in the vocabulary '
+  vocabularies_keywords_hint_2: ' and related meta data fields.'
+  vocabularies_no_description: (No description available)
+  vocabularies_no_keywords: No keywords available.
+  vocabularies_no_people: Keine Personen vorhanden.
   vocabularies_people_hint_1: 'Alle im Vokabular '
   vocabularies_people_hint_2: ' enthaltenen Personen und die dazugehörenden Metadatenfelder.'
-  vocabularies_no_description: (No description available)
-  vocabularies_no_keywords: Keine Schlagworte vorhanden.
-  vocabularies_no_people: Keine Personen vorhanden.
-  vocabularies_tabs_contents: Contents
+  vocabularies_tabs_contents: Items
   vocabularies_tabs_keywords: Keywords
   vocabularies_tabs_people: People
   vocabularies_tabs_permissions: Permissions
-  vocabulary_permissions_hint1: >-
-    Für dieses Vokabular sind die Berechtigungen "Betrachten" und "Anwenden"
-    vergeben. Wenn Sie Mitglied einer berechtigten Arbeitsgruppe sind, können
-    Sie Personen zu dieser hinzufügen.
-  vocabulary_permissions_hint2: >-
-    Weitere Berechtigungen für Personen, Arbeitsgruppen, API-Applikationen oder
-    die Öffentlichkeit werden durch den Administrator vergeben – bitte wenden
-    Sie sich an den Support.
   vocabularies_tabs_vocabulary: Vocabulary
-  vocabulary_term_info_term: Term
-  vocabulary_term_info_rdfclass: Type
+  vocabulary_permissions_hint1: >-
+    This vocabulary can be managed with the permissions "View" and "Execute". If
+    you are member of a work group which owns permissions, you are able to add
+    or remove further users. Think carefully before you make changes to work
+    groups as this may affect other permissions.
+  vocabulary_permissions_hint2: >-
+    Further permissions for persons, work groups, API clients or public usage
+    are granted by the administrator. Please contact  support.
+  vocabulary_term_info_contents: Items
   vocabulary_term_info_description: Description
+  vocabulary_term_info_rdfclass: Type
+  vocabulary_term_info_term: Term
   vocabulary_term_info_url: URL
-  vocabulary_term_info_contents: Contents
-  workgroup_link_to_contents_text: Contents
-  workgroup_link_to_contents_title: View contents of this work group
+  workgroup_link_to_contents_text: Items
+  workgroup_link_to_contents_title: Show items of this work group
   workgroup_members_table_is_member: Member?
   workgroup_members_table_login: Login
   workgroup_members_table_title: Members
-  browse_entries_title: Browse similar entries
-  browse_entries_filter_link: Filter this →
-  browse_entries_browse_link_title: Browse in this direction
-  browse_entries_loading_error: Loading error!
-  error_401_title: To get access please login below with your user data.
-  error_403_title: You don’t have the necessary permissions to access this resource.
-  error_403_message: Please contact the responsible user who has the right alllow access.
-  error_404_title: The requested page cannot be found.
-  error_500_title: A server error occurred.
-  error_500_message: >-
-    If you require help in this matter, please contact the support
-    (support.medienarchiv@zhdk.ch) with a description of your last working steps
-    and a screen shot of this page.

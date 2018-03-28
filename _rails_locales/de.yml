@@ -24,7 +24,6 @@ de:
         error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
   ajax_form_connection_error: Verbindungsfehler. Bitte versuchen Sie es noch einmal.
   ajax_form_no_longer_authorized: Sie sind für diese Aktion nicht mehr authorisiert.
-  ajax_form_successful_but_unparsable: '---'
   ajax_form_unexpected_error: Es gab einen unerwarteten Server-Fehler.
   ajax_form_validation_error_unparsable: Validation error with unparsable errors.
   ajax_form_validation_error_without_any_data: Validation error without any data.
@@ -89,10 +88,6 @@ de:
   browse_entries_filter_link: Weiter filtern →
   browse_entries_loading_error: Ladefehler
   browse_entries_title: Nach ähnlichen Inhalten stöbern
-  btn_delete_confirm_msq: '---'
-  btn_delete_text: '---'
-  btn_publish_confirm_msg: '---'
-  btn_publish_text: '---'
   bubble_batch_label: Stapel
   bubble_draft_label: Entwurf
   clipboard_add_hint: Zur Stapelverarbeitung hinzufügen
@@ -127,7 +122,6 @@ de:
   collection_highlighted_contents: Hervorgehobene Inhalte
   collection_layout_save: Darstellung festlegen
   collection_layout_saved: Darstellung gespeichert
-  collection_media_resources_title: '---'
   collection_meta_data_header_prefix: 'Set editieren: '
   collection_new_cancel: Abbrechen
   collection_new_create_set: Set erstellen
@@ -236,7 +230,6 @@ de:
   dashboard_none_exist: Keine vorhanden.
   dashboard_show_all: Alle anzeigen →
   dashboard_title_head: Mein Archiv
-  dashboard_welcome_msg: '---'
   dynamic_filters_authorization: Berechtigung
   dynamic_filters_visibility: Sichtbarkeit
   dynamic_filters_visibility_private: Nur für mich
@@ -446,7 +439,6 @@ de:
   meta_data_edit_more_data: Weitere Angaben
   meta_data_form_all_data: Alle Daten
   meta_data_form_cancel: Abbrechen
-  meta_data_form_publish: '---'
   meta_data_form_save: Speichern
   meta_data_form_saving: >-
     Die Metadaten werden gerade gespeichert. Dies kann einige Zeit in Anspruch
@@ -567,7 +559,6 @@ de:
   resource_select_collection_clear: Löschen
   resource_select_collection_has_more: Es gibt noch weitere Resultate. Bitte Suche verfeinern.
   resource_select_collection_hint_more: Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.
-  resource_select_collection_hint_search: '---'
   resource_select_collection_new: Neue
   resource_select_collection_non_assigned: Inhalt ist noch keinem Set zugewiesen.
   resource_select_collection_non_found: Zu dieser Suche wurde kein Set gefunden.
@@ -591,7 +582,6 @@ de:
   resources_box_batch_actions_menu_title: Aktionen
   resources_box_batch_actions_removefromclipboard: Ausgewählte aus der Stapelverarbeitung entfernen
   resources_box_batch_actions_removefromset: Aus Set entfernen
-  resources_box_batch_actions_save: '---'
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
@@ -656,13 +646,11 @@ de:
   sitemap_my_archive: Mein Archiv
   sitemap_my_clipboard: Stapelverarbeitung
   sitemap_my_content_collections: Sets
-  sitemap_my_content_filter_sets: '---'
   sitemap_my_content_media_entries: Medieneinträge
   sitemap_my_entrusted_collections: Mir anvertraute Sets
   sitemap_my_entrusted_filter_sets: Mir anvertraute Filtersets
   sitemap_my_entrusted_media_entries: Mir anvertraute Medieneinträge
   sitemap_my_favorite_collections: Favoriten-Sets
-  sitemap_my_favorite_filter_sets: '---'
   sitemap_my_favorite_media_entries: Favoriten-Medieneinträge
   sitemap_my_groups: Arbeitsgruppen
   sitemap_my_latest_imports: Letzte Importe

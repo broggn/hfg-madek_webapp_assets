@@ -22,7 +22,6 @@ en:
         create: Create group
   ajax_form_connection_error: Connection error. Please try again.
   ajax_form_no_longer_authorized: You are no longer authorized to do this.
-  ajax_form_successful_but_unparsable: '---'
   ajax_form_unexpected_error: There was an unexpected server error.
   ajax_form_validation_error_unparsable: Validation error with unparsable errors.
   ajax_form_validation_error_without_any_data: Validation error without any data.
@@ -87,10 +86,6 @@ en:
   browse_entries_filter_link: Apply additional filter →
   browse_entries_loading_error: Loading error
   browse_entries_title: Browse similar items
-  btn_delete_confirm_msq: '---'
-  btn_delete_text: '---'
-  btn_publish_confirm_msg: '---'
-  btn_publish_text: '---'
   bubble_batch_label: Batch
   bubble_draft_label: Draft
   clipboard_add_hint: Add to batch processing
@@ -124,7 +119,6 @@ en:
   collection_highlighted_contents: Highlighted items
   collection_layout_save: Save type of display
   collection_layout_saved: Type of display saved
-  collection_media_resources_title: '---'
   collection_meta_data_header_prefix: 'Edit set:'
   collection_new_cancel: Cancel
   collection_new_create_set: Create set
@@ -234,7 +228,6 @@ en:
   dashboard_none_exist: There are none.
   dashboard_show_all: Show all →
   dashboard_title_head: My archive
-  dashboard_welcome_msg: '---'
   dynamic_filters_authorization: Authorization
   dynamic_filters_visibility: Accessability
   dynamic_filters_visibility_private: Only for me
@@ -428,7 +421,6 @@ en:
   meta_data_edit_more_data: More data
   meta_data_form_all_data: Alle daten
   meta_data_form_cancel: Cancel
-  meta_data_form_publish: '---'
   meta_data_form_save: Save
   meta_data_form_saving: >-
     Meta data are currently being saved. This will take some time. Please be
@@ -549,7 +541,6 @@ en:
   resource_select_collection_clear: Clear
   resource_select_collection_has_more: There are more results. Please refine the search.
   resource_select_collection_hint_more: Additional sets were found. Please refine your search.
-  resource_select_collection_hint_search: '---'
   resource_select_collection_new: New
   resource_select_collection_non_assigned: Item is not yet related to any set.
   resource_select_collection_non_found: No set was found.
@@ -573,7 +564,6 @@ en:
   resources_box_batch_actions_menu_title: Actions
   resources_box_batch_actions_removefromclipboard: Remove selected from batch processing
   resources_box_batch_actions_removefromset: Remove from set
-  resources_box_batch_actions_save: '---'
   resources_box_batch_actions_sets_managepermissions: Edit permissions for sets
   resources_box_batch_actions_transfer_responsibility_entries: Transfer responsibility of media entries
   resources_box_batch_actions_transfer_responsibility_sets: Transfer responsibility of sets
@@ -636,13 +626,11 @@ en:
   sitemap_my_archive: My archive
   sitemap_my_clipboard: Batch processing
   sitemap_my_content_collections: Sets
-  sitemap_my_content_filter_sets: '---'
   sitemap_my_content_media_entries: Media entries
   sitemap_my_entrusted_collections: My entrusted sets
   sitemap_my_entrusted_filter_sets: My entrusted filter sets
   sitemap_my_entrusted_media_entries: My entrusted media entries
   sitemap_my_favorite_collections: Favorite sets
-  sitemap_my_favorite_filter_sets: '---'
   sitemap_my_favorite_media_entries: Favorite media entries
   sitemap_my_groups: Work groups
   sitemap_my_latest_imports: Last imports

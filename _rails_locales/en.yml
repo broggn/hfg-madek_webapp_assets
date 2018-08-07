@@ -270,6 +270,7 @@ en:
   explore_vocabulary_section_show_details: View details
   explore_vovabulary_section_title: Vocabularies
   external_groups: Division groups
+  footer_choose_language: Choose language
   group_ask_delete_cancel: Cancel
   group_ask_delete_delete: Delete
   group_ask_delete_question_post: '?'
@@ -567,6 +568,7 @@ en:
   resources_box_batch_actions_sets_managepermissions: Edit permissions for sets
   resources_box_batch_actions_transfer_responsibility_entries: Transfer responsibility of media entries
   resources_box_batch_actions_transfer_responsibility_sets: Transfer responsibility of sets
+  resources_box_batch_actions_meta_data_batch: Metadata Batch Processing
   resources_box_deselect_all: Deselect all
   resources_box_filter: Filter
   resources_box_new_search: New search

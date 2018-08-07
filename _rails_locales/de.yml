@@ -276,6 +276,7 @@ de:
   explore_vocabulary_section_show_details: Details anzeigen
   explore_vovabulary_section_title: Vokabulare
   external_groups: Abteilungsgruppen
+  footer_choose_language: Sprache wählen
   group_ask_delete_cancel: Abbrechen
   group_ask_delete_delete: Löschen
   group_ask_delete_question_post: ' löschen?'
@@ -585,6 +586,7 @@ de:
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
+  resources_box_batch_actions_meta_data_batch: Metadaten Batchverarbeitung
   resources_box_deselect_all: Alle abwählen
   resources_box_filter: Filtern
   resources_box_new_search: Neue Suche

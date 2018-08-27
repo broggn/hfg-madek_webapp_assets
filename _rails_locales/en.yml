@@ -568,6 +568,7 @@ en:
   resources_box_batch_actions_sets_managepermissions: Edit permissions for sets
   resources_box_batch_actions_transfer_responsibility_entries: Transfer responsibility of media entries
   resources_box_batch_actions_transfer_responsibility_sets: Transfer responsibility of sets
+  resources_box_batch_actions_meta_data_batch: Metadata Batch Processing
   resources_box_deselect_all: Deselect all
   resources_box_filter: Filter
   resources_box_new_search: New search
@@ -585,6 +586,48 @@ en:
   resources_box_selection_remove_selection: Remove selection
   resources_box_selection_select: Select
   resources_box_title_count_post: Items
+  resources_box_batch_select_fields: Select fields
+  resources_box_batch_enter_metadata: Enter metadata
+  resources_box_batch_close: close
+  resources_box_batch_mandatory_fields: 'Mandatory fields:'
+  resources_box_batch_mandatory_field: Mandatory field
+  resources_box_batch_mandatory_field_for_media_entry: Mandatory field for media entries
+  resources_box_batch_field_only_for_sets: This value is applied only on sets
+  resources_box_batch_field_only_for_entries: This value is applied only on media entries
+  resources_box_batch_load_all_pages: Loading all content...
+  resources_box_batch_apply_on_all_1: 'Apply on all '
+  resources_box_batch_apply_on_all_2: ' entries'
+  resources_box_batch_apply_on_selected_1: 'Apply on '
+  resources_box_batch_apply_on_selected_2: ' entries'
+  resources_box_batch_all_content: All content
+  resources_box_batch_selected_content: Selected content
+  resources_box_batch_stats_total: 'Total:'
+  resources_box_batch_stats_where_loaded: 'loaded:'
+  resources_box_batch_stats_where_editable: 'editable:'
+  resources_box_batch_stats_where_selected: 'selected:'
+  resources_box_batch_fill_in_all_fields_hint: >-
+    Please fill in all fields or remove the ones without data. Otherwise you
+    cannot save the data.
+  resources_box_batch_please_wait_and_done_leave: Please wait and do not leave this page.
+  resources_box_batch_loading_stats_total: ' total, '
+  resources_box_batch_loading_stats_applying: ' are saving, '
+  resources_box_batch_loading_stats_pending: ' are waiting, '
+  resources_box_batch_loading_stats_done: ' are done'
+  resources_box_batch_loading_stats_failed: ' failed'
+  resources_box_batch_cancel_waiting: cancel waiting
+  resources_box_batch_processing_successful: ' successfully processed'
+  resources_box_batch_ignore_failures: Ignore failures
+  resources_box_batch_status_applying: applying
+  resources_box_batch_status_done: done
+  resources_box_batch_status_waiting: waiting
+  resources_box_batch_status_cancelled: cancelled
+  resources_box_batch_status_apply: apply
+  resources_box_batch_status_retry: retry
+  resources_box_batch_add_to_existing: add to existing
+  resources_box_batch_replace_existing: replace existing
+  resources_box_batch_entry_contexts: Contexts Media Entries
+  resources_box_batch_set_contexts: Contexts Sets
+  resources_box_batch_all_data: All data
   resources_section_show_all: Show all →
   search_btn_search: Search
   search_filename: File name

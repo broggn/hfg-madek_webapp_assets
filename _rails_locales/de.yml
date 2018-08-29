@@ -586,6 +586,7 @@ de:
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
+  resources_box_batch_actions_meta_data_batch: Metadaten Stapelverarbeitung
   resources_box_deselect_all: Alle abwählen
   resources_box_filter: Filtern
   resources_box_new_search: Neue Suche
@@ -603,6 +604,57 @@ de:
   resources_box_selection_remove_selection: Auswahl entfernen
   resources_box_selection_select: Auswählen
   resources_box_title_count_post: Inhalte
+  resources_box_batch_select_fields: Felder auswählen
+  resources_box_batch_enter_metadata: Metadaten eingeben
+  resources_box_batch_close: schliessen
+  resources_box_batch_mandatory_fields: 'Pflichtfelder:'
+  resources_box_batch_mandatory_field: Pflichtfeld
+  resources_box_batch_mandatory_field_for_media_entry: Pflichtfeld für Medieneinträge
+  resources_box_batch_field_only_for_sets: Dieser Wert wird nur auf Sets angewendet
+  resources_box_batch_field_only_for_entries: Dieser Wert wird nur auf Medieneinträge angewendet
+  resources_box_batch_load_all_pages: Es werden alle Inhalte geladen...
+  resources_box_batch_apply_on_all_1: 'Auf alle Inhalte '
+  resources_box_batch_apply_on_all_2: ' anwenden'
+  resources_box_batch_apply_on_selected_1: 'Auf '
+  resources_box_batch_apply_on_selected_2: ' Inhalte anwenden'
+  resources_box_batch_all_content: Alle Inhalte
+  resources_box_batch_selected_content: Ausgewählte Inhalte
+  resources_box_batch_stats_total: 'Total:'
+  resources_box_batch_stats_where_loaded: 'davon geladen:'
+  resources_box_batch_stats_where_editable: 'davon editierbar:'
+  resources_box_batch_stats_where_selected: 'selektiert:'
+  resources_box_batch_fill_in_all_fields_hint: >-
+    Bitte füllen Sie alle Felder aus oder schliessen Sie Felder ohne Eingaben.
+    Sonst können Sie ihre Eingaben nicht speichern.
+  resources_box_batch_please_wait_and_done_leave: Bitte warten und die Ansicht nicht verlassen.
+  resources_box_batch_loading_stats_total: ' total, '
+  resources_box_batch_loading_stats_applying: ' am speichern, '
+  resources_box_batch_loading_stats_pending: ' am warten, '
+  resources_box_batch_loading_stats_done: ' sind fertig'
+  resources_box_batch_loading_stats_failed: ' fehlgeschlagen'
+  resources_box_batch_cancel_waiting: wartende abbrechen
+  resources_box_batch_processing_successful: ' erfolgreich verarbeitet'
+  resources_box_batch_ignore_failures: Fehler ignorieren
+  resources_box_batch_status_applying: am speichern
+  resources_box_batch_status_done: fertig
+  resources_box_batch_status_waiting: am warten
+  resources_box_batch_status_cancelled: abgebrochen
+  resources_box_batch_status_apply: anwenden
+  resources_box_batch_status_retry: erneut
+  resources_box_batch_add_to_existing: zu bestehenden hinzufügen
+  resources_box_batch_replace_existing: bestehende ersetzen
+  resources_box_batch_entry_contexts: Kontexte Medieneinträge
+  resources_box_batch_set_contexts: Kontexte Sets
+  resources_box_batch_all_data: Alle Daten
+  resources_box_batch_search_placeholder: Suchen...
+  resources_box_batch_person_widget_firstname: Vorname
+  resources_box_batch_person_widget_lastname: Nachname
+  resources_box_batch_person_widget_pseudonym: Pseudonym
+  resources_box_batch_person_widget_add_person: Person einfügen
+  resources_box_batch_person_widget_name: Name
+  resources_box_batch_person_widget_add_group: Arbeitsgruppe einfügen
+  resources_box_batch_person_widget_tab_person: Person
+  resources_box_batch_person_widget_tab_group: Gruppe
   resources_section_show_all: Alle anzeigen →
   search_btn_search: Suchen
   search_filename: Filename

@@ -586,6 +586,7 @@ de:
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
+  resources_box_batch_actions_meta_data_batch_new: 'NEU:'
   resources_box_batch_actions_meta_data_batch: Metadaten Stapelverarbeitung
   resources_box_deselect_all: Alle abwählen
   resources_box_filter: Filtern

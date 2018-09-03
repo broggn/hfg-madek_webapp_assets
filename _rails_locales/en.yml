@@ -568,6 +568,7 @@ en:
   resources_box_batch_actions_sets_managepermissions: Edit permissions for sets
   resources_box_batch_actions_transfer_responsibility_entries: Transfer responsibility of media entries
   resources_box_batch_actions_transfer_responsibility_sets: Transfer responsibility of sets
+  resources_box_batch_actions_meta_data_batch_new: 'NEW:'
   resources_box_batch_actions_meta_data_batch: Metadata Batch Processing
   resources_box_deselect_all: Deselect all
   resources_box_filter: Filter

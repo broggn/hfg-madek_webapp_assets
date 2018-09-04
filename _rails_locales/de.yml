@@ -586,7 +586,7 @@ de:
   resources_box_batch_actions_sets_managepermissions: Berechtigungen von Sets editieren
   resources_box_batch_actions_transfer_responsibility_entries: Verantwortlichkeit von Medieneinträgen übertragen
   resources_box_batch_actions_transfer_responsibility_sets: Verantwortlichkeit von Sets übertragen
-  resources_box_batch_actions_meta_data_batch_new: 'NEU:'
+  resources_box_batch_actions_meta_data_batch_new: 'BETA:'
   resources_box_batch_actions_meta_data_batch: Metadaten Stapelverarbeitung
   resources_box_deselect_all: Alle abwählen
   resources_box_filter: Filtern
@@ -614,8 +614,8 @@ de:
   resources_box_batch_field_only_for_sets: Dieser Wert wird nur auf Sets angewendet
   resources_box_batch_field_only_for_entries: Dieser Wert wird nur auf Medieneinträge angewendet
   resources_box_batch_load_all_pages: Es werden alle Inhalte geladen...
-  resources_box_batch_apply_on_all_1: 'Auf alle Inhalte '
-  resources_box_batch_apply_on_all_2: ' anwenden'
+  resources_box_batch_apply_on_all_1: 'Auf alle '
+  resources_box_batch_apply_on_all_2: ' Inhalte anwenden'
   resources_box_batch_apply_on_selected_1: 'Auf '
   resources_box_batch_apply_on_selected_2: ' Inhalte anwenden'
   resources_box_batch_all_content: Alle Inhalte
@@ -624,6 +624,8 @@ de:
   resources_box_batch_stats_where_loaded: 'davon geladen:'
   resources_box_batch_stats_where_editable: 'davon editierbar:'
   resources_box_batch_stats_where_selected: 'selektiert:'
+  resources_box_batch_stats_entries: Einträge
+  resources_box_batch_stats_collections: Sets
   resources_box_batch_fill_in_all_fields_hint: >-
     Bitte füllen Sie alle Felder aus oder schliessen Sie Felder ohne Eingaben.
     Sonst können Sie ihre Eingaben nicht speichern.

@@ -626,7 +626,8 @@ en:
   resources_box_batch_status_retry: retry
   resources_box_batch_add_to_existing: add to existing
   resources_box_batch_replace_existing: replace existing
-  resources_box_batch_contexts: Contexts
+  resources_box_batch_entry_contexts: Contexts Media Entries
+  resources_box_batch_set_contexts: Contexts Sets
   resources_box_batch_all_data: All data
   resources_box_batch_search_placeholder: Search...
   resources_box_batch_person_widget_firstname: Firstname

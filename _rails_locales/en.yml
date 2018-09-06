@@ -568,6 +568,7 @@ en:
   resources_box_batch_actions_sets_managepermissions: Edit permissions for sets
   resources_box_batch_actions_transfer_responsibility_entries: Transfer responsibility of media entries
   resources_box_batch_actions_transfer_responsibility_sets: Transfer responsibility of sets
+  resources_box_batch_actions_meta_data_batch_new: 'BETA:'
   resources_box_batch_actions_meta_data_batch: Metadata Batch Processing
   resources_box_deselect_all: Deselect all
   resources_box_filter: Filter
@@ -592,6 +593,7 @@ en:
   resources_box_batch_mandatory_fields: 'Mandatory fields:'
   resources_box_batch_mandatory_field: Mandatory field
   resources_box_batch_mandatory_field_for_media_entry: Mandatory field for media entries
+  resources_box_batch_field_only_for_entries_and_sets: This value is applied on media entries and on sets
   resources_box_batch_field_only_for_sets: This value is applied only on sets
   resources_box_batch_field_only_for_entries: This value is applied only on media entries
   resources_box_batch_load_all_pages: Loading all content...
@@ -605,6 +607,8 @@ en:
   resources_box_batch_stats_where_loaded: 'loaded:'
   resources_box_batch_stats_where_editable: 'editable:'
   resources_box_batch_stats_where_selected: 'selected:'
+  resources_box_batch_stats_entries: Media Entries
+  resources_box_batch_stats_collections: Sets
   resources_box_batch_fill_in_all_fields_hint: >-
     Please fill in all fields or remove the ones without data. Otherwise you
     cannot save the data.

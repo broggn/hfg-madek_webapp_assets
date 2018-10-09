@@ -512,6 +512,7 @@ en:
   resource_action_collection_edit_highlight: Highlight items
   resource_action_collection_edit_metadata: Edit metadata
   resource_action_collection_favor: Add to favorites
+  resource_action_collection_manage_temporary_urls: Manage Temporary URLs
   resource_action_collection_select_collection: Add to/remove from set
   resource_action_collection_share: Share set
   resource_action_media_entry_destroy: Delete media entry
@@ -520,6 +521,7 @@ en:
   resource_action_media_entry_edit_metadata: Edit metadata
   resource_action_media_entry_export: Export media entry
   resource_action_media_entry_favor: Add to favorites
+  resource_action_media_entry_manage_temporary_urls: Manage Temporary URLs
   resource_action_media_entry_select_collection: Add to/remove from set
   resource_action_media_entry_share: Share media entry
   resource_action_more_actions: Further actions
@@ -697,6 +699,28 @@ en:
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vocabularies
   sitemap_vocabulary: Vocabulary
+  temporary_urls_back_to_collection: Back to the set
+  temporary_urls_back_to_media_entry: Back to the media entry
+  temporary_urls_create_title: Create a new Temporary URL
+  temporary_urls_create_description: Description
+  temporary_urls_create_submit: Add Temporary URL
+  temporary_urls_create_cancel: Cancel
+  temporary_urls_created_title: New Temporary URL created
+  temporary_urls_created_back_btn: Go back to all Temporary URLs
+  temporary_urls_created_notice: 'This Temporary URL will be displayed only once, please save it now.'
+  temporary_urls_list_created_hint_pre: 'Created: '
+  temporary_urls_list_expires_hint_pre: 'Expires at: '
+  temporary_urls_list_new_button: Add a new Temporary URL
+  temporary_urls_list_no_description: (No description)
+  temporary_urls_list_revoke_btn_hint: Revoke Temporary URL
+  temporary_urls_list_revoke_confirm: Are you sure you want to revoke this Temporary URL?
+  temporary_urls_list_revoked_title: Revoked Temporary URLs
+  temporary_urls_head_id: ID
+  temporary_urls_head_name: Name
+  temporary_urls_head_token: Token
+  temporary_urls_head_valid_since: Valid since
+  temporary_urls_head_valid_until: Expires at
+  temporary_urls_show_title: Temporary URL
   transfer_responsibility_batch_success_collection_1: 'You have successfully transferred responsibility for '
   transfer_responsibility_batch_success_collection_1a: ' set '
   transfer_responsibility_batch_success_collection_1b: ' sets '

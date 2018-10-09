@@ -530,6 +530,7 @@ de:
   resource_action_collection_edit_highlight: Inhalte hervorheben
   resource_action_collection_edit_metadata: Metadaten editieren
   resource_action_collection_favor: Zu Favoriten hinzufügen
+  resource_action_collection_manage_temporary_urls: Manage Temporary URLs
   resource_action_collection_select_collection: Zu Set hinzufügen/entfernen
   resource_action_collection_share: Set teilen
   resource_action_media_entry_destroy: Medieneintrag löschen
@@ -538,6 +539,7 @@ de:
   resource_action_media_entry_edit_metadata: Metadaten editieren
   resource_action_media_entry_export: Medieneintrag exportieren
   resource_action_media_entry_favor: Zu Favoriten hinzufügen
+  resource_action_media_entry_manage_temporary_urls: Manage Temporary URLs
   resource_action_media_entry_select_collection: Zu Sets hinzufügen / Aus Sets entfernen
   resource_action_media_entry_share: Medieneintrag teilen
   resource_action_more_actions: Weitere Aktionen
@@ -717,6 +719,30 @@ de:
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vokabulare
   sitemap_vocabulary: Vokabular
+  temporary_urls_back_to_collection: Zurück zum Set
+  temporary_urls_back_to_media_entry: Zurück zum Medieneintrag
+  temporary_urls_create_title: Neuen Temporary URL hinzufügen
+  temporary_urls_create_description: Beschreibung
+  temporary_urls_create_submit: Temporary URL anlegen
+  temporary_urls_create_cancel: Abbrechen
+  temporary_urls_created_title: Neuer Temporary URL erstellt
+  temporary_urls_created_back_btn: Zurück zu allen Temporary URLs
+  temporary_urls_created_notice: >-
+    Dieser Temporary URL wird nur einmalig angezeigt, bitte speichern Sie ihn
+    jetzt.
+  temporary_urls_list_created_hint_pre: 'Erstellt: '
+  temporary_urls_list_expires_hint_pre: 'Ablaufdatum: '
+  temporary_urls_list_new_button: Neuen Temporary URL erstellen
+  temporary_urls_list_no_description: (Keine Beschreibung)
+  temporary_urls_list_revoke_btn_hint: Temporary URL zurückziehen
+  temporary_urls_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Temporary URL zurückziehen wollen?'
+  temporary_urls_list_revoked_title: Zurückgezogene Temporary URLs
+  temporary_urls_head_id: ID
+  temporary_urls_head_name: Name
+  temporary_urls_head_token: Token
+  temporary_urls_head_valid_since: Gültig seit
+  temporary_urls_head_valid_until: Gültig bis
+  temporary_urls_show_title: Temporary URL
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

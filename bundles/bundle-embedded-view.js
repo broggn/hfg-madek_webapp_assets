@@ -152,7 +152,8 @@ module.exports = React.createClass({
         get = _props.get,
         mediaProps = _props.mediaProps,
         withLink = _props.withLink,
-        withZoomLink = _props.withZoomLink;
+        withZoomLink = _props.withZoomLink,
+        isEmbedded = _props.isEmbedded;
     var image_url = get.image_url,
         title = get.title,
         media_type = get.media_type,
@@ -161,6 +162,8 @@ module.exports = React.createClass({
 
 
     var classes = cx(this.props.mods);
+
+    var usesIframeEmbed = !isEmbedded && f.includes(['audio', 'video'], media_type);
 
     // get the largest image and use it as 'full size link'
     // NOTE: we want this link even if the file is the same,
@@ -205,6 +208,8 @@ module.exports = React.createClass({
         )
       );
     }
+
+    if (usesIframeEmbed) return React.createElement(IframeEmbed, { url: get.url });
 
     var downloadRef = originalUrl ? originalUrl : get.url + '/export';
 
@@ -268,6 +273,36 @@ module.exports = React.createClass({
     );
   }
 });
+
+var IframeEmbed = function IframeEmbed(_ref) {
+  var url = _ref.url;
+  return React.createElement(
+    'div',
+    { className: 'ui-media-overview-preview' },
+    React.createElement(
+      'div',
+      {
+        style: {
+          width: '100%',
+          position: 'relative',
+          paddingTop: '56.25%'
+        } },
+      React.createElement('iframe', {
+        src: url + '/embedded?internalEmbed',
+        style: {
+          height: '100% !important',
+          width: '100% !important',
+          position: 'absolute',
+          top: '0',
+          left: '0'
+        },
+        allowFullScreen: 'true',
+        webkitallowfullscreen: 'true',
+        mozallowfullscreen: 'true'
+      })
+    )
+  );
+};
 
 },{"../../lib/i18n-translate.js":3,"../ui-components/Icon.cjsx":8,"../ui-components/MediaPlayer.cjsx":9,"../ui-components/Picture.cjsx":10,"../ui-components/ResourceIcon.cjsx":11,"active-lodash":16,"babel-runtime/core-js/object/assign":23,"classnames":43,"react":534}],6:[function(require,module,exports){
 var classnames, f, i18nTranslate, parseModsfromProps;
@@ -1129,6 +1164,7 @@ module.exports = React.createClass({
       get: get,
       mediaProps: mediaProps,
       captionConf: caption_conf,
+      isEmbedded: true,
       isInternal: embed_config.isInternal
     });
   }

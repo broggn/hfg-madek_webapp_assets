@@ -512,6 +512,7 @@ en:
   resource_action_collection_edit_highlight: Highlight items
   resource_action_collection_edit_metadata: Edit metadata
   resource_action_collection_favor: Add to favorites
+  resource_action_collection_manage_temporary_urls: Manage Confidential Links
   resource_action_collection_select_collection: Add to/remove from set
   resource_action_collection_share: Share set
   resource_action_media_entry_destroy: Delete media entry
@@ -520,6 +521,7 @@ en:
   resource_action_media_entry_edit_metadata: Edit metadata
   resource_action_media_entry_export: Export media entry
   resource_action_media_entry_favor: Add to favorites
+  resource_action_media_entry_manage_temporary_urls: Manage Confidential Links
   resource_action_media_entry_select_collection: Add to/remove from set
   resource_action_media_entry_share: Share media entry
   resource_action_more_actions: Further actions
@@ -697,6 +699,32 @@ en:
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vocabularies
   sitemap_vocabulary: Vocabulary
+  temporary_urls_back_to_collection: Back to the set
+  temporary_urls_back_to_media_entry: Back to the media entry
+  temporary_urls_create_title: Create a new Confidential Link
+  temporary_urls_create_description: Description
+  temporary_urls_create_submit: Create Confidential Link
+  temporary_urls_create_set_expiration_date: Set expiration date
+  temporary_urls_create_cancel: Cancel
+  temporary_urls_created_title: New Confidential Link created
+  temporary_urls_created_back_btn: Go back to all Confidential Links
+  temporary_urls_created_notice: Confidential Link was created!
+  temporary_urls_list_created_hint_pre: 'Created: '
+  temporary_urls_list_expires_hint_pre: 'Expiration date: '
+  temporary_urls_list_no_expiry: Never
+  temporary_urls_list_new_button: Add a new Confidential Link
+  temporary_urls_list_no_description: (No description)
+  temporary_urls_list_revoke_btn_hint: Revoke Confidential Link
+  temporary_urls_list_revoke_confirm: Are you sure you want to revoke this Confidential Link?
+  temporary_urls_list_revoked_title: Expired Confidential Links
+  temporary_urls_list_show_url: Show Link
+  temporary_urls_list_copy_url: Copy Confidential Link
+  temporary_urls_head_id: ID
+  temporary_urls_head_name: Name
+  temporary_urls_head_token: Token
+  temporary_urls_head_valid_since: Created at
+  temporary_urls_head_valid_until: Expires at
+  temporary_urls_show_title: Confidential Link
   transfer_responsibility_batch_success_collection_1: 'You have successfully transferred responsibility for '
   transfer_responsibility_batch_success_collection_1a: ' set '
   transfer_responsibility_batch_success_collection_1b: ' sets '

@@ -366,6 +366,13 @@ de:
   media_entry_file_information_title: Datei
   media_entry_media_import_gotodrafts: Medieneinträge vervollständigen
   media_entry_media_import_header: Medien importieren
+  media_entry_media_import_box_header_a: ''
+  media_entry_media_import_box_header_b: ' Upload(s)'
+  media_entry_media_import_box_upload_status_waiting: Warten…
+  media_entry_media_import_box_upload_status_error: Fehler!
+  media_entry_media_import_box_upload_status_progress_a: 'Hochladen… '
+  media_entry_media_import_box_upload_status_progress_b: '%'
+  media_entry_media_import_box_upload_status_processing: Verarbeiten…
   media_entry_media_import_inside: 'Dateien auf dieses Feld ziehen oder '
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_notes_msg: >-

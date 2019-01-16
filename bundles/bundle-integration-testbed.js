@@ -41,7 +41,82 @@ handleResult = function(err, res) {
 };
 
 
-},{"./spec/media-entry-meta-data-update_spec.coffee":20,"jquery":85}],2:[function(require,module,exports){
+},{"./spec/media-entry-meta-data-update_spec.coffee":22,"jquery":90}],2:[function(require,module,exports){
+'use strict';
+
+// provides string translation function.
+// usage
+// t = require('…'); t('hello') // => 'Hallo'
+
+var f = require('active-lodash');
+var parseTranslationsFromCSV = require('./parse-translations-from-csv');
+
+// NOTE: this works with browserify and the 'brfs' transform (embeds as string)
+var path = require('path');
+var translationsCSVText = "key,de,en,comment\najax_form_connection_error,Verbindungsfehler. Bitte versuchen Sie es noch einmal.,Connection error. Please try again.,\najax_form_no_longer_authorized,Sie sind für diese Aktion nicht mehr authorisiert.,You are no longer authorized to do this.,\najax_form_unexpected_error,Es gab einen unerwarteten Server-Fehler.,There was an unexpected server error.,\najax_form_validation_error_unparsable,Validation error with unparsable errors.,Validation error with unparsable errors.,\"Formular speichern, Edge case: Server gibt Fehlermeldung UND sie kann nicht gelesen werden.\"\najax_form_validation_error_without_any_data,Validation error without any data.,Validation error without any data.,\"Formular speichern, Edge case: Server gibt Fehlermeldungs-Code aber sonst keinen Inhalt\"\najax_form_validation_error_without_error_data,Validation error without error data.,Validation error without error data.,\"Formular speichern, Edge case: Server gibt Fehlermeldung, aber keine Details\"\napi_tokens_callback_description,Token wird für eine externe Applikation erstellt.,Token is being created for an external application.,\napi_tokens_create_cancel,Abbrechen,Cancel,\napi_tokens_create_description,Beschreibung,Description,\napi_tokens_create_submit,Token anlegen,Create token,\napi_tokens_create_title,Neuen Token hinzufügen,Add new token,\napi_tokens_created_back_btn,Zurück zu allen Tokens.,Back to all tokens.,\napi_tokens_created_callback_btn,Weiter zur Applikation,Continue to the application,\napi_tokens_created_callback_description,\"Falls die Weiterleitung nicht funktioniert, kann der Token auch manuell kopiert werden:\",\"If the redirect does not work, the token can also be copied manually:\",\napi_tokens_created_notice,Dieser Token wird nur einmal angezeigt. Bitte speichern Sie ihn jetzt.,This token is displayed only once. Please save it now.,\napi_tokens_created_title,Es wurde ein neuer Token erstellt.,A new token was created.,\napi_tokens_head_id,ID,ID,\napi_tokens_head_name,Name,Name,\napi_tokens_head_permissions,Berechtigungen,Permissions,\napi_tokens_head_valid_since,Gültig seit,Valid from,\napi_tokens_head_valid_until,Gültig bis,Valid to,\napi_tokens_list_created_hint_pre,Erstellt: ,Created: ,\"Tooltip auf dem Datum in der Tokens-Tabelle, wird vor einem Zeitstempel angezeigt\"\napi_tokens_list_expires_hint_pre,Ablaufdatum: ,Expiration date: ,\"Tooltip auf dem Datum in der Tokens-Tabelle, wird vor einem Zeitstempel angezeigt\"\napi_tokens_list_new_button,Neuen Token erstellen,Create new tolken,\napi_tokens_list_no_description,(Keine Beschreibung),No description),\"Platzhalter-Text, falls ein Token keine Beschreibung hat.\"\napi_tokens_list_revoke_btn_hint,Token zurückziehen.,Revoke token.,\napi_tokens_list_revoke_confirm,\"Sind Sie sicher, dass Sie diesen Token zurückziehen wollen?\",Are you sure you want to revoke the token?,\napi_tokens_list_revoked_title,Zurückgezogene Tokens,Revoked tokens,\napi_tokens_list_scope_off,Nein,No,\napi_tokens_list_scope_on,Ja,Yes,\napi_tokens_list_scope_read,Lesen,Read,\napi_tokens_list_scope_write,Schreiben,Write,\napp_autocomplete_no_results,Keine Ergebnisse.,No results.,\napp_confirm_form_leave_msg,\"Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten. Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.\",Please confirm that you wish to leave this page – entered data might not be saved.,NOTE: German version copied from Firefox default message\napp_notice_logged_out,Sie haben sich abgemeldet.,You have logged out.,\napp_warning_jsonly,\"Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert.\",\"This feature requires Javascript, but it is not activated.\",\nauthentication_groups,Systemgruppen,System groups,\nbatch_add_to_collection_hint,\"Nach Sets suchen, zu denen Sie die Medieneinträge hinzufügen möchten.\",Seach for sets to add media entries.,\nbatch_add_to_collection_post, Medieneinträge zu Set hinzufügen,Add media entries to set,(nach der Anzahl)\nbatch_add_to_collection_pre, ,,(vor der Anzahl)\nbatch_destroy_resources_ask_1,Möchten Sie folgende Inhalte löschen:,Do you want to delete the following items:,\nbatch_destroy_resources_ask_2, Medieneinträge, Media entries,\nbatch_destroy_resources_ask_3, Sets, Sets,\nbatch_destroy_resources_ask_4,(Die Inhalte von Sets werden nicht automatisch mit dem Set gelöscht.),\"(When a set is deleted, the items of this set are not deleted at the same time.)\",\nbatch_destroy_resources_cancel,Abbrechen,Cancel,\nbatch_destroy_resources_ok,OK,OK,\nbatch_destroy_resources_success,Inhalte wurden erfolgreich gelöscht.,Items are deleted successfully.,\nbatch_meta_data_edit,Metadaten für %{media_entry_count} Medieneinträge gleichzeitig editieren.,Edit metadata for %{media_entry_count} media entries at the same time.,TODO_cleanup_interpolation\nbatch_remove_from_collection_cancel,Abbrechen,Cancel,\nbatch_remove_from_collection_question_part_1,Möchten Sie die ausgewählten ,Do you want to remove the selected ,\nbatch_remove_from_collection_question_part_2, Medieneinträge und , media entries and ,\nbatch_remove_from_collection_question_part_3, Sets aus dem Set entfernen?, sets from this set?,\nbatch_remove_from_collection_remove,Entfernen,Remove,\nbatch_remove_from_collection_title,Medieinträge/Sets aus Set entfernen,Remove media entries/sets from sets,\nbatch_warning_no_authorized_contents_collection,Sie haben für keines der Sets die nötige Berechtigung.,You have no permissions for these sets.,\nbatch_warning_no_authorized_contents_media_entry,Sie haben für keinen der Medieneinträge die nötige Berechtigung.,You have no permissions for these media entries.,\nbatch_warning_no_contents_collection,Sie haben keine Sets.,You have no sets.,\nbatch_warning_no_contents_media_entry,Sie haben keine Medieneinträge.,You have no media entries.,\nbrowse_entries_browse_link_title,In diese Richtung weiterstöbern,Browse further in this direction,\nbrowse_entries_filter_link,Weiter filtern →,Apply additional filter →,\nbrowse_entries_loading_error,Ladefehler,Loading error,\nbrowse_entries_title,Nach ähnlichen Inhalten stöbern,Browse similar items,\nbubble_batch_label,Stapel,Batch,Wo: Labels in der Stapelverarbeitung\nbubble_draft_label,Entwurf,Draft,Wo: Labels in der Stapelverarbeitung\nclipboard_add_hint,Zur Stapelverarbeitung hinzufügen,Add to batch processing,\nclipboard_adding_all_resources_cancelled,\"Das Hinzufügen zur Stapelverarbeitung wurde abgebrochen. Ein Teil der Inhalte wurde schon hinzugefügt. Wenn Sie alle hinzufügen möchten, versuchen Sie es noch einmal. Schon hinzugefügte Inhalte werden nicht dupliziert.\",\"The process of adding items to batch processing was interrupted. Some items were successfully added to batch processing. If you wish to add all items, please try again.Those items already added will not be duplicated.\",\nclipboard_adding_all_resources_error,Es konnten nicht alle Inhalte zur Stapelverarbeitung hinzugefügt werden. Bitte versuchen Sie es noch einmal. Schon hinzugefügte Inhalte werden nicht dupliziert.,It was not possible to add all items to batch processing. Please try again. Those items already added will not be duplicated.,\nclipboard_adding_all_resources_retry,Nochmals, Again,\nclipboard_adding_resources,Füge Inhalte zur Stapelverarbeitung hinzu …,Add items to batch processing …,\nclipboard_ask_add_all_1,Möchten sie alle ,Would you like to add all ,\nclipboard_ask_add_all_2, Inhalte zur Stapelverarbeitung hinzufügen?, items to batch processing?,\nclipboard_ask_add_all_cancel,Abbrechen,Cancel,\nclipboard_ask_add_all_ok,Ok,OK,\nclipboard_batch_add_success,Die Inhalte wurden der Stapelverarbeitung hinzugefügt.,Items were added to batch processing.,\nclipboard_batch_remove_success,Die Inhalte wurden aus der Stapelverarbeitung entfernt.,Items wer removed from batch processing.,\nclipboard_empty_message,Sie haben keine Inhalte für die Stapelverarbeitung ausgewählt.,Batch processing is empty,\nclipboard_fetching_resources,Lade Inhalte …,Items loading …,\"Wieso sind da Pünktchen? -> Ist eine Zustandsanzeige, Nutzer wartet.\"\nclipboard_removing_resources,Entferne Inhalte aus Stapelverarbeitung...,Remove items from batch processing ...,\ncollection_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgendes Set löschen möchten: \",Are you sure you want to delete the following set:,\ncollection_ask_delete_title,Set löschen,Delete set,\ncollection_delete_success,Set wurde gelöscht.,Set deleted.,\ncollection_edit_cover_submit_btn,Speichern,Submit,\ncollection_edit_cover_title,Titelbild für Set festlegen,Define set cover,\ncollection_edit_highlights_btn,Auswahl speichern,Submit selection,\ncollection_edit_highlights_empty,Dieses Set hat noch keine Inhalte.,This set has no items yet.,\ncollection_edit_highlights_title,Inhalte hervorheben,Highlight items,\ncollection_edit_permissions_btn,Speichern,Submit,\ncollection_highlighted_contents,Hervorgehobene Inhalte,Highlighted items,\ncollection_layout_save,Darstellung festlegen,Save type of display,\ncollection_layout_saved,Darstellung gespeichert,Type of display saved,\ncollection_meta_data_header_prefix,Set editieren: ,Edit set:,\ncollection_new_cancel,Abbrechen,Cancel,\ncollection_new_create_set,Set erstellen,Create set,\ncollection_new_dialog_title,Set erstellen,Create set,\ncollection_new_flash_successful,Set wurde erstellt.,Set was created.,\ncollection_new_flash_title_needed,Titel ist ein Pflichtfeld.,Title is a mandatory field.,\ncollection_new_header,Neues Set,New set,\ncollection_new_label_title,Titel,Title,\ncollection_permissions_btn,Zugriffsberechtigungen ändern,Change permissions,\ncollection_relations_child_sets,Untergeordnete Sets,Child sets,\ncollection_relations_children_hint,Diese Sets wurden dem ausgewählten Set hinzugefügt.,These sets are now related to the selected set.,\ncollection_relations_current,Aktuelles Set,Current set,\ncollection_relations_hint_text,\"Das ausgewählte Set ist mit anderen Sets verknüpft. Diese Zusammenhänge wurden aktiv durch Sie oder eine/n andere/n Nutzer/in festgelegt als übergeordnet, benachbart oder untergeordnet. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.\",\"The selected set is related to other sets. The relationship between these sets was actively defined by you or another user. The type of relationship to the other sets could be described as parent, siblings or children relationship. The displayed sets are owned by yourself or shared by other users with you.\",\ncollection_relations_no_child_sets, , ,\"Optionaler Hinweis, falls Zusammenhänge leer\"\ncollection_relations_no_parent_sets, , ,\"Optionaler Hinweis, falls Zusammenhänge leer\"\ncollection_relations_no_sibling_sets, , ,\"Optionaler Hinweis, falls Zusammenhänge leer\"\ncollection_relations_parent_sets,Übergeordnete Sets,Parent sets,\ncollection_relations_parents_hint,Das ausgewählte Set wurde diesen Sets hinzugefügt.,The selected set is now related to this set.,\ncollection_relations_show_all,Alle anzeigen →,Show all →,\ncollection_relations_show_all_relations,Alle Zusammenhänge anzeigen,Show all relations,\ncollection_relations_sibling_sets,Benachbarte Sets,Sibling sets,\ncollection_relations_siblings_hint,Diese Sets wurden den gleichen Sets hinzugefügt wie das ausgewählte Set.,This set is related to the same sets as the selected set.,Wo: Zusammenhänge eines Sets\ncollection_resource_selection_cancel,Abbrechen,Cancel,\ncollection_resource_selection_h_author,Autor/in,Author,\ncollection_resource_selection_h_date,Datierung,Dating,\ncollection_resource_selection_h_keywords,Schlagworte,Keywords,\ncollection_resource_selection_h_responsible,Rechteinhaber,Holder of rights,\ncollection_resource_selection_h_selection,Auswahl,Selection,\ncollection_resource_selection_h_subtitle,Untertitel,Subtitle,\ncollection_resource_selection_h_title,Titel,Title,\ncollection_resource_selection_save,Auswahl speichern,Save selection,\ncollection_select_collection_flash_result,Set aus %{removed_count} Set(s) entfernt. Zu %{added_count} Set(s) hinzugefügt.,Removed set from %{removed_count} set(s). Added set to %{added_count} set(s).,TODO_cleanup_interpolation\ncollection_sorting_created_at_asc,Sortieren nach Importierdatum aufsteigend,Sort by import date ascending,\ncollection_sorting_created_at_desc,Sortieren nach Importierdatum absteigend,Sort by import date descending,\ncollection_sorting_last_change,Sortieren nach letzter Änderung,Sort by date of update,\ncollection_sorting_title_asc,Sortieren nach Titel alphabetisch,Sort by title alphabetically,\ncollection_sorting_title_desc,Sortieren nach Titel absteigend,\"Sort by title alphabetically, but descending\",\ncollection_tab_main,Set,Set,\ncollection_was_disfavored,Das Set wurde von den Favoriten entfernt.,Set was removed from favorites.,\ncollection_was_favored,Das Set wurde zu den Favoriten hinzugefügt.,Set was added to favorites.,\ncontents_privacy_private,Diese Inhalte sind nur für Sie zugänglich.,These items are only accessible to you.,\ncontents_privacy_public,Diese Inhalte sind öffentlich zugänglich.,These items are accessible to the public.,\ncustom_urls_canonical_hint,\"Jeder Inhalt hat eine automatisch erzeugte, kanonische Adresse bestehend aus Zahlen und Buchstaben, eine sog. UUID (Universally Unique Identifier). Diese Adresse kann nicht übertragen oder entfernt werden und ist deshalb immer an erster Stelle aufgelistet.\",\"Every item has a canonical address consisting of numbers und letters which is created automatically, a so- called UUID (Universally Unique Identifier). This address can not be transferred or deleted. For this reason it is always listed first.\",\ncustom_urls_canonical_title,Kanonische Adresse (UUID),Canonical address (UUID),\ncustom_urls_flash_create_successful_1,Adresse ,Address ,\ncustom_urls_flash_create_successful_2, wurde erstellt., was created.,\ncustom_urls_flash_empty,Adresse darf nicht leer sein.,Address is not allowed to be empty.,\ncustom_urls_flash_exists_on_itself_collection_1,Die Adresse ,The address ,\ncustom_urls_flash_exists_on_itself_collection_2, existiert bereits für dieses Set., already exists for this set.,\ncustom_urls_flash_exists_on_itself_media_entry_1,Die Adresse ,The address ,\ncustom_urls_flash_exists_on_itself_media_entry_2, existiert bereits für diesen Medieneintrag., already exists for this media entry.,\ncustom_urls_flash_not_allowed_collection_1,Die Adresse ,The address ,\ncustom_urls_flash_not_allowed_collection_2,\" kann nicht übertragen werden. Sie haben nicht die Berechtigung das Set zu verwalten, auf welches die Adresse \", can not be transferred. You do not have permission to manage the set to which the address ,\ncustom_urls_flash_not_allowed_collection_3, im Moment verweist., is related to.,\ncustom_urls_flash_not_allowed_media_entry_1,Die Adresse ,The address ,\ncustom_urls_flash_not_allowed_media_entry_2,\" kann nicht übertragen werden. Sie haben nicht die Berechtigung den Medieneintrag zu verwalten, auf welchen die Adresse \", cannot be transferred. You do not have  permission to manage the media entry to which the address ,\ncustom_urls_flash_not_allowed_media_entry_3, im Moment verweist., is related to.,\ncustom_urls_flash_not_same_type_collection_1,Adresse ,The address ,\ncustom_urls_flash_not_same_type_collection_2, kann nicht übertragen werden. Adressen von Medieneinträgen können nicht auf Sets übertragen werden., can not be transferred. Addresses from media entries can not be transferred to sets.,\ncustom_urls_flash_not_same_type_media_entry_1,Adresse ,The address ,\ncustom_urls_flash_not_same_type_media_entry_2, kann nicht übertragen werden. Adressen von Sets können nicht auf Medieneinträge übertragen werden., cannot be transferred. Addresses from sets cannot be transferred to media entries.,\ncustom_urls_flash_primary_url_set_1,,,\"Wo: Bestätigung CustomURL, vor der Adresse\"\ncustom_urls_flash_primary_url_set_2, wurde als primäre Adresse gesetzt., was set as primary address.,\"Wo: Bestätigung CustomURL, nach der Adresse\"\ncustom_urls_flash_transfer_confirmation_collection_1,Die Adresse ,The address ,\ncustom_urls_flash_transfer_confirmation_collection_2, ist gegenwärtig dem Set , is currently related to the set  ,\ncustom_urls_flash_transfer_confirmation_collection_3, zugewiesen. Wollen Sie diese Adresse auf das Set ,. Would you like to transfer this address to the set ,\ncustom_urls_flash_transfer_confirmation_collection_4, übertragen?,?,\ncustom_urls_flash_transfer_confirmation_media_entry_1,Die Adresse ,The address ,\ncustom_urls_flash_transfer_confirmation_media_entry_2, ist gegenwärtig dem Medieneintrag , is currently related to the media entry  ,\ncustom_urls_flash_transfer_confirmation_media_entry_3, zugewiesen. Wollen Sie diese Adresse auf den Medieneintrag ,. Would you like to transfer this address to the media entry ,\ncustom_urls_flash_transfer_confirmation_media_entry_4, übertragen?,?,\ncustom_urls_flash_transfer_successful_1,Adresse ,Address  ,\ncustom_urls_flash_transfer_successful_2, wurde von , was transferred from  ,\ncustom_urls_flash_transfer_successful_3, auf , to ,\ncustom_urls_flash_transfer_successful_4, übertragen.,0,\ncustom_urls_flash_wrong_format_1,Adresse ,Address ,\ncustom_urls_flash_wrong_format_2, erfüllt die Anforderungen nicht., does not meet the requirements.,\ncustom_urls_manage_address_title,Adressverwaltung,Address administration,\ncustom_urls_new,Adresse anlegen / übertragen,Create / transfer address,\ncustom_urls_no_addresses_defined,Noch keine Adressen definiert.,No address defined yet.,\ncustom_urls_primary_hint,\"Für jeden Inhalt (egal ob Medieneintrag oder Set) gibt es immer genau eine primäre Adresse. Diese ist in der Adressleiste des Browsers sichtbar, wenn der Inhalt angezeigt wird. Neben der primären Adresse können weitere gesetzt werden, die auf die primäre Adresse weiterleiten.\",Each item (media entry or set) has exactly one primary address. This address is displayed in the browsersaddress bar when the item is accessed.You have the option to create other addresses which are forwarded to the primary address.,\ncustom_urls_primary_title,Primäre Adresse,Primary address,\ncustom_urls_table_header_actions,Aktionen,Actions,\ncustom_urls_table_header_address,Adresse,Address ,\ncustom_urls_table_header_created_by,Erstellt durch,Created by,\ncustom_urls_table_header_date,Datum,Date,\ncustom_urls_table_header_type,Typ,Type,\ncustom_urls_title,Adressen für ,Addresses for ,\ndashboard_create_collection,Set erstellen,Create set,\ndashboard_create_collection_btn,Set erstellen,Create set,\ndashboard_create_media_entry_btn,Medien importieren,Upload media,\ndashboard_none_exist,Keine vorhanden.,There are none.,\ndashboard_show_all,Alle anzeigen →,Show all →,\ndashboard_title_head,Mein Archiv,My archive,\ndynamic_filters_authorization,Berechtigung,Authorization,\ndynamic_filters_visibility,Sichtbarkeit,Accessability,\ndynamic_filters_visibility_private,Nur für mich,Only for me,\ndynamic_filters_visibility_user_or_group,Geteilt mit Personen und Arbeitsgruppen,Shared with people and work groups,\nedit_custom_urls_back_to_collection,Zurück zum Set,Back to the set,\nedit_custom_urls_back_to_media_entry,Zurück zum Medieneintrag,Back to the media entry,\nedit_custom_urls_cancel,Abbrechen,Cancel,\nedit_custom_urls_confirmation,Bestätigung,Confirmation,\nedit_custom_urls_create_or_transfer,Adresse anlegen / übertragen,Create / transfer address,\nedit_custom_urls_preferred_address,Gewünschte Adresse:,Preferred address:,\nedit_custom_urls_requirements_hint,\"Eine Adresse darf nur genau einmal im System vorkommen – entweder für einen Medieneintrag oder für ein Set. Sie beginnt immer mit einem Kleinbuchstaben, gefolgt von (mindestens einem) weiteren Zeichen aus Kleinbuchstaben, Nummern, Bindestrichen ( - ) und Grundstrichen ( _ ) in beliebiger Reihenfolge.\",\"Each comprehensible address is unique in the system – either for a media entry or for a set. The address always begins with a lower case letter, followed by at least one other character. The following characters can bei lower case letters, numbers, hyphens ( - ) or low lines ( _ ) in any order.\",\nedit_custom_urls_requirements_title,Anforderungen,Requirements,\nedit_custom_urls_set_primary,Als primäre Adresse setzen,Set as primary address,\nedit_custom_urls_state_primary,Primäre Adresse,Primary address,\nedit_custom_urls_state_transfer,Weiterleitung,Forwarding,\nedit_custom_urls_title,Anforderungen,Requirements,\nedit_custom_urls_transfer,Übertragen,Transfer,\nedit_custom_urls_transfer_hint,\"Eine bereits bestehende Adresse kann von einem Medieneintrag auf einen anderen oder von einem Set auf ein anderes übertragen werden. Bestehende Adressen können nicht von einem Medieneintrag auf ein Set und umgekehrt übertragen werden. Wollen Sie eine Adresse übertragen, dann geben Sie diese hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung 'Verwalten' verfügen.\",\"An existing address can be transferred from one media entry to another or from one set to another. Existing addresses cannfot be transferred from a media entry to a set or vice versa. If you want to transfer an address, please enter this address here. You have to have manage permissions for both items.\",\nedit_custom_urls_transfer_title,Übertragen,Transfer,\nerror_401_title,\"Um Zugang zu diesem Bereich zu erhalten, melden Sie sich bitte an.\",To get access please login below with your user data.,\nerror_403_message,Bitte kontaktieren Sie die für den Medieneintrag oder das Sets verantwortliche Person.,Please contact the responsible user who has the right alllow access.,\nerror_403_title,Sie haben keine Zugriffsrechte für diesen Inhalt.,You don’t have the necessary permissions to access this resource.,\nerror_404_title,Die gesuchte Seite kann nicht gefunden werden.,The requested page cannot be found.,\nerror_500_message,\"Benötigen Sie diesbezüglich Hilfe, dann kontaktieren Sie bitte den Support (support.medienarchiv@zhdk.ch) mit einer Beschreibung Ihrer letzten Arbeitsschritte sowie einem Screenshot dieser Seite.\",\"If you require help in this matter, please contact the support (support.medienarchiv@zhdk.ch) with a description of your last working steps and a screen shot of this page.\",\nerror_500_title,Es ist ein Server-Fehler aufgetreten.,A server error occurred.,\nexplore_keywords_section_title,Häufige Schlagworte,Frequent keywords,\nexplore_show_more,Weitere anzeigen,Show more,\nexplore_vocabulary_section_show_details,Details anzeigen,View details,\nexplore_vovabulary_section_title,Vokabulare,Vocabularies,\nexternal_groups,Abteilungsgruppen,Division groups,\nfooter_choose_language,Sprache wählen,Choose language,\ngroup_ask_delete_cancel,Abbrechen,Cancel,\ngroup_ask_delete_delete,Löschen,Delete,\ngroup_ask_delete_question_post, löschen?,?,\ngroup_ask_delete_question_pre,Möchten Sie die Arbeitsgruppe ,Would you like to delete work group ,\ngroup_ask_delete_title,Arbeitsgruppe löschen,Delete work group,\ngroup_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?\",Are you sure you want to delete this work group?,\ngroup_edit_at_least_one_member_delete,löschen,delete,VERB\ngroup_edit_at_least_one_member_post,0,0,NACH dem Verb und Namen der Gruppe\ngroup_edit_at_least_one_member_pre,Eine Arbeitsgruppe muss mindestens eine Person enthalten. Ganze Arbeitsgruppe ,A work group has at least one member. Whole work group,VOR dem Verb und Namen der Gruppe\ngroup_edit_btn,Bearbeiten,Edit,\ngroup_edit_cancel,Abbrechen,Cancel,\ngroup_edit_form_new_member_login_hint,Login des neuen Mitglieds dieser Arbeitsgruppe,New work group member login,\ngroup_edit_form_new_member_login_label,User hinzufügen,Add a member,\ngroup_edit_form_save_btn,Speichern,Save,\ngroup_edit_form_title_pre,Arbeitsgruppe bearbeiten: ,Edit work group: ,\ngroup_edit_hint_remove_yourself,Achtung: Sie entfernen sich selbst aus der Arbeitsgruppe!,Attention: You are about to remove yourself from the work group!,\ngroup_edit_member,Mitglieder,Members,\ngroup_edit_name,Name,Name,\ngroup_edit_person,Person,Person,\ngroup_edit_save,Speichern,Save,\ngroup_edit_username,Benutzername,Username,\ngroup_meta_data_institutional_name,Name der Abteilungsgruppe,Division group name,\ngroup_meta_data_name,Name,Name,\ngroup_new_form_title,Neue Arbeitsgruppe erstellen,Create group,\ngroup_new_group_btn,Neue Arbeitsgruppe,New work group,\ngroup_show_edit_button,Arbeitsgruppe bearbeiten,Edit work group,\ngroup_show_members,Mitglieder,Members,\ngroup_show_permissions_use,(anwenden),(execute),\ngroup_show_permissions_view,(betrachten),(view),\ngroup_show_permissions_view_use,(betrachten und anwenden),(view and execute),\ngroup_show_vocabulary_permissions,Berechtigungen Vokabulare,Permissions vocabularies,\ngroup_toolbar_header_entrusted_resources,Mir anvertraute Medieneinträge,Entrusted media entries,\ngroup_was_deleted,Arbeitsgruppe wurde gelöscht.,Work group has been deleted.,\nhome_page_new_contents,Neue Inhalte,New items,\ninternal_groups,Arbeitsgruppen,Work groups,\nlayout_mode_grid,Raster-Ansicht,Grid view,\nlayout_mode_list,Listen-Ansicht,List view,\nlayout_mode_miniature,Miniatur-Ansicht,Miniature view,\nlayout_mode_tiles,Kachel-Ansicht,Tile view,\nlogin_box_internal,Externe,External users,\nlogin_box_login_btn,Anmelden,Log in,\nlogin_box_password,Passwort,Password,\nlogin_box_rememberme,Login merken,Remember me,\nlogin_box_username,Benutzername,User name,\nlogin_provider_aai_hint,Alle Funktionen nutzen und auf mehr Inhalte zugreifen.,Log in to use all features and access more items.,\nlogin_provider_aai_title,AAI-Login,AAI login,\nlogin_provider_zhdk_hint,Alle Funktionen nutzen und auf mehr Inhalte zugreifen.,Log in to use all features and access more items.,\nlogin_provider_zhdk_title,ZHdK-Login,ZHdK login,\nmedia_entry_all_metadata_title,Alle Metadaten nach Vokabularen,All metadata by vocabulary,\nmedia_entry_ask_delete_question_pre,\"Sind Sie sicher, dass Sie folgenden Medienintrag löschen möchten: \",Are you sure you want to delete the following media entry:,\nmedia_entry_ask_delete_title,Medieneintrag löschen,Delete media entry,\nmedia_entry_back_btn,Zurück,Back,\nmedia_entry_conversion_hint,\"Diese Datei wird gerade für eine Vorschau konvertiert. Sobald dies abgeschlossen ist, finden Sie hier eine abspielbare Version.\",\"Currently the system is converting this file to a preview. As soon as the conversion is finished, you will be able to play the file here.\",\nmedia_entry_conversion_progress_post,% abgeschlossen.,% completed.,\nmedia_entry_conversion_progress_pre,Konvertierung zu ,Conversion ,\nmedia_entry_conversion_reload,\"Laden Sie diese Seite neu, um den aktuellen Stand der Konvertierung zu erfahren.\",Reload this page to display the current state of conversion.,\nmedia_entry_conversion_status_failed,Die Konvertierung ist fehlgeschlagen. Bitte wenden Sie sich an den Support.,The file conversion has failed. Please contact support.,\nmedia_entry_conversion_status_initialized,Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.,The media file is converting. Please try later.,\nmedia_entry_conversion_status_submitted,Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.,The media file is converting. Please try later.,\nmedia_entry_delete_success,Der Medieneintrag wurde gelöscht.,Media entry has been deleted.,\nmedia_entry_export_close,Schliessen,Close,\nmedia_entry_export_download,Exportieren,Download,\nmedia_entry_export_has_no_original,Sie verfügen für den Export der Originaldatei nicht über die notwendige Berechtigung.,You are not allowed to download the original file.,\nmedia_entry_export_no_content,Sie haben keine Zugriffsberechtigung für die Originaldatei und es steht keine Vorschau zur Verfügung.,You do not have permission to access the original file and there is no preview available.,\nmedia_entry_export_original,Original,Original,\nmedia_entry_export_original_hint,Originaldatei herunterladen.,Download original file.,\nmedia_entry_export_subtitle_audios,Audio-Dateien,Audio files,\nmedia_entry_export_subtitle_documents,Dokumente,Documents,\nmedia_entry_export_subtitle_images,Bilder,Images,\nmedia_entry_export_subtitle_videos,Video-Dateien,Video files,\nmedia_entry_export_title,Medieneintrag exportieren,Download media entry,\nmedia_entry_file_format_not_supported_1,\"Wahrscheinlich unterstützt Ihr Browser nicht die Darstellung dieses Dateiformats, aber Sie \",\"Your browser probably does not support the file format, but you can \",\nmedia_entry_file_format_not_supported_2,können die Datei ,download the file,\nmedia_entry_file_format_not_supported_3,exportieren.,0,\nmedia_entry_file_information_title,Datei,File information,\nmedia_entry_media_import_gotodrafts,Medieneinträge vervollständigen,Complete media entries,\nmedia_entry_media_import_header,Medien importieren,Media upload,\nmedia_entry_media_import_box_header_a,,,\nmedia_entry_media_import_box_header_b, Upload(s), Upload(s),\nmedia_entry_media_import_box_upload_status_waiting,Warten…,Waiting…,\nmedia_entry_media_import_box_upload_status_error,Fehler!,Error!,\nmedia_entry_media_import_box_upload_status_progress_a,\"Hochladen… \",\"Uploading… \",\nmedia_entry_media_import_box_upload_status_progress_b,\"%\",\"%\",\nmedia_entry_media_import_box_upload_status_processing,Verarbeiten…,Processing…,\nmedia_entry_media_import_inside,Dateien auf dieses Feld ziehen oder ,Add files by drag and drop in this field or ,\nmedia_entry_media_import_inside_nojs,Dateien auswählen,Select files,\nmedia_entry_media_import_notes_msg,\"Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Importieren in RGB um.\",\"Images (TIFF, JPEG, PNG) and audio/video files in the most common formats are processed and displayed directly. Images in the CMYK color model cannot be displayed correctly, please convert to RGB before uploading.\",\nmedia_entry_media_import_notes_title,Hinweise,Hints,\nmedia_entry_media_import_select_media,Medien auswählen,Select media files,\nmedia_entry_media_import_title,\"Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.\",\"Add images, video or audio files, or other documents.\",\nmedia_entry_meta_data_edit_by_context_btn,Metadaten nach Kontexten bearbeiten,Edit metadata by context,\nmedia_entry_meta_data_edit_by_vocab_btn,Metadaten nach Vokabularen bearbeiten,Edit metadata by vocabulary,\nmedia_entry_meta_data_header_prefix,Medieneintrag editieren: ,Edit media entry:,\nmedia_entry_more_data_title,Verantwortlichkeit und Aktivität,Responsibility and activities,\nmedia_entry_not_published_warning_msg,Bei diesem Medieneintrag fehlen noch Pflichtangaben.,Media entry still needs mandatory data.,\nmedia_entry_relations_current,Aktueller Eintrag,Current entry,\nmedia_entry_relations_hint_text,\"Der ausgewählte Medieneintrag ist mit Sets verknüpft. Diese Zusammenhänge wurden aktiv festgelegt als übergeordnet oder benachbart. Sie sehen hier sowohl eigene Sets, als auch solche, die andere Nutzer/innen mit Ihnen teilen.\",\"The selected media entry is connected to sets. These relations are actively defined as a parent, a sibling or a child relationship. The sets displayed here are your own or are shared with you by other users.\",\nmedia_entry_relations_parents_hint,Der ausgewählte Medieneintrag wurde diesen Sets hinzugefügt.,The selected media entry was added to these sets.,\nmedia_entry_relations_siblings_hint,Diese Sets wurden den gleichen Sets hinzugefügt wie der ausgewählte Medieneintrag.,These sets were added to the same sets as the selected media entry.,\nmedia_entry_select_collection_flash_result,Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu %{added_count} Set(s) hinzugefügt.,Media entry removed from %{removed_count} set(s) and added to %{added_count} set(s).,TODO_cleanup_interpolation\nmedia_entry_tab_main,Medieneintrag,Media entry,\nmedia_entry_tab_more_data,Alle Metadaten,All metadata,\nmedia_entry_tab_permissions,Berechtigungen,Permissions,\nmedia_entry_tab_relations,Zusammenhänge,Relations,\nmedia_entry_tab_usage_data,Nutzung,Usage,\nmedia_entry_upload_btn,Importieren,Upload,\nmedia_entry_was_disfavored,Der Medieneintrag wurde von den Favoriten entfernt.,Media entry was removed from favorites.,\nmedia_entry_was_favored,Der Medieneintrag wurde zu den Favoriten hinzugefügt.,Media entry was added to favorites.,\nmeta_data_action_delete_btn,Löschen,Delete,\nmeta_data_action_edit_btn,Bearbeiten,Edit,\nmeta_data_batch_action_remove_meta_data,Werte für alle Inhalte löschen,Delete data for all content,\nmeta_data_batch_failure,Metadaten konnten nicht aktualisiert werden.,Metadata could not be updated.,\nmeta_data_batch_hint_differences,Unterschiedliche Metadaten vorhanden,Different metadata in place.,\nmeta_data_batch_hint_differences_override,\"Achtung: Bestehende Werte werden durch Änderungen überschrieben! Wenn keine Änderungen vorgenommen werden, bleiben die verschiedenen Werte erhalten.\",\"Attention: Changes will replace exiting data. If not changes are made, data will be preserved.\",\nmeta_data_batch_hint_equal_data,Gleiche Metadaten vorhanden,Same metadata in place.,\nmeta_data_batch_hint_no_data,Noch keine Metadaten vorhanden,No metadata available yet.,\nmeta_data_batch_hint_value,Werte oder Text,Values or text,\nmeta_data_batch_items_selected,Medieneinträge selektiert,Media entries selected,\nmeta_data_batch_more,weitere,More,\nmeta_data_batch_some_ignored_1,(,(,\nmeta_data_batch_some_ignored_2,\" Medieneinträge wurden ignoriert, da Sie nicht über die nötigen Berechtigungen verfügen)\",\"Media entries were ignored, because you do not have the required permissions.)\",\nmeta_data_batch_success,Metadaten wurden erfolgreich aktualisiert.,metadata have been updated successfully.,\nmeta_data_batch_summary_all_post, Medieneinträge wurden gespeichert., Media entries have been saved.,NACH der Anzahl\nmeta_data_batch_summary_all_pre,Alle ,All ,VOR der Anzahl\nmeta_data_batch_summary_missing, haben fehlende Pflichtangaben, have missing mandatory data,\nmeta_data_batch_summary_published, haben ausgefüllte Pflichtfelder, have mandatory data,\nmeta_data_batch_summary_were_published, hatten bereits ausgefüllte Pflichtfelder, already had mandatory data,\nmeta_data_batch_title_post_collections, Sets gleichzeitig editieren,Edit sets at the same time,\nmeta_data_batch_title_post_media_entries, Medieneinträge gleichzeitig bearbeiten, media entries at once,\nmeta_data_batch_title_pre,Metadaten für ,Edit metadata for ,\nmeta_data_blank_value_for_required_meta_key_post,0,0,\nmeta_data_blank_value_for_required_meta_key_pre,Kein Wert vorhanden für ,No value available for,\nmeta_data_collection_batch_summary_all_post, Sets wurden gespeichert., Sets were saved.,\nmeta_data_collection_batch_summary_all_pre,Alle ,All ,\nmeta_data_delete_confirm_msg,\"Sind Sie sicher, dass Sie diese Werte löschen wollen?\",Are you sure you want to delete these data?,\nmeta_data_edit_collection_saved,Set wurde gespeichert.,Set was saved.,\nmeta_data_edit_media_entry_published,Der Medieneintrag wurde gespeichert und alle Pflichtfelder sind ausgefüllt.,Media entry was saved and mandatory data have been entered.,\nmeta_data_edit_media_entry_saved,Der Medieneintrag wurde gespeichert.,Media entry was saved.,\nmeta_data_edit_media_entry_saved_missing,\"Der Medieneintrag wurde gespeichert, aber es wurden nicht alle Pflichtfelder ausgefüllt.\",Media entry was saved but there some mandatory data are missing.,\nmeta_data_edit_more_data,Weitere Angaben,More data,\nmeta_data_form_all_data,Alle Daten,Alle daten,\nmeta_data_form_cancel,Abbrechen,Cancel,\nmeta_data_form_save,Speichern,Save,\nmeta_data_form_saving,Die Metadaten werden gerade gespeichert. Dies kann einige Zeit in Anspruch nehmen. Bitte gedulden Sie sich und schliessen Sie das Fenster nicht.,Meta data are currently being saved. This will take some time. Please be patient and do not close the browser.,\nmeta_data_form_submit_btn,Speichern,Save,\nmeta_data_header_text,Werte,Data,\nmeta_data_input_date_placeholder_duration_from,von,from,\nmeta_data_input_date_placeholder_duration_to,bis,to,\nmeta_data_input_date_placeholder_text,Freie Eingabe,Free text entry,\nmeta_data_input_date_placeholder_timestamp,wird als Text gespeichert,on,\nmeta_data_input_date_type_duration,von/bis,from/to,\nmeta_data_input_date_type_text,Freie Eingabe,Free text entry,\nmeta_data_input_date_type_timestamp,am,on,\nmeta_data_input_keywords_existing,Schlagwort ist bereits vergeben.,Keyword already assigned.,\nmeta_data_input_new_group_add,Arbeitsgruppe einfügen,Add work group,\nmeta_data_input_new_person_add,Person einfügen,Add person,\nmeta_data_input_new_person_toggle,Neue Person oder Gruppe anlegen,Add new person or work group,\nmeta_data_meta_key_label,Schlüssel,Key,\nmeta_data_type_label,Typ,Type,\nmeta_data_value_label,Wert,Data,\nmeta_key_order_alphabetical,a-z,a-z,\nmeta_key_order_alphabetical_hint,Die Schlagworte dieses Metadatenfeldes sind alphabetisch sortiert.,The keywords of this metakey are sorted alphabetically.,\nmeta_key_order_custom,redaktionell,editorial,\nmeta_key_order_custom_hint,Die Schlagworte dieses Metadatenfeldes sind redaktionell sortiert.,The keywords of this metakey are sorted editorially.,\nno_content_fallback,Keine Inhalte vorhanden.,No items available.,\nno_groups_fallback,Keine Arbeitsgruppen vorhanden.,No work groups available.,\nno_keywords_fallback,Keine Schlagworte vorhanden.,No keywords available.,\nno_relations_title,Es wurden keine Zusammenhänge gefunden.,No relations found.,\npagination_nav_loadnext,Mehr laden,Load more,\npagination_nav_nextloading,Mehr Inhalte werden geladen.,More items are being loaded.,\npagination_nav_nextpage,Nächste Seite,Next page,Wo: Manuelle Paginierung (ohne Javascript-Auto-Nachladen)\npagination_nav_prevpage,Vorangehende Seite,Previous page,Wo: Manuelle Paginierung (ohne Javascript-Auto-Nachladen)\npagination_nav_thispage,Diese Seite,This page,Wo: Manuelle Paginierung (ohne Javascript-Auto-Nachladen)\npagination_of,von,of,Wo: Paginierung - Seitenanzeige (Zwischenbalken)\npagination_prefix,Seite,Page,Wo: Paginierung - Seitenanzeige (Zwischenbalken)\npeople_toolbar_header,Ähnliche Inhalte,Related items,\npermission_entrusted_to_group,Sichtbar für Arbeitsgruppen,Visible to work groups,\npermission_entrusted_to_user,Sichtbar für Nutzer/innen,Visible to users,\npermission_name_edit_metadata,Metadaten editieren,Edit metadata,\npermission_name_edit_metadata_and_relations,Metadaten editieren & Inhalte hinzufügen,Edit metadata and add items,\npermission_name_edit_permissions,Zugriffsberechtigungen ändern,Edit permissions,\npermission_name_get_full_size,Original exportieren & in PDF blättern,Download original & browse PDF,\npermission_name_get_metadata_and_previews,Betrachten,View,\npermission_name_use,Anwenden,Execute,bezieht sich auf Vokabulare!\npermission_name_view,Betrachten,View,bezieht sich auf Vokabulare!\npermission_overridden_by_public,(überschrieben durch die öffentlichen Berechtigungen),(overruled by public permissions),\npermission_subject_name_public,Internet,Internet,\npermission_subject_title_apiapps,API-Applikationen,API clients,\npermission_subject_title_groups,Gruppen,Groups,\npermission_subject_title_public,Öffentlichkeit,Public,\npermission_subject_title_users,Nutzer/innen,Users,\npermissions_batch_success,Berechtigungen wurden erfolgreich aktualisiert.,Permissions have been updated succesfully.,\npermissions_batch_title_post, Inhalten., Items.,\npermissions_batch_title_pre,Berechtigungen ändern von ,Edit permissions of ,\npermissions_overview_yours_msg_end,\", haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe folgende Berechtigungen:\",\", currently have the following permissions (either directly or as a member of a work group):\",\npermissions_overview_yours_msg_start,\"Sie, \",\"You, \",\npermissions_overview_yours_title,Ihre Berechtigungen,Your permissions,\npermissions_responsibility_title,Verantwortlichkeit,Responsibility,\npermissions_responsible_user_msg,Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten Inhalten und kann diese auch löschen.,The responsible user has all permissions for the selected content and can also delete it.,\npermissions_responsible_user_title,Verantwortliche Person,Responsible user,\npermissions_table_cancel_btn,Abbrechen,Cancel,\npermissions_table_edit_btn,Bearbeiten,Edit,\npermissions_table_remove_subject_btn,Berechtigung entfernen,Remove permission,\npermissions_table_save_btn,Speichern,Save,\npermissions_table_title,Zugriffsberechtigungen,Permissions,\npermissions_transfer_responsibility_link,Verantwortlichkeit übertragen,Transfer responisibility,\nperson_show_description,Beschreibung,Description,\nperson_show_external_uri,URI,URI,\nperson_show_first_name,Vorname,First name,\nperson_show_last_name,Nachname,Last name,\npicture_alt_fallback,(unbekannt),(unkown),\npicture_alt_prefix,Bild: ,Picture:,Prefix für Titel von Bildern (hover-titel/Screenreader)\nrelations_parents_title,Übergeordnete Sets,Parents,\nrelations_siblings_title,Benachbarte Sets,Siblings,\nrelations_title,Zusammenhänge,Relations,\nrelease_changes_since_release,Änderungen seit dem letzen Release,Changes since last release,\nrelease_info,Release Info,Release info,\nrelease_local_git_version,Lokale Git Version,Local Git version,\nrelease_version,Entwicklungs-Version,Development version,\nresource_action_collection_destroy,Set löschen,Delete set,\nresource_action_collection_disfavor,Aus Favoriten entfernen,Remove from favorites,\nresource_action_collection_edit_cover,Titelbild festlegen,Define set cover,\nresource_action_collection_edit_custom_urls,Sprechende Adressen verwalten,Manage comprehensible address,\nresource_action_collection_edit_highlight,Inhalte hervorheben,Highlight items,\nresource_action_collection_edit_metadata,Metadaten editieren,Edit metadata,\nresource_action_collection_favor,Zu Favoriten hinzufügen,Add to favorites,\nresource_action_collection_select_collection,Zu Set hinzufügen/entfernen,Add to/remove from set,\nresource_action_collection_share,Set teilen,Share set,\nresource_action_media_entry_destroy,Medieneintrag löschen,Delete media entry,\nresource_action_media_entry_disfavor,Aus Favoriten entfernen,Remove from favorites,\nresource_action_media_entry_edit_custom_urls,Sprechende Adressen verwalten,Manage comprehensible address,\nresource_action_media_entry_edit_metadata,Metadaten editieren,Edit metadata,\nresource_action_media_entry_export,Medieneintrag exportieren,Export media entry,\nresource_action_media_entry_favor,Zu Favoriten hinzufügen,Add to favorites,\nresource_action_media_entry_select_collection,Zu Sets hinzufügen / Aus Sets entfernen,Add to/remove from set,\nresource_action_media_entry_share,Medieneintrag teilen,Share media entry,\nresource_action_more_actions,Weitere Aktionen,Further actions,\nresource_action_show_in_admin,Zeige im Admin-Interface,Show in Admin Interface,\nresource_ask_delete_cancel,Abbrechen,Cancel,\nresource_ask_delete_ok,Löschen,Delete,\nresource_ask_delete_question_post,?,?,\nresource_meta_data_copyright_notice,Rechte am geistigen Eigentum,Copyright notice,\nresource_meta_data_date,Datierung,Date,\nresource_meta_data_description,Beschreibung,Description,\nresource_meta_data_document_type,Dokumenttyp,Type of document,\nresource_meta_data_fallback,Es sind keine Metadaten zu diesem Kontext bereitgestellt.,There are no metadata related to this context.,\nresource_meta_data_has_validation_errors,Es gibt fehlerhafte Eingabefelder.,There are erroneously entry fields.,\"Wo: Meldung wenn Metadaten fehlerhaft, z.B. fehlendes Pflichtfeld\"\nresource_meta_data_keywords,Schlagworte,Keywords,\nresource_meta_data_resource_type,Medientyp,Media type,\nresource_meta_data_responsible,Verantwortliche/r Nutzer/in,Responsible user,\nresource_meta_data_saved_filter,Gespeicherter Filter,Saved filter,\nresource_meta_data_title,Titel,Title,\nresource_select_collection_cancel,Abbrechen,Cancel,\nresource_select_collection_clear,Löschen,Clear,\nresource_select_collection_has_more,Es gibt noch weitere Resultate. Bitte Suche verfeinern.,There are more results. Please refine the search.,\nresource_select_collection_hint_more,Es wurden noch weitere Sets gefunden. Bitte verfeinern Sie Ihre Suche.,Additional sets were found. Please refine your search.,\nresource_select_collection_new,Neue,New,\nresource_select_collection_non_assigned,Inhalt ist noch keinem Set zugewiesen.,Item is not yet related to any set.,\nresource_select_collection_non_found,Zu dieser Suche wurde kein Set gefunden.,No set was found.,\nresource_select_collection_save,Speichern,Save,\nresource_select_collection_search,Suchen,Search,\nresource_select_collection_search_placeholder,Suche,Search,\nresource_select_collection_title,Zu Set hinzufügen/entfernen,Add to/remove from set,\nresource_thumbnail_contents,Inhalte,Items,\nresource_thumbnail_sets,Sets,Sets,\nresources_box_batch_actions_addalltoclipboard_1,Alle ,Add all ,\nresources_box_batch_actions_addalltoclipboard_2, zur Stapelverarbeitung hinzufügen, to batch processing,\nresources_box_batch_actions_addselectedtoclipboard,Ausgewählte zur Stapelverarbeitung hinzufügen,Add selected to batch processing,\nresources_box_batch_actions_addtoset,Ausgewählte zu Set hinzufügen,Add selected to set,\nresources_box_batch_actions_clear_clipboard,Stapelverarbeitung leeren,Empty batch processing,\nresources_box_batch_actions_delete,Ausgewählte löschen,Delete selected,\nresources_box_batch_actions_edit,Metadaten von Medieneinträgen editieren,Edit metadata for media entries,\nresources_box_batch_actions_edit_all_collections,Metadaten von allen Sets editieren,Edit metadata of all sets at once,\nresources_box_batch_actions_edit_all_media_entries,Metadaten von allen Medieneinträgen editieren,Edit metadata of all media entries at once,\nresources_box_batch_actions_edit_sets,Metadaten von Sets editieren,Edit metadata of sets,\nresources_box_batch_actions_managepermissions,Berechtigungen von Medieneinträgen editieren,Edit permissions for media entries,\nresources_box_batch_actions_menu_title,Aktionen,Actions,\nresources_box_batch_actions_removefromclipboard,Ausgewählte aus der Stapelverarbeitung entfernen,Remove selected from batch processing,\nresources_box_batch_actions_removefromset,Aus Set entfernen,Remove from set,\nresources_box_batch_actions_sets_managepermissions,Berechtigungen von Sets editieren,Edit permissions for sets,\nresources_box_batch_actions_transfer_responsibility_entries,Verantwortlichkeit von Medieneinträgen übertragen,Transfer responsibility of media entries,\nresources_box_batch_actions_transfer_responsibility_sets,Verantwortlichkeit von Sets übertragen,Transfer responsibility of sets,\nresources_box_batch_actions_meta_data_batch_new,BETA:,BETA:,\nresources_box_batch_actions_meta_data_batch,Metadaten Stapelverarbeitung,Metadata Batch Processing,\nresources_box_deselect_all,Alle abwählen,Deselect all,\nresources_box_filter,Filtern,Filter,\nresources_box_new_search,Neue Suche,New search,\nresources_box_no_content,Keine Inhalte verfügbar,No items available.,\nresources_box_no_content_but_sets_1,Es gibt keine Medieneinträge für diese Suche. Es wurden aber ,There are no media entries related to this search process. But ,\nresources_box_no_content_but_sets_2,Sets,sets,\nresources_box_no_content_but_sets_3, gefunden., have been found.,\nresources_box_reset_filter,Filter zurücksetzen,Reset filter,\nresources_box_select_all,Alle auswählen,Select all,\nresources_box_selection_limit_ok,Ok,Ok,\nresources_box_selection_limit_page_1,\"Die Seite kann nicht selektiert werden, da sonst die maximale Anzahl von \",This page cannot be selected because otherwise the maximum number of,\nresources_box_selection_limit_page_2, ausgewählten Inhalten überstiegen würde., pages would be exceeded.,\nresources_box_selection_limit_single_1,\"Der Inhalt kann nicht selektiert werden, da sonst die maximale Anzahl von \",\"This item can not be selected, because otherwise the maximum number of\",\nresources_box_selection_limit_single_2, ausgewählten Inhalten überstiegen würde.,selected items would be exceeded.,\nresources_box_selection_remove_selection,Auswahl entfernen,Remove selection,\nresources_box_selection_select,Auswählen,Select,\nresources_box_title_count_post,Inhalte,Items,\nresources_box_batch_select_fields,Felder auswählen,Select fields,\nresources_box_batch_enter_metadata,Metadaten eingeben,Enter metadata,\nresources_box_batch_close,schliessen,close,\nresources_box_batch_mandatory_fields,Pflichtfelder:,Mandatory fields:,\nresources_box_batch_mandatory_field,Pflichtfeld,Mandatory field,\nresources_box_batch_mandatory_field_for_media_entry,Pflichtfeld für Medieneinträge,Mandatory field for media entries,\nresources_box_batch_field_only_for_entries_and_sets,Dieser Wert wird auf Medieneinträge und auf Sets angewendet,This value is applied on media entries and on sets,\nresources_box_batch_field_only_for_sets,Dieser Wert wird nur auf Sets angewendet,This value is applied only on sets,\nresources_box_batch_field_only_for_entries,Dieser Wert wird nur auf Medieneinträge angewendet,This value is applied only on media entries,\nresources_box_batch_load_all_pages,Es werden alle Inhalte geladen...,Loading all content...,\nresources_box_batch_apply_on_all_1,Auf alle ,Apply on all ,\nresources_box_batch_apply_on_all_2, Inhalte anwenden, entries,\nresources_box_batch_apply_on_selected_1,Auf ,Apply on ,\nresources_box_batch_apply_on_selected_2, Inhalte anwenden, entries,\nresources_box_batch_all_content,Alle Inhalte,All content,\nresources_box_batch_selected_content,Ausgewählte Inhalte,Selected content,\nresources_box_batch_stats_total,Total:,Total:,\nresources_box_batch_stats_where_loaded,davon geladen:,loaded:,\nresources_box_batch_stats_where_editable,davon editierbar:,editable:,\nresources_box_batch_stats_where_selected,selektiert:,selected:,\nresources_box_batch_stats_entries,Medieneinträge,Media Entries,\nresources_box_batch_stats_collections,Sets,Sets,\nresources_box_batch_fill_in_all_fields_hint,Bitte füllen Sie alle Felder aus oder schliessen Sie Felder ohne Eingaben. Sonst können Sie ihre Eingaben nicht speichern.,Please fill in all fields or remove the ones without data. Otherwise you cannot save the data.,\nresources_box_batch_please_wait_and_done_leave,Bitte warten und die Ansicht nicht verlassen.,Please wait and do not leave this page.,\nresources_box_batch_loading_stats_total,\" total, \",\" total, \",\nresources_box_batch_loading_stats_applying,\" am speichern, \",\" are saving, \",\nresources_box_batch_loading_stats_pending,\" am warten, \",\" are waiting, \",\nresources_box_batch_loading_stats_done,\" sind fertig\",\" are done\",\nresources_box_batch_loading_stats_failed,\" fehlgeschlagen\",\" failed\",\nresources_box_batch_cancel_waiting,wartende abbrechen,cancel waiting,\nresources_box_batch_processing_successful, erfolgreich verarbeitet, successfully processed,\nresources_box_batch_ignore_failures,Fehler ignorieren,Ignore failures,\nresources_box_batch_status_applying,am speichern,applying,\nresources_box_batch_status_done,fertig,done,\nresources_box_batch_status_waiting,am warten,waiting,\nresources_box_batch_status_cancelled,abgebrochen,cancelled,\nresources_box_batch_status_apply,anwenden,apply,\nresources_box_batch_status_retry,erneut,retry,\nresources_box_batch_add_to_existing,zu bestehenden hinzufügen,add to existing,\nresources_box_batch_replace_existing,bestehende ersetzen,replace existing,\nresources_box_batch_entry_contexts,Kontexte Medieneinträge,Contexts Media Entries,\nresources_box_batch_set_contexts,Kontexte Sets,Contexts Sets,\nresources_box_batch_all_data,Alle Daten,All data,\nresources_box_batch_search_placeholder,Suchen...,Search...,\nresources_box_batch_person_widget_firstname,Vorname,Firstname,\nresources_box_batch_person_widget_lastname,Nachname,Lastname,\nresources_box_batch_person_widget_pseudonym,Pseudonym,Pseudonym,\nresources_box_batch_person_widget_add_person,Person einfügen,Add person,\nresources_box_batch_person_widget_name,Name,Name,\nresources_box_batch_person_widget_add_group,Arbeitsgruppe einfügen,Add group,\nresources_box_batch_person_widget_tab_person,Person,Person,\nresources_box_batch_person_widget_tab_group,Gruppe,Group,\nresources_section_show_all,Alle anzeigen →,Show all →,\nsearch_btn_search,Suchen,Search,\nsearch_filename,Filename,File name,\nsearch_full_text,Volltext,Full text,\nsection_title_collections,Meine Sets,My sets,\nsection_title_groups,Meine Arbeitsgruppen,My work groups,\nsection_title_keywords,Meine Schlagworte,My keywords,\nsection_title_media_entries,Meine Medieneinträge,My media entries,\nsection_title_tokens,Meine Tokens,My tokens,\nshare_back_to_collection,Zurück zum Set,Back to the set,\nshare_back_to_media_entry,Zurück zum Medieneintrag,Back to the media entry,\nshare_close,Schliessen,Close,\nshare_custom_url_hint_collection,\"Wenn Sie eine sprechende Adresse nutzen oder unter einem Link wechselnde Sets teilen möchten (z.B. .../roberts_neueste_arbeiten), dann verwenden Sie folgende URL.\",\"If you are using comprehensible addresses or if you want to share alternating sets by means of one internet link (such as …/newest_works_of_robert), use the following URL.\",\nshare_custom_url_hint_media_entry,\"Wenn Sie eine sprechende Adresse nutzen oder unter einem Link wechselnde Medieneinträge teilen möchten (z.B. .../roberts_neueste_arbeiten), dann verwenden Sie folgende URL.\",\"If you are using comprehensible addresses or if you want to share alternating media entries by means of one internet link (such as …/newest_work_of_robert), use the following URL.\",\nshare_custom_url_none_available,Es ist keine sprechende Adresse angelegt.,No comprehensible address has been defined.,\nshare_custom_url_subtitle,Sprechende Adresse teilen,Share comprehensible address,\nshare_title_collection,Set teilen,Share set,\nshare_title_media_entry,Medieneintrag teilen,Share media entry,\nshare_uuid_url_hint_collection,\"Wenn Sie explizit dieses Set teilen möchten, nutzen Sie folgende URL.\",If you explicitly want to share this set use the following address.,\nshare_uuid_url_hint_exporter,Auch für den Madek-Exporter kopieren Sie diese URL.,Copy this address for the Madek Exporter as well.,\nshare_uuid_url_hint_media_entry,\"Wenn Sie explizit diesen Medieneintrag teilen möchten, nutzen Sie folgende URL.\",\"If you explicitly want to share this media entry, use the following address.\",\nshare_uuid_url_subtitle,URL teilen,Share URL,\nsitemap_activities,Aktivitäten,Activities,\nsitemap_api,API,API,\nsitemap_clipboard,Stapelverarbeitung,Batch processing,\nsitemap_collections,Sets,Sets,\nsitemap_entries,Medieneinträge,Media entries,\nsitemap_explore,Erkunden,Explore,\nsitemap_filter_sets,Filtersets,Filter sets,\nsitemap_help,Hilfe,Support,\nsitemap_media_entries,Medieneinträge,Media entries,\nsitemap_metakey,Metakey,Metakey,\nsitemap_metakey_id,Metakey-ID,Metakey ID,\nsitemap_my_archive,Mein Archiv,My archive,\nsitemap_my_clipboard,Stapelverarbeitung,Batch processing,\nsitemap_my_content_collections,Sets,Sets,\nsitemap_my_content_media_entries,Medieneinträge,Media entries,\nsitemap_my_entrusted_collections,Mir anvertraute Sets,My entrusted sets,\nsitemap_my_entrusted_filter_sets,Mir anvertraute Filtersets,My entrusted filter sets,\nsitemap_my_entrusted_media_entries,Mir anvertraute Medieneinträge,My entrusted media entries,\nsitemap_my_favorite_collections,Favoriten-Sets,Favorite sets,\nsitemap_my_favorite_media_entries,Favoriten-Medieneinträge,Favorite media entries,\nsitemap_my_groups,Arbeitsgruppen,Work groups,\nsitemap_my_latest_imports,Letzte Importe,Last imports,\nsitemap_my_unpublished,Unvollständige Medieneinträge,Incomplete media entries,\nsitemap_my_used_keywords,Schlagworte,Keywords,\nsitemap_search,Suche,Search,\nsitemap_tokens,Tokens,Tokens,\nsitemap_vocabularies,Vokabulare,Vocabularies,\nsitemap_vocabulary,Vokabular,Vocabulary,\ntransfer_responsibility_batch_success_collection_1,Sie haben für ,You have successfully transferred responsibility for ,\ntransfer_responsibility_batch_success_collection_1a, Set , set ,\ntransfer_responsibility_batch_success_collection_1b, Sets , sets ,\ntransfer_responsibility_batch_success_collection_2, die Verantwortlichkeit erfolgreich übertragen.,0,\ntransfer_responsibility_batch_success_media_entry_1,Sie haben für ,You have successfully transferred responsibility for ,\ntransfer_responsibility_batch_success_media_entry_1a, Medieneintrag , media entry,\ntransfer_responsibility_batch_success_media_entry_1b, Medieneinträge, media entries,\ntransfer_responsibility_batch_success_media_entry_2, die Verantwortlichkeit erfolgreich übertragen.,0,\ntransfer_responsibility_cancel,Abbrechen,Cancel,\ntransfer_responsibility_person_will_receive_1,\"Sie, \",\"You, \",\ntransfer_responsibility_person_will_receive_2,\", behalten folgende Berechtigungen:\",\", are retaining the following permissions:\",\ntransfer_responsibility_submit,Übertragen,Transfer,\ntransfer_responsibility_success_collection,Sie haben die Verantwortlichkeit für das Set erfolgreich übertragen.,You have successfully transferred responsibility for the set.,\ntransfer_responsibility_success_media_entry,Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich übertragen.,You have successfully transferred responsibility for the media entry.,\ntransfer_responsibility_title,Verantwortlichkeit auf folgende/n Nutzer/in übertragen,Transfer responsibility to the following user,\nusage_data_created_at,Erstellt am,Created on,\nusage_data_import_at,Importiert am,Imported on,\nusage_data_import_by,Importiert durch,Imported by,\nusage_data_last_changes_empty,Es wurden noch keine Änderungen festgehalten.,No changes have been recorded yet.,\nusage_data_last_changes_title,Letzte Änderungen der Metadaten,Last change of metadata,\nusage_data_relations_children,Set enthält,Set is related to,\nusage_data_relations_parents,Übergeordnete Sets,Parent sets,\nusage_data_relations_title,Zusammenhänge,Relations,\nusage_data_responsibility_title,Verantwortlichkeit und Aktivitäten,Responsibility and activities,\nusage_data_responsible,Verantwortliche/r Nutzer/in,Responsible user,\nusage_terms_accept_btn,Nutzungsbedingungen akzeptieren,Accept usage terms,\nusage_terms_reject_btn,Ablehnen,Reject usage terms,\nuser_menu_admin_mode_toogle_off,Admin-Modus beenden,Stop admin mode,\nuser_menu_admin_mode_toogle_on,In Admin-Modus wechseln,Switch to admin mode,\nuser_menu_admin_ui,Admin-Interface öffnen,Open admin interface,\nuser_menu_login_btn,Anmelden,Log in,\nuser_menu_logout_btn,Abmelden,Log out,\nuser_menu_my_content_collections,Meine Sets,My sets,\nuser_menu_my_content_media_entries,Meine Medieneinträge,My media entries,\nuser_menu_my_favorite_collections,Favoriten - Sets,Favorites - sets,\nuser_menu_my_favorite_media_entries,Favoriten - Medieneinträge,Favorites - media entries,\nuser_menu_my_groups,Meine Arbeitsgruppen,My work groups,\nuser_menu_upload,Medien importieren,Upload media,\nuser_name_deactivated,[Gelöschter User],[Deleted user],\nvocabularies_all,Alle Vokabulare,All vocabularies,\nvocabularies_contents_hint_1,Alle Inhalte mit Metadaten des Vokabulars ,All items with metadata related to the vocabulary,\nvocabularies_contents_hint_2,\". Sie sehen nur Inhalte, für die Sie berechtigt sind.\",. You can see only items you have permissions for.,\nvocabularies_keywords_hint_1,Alle im Vokabular ,All keywords contained in the vocabulary ,\nvocabularies_keywords_hint_2, enthaltenen Schlagworte und die dazugehörenden Metadatenfelder., and related meta data fields.,\nvocabularies_no_description,(Keine Beschreibung),(No description available),\nvocabularies_no_keywords,Keine Schlagworte vorhanden.,No keywords available.,\nvocabularies_no_people,Keine Personen vorhanden.,Keine Personen vorhanden.,\nvocabularies_people_hint_1,Alle im Vokabular ,Alle im Vokabular ,\nvocabularies_people_hint_2, enthaltenen Personen und die dazugehörenden Metadatenfelder., enthaltenen Personen und die dazugehörenden Metadatenfelder.,\nvocabularies_tabs_contents,Inhalte,Items,\nvocabularies_tabs_keywords,Schlagworte,Keywords,\nvocabularies_tabs_people,Personen,People,\nvocabularies_tabs_permissions,Berechtigungen,Permissions,\nvocabularies_tabs_vocabulary,Vokabular,Vocabulary,\nvocabulary_permissions_hint1,\"Für dieses Vokabular können die Berechtigungen \"\"Betrachten\"\" und \"\"Anwenden\"\" vergeben werden. Wenn Sie Mitglied einer berechtigten Arbeitsgruppe sind, können Sie weitere Personen zu dieser hinzufügen oder daraus entfernen. Bitte überlegen Sie Änderungen gut, da über Arbeitsgruppen auch weitere Berechtigungen gesteuert werden.\",\"This vocabulary can be managed with the permissions \"\"View\"\" and \"\"Execute\"\". If you are member of a work group which owns permissions, you are able to add or remove further users. Think carefully before you make changes to work groups as this may affect other permissions.\",\nvocabulary_permissions_hint2,\"Weitere Berechtigungen für Personen, Arbeitsgruppen, API-Applikationen oder die Öffentlichkeit werden durch den Administrator vergeben – bitte wenden Sie sich an den Support.\",\"Further permissions for persons, work groups, API clients or public usage are granted by the administrator. Please contact  support.\",\nvocabulary_term_info_contents,Inhalte,Items,\nvocabulary_term_info_description,Beschreibung,Description,\nvocabulary_term_info_rdfclass,Typ,Type,\nvocabulary_term_info_term,Begriff,Term,\nvocabulary_term_info_url,URL,URL,\nworkgroup_link_to_contents_text,Inhalte,Items,\nworkgroup_link_to_contents_title,Inhalte dieser Arbeitsgruppe anzeigen,Show items of this work group,\nworkgroup_members_table_is_member,Mitglied?,Member?,\nworkgroup_members_table_login,Login,Login,\nworkgroup_members_table_title,Mitglieder,Members,\n";
+
+// parses CSV and returns list like: [{lang: 'en', mapping: {key: 'value'}}, …]
+var translationsList = parseTranslationsFromCSV(translationsCSVText);
+var translations = f.zipObject(f.map(translationsList, function (item) {
+  return [item.lang, item.mapping];
+}));
+
+module.exports = function I18nTranslate(marker) {
+  // get language from (global) app config
+  var LANG = APP_CONFIG.userLanguage;
+
+  if (!f.includes(f.keys(translations), LANG)) {
+    throw new Error('Unknown language \'' + LANG + '\'!');
+  }
+
+  var s = f.get(translations, [LANG, marker]);
+
+  return f.isString(s) ? s : '⟨' + marker + '⟩';
+};
+
+},{"./parse-translations-from-csv":3,"active-lodash":24,"path":285}],3:[function(require,module,exports){
+'use strict';
+
+// reads CSV and returns list like: [{lang: 'en', mapping: {key: 'value'}}, …]
+
+// NOTE: this works with browserify and the 'brfs' transform
+//       - the CSV(!) will be inlined as a simple string.
+
+var f = require('active-lodash');
+var CSV = require('babyparse');
+
+var ignoreColumnsDefault = ['comment'];
+
+function readTranslationsFromCSV(rawCsvText, ignoreColumns) {
+  ignoreColumns = f.presence(ignoreColumns) || ignoreColumnsDefault;
+
+  if (!f.present(rawCsvText)) {
+    throw new Error('No translations found!');
+  }
+  var parsed = CSV.parse(rawCsvText);
+  if (f.present(parsed.errors)) {
+    throw new Error(parsed.errors);
+  }
+
+  // first line is header, rest are rows
+  // first column are the keys, rest are langs
+  var header = parsed.data[0];
+  var rows = parsed.data.slice(1);
+  var languages = header.slice(1);
+  var keys = f.map(rows, '0');
+
+  return f(languages).map(function (lang, index) {
+    if (f.includes(ignoreColumns, lang)) {
+      return null;
+    }
+    var langRows = f.map(rows, index + 1);
+    return { lang: lang, mapping: f.zipObject(f.zip(keys, langRows)) };
+  }).compact().value();
+}
+
+module.exports = readTranslationsFromCSV;
+
+},{"active-lodash":24,"babyparse":49}],4:[function(require,module,exports){
 var getRailsCSRFToken;
 
 module.exports = getRailsCSRFToken = function() {
@@ -50,7 +125,7 @@ module.exports = getRailsCSRFToken = function() {
 };
 
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -64,7 +139,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":15}],4:[function(require,module,exports){
+},{"./shared/app-resource.coffee":17}],6:[function(require,module,exports){
 module.exports = {
   props: {
     deleted: {
@@ -86,7 +161,7 @@ module.exports = {
 };
 
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var f;
 
 f = require('active-lodash');
@@ -116,7 +191,7 @@ module.exports = {
 };
 
 
-},{"active-lodash":22}],6:[function(require,module,exports){
+},{"active-lodash":24}],8:[function(require,module,exports){
 var buildUrl, f, parseUrl;
 
 f = require('active-lodash');
@@ -179,7 +254,7 @@ module.exports = {
 };
 
 
-},{"active-lodash":22,"url":285}],7:[function(require,module,exports){
+},{"active-lodash":24,"url":291}],9:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -193,8 +268,8 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":15}],8:[function(require,module,exports){
-var AppResource, BrowserFile, Deletable, Favoritable, MetaData, Permissions, Person, ResourceWithRelations, app, f, getMediaType;
+},{"./shared/app-resource.coffee":17}],10:[function(require,module,exports){
+var AppResource, BrowserFile, Deletable, Favoritable, MetaData, Permissions, Person, ResourceWithRelations, app, f, getMediaType, t;
 
 f = require('active-lodash');
 
@@ -207,6 +282,8 @@ AppResource = require('./shared/app-resource.coffee');
 Permissions = require('./media-entry/permissions.coffee');
 
 Person = require('./person.coffee');
+
+t = require('../lib/i18n-translate');
 
 getMediaType = require('./shared/get-media-type.js');
 
@@ -284,13 +361,13 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
         state = (function() {
           switch (false) {
             case !this.uploading.error:
-              return 'Error!';
+              return t('media_entry_media_import_box_upload_status_error');
             case !!this.uploading.progress:
-              return 'Waiting…';
+              return t('media_entry_media_import_box_upload_status_waiting');
             case !(this.uploading.progress < 100):
-              return "Uploading… " + (this.uploading.progress.toFixed(2)) + "%";
+              return t('media_entry_media_import_box_upload_status_progress_a') + ("" + (this.uploading.progress.toFixed(2))) + t('media_entry_media_import_box_upload_status_progress_b');
             default:
-              return 'Processing…';
+              return t('media_entry_media_import_box_upload_status_processing');
           }
         }).call(this);
         return [filename, state];
@@ -298,7 +375,7 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
     }
   },
   upload: function(callback) {
-    var formData, req;
+    var formData, handleOnProgress, req;
     if (!(this.uploading.file instanceof BrowserFile)) {
       throw new Error('Model: MediaEntry: #upload called but no file!');
     }
@@ -307,10 +384,25 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
     this.merge('uploading', {
       started: (new Date()).getTime()
     });
-    req = this._runRequest({
+    handleOnProgress = (function(_this) {
+      return function(arg) {
+        var loaded, ref, total;
+        ref = arg != null ? arg : event, loaded = ref.loaded, total = ref.total;
+        if (!f.all([loaded, total], f.isNumber)) {
+          return console.error('Math error!');
+        }
+        return _this.merge('uploading', {
+          progress: loaded / total * 100
+        });
+      };
+    })(this);
+    return req = this._runRequest({
       method: 'POST',
       url: app.config.relativeUrlRoot + '/entries/',
-      body: formData
+      body: formData,
+      beforeSend: function(xhrObject) {
+        return xhrObject.upload.onprogress = handleOnProgress;
+      }
     }, (function(_this) {
       return function(err, res) {
         var attrs, error;
@@ -335,25 +427,11 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
         }
       };
     })(this));
-    if (req.upload) {
-      return req.upload.onprogress = (function(_this) {
-        return function(arg) {
-          var loaded, ref, total;
-          ref = arg != null ? arg : event, loaded = ref.loaded, total = ref.total;
-          if (!f.all([loaded, total], f.isNumber)) {
-            return console.error('Math error!');
-          }
-          return _this.merge('uploading', {
-            progress: loaded / total * 100
-          });
-        };
-      })(this);
-    }
   }
 });
 
 
-},{"./concerns/resource-deletable.coffee":4,"./concerns/resource-favoritable.coffee":5,"./concerns/resource-with-relations.coffee":6,"./media-entry/permissions.coffee":9,"./meta-data.coffee":10,"./person.coffee":13,"./shared/app-resource.coffee":15,"./shared/get-media-type.js":16,"active-lodash":22,"ampersand-app":26,"global/window":83}],9:[function(require,module,exports){
+},{"../lib/i18n-translate":2,"./concerns/resource-deletable.coffee":6,"./concerns/resource-favoritable.coffee":7,"./concerns/resource-with-relations.coffee":8,"./media-entry/permissions.coffee":11,"./meta-data.coffee":12,"./person.coffee":15,"./shared/app-resource.coffee":17,"./shared/get-media-type.js":18,"active-lodash":24,"ampersand-app":28,"global/window":88}],11:[function(require,module,exports){
 var ApiClient, AppResource, Collection, Group, MediaEntryApiClientPermissions, MediaEntryGroupPermissions, MediaEntryPublicPermission, MediaEntryUserPermissions, ResourcePermissions, User;
 
 Collection = require('ampersand-rest-collection');
@@ -438,7 +516,7 @@ module.exports = ResourcePermissions.extend({
 });
 
 
-},{"../api-client.coffee":3,"../group.coffee":7,"../shared/app-resource.coffee":15,"../shared/resource-permissions.coffee":18,"../user.coffee":19,"ampersand-rest-collection":35}],10:[function(require,module,exports){
+},{"../api-client.coffee":5,"../group.coffee":9,"../shared/app-resource.coffee":17,"../shared/resource-permissions.coffee":20,"../user.coffee":21,"ampersand-rest-collection":37}],12:[function(require,module,exports){
 var AppCollection, MetaDatum, f, serializeForSave, subtypes;
 
 f = require('active-lodash');
@@ -484,7 +562,7 @@ serializeForSave = function(list) {
 };
 
 
-},{"./meta-datum.coffee":11,"./shared/app-collection.coffee":14,"active-lodash":22}],11:[function(require,module,exports){
+},{"./meta-datum.coffee":13,"./shared/app-collection.coffee":16,"active-lodash":24}],13:[function(require,module,exports){
 var AppResource, MetaDatum, MetaKey;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -529,7 +607,7 @@ module.exports = {
 };
 
 
-},{"./meta-key.coffee":12,"./shared/app-resource.coffee":15}],12:[function(require,module,exports){
+},{"./meta-key.coffee":14,"./shared/app-resource.coffee":17}],14:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -543,7 +621,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":15}],13:[function(require,module,exports){
+},{"./shared/app-resource.coffee":17}],15:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -556,7 +634,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./shared/app-resource.coffee":15}],14:[function(require,module,exports){
+},{"./shared/app-resource.coffee":17}],16:[function(require,module,exports){
 var Collection, RailsResource, f;
 
 f = require('active-lodash');
@@ -575,7 +653,7 @@ module.exports = Collection.extend(RailsResource, {
 });
 
 
-},{"./rails-resource-mixin.coffee":17,"active-lodash":22,"ampersand-rest-collection":35}],15:[function(require,module,exports){
+},{"./rails-resource-mixin.coffee":19,"active-lodash":24,"ampersand-rest-collection":37}],17:[function(require,module,exports){
 var Model, RailsResource, customDataTypes, f, getRailsCSRFToken, xhr;
 
 Model = require('ampersand-model');
@@ -634,6 +712,7 @@ module.exports = Model.extend(RailsResource, {
       method: req.method,
       url: req.url,
       body: req.body,
+      beforeSend: req.beforeSend,
       headers: {
         'Accept': 'application/json',
         'X-CSRF-Token': getRailsCSRFToken()
@@ -651,7 +730,7 @@ module.exports = Model.extend(RailsResource, {
 });
 
 
-},{"../../lib/rails-csrf-token.coffee":2,"./rails-resource-mixin.coffee":17,"active-lodash":22,"ampersand-model":34,"xhr":287}],16:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":4,"./rails-resource-mixin.coffee":19,"active-lodash":24,"ampersand-model":36,"xhr":293}],18:[function(require,module,exports){
 'use strict';
 
 // get the mediaType from the contentType
@@ -682,7 +761,7 @@ module.exports = function mediaTypeFromContentType(contentType) {
   return 'other';
 };
 
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 var getRailsCSRFToken;
 
 getRailsCSRFToken = require('../../lib/rails-csrf-token.coffee');
@@ -697,7 +776,7 @@ module.exports = {
 };
 
 
-},{"../../lib/rails-csrf-token.coffee":2}],18:[function(require,module,exports){
+},{"../../lib/rails-csrf-token.coffee":4}],20:[function(require,module,exports){
 var AppResource;
 
 AppResource = require('./app-resource.coffee');
@@ -726,7 +805,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./app-resource.coffee":15}],19:[function(require,module,exports){
+},{"./app-resource.coffee":17}],21:[function(require,module,exports){
 var AppResource, Person;
 
 AppResource = require('./shared/app-resource.coffee');
@@ -744,7 +823,7 @@ module.exports = AppResource.extend({
 });
 
 
-},{"./person.coffee":13,"./shared/app-resource.coffee":15}],20:[function(require,module,exports){
+},{"./person.coffee":15,"./shared/app-resource.coffee":17}],22:[function(require,module,exports){
 var MediaEntry, f;
 
 f = require('active-lodash');
@@ -779,7 +858,7 @@ module.exports = function(data, callback) {
 };
 
 
-},{"../models/media-entry.coffee":8,"active-lodash":22}],21:[function(require,module,exports){
+},{"../models/media-entry.coffee":10,"active-lodash":24}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -809,7 +888,7 @@ exports['default'] = function (f) {
 };
 
 module.exports = exports['default'];
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -837,7 +916,7 @@ exports['default'] = (function () {
 })();
 
 module.exports = exports['default'];
-},{"../lodash.custom":25,"./additions":21,"./overrides":24,"babel-runtime/helpers/interop-require-default":45}],23:[function(require,module,exports){
+},{"../lodash.custom":27,"./additions":23,"./overrides":26,"babel-runtime/helpers/interop-require-default":47}],25:[function(require,module,exports){
 "use strict";
 
 var _Object$create = require("babel-runtime/core-js/object/create")["default"];
@@ -853,7 +932,7 @@ exports["default"] = function (func) {
 };
 
 module.exports = exports["default"];
-},{"babel-runtime/core-js/object/create":44}],24:[function(require,module,exports){
+},{"babel-runtime/core-js/object/create":46}],26:[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -885,7 +964,7 @@ exports['default'] = function (f) {
 };
 
 module.exports = exports['default'];
-},{"./lib/callWithNewObject":23,"babel-runtime/helpers/interop-require-default":45}],25:[function(require,module,exports){
+},{"./lib/callWithNewObject":25,"babel-runtime/helpers/interop-require-default":47}],27:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -12903,7 +12982,7 @@ module.exports = exports['default'];
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-app"] = window.ampersand["ampersand-app"] || [];  window.ampersand["ampersand-app"].push("2.0.0");}
 var Events = require('ampersand-events');
 var toArray = require('lodash/toArray');
@@ -12939,7 +13018,7 @@ Events.createEmitter(app);
 // export our singleton
 module.exports = app;
 
-},{"ampersand-events":27,"lodash/assign":250,"lodash/toArray":271}],27:[function(require,module,exports){
+},{"ampersand-events":29,"lodash/assign":255,"lodash/toArray":276}],29:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-events"] = window.ampersand["ampersand-events"] || [];  window.ampersand["ampersand-events"].push("2.0.2");}
 var runOnce = require('lodash/once');
 var keys = require('lodash/keys');
@@ -13064,7 +13143,7 @@ Events.emit = Events.trigger;
 
 module.exports = Events;
 
-},{"./libs/utils":28,"lodash/assign":250,"lodash/forEach":254,"lodash/isEmpty":260,"lodash/keys":268,"lodash/once":269}],28:[function(require,module,exports){
+},{"./libs/utils":30,"lodash/assign":255,"lodash/forEach":259,"lodash/isEmpty":265,"lodash/keys":273,"lodash/once":274}],30:[function(require,module,exports){
 var uniqueId = require('lodash/uniqueId');
 var eventSplitter = /\s+/;
 
@@ -13132,7 +13211,7 @@ exports.createListenMethod = function createListenMethod(implementation) {
     };
 };
 
-},{"lodash/uniqueId":276}],29:[function(require,module,exports){
+},{"lodash/uniqueId":281}],31:[function(require,module,exports){
 var assign = require('lodash.assign');
 
 /// Following code is largely pasted from Backbone.js
@@ -13181,7 +13260,7 @@ var extend = function(protoProps) {
 // Expose the extend function
 module.exports = extend;
 
-},{"lodash.assign":133}],30:[function(require,module,exports){
+},{"lodash.assign":138}],32:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-collection-lodash-mixin"] = window.ampersand["ampersand-collection-lodash-mixin"] || [];  window.ampersand["ampersand-collection-lodash-mixin"].push("2.0.1");}
 var isFunction = require('lodash.isfunction');
 var _ = {
@@ -13295,7 +13374,7 @@ mixins.size = function () {
 
 module.exports = mixins;
 
-},{"lodash.countby":137,"lodash.difference":139,"lodash.drop":140,"lodash.every":142,"lodash.filter":143,"lodash.find":144,"lodash.foreach":145,"lodash.groupby":146,"lodash.includes":149,"lodash.indexby":150,"lodash.indexof":151,"lodash.initial":152,"lodash.invoke":153,"lodash.isempty":157,"lodash.isfunction":159,"lodash.lastindexof":167,"lodash.map":169,"lodash.max":170,"lodash.min":171,"lodash.partition":175,"lodash.reduce":176,"lodash.reduceright":177,"lodash.reject":178,"lodash.rest":179,"lodash.sample":182,"lodash.shuffle":183,"lodash.some":184,"lodash.sortby":185,"lodash.take":186,"lodash.without":190}],31:[function(require,module,exports){
+},{"lodash.countby":142,"lodash.difference":144,"lodash.drop":145,"lodash.every":147,"lodash.filter":148,"lodash.find":149,"lodash.foreach":150,"lodash.groupby":151,"lodash.includes":154,"lodash.indexby":155,"lodash.indexof":156,"lodash.initial":157,"lodash.invoke":158,"lodash.isempty":162,"lodash.isfunction":164,"lodash.lastindexof":172,"lodash.map":174,"lodash.max":175,"lodash.min":176,"lodash.partition":180,"lodash.reduce":181,"lodash.reduceright":182,"lodash.reject":183,"lodash.rest":184,"lodash.sample":187,"lodash.shuffle":188,"lodash.some":189,"lodash.sortby":190,"lodash.take":191,"lodash.without":195}],33:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-collection-rest-mixin"] = window.ampersand["ampersand-collection-rest-mixin"] || [];  window.ampersand["ampersand-collection-rest-mixin"].push("5.0.0");}
 var sync = require('ampersand-sync');
 var assign = require('lodash.assign');
@@ -13408,7 +13487,7 @@ module.exports = {
     }
 };
 
-},{"ampersand-sync":37,"lodash.assign":133}],32:[function(require,module,exports){
+},{"ampersand-sync":39,"lodash.assign":138}],34:[function(require,module,exports){
 var AmpersandEvents = require('ampersand-events');
 var classExtend = require('ampersand-class-extend');
 var isArray = require('lodash.isarray');
@@ -13788,7 +13867,7 @@ Collection.extend = classExtend;
 
 module.exports = Collection;
 
-},{"ampersand-class-extend":29,"ampersand-events":33,"lodash.assign":133,"lodash.bind":135,"lodash.isarray":155}],33:[function(require,module,exports){
+},{"ampersand-class-extend":31,"ampersand-events":35,"lodash.assign":138,"lodash.bind":140,"lodash.isarray":160}],35:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-events"] = window.ampersand["ampersand-events"] || [];  window.ampersand["ampersand-events"].push("1.1.1");}
 var runOnce = require('lodash.once');
 var uniqueId = require('lodash.uniqueid');
@@ -13971,7 +14050,7 @@ Events.listenToAndRun = function (obj, name, callback) {
 
 module.exports = Events;
 
-},{"lodash.assign":133,"lodash.bind":135,"lodash.foreach":145,"lodash.isempty":157,"lodash.keys":165,"lodash.once":173,"lodash.uniqueid":189}],34:[function(require,module,exports){
+},{"lodash.assign":138,"lodash.bind":140,"lodash.foreach":150,"lodash.isempty":162,"lodash.keys":170,"lodash.once":178,"lodash.uniqueid":194}],36:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-model"] = window.ampersand["ampersand-model"] || [];  window.ampersand["ampersand-model"].push("6.0.2");}
 var State = require('ampersand-state');
 var sync = require('ampersand-sync');
@@ -14115,7 +14194,7 @@ var Model = State.extend({
 
 module.exports = Model;
 
-},{"ampersand-state":36,"ampersand-sync":37,"lodash.assign":133,"lodash.clone":136,"lodash.isobject":161,"lodash.result":181}],35:[function(require,module,exports){
+},{"ampersand-state":38,"ampersand-sync":39,"lodash.assign":138,"lodash.clone":141,"lodash.isobject":166,"lodash.result":186}],37:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-rest-collection"] = window.ampersand["ampersand-rest-collection"] || [];  window.ampersand["ampersand-rest-collection"].push("5.0.0");}
 var Collection = require('ampersand-collection');
 var lodashMixin = require('ampersand-collection-lodash-mixin');
@@ -14124,7 +14203,7 @@ var restMixins = require('ampersand-collection-rest-mixin');
 
 module.exports = Collection.extend(lodashMixin, restMixins);
 
-},{"ampersand-collection":32,"ampersand-collection-lodash-mixin":30,"ampersand-collection-rest-mixin":31}],36:[function(require,module,exports){
+},{"ampersand-collection":34,"ampersand-collection-lodash-mixin":32,"ampersand-collection-rest-mixin":33}],38:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-state"] = window.ampersand["ampersand-state"] || [];  window.ampersand["ampersand-state"].push("4.6.0");}
 var uniqueId = require('lodash.uniqueid');
 var assign = require('lodash.assign');
@@ -14936,11 +15015,11 @@ Base.extend = extend;
 // Our main exports
 module.exports = Base;
 
-},{"ampersand-events":33,"array-next":43,"key-tree-store":86,"lodash.assign":133,"lodash.bind":135,"lodash.clone":136,"lodash.defaults":138,"lodash.escape":141,"lodash.foreach":145,"lodash.has":148,"lodash.includes":149,"lodash.isarray":155,"lodash.isdate":156,"lodash.isempty":157,"lodash.isequal":158,"lodash.isfunction":159,"lodash.isnull":160,"lodash.isobject":161,"lodash.isstring":162,"lodash.isundefined":164,"lodash.keys":165,"lodash.omit":172,"lodash.result":181,"lodash.union":188,"lodash.uniqueid":189}],37:[function(require,module,exports){
+},{"ampersand-events":35,"array-next":45,"key-tree-store":91,"lodash.assign":138,"lodash.bind":140,"lodash.clone":141,"lodash.defaults":143,"lodash.escape":146,"lodash.foreach":150,"lodash.has":153,"lodash.includes":154,"lodash.isarray":160,"lodash.isdate":161,"lodash.isempty":162,"lodash.isequal":163,"lodash.isfunction":164,"lodash.isnull":165,"lodash.isobject":166,"lodash.isstring":167,"lodash.isundefined":169,"lodash.keys":170,"lodash.omit":177,"lodash.result":186,"lodash.union":193,"lodash.uniqueid":194}],39:[function(require,module,exports){
 var xhr = require('xhr');
 module.exports = require('./core')(xhr);
 
-},{"./core":38,"xhr":287}],38:[function(require,module,exports){
+},{"./core":40,"xhr":293}],40:[function(require,module,exports){
 ;if (typeof window !== "undefined") {  window.ampersand = window.ampersand || {};  window.ampersand["ampersand-sync"] = window.ampersand["ampersand-sync"] || [];  window.ampersand["ampersand-sync"].push("4.0.2");}
 var result = require('lodash.result');
 var defaults = require('lodash.defaults');
@@ -15092,7 +15171,7 @@ module.exports = function (xhr) {
   };
 };
 
-},{"lodash.assign":133,"lodash.defaults":138,"lodash.includes":149,"lodash.result":181,"media-type":278,"qs":39}],39:[function(require,module,exports){
+},{"lodash.assign":138,"lodash.defaults":143,"lodash.includes":154,"lodash.result":186,"media-type":283,"qs":41}],41:[function(require,module,exports){
 // Load modules
 
 var Stringify = require('./stringify');
@@ -15109,7 +15188,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":40,"./stringify":41}],40:[function(require,module,exports){
+},{"./parse":42,"./stringify":43}],42:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -15297,7 +15376,7 @@ module.exports = function (str, options) {
     return Utils.compact(obj);
 };
 
-},{"./utils":42}],41:[function(require,module,exports){
+},{"./utils":44}],43:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -15420,7 +15499,7 @@ module.exports = function (obj, options) {
     return keys.join(delimiter);
 };
 
-},{"./utils":42}],42:[function(require,module,exports){
+},{"./utils":44}],44:[function(require,module,exports){
 // Load modules
 
 
@@ -15612,7 +15691,7 @@ exports.isBuffer = function (obj) {
               obj.constructor.isBuffer(obj));
 };
 
-},{}],43:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = function arrayNext(array, currentItem) {
     var len = array.length;
     var newIndex = array.indexOf(currentItem) + 1;
@@ -15620,11 +15699,11 @@ module.exports = function arrayNext(array, currentItem) {
     return array[newIndex];
 };
 
-},{}],44:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
-},{"core-js/library/fn/object/create":47}],45:[function(require,module,exports){
+},{"core-js/library/fn/object/create":52}],47:[function(require,module,exports){
 module.exports = require("./interopRequireDefault.js");
-},{"./interopRequireDefault.js":46}],46:[function(require,module,exports){
+},{"./interopRequireDefault.js":48}],48:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -15634,24 +15713,1095 @@ exports.default = function (obj) {
     default: obj
   };
 };
-},{}],47:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
+/*
+	Baby Parse
+	v0.4.1
+	https://github.com/Rich-Harris/BabyParse
+
+	Created by Rich Harris
+	Maintained by Matt Holt
+
+	Based on Papa Parse v4.0.7 by Matt Holt
+	https://github.com/mholt/PapaParse
+*/
+(function(global)
+{
+
+	// A configuration object from which to draw default settings
+	var DEFAULTS = {
+		delimiter: "",	// empty: auto-detect
+		newline: "",	// empty: auto-detect
+		header: false,
+		dynamicTyping: false,
+		preview: 0,
+		step: undefined,
+		comments: false,
+		complete: undefined,
+		skipEmptyLines: false,
+		fastMode: false
+	};
+
+	var Baby = {};
+	Baby.parse = CsvToJson;
+	Baby.parseFiles = ParseFiles;
+	Baby.unparse = JsonToCsv;
+	Baby.RECORD_SEP = String.fromCharCode(30);
+	Baby.UNIT_SEP = String.fromCharCode(31);
+	Baby.BYTE_ORDER_MARK = "\ufeff";
+	Baby.BAD_DELIMITERS = ["\r", "\n", "\"", Baby.BYTE_ORDER_MARK];
+	Baby.DefaultDelimiter = ",";		// Used if not specified and detection fails
+	Baby.Parser = Parser;				// For testing/dev only
+	Baby.ParserHandle = ParserHandle;	// For testing/dev only
+	
+	var fs = fs || require('fs')
+	
+	function ParseFiles(_input, _config)
+	{
+		if (Array.isArray(_input)) {
+			var results = [];
+			_input.forEach(function(input) {
+				if(typeof input === 'object')
+					results.push(ParseFiles(input.file, input.config));
+				else
+					results.push(ParseFiles(input, _config));
+			});
+			return results;
+		} else {
+			var results = {
+				data: [],
+				errors: []
+			};
+			if ((/(\.csv|\.txt)$/).test(_input)) {
+				try {
+					var contents = fs.readFileSync(_input).toString();
+					return CsvToJson(contents, _config);
+				} catch (err) {
+					results.errors.push(err);
+					return results;
+				}
+			} else {
+				results.errors.push({
+					type: '',
+					code: '',
+					message: 'Unsupported file type.',
+					row: ''
+				});
+				return results;
+			}
+		}
+	}
+
+	function CsvToJson(_input, _config)
+	{
+		var config = copyAndValidateConfig(_config);
+		var ph = new ParserHandle(config);
+		var results = ph.parse(_input);
+		return results;
+	}
+
+
+
+
+	function JsonToCsv(_input, _config)
+	{
+		var _output = "";
+		var _fields = [];
+
+		// Default configuration
+		var _quotes = false;	// whether to surround every datum with quotes
+		var _delimiter = ",";	// delimiting character
+		var _newline = "\r\n";	// newline character(s)
+
+		unpackConfig();
+
+		if (typeof _input === 'string')
+			_input = JSON.parse(_input);
+
+		if (_input instanceof Array)
+		{
+			if (!_input.length || _input[0] instanceof Array)
+				return serialize(null, _input);
+			else if (typeof _input[0] === 'object')
+				return serialize(objectKeys(_input[0]), _input);
+		}
+		else if (typeof _input === 'object')
+		{
+			if (typeof _input.data === 'string')
+				_input.data = JSON.parse(_input.data);
+
+			if (_input.data instanceof Array)
+			{
+				if (!_input.fields)
+					_input.fields = _input.data[0] instanceof Array
+									? _input.fields
+									: objectKeys(_input.data[0]);
+
+				if (!(_input.data[0] instanceof Array) && typeof _input.data[0] !== 'object')
+					_input.data = [_input.data];	// handles input like [1,2,3] or ["asdf"]
+			}
+
+			return serialize(_input.fields || [], _input.data || []);
+		}
+
+		// Default (any valid paths should return before this)
+		throw "exception: Unable to serialize unrecognized input";
+
+
+		function unpackConfig()
+		{
+			if (typeof _config !== 'object')
+				return;
+
+			if (typeof _config.delimiter === 'string'
+				&& _config.delimiter.length == 1
+				&& Baby.BAD_DELIMITERS.indexOf(_config.delimiter) == -1)
+			{
+				_delimiter = _config.delimiter;
+			}
+
+			if (typeof _config.quotes === 'boolean'
+				|| _config.quotes instanceof Array)
+				_quotes = _config.quotes;
+
+			if (typeof _config.newline === 'string')
+				_newline = _config.newline;
+		}
+
+
+		// Turns an object's keys into an array
+		function objectKeys(obj)
+		{
+			if (typeof obj !== 'object')
+				return [];
+			var keys = [];
+			for (var key in obj)
+				keys.push(key);
+			return keys;
+		}
+
+		// The double for loop that iterates the data and writes out a CSV string including header row
+		function serialize(fields, data)
+		{
+			var csv = "";
+
+			if (typeof fields === 'string')
+				fields = JSON.parse(fields);
+			if (typeof data === 'string')
+				data = JSON.parse(data);
+
+			var hasHeader = fields instanceof Array && fields.length > 0;
+			var dataKeyedByField = !(data[0] instanceof Array);
+
+			// If there a header row, write it first
+			if (hasHeader)
+			{
+				for (var i = 0; i < fields.length; i++)
+				{
+					if (i > 0)
+						csv += _delimiter;
+					csv += safe(fields[i], i);
+				}
+				if (data.length > 0)
+					csv += _newline;
+			}
+
+			// Then write out the data
+			for (var row = 0; row < data.length; row++)
+			{
+				var maxCol = hasHeader ? fields.length : data[row].length;
+
+				for (var col = 0; col < maxCol; col++)
+				{
+					if (col > 0)
+						csv += _delimiter;
+					var colIdx = hasHeader && dataKeyedByField ? fields[col] : col;
+					csv += safe(data[row][colIdx], col);
+				}
+
+				if (row < data.length - 1)
+					csv += _newline;
+			}
+
+			return csv;
+		}
+
+		// Encloses a value around quotes if needed (makes a value safe for CSV insertion)
+		function safe(str, col)
+		{
+			if (typeof str === "undefined" || str === null)
+				return "";
+
+			str = str.toString().replace(/"/g, '""');
+
+			var needsQuotes = (typeof _quotes === 'boolean' && _quotes)
+							|| (_quotes instanceof Array && _quotes[col])
+							|| hasAny(str, Baby.BAD_DELIMITERS)
+							|| str.indexOf(_delimiter) > -1
+							|| str.charAt(0) == ' '
+							|| str.charAt(str.length - 1) == ' ';
+
+			return needsQuotes ? '"' + str + '"' : str;
+		}
+
+		function hasAny(str, substrings)
+		{
+			for (var i = 0; i < substrings.length; i++)
+				if (str.indexOf(substrings[i]) > -1)
+					return true;
+			return false;
+		}
+	}
+
+
+
+
+
+
+	// Use one ParserHandle per entire CSV file or string
+	function ParserHandle(_config)
+	{
+		// One goal is to minimize the use of regular expressions...
+		var FLOAT = /^\s*-?(\d*\.?\d+|\d+\.?\d*)(e[-+]?\d+)?\s*$/i;
+
+		var self = this;
+		var _stepCounter = 0;	// Number of times step was called (number of rows parsed)
+		var _input;				// The input being parsed
+		var _parser;			// The core parser being used
+		var _paused = false;	// Whether we are paused or not
+		var _delimiterError;	// Temporary state between delimiter detection and processing results
+		var _fields = [];		// Fields are from the header row of the input, if there is one
+		var _results = {		// The last results returned from the parser
+			data: [],
+			errors: [],
+			meta: {}
+		};
+
+		if (isFunction(_config.step))
+		{
+			var userStep = _config.step;
+			_config.step = function(results)
+			{
+				_results = results;
+
+				if (needsHeaderRow())
+					processResults();
+				else	// only call user's step function after header row
+				{
+					processResults();
+
+					// It's possbile that this line was empty and there's no row here after all
+					if (_results.data.length == 0)
+						return;
+
+					_stepCounter += results.data.length;
+					if (_config.preview && _stepCounter > _config.preview)
+						_parser.abort();
+					else
+						userStep(_results, self);
+				}
+			};
+		}
+
+		this.parse = function(input)
+		{
+			if (!_config.newline)
+				_config.newline = guessLineEndings(input);
+
+			_delimiterError = false;
+			if (!_config.delimiter)
+			{
+				var delimGuess = guessDelimiter(input);
+				if (delimGuess.successful)
+					_config.delimiter = delimGuess.bestDelimiter;
+				else
+				{
+					_delimiterError = true;	// add error after parsing (otherwise it would be overwritten)
+					_config.delimiter = Baby.DefaultDelimiter;
+				}
+				_results.meta.delimiter = _config.delimiter;
+			}
+
+			var parserConfig = copy(_config);
+			if (_config.preview && _config.header)
+				parserConfig.preview++;	// to compensate for header row
+
+			_input = input;
+			_parser = new Parser(parserConfig);
+			_results = _parser.parse(_input);
+			processResults();
+			if (isFunction(_config.complete) && !_paused && (!self.streamer || self.streamer.finished()))
+				_config.complete(_results);
+			return _paused ? { meta: { paused: true } } : (_results || { meta: { paused: false } });
+		};
+
+		this.pause = function()
+		{
+			_paused = true;
+			_parser.abort();
+			_input = _input.substr(_parser.getCharIndex());
+		};
+
+		this.resume = function()
+		{
+			_paused = false;
+			_parser = new Parser(_config);
+			_parser.parse(_input);
+			if (!_paused)
+			{
+				if (self.streamer && !self.streamer.finished())
+					self.streamer.resume();		// more of the file yet to come
+				else if (isFunction(_config.complete))
+					_config.complete(_results);
+			}
+		};
+
+		this.abort = function()
+		{
+			_parser.abort();
+			if (isFunction(_config.complete))
+				_config.complete(_results);
+			_input = "";
+		};
+
+		function processResults()
+		{
+			if (_results && _delimiterError)
+			{
+				addError("Delimiter", "UndetectableDelimiter", "Unable to auto-detect delimiting character; defaulted to '"+Baby.DefaultDelimiter+"'");
+				_delimiterError = false;
+			}
+
+			if (_config.skipEmptyLines)
+			{
+				for (var i = 0; i < _results.data.length; i++)
+					if (_results.data[i].length == 1 && _results.data[i][0] == "")
+						_results.data.splice(i--, 1);
+			}
+
+			if (needsHeaderRow())
+				fillHeaderFields();
+
+			return applyHeaderAndDynamicTyping();
+		}
+
+		function needsHeaderRow()
+		{
+			return _config.header && _fields.length == 0;
+		}
+
+		function fillHeaderFields()
+		{
+			if (!_results)
+				return;
+			for (var i = 0; needsHeaderRow() && i < _results.data.length; i++)
+				for (var j = 0; j < _results.data[i].length; j++)
+					_fields.push(_results.data[i][j]);
+			_results.data.splice(0, 1);
+		}
+
+		function applyHeaderAndDynamicTyping()
+		{
+			if (!_results || (!_config.header && !_config.dynamicTyping))
+				return _results;
+
+			for (var i = 0; i < _results.data.length; i++)
+			{
+				var row = {};
+
+				for (var j = 0; j < _results.data[i].length; j++)
+				{
+					if (_config.dynamicTyping)
+					{
+						var value = _results.data[i][j];
+						if (value == "true" || value === "TRUE")
+							_results.data[i][j] = true;
+						else if (value == "false" || value === "FALSE")
+							_results.data[i][j] = false;
+						else
+							_results.data[i][j] = tryParseFloat(value);
+					}
+
+					if (_config.header)
+					{
+						if (j >= _fields.length)
+						{
+							if (!row["__parsed_extra"])
+								row["__parsed_extra"] = [];
+							row["__parsed_extra"].push(_results.data[i][j]);
+						}
+						else
+							row[_fields[j]] = _results.data[i][j];
+					}
+				}
+
+				if (_config.header)
+				{
+					_results.data[i] = row;
+					if (j > _fields.length)
+						addError("FieldMismatch", "TooManyFields", "Too many fields: expected " + _fields.length + " fields but parsed " + j, i);
+					else if (j < _fields.length)
+						addError("FieldMismatch", "TooFewFields", "Too few fields: expected " + _fields.length + " fields but parsed " + j, i);
+				}
+			}
+
+			if (_config.header && _results.meta)
+				_results.meta.fields = _fields;
+			return _results;
+		}
+
+		function guessDelimiter(input)
+		{
+			var delimChoices = [",", "\t", "|", ";", Baby.RECORD_SEP, Baby.UNIT_SEP];
+			var bestDelim, bestDelta, fieldCountPrevRow;
+
+			for (var i = 0; i < delimChoices.length; i++)
+			{
+				var delim = delimChoices[i];
+				var delta = 0, avgFieldCount = 0;
+				fieldCountPrevRow = undefined;
+
+				var preview = new Parser({
+					delimiter: delim,
+					preview: 10
+				}).parse(input);
+
+				for (var j = 0; j < preview.data.length; j++)
+				{
+					var fieldCount = preview.data[j].length;
+					avgFieldCount += fieldCount;
+
+					if (typeof fieldCountPrevRow === 'undefined')
+					{
+						fieldCountPrevRow = fieldCount;
+						continue;
+					}
+					else if (fieldCount > 1)
+					{
+						delta += Math.abs(fieldCount - fieldCountPrevRow);
+						fieldCountPrevRow = fieldCount;
+					}
+				}
+
+				avgFieldCount /= preview.data.length;
+
+				if ((typeof bestDelta === 'undefined' || delta < bestDelta)
+					&& avgFieldCount > 1.99)
+				{
+					bestDelta = delta;
+					bestDelim = delim;
+				}
+			}
+
+			_config.delimiter = bestDelim;
+
+			return {
+				successful: !!bestDelim,
+				bestDelimiter: bestDelim
+			}
+		}
+
+		function guessLineEndings(input)
+		{
+			input = input.substr(0, 1024*1024);	// max length 1 MB
+
+			var r = input.split('\r');
+
+			if (r.length == 1)
+				return '\n';
+
+			var numWithN = 0;
+			for (var i = 0; i < r.length; i++)
+			{
+				if (r[i][0] == '\n')
+					numWithN++;
+			}
+
+			return numWithN >= r.length / 2 ? '\r\n' : '\r';
+		}
+
+		function tryParseFloat(val)
+		{
+			var isNumber = FLOAT.test(val);
+			return isNumber ? parseFloat(val) : val;
+		}
+
+		function addError(type, code, msg, row)
+		{
+			_results.errors.push({
+				type: type,
+				code: code,
+				message: msg,
+				row: row
+			});
+		}
+	}
+
+
+
+
+
+
+	// The core parser implements speedy and correct CSV parsing
+	function Parser(config)
+	{
+		// Unpack the config object
+		config = config || {};
+		var delim = config.delimiter;
+		var newline = config.newline;
+		var comments = config.comments;
+		var step = config.step;
+		var preview = config.preview;
+		var fastMode = config.fastMode;
+
+		// Delimiter must be valid
+		if (typeof delim !== 'string'
+			|| delim.length != 1
+			|| Baby.BAD_DELIMITERS.indexOf(delim) > -1)
+			delim = ",";
+
+		// Comment character must be valid
+		if (comments === delim)
+			throw "Comment character same as delimiter";
+		else if (comments === true)
+			comments = "#";
+		else if (typeof comments !== 'string'
+			|| Baby.BAD_DELIMITERS.indexOf(comments) > -1)
+			comments = false;
+
+		// Newline must be valid: \r, \n, or \r\n
+		if (newline != '\n' && newline != '\r' && newline != '\r\n')
+			newline = '\n';
+
+		// We're gonna need these at the Parser scope
+		var cursor = 0;
+		var aborted = false;
+
+		this.parse = function(input)
+		{
+			// For some reason, in Chrome, this speeds things up (!?)
+			if (typeof input !== 'string')
+				throw "Input must be a string";
+
+			// We don't need to compute some of these every time parse() is called,
+			// but having them in a more local scope seems to perform better
+			var inputLen = input.length,
+				delimLen = delim.length,
+				newlineLen = newline.length,
+				commentsLen = comments.length;
+			var stepIsFunction = typeof step === 'function';
+
+			// Establish starting state
+			cursor = 0;
+			var data = [], errors = [], row = [];
+
+			if (!input)
+				return returnable();
+
+			if (fastMode)
+			{
+				// Fast mode assumes there are no quoted fields in the input
+				var rows = input.split(newline);
+				for (var i = 0; i < rows.length; i++)
+				{
+					if (comments && rows[i].substr(0, commentsLen) == comments)
+						continue;
+					if (stepIsFunction)
+					{
+						data = [ rows[i].split(delim) ];
+						doStep();
+						if (aborted)
+							return returnable();
+					}
+					else
+						data.push(rows[i].split(delim));
+					if (preview && i >= preview)
+					{
+						data = data.slice(0, preview);
+						return returnable(true);
+					}
+				}
+				return returnable();
+			}
+
+			var nextDelim = input.indexOf(delim, cursor);
+			var nextNewline = input.indexOf(newline, cursor);
+
+			// Parser loop
+			for (;;)
+			{
+				// Field has opening quote
+				if (input[cursor] == '"')
+				{
+					// Start our search for the closing quote where the cursor is
+					var quoteSearch = cursor;
+
+					// Skip the opening quote
+					cursor++;
+
+					for (;;)
+					{
+						// Find closing quote
+						var quoteSearch = input.indexOf('"', quoteSearch+1);
+
+						if (quoteSearch === -1)
+						{
+							// No closing quote... what a pity
+							errors.push({
+								type: "Quotes",
+								code: "MissingQuotes",
+								message: "Quoted field unterminated",
+								row: data.length,	// row has yet to be inserted
+								index: cursor
+							});
+							return finish();
+						}
+
+						if (quoteSearch === inputLen-1)
+						{
+							// Closing quote at EOF
+							row.push(input.substring(cursor, quoteSearch).replace(/""/g, '"'));
+							data.push(row);
+							if (stepIsFunction)
+								doStep();
+							return returnable();
+						}
+
+						// If this quote is escaped, it's part of the data; skip it
+						if (input[quoteSearch+1] == '"')
+						{
+							quoteSearch++;
+							continue;
+						}
+
+						if (input[quoteSearch+1] == delim)
+						{
+							// Closing quote followed by delimiter
+							row.push(input.substring(cursor, quoteSearch).replace(/""/g, '"'));
+							cursor = quoteSearch + 1 + delimLen;
+							nextDelim = input.indexOf(delim, cursor);
+							nextNewline = input.indexOf(newline, cursor);
+							break;
+						}
+
+						if (input.substr(quoteSearch+1, newlineLen) === newline)
+						{
+							// Closing quote followed by newline
+							row.push(input.substring(cursor, quoteSearch).replace(/""/g, '"'));
+							saveRow(quoteSearch + 1 + newlineLen);
+							nextDelim = input.indexOf(delim, cursor);	// because we may have skipped the nextDelim in the quoted field
+
+							if (stepIsFunction)
+							{
+								doStep();
+								if (aborted)
+									return returnable();
+							}
+							
+							if (preview && data.length >= preview)
+								return returnable(true);
+
+							break;
+						}
+					}
+
+					continue;
+				}
+
+				// Comment found at start of new line
+				if (comments && row.length === 0 && input.substr(cursor, commentsLen) === comments)
+				{
+					if (nextNewline == -1)	// Comment ends at EOF
+						return returnable();
+					cursor = nextNewline + newlineLen;
+					nextNewline = input.indexOf(newline, cursor);
+					nextDelim = input.indexOf(delim, cursor);
+					continue;
+				}
+
+				// Next delimiter comes before next newline, so we've reached end of field
+				if (nextDelim !== -1 && (nextDelim < nextNewline || nextNewline === -1))
+				{
+					row.push(input.substring(cursor, nextDelim));
+					cursor = nextDelim + delimLen;
+					nextDelim = input.indexOf(delim, cursor);
+					continue;
+				}
+
+				// End of row
+				if (nextNewline !== -1)
+				{
+					row.push(input.substring(cursor, nextNewline));
+					saveRow(nextNewline + newlineLen);
+
+					if (stepIsFunction)
+					{
+						doStep();
+						if (aborted)
+							return returnable();
+					}
+
+					if (preview && data.length >= preview)
+						return returnable(true);
+
+					continue;
+				}
+
+				break;
+			}
+
+
+			return finish();
+
+
+			// Appends the remaining input from cursor to the end into
+			// row, saves the row, calls step, and returns the results.
+			function finish()
+			{
+				row.push(input.substr(cursor));
+				data.push(row);
+				cursor = inputLen;	// important in case parsing is paused
+				if (stepIsFunction)
+					doStep();
+				return returnable();
+			}
+
+			// Appends the current row to the results. It sets the cursor
+			// to newCursor and finds the nextNewline. The caller should
+			// take care to execute user's step function and check for
+			// preview and end parsing if necessary.
+			function saveRow(newCursor)
+			{
+				data.push(row);
+				row = [];
+				cursor = newCursor;
+				nextNewline = input.indexOf(newline, cursor);
+			}
+
+			// Returns an object with the results, errors, and meta.
+			function returnable(stopped)
+			{
+				return {
+					data: data,
+					errors: errors,
+					meta: {
+						delimiter: delim,
+						linebreak: newline,
+						aborted: aborted,
+						truncated: !!stopped
+					}
+				};
+			}
+
+			// Executes the user's step function and resets data & errors.
+			function doStep()
+			{
+				step(returnable());
+				data = [], errors = [];
+			}
+		};
+
+		// Sets the abort flag
+		this.abort = function()
+		{
+			aborted = true;
+		};
+
+		// Gets the cursor position
+		this.getCharIndex = function()
+		{
+			return cursor;
+		};
+	}
+
+
+
+
+	// Replaces bad config values with good, default ones
+	function copyAndValidateConfig(origConfig)
+	{
+		if (typeof origConfig !== 'object')
+			origConfig = {};
+
+		var config = copy(origConfig);
+
+		if (typeof config.delimiter !== 'string'
+			|| config.delimiter.length != 1
+			|| Baby.BAD_DELIMITERS.indexOf(config.delimiter) > -1)
+			config.delimiter = DEFAULTS.delimiter;
+
+		if (config.newline != '\n'
+			&& config.newline != '\r'
+			&& config.newline != '\r\n')
+			config.newline = DEFAULTS.newline;
+
+		if (typeof config.header !== 'boolean')
+			config.header = DEFAULTS.header;
+
+		if (typeof config.dynamicTyping !== 'boolean')
+			config.dynamicTyping = DEFAULTS.dynamicTyping;
+
+		if (typeof config.preview !== 'number')
+			config.preview = DEFAULTS.preview;
+
+		if (typeof config.step !== 'function')
+			config.step = DEFAULTS.step;
+
+		if (typeof config.complete !== 'function')
+			config.complete = DEFAULTS.complete;
+
+		if (typeof config.skipEmptyLines !== 'boolean')
+			config.skipEmptyLines = DEFAULTS.skipEmptyLines;
+
+		if (typeof config.fastMode !== 'boolean')
+			config.fastMode = DEFAULTS.fastMode;
+
+		return config;
+	}
+
+	function copy(obj)
+	{
+		if (typeof obj !== 'object')
+			return obj;
+		var cpy = obj instanceof Array ? [] : {};
+		for (var key in obj)
+			cpy[key] = copy(obj[key]);
+		return cpy;
+	}
+
+	function isFunction(func)
+	{
+		return typeof func === 'function';
+	}
+
+
+
+
+
+
+	// export to Node...
+	if ( typeof module !== 'undefined' && module.exports ) {
+		module.exports = Baby;
+	}
+
+	// ...or as AMD module...
+	else if ( typeof define === 'function' && define.amd ) {
+		define( function () { return Baby; });
+	}
+
+	// ...or as browser global
+	else {
+		global.Baby = Baby;
+	}
+
+})(typeof window !== 'undefined' ? window : this);
+
+},{"fs":50}],50:[function(require,module,exports){
+
+},{}],51:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],52:[function(require,module,exports){
 require('../../modules/es6.object.create');
 var $Object = require('../../modules/_core').Object;
 module.exports = function create(P, D){
   return $Object.create(P, D);
 };
-},{"../../modules/_core":52,"../../modules/es6.object.create":81}],48:[function(require,module,exports){
+},{"../../modules/_core":57,"../../modules/es6.object.create":86}],53:[function(require,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],49:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 var isObject = require('./_is-object');
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./_is-object":66}],50:[function(require,module,exports){
+},{"./_is-object":71}],55:[function(require,module,exports){
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./_to-iobject')
@@ -15673,16 +16823,16 @@ module.exports = function(IS_INCLUDES){
     } return !IS_INCLUDES && -1;
   };
 };
-},{"./_to-index":75,"./_to-iobject":77,"./_to-length":78}],51:[function(require,module,exports){
+},{"./_to-index":80,"./_to-iobject":82,"./_to-length":83}],56:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
-},{}],52:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 var core = module.exports = {version: '2.4.0'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],53:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function(fn, that, length){
@@ -15703,18 +16853,18 @@ module.exports = function(fn, that, length){
     return fn.apply(that, arguments);
   };
 };
-},{"./_a-function":48}],54:[function(require,module,exports){
+},{"./_a-function":53}],59:[function(require,module,exports){
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function(it){
   if(it == undefined)throw TypeError("Can't call method on  " + it);
   return it;
 };
-},{}],55:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_fails":59}],56:[function(require,module,exports){
+},{"./_fails":64}],61:[function(require,module,exports){
 var isObject = require('./_is-object')
   , document = require('./_global').document
   // in old IE typeof document.createElement is 'object'
@@ -15722,12 +16872,12 @@ var isObject = require('./_is-object')
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./_global":60,"./_is-object":66}],57:[function(require,module,exports){
+},{"./_global":65,"./_is-object":71}],62:[function(require,module,exports){
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
-},{}],58:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 var global    = require('./_global')
   , core      = require('./_core')
   , ctx       = require('./_ctx')
@@ -15789,7 +16939,7 @@ $export.W = 32;  // wrap
 $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library` 
 module.exports = $export;
-},{"./_core":52,"./_ctx":53,"./_global":60,"./_hide":62}],59:[function(require,module,exports){
+},{"./_core":57,"./_ctx":58,"./_global":65,"./_hide":67}],64:[function(require,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -15797,17 +16947,17 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],60:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],61:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-},{}],62:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 var dP         = require('./_object-dp')
   , createDesc = require('./_property-desc');
 module.exports = require('./_descriptors') ? function(object, key, value){
@@ -15816,23 +16966,23 @@ module.exports = require('./_descriptors') ? function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./_descriptors":55,"./_object-dp":68,"./_property-desc":72}],63:[function(require,module,exports){
+},{"./_descriptors":60,"./_object-dp":73,"./_property-desc":77}],68:[function(require,module,exports){
 module.exports = require('./_global').document && document.documentElement;
-},{"./_global":60}],64:[function(require,module,exports){
+},{"./_global":65}],69:[function(require,module,exports){
 module.exports = !require('./_descriptors') && !require('./_fails')(function(){
   return Object.defineProperty(require('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_descriptors":55,"./_dom-create":56,"./_fails":59}],65:[function(require,module,exports){
+},{"./_descriptors":60,"./_dom-create":61,"./_fails":64}],70:[function(require,module,exports){
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-},{"./_cof":51}],66:[function(require,module,exports){
+},{"./_cof":56}],71:[function(require,module,exports){
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-},{}],67:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject    = require('./_an-object')
   , dPs         = require('./_object-dps')
@@ -15875,7 +17025,7 @@ module.exports = Object.create || function create(O, Properties){
   return Properties === undefined ? result : dPs(result, Properties);
 };
 
-},{"./_an-object":49,"./_dom-create":56,"./_enum-bug-keys":57,"./_html":63,"./_object-dps":69,"./_shared-key":73}],68:[function(require,module,exports){
+},{"./_an-object":54,"./_dom-create":61,"./_enum-bug-keys":62,"./_html":68,"./_object-dps":74,"./_shared-key":78}],73:[function(require,module,exports){
 var anObject       = require('./_an-object')
   , IE8_DOM_DEFINE = require('./_ie8-dom-define')
   , toPrimitive    = require('./_to-primitive')
@@ -15892,7 +17042,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   if('value' in Attributes)O[P] = Attributes.value;
   return O;
 };
-},{"./_an-object":49,"./_descriptors":55,"./_ie8-dom-define":64,"./_to-primitive":79}],69:[function(require,module,exports){
+},{"./_an-object":54,"./_descriptors":60,"./_ie8-dom-define":69,"./_to-primitive":84}],74:[function(require,module,exports){
 var dP       = require('./_object-dp')
   , anObject = require('./_an-object')
   , getKeys  = require('./_object-keys');
@@ -15906,7 +17056,7 @@ module.exports = require('./_descriptors') ? Object.defineProperties : function 
   while(length > i)dP.f(O, P = keys[i++], Properties[P]);
   return O;
 };
-},{"./_an-object":49,"./_descriptors":55,"./_object-dp":68,"./_object-keys":71}],70:[function(require,module,exports){
+},{"./_an-object":54,"./_descriptors":60,"./_object-dp":73,"./_object-keys":76}],75:[function(require,module,exports){
 var has          = require('./_has')
   , toIObject    = require('./_to-iobject')
   , arrayIndexOf = require('./_array-includes')(false)
@@ -15924,7 +17074,7 @@ module.exports = function(object, names){
   }
   return result;
 };
-},{"./_array-includes":50,"./_has":61,"./_shared-key":73,"./_to-iobject":77}],71:[function(require,module,exports){
+},{"./_array-includes":55,"./_has":66,"./_shared-key":78,"./_to-iobject":82}],76:[function(require,module,exports){
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys       = require('./_object-keys-internal')
   , enumBugKeys = require('./_enum-bug-keys');
@@ -15932,7 +17082,7 @@ var $keys       = require('./_object-keys-internal')
 module.exports = Object.keys || function keys(O){
   return $keys(O, enumBugKeys);
 };
-},{"./_enum-bug-keys":57,"./_object-keys-internal":70}],72:[function(require,module,exports){
+},{"./_enum-bug-keys":62,"./_object-keys-internal":75}],77:[function(require,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -15941,20 +17091,20 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],73:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 var shared = require('./_shared')('keys')
   , uid    = require('./_uid');
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
 };
-},{"./_shared":74,"./_uid":80}],74:[function(require,module,exports){
+},{"./_shared":79,"./_uid":85}],79:[function(require,module,exports){
 var global = require('./_global')
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
   return store[key] || (store[key] = {});
 };
-},{"./_global":60}],75:[function(require,module,exports){
+},{"./_global":65}],80:[function(require,module,exports){
 var toInteger = require('./_to-integer')
   , max       = Math.max
   , min       = Math.min;
@@ -15962,28 +17112,28 @@ module.exports = function(index, length){
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
-},{"./_to-integer":76}],76:[function(require,module,exports){
+},{"./_to-integer":81}],81:[function(require,module,exports){
 // 7.1.4 ToInteger
 var ceil  = Math.ceil
   , floor = Math.floor;
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-},{}],77:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./_iobject')
   , defined = require('./_defined');
 module.exports = function(it){
   return IObject(defined(it));
 };
-},{"./_defined":54,"./_iobject":65}],78:[function(require,module,exports){
+},{"./_defined":59,"./_iobject":70}],83:[function(require,module,exports){
 // 7.1.15 ToLength
 var toInteger = require('./_to-integer')
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
-},{"./_to-integer":76}],79:[function(require,module,exports){
+},{"./_to-integer":81}],84:[function(require,module,exports){
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -15996,17 +17146,17 @@ module.exports = function(it, S){
   if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
   throw TypeError("Can't convert object to primitive value");
 };
-},{"./_is-object":66}],80:[function(require,module,exports){
+},{"./_is-object":71}],85:[function(require,module,exports){
 var id = 0
   , px = Math.random();
 module.exports = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
-},{}],81:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 var $export = require('./_export')
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', {create: require('./_object-create')});
-},{"./_export":58,"./_object-create":67}],82:[function(require,module,exports){
+},{"./_export":63,"./_object-create":72}],87:[function(require,module,exports){
 var isFunction = require('is-function')
 
 module.exports = forEach
@@ -16054,7 +17204,7 @@ function forEachObject(object, iterator, context) {
     }
 }
 
-},{"is-function":84}],83:[function(require,module,exports){
+},{"is-function":89}],88:[function(require,module,exports){
 (function (global){
 var win;
 
@@ -16071,7 +17221,7 @@ if (typeof window !== "undefined") {
 module.exports = win;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],84:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -16088,7 +17238,7 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],85:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
@@ -25904,7 +27054,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],86:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 var slice = Array.prototype.slice;
 
 // our constructor
@@ -25991,7 +27141,7 @@ KeyTreeStore.prototype.run = function (keypath, context) {
 
 module.exports = KeyTreeStore;
 
-},{}],87:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26022,7 +27172,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],88:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26055,7 +27205,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],89:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26089,7 +27239,7 @@ function arrayEvery(array, predicate) {
 
 module.exports = arrayEvery;
 
-},{}],90:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26125,7 +27275,7 @@ function arrayFilter(array, predicate) {
 
 module.exports = arrayFilter;
 
-},{}],91:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26157,7 +27307,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],92:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26186,7 +27336,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"lodash._basecopy":96,"lodash.keys":165}],93:[function(require,module,exports){
+},{"lodash._basecopy":101,"lodash.keys":170}],98:[function(require,module,exports){
 /**
  * lodash 3.3.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26610,7 +27760,7 @@ function property(path) {
 
 module.exports = baseCallback;
 
-},{"lodash._baseisequal":109,"lodash._bindcallback":119,"lodash.isarray":155,"lodash.pairs":174}],94:[function(require,module,exports){
+},{"lodash._baseisequal":114,"lodash._bindcallback":124,"lodash.isarray":160,"lodash.pairs":179}],99:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.3.0 (Custom Build) <https://lodash.com/>
@@ -26885,7 +28035,7 @@ function isObject(value) {
 module.exports = baseClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":87,"lodash._arrayeach":88,"lodash._baseassign":92,"lodash._basefor":105,"lodash.isarray":155,"lodash.keys":165}],95:[function(require,module,exports){
+},{"lodash._arraycopy":92,"lodash._arrayeach":93,"lodash._baseassign":97,"lodash._basefor":110,"lodash.isarray":160,"lodash.keys":170}],100:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26930,7 +28080,7 @@ function baseCompareAscending(value, other) {
 
 module.exports = baseCompareAscending;
 
-},{}],96:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -26964,7 +28114,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],97:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27023,7 +28173,7 @@ function isObject(value) {
 
 module.exports = baseCreate;
 
-},{}],98:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27088,7 +28238,7 @@ function baseDifference(array, values) {
 
 module.exports = baseDifference;
 
-},{"lodash._baseindexof":108,"lodash._cacheindexof":120,"lodash._createcache":123}],99:[function(require,module,exports){
+},{"lodash._baseindexof":113,"lodash._cacheindexof":125,"lodash._createcache":128}],104:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27271,7 +28421,7 @@ function isObject(value) {
 
 module.exports = baseEach;
 
-},{"lodash.keys":165}],100:[function(require,module,exports){
+},{"lodash.keys":170}],105:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27417,7 +28567,7 @@ function isObject(value) {
 
 module.exports = baseEachRight;
 
-},{"lodash._baseforright":106,"lodash.keys":165}],101:[function(require,module,exports){
+},{"lodash._baseforright":111,"lodash.keys":170}],106:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27449,7 +28599,7 @@ function baseFilter(collection, predicate) {
 
 module.exports = baseFilter;
 
-},{"lodash._baseeach":99}],102:[function(require,module,exports){
+},{"lodash._baseeach":104}],107:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27485,7 +28635,7 @@ function baseFind(collection, predicate, eachFunc, retKey) {
 
 module.exports = baseFind;
 
-},{}],103:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 /**
  * lodash 3.6.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27519,7 +28669,7 @@ function baseFindIndex(array, predicate, fromRight) {
 
 module.exports = baseFindIndex;
 
-},{}],104:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27652,7 +28802,7 @@ function isLength(value) {
 
 module.exports = baseFlatten;
 
-},{"lodash.isarguments":154,"lodash.isarray":155}],105:[function(require,module,exports){
+},{"lodash.isarguments":159,"lodash.isarray":160}],110:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27740,7 +28890,7 @@ function isObject(value) {
 
 module.exports = baseFor;
 
-},{}],106:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27826,7 +28976,7 @@ function isObject(value) {
 
 module.exports = baseForRight;
 
-},{}],107:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27902,7 +29052,7 @@ function isObject(value) {
 
 module.exports = baseGet;
 
-},{}],108:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -27961,7 +29111,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = baseIndexOf;
 
-},{}],109:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28305,7 +29455,7 @@ function isObject(value) {
 
 module.exports = baseIsEqual;
 
-},{"lodash.isarray":155,"lodash.istypedarray":163,"lodash.keys":165}],110:[function(require,module,exports){
+},{"lodash.isarray":160,"lodash.istypedarray":168,"lodash.keys":170}],115:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28334,7 +29484,7 @@ function baseRandom(min, max) {
 
 module.exports = baseRandom;
 
-},{}],111:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28369,7 +29519,7 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],112:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28412,7 +29562,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],113:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28444,7 +29594,7 @@ function baseSortBy(array, comparer) {
 
 module.exports = baseSortBy;
 
-},{}],114:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28468,7 +29618,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],115:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28538,7 +29688,7 @@ function baseUniq(array, iteratee) {
 
 module.exports = baseUniq;
 
-},{"lodash._baseindexof":108,"lodash._cacheindexof":120,"lodash._createcache":123}],116:[function(require,module,exports){
+},{"lodash._baseindexof":113,"lodash._cacheindexof":125,"lodash._createcache":128}],121:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28571,7 +29721,7 @@ function baseValues(object, props) {
 
 module.exports = baseValues;
 
-},{}],117:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28638,7 +29788,7 @@ function identity(value) {
 
 module.exports = binaryIndex;
 
-},{"lodash._binaryindexby":118}],118:[function(require,module,exports){
+},{"lodash._binaryindexby":123}],123:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28706,7 +29856,7 @@ function binaryIndexBy(array, value, iteratee, retHighest) {
 
 module.exports = binaryIndexBy;
 
-},{}],119:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28773,7 +29923,7 @@ function identity(value) {
 
 module.exports = bindCallback;
 
-},{}],120:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28828,7 +29978,7 @@ function isObject(value) {
 
 module.exports = cacheIndexOf;
 
-},{}],121:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28876,7 +30026,7 @@ function createAggregator(setter, initializer) {
 
 module.exports = createAggregator;
 
-},{"lodash._basecallback":93,"lodash._baseeach":99,"lodash.isarray":155}],122:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeach":104,"lodash.isarray":160}],127:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -28930,7 +30080,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"lodash._bindcallback":119,"lodash._isiterateecall":127,"lodash.restparam":180}],123:[function(require,module,exports){
+},{"lodash._bindcallback":124,"lodash._isiterateecall":132,"lodash.restparam":185}],128:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
@@ -29025,7 +30175,7 @@ SetCache.prototype.push = cachePush;
 module.exports = createCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._getnative":125}],124:[function(require,module,exports){
+},{"lodash._getnative":130}],129:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
@@ -29424,7 +30574,7 @@ function isObject(value) {
 module.exports = createWrapper;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":87,"lodash._basecreate":97,"lodash._replaceholders":130}],125:[function(require,module,exports){
+},{"lodash._arraycopy":92,"lodash._basecreate":102,"lodash._replaceholders":135}],130:[function(require,module,exports){
 /**
  * lodash 3.9.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29563,7 +30713,7 @@ function isNative(value) {
 
 module.exports = getNative;
 
-},{}],126:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29678,7 +30828,7 @@ function isObject(value) {
 
 module.exports = invokePath;
 
-},{"lodash._baseget":107,"lodash._baseslice":112,"lodash._topath":132,"lodash.isarray":155}],127:[function(require,module,exports){
+},{"lodash._baseget":112,"lodash._baseslice":117,"lodash._topath":137,"lodash.isarray":160}],132:[function(require,module,exports){
 /**
  * lodash 3.0.9 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29812,7 +30962,7 @@ function isObject(value) {
 
 module.exports = isIterateeCall;
 
-},{}],128:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29887,7 +31037,7 @@ function isObject(value) {
 
 module.exports = pickByArray;
 
-},{}],129:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29933,7 +31083,7 @@ function pickByCallback(object, predicate) {
 
 module.exports = pickByCallback;
 
-},{"lodash._basefor":105,"lodash.keysin":166}],130:[function(require,module,exports){
+},{"lodash._basefor":110,"lodash.keysin":171}],135:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -29972,7 +31122,7 @@ function replaceHolders(array, placeholder) {
 
 module.exports = replaceHolders;
 
-},{}],131:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30114,7 +31264,7 @@ function values(object) {
 
 module.exports = toIterable;
 
-},{"lodash._basevalues":116,"lodash.keys":165}],132:[function(require,module,exports){
+},{"lodash._basevalues":121,"lodash.keys":170}],137:[function(require,module,exports){
 /**
  * lodash 3.8.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30163,7 +31313,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"lodash.isarray":155}],133:[function(require,module,exports){
+},{"lodash.isarray":160}],138:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30245,7 +31395,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"lodash._baseassign":92,"lodash._createassigner":122,"lodash.keys":165}],134:[function(require,module,exports){
+},{"lodash._baseassign":97,"lodash._createassigner":127,"lodash.keys":170}],139:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30298,7 +31448,7 @@ function before(n, func) {
 
 module.exports = before;
 
-},{}],135:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30364,7 +31514,7 @@ bind.placeholder = {};
 
 module.exports = bind;
 
-},{"lodash._createwrapper":124,"lodash._replaceholders":130,"lodash.restparam":180}],136:[function(require,module,exports){
+},{"lodash._createwrapper":129,"lodash._replaceholders":135,"lodash.restparam":185}],141:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30444,7 +31594,7 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"lodash._baseclone":94,"lodash._bindcallback":119,"lodash._isiterateecall":127}],137:[function(require,module,exports){
+},{"lodash._baseclone":99,"lodash._bindcallback":124,"lodash._isiterateecall":132}],142:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30508,7 +31658,7 @@ var countBy = createAggregator(function(result, value, key) {
 
 module.exports = countBy;
 
-},{"lodash._createaggregator":121}],138:[function(require,module,exports){
+},{"lodash._createaggregator":126}],143:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30573,7 +31723,7 @@ var defaults = createDefaults(assign, assignDefaults);
 
 module.exports = defaults;
 
-},{"lodash.assign":133,"lodash.restparam":180}],139:[function(require,module,exports){
+},{"lodash.assign":138,"lodash.restparam":185}],144:[function(require,module,exports){
 /**
  * lodash 3.2.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30676,7 +31826,7 @@ var difference = restParam(function(array, values) {
 
 module.exports = difference;
 
-},{"lodash._basedifference":98,"lodash._baseflatten":104,"lodash.restparam":180}],140:[function(require,module,exports){
+},{"lodash._basedifference":103,"lodash._baseflatten":109,"lodash.restparam":185}],145:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30726,7 +31876,7 @@ function drop(array, n, guard) {
 
 module.exports = drop;
 
-},{"lodash._baseslice":112,"lodash._isiterateecall":127}],141:[function(require,module,exports){
+},{"lodash._baseslice":117,"lodash._isiterateecall":132}],146:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30804,7 +31954,7 @@ function escape(string) {
 
 module.exports = escape;
 
-},{"lodash._basetostring":114}],142:[function(require,module,exports){
+},{"lodash._basetostring":119}],147:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30899,7 +32049,7 @@ function every(collection, predicate, thisArg) {
 
 module.exports = every;
 
-},{"lodash._arrayevery":89,"lodash._basecallback":93,"lodash._baseeach":99,"lodash._isiterateecall":127,"lodash.isarray":155}],143:[function(require,module,exports){
+},{"lodash._arrayevery":94,"lodash._basecallback":98,"lodash._baseeach":104,"lodash._isiterateecall":132,"lodash.isarray":160}],148:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -30970,7 +32120,7 @@ function filter(collection, predicate, thisArg) {
 
 module.exports = filter;
 
-},{"lodash._arrayfilter":90,"lodash._basecallback":93,"lodash._basefilter":101,"lodash.isarray":155}],144:[function(require,module,exports){
+},{"lodash._arrayfilter":95,"lodash._basecallback":98,"lodash._basefilter":106,"lodash.isarray":160}],149:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31058,7 +32208,7 @@ var find = createFind(baseEach);
 
 module.exports = find;
 
-},{"lodash._basecallback":93,"lodash._baseeach":99,"lodash._basefind":102,"lodash._basefindindex":103,"lodash.isarray":155}],145:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeach":104,"lodash._basefind":107,"lodash._basefindindex":108,"lodash.isarray":160}],150:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31122,7 +32272,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"lodash._arrayeach":88,"lodash._baseeach":99,"lodash._bindcallback":119,"lodash.isarray":155}],146:[function(require,module,exports){
+},{"lodash._arrayeach":93,"lodash._baseeach":104,"lodash._bindcallback":124,"lodash.isarray":160}],151:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31191,7 +32341,7 @@ var groupBy = createAggregator(function(result, value, key) {
 
 module.exports = groupBy;
 
-},{"lodash._createaggregator":121}],147:[function(require,module,exports){
+},{"lodash._createaggregator":126}],152:[function(require,module,exports){
 /**
  * lodash 3.9.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31227,7 +32377,7 @@ function gt(value, other) {
 
 module.exports = gt;
 
-},{}],148:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31406,7 +32556,7 @@ function has(object, path) {
 
 module.exports = has;
 
-},{"lodash._baseget":107,"lodash._baseslice":112,"lodash._topath":132,"lodash.isarguments":154,"lodash.isarray":155}],149:[function(require,module,exports){
+},{"lodash._baseget":112,"lodash._baseslice":117,"lodash._topath":137,"lodash.isarguments":159,"lodash.isarray":160}],154:[function(require,module,exports){
 /**
  * lodash 3.1.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31545,7 +32695,7 @@ function values(object) {
 
 module.exports = includes;
 
-},{"lodash._baseindexof":108,"lodash._basevalues":116,"lodash._isiterateecall":127,"lodash.isarray":155,"lodash.isstring":162,"lodash.keys":165}],150:[function(require,module,exports){
+},{"lodash._baseindexof":113,"lodash._basevalues":121,"lodash._isiterateecall":132,"lodash.isarray":160,"lodash.isstring":167,"lodash.keys":170}],155:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31608,7 +32758,7 @@ var indexBy = createAggregator(function(result, value, key) {
 
 module.exports = indexBy;
 
-},{"lodash._createaggregator":121}],151:[function(require,module,exports){
+},{"lodash._createaggregator":126}],156:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31671,7 +32821,7 @@ function indexOf(array, value, fromIndex) {
 
 module.exports = indexOf;
 
-},{"lodash._baseindexof":108,"lodash._binaryindex":117}],152:[function(require,module,exports){
+},{"lodash._baseindexof":113,"lodash._binaryindex":122}],157:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31739,7 +32889,7 @@ function initial(array) {
 
 module.exports = initial;
 
-},{"lodash._baseslice":112,"lodash._isiterateecall":127}],153:[function(require,module,exports){
+},{"lodash._baseslice":117,"lodash._isiterateecall":132}],158:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -31907,7 +33057,7 @@ function isObject(value) {
 
 module.exports = invoke;
 
-},{"lodash._baseeach":99,"lodash._invokepath":126,"lodash.isarray":155,"lodash.restparam":180}],154:[function(require,module,exports){
+},{"lodash._baseeach":104,"lodash._invokepath":131,"lodash.isarray":160,"lodash.restparam":185}],159:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32015,7 +33165,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{}],155:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32197,7 +33347,7 @@ function isNative(value) {
 
 module.exports = isArray;
 
-},{}],156:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32252,7 +33402,7 @@ function isDate(value) {
 
 module.exports = isDate;
 
-},{}],157:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32373,7 +33523,7 @@ function isEmpty(value) {
 
 module.exports = isEmpty;
 
-},{"lodash.isarguments":154,"lodash.isarray":155,"lodash.isfunction":159,"lodash.isstring":162,"lodash.keys":165}],158:[function(require,module,exports){
+},{"lodash.isarguments":159,"lodash.isarray":160,"lodash.isfunction":164,"lodash.isstring":167,"lodash.keys":170}],163:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32437,7 +33587,7 @@ function isEqual(value, other, customizer, thisArg) {
 
 module.exports = isEqual;
 
-},{"lodash._baseisequal":109,"lodash._bindcallback":119}],159:[function(require,module,exports){
+},{"lodash._baseisequal":114,"lodash._bindcallback":124}],164:[function(require,module,exports){
 /**
  * lodash 3.0.6 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32511,7 +33661,7 @@ function isObject(value) {
 
 module.exports = isFunction;
 
-},{}],160:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32543,7 +33693,7 @@ function isNull(value) {
 
 module.exports = isNull;
 
-},{}],161:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32582,7 +33732,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],162:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32637,7 +33787,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{}],163:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32749,7 +33899,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{}],164:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -32781,7 +33931,7 @@ function isUndefined(value) {
 
 module.exports = isUndefined;
 
-},{}],165:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33019,7 +34169,7 @@ function keysIn(object) {
 
 module.exports = keys;
 
-},{"lodash._getnative":125,"lodash.isarguments":154,"lodash.isarray":155}],166:[function(require,module,exports){
+},{"lodash._getnative":130,"lodash.isarguments":159,"lodash.isarray":160}],171:[function(require,module,exports){
 /**
  * lodash 3.0.8 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33153,7 +34303,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"lodash.isarguments":154,"lodash.isarray":155}],167:[function(require,module,exports){
+},{"lodash.isarguments":159,"lodash.isarray":160}],172:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33245,7 +34395,7 @@ function lastIndexOf(array, value, fromIndex) {
 
 module.exports = lastIndexOf;
 
-},{"lodash._binaryindex":117}],168:[function(require,module,exports){
+},{"lodash._binaryindex":122}],173:[function(require,module,exports){
 /**
  * lodash 3.9.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33281,7 +34431,7 @@ function lt(value, other) {
 
 module.exports = lt;
 
-},{}],169:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33433,7 +34583,7 @@ function map(collection, iteratee, thisArg) {
 
 module.exports = map;
 
-},{"lodash._arraymap":91,"lodash._basecallback":93,"lodash._baseeach":99,"lodash.isarray":155}],170:[function(require,module,exports){
+},{"lodash._arraymap":96,"lodash._basecallback":98,"lodash._baseeach":104,"lodash.isarray":160}],175:[function(require,module,exports){
 /**
  * lodash 3.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33583,7 +34733,7 @@ var max = createExtremum(gt, NEGATIVE_INFINITY);
 
 module.exports = max;
 
-},{"lodash._basecallback":93,"lodash._baseeach":99,"lodash._isiterateecall":127,"lodash._toiterable":131,"lodash.gt":147,"lodash.isarray":155}],171:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeach":104,"lodash._isiterateecall":132,"lodash._toiterable":136,"lodash.gt":152,"lodash.isarray":160}],176:[function(require,module,exports){
 /**
  * lodash 3.4.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33733,7 +34883,7 @@ var min = createExtremum(lt, POSITIVE_INFINITY);
 
 module.exports = min;
 
-},{"lodash._basecallback":93,"lodash._baseeach":99,"lodash._isiterateecall":127,"lodash._toiterable":131,"lodash.isarray":155,"lodash.lt":168}],172:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeach":104,"lodash._isiterateecall":132,"lodash._toiterable":136,"lodash.isarray":160,"lodash.lt":173}],177:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33795,7 +34945,7 @@ var omit = restParam(function(object, props) {
 
 module.exports = omit;
 
-},{"lodash._arraymap":91,"lodash._basedifference":98,"lodash._baseflatten":104,"lodash._bindcallback":119,"lodash._pickbyarray":128,"lodash._pickbycallback":129,"lodash.keysin":166,"lodash.restparam":180}],173:[function(require,module,exports){
+},{"lodash._arraymap":96,"lodash._basedifference":103,"lodash._baseflatten":109,"lodash._bindcallback":124,"lodash._pickbyarray":133,"lodash._pickbycallback":134,"lodash.keysin":171,"lodash.restparam":185}],178:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33829,7 +34979,7 @@ function once(func) {
 
 module.exports = once;
 
-},{"lodash.before":134}],174:[function(require,module,exports){
+},{"lodash.before":139}],179:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33909,7 +35059,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"lodash.keys":165}],175:[function(require,module,exports){
+},{"lodash.keys":170}],180:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -33985,7 +35135,7 @@ var partition = createAggregator(function(result, value, key) {
 
 module.exports = partition;
 
-},{"lodash._createaggregator":121}],176:[function(require,module,exports){
+},{"lodash._createaggregator":126}],181:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34081,7 +35231,7 @@ var reduce = createReduce(arrayReduce, baseEach);
 
 module.exports = reduce;
 
-},{"lodash._basecallback":93,"lodash._baseeach":99,"lodash._basereduce":111,"lodash.isarray":155}],177:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeach":104,"lodash._basereduce":116,"lodash.isarray":160}],182:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34161,7 +35311,7 @@ var reduceRight = createReduce(arrayReduceRight, baseEachRight);
 
 module.exports = reduceRight;
 
-},{"lodash._basecallback":93,"lodash._baseeachright":100,"lodash._basereduce":111,"lodash.isarray":155}],178:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeachright":105,"lodash._basereduce":116,"lodash.isarray":160}],183:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34221,7 +35371,7 @@ function reject(collection, predicate, thisArg) {
 
 module.exports = reject;
 
-},{"lodash._arrayfilter":90,"lodash._basecallback":93,"lodash._basefilter":101,"lodash.isarray":155}],179:[function(require,module,exports){
+},{"lodash._arrayfilter":95,"lodash._basecallback":98,"lodash._basefilter":106,"lodash.isarray":160}],184:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34289,7 +35439,7 @@ function rest(array) {
 
 module.exports = rest;
 
-},{"lodash._baseslice":112,"lodash._isiterateecall":127}],180:[function(require,module,exports){
+},{"lodash._baseslice":117,"lodash._isiterateecall":132}],185:[function(require,module,exports){
 /**
  * lodash 3.6.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34358,7 +35508,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],181:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34496,7 +35646,7 @@ function result(object, path, defaultValue) {
 
 module.exports = result;
 
-},{"lodash._baseget":107,"lodash._baseslice":112,"lodash._topath":132,"lodash.isarray":155,"lodash.isfunction":159}],182:[function(require,module,exports){
+},{"lodash._baseget":112,"lodash._baseslice":117,"lodash._topath":137,"lodash.isarray":160,"lodash.isfunction":164}],187:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34556,7 +35706,7 @@ function sample(collection, n, guard) {
 
 module.exports = sample;
 
-},{"lodash._baserandom":110,"lodash._isiterateecall":127,"lodash._toiterable":131,"lodash.toarray":187}],183:[function(require,module,exports){
+},{"lodash._baserandom":115,"lodash._isiterateecall":132,"lodash._toiterable":136,"lodash.toarray":192}],188:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34590,7 +35740,7 @@ function shuffle(collection) {
 
 module.exports = shuffle;
 
-},{"lodash.sample":182}],184:[function(require,module,exports){
+},{"lodash.sample":187}],189:[function(require,module,exports){
 /**
  * lodash 3.2.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34708,7 +35858,7 @@ function some(collection, predicate, thisArg) {
 
 module.exports = some;
 
-},{"lodash._basecallback":93,"lodash._baseeach":99,"lodash._isiterateecall":127,"lodash.isarray":155}],185:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._baseeach":104,"lodash._isiterateecall":132,"lodash.isarray":160}],190:[function(require,module,exports){
 /**
  * lodash 3.1.5 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34876,7 +36026,7 @@ function sortBy(collection, iteratee, thisArg) {
 
 module.exports = sortBy;
 
-},{"lodash._basecallback":93,"lodash._basecompareascending":95,"lodash._baseeach":99,"lodash._basesortby":113,"lodash._isiterateecall":127}],186:[function(require,module,exports){
+},{"lodash._basecallback":98,"lodash._basecompareascending":100,"lodash._baseeach":104,"lodash._basesortby":118,"lodash._isiterateecall":132}],191:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -34926,7 +36076,7 @@ function take(array, n, guard) {
 
 module.exports = take;
 
-},{"lodash._baseslice":112,"lodash._isiterateecall":127}],187:[function(require,module,exports){
+},{"lodash._baseslice":117,"lodash._isiterateecall":132}],192:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -35040,7 +36190,7 @@ function values(object) {
 
 module.exports = toArray;
 
-},{"lodash._arraycopy":87,"lodash._basevalues":116,"lodash.keys":165}],188:[function(require,module,exports){
+},{"lodash._arraycopy":92,"lodash._basevalues":121,"lodash.keys":170}],193:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -35077,7 +36227,7 @@ var union = restParam(function(arrays) {
 
 module.exports = union;
 
-},{"lodash._baseflatten":104,"lodash._baseuniq":115,"lodash.restparam":180}],189:[function(require,module,exports){
+},{"lodash._baseflatten":109,"lodash._baseuniq":120,"lodash.restparam":185}],194:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -35114,7 +36264,7 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"lodash._basetostring":114}],190:[function(require,module,exports){
+},{"lodash._basetostring":119}],195:[function(require,module,exports){
 /**
  * lodash 3.2.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -35205,7 +36355,7 @@ var without = restParam(function(array, values) {
 
 module.exports = without;
 
-},{"lodash._basedifference":98,"lodash.restparam":180}],191:[function(require,module,exports){
+},{"lodash._basedifference":103,"lodash.restparam":185}],196:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -35214,7 +36364,7 @@ var DataView = getNative(root, 'DataView');
 
 module.exports = DataView;
 
-},{"./_getNative":227,"./_root":243}],192:[function(require,module,exports){
+},{"./_getNative":232,"./_root":248}],197:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -35223,7 +36373,7 @@ var Map = getNative(root, 'Map');
 
 module.exports = Map;
 
-},{"./_getNative":227,"./_root":243}],193:[function(require,module,exports){
+},{"./_getNative":232,"./_root":248}],198:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -35232,7 +36382,7 @@ var Promise = getNative(root, 'Promise');
 
 module.exports = Promise;
 
-},{"./_getNative":227,"./_root":243}],194:[function(require,module,exports){
+},{"./_getNative":232,"./_root":248}],199:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -35241,7 +36391,7 @@ var Set = getNative(root, 'Set');
 
 module.exports = Set;
 
-},{"./_getNative":227,"./_root":243}],195:[function(require,module,exports){
+},{"./_getNative":232,"./_root":248}],200:[function(require,module,exports){
 var root = require('./_root');
 
 /** Built-in value references. */
@@ -35249,7 +36399,7 @@ var Symbol = root.Symbol;
 
 module.exports = Symbol;
 
-},{"./_root":243}],196:[function(require,module,exports){
+},{"./_root":248}],201:[function(require,module,exports){
 var getNative = require('./_getNative'),
     root = require('./_root');
 
@@ -35258,7 +36408,7 @@ var WeakMap = getNative(root, 'WeakMap');
 
 module.exports = WeakMap;
 
-},{"./_getNative":227,"./_root":243}],197:[function(require,module,exports){
+},{"./_getNative":232,"./_root":248}],202:[function(require,module,exports){
 /**
  * A faster alternative to `Function#apply`, this function invokes `func`
  * with the `this` binding of `thisArg` and the arguments of `args`.
@@ -35281,7 +36431,7 @@ function apply(func, thisArg, args) {
 
 module.exports = apply;
 
-},{}],198:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for
  * iteratee shorthands.
@@ -35305,7 +36455,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],199:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 var baseTimes = require('./_baseTimes'),
     isArguments = require('./isArguments'),
     isArray = require('./isArray'),
@@ -35356,7 +36506,7 @@ function arrayLikeKeys(value, inherited) {
 
 module.exports = arrayLikeKeys;
 
-},{"./_baseTimes":214,"./_isIndex":232,"./isArguments":256,"./isArray":257,"./isBuffer":259,"./isTypedArray":267}],200:[function(require,module,exports){
+},{"./_baseTimes":219,"./_isIndex":237,"./isArguments":261,"./isArray":262,"./isBuffer":264,"./isTypedArray":272}],205:[function(require,module,exports){
 /**
  * A specialized version of `_.map` for arrays without support for iteratee
  * shorthands.
@@ -35379,7 +36529,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],201:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 /**
  * Converts an ASCII `string` to an array.
  *
@@ -35393,7 +36543,7 @@ function asciiToArray(string) {
 
 module.exports = asciiToArray;
 
-},{}],202:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 var baseAssignValue = require('./_baseAssignValue'),
     eq = require('./eq');
 
@@ -35423,7 +36573,7 @@ function assignValue(object, key, value) {
 
 module.exports = assignValue;
 
-},{"./_baseAssignValue":203,"./eq":253}],203:[function(require,module,exports){
+},{"./_baseAssignValue":208,"./eq":258}],208:[function(require,module,exports){
 var defineProperty = require('./_defineProperty');
 
 /**
@@ -35450,7 +36600,7 @@ function baseAssignValue(object, key, value) {
 
 module.exports = baseAssignValue;
 
-},{"./_defineProperty":225}],204:[function(require,module,exports){
+},{"./_defineProperty":230}],209:[function(require,module,exports){
 var baseForOwn = require('./_baseForOwn'),
     createBaseEach = require('./_createBaseEach');
 
@@ -35466,7 +36616,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./_baseForOwn":206,"./_createBaseEach":223}],205:[function(require,module,exports){
+},{"./_baseForOwn":211,"./_createBaseEach":228}],210:[function(require,module,exports){
 var createBaseFor = require('./_createBaseFor');
 
 /**
@@ -35484,7 +36634,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./_createBaseFor":224}],206:[function(require,module,exports){
+},{"./_createBaseFor":229}],211:[function(require,module,exports){
 var baseFor = require('./_baseFor'),
     keys = require('./keys');
 
@@ -35502,7 +36652,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"./_baseFor":205,"./keys":268}],207:[function(require,module,exports){
+},{"./_baseFor":210,"./keys":273}],212:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     getRawTag = require('./_getRawTag'),
     objectToString = require('./_objectToString');
@@ -35532,7 +36682,7 @@ function baseGetTag(value) {
 
 module.exports = baseGetTag;
 
-},{"./_Symbol":195,"./_getRawTag":228,"./_objectToString":240}],208:[function(require,module,exports){
+},{"./_Symbol":200,"./_getRawTag":233,"./_objectToString":245}],213:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isObjectLike = require('./isObjectLike');
 
@@ -35552,7 +36702,7 @@ function baseIsArguments(value) {
 
 module.exports = baseIsArguments;
 
-},{"./_baseGetTag":207,"./isObjectLike":264}],209:[function(require,module,exports){
+},{"./_baseGetTag":212,"./isObjectLike":269}],214:[function(require,module,exports){
 var isFunction = require('./isFunction'),
     isMasked = require('./_isMasked'),
     isObject = require('./isObject'),
@@ -35601,7 +36751,7 @@ function baseIsNative(value) {
 
 module.exports = baseIsNative;
 
-},{"./_isMasked":234,"./_toSource":248,"./isFunction":261,"./isObject":263}],210:[function(require,module,exports){
+},{"./_isMasked":239,"./_toSource":253,"./isFunction":266,"./isObject":268}],215:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isLength = require('./isLength'),
     isObjectLike = require('./isObjectLike');
@@ -35663,7 +36813,7 @@ function baseIsTypedArray(value) {
 
 module.exports = baseIsTypedArray;
 
-},{"./_baseGetTag":207,"./isLength":262,"./isObjectLike":264}],211:[function(require,module,exports){
+},{"./_baseGetTag":212,"./isLength":267,"./isObjectLike":269}],216:[function(require,module,exports){
 var isPrototype = require('./_isPrototype'),
     nativeKeys = require('./_nativeKeys');
 
@@ -35695,7 +36845,7 @@ function baseKeys(object) {
 
 module.exports = baseKeys;
 
-},{"./_isPrototype":235,"./_nativeKeys":238}],212:[function(require,module,exports){
+},{"./_isPrototype":240,"./_nativeKeys":243}],217:[function(require,module,exports){
 var identity = require('./identity'),
     overRest = require('./_overRest'),
     setToString = require('./_setToString');
@@ -35714,7 +36864,7 @@ function baseRest(func, start) {
 
 module.exports = baseRest;
 
-},{"./_overRest":242,"./_setToString":245,"./identity":255}],213:[function(require,module,exports){
+},{"./_overRest":247,"./_setToString":250,"./identity":260}],218:[function(require,module,exports){
 var constant = require('./constant'),
     defineProperty = require('./_defineProperty'),
     identity = require('./identity');
@@ -35738,7 +36888,7 @@ var baseSetToString = !defineProperty ? identity : function(func, string) {
 
 module.exports = baseSetToString;
 
-},{"./_defineProperty":225,"./constant":252,"./identity":255}],214:[function(require,module,exports){
+},{"./_defineProperty":230,"./constant":257,"./identity":260}],219:[function(require,module,exports){
 /**
  * The base implementation of `_.times` without support for iteratee shorthands
  * or max array length checks.
@@ -35760,7 +36910,7 @@ function baseTimes(n, iteratee) {
 
 module.exports = baseTimes;
 
-},{}],215:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     arrayMap = require('./_arrayMap'),
     isArray = require('./isArray'),
@@ -35799,7 +36949,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{"./_Symbol":195,"./_arrayMap":200,"./isArray":257,"./isSymbol":266}],216:[function(require,module,exports){
+},{"./_Symbol":200,"./_arrayMap":205,"./isArray":262,"./isSymbol":271}],221:[function(require,module,exports){
 /**
  * The base implementation of `_.unary` without support for storing metadata.
  *
@@ -35815,7 +36965,7 @@ function baseUnary(func) {
 
 module.exports = baseUnary;
 
-},{}],217:[function(require,module,exports){
+},{}],222:[function(require,module,exports){
 var arrayMap = require('./_arrayMap');
 
 /**
@@ -35836,7 +36986,7 @@ function baseValues(object, props) {
 
 module.exports = baseValues;
 
-},{"./_arrayMap":200}],218:[function(require,module,exports){
+},{"./_arrayMap":205}],223:[function(require,module,exports){
 var identity = require('./identity');
 
 /**
@@ -35852,7 +37002,7 @@ function castFunction(value) {
 
 module.exports = castFunction;
 
-},{"./identity":255}],219:[function(require,module,exports){
+},{"./identity":260}],224:[function(require,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -35874,7 +37024,7 @@ function copyArray(source, array) {
 
 module.exports = copyArray;
 
-},{}],220:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 var assignValue = require('./_assignValue'),
     baseAssignValue = require('./_baseAssignValue');
 
@@ -35916,7 +37066,7 @@ function copyObject(source, props, object, customizer) {
 
 module.exports = copyObject;
 
-},{"./_assignValue":202,"./_baseAssignValue":203}],221:[function(require,module,exports){
+},{"./_assignValue":207,"./_baseAssignValue":208}],226:[function(require,module,exports){
 var root = require('./_root');
 
 /** Used to detect overreaching core-js shims. */
@@ -35924,7 +37074,7 @@ var coreJsData = root['__core-js_shared__'];
 
 module.exports = coreJsData;
 
-},{"./_root":243}],222:[function(require,module,exports){
+},{"./_root":248}],227:[function(require,module,exports){
 var baseRest = require('./_baseRest'),
     isIterateeCall = require('./_isIterateeCall');
 
@@ -35963,7 +37113,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"./_baseRest":212,"./_isIterateeCall":233}],223:[function(require,module,exports){
+},{"./_baseRest":217,"./_isIterateeCall":238}],228:[function(require,module,exports){
 var isArrayLike = require('./isArrayLike');
 
 /**
@@ -35997,7 +37147,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./isArrayLike":258}],224:[function(require,module,exports){
+},{"./isArrayLike":263}],229:[function(require,module,exports){
 /**
  * Creates a base function for methods like `_.forIn` and `_.forOwn`.
  *
@@ -36024,7 +37174,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{}],225:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 var getNative = require('./_getNative');
 
 var defineProperty = (function() {
@@ -36037,7 +37187,7 @@ var defineProperty = (function() {
 
 module.exports = defineProperty;
 
-},{"./_getNative":227}],226:[function(require,module,exports){
+},{"./_getNative":232}],231:[function(require,module,exports){
 (function (global){
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -36045,7 +37195,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 module.exports = freeGlobal;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],227:[function(require,module,exports){
+},{}],232:[function(require,module,exports){
 var baseIsNative = require('./_baseIsNative'),
     getValue = require('./_getValue');
 
@@ -36064,7 +37214,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"./_baseIsNative":209,"./_getValue":230}],228:[function(require,module,exports){
+},{"./_baseIsNative":214,"./_getValue":235}],233:[function(require,module,exports){
 var Symbol = require('./_Symbol');
 
 /** Used for built-in method references. */
@@ -36112,7 +37262,7 @@ function getRawTag(value) {
 
 module.exports = getRawTag;
 
-},{"./_Symbol":195}],229:[function(require,module,exports){
+},{"./_Symbol":200}],234:[function(require,module,exports){
 var DataView = require('./_DataView'),
     Map = require('./_Map'),
     Promise = require('./_Promise'),
@@ -36172,7 +37322,7 @@ if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
 
 module.exports = getTag;
 
-},{"./_DataView":191,"./_Map":192,"./_Promise":193,"./_Set":194,"./_WeakMap":196,"./_baseGetTag":207,"./_toSource":248}],230:[function(require,module,exports){
+},{"./_DataView":196,"./_Map":197,"./_Promise":198,"./_Set":199,"./_WeakMap":201,"./_baseGetTag":212,"./_toSource":253}],235:[function(require,module,exports){
 /**
  * Gets the value at `key` of `object`.
  *
@@ -36187,7 +37337,7 @@ function getValue(object, key) {
 
 module.exports = getValue;
 
-},{}],231:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 /** Used to compose unicode character classes. */
 var rsAstralRange = '\\ud800-\\udfff',
     rsComboMarksRange = '\\u0300-\\u036f',
@@ -36215,7 +37365,7 @@ function hasUnicode(string) {
 
 module.exports = hasUnicode;
 
-},{}],232:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -36239,7 +37389,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],233:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 var eq = require('./eq'),
     isArrayLike = require('./isArrayLike'),
     isIndex = require('./_isIndex'),
@@ -36271,7 +37421,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"./_isIndex":232,"./eq":253,"./isArrayLike":258,"./isObject":263}],234:[function(require,module,exports){
+},{"./_isIndex":237,"./eq":258,"./isArrayLike":263,"./isObject":268}],239:[function(require,module,exports){
 var coreJsData = require('./_coreJsData');
 
 /** Used to detect methods masquerading as native. */
@@ -36293,7 +37443,7 @@ function isMasked(func) {
 
 module.exports = isMasked;
 
-},{"./_coreJsData":221}],235:[function(require,module,exports){
+},{"./_coreJsData":226}],240:[function(require,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -36313,7 +37463,7 @@ function isPrototype(value) {
 
 module.exports = isPrototype;
 
-},{}],236:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 /**
  * Converts `iterator` to an array.
  *
@@ -36333,7 +37483,7 @@ function iteratorToArray(iterator) {
 
 module.exports = iteratorToArray;
 
-},{}],237:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 /**
  * Converts `map` to its key-value pairs.
  *
@@ -36353,7 +37503,7 @@ function mapToArray(map) {
 
 module.exports = mapToArray;
 
-},{}],238:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 var overArg = require('./_overArg');
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -36361,7 +37511,7 @@ var nativeKeys = overArg(Object.keys, Object);
 
 module.exports = nativeKeys;
 
-},{"./_overArg":241}],239:[function(require,module,exports){
+},{"./_overArg":246}],244:[function(require,module,exports){
 var freeGlobal = require('./_freeGlobal');
 
 /** Detect free variable `exports`. */
@@ -36385,7 +37535,7 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-},{"./_freeGlobal":226}],240:[function(require,module,exports){
+},{"./_freeGlobal":231}],245:[function(require,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -36409,7 +37559,7 @@ function objectToString(value) {
 
 module.exports = objectToString;
 
-},{}],241:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
  *
@@ -36426,7 +37576,7 @@ function overArg(func, transform) {
 
 module.exports = overArg;
 
-},{}],242:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 var apply = require('./_apply');
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -36464,7 +37614,7 @@ function overRest(func, start, transform) {
 
 module.exports = overRest;
 
-},{"./_apply":197}],243:[function(require,module,exports){
+},{"./_apply":202}],248:[function(require,module,exports){
 var freeGlobal = require('./_freeGlobal');
 
 /** Detect free variable `self`. */
@@ -36475,7 +37625,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
 
-},{"./_freeGlobal":226}],244:[function(require,module,exports){
+},{"./_freeGlobal":231}],249:[function(require,module,exports){
 /**
  * Converts `set` to an array of its values.
  *
@@ -36495,7 +37645,7 @@ function setToArray(set) {
 
 module.exports = setToArray;
 
-},{}],245:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 var baseSetToString = require('./_baseSetToString'),
     shortOut = require('./_shortOut');
 
@@ -36511,7 +37661,7 @@ var setToString = shortOut(baseSetToString);
 
 module.exports = setToString;
 
-},{"./_baseSetToString":213,"./_shortOut":246}],246:[function(require,module,exports){
+},{"./_baseSetToString":218,"./_shortOut":251}],251:[function(require,module,exports){
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
 var HOT_COUNT = 800,
     HOT_SPAN = 16;
@@ -36550,7 +37700,7 @@ function shortOut(func) {
 
 module.exports = shortOut;
 
-},{}],247:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 var asciiToArray = require('./_asciiToArray'),
     hasUnicode = require('./_hasUnicode'),
     unicodeToArray = require('./_unicodeToArray');
@@ -36570,7 +37720,7 @@ function stringToArray(string) {
 
 module.exports = stringToArray;
 
-},{"./_asciiToArray":201,"./_hasUnicode":231,"./_unicodeToArray":249}],248:[function(require,module,exports){
+},{"./_asciiToArray":206,"./_hasUnicode":236,"./_unicodeToArray":254}],253:[function(require,module,exports){
 /** Used for built-in method references. */
 var funcProto = Function.prototype;
 
@@ -36598,7 +37748,7 @@ function toSource(func) {
 
 module.exports = toSource;
 
-},{}],249:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 /** Used to compose unicode character classes. */
 var rsAstralRange = '\\ud800-\\udfff',
     rsComboMarksRange = '\\u0300-\\u036f',
@@ -36640,7 +37790,7 @@ function unicodeToArray(string) {
 
 module.exports = unicodeToArray;
 
-},{}],250:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 var assignValue = require('./_assignValue'),
     copyObject = require('./_copyObject'),
     createAssigner = require('./_createAssigner'),
@@ -36700,7 +37850,7 @@ var assign = createAssigner(function(object, source) {
 
 module.exports = assign;
 
-},{"./_assignValue":202,"./_copyObject":220,"./_createAssigner":222,"./_isPrototype":235,"./isArrayLike":258,"./keys":268}],251:[function(require,module,exports){
+},{"./_assignValue":207,"./_copyObject":225,"./_createAssigner":227,"./_isPrototype":240,"./isArrayLike":263,"./keys":273}],256:[function(require,module,exports){
 var toInteger = require('./toInteger');
 
 /** Error message constants. */
@@ -36742,7 +37892,7 @@ function before(n, func) {
 
 module.exports = before;
 
-},{"./toInteger":273}],252:[function(require,module,exports){
+},{"./toInteger":278}],257:[function(require,module,exports){
 /**
  * Creates a function that returns `value`.
  *
@@ -36770,7 +37920,7 @@ function constant(value) {
 
 module.exports = constant;
 
-},{}],253:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 /**
  * Performs a
  * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
@@ -36809,7 +37959,7 @@ function eq(value, other) {
 
 module.exports = eq;
 
-},{}],254:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 var arrayEach = require('./_arrayEach'),
     baseEach = require('./_baseEach'),
     castFunction = require('./_castFunction'),
@@ -36852,7 +38002,7 @@ function forEach(collection, iteratee) {
 
 module.exports = forEach;
 
-},{"./_arrayEach":198,"./_baseEach":204,"./_castFunction":218,"./isArray":257}],255:[function(require,module,exports){
+},{"./_arrayEach":203,"./_baseEach":209,"./_castFunction":223,"./isArray":262}],260:[function(require,module,exports){
 /**
  * This method returns the first argument it receives.
  *
@@ -36875,7 +38025,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],256:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 var baseIsArguments = require('./_baseIsArguments'),
     isObjectLike = require('./isObjectLike');
 
@@ -36913,7 +38063,7 @@ var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsAr
 
 module.exports = isArguments;
 
-},{"./_baseIsArguments":208,"./isObjectLike":264}],257:[function(require,module,exports){
+},{"./_baseIsArguments":213,"./isObjectLike":269}],262:[function(require,module,exports){
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -36941,7 +38091,7 @@ var isArray = Array.isArray;
 
 module.exports = isArray;
 
-},{}],258:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 var isFunction = require('./isFunction'),
     isLength = require('./isLength');
 
@@ -36976,7 +38126,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./isFunction":261,"./isLength":262}],259:[function(require,module,exports){
+},{"./isFunction":266,"./isLength":267}],264:[function(require,module,exports){
 var root = require('./_root'),
     stubFalse = require('./stubFalse');
 
@@ -37016,7 +38166,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-},{"./_root":243,"./stubFalse":270}],260:[function(require,module,exports){
+},{"./_root":248,"./stubFalse":275}],265:[function(require,module,exports){
 var baseKeys = require('./_baseKeys'),
     getTag = require('./_getTag'),
     isArguments = require('./isArguments'),
@@ -37095,7 +38245,7 @@ function isEmpty(value) {
 
 module.exports = isEmpty;
 
-},{"./_baseKeys":211,"./_getTag":229,"./_isPrototype":235,"./isArguments":256,"./isArray":257,"./isArrayLike":258,"./isBuffer":259,"./isTypedArray":267}],261:[function(require,module,exports){
+},{"./_baseKeys":216,"./_getTag":234,"./_isPrototype":240,"./isArguments":261,"./isArray":262,"./isArrayLike":263,"./isBuffer":264,"./isTypedArray":272}],266:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isObject = require('./isObject');
 
@@ -37134,7 +38284,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./_baseGetTag":207,"./isObject":263}],262:[function(require,module,exports){
+},{"./_baseGetTag":212,"./isObject":268}],267:[function(require,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -37171,7 +38321,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],263:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -37204,7 +38354,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],264:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -37235,7 +38385,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],265:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isArray = require('./isArray'),
     isObjectLike = require('./isObjectLike');
@@ -37267,7 +38417,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{"./_baseGetTag":207,"./isArray":257,"./isObjectLike":264}],266:[function(require,module,exports){
+},{"./_baseGetTag":212,"./isArray":262,"./isObjectLike":269}],271:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isObjectLike = require('./isObjectLike');
 
@@ -37298,7 +38448,7 @@ function isSymbol(value) {
 
 module.exports = isSymbol;
 
-},{"./_baseGetTag":207,"./isObjectLike":264}],267:[function(require,module,exports){
+},{"./_baseGetTag":212,"./isObjectLike":269}],272:[function(require,module,exports){
 var baseIsTypedArray = require('./_baseIsTypedArray'),
     baseUnary = require('./_baseUnary'),
     nodeUtil = require('./_nodeUtil');
@@ -37327,7 +38477,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 
 module.exports = isTypedArray;
 
-},{"./_baseIsTypedArray":210,"./_baseUnary":216,"./_nodeUtil":239}],268:[function(require,module,exports){
+},{"./_baseIsTypedArray":215,"./_baseUnary":221,"./_nodeUtil":244}],273:[function(require,module,exports){
 var arrayLikeKeys = require('./_arrayLikeKeys'),
     baseKeys = require('./_baseKeys'),
     isArrayLike = require('./isArrayLike');
@@ -37366,7 +38516,7 @@ function keys(object) {
 
 module.exports = keys;
 
-},{"./_arrayLikeKeys":199,"./_baseKeys":211,"./isArrayLike":258}],269:[function(require,module,exports){
+},{"./_arrayLikeKeys":204,"./_baseKeys":216,"./isArrayLike":263}],274:[function(require,module,exports){
 var before = require('./before');
 
 /**
@@ -37393,7 +38543,7 @@ function once(func) {
 
 module.exports = once;
 
-},{"./before":251}],270:[function(require,module,exports){
+},{"./before":256}],275:[function(require,module,exports){
 /**
  * This method returns `false`.
  *
@@ -37413,7 +38563,7 @@ function stubFalse() {
 
 module.exports = stubFalse;
 
-},{}],271:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     copyArray = require('./_copyArray'),
     getTag = require('./_getTag'),
@@ -37473,7 +38623,7 @@ function toArray(value) {
 
 module.exports = toArray;
 
-},{"./_Symbol":195,"./_copyArray":219,"./_getTag":229,"./_iteratorToArray":236,"./_mapToArray":237,"./_setToArray":244,"./_stringToArray":247,"./isArrayLike":258,"./isString":265,"./values":277}],272:[function(require,module,exports){
+},{"./_Symbol":200,"./_copyArray":224,"./_getTag":234,"./_iteratorToArray":241,"./_mapToArray":242,"./_setToArray":249,"./_stringToArray":252,"./isArrayLike":263,"./isString":270,"./values":282}],277:[function(require,module,exports){
 var toNumber = require('./toNumber');
 
 /** Used as references for various `Number` constants. */
@@ -37517,7 +38667,7 @@ function toFinite(value) {
 
 module.exports = toFinite;
 
-},{"./toNumber":274}],273:[function(require,module,exports){
+},{"./toNumber":279}],278:[function(require,module,exports){
 var toFinite = require('./toFinite');
 
 /**
@@ -37555,7 +38705,7 @@ function toInteger(value) {
 
 module.exports = toInteger;
 
-},{"./toFinite":272}],274:[function(require,module,exports){
+},{"./toFinite":277}],279:[function(require,module,exports){
 var isObject = require('./isObject'),
     isSymbol = require('./isSymbol');
 
@@ -37623,7 +38773,7 @@ function toNumber(value) {
 
 module.exports = toNumber;
 
-},{"./isObject":263,"./isSymbol":266}],275:[function(require,module,exports){
+},{"./isObject":268,"./isSymbol":271}],280:[function(require,module,exports){
 var baseToString = require('./_baseToString');
 
 /**
@@ -37653,7 +38803,7 @@ function toString(value) {
 
 module.exports = toString;
 
-},{"./_baseToString":215}],276:[function(require,module,exports){
+},{"./_baseToString":220}],281:[function(require,module,exports){
 var toString = require('./toString');
 
 /** Used to generate unique IDs. */
@@ -37683,7 +38833,7 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"./toString":275}],277:[function(require,module,exports){
+},{"./toString":280}],282:[function(require,module,exports){
 var baseValues = require('./_baseValues'),
     keys = require('./keys');
 
@@ -37719,7 +38869,7 @@ function values(object) {
 
 module.exports = values;
 
-},{"./_baseValues":217,"./keys":268}],278:[function(require,module,exports){
+},{"./_baseValues":222,"./keys":273}],283:[function(require,module,exports){
 /**
  * media-type
  * @author Lovell Fuller
@@ -37828,7 +38978,7 @@ exports.fromString = function(str) {
   return mediaType;
 };
 
-},{}],279:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
 var trim = require('trim')
   , forEach = require('for-each')
   , isArray = function(arg) {
@@ -37860,7 +39010,235 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":82,"trim":284}],280:[function(require,module,exports){
+},{"for-each":87,"trim":290}],285:[function(require,module,exports){
+(function (process){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (typeof path !== 'string') {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(filter(paths, function(p, index) {
+    if (typeof p !== 'string') {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+function filter (xs, f) {
+    if (xs.filter) return xs.filter(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        if (f(xs[i], i, xs)) res.push(xs[i]);
+    }
+    return res;
+}
+
+// String.prototype.substr - negative index don't work in IE8
+var substr = 'ab'.substr(-1) === 'b'
+    ? function (str, start, len) { return str.substr(start, len) }
+    : function (str, start, len) {
+        if (start < 0) start = str.length + start;
+        return str.substr(start, len);
+    }
+;
+
+}).call(this,require('_process'))
+},{"_process":51}],286:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -38397,7 +39775,7 @@ module.exports = function (headers) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],281:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -38483,7 +39861,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],282:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -38570,13 +39948,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],283:[function(require,module,exports){
+},{}],289:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":281,"./encode":282}],284:[function(require,module,exports){
+},{"./decode":287,"./encode":288}],290:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -38592,7 +39970,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],285:[function(require,module,exports){
+},{}],291:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -39326,7 +40704,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":286,"punycode":280,"querystring":283}],286:[function(require,module,exports){
+},{"./util":292,"punycode":286,"querystring":289}],292:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -39344,7 +40722,7 @@ module.exports = {
   }
 };
 
-},{}],287:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 "use strict";
 var window = require("global/window")
 var isFunction = require("is-function")
@@ -39587,7 +40965,7 @@ function getXml(xhr) {
 
 function noop() {}
 
-},{"global/window":83,"is-function":84,"parse-headers":279,"xtend":288}],288:[function(require,module,exports){
+},{"global/window":88,"is-function":89,"parse-headers":284,"xtend":294}],294:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

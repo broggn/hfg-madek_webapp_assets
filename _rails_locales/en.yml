@@ -352,6 +352,13 @@ en:
   media_entry_file_information_title: File information
   media_entry_media_import_gotodrafts: Complete media entries
   media_entry_media_import_header: Media upload
+  media_entry_media_import_box_header_a: ''
+  media_entry_media_import_box_header_b: ' Upload(s)'
+  media_entry_media_import_box_upload_status_waiting: Waiting…
+  media_entry_media_import_box_upload_status_error: Error!
+  media_entry_media_import_box_upload_status_progress_a: 'Uploading… '
+  media_entry_media_import_box_upload_status_progress_b: '%'
+  media_entry_media_import_box_upload_status_processing: Processing…
   media_entry_media_import_inside: 'Add files by drag and drop in this field or '
   media_entry_media_import_inside_nojs: Select files
   media_entry_media_import_notes_msg: >-

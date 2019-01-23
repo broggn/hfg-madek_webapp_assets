@@ -362,6 +362,8 @@ en:
   media_entry_media_import_inside: 'Add files by drag and drop in this field or '
   media_entry_media_import_inside_nojs: Select files
   media_entry_media_import_notes_msg: >-
+    Please use a fast internet connection (network cable) for large files.
+
     Images (TIFF, JPEG, PNG) and audio/video files in the most common formats
     are processed and displayed directly. Images in the CMYK color model cannot
     be displayed correctly, please convert to RGB before uploading.

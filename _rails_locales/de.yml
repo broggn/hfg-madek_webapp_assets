@@ -376,6 +376,9 @@ de:
   media_entry_media_import_inside: 'Dateien auf dieses Feld ziehen oder '
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_notes_msg: >-
+    Für grosse Dateien auf eine schnelle Internet-Anbindung achten
+    (Netzwerkkabel).
+
     Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten
     Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum
     werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Importieren in

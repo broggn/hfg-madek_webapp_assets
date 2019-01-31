@@ -234,6 +234,8 @@ de:
   dynamic_filters_visibility: Sichtbarkeit
   dynamic_filters_visibility_private: Nur für mich
   dynamic_filters_visibility_user_or_group: Geteilt mit Personen und Arbeitsgruppen
+  dynamic_filters_person_header: Persons
+  dynamic_filters_role_header: Rollen
   edit_custom_urls_back_to_collection: Zurück zum Set
   edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
   edit_custom_urls_cancel: Abbrechen
@@ -376,9 +378,6 @@ de:
   media_entry_media_import_inside: 'Dateien auf dieses Feld ziehen oder '
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_notes_msg: >-
-    Für grosse Dateien auf eine schnelle Internet-Anbindung achten
-    (Netzwerkkabel).
-
     Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten
     Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum
     werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Importieren in
@@ -467,7 +466,15 @@ de:
   meta_data_input_new_group_add: Arbeitsgruppe einfügen
   meta_data_input_new_person_add: Person einfügen
   meta_data_input_new_person_toggle: Neue Person oder Gruppe anlegen
+  meta_data_input_person_save: Speichern
   meta_data_meta_key_label: Schlüssel
+  meta_data_role_add_another_btn: Add another role
+  meta_data_role_add_btn: Add a role
+  meta_data_role_add_heading: Add a role to
+  meta_data_role_choose_label: Choose the role
+  meta_data_role_edit_btn: Edit role
+  meta_data_role_edit_heading: Edit the role of
+  meta_data_role_remove_btn: Remove role
   meta_data_type_label: Typ
   meta_data_value_label: Wert
   meta_key_order_alphabetical: a-z

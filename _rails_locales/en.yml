@@ -232,6 +232,8 @@ en:
   dynamic_filters_visibility: Accessability
   dynamic_filters_visibility_private: Only for me
   dynamic_filters_visibility_user_or_group: Shared with people and work groups
+  dynamic_filters_person_header: Persons
+  dynamic_filters_role_header: Roles
   edit_custom_urls_back_to_collection: Back to the set
   edit_custom_urls_back_to_media_entry: Back to the media entry
   edit_custom_urls_cancel: Cancel
@@ -362,8 +364,6 @@ en:
   media_entry_media_import_inside: 'Add files by drag and drop in this field or '
   media_entry_media_import_inside_nojs: Select files
   media_entry_media_import_notes_msg: >-
-    Please use a fast internet connection (network cable) for large files.
-
     Images (TIFF, JPEG, PNG) and audio/video files in the most common formats
     are processed and displayed directly. Images in the CMYK color model cannot
     be displayed correctly, please convert to RGB before uploading.
@@ -448,7 +448,15 @@ en:
   meta_data_input_new_group_add: Add work group
   meta_data_input_new_person_add: Add person
   meta_data_input_new_person_toggle: Add new person or work group
+  meta_data_input_person_save: Save
   meta_data_meta_key_label: Key
+  meta_data_role_add_another_btn: Add another role
+  meta_data_role_add_btn: Add a role
+  meta_data_role_add_heading: Add a role to
+  meta_data_role_choose_label: Choose the role
+  meta_data_role_edit_btn: Edit role
+  meta_data_role_edit_heading: Edit the role of
+  meta_data_role_remove_btn: Remove role
   meta_data_type_label: Type
   meta_data_value_label: Data
   meta_key_order_alphabetical: a-z

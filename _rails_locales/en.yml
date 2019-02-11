@@ -446,7 +446,11 @@ en:
   meta_data_input_date_type_timestamp: 'on'
   meta_data_input_keywords_existing: Keyword already assigned.
   meta_data_input_new_group_add: Add work group
+  meta_data_input_new_group_name: Name
   meta_data_input_new_person_add: Add person
+  meta_data_input_new_person_first_name: First name
+  meta_data_input_new_person_last_name: Last name
+  meta_data_input_new_person_pseudonym: Pseudonym
   meta_data_input_new_person_toggle: Add new person or work group
   meta_data_input_person_save: Save
   meta_data_meta_key_label: Key

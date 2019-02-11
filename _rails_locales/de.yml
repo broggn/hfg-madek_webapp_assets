@@ -464,7 +464,11 @@ de:
   meta_data_input_date_type_timestamp: am
   meta_data_input_keywords_existing: Schlagwort ist bereits vergeben.
   meta_data_input_new_group_add: Arbeitsgruppe einfügen
+  meta_data_input_new_group_name: Name
   meta_data_input_new_person_add: Person einfügen
+  meta_data_input_new_person_first_name: Vorname
+  meta_data_input_new_person_last_name: Nachname
+  meta_data_input_new_person_pseudonym: Pseudonym
   meta_data_input_new_person_toggle: Neue Person oder Gruppe anlegen
   meta_data_input_person_save: Speichern
   meta_data_meta_key_label: Schlüssel

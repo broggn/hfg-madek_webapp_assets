@@ -376,9 +376,6 @@ de:
   media_entry_media_import_inside: 'Dateien auf dieses Feld ziehen oder '
   media_entry_media_import_inside_nojs: Dateien auswählen
   media_entry_media_import_notes_msg: >-
-    Für grosse Dateien auf eine schnelle Internet-Anbindung achten
-    (Netzwerkkabel).
-
     Bilder (TIFF, JPEG, PNG) sowie Audio- und Videofiles in den gängigsten
     Formaten werden direkt verarbeitet und dargestellt. Bilder im CMYK-Farbraum
     werden nicht korrekt dargestellt. Wandeln Sie diese vor dem Importieren in
@@ -540,6 +537,7 @@ de:
   resource_action_collection_edit_highlight: Inhalte hervorheben
   resource_action_collection_edit_metadata: Metadaten editieren
   resource_action_collection_favor: Zu Favoriten hinzufügen
+  resource_action_collection_manage_confidential_links: Vertrauliche Links verwalten
   resource_action_collection_select_collection: Zu Set hinzufügen/entfernen
   resource_action_collection_share: Set teilen
   resource_action_media_entry_destroy: Medieneintrag löschen
@@ -548,6 +546,7 @@ de:
   resource_action_media_entry_edit_metadata: Metadaten editieren
   resource_action_media_entry_export: Medieneintrag exportieren
   resource_action_media_entry_favor: Zu Favoriten hinzufügen
+  resource_action_media_entry_manage_confidential_links: Vertrauliche Links verwalten
   resource_action_media_entry_select_collection: Zu Sets hinzufügen / Aus Sets entfernen
   resource_action_media_entry_share: Medieneintrag teilen
   resource_action_more_actions: Weitere Aktionen
@@ -727,6 +726,34 @@ de:
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vokabulare
   sitemap_vocabulary: Vokabular
+  confidential_links_title_pre: 'Vertrauliche Links für '
+  confidential_links_title_post: Zurück zum Set
+  confidential_links_back_to_collection: Zurück zum Set
+  confidential_links_back_to_media_entry: Zurück zum Medieneintrag
+  confidential_links_create_title: Neuen Vertraulichen Link erstellen
+  confidential_links_create_description: Beschreibung
+  confidential_links_create_submit: Vertraulichen Link erstellen
+  confidential_links_create_set_expiration_date: Ablaufdatum einstellen
+  confidential_links_create_cancel: Abbrechen
+  confidential_links_created_title: Neuer Vertraulicher Link erstellt
+  confidential_links_created_back_btn: Zurück zu allen Vertraulichen Links
+  confidential_links_created_notice: Vertraulicher Link erstellt!
+  confidential_links_list_created_hint_pre: 'Erstellt: '
+  confidential_links_list_expires_hint_pre: 'Ablaufdatum: '
+  confidential_links_list_no_expiry: Nie
+  confidential_links_list_new_button: Neuen Vertraulichen Link erstellen
+  confidential_links_list_no_description: (Keine Beschreibung)
+  confidential_links_list_revoke_btn_hint: Vertraulichen Link zurückziehen
+  confidential_links_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Vertraulichen Link zurückziehen wollen?'
+  confidential_links_list_revoked_title: Abgelaufene Vertrauliche Links
+  confidential_links_list_show_url: Link anzeigen
+  confidential_links_list_copy_url: Vertraulichen Link kopieren
+  confidential_links_head_id: ID
+  confidential_links_head_name: Name
+  confidential_links_head_token: Token
+  confidential_links_head_valid_since: Erstellt am
+  confidential_links_head_valid_until: Läuft ab
+  confidential_links_show_title: Vertraulicher Link
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

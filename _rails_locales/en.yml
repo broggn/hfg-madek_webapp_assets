@@ -362,8 +362,6 @@ en:
   media_entry_media_import_inside: 'Add files by drag and drop in this field or '
   media_entry_media_import_inside_nojs: Select files
   media_entry_media_import_notes_msg: >-
-    Please use a fast internet connection (network cable) for large files.
-
     Images (TIFF, JPEG, PNG) and audio/video files in the most common formats
     are processed and displayed directly. Images in the CMYK color model cannot
     be displayed correctly, please convert to RGB before uploading.
@@ -521,6 +519,7 @@ en:
   resource_action_collection_edit_highlight: Highlight items
   resource_action_collection_edit_metadata: Edit metadata
   resource_action_collection_favor: Add to favorites
+  resource_action_collection_manage_confidential_links: Manage Confidential Links
   resource_action_collection_select_collection: Add to/remove from set
   resource_action_collection_share: Share set
   resource_action_media_entry_destroy: Delete media entry
@@ -529,6 +528,7 @@ en:
   resource_action_media_entry_edit_metadata: Edit metadata
   resource_action_media_entry_export: Export media entry
   resource_action_media_entry_favor: Add to favorites
+  resource_action_media_entry_manage_confidential_links: Manage Confidential Links
   resource_action_media_entry_select_collection: Add to/remove from set
   resource_action_media_entry_share: Share media entry
   resource_action_more_actions: Further actions
@@ -706,6 +706,34 @@ en:
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vocabularies
   sitemap_vocabulary: Vocabulary
+  confidential_links_title_pre: 'Confidential Links for '
+  confidential_links_title_post: Back to the set
+  confidential_links_back_to_collection: Back to the set
+  confidential_links_back_to_media_entry: Back to the media entry
+  confidential_links_create_title: Create a new Confidential Link
+  confidential_links_create_description: Description
+  confidential_links_create_submit: Create Confidential Link
+  confidential_links_create_set_expiration_date: Set expiration date
+  confidential_links_create_cancel: Cancel
+  confidential_links_created_title: New Confidential Link created
+  confidential_links_created_back_btn: Go back to all Confidential Links
+  confidential_links_created_notice: Confidential Link was created!
+  confidential_links_list_created_hint_pre: 'Created: '
+  confidential_links_list_expires_hint_pre: 'Expiration date: '
+  confidential_links_list_no_expiry: Never
+  confidential_links_list_new_button: Add a new Confidential Link
+  confidential_links_list_no_description: (No description)
+  confidential_links_list_revoke_btn_hint: Revoke Confidential Link
+  confidential_links_list_revoke_confirm: Are you sure you want to revoke this Confidential Link?
+  confidential_links_list_revoked_title: Expired Confidential Links
+  confidential_links_list_show_url: Show Link
+  confidential_links_list_copy_url: Copy Confidential Link
+  confidential_links_head_id: ID
+  confidential_links_head_name: Name
+  confidential_links_head_token: Token
+  confidential_links_head_valid_since: Created at
+  confidential_links_head_valid_until: Expires at
+  confidential_links_show_title: Confidential Link
   transfer_responsibility_batch_success_collection_1: 'You have successfully transferred responsibility for '
   transfer_responsibility_batch_success_collection_1a: ' set '
   transfer_responsibility_batch_success_collection_1b: ' sets '

@@ -51,7 +51,7 @@ de:
   api_tokens_list_no_description: (Keine Beschreibung)
   api_tokens_list_revoke_btn_hint: Token zurückziehen.
   api_tokens_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Token zurückziehen wollen?'
-  api_tokens_list_revoked_title: Zurückgezogene Tokens
+  api_tokens_list_revoked_title: Abgelaufene und zurückgezogene Tokens
   api_tokens_list_scope_off: Nein
   api_tokens_list_scope_on: Ja
   api_tokens_list_scope_read: Lesen
@@ -738,7 +738,20 @@ de:
   sitemap_search: Suche
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vokabulare
+  confidential_links_help_title: Hinweise
   sitemap_vocabulary: Vokabular
+  confidential_links_help_text: >-
+    Vertrauliche Links ermöglichen den direkten Zugriff auf Medieneinträge, auch
+    wenn sie nicht öffentlich sichtbar sind.
+
+    Diese Links ermöglichen somit auch Benutzern ohne Login einen Zugang zum
+    Medieneintrag. Binden Sie Vertrauliche Links nicht in öffentlich zugängliche
+    Webseiten ein, sonst werden die regulären Zugriffsberechtigungen
+    wirkungslos.
+
+    Vertrauliche Links können nur vom Verantwortlichen eines Medieneintrags
+    erstellt und zurückgezogen werden. Die Links können mit einem Verfallsdatum
+    erstellt oder zeitlich unbeschränkt erstellt werden.
   confidential_links_header: Vertrauliche Links
   confidential_links_title_pre: 'Vertrauliche Links für '
   confidential_links_title_post: Zurück zum Set
@@ -758,9 +771,9 @@ de:
   confidential_links_list_no_expiry: Nie
   confidential_links_list_new_button: Neuen Vertraulichen Link erstellen
   confidential_links_list_no_description: (Keine Beschreibung)
-  confidential_links_list_revoke_btn_hint: Vertraulichen Link zurückziehen
+  confidential_links_list_revoke_btn_hint: Zurückziehen
   confidential_links_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Vertraulichen Link zurückziehen wollen?'
-  confidential_links_list_revoked_title: Abgelaufene Vertrauliche Links
+  confidential_links_list_revoked_title: Abgelaufene und zurückgezogene Vertrauliche Links
   confidential_links_list_show_url: Link anzeigen
   confidential_links_list_copy_url: Vertraulichen Link kopieren
   confidential_links_head_id: ID
@@ -769,6 +782,9 @@ de:
   confidential_links_head_valid_since: Erstellt am
   confidential_links_head_valid_until: Läuft ab
   confidential_links_show_title: Vertraulicher Link
+  confidential_links_access_notice: >-
+    Dieser Medieneintrag wurde über einen Vertraulichen Link aufgerufen. Die URL
+    dieser Seite darf nur einem eingeschränkten Personenkreis zugänglich sein.
   transfer_responsibility_batch_success_collection_1: 'Sie haben für '
   transfer_responsibility_batch_success_collection_1a: ' Set '
   transfer_responsibility_batch_success_collection_1b: ' Sets '

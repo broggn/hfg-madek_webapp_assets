@@ -47,7 +47,7 @@ en:
   api_tokens_list_no_description: No description)
   api_tokens_list_revoke_btn_hint: Revoke token.
   api_tokens_list_revoke_confirm: Are you sure you want to revoke the token?
-  api_tokens_list_revoked_title: Revoked tokens
+  api_tokens_list_revoked_title: Expired and revoked tokens
   api_tokens_list_scope_off: 'No'
   api_tokens_list_scope_on: 'Yes'
   api_tokens_list_scope_read: Read
@@ -718,7 +718,20 @@ en:
   sitemap_search: Search
   sitemap_tokens: Tokens
   sitemap_vocabularies: Vocabularies
+  confidential_links_help_title: Hints
   sitemap_vocabulary: Vocabulary
+  confidential_links_help_text: >-
+    Confidential Links can be used to enable access to Entries without making
+    them publicly visible.
+
+    These Links therefore also make it possible to share Entries with Users that
+    don't have a login. Please do not share or embed Confidential Links onto
+    publicly accessible websites, because it would render the regular permission
+    settings useless.
+
+    Confidential Links can only be created by the responsible user of an Entry.
+    They can be manually revoked at any time, and optionally be set to expire
+    automatically after a set day.
   confidential_links_header: Confidential Links
   confidential_links_title_pre: 'Confidential Links for '
   confidential_links_title_post: Back to the set
@@ -738,9 +751,9 @@ en:
   confidential_links_list_no_expiry: Never
   confidential_links_list_new_button: Add a new Confidential Link
   confidential_links_list_no_description: (No description)
-  confidential_links_list_revoke_btn_hint: Revoke Confidential Link
+  confidential_links_list_revoke_btn_hint: Revoke
   confidential_links_list_revoke_confirm: Are you sure you want to revoke this Confidential Link?
-  confidential_links_list_revoked_title: Expired Confidential Links
+  confidential_links_list_revoked_title: Expired and revoked Confidential Links
   confidential_links_list_show_url: Show Link
   confidential_links_list_copy_url: Copy Confidential Link
   confidential_links_head_id: ID
@@ -749,6 +762,9 @@ en:
   confidential_links_head_valid_since: Created at
   confidential_links_head_valid_until: Expires at
   confidential_links_show_title: Confidential Link
+  confidential_links_access_notice: >-
+    This Entry was accessed via a Confidential Link. The URL of this page shall
+    only be made accessible to a limited group of people.
   transfer_responsibility_batch_success_collection_1: 'You have successfully transferred responsibility for '
   transfer_responsibility_batch_success_collection_1a: ' set '
   transfer_responsibility_batch_success_collection_1b: ' sets '

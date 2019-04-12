@@ -533,6 +533,8 @@ de:
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
   person_show_description: Beschreibung
   person_show_external_uri: URI
+  person_show_external_uris: URIs
+  person_show_external_uri_authority_control: Normdaten
   person_show_first_name: Vorname
   person_show_last_name: Nachname
   picture_alt_fallback: (unbekannt)
@@ -856,6 +858,7 @@ de:
   vocabulary_term_info_rdfclass: Typ
   vocabulary_term_info_term: Begriff
   vocabulary_term_info_url: URL
+  vocabulary_term_info_urls: URLs
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?

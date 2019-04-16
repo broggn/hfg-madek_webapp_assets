@@ -515,8 +515,6 @@ en:
   permissions_transfer_responsibility_link: Transfer responisibility
   person_show_description: Description
   person_show_external_uri: URI
-  person_show_external_uris: URIs
-  person_show_external_uri_authority_control: Authority Control Data
   person_show_first_name: First name
   person_show_last_name: Last name
   picture_alt_fallback: (unkown)
@@ -748,6 +746,8 @@ en:
   confidential_links_created_notice: Confidential Link was created!
   confidential_links_show_link_for_copy: 'Link to copy:'
   confidential_links_show_embedcode_for_copy: 'Embed-Code to copy:'
+  confidential_links_show_embed_link: 'Embed-link:'
+  confidential_links_show_embed_code_iframe: 'HTML-code/iframe:'
   confidential_links_list_created_hint_pre: 'Created: '
   confidential_links_list_expires_hint_pre: 'Expiration date: '
   confidential_links_list_no_expiry: Never
@@ -834,7 +834,6 @@ en:
   vocabulary_term_info_rdfclass: Type
   vocabulary_term_info_term: Term
   vocabulary_term_info_url: URL
-  vocabulary_term_info_urls: URLs
   workgroup_link_to_contents_text: Items
   workgroup_link_to_contents_title: Show items of this work group
   workgroup_members_table_is_member: Member?

@@ -748,6 +748,8 @@ en:
   confidential_links_created_notice: Confidential Link was created!
   confidential_links_show_link_for_copy: 'Link to copy:'
   confidential_links_show_embedcode_for_copy: 'Embed-Code to copy:'
+  confidential_links_show_embed_link: 'Embed-link:'
+  confidential_links_show_embed_code_iframe: 'HTML-code/iframe:'
   confidential_links_list_created_hint_pre: 'Created: '
   confidential_links_list_expires_hint_pre: 'Expiration date: '
   confidential_links_list_no_expiry: Never

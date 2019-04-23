@@ -532,9 +532,8 @@ de:
   permissions_table_title: Zugriffsberechtigungen
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
   person_show_description: Beschreibung
-  person_show_external_uri: URI
-  person_show_external_uris: URIs
-  person_show_external_uri_authority_control: Normdaten
+  person_show_external_uris: Links
+  person_show_external_uris_autority_control: Normdaten
   person_show_first_name: Vorname
   person_show_last_name: Nachname
   picture_alt_fallback: (unbekannt)

@@ -514,9 +514,8 @@ en:
   permissions_table_title: Permissions
   permissions_transfer_responsibility_link: Transfer responisibility
   person_show_description: Description
-  person_show_external_uri: URI
-  person_show_external_uris: URIs
-  person_show_external_uri_authority_control: Authority Control Data
+  person_show_external_uris: Links
+  person_show_external_uris_autority_control: Authority Control Data
   person_show_first_name: First name
   person_show_last_name: Last name
   picture_alt_fallback: (unkown)

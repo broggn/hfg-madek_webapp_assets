@@ -56,7 +56,13 @@ en:
   app_confirm_form_leave_msg: >-
     Please confirm that you wish to leave this page – entered data might not be
     saved.
+  app_notice_admin_mode_on: Admin mode activated!
+  app_notice_admin_mode_off: Admin mode deactivated!
+  app_notice_logged_in: You have logged in.
   app_notice_logged_out: You have logged out.
+  app_notice_wrong_credentials: Incorrect username/password.
+  app_notice_shibboleth_not_enabled: Shibboleth sign in is not enabled!
+  app_notice_shibboleth_missing_fields: ' GIVENNAME und EMAIL sind Pflichtfelder!'
   app_warning_jsonly: 'This feature requires Javascript, but it is not activated.'
   authentication_groups: System groups
   batch_add_to_collection_hint: Seach for sets to add media entries.
@@ -476,8 +482,10 @@ en:
   pagination_nav_nextpage: Next page
   pagination_nav_prevpage: Previous page
   pagination_nav_thispage: This page
-  pagination_of: of
-  pagination_prefix: Page
+  pagination_prefix: 'Page '
+  pagination_infix: ' of '
+  pagination_postfix: ''
+  pagination_selection_label: Select page
   people_toolbar_header: Related items
   permission_entrusted_to_group: Visible to work groups
   permission_entrusted_to_user: Visible to users

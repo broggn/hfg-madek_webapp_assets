@@ -66,7 +66,9 @@ de:
   app_notice_logged_out: Sie haben sich abgemeldet.
   app_notice_wrong_credentials: Falscher Benutzername/Passwort.
   app_notice_shibboleth_not_enabled: Die Anmeldung mittels Shibboleth ist nicht aktiviert!
-  app_notice_shibboleth_missing_fields: Die Authentifizierungsdaten von Shibboleth sind unvollständig. SURNAME
+  app_notice_shibboleth_missing_fields: >-
+    Die Authentifizierungsdaten von Shibboleth sind unvollständig. SURNAME,
+    GIVENNAME und EMAIL sind Pflichtfelder!
   app_warning_jsonly: 'Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert.'
   authentication_groups: Systemgruppen
   batch_add_to_collection_hint: 'Nach Sets suchen, zu denen Sie die Medieneinträge hinzufügen möchten.'
@@ -478,13 +480,13 @@ de:
   meta_data_input_new_person_toggle: Neue Person oder Gruppe anlegen
   meta_data_input_person_save: Speichern
   meta_data_meta_key_label: Schlüssel
-  meta_data_role_add_another_btn: Weitere Rolle hinzufügen
-  meta_data_role_add_btn: Rolle hinzufügen
-  meta_data_role_add_heading: 'Rolle hinzufügen zu '
-  meta_data_role_choose_label: Rolle auswählen
-  meta_data_role_edit_btn: Rolle bearbeiten
-  meta_data_role_edit_heading: Rolle bearbeiten
-  meta_data_role_remove_btn: Rolle entfernen
+  meta_data_role_add_another_btn: Weitere Funktion hinzufügen
+  meta_data_role_add_btn: Funktion hinzufügen
+  meta_data_role_add_heading: 'Funktion hinzufügen zu '
+  meta_data_role_choose_label: Funktion auswählen
+  meta_data_role_edit_btn: Funktion bearbeiten
+  meta_data_role_edit_heading: Funktion bearbeiten
+  meta_data_role_remove_btn: Funktion entfernen
   meta_data_type_label: Typ
   meta_data_value_label: Wert
   meta_key_order_alphabetical: a-z

@@ -243,7 +243,7 @@ de:
   dynamic_filters_visibility_private: Nur für mich
   dynamic_filters_visibility_user_or_group: Geteilt mit Personen und Arbeitsgruppen
   dynamic_filters_person_header: Personen
-  dynamic_filters_role_header: Rollen
+  dynamic_filters_role_header: Funktionen
   edit_custom_urls_back_to_collection: Zurück zum Set
   edit_custom_urls_back_to_media_entry: Zurück zum Medieneintrag
   edit_custom_urls_cancel: Abbrechen

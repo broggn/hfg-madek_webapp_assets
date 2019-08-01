@@ -430,6 +430,7 @@ de:
   meta_data_batch_hint_equal_data: Gleiche Metadaten vorhanden
   meta_data_batch_hint_no_data: Noch keine Metadaten vorhanden
   meta_data_batch_hint_value: Werte oder Text
+  meta_data_batch_item_selected: Medieneintrag selektiert
   meta_data_batch_items_selected: Medieneinträge selektiert
   meta_data_batch_more: weitere
   meta_data_batch_some_ignored_1: (

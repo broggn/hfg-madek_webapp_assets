@@ -412,6 +412,7 @@ en:
   meta_data_batch_hint_equal_data: Same metadata in place.
   meta_data_batch_hint_no_data: No metadata available yet.
   meta_data_batch_hint_value: Values or text
+  meta_data_batch_item_selected: Media entry selected
   meta_data_batch_items_selected: Media entries selected
   meta_data_batch_more: More
   meta_data_batch_some_ignored_1: (

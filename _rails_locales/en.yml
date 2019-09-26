@@ -266,6 +266,16 @@ en:
     please enter this address here. You have to have manage permissions for both
     items.
   edit_custom_urls_transfer_title: Transfer
+  embed_error_title: Error!
+  embed_error_context_pre: 'Requested URL: '
+  embed_error_context_post: ''
+  embed_error_help_pre: 'Help: '
+  embed_error_help_post: ''
+  embed_error_msg: This content cannot be displayed.
+  embed_error_msg_403: >-
+    This content cannot be displayed because the necessary permissions are
+    missing.
+  embed_error_msg_404: The requested content could not be found.
   error_401_title: To get access please login below with your user data.
   error_403_message: Please contact the responsible user who has the right alllow access.
   error_403_title: You don’t have the necessary permissions to access this resource.

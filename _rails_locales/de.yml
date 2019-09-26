@@ -270,6 +270,16 @@ de:
     hier ein. Sie müssen für beide Inhalte über die Zugriffsberechtigung
     'Verwalten' verfügen.
   edit_custom_urls_transfer_title: Übertragen
+  embed_error_title: Fehler!
+  embed_error_context_pre: 'Angeforderte URL: '
+  embed_error_context_post: ''
+  embed_error_help_pre: 'Hilfe: '
+  embed_error_help_post: ''
+  embed_error_msg: Dieser Inhalt kann nicht angezeigt werden.
+  embed_error_msg_403: >-
+    Dieser Inhalt kann nicht angezeigt werden, weil die nötigen Berechtigungen
+    fehlen.
+  embed_error_msg_404: Der gewünschte Inhalt konnte nicht gefunden werden.
   error_401_title: 'Um Zugang zu diesem Bereich zu erhalten, melden Sie sich bitte an.'
   error_403_message: >-
     Bitte kontaktieren Sie die für den Medieneintrag oder das Sets

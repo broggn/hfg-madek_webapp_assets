@@ -275,9 +275,9 @@ de:
   embed_error_context_post: ''
   embed_error_help_pre: 'Hilfe: '
   embed_error_help_post: ''
-  embed_error_msg: Dieser Inhalt kann nicht angezeigt werden.
+  embed_error_msg: Dieser Inhalt kann nicht eingebettet werden.
   embed_error_msg_403: >-
-    Dieser Inhalt kann nicht angezeigt werden, weil die nötigen Berechtigungen
+    Dieser Inhalt kann nicht eingebettet werden, weil die nötigen Berechtigungen
     fehlen.
   embed_error_msg_404: Der gewünschte Inhalt konnte nicht gefunden werden.
   error_401_title: 'Um Zugang zu diesem Bereich zu erhalten, melden Sie sich bitte an.'

@@ -271,9 +271,9 @@ en:
   embed_error_context_post: ''
   embed_error_help_pre: 'Help: '
   embed_error_help_post: ''
-  embed_error_msg: This content cannot be displayed.
+  embed_error_msg: This content cannot be embedded.
   embed_error_msg_403: >-
-    This content cannot be displayed because the necessary permissions are
+    This content cannot be embedded because the necessary permissions are
     missing.
   embed_error_msg_404: The requested content could not be found.
   error_401_title: To get access please login below with your user data.

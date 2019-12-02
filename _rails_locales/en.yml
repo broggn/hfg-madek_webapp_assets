@@ -484,6 +484,7 @@ en:
   meta_data_role_remove_btn: Remove function
   meta_data_type_label: Type
   meta_data_value_label: Data
+  meta_datum_json_download_value: Link to this dataset
   meta_key_order_alphabetical: a-z
   meta_key_order_alphabetical_hint: The keywords of this metakey are sorted alphabetically.
   meta_key_order_custom: editorial

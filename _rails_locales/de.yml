@@ -502,6 +502,7 @@ de:
   meta_data_role_remove_btn: Funktion entfernen
   meta_data_type_label: Typ
   meta_data_value_label: Wert
+  meta_datum_json_download_value: Link zu diesem Datensatz
   meta_key_order_alphabetical: a-z
   meta_key_order_alphabetical_hint: Die Schlagworte dieses Metadatenfeldes sind alphabetisch sortiert.
   meta_key_order_custom: redaktionell

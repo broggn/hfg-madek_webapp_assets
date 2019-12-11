@@ -234,7 +234,7 @@ en:
   dashboard_create_collection_btn: Create set
   dashboard_create_media_entry_btn: Upload media
   dashboard_none_exist: There are none.
-  dashboard_show_all: Show all →
+  dashboard_show_all: Show all
   dashboard_title_head: My archive
   dynamic_filters_authorization: Authorization
   dynamic_filters_visibility: Accessability

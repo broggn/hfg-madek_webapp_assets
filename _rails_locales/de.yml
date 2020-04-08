@@ -765,18 +765,7 @@ de:
   sitemap_vocabularies: Vokabulare
   confidential_links_help_title: Hinweise
   sitemap_vocabulary: Vokabular
-  confidential_links_help_text: >-
-    Vertrauliche Links ermöglichen den direkten Zugriff auf Medieneinträge, auch
-    wenn sie nicht öffentlich sichtbar sind.
-
-    Diese Links ermöglichen somit auch Benutzern ohne Login einen Zugang zum
-    Medieneintrag. Binden Sie Vertrauliche Links nicht in öffentlich zugängliche
-    Webseiten ein, sonst werden die regulären Zugriffsberechtigungen
-    wirkungslos.
-
-    Vertrauliche Links können nur vom Verantwortlichen eines Medieneintrags
-    erstellt und zurückgezogen werden. Die Links können mit einem Verfallsdatum
-    erstellt oder zeitlich unbeschränkt erstellt werden.
+  confidential_links_help_text: "Vertrauliche Links ermöglichen den direkten Zugriff auf Medieneinträge, auch wenn sie nicht öffentlich sichtbar sind.\r\nDiese Links ermöglichen somit auch Benutzern ohne Login einen Zugang zum Medieneintrag. Binden Sie Vertrauliche Links nicht in öffentlich zugängliche Webseiten ein, sonst werden die regulären Zugriffsberechtigungen wirkungslos.\r\nVertrauliche Links können nur vom Verantwortlichen eines Medieneintrags erstellt und zurückgezogen werden. Die Links können mit einem Verfallsdatum erstellt oder zeitlich unbeschränkt erstellt werden."
   confidential_links_header: Vertrauliche Links
   confidential_links_title_pre: 'Vertrauliche Links für '
   confidential_links_title_post: Zurück zum Set
@@ -884,6 +873,62 @@ de:
   vocabulary_term_info_term: Begriff
   vocabulary_term_info_url: URL
   vocabulary_term_info_urls: URLs
+  workflow_edit_actions_back: Zurück
+  workflow_edit_actions_cancel: Abbrechen
+  workflow_edit_actions_delete: X
+  workflow_edit_actions_validate: Prüfen
+  workflow_edit_actions_validating: Prüfen…
+  workflow_edit_actions_fill_data: Daten eingeben
+  workflow_edit_actions_processing: Formular aufrufen…
+  workflow_edit_actions_save: Speichern
+  workflow_edit_add_md_by_metakey: Hinzufügen
+  workflow_edit_adder_meta_key_already_used: Metadatum wird schon verwendet
+  workflow_owners_title: Workflow-Besitzer
+  workflow_feature_title: Workflow
+  workflow_associated_collections_title: Set mit Inhalten
+  workflow_associated_collections_explain: >-
+    In diesem Workflow-Set enthaltene Medieneinträge und Sets können bis zum
+    Abschluss nur als Teil dieses Workflows bearbeitet werden.
+  workflow_associated_collections_upload: Medien hinzufügen
+  workflow_common_settings_title: Gemeinsamer Datensatz
+  workflow_common_settings_explain: >-
+    Folgende Angaben und Einstellungen gelten für alle enthaltenen
+    Medieneinträge und Sets und werden mit Abschluss des Workflows permanent
+    angewendet.
+  workflow_common_settings_permissions_title: Berechtigungen
+  workflow_common_settings_permissions_responsible: Verantwortliche Person(en)
+  workflow_common_settings_permissions_write: Schreib- und Leserechte
+  workflow_common_settings_permissions_read: Nur Leserechte
+  workflow_common_settings_permissions_read_public: Öffentlicher Zugriff (Internet)
+  workflow_common_settings_permissions_select_user: Nutzer/innen auswählen
+  workflow_common_settings_permissions_add_user: Nutzer/innen hinzufügen
+  workflow_common_settings_permissions_add_group: Gruppe hinzufügen
+  workflow_common_settings_permissions_add_api_client: API-Client hinzufügen
+  workflow_common_settings_metadata_title: Meta-Daten
+  workflow_preview_actions_back: Zurück
+  workflow_preview_actions_finish: Abschliessen
+  workflow_preview_actions_finishing: Abschliessen…
+  workflow_preview_actions_save_data: Daten speichern
+  workflow_preview_actions_saving: Daten speichern…
+  workflow_preview_consists_of_prefix: enthält
+  workflow_preview_consists_of_and: und
+  workflow_preview_consists_of_media_entries: Medieneinträge
+  workflow_preview_consists_of_collections: Sets
+  workflow_preview_errors_found: Fehler gefunden
+  workflow_preview_header: Workflow-Vorschau
+  workflow_preview_resources_header: Medienteinträge und Sets
+  workflow_preview_finish_confirmation: >-
+    Wollen Sie den Workflow abschliessen? Diese Aktion kann nicht rückgängig
+    gemacht werden!
+  workflow_preview_summary_text_part_1: >-
+    Folgende Angaben werden auf alle Medieneinträge und Sets angewendet
+    enthalten im Workflow-Set
+  workflow_preview_summary_text_part_2: Enthalten
+  workflow_preview_value_managed_by: Diese Angabe wird verwaltet vom Workflow
+  workflows_index_actions_edit: Bearbeiten
+  workflows_index_actions_new: Neuer Workflow
+  workflows_index_actions_show: Details anzeigen
+  workflows_index_header: Meine Workflows
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?

@@ -850,6 +850,59 @@ en:
   vocabulary_term_info_term: Term
   vocabulary_term_info_url: URL
   vocabulary_term_info_urls: URLs
+  workflow_edit_actions_back: Go back
+  workflow_edit_actions_cancel: Cancel
+  workflow_edit_actions_delete: X
+  workflow_edit_actions_validate: Check & Finish…
+  workflow_edit_actions_validating: Checking…
+  workflow_edit_actions_fill_data: Fill Data
+  workflow_edit_actions_processing: Loading…
+  workflow_edit_actions_save: Save
+  workflow_edit_add_md_by_metakey: Add
+  workflow_edit_adder_meta_key_already_used: Metakey already used
+  workflow_owners_title: Workflow owners
+  workflow_feature_title: Workflow
+  workflow_associated_collections_title: Set with content
+  workflow_associated_collections_explain: >-
+    Content contained in this workflow-set may only be edited until this
+    workflow will be finished.
+  workflow_associated_collections_upload: Add media
+  workflow_common_settings_title: Common data
+  workflow_common_settings_explain: >-
+    These data and settings apply to all contents and are permanently applied at
+    the end of the process.
+  workflow_common_settings_permissions_title: Permissions
+  workflow_common_settings_permissions_responsible: Responsible user
+  workflow_common_settings_permissions_write: Read and write permissions
+  workflow_common_settings_permissions_read: Only reading permissions
+  workflow_common_settings_permissions_read_public: Public access (Internet)
+  workflow_common_settings_permissions_select_user: Select user
+  workflow_common_settings_permissions_add_user: Add user
+  workflow_common_settings_permissions_add_group: Add group
+  workflow_common_settings_permissions_add_api_client: Add API-Client
+  workflow_common_settings_metadata_title: MetaData
+  workflow_preview_actions_back: Go back
+  workflow_preview_actions_finish: Finish
+  workflow_preview_actions_finishing: Finish…
+  workflow_preview_actions_save_data: Save data
+  workflow_preview_actions_saving: Saving…
+  workflow_preview_consists_of_prefix: consists of
+  workflow_preview_consists_of_and: and
+  workflow_preview_consists_of_media_entries: Media entries
+  workflow_preview_consists_of_collections: Sets
+  workflow_preview_errors_found: error(s) found
+  workflow_preview_header: 'Preview of workflow '
+  workflow_preview_resources_header: Media entries and Sets
+  workflow_preview_finish_confirmation: >-
+    You're about to finish the workflow. This action cannot be undone. Do you
+    want to proceed?
+  workflow_preview_summary_text_part_1: Following settings will apply to everything contained in the Set
+  workflow_preview_summary_text_part_2: Contained
+  workflow_preview_value_managed_by: This value is managed by workflow
+  workflows_index_actions_edit: Edit
+  workflows_index_actions_new: New workflow
+  workflows_index_actions_show: Show details
+  workflows_index_header: My Workflows
   workgroup_link_to_contents_text: Items
   workgroup_link_to_contents_title: Show items of this work group
   workgroup_members_table_is_member: Member?
@@ -861,42 +914,13 @@ en:
   workflow_actions_validating: Checking…
   workflow_add_md_by_metakey: Add
   workflow_adder_meta_key_already_used: Metakey already used
-  workflow_associated_collections_explain: >-
-    Content contained in this workflow-set may only be edited until this
-    workflow will be finished.
-  workflow_associated_collections_title: Set with content
-  workflow_associated_collections_upload: Add media
   workflow_common_settings_explain_metadata: >-
     Die für diesen Prozess relevanten Metadaten-Felder und ihre Einstellungen
     und Werte
   workflow_common_settings_explain_permissions: ''
-  workflow_common_settings_explain: >-
-    These data and settings apply to all contents and are permanently applied at
-    the end of the process.
-  workflow_common_settings_metadata_title: MetaData
-  workflow_common_settings_permissions_add_api_client: Add API-Client
-  workflow_common_settings_permissions_add_group: Add group
-  workflow_common_settings_permissions_add_user: Add user
-  workflow_common_settings_permissions_read_public: Public access (Internet)
-  workflow_common_settings_permissions_read: Only reading permissions
-  workflow_common_settings_permissions_responsible: Responsible user
-  workflow_common_settings_permissions_select_user: Select user
-  workflow_common_settings_permissions_title: Permissions
-  workflow_common_settings_permissions_write: Read and write permissions
-  workflow_common_settings_title: Common data
-  workflow_edit_actions_back: Go back
-  workflow_edit_actions_cancel: Cancel
-  workflow_edit_actions_delete: X
-  workflow_edit_actions_fill_data: Fill Data
   workflow_edit_actions_finish: Finish
   workflow_edit_actions_finishing: Finish…
-  workflow_edit_actions_processing: Loading…
   workflow_edit_actions_save_data: Save
-  workflow_edit_actions_validate: Check & Finish…
-  workflow_edit_actions_validating: Checking…
-  workflow_edit_add_md_by_metakey: Add
-  workflow_edit_adder_meta_key_already_used: Metakey already used
-  workflow_feature_title: Workflow
   workflow_md_edit_form_key_is_managed_a: 'This value is managed by workflow '
   workflow_md_edit_form_key_is_managed_b: .
   workflow_md_edit_is_common_empty: ' (leer)'
@@ -917,29 +941,6 @@ en:
     Prozesses genutzt. Es kann weiterhin bei den jeweiligen Medienenträgen
     ausgefüllt werden.
   workflow_md_edit_value_error_notice: Noch kein Fixer Wert vergeben für Pflichtfeld!
-  workflow_owners_title: Workflow owners
-  workflow_preview_actions_back: Go back
-  workflow_preview_actions_finish: Finish
-  workflow_preview_actions_finishing: Finish…
-  workflow_preview_actions_save_data: Save data
-  workflow_preview_actions_saving: Saving…
-  workflow_preview_consists_of_and: and
-  workflow_preview_consists_of_collections: Sets
-  workflow_preview_consists_of_media_entries: Media entries
-  workflow_preview_consists_of_prefix: consists of
-  workflow_preview_errors_found: error(s) found
-  workflow_preview_finish_confirmation: >-
-    You're about to finish the workflow. This action cannot be undone. Do you
-    want to proceed?
-  workflow_preview_header: 'Preview of workflow '
-  workflow_preview_resources_header: Media entries and Sets
-  workflow_preview_summary_text_part_1: Following settings will apply to everything contained in the Set
-  workflow_preview_summary_text_part_2: Contained
-  workflow_preview_value_managed_by: This value is managed by workflow
   workflow_uploader_notice_post: ''
   workflow_uploader_notice_pre: Following Media Entries will be added to the main collection of workflow
   workflow_workflow_owners_title: Workflow owners
-  workflows_index_actions_edit: Edit
-  workflows_index_actions_new: New workflow
-  workflows_index_actions_show: Show details
-  workflows_index_header: My Workflows

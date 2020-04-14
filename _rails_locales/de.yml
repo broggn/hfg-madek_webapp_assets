@@ -874,6 +874,62 @@ de:
   vocabulary_term_info_term: Begriff
   vocabulary_term_info_url: URL
   vocabulary_term_info_urls: URLs
+  workflow_edit_actions_back: Zurück
+  workflow_edit_actions_cancel: Abbrechen
+  workflow_edit_actions_delete: X
+  workflow_edit_actions_validate: Prüfen & Abschliessen…
+  workflow_edit_actions_validating: Wird geprüft…
+  workflow_edit_actions_fill_data: Daten eingeben
+  workflow_edit_actions_processing: Lädt…
+  workflow_edit_actions_save: Speichern
+  workflow_edit_add_md_by_metakey: Hinzufügen
+  workflow_edit_adder_meta_key_already_used: Metadatum wird schon verwendet
+  workflow_owners_title: Workflow-Besitzer
+  workflow_feature_title: Workflow
+  workflow_associated_collections_title: Set mit Inhalten
+  workflow_associated_collections_explain: >-
+    In diesem Workflow-Set enthaltene Medieneinträge und Sets können bis zum
+    Abschluss nur als Teil dieses Workflows bearbeitet werden.
+  workflow_associated_collections_upload: Medien hinzufügen
+  workflow_common_settings_title: Gemeinsamer Datensatz
+  workflow_common_settings_explain: >-
+    Folgende Angaben und Einstellungen gelten für alle enthaltenen
+    Medieneinträge und Sets und werden mit Abschluss des Workflows permanent
+    angewendet.
+  workflow_common_settings_permissions_title: Berechtigungen
+  workflow_common_settings_permissions_responsible: Verantwortliche Person(en)
+  workflow_common_settings_permissions_write: Schreib- und Leserechte
+  workflow_common_settings_permissions_read: Nur Leserechte
+  workflow_common_settings_permissions_read_public: Öffentlicher Zugriff (Internet)
+  workflow_common_settings_permissions_select_user: Nutzer/innen auswählen
+  workflow_common_settings_permissions_add_user: Nutzer/innen hinzufügen
+  workflow_common_settings_permissions_add_group: Gruppe hinzufügen
+  workflow_common_settings_permissions_add_api_client: API-Client hinzufügen
+  workflow_common_settings_metadata_title: Meta-Daten
+  workflow_preview_actions_back: Zurück
+  workflow_preview_actions_finish: Abschliessen
+  workflow_preview_actions_finishing: Abschliessen…
+  workflow_preview_actions_save_data: Daten speichern
+  workflow_preview_actions_saving: Daten speichern…
+  workflow_preview_consists_of_prefix: enthält
+  workflow_preview_consists_of_and: und
+  workflow_preview_consists_of_media_entries: Medieneinträge
+  workflow_preview_consists_of_collections: Sets
+  workflow_preview_errors_found: Fehler gefunden
+  workflow_preview_header: Workflow-Vorschau
+  workflow_preview_resources_header: Medienteinträge und Sets
+  workflow_preview_finish_confirmation: >-
+    Wollen Sie den Workflow abschliessen? Diese Aktion kann nicht rückgängig
+    gemacht werden!
+  workflow_preview_summary_text_part_1: >-
+    Folgende Angaben werden auf alle Medieneinträge und Sets angewendet
+    enthalten im Workflow-Set
+  workflow_preview_summary_text_part_2: Enthalten
+  workflow_preview_value_managed_by: Diese Angabe wird verwaltet vom Workflow
+  workflows_index_actions_edit: Bearbeiten
+  workflows_index_actions_new: Neuer Workflow
+  workflows_index_actions_show: Details anzeigen
+  workflows_index_header: Meine Workflows
   workgroup_link_to_contents_text: Inhalte
   workgroup_link_to_contents_title: Inhalte dieser Arbeitsgruppe anzeigen
   workgroup_members_table_is_member: Mitglied?
@@ -885,43 +941,13 @@ de:
   workflow_actions_validating: Prüfen…
   workflow_add_md_by_metakey: Hinzufügen
   workflow_adder_meta_key_already_used: Metakey ist schon verwendet
-  workflow_associated_collections_explain: >-
-    In diesem Workflow-Set enthaltene Medieneinträge und Sets können bis zum
-    Abschluss nur als Teil dieses Workflows bearbeitet werden.
-  workflow_associated_collections_title: Set mit Inhalten
-  workflow_associated_collections_upload: Medien hinzufügen
   workflow_common_settings_explain_metadata: >-
     Die für diesen Prozess relevanten Metadaten-Felder und ihre Einstellungen
     und Werte
   workflow_common_settings_explain_permissions: ''
-  workflow_common_settings_explain: >-
-    Folgende Angaben und Einstellungen gelten für alle enthaltenen
-    Medieneinträge und Sets und werden mit Abschluss des Workflows permanent
-    angewendet.
-  workflow_common_settings_metadata_title: Meta-Daten
-  workflow_common_settings_permissions_add_api_client: API-Client hinzufügen
-  workflow_common_settings_permissions_add_group: Gruppe hinzufügen
-  workflow_common_settings_permissions_add_user: Nutzer/innen hinzufügen
-  workflow_common_settings_permissions_read_public: Öffentlicher Zugriff (Internet)
-  workflow_common_settings_permissions_read: Nur Leserechte
-  workflow_common_settings_permissions_responsible: Verantwortliche Person(en)
-  workflow_common_settings_permissions_select_user: Nutzer/innen auswählen
-  workflow_common_settings_permissions_title: Berechtigungen
-  workflow_common_settings_permissions_write: Schreib- und Leserechte
-  workflow_common_settings_title: Gemeinsamer Datensatz
-  workflow_edit_actions_back: Zurück
-  workflow_edit_actions_cancel: Abbrechen
-  workflow_edit_actions_delete: X
-  workflow_edit_actions_fill_data: Daten eingeben
   workflow_edit_actions_finish: Abschliessen
   workflow_edit_actions_finishing: Wird abgeschlossen…
-  workflow_edit_actions_processing: Lädt…
   workflow_edit_actions_save_data: Speichern
-  workflow_edit_actions_validate: Prüfen & Abschliessen…
-  workflow_edit_actions_validating: Wird geprüft…
-  workflow_edit_add_md_by_metakey: Hinzufügen
-  workflow_edit_adder_meta_key_already_used: Metadatum wird schon verwendet
-  workflow_feature_title: Workflow
   workflow_md_edit_form_key_is_managed_a: 'Dieser Wert wird im Prozess '
   workflow_md_edit_form_key_is_managed_b: ' verwaltet.'
   workflow_md_edit_is_common_empty: ' (leer)'
@@ -942,31 +968,6 @@ de:
     Prozesses genutzt. Es kann weiterhin bei den jeweiligen Medienenträgen
     ausgefüllt werden.
   workflow_md_edit_value_error_notice: Noch kein Fixer Wert vergeben für Pflichtfeld!
-  workflow_owners_title: Workflow-Besitzer
-  workflow_preview_actions_back: Zurück
-  workflow_preview_actions_finish: Abschliessen
-  workflow_preview_actions_finishing: Abschliessen…
-  workflow_preview_actions_save_data: Daten speichern
-  workflow_preview_actions_saving: Daten speichern…
-  workflow_preview_consists_of_and: und
-  workflow_preview_consists_of_collections: Sets
-  workflow_preview_consists_of_media_entries: Medieneinträge
-  workflow_preview_consists_of_prefix: enthält
-  workflow_preview_errors_found: Fehler gefunden
-  workflow_preview_finish_confirmation: >-
-    Wollen Sie den Workflow abschliessen? Diese Aktion kann nicht rückgängig
-    gemacht werden!
-  workflow_preview_header: Workflow-Vorschau
-  workflow_preview_resources_header: Medienteinträge und Sets
-  workflow_preview_summary_text_part_1: >-
-    Folgende Angaben werden auf alle Medieneinträge und Sets angewendet
-    enthalten im Workflow-Set
-  workflow_preview_summary_text_part_2: Enthalten
-  workflow_preview_value_managed_by: Diese Angabe wird verwaltet vom Workflow
   workflow_uploader_notice_post: ''
   workflow_uploader_notice_pre: Following Media Entries will be added to the main collection of workflow
   workflow_workflow_owners_title: Prozess-Besitzer
-  workflows_index_actions_edit: Bearbeiten
-  workflows_index_actions_new: Neuer Workflow
-  workflows_index_actions_show: Details anzeigen
-  workflows_index_header: Meine Workflows

@@ -556,11 +556,18 @@ de:
   permissions_table_save_btn: Speichern
   permissions_table_title: Zugriffsberechtigungen
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
-  person_show_description: Beschreibung
+  person_edit_add_uri_btn: URI hinzufügen
+  person_edit_cancel_btn: Abbrechen
+  person_edit_editing_header: Bearbeiten
   person_show_external_uris: Links
+  person_edit_preview: Vorschau
+  person_edit_save_btn: Speichern
+  person_show_description: Beschreibung
+  person_show_edit_btn: Bearbeiten
   person_show_external_uris_autority_control: Normdaten
   person_show_first_name: Vorname
   person_show_last_name: Nachname
+  person_show_pseudonym: Pseudonym
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '
   relations_parents_title: Übergeordnete Sets
@@ -841,6 +848,7 @@ de:
   user_menu_my_favorite_collections: Favoriten - Sets
   user_menu_my_favorite_media_entries: Favoriten - Medieneinträge
   user_menu_my_groups: Meine Arbeitsgruppen
+  user_menu_my_person: Meine Person
   user_menu_upload: Medien importieren
   user_name_deactivated: '[Gelöschter User]'
   vocabularies_all: Alle Vokabulare

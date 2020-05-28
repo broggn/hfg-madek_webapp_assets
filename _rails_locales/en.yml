@@ -538,11 +538,18 @@ en:
   permissions_table_save_btn: Save
   permissions_table_title: Permissions
   permissions_transfer_responsibility_link: Transfer responsibility
-  person_show_description: Description
+  person_edit_add_uri_btn: Add URI
+  person_edit_cancel_btn: Cancel
+  person_edit_editing_header: editing
   person_show_external_uris: Links
+  person_edit_preview: Preview
+  person_edit_save_btn: Save
+  person_show_description: Description
+  person_show_edit_btn: Edit
   person_show_external_uris_autority_control: Authority Control Data
   person_show_first_name: First name
   person_show_last_name: Last name
+  person_show_pseudonym: Pseudonym
   picture_alt_fallback: (unkown)
   picture_alt_prefix: 'Picture:'
   relations_parents_title: Parents
@@ -819,6 +826,7 @@ en:
   user_menu_my_favorite_collections: Favorites - sets
   user_menu_my_favorite_media_entries: Favorites - media entries
   user_menu_my_groups: My work groups
+  user_menu_my_person: My person
   user_menu_upload: Upload media
   user_name_deactivated: '[Deleted user]'
   vocabularies_all: All vocabularies

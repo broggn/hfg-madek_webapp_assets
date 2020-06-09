@@ -236,7 +236,7 @@ de:
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_none_exist: Keine vorhanden.
-  dashboard_show_all: Alle anzeigen
+  dashboard_show_all: Alle anzeigen →
   dashboard_title_head: Mein Archiv
   dynamic_filters_authorization: Berechtigung
   dynamic_filters_visibility: Sichtbarkeit
@@ -378,6 +378,8 @@ de:
   media_entry_export_subtitle_images: Bilder
   media_entry_export_subtitle_videos: Video-Dateien
   media_entry_export_title: Medieneintrag exportieren
+  media_entry_export_rdf_title: RDF-Export Metadaten
+  media_entry_export_rdf_title_hint: (Beta-Version)
   media_entry_file_format_not_supported_1: >-
     Wahrscheinlich unterstützt Ihr Browser nicht die Darstellung dieses
     Dateiformats, aber Sie 

@@ -234,7 +234,7 @@ en:
   dashboard_create_collection_btn: Create set
   dashboard_create_media_entry_btn: Upload media
   dashboard_none_exist: There are none.
-  dashboard_show_all: Show all
+  dashboard_show_all: Show all →
   dashboard_title_head: My archive
   dynamic_filters_authorization: Authorization
   dynamic_filters_visibility: Accessability
@@ -366,6 +366,8 @@ en:
   media_entry_export_subtitle_images: Images
   media_entry_export_subtitle_videos: Video files
   media_entry_export_title: Download media entry
+  media_entry_export_rdf_title: RDF export metadata
+  media_entry_export_rdf_title_hint: (beta version)
   media_entry_file_format_not_supported_1: 'Your browser probably does not support the file format, but you can '
   media_entry_file_format_not_supported_2: download the file
   media_entry_file_format_not_supported_3: '0'

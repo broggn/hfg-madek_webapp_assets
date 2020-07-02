@@ -504,6 +504,11 @@ de:
   meta_data_type_label: Typ
   meta_data_value_label: Wert
   meta_datum_json_download_value: Link zu diesem Datensatz
+  meta_datum_media_entry_label_id: 'Ressourcen-ID:'
+  meta_datum_media_entry_label_string: 'Zusatztext:'
+  meta_datum_media_entry_err_uuid_invalid: Ungültige UUID!
+  meta_datum_media_entry_value_unauthorized: 'Hinweis: Sie haben keinen Zugriff auf diese Ressource!'
+  meta_datum_media_entry_value_not_found: 'Hinweis: Diese Ressource konnte nicht (mehr) gefunden werden!'
   meta_key_order_alphabetical: a-z
   meta_key_order_alphabetical_hint: Die Schlagworte dieses Metadatenfeldes sind alphabetisch sortiert.
   meta_key_order_custom: redaktionell

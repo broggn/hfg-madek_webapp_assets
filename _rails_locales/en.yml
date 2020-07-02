@@ -486,6 +486,11 @@ en:
   meta_data_type_label: Type
   meta_data_value_label: Data
   meta_datum_json_download_value: Link to this dataset
+  meta_datum_media_entry_label_id: 'Resource ID:'
+  meta_datum_media_entry_label_string: 'additional text:'
+  meta_datum_media_entry_err_uuid_invalid: Invalid UUID!
+  meta_datum_media_entry_value_unauthorized: 'Notice: You do not have access to this resource!'
+  meta_datum_media_entry_value_not_found: 'Notice: This resource could not be found (anymore)!'
   meta_key_order_alphabetical: a-z
   meta_key_order_alphabetical_hint: The keywords of this metakey are sorted alphabetically.
   meta_key_order_custom: editorial

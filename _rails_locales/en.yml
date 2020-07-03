@@ -366,6 +366,11 @@ en:
   media_entry_export_subtitle_images: Images
   media_entry_export_subtitle_videos: Video files
   media_entry_export_title: Download media entry
+  media_entry_export_rdf_title: RDF export metadata
+  media_entry_export_rdf_title_hint: (experimental)
+  media_entry_export_rdf_experiment_footnote: >-
+    Data structure and format is subject to change. Please send feedback if you
+    are using this!
   media_entry_file_format_not_supported_1: 'Your browser probably does not support the file format, but you can '
   media_entry_file_format_not_supported_2: download the file
   media_entry_file_format_not_supported_3: '0'

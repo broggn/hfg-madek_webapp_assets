@@ -378,6 +378,11 @@ de:
   media_entry_export_subtitle_images: Bilder
   media_entry_export_subtitle_videos: Video-Dateien
   media_entry_export_title: Medieneintrag exportieren
+  media_entry_export_rdf_title: RDF-Export Metadaten
+  media_entry_export_rdf_title_hint: (experimentell)
+  media_entry_export_rdf_experiment_footnote: >-
+    Struktur und Format der Daten können sich ändern. Bitte geben sie eine
+    Rückmeldung, falls Sie diese verwenden!
   media_entry_file_format_not_supported_1: >-
     Wahrscheinlich unterstützt Ihr Browser nicht die Darstellung dieses
     Dateiformats, aber Sie 

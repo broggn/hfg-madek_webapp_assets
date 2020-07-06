@@ -378,6 +378,11 @@ de:
   media_entry_export_subtitle_images: Bilder
   media_entry_export_subtitle_videos: Video-Dateien
   media_entry_export_title: Medieneintrag exportieren
+  media_entry_export_rdf_title: RDF-Export Metadaten
+  media_entry_export_rdf_title_hint: (experimentell)
+  media_entry_export_rdf_experiment_footnote: >-
+    Struktur und Format der Daten können sich ändern. Bitte geben sie eine
+    Rückmeldung, falls Sie diese verwenden!
   media_entry_file_format_not_supported_1: >-
     Wahrscheinlich unterstützt Ihr Browser nicht die Darstellung dieses
     Dateiformats, aber Sie 
@@ -504,6 +509,11 @@ de:
   meta_data_type_label: Typ
   meta_data_value_label: Wert
   meta_datum_json_download_value: Link zu diesem Datensatz
+  meta_datum_media_entry_label_id: 'Ressourcen-ID:'
+  meta_datum_media_entry_label_string: 'Zusatztext:'
+  meta_datum_media_entry_err_uuid_invalid: Ungültige UUID!
+  meta_datum_media_entry_value_unauthorized: 'Hinweis: Sie haben keinen Zugriff auf diese Ressource!'
+  meta_datum_media_entry_value_not_found: 'Hinweis: Diese Ressource konnte nicht (mehr) gefunden werden!'
   meta_key_order_alphabetical: a-z
   meta_key_order_alphabetical_hint: Die Schlagworte dieses Metadatenfeldes sind alphabetisch sortiert.
   meta_key_order_custom: redaktionell
@@ -556,11 +566,21 @@ de:
   permissions_table_save_btn: Speichern
   permissions_table_title: Zugriffsberechtigungen
   permissions_transfer_responsibility_link: Verantwortlichkeit übertragen
-  person_show_description: Beschreibung
+  person_edit_add_uri_btn: URI hinzufügen
+  person_edit_cancel_btn: Abbrechen
+  person_edit_editing_header: Bearbeiten
   person_show_external_uris: Links
+  person_edit_preview: Vorschau
+  person_edit_save_btn: Speichern
+  person_edit_name_readonly_hint: >-
+    Hinweis: Der eigene Name kann nicht geändert werden. Bitte wenden sie sich
+    an den Support.
+  person_show_description: Beschreibung
+  person_show_edit_btn: Bearbeiten
   person_show_external_uris_autority_control: Normdaten
   person_show_first_name: Vorname
   person_show_last_name: Nachname
+  person_show_pseudonym: Pseudonym
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '
   relations_parents_title: Übergeordnete Sets
@@ -841,6 +861,7 @@ de:
   user_menu_my_favorite_collections: Favoriten - Sets
   user_menu_my_favorite_media_entries: Favoriten - Medieneinträge
   user_menu_my_groups: Meine Arbeitsgruppen
+  user_menu_my_person: Meine Person
   user_menu_upload: Medien importieren
   user_name_deactivated: '[Gelöschter User]'
   vocabularies_all: Alle Vokabulare
@@ -942,15 +963,24 @@ de:
   workflow_add_md_by_metakey: Hinzufügen
   workflow_adder_meta_key_already_used: Metakey ist schon verwendet
   workflow_common_settings_explain_metadata: >-
-    Die für diesen Prozess relevanten Metadaten-Felder und ihre Einstellungen
-    und Werte
+    Die für diesen Workflow relevanten Metadaten-Felder und ihre Einstellungen
+    und Werte. 
+  workflow_common_settings_explain_metadata2: >-
+    „Fixe Werte“ können nur an dieser Stelle vergeben werden und werden bei
+    Abschluss des Workflows auf alle Inhalte angewendet. Felder mit
+    „Individueller Vergabe“ stehen im Schritt „Daten eingeben“ zur massenweise
+    Eingabe zur Verfügung.
   workflow_common_settings_explain_permissions: ''
+  workflow_common_settings_permissions_hint_after: >-
+    Leserechte und öffentlicher Zugriff umfassen „Betrachten“ der Metadaten und
+    Vorschau, sowie „Original exportieren & in PDF blättern“.
   workflow_edit_actions_finish: Abschliessen
   workflow_edit_actions_finishing: Wird abgeschlossen…
   workflow_edit_actions_save_data: Speichern
-  workflow_md_edit_form_key_is_managed_a: 'Dieser Wert wird im Prozess '
+  workflow_md_edit_form_key_is_managed_a: 'Dieser Wert wird im Workflow '
   workflow_md_edit_form_key_is_managed_b: ' verwaltet.'
   workflow_md_edit_is_common_empty: ' (leer)'
+  workflow_md_edit_legend: 'Legende:'
   workflow_md_edit_is_common_explanation: >-
     Gesetzter Wert soll auf alle enthaltenen Medieneinträge angewendet werden,
     oder (wenn deaktiviert) einzeln eingegeben werden können
@@ -958,16 +988,28 @@ de:
   workflow_md_edit_is_common: Fixer Wert
   workflow_md_edit_is_mandatory_explanation: >-
     Alle enthaltenen Medieneinträge müssen einen Wert gesetzt haben, damit der
-    Prozess abgeschlossen werden kann
+    Workflow abgeschlossen werden kann
   workflow_md_edit_is_mandatory: Pflichtfeld
   workflow_md_edit_is_not_common: Individuelle Vergabe
   workflow_md_edit_is_overridable: …und dabei vorhandene Werte überschreiben
+  workflow_md_edit_scope: Geltungsbereich
+  workflow_md_edit_scope_entry: Einträge
+  workflow_md_edit_scope_set: Sets
   workflow_md_edit_remove_btn: Entfernen
   workflow_md_edit_remove_explain: >-
     Nach dem Entfernen wird dieses Metadaten-Feld nicht mehr innerhalb dieses
-    Prozesses genutzt. Es kann weiterhin bei den jeweiligen Medienenträgen
+    Workflows genutzt. Es kann weiterhin bei den jeweiligen Medienenträgen
     ausgefüllt werden.
   workflow_md_edit_value_error_notice: Noch kein Fixer Wert vergeben für Pflichtfeld!
+  workflow_mk_error_unknown: 'Problem:'
+  workflow_mk_error_not_found: >-
+    Die folgenden MetaKeys sind konfiguriert, aber konnten nicht im System
+    gefunden werden: 
+  workflow_mk_error_not_authorized: >-
+    Die folgenden MetaKeys sind konfiguriert, aber es fehlen Ihnen die
+    Berechtigungen sie zu nutzen: 
+  workflow_md_edit_mk_error_not_found: Dieser MetaKey konnte nicht im System gefunden werden!
+  workflow_md_edit_mk_error_not_authorized: Für diesen MetaKey fehlen Ihnen die Berechtigungen zur Nutzung!
   workflow_uploader_notice_post: ''
   workflow_uploader_notice_pre: Following Media Entries will be added to the main collection of workflow
-  workflow_workflow_owners_title: Prozess-Besitzer
+  workflow_workflow_owners_title: Workflow-Besitzer

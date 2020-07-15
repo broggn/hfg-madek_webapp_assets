@@ -925,17 +925,17 @@ en:
   workflow_feature_title: Workflow
   workflow_md_edit_form_key_is_managed_a: 'This value is managed by workflow '
   workflow_md_edit_form_key_is_managed_b: .
-  workflow_md_edit_is_common_empty: ' (leer)'
+  workflow_md_edit_is_common_empty: ' (empty)'
   workflow_md_edit_legend: 'Legend:'
   workflow_md_edit_is_common_explanation: >-
     The set value should be applied to all media entries contained, or (if
     deactivated) can be entered individually
-  workflow_md_edit_is_common_nonempty: ' (gesetzt)'
-  workflow_md_edit_is_common: Fixer Wert
+  workflow_md_edit_is_common_nonempty: ' (set)'
+  workflow_md_edit_is_common: Fixed value
   workflow_md_edit_is_mandatory_explanation: >-
     All media entries contained must have a value set so that the Workflow can
     be completed
-  workflow_md_edit_is_mandatory: Pflichtfeld
+  workflow_md_edit_is_mandatory: Mandatory field
   workflow_md_edit_is_not_common: Individuelle Vergabe
   workflow_md_edit_is_overridable: …and overwrite existing values
   workflow_md_edit_scope: Scope
@@ -945,6 +945,7 @@ en:
   workflow_md_edit_remove_explain: >-
     After removal, this metadata field is no longer used within this process. It
     can still be filled in at the respective media entries.
+  workflow_md_edit_value: Value
   workflow_md_edit_value_error_notice: No fixed value yet assigned for mandatory field!
   workflow_mk_error_unknown: 'Problem:'
   workflow_mk_error_not_found: >-

@@ -974,6 +974,7 @@ de:
     Nach dem Entfernen wird dieses Metadaten-Feld nicht mehr innerhalb dieses
     Workflows genutzt. Es kann weiterhin bei den jeweiligen Medienenträgen
     ausgefüllt werden.
+  workflow_md_edit_value: Wert
   workflow_md_edit_value_error_notice: Noch kein Fixer Wert vergeben für Pflichtfeld!
   workflow_mk_error_unknown: 'Problem:'
   workflow_mk_error_not_found: >-

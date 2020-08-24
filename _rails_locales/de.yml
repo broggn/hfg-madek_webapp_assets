@@ -236,7 +236,7 @@ de:
   dashboard_create_collection_btn: Set erstellen
   dashboard_create_media_entry_btn: Medien importieren
   dashboard_none_exist: Keine vorhanden.
-  dashboard_show_all: Alle anzeigen →
+  dashboard_show_all: Alle anzeigen
   dashboard_title_head: Mein Archiv
   dynamic_filters_authorization: Berechtigung
   dynamic_filters_visibility: Sichtbarkeit
@@ -575,9 +575,9 @@ de:
   person_edit_name_readonly_hint: >-
     Hinweis: Der eigene Name kann nicht geändert werden. Bitte wenden sie sich
     an den Support.
-  person_show_description: Beschreibung
-  person_show_edit_btn: Bearbeiten
-  person_show_external_uris_autority_control: Normdaten
+  person_show_description: Kurzbiographie
+  person_show_edit_btn: Seite bearbeiten
+  person_show_external_uris_autority_control: Verzeichnis(se)
   person_show_first_name: Vorname
   person_show_last_name: Nachname
   person_show_pseudonym: Pseudonym

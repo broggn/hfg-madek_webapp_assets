@@ -234,7 +234,7 @@ en:
   dashboard_create_collection_btn: Create set
   dashboard_create_media_entry_btn: Upload media
   dashboard_none_exist: There are none.
-  dashboard_show_all: Show all →
+  dashboard_show_all: Show all
   dashboard_title_head: My archive
   dynamic_filters_authorization: Authorization
   dynamic_filters_visibility: Accessability
@@ -548,16 +548,16 @@ en:
   permissions_table_save_btn: Save
   permissions_table_title: Permissions
   permissions_transfer_responsibility_link: Transfer responsibility
-  person_edit_add_uri_btn: Add URI
+  person_edit_add_uri_btn: Add URL
   person_edit_cancel_btn: Cancel
   person_edit_editing_header: editing
   person_show_external_uris: Links
   person_edit_preview: Preview
   person_edit_save_btn: Save
   person_edit_name_readonly_hint: 'Notice: Your own name can not be changed .Please contact the support.'
-  person_show_description: Description
-  person_show_edit_btn: Edit
-  person_show_external_uris_autority_control: Authority Control Data
+  person_show_description: Short biography
+  person_show_edit_btn: Edit Page
+  person_show_external_uris_autority_control: Register
   person_show_first_name: First name
   person_show_last_name: Last name
   person_show_pseudonym: Pseudonym

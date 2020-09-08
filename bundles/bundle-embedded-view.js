@@ -874,6 +874,7 @@ var VideoJS = function (_Component) {
             titleBar: {
               hideOnPlay: props.mode === 'video',
               title: props.captionConf.title,
+              logoTitle: props.captionConf.logoTitle,
               subtitle: props.captionConf.subtitle,
               link: props.captionConf.link,
               logo: 'Z'
@@ -951,6 +952,7 @@ exports.default = VideoJS;
 
 function titleBarPlugin(_ref) {
   var logo = _ref.logo,
+      logoTitle = _ref.logoTitle,
       title = _ref.title,
       subtitle = _ref.subtitle,
       link = _ref.link,
@@ -959,9 +961,13 @@ function titleBarPlugin(_ref) {
 
   var Dom = document.createElement.bind(document);
   var player = this;
+
+  var logoEl = Dom('span');
+  logoEl.title = logoTitle;
+
   var overlay = {
     el: Dom('a'),
-    logo: Dom('span'),
+    logo: logoEl,
     caption: Dom('span'),
     title: Dom('span'),
     subtitle: Dom('span')

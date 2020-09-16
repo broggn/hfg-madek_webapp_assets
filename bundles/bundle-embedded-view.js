@@ -1217,7 +1217,7 @@ var videojs = null;
 var defaultProps = {
   mode: 'video',
   controls: true,
-  preload: 'auto',
+  preload: 'none',
   onMount: noop,
   onReady: noop
 };

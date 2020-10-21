@@ -170,6 +170,8 @@ de:
     hinzugefügt.
   collection_sorting_created_at_asc: Sortieren nach Importierdatum aufsteigend
   collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
+  collection_sorting_manual_asc: Sortieren manuell aufsteigend
+  collection_sorting_manual_desc: Sortieren manuell absteigend
   collection_sorting_last_change: Sortieren nach letzter Änderung
   collection_sorting_title_asc: Sortieren nach Titel alphabetisch
   collection_sorting_title_desc: Sortieren nach Titel absteigend
@@ -728,6 +730,7 @@ de:
   resources_box_batch_person_widget_tab_person: Person
   resources_box_batch_person_widget_tab_group: Gruppe
   resources_section_show_all: Alle anzeigen →
+  resources_type_all: Alle
   search_btn_search: Suchen
   search_filename: Filename
   search_full_text: Volltext

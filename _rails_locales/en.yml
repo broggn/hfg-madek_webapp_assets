@@ -168,6 +168,8 @@ en:
     set(s).
   collection_sorting_created_at_asc: Sort by import date ascending
   collection_sorting_created_at_desc: Sort by import date descending
+  collection_sorting_manual_asc: Sort manually ascending
+  collection_sorting_manual_desc: Sort manually descending
   collection_sorting_last_change: Sort by date of update
   collection_sorting_title_asc: Sort by title alphabetically
   collection_sorting_title_desc: 'Sort by title alphabetically, but descending'
@@ -708,6 +710,7 @@ en:
   resources_box_batch_person_widget_tab_person: Person
   resources_box_batch_person_widget_tab_group: Group
   resources_section_show_all: Show all →
+  resources_type_all: All
   search_btn_search: Search
   search_filename: File name
   search_full_text: Full text

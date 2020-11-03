@@ -234,7 +234,10 @@ module.exports = readTranslationsFromCSV;
         setSourcesSanitized(player, this.src, this.options_.label, customSourcePicker)
 
         // force trigger the change on next loop when not preloaded
-        if (player.preload() === 'none') setTimeout(() => player.trigger(handleSeekEvent), 100)
+        if (player.preload() === 'none')
+          setTimeout(function() {
+            player.trigger(handleSeekEvent)
+          }, 100)
       }
     })
 

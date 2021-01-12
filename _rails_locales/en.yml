@@ -411,6 +411,8 @@ en:
   media_entry_select_collection_flash_result: >-
     Media entry removed from %{removed_count} set(s) and added to %{added_count}
     set(s).
+  media_entry_siblings_section_title: Other media entries in the same set
+  media_entry_siblings_parent_set: 'Parent set:'
   media_entry_tab_main: Media entry
   media_entry_tab_more_data: All metadata
   media_entry_tab_permissions: Permissions

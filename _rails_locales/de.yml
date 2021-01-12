@@ -429,6 +429,8 @@ de:
   media_entry_select_collection_flash_result: >-
     Der Medieneintrag wurde aus %{removed_count} Set(s) entfernt und zu
     %{added_count} Set(s) hinzugefügt.
+  media_entry_siblings_section_title: Weitere Medieneinträge im selben Set
+  media_entry_siblings_parent_set: 'Übergeordnetes Set:'
   media_entry_tab_main: Medieneintrag
   media_entry_tab_more_data: Alle Metadaten
   media_entry_tab_permissions: Berechtigungen

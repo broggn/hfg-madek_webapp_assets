@@ -555,14 +555,15 @@ de:
   permissions_batch_title_post: ' Inhalten.'
   permissions_batch_title_pre: 'Berechtigungen ändern von '
   permissions_overview_yours_msg_end: >-
-    , haben gegenwärtig als Person oder als Mitglied einer Arbeitsgruppe
-    folgende Berechtigungen:
+    , haben gegenwärtig als Nutzer/in oder als Mitglied einer
+    VerantowrtungsGruppe oder Arbeitsgruppe folgende Berechtigungen:
   permissions_overview_yours_msg_start: 'Sie, '
   permissions_overview_yours_title: Ihre Berechtigungen
   permissions_responsibility_title: Verantwortlichkeit
-  permissions_responsible_user_msg: >-
-    Die verantwortliche Person hat alle Berechtigungen zu den ausgewählten
-    Inhalten und kann diese auch löschen.
+  permissions_responsible_user_and_responsibility_group_title: Verantwortliche/r Nutzer/in / Verantwortungs-Gruppe
+  permissions_responsible_user_and_responsibility_group_msg: >-
+    Der/die verantwortliche/r Nutzer/in hat alle Berechtigungen zu den
+    ausgewählten Inhalten und kann diese auch löschen.
   permissions_responsible_user_title: Verantwortliche Person
   permissions_table_cancel_btn: Abbrechen
   permissions_table_edit_btn: Bearbeiten
@@ -733,11 +734,12 @@ de:
   resources_box_batch_person_widget_tab_group: Gruppe
   resources_section_show_all: Alle anzeigen →
   resources_type_all: Alle
+  responsibility_groups: Verantwortungs-Gruppen
   search_btn_search: Suchen
   search_filename: Filename
   search_full_text: Volltext
   section_title_collections: Meine Sets
-  section_title_groups: Meine Arbeitsgruppen
+  section_title_groups: Meine Gruppen
   section_title_keywords: Meine Schlagworte
   section_title_media_entries: Meine Medieneinträge
   section_title_tokens: Meine Tokens
@@ -777,12 +779,14 @@ de:
   sitemap_my_clipboard: Stapelverarbeitung
   sitemap_my_content_collections: Sets
   sitemap_my_content_media_entries: Medieneinträge
+  sitemap_my_delegated_collections: Sets in gemeinsamer Verantwortung
+  sitemap_my_delegated_media_entries: Medieneinträge in gemeinsamer Verantwortung
   sitemap_my_entrusted_collections: Mir anvertraute Sets
   sitemap_my_entrusted_filter_sets: Mir anvertraute Filtersets
   sitemap_my_entrusted_media_entries: Mir anvertraute Medieneinträge
   sitemap_my_favorite_collections: Favoriten-Sets
   sitemap_my_favorite_media_entries: Favoriten-Medieneinträge
-  sitemap_my_groups: Arbeitsgruppen
+  sitemap_my_groups: Gruppen
   sitemap_my_latest_imports: Letzte Importe
   sitemap_my_unpublished: Unvollständige Medieneinträge
   sitemap_my_used_keywords: Schlagworte
@@ -843,7 +847,7 @@ de:
   transfer_responsibility_success_media_entry: >-
     Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
     übertragen.
-  transfer_responsibility_title: Verantwortlichkeit auf folgende/n Nutzer/in übertragen
+  transfer_responsibility_title: Verantwortlichkeit auf folgende/n Nutzer/in oder Delegation übertragen
   usage_data_created_at: Erstellt am
   usage_data_import_at: Importiert am
   usage_data_import_by: Importiert durch
@@ -853,7 +857,7 @@ de:
   usage_data_relations_parents: Übergeordnete Sets
   usage_data_relations_title: Zusammenhänge
   usage_data_responsibility_title: Verantwortlichkeit und Aktivitäten
-  usage_data_responsible: Verantwortliche/r Nutzer/in
+  usage_data_responsible: Verantwortliche/r Nutzer/in / Verantwortungs-Gruppe
   usage_terms_accept_btn: Nutzungsbedingungen akzeptieren
   usage_terms_reject_btn: Ablehnen
   user_menu_admin_mode_toogle_off: Admin-Modus beenden
@@ -865,7 +869,7 @@ de:
   user_menu_my_content_media_entries: Meine Medieneinträge
   user_menu_my_favorite_collections: Favoriten - Sets
   user_menu_my_favorite_media_entries: Favoriten - Medieneinträge
-  user_menu_my_groups: Meine Arbeitsgruppen
+  user_menu_my_groups: Meine Gruppen
   user_menu_my_person: Meine Person
   user_menu_upload: Medien importieren
   user_name_deactivated: '[Gelöschter User]'

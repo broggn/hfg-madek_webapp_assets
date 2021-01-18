@@ -536,15 +536,14 @@ en:
   permissions_batch_success: Permissions have been updated succesfully.
   permissions_batch_title_post: ' Items.'
   permissions_batch_title_pre: 'Edit permissions of '
-  permissions_overview_yours_msg_end: >-
-    , currently have the following permissions (either directly or as a member
-    of a work group):
+  permissions_overview_yours_msg_end: ", currently have the following permissions (either directly or as a member of a\r\nresponsibility group or as a member of a work group):"
   permissions_overview_yours_msg_start: 'You, '
   permissions_overview_yours_title: Your permissions
   permissions_responsibility_title: Responsibility
-  permissions_responsible_user_msg: >-
-    The responsible user has all permissions for the selected content and can
-    also delete it.
+  permissions_responsible_user_and_responsibility_group_title: Responsible user / Responsibility group
+  permissions_responsible_user_and_responsibility_group_msg: >-
+    The responsible user / responsibility group has all permissions for the
+    selected content and can also delete it.
   permissions_responsible_user_title: Responsible user
   permissions_table_cancel_btn: Cancel
   permissions_table_edit_btn: Edit
@@ -713,11 +712,12 @@ en:
   resources_box_batch_person_widget_tab_group: Group
   resources_section_show_all: Show all →
   resources_type_all: All
+  responsibility_groups: Responsibility groups
   search_btn_search: Search
   search_filename: File name
   search_full_text: Full text
   section_title_collections: My sets
-  section_title_groups: My work groups
+  section_title_groups: My groups
   section_title_keywords: My keywords
   section_title_media_entries: My media entries
   section_title_tokens: My tokens
@@ -755,12 +755,14 @@ en:
   sitemap_my_clipboard: Batch processing
   sitemap_my_content_collections: Sets
   sitemap_my_content_media_entries: Media entries
+  sitemap_my_delegated_collections: Sets with joint responsibility
+  sitemap_my_delegated_media_entries: Media entries with joint responsibility
   sitemap_my_entrusted_collections: My entrusted sets
   sitemap_my_entrusted_filter_sets: My entrusted filter sets
   sitemap_my_entrusted_media_entries: My entrusted media entries
   sitemap_my_favorite_collections: Favorite sets
   sitemap_my_favorite_media_entries: Favorite media entries
-  sitemap_my_groups: Work groups
+  sitemap_my_groups: Groups
   sitemap_my_latest_imports: Last imports
   sitemap_my_unpublished: Incomplete media entries
   sitemap_my_used_keywords: Keywords
@@ -819,7 +821,7 @@ en:
   transfer_responsibility_submit: Transfer
   transfer_responsibility_success_collection: You have successfully transferred responsibility for the set.
   transfer_responsibility_success_media_entry: You have successfully transferred responsibility for the media entry.
-  transfer_responsibility_title: Transfer responsibility to the following user
+  transfer_responsibility_title: Transfer responsibility to the following user or delegation
   usage_data_created_at: Created on
   usage_data_import_at: Imported on
   usage_data_import_by: Imported by
@@ -829,7 +831,7 @@ en:
   usage_data_relations_parents: Parent sets
   usage_data_relations_title: Relations
   usage_data_responsibility_title: Responsibility and activities
-  usage_data_responsible: Responsible user
+  usage_data_responsible: Responsible user / responsibility group
   usage_terms_accept_btn: Accept usage terms
   usage_terms_reject_btn: Reject usage terms
   user_menu_admin_mode_toogle_off: Stop admin mode
@@ -841,7 +843,7 @@ en:
   user_menu_my_content_media_entries: My media entries
   user_menu_my_favorite_collections: Favorites - sets
   user_menu_my_favorite_media_entries: Favorites - media entries
-  user_menu_my_groups: My work groups
+  user_menu_my_groups: My groups
   user_menu_my_person: My person
   user_menu_upload: Upload media
   user_name_deactivated: '[Deleted user]'

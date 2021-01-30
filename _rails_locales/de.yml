@@ -940,6 +940,7 @@ de:
   workflow_common_settings_permissions_read_public: Öffentlicher Zugriff (Internet)
   workflow_common_settings_permissions_read: Nur Leserechte
   workflow_common_settings_permissions_responsible: Verantwortliche Person(en)
+  workflow_common_settings_permissions_select_owner: Nutzer/innen oder Delegationen auswählen
   workflow_common_settings_permissions_select_user: Nutzer/innen auswählen
   workflow_common_settings_permissions_title: Berechtigungen
   workflow_common_settings_permissions_write: Schreib- und Leserechte
@@ -1020,6 +1021,7 @@ de:
   workflow_workflow_owners_title: Workflow-Besitzer
   workflows_index_actions_edit: Bearbeiten
   workflows_index_actions_new: Neuer Workflow
+  workflows_index_action_save: Speichern
   workflows_index_actions_show: Details anzeigen
   workflows_index_header: Meine Workflows
   media_entry_notice_new_versions: 'Für diesen Medieneintrag sind neuere Versionen vorhanden:'

@@ -910,6 +910,7 @@ en:
   workflow_common_settings_permissions_read_public: Public access (Internet)
   workflow_common_settings_permissions_read: Only reading permissions
   workflow_common_settings_permissions_responsible: Responsible user
+  workflow_common_settings_permissions_select_owner: Select user or delegation
   workflow_common_settings_permissions_select_user: Select user
   workflow_common_settings_permissions_title: Permissions
   workflow_common_settings_permissions_write: Read and write permissions
@@ -987,6 +988,7 @@ en:
   workflow_workflow_owners_title: Workflow owners
   workflows_index_actions_edit: Edit
   workflows_index_actions_new: New workflow
+  workflows_index_action_save: Save
   workflows_index_actions_show: Show details
   workflows_index_header: My Workflows
   media_entry_notice_new_versions: 'Newer versions are available for this media entry:'

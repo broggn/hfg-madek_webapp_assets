@@ -290,8 +290,12 @@ de:
   error_404_title: Die gesuchte Seite kann nicht gefunden werden.
   error_500_message: >-
     Benötigen Sie diesbezüglich Hilfe, dann kontaktieren Sie bitte den Support
-    (support.medienarchiv@zhdk.ch) mit einer Beschreibung Ihrer letzten
-    Arbeitsschritte sowie einem Screenshot dieser Seite.
+    (%{support_email}) mit einer Beschreibung Ihrer letzten Arbeitsschritte
+    sowie einem Screenshot dieser Seite.
+  error_500_message_pre: 'Benötigen Sie diesbezüglich Hilfe, dann kontaktieren Sie bitte den Support ('
+  error_500_message_post: >-
+    ) mit einer Beschreibung Ihrer letzten Arbeitsschritte sowie einem
+    Screenshot dieser Seite.
   error_500_title: Es ist ein Server-Fehler aufgetreten.
   explore_keywords_section_title: Häufige Schlagworte
   explore_show_more: Weitere anzeigen

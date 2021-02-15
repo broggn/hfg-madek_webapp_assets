@@ -56,7 +56,10 @@ de:
   api_tokens_list_scope_on: Ja
   api_tokens_list_scope_read: Lesen
   api_tokens_list_scope_write: Schreiben
+  app_autocomplete_displayname_users: Nutzer/innen
+  app_autocomplete_displayname_delegations: Verantwortungs-Gruppen
   app_autocomplete_no_results: Keine Ergebnisse.
+  app_autocomplete_user_delegation_postfix: ' (Verantwortungs-Gruppe)'
   app_confirm_form_leave_msg: >-
     Diese Seite bittet Sie zu bestätigen, dass Sie die Seite verlassen möchten.
     Daten, die Sie eingegeben haben, werden unter Umständen nicht gespeichert.
@@ -847,7 +850,9 @@ de:
   transfer_responsibility_success_media_entry: >-
     Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
     übertragen.
-  transfer_responsibility_title: Verantwortlichkeit auf folgende/n Nutzer/in oder Delegation übertragen
+  transfer_responsibility_title: >-
+    Verantwortlichkeit auf folgende/n Nutzer/in oder Verantwortungs-Gruppe
+    übertragen
   usage_data_created_at: Erstellt am
   usage_data_import_at: Importiert am
   usage_data_import_by: Importiert durch
@@ -940,7 +945,7 @@ de:
   workflow_common_settings_permissions_read_public: Öffentlicher Zugriff (Internet)
   workflow_common_settings_permissions_read: Nur Leserechte
   workflow_common_settings_permissions_responsible: Verantwortliche Person(en)
-  workflow_common_settings_permissions_select_owner: Nutzer/innen oder Delegationen auswählen
+  workflow_common_settings_permissions_select_owner: 'Nutzer/innen oder Verantwortungs-Gruppen auswählen:'
   workflow_common_settings_permissions_select_user: Nutzer/innen auswählen
   workflow_common_settings_permissions_title: Berechtigungen
   workflow_common_settings_permissions_write: Schreib- und Leserechte

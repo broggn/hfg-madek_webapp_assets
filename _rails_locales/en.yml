@@ -287,8 +287,12 @@ en:
   error_404_title: The requested page cannot be found.
   error_500_message: >-
     If you require help in this matter, please contact the support
-    (support.medienarchiv@zhdk.ch) with a description of your last working steps
-    and a screen shot of this page.
+    (%{support_email}) with a description of your last working steps and a
+    screen shot of this page.
+  error_500_message_pre: 'If you require help in this matter, please contact the support ('
+  error_500_message_post: >-
+    ) with a description of your last working steps and a screen shot of this
+    page.
   error_500_title: A server error occurred.
   explore_keywords_section_title: Frequent keywords
   explore_show_more: Show more

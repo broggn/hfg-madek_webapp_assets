@@ -241,12 +241,17 @@ en:
   dashboard_none_exist: There are none.
   dashboard_show_all: Show all
   dashboard_title_head: My archive
+  dynamic_filters_any_values_title: Any values
   dynamic_filters_authorization: Authorization
   dynamic_filters_visibility: Accessability
   dynamic_filters_visibility_private: Only for me
   dynamic_filters_visibility_user_or_group: Shared with people and work groups
   dynamic_filters_person_header: Persons
+  dynamic_filters_remove_all_title: Remove all
   dynamic_filters_role_header: Functions
+  dynamic_filters_search_for_api_client_placeholder: Search for API client...
+  dynamic_filters_search_for_group_placeholder: Search for group...
+  dynamic_filters_search_for_user_placeholder: Search for user...
   edit_custom_urls_back_to_collection: Back to the set
   edit_custom_urls_back_to_media_entry: Back to the media entry
   edit_custom_urls_cancel: Cancel
@@ -525,6 +530,7 @@ en:
   pagination_postfix: ''
   pagination_selection_label: Select page
   people_toolbar_header: Related items
+  permission_entrusted_to_api_client: Visible to API clients
   permission_entrusted_to_group: Visible to work groups
   permission_entrusted_to_user: Visible to users
   permission_name_edit_metadata: Edit metadata

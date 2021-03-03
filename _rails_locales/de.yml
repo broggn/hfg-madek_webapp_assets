@@ -252,6 +252,7 @@ de:
   dynamic_filters_remove_all_title: Alle entfernen
   dynamic_filters_role_header: Funktionen
   dynamic_filters_search_for_api_client_placeholder: Suche nach API-Applikation
+  dynamic_filters_search_for_delegation_placeholder: Suche nach Gruppe...
   dynamic_filters_search_for_group_placeholder: Suche nach Gruppe...
   dynamic_filters_search_for_user_placeholder: Suche nach User...
   edit_custom_urls_back_to_collection: Zurück zum Set
@@ -577,6 +578,7 @@ de:
   permissions_responsible_user_and_responsibility_group_msg: >-
     Der/die verantwortliche/r Nutzer/in hat alle Berechtigungen zu den
     ausgewählten Inhalten und kann diese auch löschen.
+  permissions_responsible_delegation_title: Verantwortungs-Gruppe
   permissions_responsible_user_title: Verantwortliche Person
   permissions_table_cancel_btn: Abbrechen
   permissions_table_edit_btn: Bearbeiten

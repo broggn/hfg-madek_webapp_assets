@@ -924,7 +924,7 @@ en:
   workflow_common_settings_permissions_add_user: Add user
   workflow_common_settings_permissions_read_public: Public access (Internet)
   workflow_common_settings_permissions_read: Only reading permissions
-  workflow_common_settings_permissions_responsible: Responsible user
+  workflow_common_settings_permissions_responsible: Responsible user / responsibility group
   workflow_common_settings_permissions_select_owner: Select user or responsibility group
   workflow_common_settings_permissions_select_user: Select user
   workflow_common_settings_permissions_title: Permissions

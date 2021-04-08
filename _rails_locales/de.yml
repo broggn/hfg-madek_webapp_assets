@@ -956,7 +956,7 @@ de:
   workflow_common_settings_permissions_add_user: Nutzer/innen hinzufügen
   workflow_common_settings_permissions_read_public: Öffentlicher Zugriff (Internet)
   workflow_common_settings_permissions_read: Nur Leserechte
-  workflow_common_settings_permissions_responsible: Verantwortliche Person(en)
+  workflow_common_settings_permissions_responsible: Verantwortliche/r Nutzer/in / Verantwortungs-Gruppe
   workflow_common_settings_permissions_select_owner: 'Nutzer/innen oder Verantwortungs-Gruppen auswählen:'
   workflow_common_settings_permissions_select_user: Nutzer/innen auswählen
   workflow_common_settings_permissions_title: Berechtigungen

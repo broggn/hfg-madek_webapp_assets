@@ -941,8 +941,6 @@ en:
   workflow_edit_actions_finishing: Finish…
   workflow_edit_actions_processing: Loading…
   workflow_edit_actions_save_data: Save
-  workflow_edit_actions_validate: Check & Finish…
-  workflow_edit_actions_validating: Checking…
   workflow_edit_add_md_by_metakey: Add
   workflow_edit_adder_meta_key_already_used: Metakey already used
   workflow_feature_title: Workflow
@@ -959,7 +957,7 @@ en:
     All media entries contained must have a value set so that the Workflow can
     be completed
   workflow_md_edit_is_mandatory: Mandatory field
-  workflow_md_edit_is_not_common: Individuelle Vergabe
+  workflow_md_edit_is_not_common: Individual assignment
   workflow_md_edit_is_overridable: …and overwrite existing values
   workflow_md_edit_scope: Scope
   workflow_md_edit_scope_entry: Entries

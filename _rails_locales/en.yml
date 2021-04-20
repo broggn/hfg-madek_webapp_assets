@@ -578,6 +578,7 @@ en:
   person_show_external_uris_autority_control: Register
   person_show_first_name: First name
   person_show_last_name: Last name
+  person_show_only_name: Name
   person_show_pseudonym: Pseudonym
   picture_alt_fallback: (unkown)
   picture_alt_prefix: 'Picture:'

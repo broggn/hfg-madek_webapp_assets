@@ -600,6 +600,7 @@ de:
   person_show_external_uris_autority_control: Verzeichnis(se)
   person_show_first_name: Vorname
   person_show_last_name: Nachname
+  person_show_only_name: Name
   person_show_pseudonym: Pseudonym
   picture_alt_fallback: (unbekannt)
   picture_alt_prefix: 'Bild: '

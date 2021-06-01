@@ -471,7 +471,7 @@ en:
   meta_data_edit_media_entry_saved: Media entry was saved.
   meta_data_edit_media_entry_saved_missing: Media entry was saved but there some mandatory data are missing.
   meta_data_edit_more_data: More data
-  meta_data_form_all_data: Alle daten
+  meta_data_form_all_data: All metadata
   meta_data_form_cancel: Cancel
   meta_data_form_save: Save
   meta_data_form_saving: >-

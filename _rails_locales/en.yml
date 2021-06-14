@@ -411,7 +411,7 @@ en:
   media_entry_media_import_title: 'Add images, video or audio files, or other documents.'
   media_entry_meta_data_edit_by_context_btn: Edit metadata by context
   media_entry_meta_data_edit_by_vocab_btn: Edit metadata by vocabulary
-  media_entry_meta_data_header_prefix: 'Edit media entry:'
+  media_entry_meta_data_header_prefix: 'Edit media entry: '
   media_entry_more_data_title: Responsibility and activities
   media_entry_not_published_warning_msg: Media entry still needs mandatory data.
   media_entry_relations_current: Current entry

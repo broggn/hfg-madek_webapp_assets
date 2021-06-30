@@ -657,6 +657,9 @@ en:
   resources_box_batch_actions_meta_data_batch: Metadata Batch Processing
   resources_box_deselect_all: Deselect all
   resources_box_filter: Filter
+  resources_box_filters_note_post: in the Action bar to see more filter options.
+  resources_box_filters_note_pre: Please select
+  resources_box_filters_note_or: or
   resources_box_new_search: New search
   resources_box_no_content: No items available.
   resources_box_no_content_but_sets_1: 'There are no media entries related to this search process. But '

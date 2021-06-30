@@ -679,6 +679,9 @@ de:
   resources_box_batch_actions_meta_data_batch: Metadaten Stapelverarbeitung
   resources_box_deselect_all: Alle abwählen
   resources_box_filter: Filtern
+  resources_box_filters_note_post: 'aus, um weitere Filterkriterien anwenden zu können.'
+  resources_box_filters_note_pre: Wählen Sie in der Aktionsleiste
+  resources_box_filters_note_or: oder
   resources_box_new_search: Neue Suche
   resources_box_no_content: Keine Inhalte verfügbar
   resources_box_no_content_but_sets_1: 'Es gibt keine Medieneinträge für diese Suche. Es wurden aber '

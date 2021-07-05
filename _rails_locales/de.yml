@@ -378,6 +378,21 @@ de:
   media_entry_conversion_status_initialized: Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.
   media_entry_conversion_status_submitted: Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.
   media_entry_delete_success: Der Medieneintrag wurde gelöscht.
+  media_entry_duplicator_configuration_annotate_as_new_version_of_post: erstellen
+  media_entry_duplicator_configuration_annotate_as_new_version_of_pre: (Experte) Hinweis zu neuer Version inkl. Verlinkung zu
+  media_entry_duplicator_configuration_copy_meta_data: Metadaten übertragen
+  media_entry_duplicator_configuration_copy_permissions: Zugriffsberechtigungen übertragen
+  media_entry_duplicator_configuration_copy_relations: Zusammenhänge übertragen (übergeordnete Sets und Favoriten)
+  media_entry_duplicator_configuration_move_custom_urls: (Experte) Sprechende Adresse (URL) übernehmen
+  media_entry_duplicator_configuration_instructions: 'Folgende Optionen können gewählt werden:'
+  media_entry_duplicator_custom_urls_already_moved: moved to the first successful upload!
+  media_entry_duplicator_desc_post: zugewiesen.
+  media_entry_duplicator_desc_pre: >-
+    Die unten importierten Mediendateien bekommen die den nachfolgend gewählten
+    Optionen entsprechenden Metadaten, Zugriffsberechtigungen, Beziehungen und
+    weitere Einstellungen des aktuellen Medieneintrags
+  media_entry_duplicator_md_title_suffix: (updated)
+  media_entry_duplicator_new_version_of_label: Updated file
   media_entry_export_close: Schliessen
   media_entry_export_download: Exportieren
   media_entry_export_has_no_original: >-
@@ -405,6 +420,7 @@ de:
   media_entry_file_format_not_supported_3: exportieren.
   media_entry_file_information_title: Datei
   media_entry_media_import_gotodrafts: Medieneinträge vervollständigen
+  media_entry_media_import_gotomediaentries: Weiter zum Medieneinträge
   media_entry_media_import_gotoworkflow: Weiter zum Workflow
   media_entry_media_import_header: Medien importieren
   media_entry_media_import_box_header_a: ''
@@ -629,6 +645,7 @@ de:
   resource_action_media_entry_manage_confidential_links: Vertrauliche Links verwalten
   resource_action_media_entry_select_collection: Zu Sets hinzufügen / Aus Sets entfernen
   resource_action_media_entry_share: Medieneintrag teilen
+  resource_action_media_entry_update_file: Medieneintrag ersetzen
   resource_action_more_actions: Weitere Aktionen
   resource_action_show_in_admin: Zeige im Admin-Interface
   resource_ask_delete_cancel: Abbrechen

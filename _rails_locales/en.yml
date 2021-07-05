@@ -368,6 +368,20 @@ en:
   media_entry_conversion_status_initialized: The media file is converting. Please try later.
   media_entry_conversion_status_submitted: The media file is converting. Please try later.
   media_entry_delete_success: Media entry has been deleted.
+  media_entry_duplicator_configuration_annotate_as_new_version_of_post: ''
+  media_entry_duplicator_configuration_annotate_as_new_version_of_pre: (Expert) Add annotation «new version of» and link to
+  media_entry_duplicator_configuration_copy_meta_data: Copy meta data
+  media_entry_duplicator_configuration_copy_permissions: Copy permissions
+  media_entry_duplicator_configuration_copy_relations: Copy relations (parent collections & favorites)
+  media_entry_duplicator_configuration_move_custom_urls: (Expert) Move comprehensible Address (URL)
+  media_entry_duplicator_configuration_instructions: 'Choose options below:'
+  media_entry_duplicator_custom_urls_already_moved: moved to the first successful upload!
+  media_entry_duplicator_desc_post: by selected options.
+  media_entry_duplicator_desc_pre: >-
+    The media file to be imported below will get assigned meta data,
+    permissions, relations and further settings from the actual media entry
+  media_entry_duplicator_md_title_suffix: (updated)
+  media_entry_duplicator_new_version_of_label: Updated file
   media_entry_export_close: Close
   media_entry_export_download: Download
   media_entry_export_has_no_original: You are not allowed to download the original file.
@@ -391,6 +405,7 @@ en:
   media_entry_file_format_not_supported_3: '0'
   media_entry_file_information_title: File information
   media_entry_media_import_gotodrafts: Complete media entries
+  media_entry_media_import_gotomediaentries: Continue to media entries
   media_entry_media_import_gotoworkflow: Continue to Workflow
   media_entry_media_import_header: Media upload
   media_entry_media_import_box_header_a: ''
@@ -607,6 +622,7 @@ en:
   resource_action_media_entry_manage_confidential_links: Manage Confidential Links
   resource_action_media_entry_select_collection: Add to/remove from set
   resource_action_media_entry_share: Share media entry
+  resource_action_media_entry_update_file: Replace media entry
   resource_action_more_actions: Further actions
   resource_action_show_in_admin: Show in Admin Interface
   resource_ask_delete_cancel: Cancel

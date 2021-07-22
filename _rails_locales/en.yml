@@ -405,7 +405,7 @@ en:
   media_entry_file_format_not_supported_3: '0'
   media_entry_file_information_title: File information
   media_entry_media_import_gotodrafts: Complete media entries
-  media_entry_media_import_gotomediaentries: Continue to media entries
+  media_entry_media_import_gotomediaentries: Continue to My media entries
   media_entry_media_import_gotoworkflow: Continue to Workflow
   media_entry_media_import_header: Media upload
   media_entry_media_import_box_header_a: ''

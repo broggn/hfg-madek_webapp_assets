@@ -137,6 +137,7 @@ de:
   collection_new_cancel: Abbrechen
   collection_new_create_set: Set erstellen
   collection_new_dialog_title: Set erstellen
+  collection_new_dialog_parent_warning: 'The new created set will be added as a child to:'
   collection_new_flash_successful: Set wurde erstellt.
   collection_new_flash_title_needed: Titel ist ein Pflichtfeld.
   collection_new_header: Neues Set
@@ -627,6 +628,7 @@ de:
   release_info: Release Info
   release_local_git_version: Lokale Git Version
   release_version: Entwicklungs-Version
+  resource_action_collection_create: Set erstellen
   resource_action_collection_destroy: Set löschen
   resource_action_collection_disfavor: Aus Favoriten entfernen
   resource_action_collection_edit_cover: Titelbild festlegen

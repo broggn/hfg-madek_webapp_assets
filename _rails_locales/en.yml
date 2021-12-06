@@ -134,6 +134,7 @@ en:
   collection_new_cancel: Cancel
   collection_new_create_set: Create set
   collection_new_dialog_title: Create set
+  collection_new_dialog_parent_warning: 'The new created set will be added as a child to:'
   collection_new_flash_successful: Set was created.
   collection_new_flash_title_needed: Title is a mandatory field.
   collection_new_header: New set
@@ -604,6 +605,7 @@ en:
   release_info: Release info
   release_local_git_version: Local Git version
   release_version: Development version
+  resource_action_collection_create: Create set
   resource_action_collection_destroy: Delete set
   resource_action_collection_disfavor: Remove from favorites
   resource_action_collection_edit_cover: Define set cover

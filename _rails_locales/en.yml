@@ -563,6 +563,7 @@ en:
   permission_subject_title_groups: Groups
   permission_subject_title_public: Public
   permission_subject_title_users: Users
+  permission_subject_title_users_or_delegations: Users / Responsibility Groups
   permissions_batch_success: Permissions have been updated succesfully.
   permissions_batch_title_post: ' Items.'
   permissions_batch_title_pre: 'Edit permissions of '

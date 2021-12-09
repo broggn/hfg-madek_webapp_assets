@@ -582,6 +582,7 @@ de:
   permission_subject_title_groups: Gruppen
   permission_subject_title_public: Öffentlichkeit
   permission_subject_title_users: Nutzer/innen
+  permission_subject_title_users_or_delegations: Nutzer/innen / Verantwortungs-Gruppen
   permissions_batch_success: Berechtigungen wurden erfolgreich aktualisiert.
   permissions_batch_title_post: ' Inhalten.'
   permissions_batch_title_pre: 'Berechtigungen ändern von '

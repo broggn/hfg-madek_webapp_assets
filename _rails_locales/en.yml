@@ -513,6 +513,7 @@ en:
   meta_data_input_person_save: Save
   meta_data_input_json_err_prefix: 'Input error: '
   meta_data_input_json_err_no_object: Value is not an 'Object'!
+  meta_data_meta_key_documentation_url: click link for details
   meta_data_meta_key_label: Key
   meta_data_role_add_another_btn: Add another function
   meta_data_role_add_btn: Add a function

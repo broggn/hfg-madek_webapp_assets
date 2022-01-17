@@ -532,6 +532,7 @@ de:
   meta_data_input_person_save: Speichern
   meta_data_input_json_err_prefix: 'Eingabefehler: '
   meta_data_input_json_err_no_object: Wert ist nicht vom Typ 'Object'!
+  meta_data_meta_key_documentation_url: '> Online-Hilfe'
   meta_data_meta_key_label: Schlüssel
   meta_data_role_add_another_btn: Weitere Funktion hinzufügen
   meta_data_role_add_btn: Funktion hinzufügen

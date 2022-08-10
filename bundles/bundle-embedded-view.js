@@ -576,8 +576,11 @@ module.exports = React.createClass({
     var image_url = get.image_url,
         title = get.title,
         media_type = get.media_type,
-        type = get.type;
-    var previews = get.media_file.previews;
+        type = get.type,
+        export_url = get.export_url;
+    var _get$media_file = get.media_file,
+        previews = _get$media_file.previews,
+        original_file_url = _get$media_file.original_file_url;
 
 
     var classes = cx(this.props.mods);
@@ -593,12 +596,9 @@ module.exports = React.createClass({
     // prefer the given image_url, but fallback to largest
     var picture = image_url || imageHref ? React.createElement(Picture, (0, _assign2.default)({ title: title, src: image_url || imageHref }, mediaProps)) : React.createElement(ResourceIcon, { mediaType: media_type, thumbnail: false, type: type });
 
-    var originalUrl = null;
-    if (this.props.get.media_file && this.props.get.media_file.original_file_url) originalUrl = this.props.get.media_file.original_file_url;
-
     var mediaPlayerConfig = f.merge({
       poster: imageHref || image_url,
-      originalUrl: originalUrl
+      originalUrl: original_file_url
     }, mediaProps);
 
     var not_ready = (get.media_type == 'video' || get.media_type == 'audio') && f.get(get, 'media_file.conversion_status') != 'finished';
@@ -632,19 +632,19 @@ module.exports = React.createClass({
       url: get.url, accessToken: get.used_confidential_access_token
     });
 
-    var downloadRef = originalUrl ? originalUrl : get.url + '/export';
+    var downloadRef = original_file_url ? original_file_url : export_url;
 
     var content =
     // PDF
     this.props.get.media_type == 'document' ? React.createElement(
       'div',
       { className: 'ui-has-magnifier' },
-      React.createElement(
+      downloadRef ? React.createElement(
         'a',
         { href: downloadRef },
         picture
-      ),
-      React.createElement(
+      ) : picture,
+      downloadRef && React.createElement(
         'a',
         { href: downloadRef, className: 'ui-magnifier' },
         React.createElement(Icon, { i: 'magnifier', mods: 'bright' })

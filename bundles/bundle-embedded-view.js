@@ -1083,7 +1083,7 @@ cx = require('classnames');
 module.exports = React.createClass({
   displayName: 'ResourceIcon',
   propTypes: {
-    type: React.PropTypes.oneOf(['MediaEntry', 'FilterSet', 'Collection']).isRequired,
+    type: React.PropTypes.oneOf(['MediaEntry', 'Collection']).isRequired,
     mediaType: React.PropTypes.string
   },
   render: function(arg) {
@@ -1133,12 +1133,6 @@ module.exports = React.createClass({
               "style": style
             });
           case type !== 'Collection':
-            return React.createElement(Icon, {
-              "i": 'set',
-              "mods": cx('ui_media-type-icon', overrideClasses),
-              "style": style
-            });
-          case type !== 'FilterSet':
             return React.createElement(Icon, {
               "i": 'set',
               "mods": cx('ui_media-type-icon', overrideClasses),

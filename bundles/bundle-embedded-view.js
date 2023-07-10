@@ -723,9 +723,7 @@ var IframeEmbed = function IframeEmbed(_ref) {
           top: '0',
           left: '0'
         },
-        allowFullScreen: 'true',
-        webkitallowfullscreen: 'true',
-        mozallowfullscreen: 'true'
+        allowFullScreen: 'true'
       })
     )
   );

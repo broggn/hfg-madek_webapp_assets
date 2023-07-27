@@ -603,8 +603,12 @@ module.exports = React.createClass({
 
     var not_ready = (get.media_type == 'video' || get.media_type == 'audio') && f.get(get, 'media_file.conversion_status') != 'finished';
 
-    if (not_ready) {
-      var warningText = get.media_file.conversion_status === 'submitted' ? [t('media_entry_conversion_progress_pre'), get.media_file.conversion_progress, t('media_entry_conversion_progress_post')].join('') : t('media_entry_conversion_status_' + get.media_file.conversion_status);
+    var missingAvPreviews = get.media_type == 'video' && (previews.videos || []).length == 0 || get.media_type == 'audio' && (previews.audios || []).length == 0;
+
+    if (not_ready || missingAvPreviews) {
+      var deFactoFailed = !not_ready && missingAvPreviews;
+      var status = deFactoFailed ? 'failed' : get.media_file.conversion_status;
+      var warningText = status === 'submitted' ? [t('media_entry_conversion_progress_pre'), get.media_file.conversion_progress, t('media_entry_conversion_progress_post')].join('') : t('media_entry_conversion_status_' + status);
 
       return React.createElement(
         'div',
@@ -614,7 +618,7 @@ module.exports = React.createClass({
           { className: 'ui-alert warning' },
           warningText
         ),
-        React.createElement(
+        status === 'failed' ? React.createElement('div', { className: 'p pvh mth' }) : React.createElement(
           'div',
           { className: 'p pvh mth' },
           t('media_entry_conversion_hint'),

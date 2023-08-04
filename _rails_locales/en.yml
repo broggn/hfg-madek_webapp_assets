@@ -761,6 +761,9 @@ en:
   section_title_keywords: My keywords
   section_title_media_entries: My media entries
   section_title_tokens: My tokens
+  session_expiring_soon: >-
+    You will be logged out in less than %{minutes} minutes. Save your input and
+    log in again.
   share_back_to_collection: Back to the set
   share_back_to_media_entry: Back to the media entry
   share_close: Close

@@ -786,6 +786,9 @@ de:
   section_title_keywords: Meine Schlagworte
   section_title_media_entries: Meine Medieneinträge
   section_title_tokens: Meine Tokens
+  session_expiring_soon: >-
+    Sie werden in weniger als %{minutes} Minuten ausgeloggt. Speichern Sie Ihre
+    Eingaben und melden sich neu an.
   share_back_to_collection: Zurück zum Set
   share_back_to_media_entry: Zurück zum Medieneintrag
   share_close: Schliessen

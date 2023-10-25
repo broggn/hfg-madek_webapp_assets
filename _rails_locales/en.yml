@@ -606,10 +606,9 @@ en:
   relations_parents_title: Parents
   relations_siblings_title: Siblings
   relations_title: Relations
-  release_changes_since_release: Changes since last release
+  release_source_history: Source History
   release_info: Release info
   release_local_git_version: Local Git version
-  release_version: Development version
   resource_action_collection_create: Create set
   resource_action_collection_destroy: Delete set
   resource_action_collection_disfavor: Remove from favorites

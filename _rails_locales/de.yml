@@ -631,10 +631,9 @@ de:
   relations_parents_title: Übergeordnete Sets
   relations_siblings_title: Benachbarte Sets
   relations_title: Zusammenhänge
-  release_changes_since_release: Änderungen seit dem letzen Release
+  release_source_history: Source History
   release_info: Release Info
   release_local_git_version: Lokale Git Version
-  release_version: Entwicklungs-Version
   resource_action_collection_create: Set erstellen
   resource_action_collection_destroy: Set löschen
   resource_action_collection_disfavor: Aus Favoriten entfernen

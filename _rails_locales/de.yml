@@ -293,9 +293,7 @@ de:
     fehlen.
   embed_error_msg_404: Der gewünschte Inhalt konnte nicht gefunden werden.
   error_401_title: 'Um Zugang zu diesem Bereich zu erhalten, melden Sie sich bitte an.'
-  error_403_message: >-
-    Bitte kontaktieren Sie die für den Medieneintrag oder das Sets
-    verantwortliche Person.
+  error_403_message: Bitte kontaktieren Sie die für die Ressource verantwortliche Person.
   error_403_title: Sie haben keine Zugriffsrechte für diesen Inhalt.
   error_404_title: Die gesuchte Seite kann nicht gefunden werden.
   error_500_message: >-

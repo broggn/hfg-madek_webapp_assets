@@ -289,7 +289,7 @@ en:
     missing.
   embed_error_msg_404: The requested content could not be found.
   error_401_title: To get access please login below with your user data.
-  error_403_message: Please contact the responsible user who has the right alllow access.
+  error_403_message: Please contact the responsible user for this resource.
   error_403_title: You don’t have the necessary permissions to access this resource.
   error_404_title: The requested page cannot be found.
   error_500_message: >-

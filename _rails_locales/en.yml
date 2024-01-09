@@ -1034,3 +1034,5 @@ en:
   workflows_index_actions_show: Show details
   workflows_index_header: My Workflows
   media_entry_notice_new_versions: 'Newer versions are available for this media entry:'
+  read_more_button: Show more
+  read_less_button: Show less

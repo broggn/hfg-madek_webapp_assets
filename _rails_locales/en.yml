@@ -349,7 +349,7 @@ en:
   login_box_internal: External users
   login_box_title: Log in
   login_box_login_btn: Log in
-  login_box_email_or_login: Username or email
+  login_box_email_or_login: Email
   login_box_password: Password
   login_box_rememberme: Remember me
   login_box_username: User name

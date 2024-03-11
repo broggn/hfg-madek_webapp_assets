@@ -56,6 +56,8 @@ en:
   app_autocomplete_displayname_delegations: Responsibility groups
   app_autocomplete_no_results: No results.
   app_autocomplete_user_delegation_postfix: ' (Responsibility group)'
+  app_autocomplete_enter_term: Enter search term for further results
+  app_autocomplete_extend_term: Extend search term for further results
   app_confirm_form_leave_msg: >-
     Please confirm that you wish to leave this page – entered data might not be
     saved.

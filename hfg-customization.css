@@ -53,6 +53,7 @@ html *:before {
 .ui-tabs-item a,
 .ui-media-overview-preview,
 .ui-header,
+.ui-form-group.columned,
 td {
   border: none !important;
   outline: none !important;
@@ -191,7 +192,7 @@ a.ui-tag-button:visited:hover {
   margin: 0 auto;
   margin-bottom: -10em;
   padding-top: 2em;
-  content: "Einfache Suche Ã¼ber Madek-Textfelder. Keywords und Personen werden NICHT durchsucht, Operatoren (Plus, AnfÃ¼hrungszeichen usw.) werden nicht unterstÃ¼tzt. \A\A Wir empfehlen eine sehr allgemeine Suche (ggf. Suchfeld leer lassen). Die Ergebnisse kÃ¶nnen dann auf der nÃ¤chsten Seite mit Filtern detailliert eingeschrÃ¤nkt werden.";
+  content: "Einfache Suche über Madek-Textfelder. Keywords und Personen werden NICHT durchsucht, Operatoren (Plus, Anführungszeichen usw.) werden nicht unterstützt. \A\A Wir empfehlen eine sehr allgemeine Suche (ggf. Suchfeld leer lassen). Die Ergebnisse können dann auf der nächsten Seite mit Filtern detailliert eingeschränkt werden.";
   white-space: pre-wrap;
 }
 #app[data-view="search"] .ui-container.midtone::after {
@@ -224,16 +225,11 @@ a.ui-tag-button:visited:hover {
 
 
 
-/* alerts */
-.ui-alert.success {
-  background-color: var(--status-green);
+/* make textareas resizable */
+textarea {
+  resize: vertical;
 }
-.ui-alert.confirmation {
-  background-color: var(--status-blue);
-}
-.ui-alert.error {
-  background-color: var(--status-red);
-}
+
 
 
 /* ADMIN MODE */
@@ -241,8 +237,9 @@ body[data-uberadmin] {
   border: none;
 }
 body[data-uberadmin] #app {
-  border: 1.5em solid var(--status-blue);
+  border: 1.5em solid rgb(219, 49, 49);
 }
+
 
 
 /* SECTION LABELS */

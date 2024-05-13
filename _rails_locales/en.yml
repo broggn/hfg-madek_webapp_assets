@@ -754,6 +754,8 @@ en:
   resources_box_batch_person_widget_add_group: Add group
   resources_box_batch_person_widget_tab_person: Person
   resources_box_batch_person_widget_tab_group: Group
+  resources_box_info_header_no_system_groups: '%{system_groups_name} are not taken into account.'
+  resources_box_info_header_system_groups_name: System groups
   resources_section_show_all: Show all →
   resources_type_all: All
   responsibility_groups: Responsibility groups

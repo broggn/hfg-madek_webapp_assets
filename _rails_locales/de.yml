@@ -777,6 +777,8 @@ de:
   resources_box_batch_person_widget_add_group: Arbeitsgruppe einfügen
   resources_box_batch_person_widget_tab_person: Person
   resources_box_batch_person_widget_tab_group: Gruppe
+  resources_box_info_header_no_system_groups: 'In dieser Auflistung werden %{system_groups_name} nicht berücksichtigt.'
+  resources_box_info_header_system_groups_name: Systemgruppen
   resources_section_show_all: Alle anzeigen →
   resources_type_all: Alle
   responsibility_groups: Verantwortungs-Gruppen

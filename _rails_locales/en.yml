@@ -544,6 +544,11 @@ en:
   no_groups_fallback: No work groups available.
   no_keywords_fallback: No keywords available.
   no_relations_title: No relations found.
+  notifications_title_transfer_responsibility: Transfer responsibility
+  notifications_message_transfer_responsibility: 'The responsibility for %{resource} was transferred from %{user} to you.'
+  notifications_acknowledge_all: Delete all notifications
+  notifications_acknowledge: Delete
+  notifications_no_notifications: No notifications present
   pagination_nav_loadnext: Load more
   pagination_nav_nextloading: More items are being loaded.
   pagination_nav_nextpage: Next page
@@ -789,7 +794,27 @@ en:
   share_uuid_url_hint_exporter: Copy this address for the Madek Exporter as well.
   share_uuid_url_hint_media_entry: 'If you explicitly want to share this media entry, use the following address.'
   share_uuid_url_subtitle: Share URL
+  settings_notifications_title: Notifications
+  settings_notifications_info1: >-
+    Notifications are listed under %{notifications} and optionally sent via
+    email.
+  settings_notifications_info2: Notifications will be removed after 6 months
+  settings_notifications_info3: 'Choose your settings for e-mail notifications below:'
+  settings_notifications_email_label: 'Notifications will be sent to the following e-mail address:'
+  settings_notifications_language_label: You will receive emails in
+  settings_notifications_language_de: German
+  settings_notifications_language_en: English
+  settings_notifications_title_transfer_responsibility: Transfer responsibility
+  settings_notifications_title_weather_report: Weather report
+  settings_notifications_email_frequency_label: 'Frequency of email notification:'
+  settings_notifications_email_frequency_immediately: immediately
+  settings_notifications_email_frequency_daily: daily (digest)
+  settings_notifications_email_frequency_weekly: weekly (digest)
+  settings_notifications_email_frequency_never: none
+  settings_save_changes: Save settings
+  settings_saved_changes: Settings have been saved
   sitemap_activities: Activities
+  sitemap_notifications: Notifications
   sitemap_api: API
   sitemap_clipboard: Batch processing
   sitemap_collections: Sets
@@ -817,6 +842,7 @@ en:
   sitemap_my_used_keywords: Keywords
   sitemap_search: Search
   sitemap_tokens: Tokens
+  sitemap_settings: Settings
   sitemap_vocabularies: Vocabularies
   confidential_links_help_title: Hints
   sitemap_vocabulary: Vocabulary

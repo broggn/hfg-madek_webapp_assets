@@ -563,6 +563,11 @@ de:
   no_groups_fallback: Keine Arbeitsgruppen vorhanden.
   no_keywords_fallback: Keine Schlagworte vorhanden.
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
+  notifications_title_transfer_responsibility: Verantwortlichkeit übertragen
+  notifications_message_transfer_responsibility: 'Verantwortlichkeit von %{resource} wurde von %{user} an Sie übertragen.'
+  notifications_acknowledge_all: Alle Notifikationen löschen
+  notifications_acknowledge: Löschen
+  notifications_no_notifications: Keine Notifikationen vorhanden
   pagination_nav_loadnext: Mehr laden
   pagination_nav_nextloading: Mehr Inhalte werden geladen.
   pagination_nav_nextpage: Nächste Seite
@@ -814,7 +819,27 @@ de:
     Wenn Sie explizit diesen Medieneintrag teilen möchten, nutzen Sie folgende
     URL.
   share_uuid_url_subtitle: URL teilen
+  settings_notifications_title: Notifikationen
+  settings_notifications_info1: >-
+    Notifikationen werden unter %{notifications} aufgeführt und optional per
+    E-Mail verschickt.
+  settings_notifications_info2: Notifikationen werden nach 6 Monaten gelöscht
+  settings_notifications_info3: 'Die Einstellungen für die E-Mail-Notifikationen finden Sie nachstehend:'
+  settings_notifications_email_label: 'An folgende E-Mail-Adresse bekommen Sie Notifikationen zugestellt:'
+  settings_notifications_language_label: 'Die E-Mails werden in folgender Sprache verschickt:'
+  settings_notifications_language_de: Deutsch
+  settings_notifications_language_en: Englisch
+  settings_notifications_title_transfer_responsibility: Verantwortlichkeit übertragen
+  settings_notifications_title_weather_report: Wetterbericht
+  settings_notifications_email_frequency_label: In welcher Häufigkeit möchten Sie E-Mails erhalten?
+  settings_notifications_email_frequency_immediately: sofort
+  settings_notifications_email_frequency_daily: täglich (Zusammenfassung)
+  settings_notifications_email_frequency_weekly: wöchentlich (Zusammenfassung)
+  settings_notifications_email_frequency_never: keine
+  settings_save_changes: Einstellungen speichern
+  settings_saved_changes: Einstellungen wurden gespeichert
   sitemap_activities: Aktivitäten
+  sitemap_notifications: Notifikationen
   sitemap_api: API
   sitemap_clipboard: Stapelverarbeitung
   sitemap_collections: Sets
@@ -842,6 +867,7 @@ de:
   sitemap_my_used_keywords: Schlagworte
   sitemap_search: Suche
   sitemap_tokens: Tokens
+  sitemap_settings: Einstellungen
   sitemap_vocabularies: Vokabulare
   confidential_links_help_title: Hinweise
   sitemap_vocabulary: Vokabular

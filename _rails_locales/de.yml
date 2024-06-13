@@ -826,9 +826,9 @@ de:
   settings_notifications_info2: Notifikationen werden nach 6 Monaten gelöscht
   settings_notifications_info3: 'Die Einstellungen für die E-Mail-Notifikationen finden Sie nachstehend:'
   settings_notifications_email_label: 'An folgende E-Mail-Adresse bekommen Sie Notifikationen zugestellt:'
-  settings_notifications_language_label: 'Die E-Mails werden in folgender Sprache verschickt:'
-  settings_notifications_language_de: Deutsch
-  settings_notifications_language_en: Englisch
+  settings_notifications_locale_label: 'Die E-Mails werden in folgender Sprache verschickt:'
+  settings_notifications_locale_de: Deutsch
+  settings_notifications_locale_en: Englisch
   settings_notifications_title_transfer_responsibility: Verantwortlichkeit übertragen
   settings_notifications_title_weather_report: Wetterbericht
   settings_notifications_email_frequency_label: In welcher Häufigkeit möchten Sie E-Mails erhalten?

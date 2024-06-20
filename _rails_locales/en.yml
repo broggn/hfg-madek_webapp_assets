@@ -244,6 +244,7 @@ en:
   dashboard_none_exist: There are none.
   dashboard_show_all: Show all
   dashboard_title_head: My archive
+  deleted: deleted
   dynamic_filters_any_values_title: Any values
   dynamic_filters_authorization: Authorization
   dynamic_filters_visibility: Accessability

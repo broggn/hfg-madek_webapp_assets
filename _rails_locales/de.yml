@@ -125,6 +125,7 @@ de:
   clipboard_removing_resources: Entferne Inhalte aus Stapelverarbeitung...
   collection_ask_delete_question_pre: 'Sind Sie sicher, dass Sie folgendes Set löschen möchten: '
   collection_ask_delete_title: Set löschen
+  collection_deleted: Dieses Set wurde gelöscht und ist für Benutzer nicht mehr sichtbar.
   collection_delete_success: Set wurde gelöscht.
   collection_edit_cover_submit_btn: Speichern
   collection_edit_cover_title: Titelbild für Set festlegen
@@ -382,6 +383,9 @@ de:
   media_entry_conversion_status_failed: Die Konvertierung ist fehlgeschlagen. Bitte wenden Sie sich an den Support.
   media_entry_conversion_status_initialized: Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.
   media_entry_conversion_status_submitted: Die Konvertierung läuft. Bitte versuchen Sie es später noch einmal.
+  media_entry_deleted: >-
+    Dieser Medieneintrag wurde gelöscht und ist für Benutzer nicht mehr
+    sichtbar.
   media_entry_delete_success: Der Medieneintrag wurde gelöscht.
   media_entry_duplicator_configuration_annotate_as_new_version_of_post: erstellen
   media_entry_duplicator_configuration_annotate_as_new_version_of_pre: (Experte) Hinweis zu neuer Version inkl. Verlinkung zu

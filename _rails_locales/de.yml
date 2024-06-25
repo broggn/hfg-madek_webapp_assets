@@ -569,10 +569,22 @@ de:
   no_keywords_fallback: Keine Schlagworte vorhanden.
   no_relations_title: Es wurden keine Zusammenhänge gefunden.
   notifications_title_transfer_responsibility: Verantwortlichkeit übertragen
-  notifications_message_transfer_responsibility: 'Verantwortlichkeit von %{resource} wurde von %{user} an Sie übertragen.'
+  notifications_message_transfer_responsibility: >-
+    Verantwortlichkeit für %{resourceType} %{resource} wurde von %{user} an Sie
+    übertragen.
+  notifications_message_transfer_responsibility_via_delegation: >-
+    Verantwortlichkeit für %{resourceType} %{resource} wurde von %{user} an
+    %{viaDelegation} übertragen.
+  notifications_media_entry: Medieneintrag
+  notifications_collection: Set
   notifications_acknowledge_all: Alle Notifikationen löschen
+  notifications_really_acknowledge_all: Wirklich alle löschen?
   notifications_acknowledge: Löschen
-  notifications_no_notifications: Keine Notifikationen vorhanden
+  notifications_acknowledge_date_tooltip: 'Alle Notifikationen vom %{date} löschen'
+  notifications_no_notifications: Keine Einträge vorhanden
+  notifications_section_expand: Alle anzeigen
+  notifications_section_collapse: Anzeige reduzieren
+  notifications_section_show_more: Weitere Einträge anzeigen
   pagination_nav_loadnext: Mehr laden
   pagination_nav_nextloading: Mehr Inhalte werden geladen.
   pagination_nav_nextpage: Nächste Seite

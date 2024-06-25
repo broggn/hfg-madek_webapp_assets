@@ -548,10 +548,22 @@ en:
   no_keywords_fallback: No keywords available.
   no_relations_title: No relations found.
   notifications_title_transfer_responsibility: Transfer responsibility
-  notifications_message_transfer_responsibility: 'The responsibility for %{resource} was transferred from %{user} to you.'
+  notifications_message_transfer_responsibility: >-
+    The responsibility for %{resourceType} %{resource} was transferred from
+    %{user} to you.
+  notifications_message_transfer_responsibility_via_delegation: >-
+    The responsibility for %{resourceType} %{resource} was transferred from
+    %{user} to %{viaDelegation}.
+  notifications_media_entry: media entry
+  notifications_collection: set
   notifications_acknowledge_all: Delete all notifications
+  notifications_really_acknowledge_all: Really delete all?
   notifications_acknowledge: Delete
-  notifications_no_notifications: No notifications present
+  notifications_acknowledge_date_tooltip: 'Delete all notifications of %{date}'
+  notifications_no_notifications: No entries present
+  notifications_section_expand: Show all
+  notifications_section_collapse: Reduce
+  notifications_section_show_more: Show more
   pagination_nav_loadnext: Load more
   pagination_nav_nextloading: More items are being loaded.
   pagination_nav_nextpage: Next page

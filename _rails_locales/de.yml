@@ -127,6 +127,7 @@ de:
   collection_ask_delete_title: Set löschen
   collection_deleted: Dieses Set wurde gelöscht und ist für Benutzer nicht mehr sichtbar.
   collection_delete_success: Set wurde gelöscht.
+  collection_does_not_exist: Dieses Set existiert nicht.
   collection_edit_cover_submit_btn: Speichern
   collection_edit_cover_title: Titelbild für Set festlegen
   collection_edit_highlights_btn: Auswahl speichern

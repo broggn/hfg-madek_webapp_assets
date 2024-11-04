@@ -124,6 +124,7 @@ en:
   collection_ask_delete_title: Delete set
   collection_deleted: This set has been deleted and is no longer visible to users.
   collection_delete_success: Set deleted.
+  collection_does_not_exist: This set does not exist.
   collection_edit_cover_submit_btn: Submit
   collection_edit_cover_title: Define set cover
   collection_edit_highlights_btn: Submit selection

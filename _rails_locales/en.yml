@@ -178,7 +178,8 @@ en:
   collection_sorting_created_at_desc: Sort by import date descending
   collection_sorting_manual_asc: Sort manually ascending
   collection_sorting_manual_desc: Sort manually descending
-  collection_sorting_last_change: Sort by date of update
+  collection_sorting_last_change_desc: Sort by date of update descending
+  collection_sorting_last_change_asc: Sort by date of update ascending
   collection_sorting_title_asc: Sort by title alphabetically
   collection_sorting_title_desc: 'Sort by title alphabetically, but descending'
   collection_tab_main: Set

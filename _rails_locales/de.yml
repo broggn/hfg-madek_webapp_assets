@@ -180,7 +180,8 @@ de:
   collection_sorting_created_at_desc: Sortieren nach Importierdatum absteigend
   collection_sorting_manual_asc: Sortieren manuell aufsteigend
   collection_sorting_manual_desc: Sortieren manuell absteigend
-  collection_sorting_last_change: Sortieren nach letzter Änderung
+  collection_sorting_last_change_desc: Sortieren nach letzter Änderung absteigend
+  collection_sorting_last_change_asc: Sortieren nach letzter Änderung aufsteigend
   collection_sorting_title_asc: Sortieren nach Titel alphabetisch
   collection_sorting_title_desc: Sortieren nach Titel absteigend
   collection_tab_main: Set

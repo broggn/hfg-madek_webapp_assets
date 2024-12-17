@@ -366,7 +366,7 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
             case !!this.uploading.progress:
               return t('media_entry_media_import_box_upload_status_waiting');
             case !(this.uploading.progress < 100):
-              return t('media_entry_media_import_box_upload_status_progress_a') + ("" + (this.uploading.progress.toFixed(2))) + t('media_entry_media_import_box_upload_status_progress_b');
+              return t('media_entry_media_import_box_upload_status_progress_a') + ("" + (this.uploading.progress === -1 ? '??' : this.uploading.progress.toFixed(2))) + t('media_entry_media_import_box_upload_status_progress_b');
             default:
               return t('media_entry_media_import_box_upload_status_processing');
           }
@@ -394,13 +394,17 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
     });
     handleOnProgress = (function(_this) {
       return function(arg) {
-        var loaded, ref, total;
+        var error, loaded, progress, ref, total;
         ref = arg != null ? arg : event, loaded = ref.loaded, total = ref.total;
-        if (!f.all([loaded, total], f.isNumber)) {
-          return console.error('Math error!');
+        try {
+          progress = loaded / total * 100;
+        } catch (error1) {
+          error = error1;
+          console.error('Could not calculate percentage for loaded/total:', loaded, total, error);
+          progress = -1;
         }
         return _this.merge('uploading', {
-          progress: loaded / total * 100
+          progress: progress
         });
       };
     })(this);
@@ -415,7 +419,15 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
       return function(err, res) {
         var attrs, error;
         if (err || !res || res.statusCode >= 400) {
-          error = err || res.body || true;
+          if (err) {
+            error = err;
+          } else if (res) {
+            console.error("Response status code = " + res.statusCode);
+            error = res.body;
+          } else {
+            error = "Error: no response data";
+          }
+          console.log("Date", Date());
           _this.set('uploading', f.merge(_this.uploading, {
             error: error
           }));

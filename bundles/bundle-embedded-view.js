@@ -611,11 +611,11 @@ var cx = require('classnames');
 var qs = require('qs');
 var parseUrl = require('url').parse;
 
-// const Link = require('../ui-components/Link.cjsx')
-var Icon = require('../ui-components/Icon.cjsx');
-var Picture = require('../ui-components/Picture.cjsx');
-var ResourceIcon = require('../ui-components/ResourceIcon.cjsx');
-var MediaPlayer = require('../ui-components/MediaPlayer.cjsx');
+// const Link = require('../ui-components/Link.jsx')
+var Icon = require('../ui-components/Icon.jsx');
+var Picture = require('../ui-components/Picture.jsx');
+var ResourceIcon = require('../ui-components/ResourceIcon.jsx');
+var MediaPlayer = require('../ui-components/MediaPlayer.jsx');
 
 // eslint-disable-next-line react/no-deprecated
 module.exports = React.createClass({
@@ -799,18 +799,27 @@ var IframeEmbed = function IframeEmbed(_ref) {
   );
 };
 
-},{"../../lib/i18n-translate.js":3,"../ui-components/Icon.cjsx":10,"../ui-components/MediaPlayer.cjsx":11,"../ui-components/Picture.cjsx":12,"../ui-components/ResourceIcon.cjsx":13,"active-lodash":18,"babel-runtime/core-js/object/assign":25,"classnames":45,"qs":370,"react":539,"url":543}],8:[function(require,module,exports){
-var classnames, f, i18nTranslate, parseModsfromProps;
+},{"../../lib/i18n-translate.js":3,"../ui-components/Icon.jsx":10,"../ui-components/MediaPlayer.jsx":11,"../ui-components/Picture.jsx":12,"../ui-components/ResourceIcon.jsx":13,"active-lodash":18,"babel-runtime/core-js/object/assign":25,"classnames":45,"qs":370,"react":539,"url":543}],8:[function(require,module,exports){
+'use strict';
 
-f = require('active-lodash');
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
+ */
+var f = require('active-lodash');
+var classnames = require('classnames/dedupe');
+var i18nTranslate = require('../../lib/i18n-translate.js');
 
-classnames = require('classnames/dedupe');
+var parseModsfromProps = function parseModsfromProps(param) {
+  if (param == null) {
+    param = props;
+  }
+  var _param = param,
+      className = _param.className,
+      mods = _param.mods;
 
-i18nTranslate = require('../../lib/i18n-translate.js');
-
-parseModsfromProps = function(arg) {
-  var className, mods, ref;
-  ref = arg != null ? arg : props, className = ref.className, mods = ref.mods;
   return [mods, className];
 };
 
@@ -820,7 +829,6 @@ module.exports = {
   cx: classnames,
   t: i18nTranslate
 };
-
 
 },{"../../lib/i18n-translate.js":3,"active-lodash":18,"classnames/dedupe":44}],9:[function(require,module,exports){
 'use strict';
@@ -936,17 +944,30 @@ AudioPlayer.propTypes = propTypes;
 exports.default = AudioPlayer;
 
 },{"./VideoJs":14,"babel-runtime/core-js/object/assign":25,"babel-runtime/core-js/object/get-prototype-of":28,"babel-runtime/helpers/classCallCheck":32,"babel-runtime/helpers/createClass":33,"babel-runtime/helpers/inherits":34,"babel-runtime/helpers/objectWithoutProperties":37,"babel-runtime/helpers/possibleConstructorReturn":38,"prop-types":362,"react":539}],10:[function(require,module,exports){
-var FONT_AWESOME_ICONS, ICON_NAME_ALIASES, React, f, ui;
+'use strict';
 
-React = require('react');
+var _assign = require('babel-runtime/core-js/object/assign');
 
-f = require('active-lodash');
+var _assign2 = _interopRequireDefault(_assign);
 
-ui = require('../lib/ui.coffee');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-FONT_AWESOME_ICONS = ['cloud', 'clock-o', 'flask'];
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+// A single icon (from styleguide) by name
 
-ICON_NAME_ALIASES = {
+var React = require('react');
+var f = require('active-lodash');
+var ui = require('../lib/ui.js');
+
+// The following icons come from 'fontawesome' (all others from 'madek-icon-font'):
+var FONT_AWESOME_ICONS = ['cloud', 'clock-o', 'flask'];
+// Aliases
+var ICON_NAME_ALIASES = {
   'madek-workflow': 'flask'
 };
 
@@ -955,32 +976,45 @@ module.exports = React.createClass({
   propTypes: {
     i: React.PropTypes.string.isRequired
   },
-  render: function(arg) {
-    var classes, i, iconClass, restProps;
-    i = (arg != null ? arg : this.props).i;
-    restProps = f.omit(this.props, ['i', 'mods']);
+
+  render: function render(param) {
+    if (param == null) {
+      param = this.props;
+    }
+    var _param = param,
+        i = _param.i;
+
+    var restProps = f.omit(this.props, ['i', 'mods']);
     i = ICON_NAME_ALIASES[i] || i;
-    iconClass = f.includes(FONT_AWESOME_ICONS, i) ? "fa fa-" + i : "icon-" + i;
-    classes = ui.cx(ui.parseMods(this.props), iconClass);
-    return React.createElement("i", Object.assign({}, restProps, {
-      "className": classes
-    }));
+    var iconClass = f.includes(FONT_AWESOME_ICONS, i) ? 'fa fa-' + i : 'icon-' + i;
+    var classes = ui.cx(ui.parseMods(this.props), iconClass);
+
+    return React.createElement('i', (0, _assign2.default)({}, restProps, { className: classes }));
   }
 });
 
+},{"../lib/ui.js":8,"active-lodash":18,"babel-runtime/core-js/object/assign":25,"react":539}],11:[function(require,module,exports){
+'use strict';
 
-},{"../lib/ui.coffee":8,"active-lodash":18,"react":539}],11:[function(require,module,exports){
-var AudioPlayer, React, VideoPlayer, f, t;
+var _assign = require('babel-runtime/core-js/object/assign');
 
-React = require('react');
+var _assign2 = _interopRequireDefault(_assign);
 
-f = require('active-lodash');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-t = require('../../lib/i18n-translate.js');
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS205: Consider reworking code to avoid use of IIFEs
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+var React = require('react');
+var f = require('active-lodash');
+var t = require('../../lib/i18n-translate.js');
 
-AudioPlayer = require('./AudioPlayer')["default"];
-
-VideoPlayer = require('./VideoPlayer')["default"];
+var AudioPlayer = require('./AudioPlayer').default;
+var VideoPlayer = require('./VideoPlayer').default;
 
 module.exports = React.createClass({
   displayName: 'MediaPlayer',
@@ -992,80 +1026,106 @@ module.exports = React.createClass({
     }).isRequired).isRequired,
     poster: React.PropTypes.string
   },
-  getInitialState: function() {
-    return {
-      active: false,
-      showHint: false
-    };
+
+  getInitialState: function getInitialState() {
+    return { active: false, showHint: false };
   },
-  componentDidMount: function() {
-    return this.setState({
-      active: true
-    });
+  componentDidMount: function componentDidMount() {
+    return this.setState({ active: true });
   },
-  _ref: function(ref) {
-    var maybes;
+  _ref: function _ref(ref) {
     if (!ref) {
       return;
     }
-    maybes = f.filter(this.props.sources, function(source) {
+    var maybes = f.filter(this.props.sources, function (source) {
       return ref.canPlayType(source.content_type) !== '';
     });
+
     if (f.isEmpty(maybes)) {
-      return this.setState({
-        showHint: true
-      });
+      return this.setState({ showHint: true });
     }
   },
-  render: function(arg) {
-    var MediaTag, downloadRef, mediaProps, poster, ref1, sources, type;
-    ref1 = arg != null ? arg : this.props, type = ref1.type, sources = ref1.sources, poster = ref1.poster;
-    MediaTag = type;
-    mediaProps = f.omit(this.props, 'originalUrl');
+  render: function render(param) {
+    var _this = this;
+
+    if (param == null) {
+      param = this.props;
+    }
+    var _param = param,
+        type = _param.type,
+        sources = _param.sources,
+        poster = _param.poster;
+
+    var MediaTag = type;
+    var mediaProps = f.omit(this.props, 'originalUrl');
+
     if (type === 'audio') {
-      return React.createElement("div", {
-        "style": {
-          margin: '0px',
-          padding: '0px'
-        }
-      }, React.createElement(AudioPlayer, Object.assign({}, mediaProps)), (this.state.showHint ? (downloadRef = this.props.getUrl + '/export', React.createElement("p", {
-        "style": {
-          marginTop: '40px'
-        }
-      }, t('media_entry_file_format_not_supported_1'), React.createElement("a", {
-        "href": downloadRef
-      }, t('media_entry_file_format_not_supported_2')), t('media_entry_file_format_not_supported_3'))) : void 0));
-    } else {
-      if (!this.state.active) {
-        return React.createElement("div", null, React.createElement("div", {
-          "className": 'no-js'
-        }, React.createElement(VideoPlayer, Object.assign({}, mediaProps))), React.createElement("div", {
-          "className": 'js-only'
-        }, React.createElement("img", {
-          "src": poster,
-          "style": {
-            height: '100%',
-            width: '100%'
+      return React.createElement(
+        'div',
+        { style: { margin: '0px', padding: '0px' } },
+        React.createElement(AudioPlayer, (0, _assign2.default)({}, mediaProps)),
+        function () {
+          if (_this.state.showHint) {
+            var downloadRef = _this.props.getUrl + '/export';
+            return React.createElement(
+              'p',
+              { style: { marginTop: '40px' } },
+              t('media_entry_file_format_not_supported_1'),
+              React.createElement(
+                'a',
+                { href: downloadRef },
+                t('media_entry_file_format_not_supported_2')
+              ),
+              t('media_entry_file_format_not_supported_3')
+            );
           }
-        })));
+        }()
+      );
+    } else {
+      // use videojs for client-side videos
+      // before the player is loaded, show the poster to minimize flicker
+      // if js fails, user still get the HTML5 video tag
+      if (!this.state.active) {
+        return React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'div',
+            { className: 'no-js' },
+            React.createElement(VideoPlayer, (0, _assign2.default)({}, mediaProps))
+          ),
+          React.createElement(
+            'div',
+            { className: 'js-only' },
+            React.createElement('img', { src: poster, style: { height: '100%', width: '100%' } })
+          )
+        );
       } else {
-        return React.createElement(VideoPlayer, Object.assign({}, mediaProps));
+        return React.createElement(VideoPlayer, (0, _assign2.default)({}, mediaProps));
       }
     }
   }
 });
 
+},{"../../lib/i18n-translate.js":3,"./AudioPlayer":9,"./VideoPlayer":15,"active-lodash":18,"babel-runtime/core-js/object/assign":25,"react":539}],12:[function(require,module,exports){
+'use strict';
 
-},{"../../lib/i18n-translate.js":3,"./AudioPlayer":9,"./VideoPlayer":15,"active-lodash":18,"react":539}],12:[function(require,module,exports){
-var React, f, t, ui;
+var _assign = require('babel-runtime/core-js/object/assign');
 
-React = require('react');
+var _assign2 = _interopRequireDefault(_assign);
 
-f = require('active-lodash');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-ui = require('../lib/ui.coffee');
-
-t = require('../../lib/i18n-translate.js');
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+var React = require('react');
+var f = require('active-lodash');
+var ui = require('../lib/ui.js');
+var t = require('../../lib/i18n-translate.js');
 
 module.exports = React.createClass({
   displayName: 'Picture',
@@ -1074,38 +1134,43 @@ module.exports = React.createClass({
     title: React.PropTypes.string,
     alt: React.PropTypes.string
   },
-  render: function(arg) {
-    var alt, altTxt, className, classes, mods, ref, restProps, src, title, titleTxt;
-    ref = arg != null ? arg : this.props, src = ref.src, title = ref.title, alt = ref.alt, className = ref.className, mods = ref.mods;
-    restProps = f.omit(this.props, ['mods']);
-    classes = ui.cx(className, mods, 'ui_picture');
-    titleTxt = title || alt || t('picture_alt_fallback');
-    altTxt = (t('picture_alt_prefix')) + " " + titleTxt;
-    return React.createElement("img", Object.assign({}, restProps, {
-      "className": classes,
-      "title": titleTxt,
-      "alt": altTxt
-    }));
+
+  render: function render(param) {
+    if (param == null) {
+      param = this.props;
+    }
+    var _param = param,
+        src = _param.src,
+        title = _param.title,
+        alt = _param.alt,
+        className = _param.className,
+        mods = _param.mods;
+
+    var restProps = f.omit(this.props, ['mods']);
+    var classes = ui.cx(className, mods, 'ui_picture');
+    var titleTxt = title || alt || t('picture_alt_fallback');
+    var altTxt = t('picture_alt_prefix') + ' ' + titleTxt;
+
+    return React.createElement('img', (0, _assign2.default)({}, restProps, { className: classes, title: titleTxt, alt: altTxt }));
   }
 });
 
+},{"../../lib/i18n-translate.js":3,"../lib/ui.js":8,"active-lodash":18,"babel-runtime/core-js/object/assign":25,"react":539}],13:[function(require,module,exports){
+'use strict';
 
-},{"../../lib/i18n-translate.js":3,"../lib/ui.coffee":8,"active-lodash":18,"react":539}],13:[function(require,module,exports){
-var Icon, Picture, React, cx, f, t, ui;
-
-React = require('react');
-
-f = require('active-lodash');
-
-ui = require('../lib/ui.coffee');
-
-t = require('../../lib/i18n-translate.js');
-
-Picture = require('./Picture.cjsx');
-
-Icon = require('./Icon.cjsx');
-
-cx = require('classnames');
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+var React = require('react');
+var f = require('active-lodash');
+var ui = require('../lib/ui.js');
+var t = require('../../lib/i18n-translate.js');
+var Picture = require('./Picture.jsx');
+var Icon = require('./Icon.jsx');
+var cx = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'ResourceIcon',
@@ -1113,73 +1178,62 @@ module.exports = React.createClass({
     type: React.PropTypes.oneOf(['MediaEntry', 'Collection']).isRequired,
     mediaType: React.PropTypes.string
   },
-  render: function(arg) {
-    var mediaType, mediaTypeIcon, overrideClasses, ref, type;
-    ref = arg != null ? arg : this.props, type = ref.type, mediaType = ref.mediaType, overrideClasses = ref.overrideClasses;
-    mediaTypeIcon = (function(_this) {
-      return function() {
-        var mediaTypeIconMapping, style;
-        mediaTypeIconMapping = function(mediaType) {
-          var map;
-          map = {
-            'image': 'fa fa-file-image-o',
-            'audio': 'fa fa-file-audio-o',
-            'video': 'fa fa-file-video-o',
-            'document': 'fa fa-file-o',
-            'other': 'fa fa-file-o'
-          };
-          return map[mediaType] || map['other'];
+
+  render: function render(param) {
+    var _this = this;
+
+    // media type icon, used instead of image preview if there isn't any
+    if (param == null) {
+      param = this.props;
+    }
+    var _param = param,
+        type = _param.type,
+        mediaType = _param.mediaType,
+        overrideClasses = _param.overrideClasses;
+
+    var mediaTypeIcon = function () {
+      var mediaTypeIconMapping = function mediaTypeIconMapping(mediaType) {
+        var map = {
+          image: 'fa fa-file-image-o',
+          audio: 'fa fa-file-audio-o',
+          video: 'fa fa-file-video-o',
+          document: 'fa fa-file-o',
+          other: 'fa fa-file-o'
         };
-        style = _this.props.thumbnail ? {} : {
-          fontSize: '104px',
-          padding: '64px',
-          color: '#9a9a9a'
-        };
-        if (_this.props.tiles) {
-          style = {
-            padding: '64px 0px',
-            fontSize: '104px',
-            color: '#9a9a9a',
-            textAlign: 'center',
-            backgroundColor: '#fff'
-          };
-        }
-        if (_this.props.flyout) {
-          style = {
-            fontSize: '26px',
-            padding: '26px',
-            textAlign: 'center',
-            display: 'inline-block'
-          };
-        }
-        switch (false) {
-          case type !== 'MediaEntry':
-            mediaTypeIcon = mediaTypeIconMapping(mediaType);
-            return React.createElement("i", {
-              "className": cx('ui_media-type-icon', mediaTypeIcon, overrideClasses),
-              "style": style
-            });
-          case type !== 'Collection':
-            return React.createElement(Icon, {
-              "i": 'set',
-              "mods": cx('ui_media-type-icon', overrideClasses),
-              "style": style
-            });
-          default:
-            return React.createElement(Icon, {
-              "i": 'bang',
-              "mods": cx('ui_media-type-icon', overrideClasses),
-              "style": style
-            });
-        }
+        return map[mediaType] || map['other'];
       };
-    })(this)();
+
+      var style = _this.props.thumbnail ? {} : { fontSize: '104px', padding: '64px', color: '#9a9a9a' };
+      if (_this.props.tiles) {
+        style = {
+          padding: '64px 0px',
+          fontSize: '104px',
+          color: '#9a9a9a',
+          textAlign: 'center',
+          backgroundColor: '#fff'
+        };
+      }
+      if (_this.props.flyout) {
+        // The classes fa... bring inline-block automatically, but for sets we must have it anyways.
+        style = { fontSize: '26px', padding: '26px', textAlign: 'center', display: 'inline-block' };
+      }
+
+      switch (false) {
+        case type !== 'MediaEntry':
+          mediaTypeIcon = mediaTypeIconMapping(mediaType);
+          return React.createElement('i', { className: cx('ui_media-type-icon', mediaTypeIcon, overrideClasses), style: style });
+        case type !== 'Collection':
+          return React.createElement(Icon, { i: 'set', mods: cx('ui_media-type-icon', overrideClasses), style: style });
+        default:
+          return React.createElement(Icon, { i: 'bang', mods: cx('ui_media-type-icon', overrideClasses), style: style });
+      }
+    }();
+
     return mediaTypeIcon;
   }
 });
 
-
-},{"../../lib/i18n-translate.js":3,"../lib/ui.coffee":8,"./Icon.cjsx":10,"./Picture.cjsx":12,"active-lodash":18,"classnames":45,"react":539}],14:[function(require,module,exports){
+},{"../../lib/i18n-translate.js":3,"../lib/ui.js":8,"./Icon.jsx":10,"./Picture.jsx":12,"active-lodash":18,"classnames":45,"react":539}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

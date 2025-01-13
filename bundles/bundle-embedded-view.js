@@ -698,9 +698,7 @@ module.exports = React.createClass({
       );
     }
 
-    if (usesIframeEmbed) return React.createElement(IframeEmbed, {
-      url: get.url, accessToken: get.used_confidential_access_token
-    });
+    if (usesIframeEmbed) return React.createElement(IframeEmbed, { url: get.url, accessToken: get.used_confidential_access_token });
 
     var downloadRef = original_file_url ? original_file_url : export_url;
 
@@ -813,12 +811,8 @@ var classnames = require('classnames/dedupe');
 var i18nTranslate = require('../../lib/i18n-translate.js');
 
 var parseModsfromProps = function parseModsfromProps(param) {
-  if (param == null) {
-    param = props;
-  }
-  var _param = param,
-      className = _param.className,
-      mods = _param.mods;
+  var className = param.className,
+      mods = param.mods;
 
   return [mods, className];
 };

@@ -34,7 +34,7 @@ window.runTest = function (name, data) {
 
   try {
     var test = void 0;
-    if (typeof (test = tests[name]) !== 'function') {
+    if (typeof (test = window.tests[name]) !== 'function') {
       throw new Error('No test named ' + name + '!');
     }
     test(data, handleResult);
@@ -531,6 +531,7 @@ module.exports = AppResource.extend(ResourceWithRelations, Favoritable, Deletabl
         var attrs = function () {
           try {
             return JSON.parse(res.body);
+            // eslint-disable-next-line no-empty
           } catch (error1) {}
         }();
         if (attrs) {
@@ -877,6 +878,7 @@ module.exports = Model.extend(RailsResource, {
       var data = function () {
         try {
           return JSON.parse(body);
+          // eslint-disable-next-line no-empty
         } catch (error) {}
       }() || body;
       return callback(err, res, data);

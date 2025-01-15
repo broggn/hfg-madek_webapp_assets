@@ -95,6 +95,11 @@ en:
   batch_warning_no_authorized_contents_media_entry: You have no permissions for these media entries.
   batch_warning_no_contents_collection: You have no sets.
   batch_warning_no_contents_media_entry: You have no media entries.
+  batch_edit_title_title: Edit titles of media entries
+  batch_edit_title_th_filename: File name
+  batch_edit_title_th_title: Title
+  batch_edit_title_save: Save
+  batch_edit_title_cancel: Cancel
   browse_entries_browse_link_title: Browse further in this direction
   browse_entries_filter_link: Apply additional filter →
   browse_entries_loading_error: Loading error
@@ -690,6 +695,7 @@ en:
   resources_box_batch_actions_clear_clipboard: Empty batch processing
   resources_box_batch_actions_delete: Delete selected
   resources_box_batch_actions_edit: Edit metadata for media entries
+  resources_box_batch_actions_edit_title: Edit titles of media entries
   resources_box_batch_actions_edit_all_collections: Edit metadata of all sets at once
   resources_box_batch_actions_edit_all_media_entries: Edit metadata of all media entries at once
   resources_box_batch_actions_edit_sets: Edit metadata of sets

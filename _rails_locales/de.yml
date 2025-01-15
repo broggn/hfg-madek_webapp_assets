@@ -97,6 +97,11 @@ de:
   batch_warning_no_authorized_contents_media_entry: Sie haben für keinen der Medieneinträge die nötige Berechtigung.
   batch_warning_no_contents_collection: Sie haben keine Sets.
   batch_warning_no_contents_media_entry: Sie haben keine Medieneinträge.
+  batch_edit_title_title: Titel von Medieneinträgen editieren
+  batch_edit_title_th_filename: Dateiname
+  batch_edit_title_th_title: Titel
+  batch_edit_title_save: Speichern
+  batch_edit_title_cancel: Abbrechen
   browse_entries_browse_link_title: In diese Richtung weiterstöbern
   browse_entries_filter_link: Weiter filtern →
   browse_entries_loading_error: Ladefehler
@@ -715,6 +720,7 @@ de:
   resources_box_batch_actions_clear_clipboard: Stapelverarbeitung leeren
   resources_box_batch_actions_delete: Ausgewählte löschen
   resources_box_batch_actions_edit: Metadaten von Medieneinträgen editieren
+  resources_box_batch_actions_edit_title: Titel von Medieneinträgen editieren
   resources_box_batch_actions_edit_all_collections: Metadaten von allen Sets editieren
   resources_box_batch_actions_edit_all_media_entries: Metadaten von allen Medieneinträgen editieren
   resources_box_batch_actions_edit_sets: Metadaten von Sets editieren

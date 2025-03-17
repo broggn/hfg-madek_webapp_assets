@@ -20,8 +20,8 @@ de:
         success: '%{resource_name} wurde gelöscht.'
         error: '%{resource_name} konnte nicht gelöscht werden.'
       meta_data_update:
-        success: 'Metadaten von %{resource_name} wurden gespeichert.'
-        error: 'Metadaten von %{resource_name} konnten nicht gespeichert werden.'
+        success: Metadaten von %{resource_name} wurden gespeichert.
+        error: Metadaten von %{resource_name} konnten nicht gespeichert werden.
   ajax_form_connection_error: Verbindungsfehler. Bitte versuchen Sie es noch einmal.
   ajax_form_no_longer_authorized: Sie sind für diese Aktion nicht mehr authorisiert.
   ajax_form_unexpected_error: Es gab einen unerwarteten Server-Fehler.
@@ -50,7 +50,7 @@ de:
   api_tokens_list_new_button: Neuen Token erstellen
   api_tokens_list_no_description: (Keine Beschreibung)
   api_tokens_list_revoke_btn_hint: Token zurückziehen.
-  api_tokens_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Token zurückziehen wollen?'
+  api_tokens_list_revoke_confirm: Sind Sie sicher, dass Sie diesen Token zurückziehen wollen?
   api_tokens_list_revoked_title: Abgelaufene und zurückgezogene Tokens
   api_tokens_list_scope_off: Nein
   api_tokens_list_scope_on: Ja
@@ -74,9 +74,9 @@ de:
   app_notice_shibboleth_missing_fields: >-
     Die Authentifizierungsdaten von Shibboleth sind unvollständig. SURNAME,
     GIVENNAME und EMAIL sind Pflichtfelder!
-  app_warning_jsonly: 'Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert.'
+  app_warning_jsonly: Diese Funktion erfordert JavaScript, aber es ist nicht aktiviert.
   authentication_groups: Systemgruppen
-  batch_add_to_collection_hint: 'Nach Sets suchen, zu denen Sie die Medieneinträge hinzufügen möchten.'
+  batch_add_to_collection_hint: Nach Sets suchen, zu denen Sie die Medieneinträge hinzufügen möchten.
   batch_add_to_collection_post: ' Medieneinträge zu Set hinzufügen'
   batch_add_to_collection_pre: ' '
   batch_destroy_resources_ask_1: 'Möchten Sie folgende Inhalte löschen:'
@@ -86,7 +86,7 @@ de:
   batch_destroy_resources_cancel: Abbrechen
   batch_destroy_resources_ok: OK
   batch_destroy_resources_success: Inhalte wurden erfolgreich gelöscht.
-  batch_meta_data_edit: 'Metadaten für %{media_entry_count} Medieneinträge gleichzeitig editieren.'
+  batch_meta_data_edit: Metadaten für %{media_entry_count} Medieneinträge gleichzeitig editieren.
   batch_remove_from_collection_cancel: Abbrechen
   batch_remove_from_collection_question_part_1: 'Möchten Sie die ausgewählten '
   batch_remove_from_collection_question_part_2: ' Medieneinträge und '
@@ -304,7 +304,7 @@ de:
     Dieser Inhalt kann nicht eingebettet werden, weil die nötigen Berechtigungen
     fehlen.
   embed_error_msg_404: Der gewünschte Inhalt konnte nicht gefunden werden.
-  error_401_title: 'Um Zugang zu diesem Bereich zu erhalten, melden Sie sich bitte an.'
+  error_401_title: Um Zugang zu diesem Bereich zu erhalten, melden Sie sich bitte an.
   error_403_message: Bitte kontaktieren Sie die für die Ressource verantwortliche Person.
   error_403_title: Sie haben keine Zugriffsrechte für diesen Inhalt.
   error_404_title: Die gesuchte Seite kann nicht gefunden werden.
@@ -312,7 +312,7 @@ de:
     Benötigen Sie diesbezüglich Hilfe, dann kontaktieren Sie bitte den Support
     (%{support_email}) mit einer Beschreibung Ihrer letzten Arbeitsschritte
     sowie einem Screenshot dieser Seite.
-  error_500_message_pre: 'Benötigen Sie diesbezüglich Hilfe, dann kontaktieren Sie bitte den Support ('
+  error_500_message_pre: Benötigen Sie diesbezüglich Hilfe, dann kontaktieren Sie bitte den Support (
   error_500_message_post: >-
     ) mit einer Beschreibung Ihrer letzten Arbeitsschritte sowie einem
     Screenshot dieser Seite.
@@ -328,7 +328,7 @@ de:
   group_ask_delete_question_post: ' löschen?'
   group_ask_delete_question_pre: 'Möchten Sie die Arbeitsgruppe '
   group_ask_delete_title: Arbeitsgruppe löschen
-  group_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?'
+  group_delete_confirm_msg: Sind Sie sicher, dass Sie diese Arbeitsgruppe löschen wollen?
   group_edit_at_least_one_member_delete: löschen
   group_edit_at_least_one_member_post: '0'
   group_edit_at_least_one_member_pre: >-
@@ -455,7 +455,7 @@ de:
     RGB um.
   media_entry_media_import_notes_title: Hinweise
   media_entry_media_import_select_media: Medien auswählen
-  media_entry_media_import_title: 'Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.'
+  media_entry_media_import_title: Bilder, Videos, Audio-Dateien oder Dokumente bereitstellen.
   media_entry_meta_data_edit_by_context_btn: Metadaten nach Kontexten bearbeiten
   media_entry_meta_data_edit_by_vocab_btn: Metadaten nach Vokabularen bearbeiten
   media_entry_meta_data_header_prefix: 'Medieneintrag editieren: '
@@ -513,7 +513,7 @@ de:
   meta_data_blank_value_for_required_meta_key_pre: 'Kein Wert vorhanden für '
   meta_data_collection_batch_summary_all_post: ' Sets wurden gespeichert.'
   meta_data_collection_batch_summary_all_pre: 'Alle '
-  meta_data_delete_confirm_msg: 'Sind Sie sicher, dass Sie diese Werte löschen wollen?'
+  meta_data_delete_confirm_msg: Sind Sie sicher, dass Sie diese Werte löschen wollen?
   meta_data_edit_collection_saved: Set wurde gespeichert.
   meta_data_edit_media_entry_published: Der Medieneintrag wurde gespeichert und alle Pflichtfelder sind ausgefüllt.
   meta_data_edit_media_entry_saved: Der Medieneintrag wurde gespeichert.
@@ -587,7 +587,7 @@ de:
   notifications_acknowledge_all: Alle Notifikationen löschen
   notifications_really_acknowledge_all: Wirklich alle löschen?
   notifications_acknowledge: Löschen
-  notifications_acknowledge_date_tooltip: 'Alle Notifikationen vom %{date} löschen'
+  notifications_acknowledge_date_tooltip: Alle Notifikationen vom %{date} löschen
   notifications_no_notifications: Keine Einträge vorhanden
   notifications_section_expand: Alle anzeigen
   notifications_section_collapse: Anzeige reduzieren
@@ -735,7 +735,7 @@ de:
   resources_box_batch_actions_meta_data_batch: Metadaten Stapelverarbeitung
   resources_box_deselect_all: Alle abwählen
   resources_box_filter: Filtern
-  resources_box_filters_note_post: 'aus, um weitere Filterkriterien anwenden zu können.'
+  resources_box_filters_note_post: aus, um weitere Filterkriterien anwenden zu können.
   resources_box_filters_note_pre: Wählen Sie in der Aktionsleiste
   resources_box_filters_note_or: oder
   resources_box_new_search: Neue Suche
@@ -807,7 +807,7 @@ de:
   resources_box_batch_person_widget_add_group: Arbeitsgruppe einfügen
   resources_box_batch_person_widget_tab_person: Person
   resources_box_batch_person_widget_tab_group: Gruppe
-  resources_box_info_header_no_system_groups: 'In dieser Auflistung werden %{system_groups_name} nicht berücksichtigt.'
+  resources_box_info_header_no_system_groups: In dieser Auflistung werden %{system_groups_name} nicht berücksichtigt.
   resources_box_info_header_system_groups_name: Systemgruppen
   resources_section_show_all: Alle anzeigen →
   resources_type_all: Alle
@@ -838,7 +838,7 @@ de:
   share_custom_url_subtitle: Sprechende Adresse teilen
   share_title_collection: Set teilen
   share_title_media_entry: Medieneintrag teilen
-  share_uuid_url_hint_collection: 'Wenn Sie explizit dieses Set teilen möchten, nutzen Sie folgende URL.'
+  share_uuid_url_hint_collection: Wenn Sie explizit dieses Set teilen möchten, nutzen Sie folgende URL.
   share_uuid_url_hint_exporter: Auch für den Madek-Exporter kopieren Sie diese URL.
   share_uuid_url_hint_media_entry: >-
     Wenn Sie explizit diesen Medieneintrag teilen möchten, nutzen Sie folgende
@@ -919,7 +919,7 @@ de:
   confidential_links_list_new_button: Neuen Vertraulichen Link erstellen
   confidential_links_list_no_description: (Keine Beschreibung)
   confidential_links_list_revoke_btn_hint: Zurückziehen
-  confidential_links_list_revoke_confirm: 'Sind Sie sicher, dass Sie diesen Vertraulichen Link zurückziehen wollen?'
+  confidential_links_list_revoke_confirm: Sind Sie sicher, dass Sie diesen Vertraulichen Link zurückziehen wollen?
   confidential_links_list_revoked_title: Abgelaufene und zurückgezogene Vertrauliche Links
   confidential_links_list_show_url: Link anzeigen
   confidential_links_list_copy_url: Vertraulichen Link kopieren
@@ -944,9 +944,9 @@ de:
   transfer_responsibility_currently_responsible: Bisher verantwortlich
   transfer_responsibility_to: Verantwortlichkeit übertragen auf
   transfer_responsibility_for_1_media_entry: für 1 Medieneintrag
-  transfer_responsibility_for_n_media_entries: 'für %{nofResources} Medieneinträge'
+  transfer_responsibility_for_n_media_entries: für %{nofResources} Medieneinträge
   transfer_responsibility_for_1_collection: für 1 Set
-  transfer_responsibility_for_n_collections: 'für %{nofResources} Sets'
+  transfer_responsibility_for_n_collections: für %{nofResources} Sets
   transfer_responsibility_multiple_will_receive: 'Die bisher Verantwortlichen behalten folgende Berechtigungen:'
   transfer_responsibility_single_will_receive: '%{name} behält folgende Berechtigungen:'
   transfer_responsibility_submit: Übertragen
@@ -955,7 +955,7 @@ de:
     Sie haben die Verantwortlichkeit für den Medieneintrag erfolgreich
     übertragen.
   transfer_responsibility_title_single: Verantwortlichkeit übertragen
-  transfer_responsibility_title_batch: 'Verantwortlichkeit %{forNResources} übertragen'
+  transfer_responsibility_title_batch: Verantwortlichkeit %{forNResources} übertragen
   transfer_responsibility_you_will_receive: 'Sie, %{name}, behalten folgende Berechtigungen:'
   usage_data_created_at: Erstellt am
   usage_data_import_at: Importiert am
@@ -984,7 +984,7 @@ de:
   user_name_deactivated: '[Gelöschter User]'
   vocabularies_all: Alle Vokabulare
   vocabularies_contents_hint_1: 'Alle Inhalte mit Metadaten des Vokabulars '
-  vocabularies_contents_hint_2: '. Sie sehen nur Inhalte, für die Sie berechtigt sind.'
+  vocabularies_contents_hint_2: . Sie sehen nur Inhalte, für die Sie berechtigt sind.
   vocabularies_keywords_hint_1: 'Alle im Vokabular '
   vocabularies_keywords_hint_2: ' enthaltenen Schlagworte und die dazugehörenden Metadatenfelder.'
   vocabularies_no_description: (Keine Beschreibung)

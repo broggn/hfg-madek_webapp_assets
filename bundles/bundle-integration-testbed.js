@@ -585,7 +585,8 @@ module.exports = _appResource2.default.extend(_resourceWithRelations2.default, _
         var attrs = function () {
           try {
             return JSON.parse(res.body);
-          } catch (error1) {
+            // eslint-disable-next-line no-unused-vars
+          } catch (e) {
             // silently ignore
           }
         }();
@@ -999,7 +1000,9 @@ module.exports = _ampersandModel2.default.extend(_railsResourceMixin2.default, {
       var data = function () {
         try {
           return JSON.parse(body);
-        } catch (error) {
+
+          // eslint-disable-next-line no-unused-vars
+        } catch (e) {
           // this is OK, just fallback to unparsed body
         }
       }() || body;

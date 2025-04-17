@@ -439,6 +439,7 @@ en:
     be displayed correctly, please convert to RGB before uploading.
   media_entry_media_import_notes_title: Hints
   media_entry_media_import_select_media: Select media files
+  media_entry_media_import_upload_error: exceeds size limit of 16000 pixel
   media_entry_media_import_title: Add images, video or audio files, or other documents.
   media_entry_meta_data_edit_by_context_btn: Edit metadata by context
   media_entry_meta_data_edit_by_vocab_btn: Edit metadata by vocabulary

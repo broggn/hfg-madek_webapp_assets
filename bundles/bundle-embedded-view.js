@@ -1684,7 +1684,31 @@ var VideoPlayer = function (_React$Component) {
         };
       });
 
-      return _react2.default.createElement(_VideoJs2.default, (0, _assign2.default)({}, props, { sources: videoSources, options: (0, _assign2.default)({}, VIDEOJS_OPTIONS, options) }));
+      var mp4s = videoSources.filter(function (source) {
+        return source.type === 'video/mp4';
+      }).sort(function (a, b) {
+        if (a.label === 'SD') {
+          return -1;
+        } else if (b.label === 'SD') {
+          return 1;
+        }
+        return 0;
+      });
+
+      var webms = videoSources.filter(function (source) {
+        return source.type === 'video/webm';
+      }).sort(function (a, b) {
+        if (a.label === 'SD') {
+          return -1;
+        } else if (b.label === 'SD') {
+          return 1;
+        }
+        return 0;
+      });
+
+      var sortedSources = mp4s.concat(webms);
+
+      return _react2.default.createElement(_VideoJs2.default, (0, _assign2.default)({}, props, { sources: sortedSources, options: (0, _assign2.default)({}, VIDEOJS_OPTIONS, options) }));
     }
   }]);
   return VideoPlayer;

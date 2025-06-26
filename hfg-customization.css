@@ -1,6 +1,6 @@
 /*
 * Custom Stylesheet for Madek User Interface (WebApp)
-* Copyright (C) 2024 HfG Karlsruhe
+* Copyright (C) 2025 HfG Karlsruhe
 * Author: Hannes Herold <hherold@hfg-karlsruhe.de>
 * 
 * This program is free software: you can redistribute it and/or modify
@@ -15,35 +15,74 @@
 */
 
 /*
-* This minimal variant only attempts to remove the shadows and background patterns.
-* Also, Sets are shaped round to visually distinguish them from Media Entries.
+* v1.0.0
+* Basic adjustments.
+* Remove shadows and background patterns.
+* Sets are shaped round to visually distinguish them from Media Entries.
+* v1.0.1
+* Remove info text from search page.
+* v1.0.2
+* Tags with roles styled and displayed in a row.
+* v1.1.0
+* ORC colors are used for primary and secondary colors: buttons, text-links.
+* Remove rounded corners from all elements, buttons, boxes, background elements, etc.
+* v1.2.0
+* No dark background in header (and slightly more spacing below).
+* Larger HfG logo, text "Project Archive | HfG Karlsruhe" hidden instead.
+* Icons in the headings are hidden – except for "Keywords" and "Editieren" (because actually useful for understanding).
+* Fixed a bug with roles tags when two roles are assigned to one person.
 */
 
 :root {
-  --white: #FFFFFF;
-  --text: #4c4c4c;
-  /* --primary: rgb(244, 125, 46); */
-  /* --primary: rgb(255, 113, 61); */
-  /* --primary: rgb(18, 160, 96); */
-  --primary: #7a9d29;
-  --status-green: SeaGreen;
-  --status-blue: SlateBlue;
-  --status-red: MediumVioletRed;
+    --white: #FFFFFF;
+    --black: #000000;
+    --grey-100: #f5f5f5;
+    --grey-200: #e5e5e5;
+    --grey-300: #d4d4d4;
+    --grey-400: #a3a3a3;
+    --grey-500: #737373;
+    --grey-600: #525252;
+    --grey-700: #404040;
+    --grey-800: #262626;
+    --grey-900: #171717;
+    --text: #4c4c4c;
+    --madek-border-color: #CCCCCC;
+    --madek-background-border-hover: #EFEFEF;
+    --madek-background-light-grey: #f1f1f1;
+    /* --primary: rgb(244, 125, 46); */
+    /* --primary: rgb(255, 113, 61); */
+    /* --primary: rgb(18, 160, 96); */
+    /* --primary: #7a9d29; */
+    --orc-orange: #FF4D00;
+    /* Uploader Values */
+    --primary: var(--orc-orange);    
+    --primary-dimmed: #E54500;
+    --alert-success: #22c55e;
+    --alert-help: #a855f7;
 }
+  
 
 
 /* MAKE IT FLAT */
+/* ------------------------------------------------------------ */
 html *:not(.ui-header-logo), 
 html *:after, 
 html *:before {
-  background-image: none !important;
-  box-shadow: none !important;
-  text-shadow: initial !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: initial !important;
 }
+
+/* BACKGROUND-COLOR*/
+/* body,
+.app-body {
+    background: var(--white);
+} */
 
 
 
 /* NO BORDERS */
+/* ------------------------------------------------------------ */
 *.bordered,
 *.bordered-right,
 *.bordered-left,
@@ -55,195 +94,557 @@ html *:before {
 .ui-header,
 .ui-form-group.columned,
 td {
-  border: none !important;
-  outline: none !important;
+    border: none !important;
+    outline: none !important;
 }
-.ui-drop-menu {
-  border: 1px solid #ccc !important;
+
+
+
+/* NO BORDER-RADIUS */
+/* ------------------------------------------------------------ */
+.ui-tabs-item a,
+button,
+a.button,
+.button-group *,
+.primary-button,
+.tertiary-button,
+.ui-pager,
+.ui-thumbnail-meta-extension,
+input,
+.multi-select,
+textarea,
+.modal,
+.notice,
+.rounded,
+.rounded-top,
+.rounded-bottom,
+.rounded-bottom-left,
+.rounded-bottom-right,
+.rounded-top-left,
+.rounded-top-right,
+.ui-header-menu .ui-tabs.primary a,
+.ui-drop-menu,
+.ui-autocomplete,
+.ui-side-filter-list a,
+.pitch-login .tab-content {
+    border-radius: 0 !important;
 }
 
 
 
 
-/* TABS*/
-.app-body-ui-container .ui-tabs-item a {
-  background-color: #dddddd;
-  margin-bottom: 1px;
-}
-.app-body-ui-container .ui-tabs-item:hover a {
-  background-color: var(--white) !important;
-}
-.app-body-ui-container .ui-tabs-item.active a {
-  background-color: var(--white) !important;
-  color: var(--text);
+/* ALERTS */
+.ui-alert.success {
+    background-color: var(--alert-success);
 }
 
 
 
 
 /* BUTTONS */
+/* ------------------------------------------------------------ */
 .primary-button,
 .tertiary-button {
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}
+.primary-button[disabled],
+.tertiary-button[disabled],
+.primary-button[disabled]:hover,
+.tertiary-button[disabled]:hover {
+    opacity: .6;
+    color: var(--white);
 }
 .primary-button:hover,
 .tertiary-button:hover {
-  background-color: var(--text);
+    background-color: var(--primary-dimmed);
+    color: var(--white) !important;
 }
 .tertiary-button:hover {
-  border: none;
+    border: none;
+    color: var(--white);
 }
 
+
+/* TEXT-LINKS */
+/* ------------------------------------------------------------ */
+a,
+a.link {
+    color: var(--text);
+}
+a:hover,
+a.link:hover,
+.ui-side-navigation-item.active > a {
+    color: var(--primary);
+    text-decoration: none;
+}
+a:active i {
+    opacity: 1 !important;
+}
+/* Spezifische Fälle auf Text-Color zurücksetzen */
+.ui-tag-cloud-item a:hover,
+a.link.button:hover,
+a.button:hover {
+    color: var(--text) !important;
+}
+
+
+/* HEADER */
+/* ------------------------------------------------------------ */
+.ui-header {
+    margin-bottom: 1rem;
+}
+
+header.ui-container.inverted {
+    background: var(--madek-background-light-grey);
+}
+.ui-header-menu .ui-tabs.primary .ui-tabs-item:not(.active) a {
+    background-color: var(--primary);
+}
+.ui-header-menu .ui-tabs.primary .ui-tabs-item:not(.active) a:hover {
+    background-color: var(--primary-dimmed);
+    color: var(--white);
+}
+
+a.ui-header-logo {
+    width: 7rem;
+    background-size: 100%;
+    /* margin app-body plus optischer Ausgleich */
+    margin-left: calc(20px + 1rem);
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+/* Text deaktivieren*/
+.ui-header-brand-text {
+    display:none;
+}
+
+.ui-header-user a[role="button"] {
+    /* background-color: var(--primary); */
+    border: 1px solid var(--madek-border-color);
+    padding: 3px 10px;
+    color: var(--text) !important;
+    font-weight: 600;
+    margin-right: 8px;
+}
+.ui-header-user a[role="button"]:hover {
+    background-color: var(--madek-background-border-hover);
+}
+.ui-header-user a[role="button"] i {
+    margin-left: 8px;
+}
+
+/* selbe vertikale Position wie Logo */
+.ui-header-menu {
+    top: 11px
+}
+/* Buttons in der Mitte */
+.ui-header-menu .ui-tabs .active a {
+    color: var(--white);
+    background-color: var(--primary) !important;
+    color: white !important;
+    opacity: .6;
+}
+.ui-header-menu .ui-tabs .active i {
+    color: var(--white) !important;
+}
+
+
+
+/* MENUS and MENU-BUTTONS */
+/* ------------------------------------------------------------ */
+.button-group.tertiary .active.button i {
+    /* color: var(--primary); */
+    /* opacity: 1; */
+}
+
+.dropdown-menu {
+    border: 1px solid var(--grey-200);
+    background-color: var(--white);
+}
+.ui-drop-menu button.strong {
+    background-color: var(--white);
+}
+.ui-drop-item:not(.disabled) a:hover,
+.ui-drop-item:not(.disabled) a:hover i,
+.ui-drop-item:not(.disabled) button.strong:hover,
+.ui-drop-item:not(.disabled) button.strong:hover i {
+    color: var(--text);
+    cursor: pointer;
+}
+.ui-drop-item:not(.disabled) a:hover,
+.ui-drop-item:not(.disabled) button.strong:hover {
+    background-color: var(--grey-200);
+}
+
+
+
+
+/* HAUPT-ÜBERSCHRIFTEN */
+/* ------------------------------------------------------------ */
+.ui-body-title {
+    margin-left: .5em;
+}
+/* Icons ausblenden */
+.ui-body-title h1 i {
+    display: none;
+}
+/* Bestimmte Icons beibehalten */
+.ui-body-title h1 i.icon-tag,
+.ui-body-title h1 i.icon-pen,
+.ui-body-title h1 i.icon-lens {
+    display: inline;
+}
+
+
+/* TABS*/
+/* ------------------------------------------------------------ */
+
+.app-body-ui-container .ui-tabs-item a {
+    background-color: #dddddd;
+    margin-bottom: 1px;
+}
+.app-body-ui-container .ui-tabs-item:hover a {
+    background-color: var(--white) !important;
+}
+.app-body-ui-container .ui-tabs-item.active a {
+    background-color: var(--white) !important;
+    color: var(--text);
+}
 
 
 
 /* TAGS */
+/* ------------------------------------------------------------ */
+.ui-tag-cloud.small .ui-tag-button,
+.ui-tag-cloud-small .ui-tag-button {
+    line-height: 1.3em;
+    min-height: initial;
+    padding: .4em 1em;
+}
+a.ui-tag-button .icon-tag-mini::before {
+    display: none;
+}
 a.ui-tag-button,
 a.ui-tag-button:visited {
-  background-color: var(--white);
-  color: var(--text);
+    background-color: var(--white);
+    color: var(--text);
+    border-radius: 2em;
+    word-break: initial;
+    hyphens: auto;
+    line-height: 1.9em;
 }
 .ui-tag-button:hover,
 a.ui-tag-button:visited:hover {
-  background-color: var(--white);
-  border-color: var(--primary);
+    background-color: var(--white);
+    /* color: var(--primary); */
+    border-color: var(--primary);
 }
+
+.ui-tag-button .ui-tag-counter {
+    background-color: var(--white);
+    font-weight: 400;
+    font-size: 0.75em;
+    color: var(--grey-500);
+    border: none;
+}
+
+.ui-tag-cloud:has(.ui-tag-cloud-person-roles-item) {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 60em;
+}
+.ui-tag-cloud-person-roles-item {
+    display: flex !important;
+    flex-wrap: nowrap;
+    padding-right: .5em;
+}
+.ui-tag-cloud-person-roles-item .ui-role-tags {
+    padding: 0;
+}
+.ui-tag-cloud-person-roles-item .ui-role-tags .ui-tag-button {
+    margin-left: -2px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.ui-tag-cloud-person-roles-item .ui-tag-button:has(+ .ui-role-tags) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+/* Zweifache Rolle */
+.ui-tag-cloud-person-roles-item .ui-tag-button:has(+ .ui-tag-button) {
+    border-radius: 0;
+}
+/* Doppelpunkt entfernen */
+.ui-role-tags span {
+    display: none;
+}
+
+
+
 
 
 
 
 /* THUMBNAILS */
+/* ------------------------------------------------------------ */
 /* basic styles */
 .ui-thumbnail-image-wrapper,
 .ui-featured-entry,
 .ui-level-image-wrapper {
-  overflow: hidden;
-  padding: 0;
-  background-color: var(--white);
-  border-radius: var(--soft-corners);
+    overflow: hidden;
+    padding: 0;
+    background-color: var(--white);
 }
 /* media entries */
 /* position image at top of square */
 .media-entry .ui-thumbnail-image-holder {
-  height: auto !important;
-  width: auto !important;
-  top: 0 !important;
+    height: auto !important;
+    width: auto !important;
+    top: 0 !important;
 }
 /* make image fill the whole square */
 .media-entry .ui-thumbnail-image {
-  max-width: initial !important;
-  max-height: initial !important;
-  object-fit: cover;
-  width: 130px;
-  height: 130px;
+    max-width: initial !important;
+    max-height: initial !important;
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
 }
+
 /* sets */
 /* make them round */
 .media-set .ui-thumbnail-image-wrapper,
 .ui-level-image-wrapper {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 /* make image fill the whole circle */
 .media-set .ui-thumbnail-image {
-  max-width: initial !important;
-  max-height: initial !important;
-  object-fit: cover;
-  width: 130px;
-  height: 130px;
+    max-width: initial !important;
+    max-height: initial !important;
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
 }
+
+/* orange border on hover */
+.ui-resources .ui-thumbnail-image-wrapper:hover,
+.ui-resources .ui-level-image-wrapper:hover,
+.ui-resources-page-items .ui-resource:hover .ui-tile:after,
+.ui-resources-page-items .ui-resource:hover .ui-tile__foot {
+    border-color: var(--primary);
+}
+
+/* no transition for overly-information (Kachel-Ansicht) */
+.ui-tile * {
+    transition: none !important;
+}
+
+
+
 /* ICONS */
+/* ------------------------------------------------------------ */
 .ui-thumbnail-privacy {
-  border: none;
-  border-radius: 50%;
-  left: .7em !important;
-  top: .7em !important;
+    border: none;
+    border-radius: 50%;
+    left: .7em !important;
+    top: .7em !important;
 }
 .ui-thumbnail-meta-extension {
-  border: none !important;
+    border: none !important;
 }
 /* Subtitles Accessibility */
 .ui-thumbnail-meta-subtitle {
-  color: var(--text);
-  line-height: 1.2em;
-  height: 28px !important;
-  margin-top: .25em;
+    color: var(--text);
+    line-height: 1.2em;
+    height: 28px !important;
+    margin-top: .25em;
 }
 
 
+
+/* ERKUNDEN-SEITE */
+/* ------------------------------------------------------------ */
+#catalog span a:hover {
+    color: var(--primary) !important;
+}
 
 
 
 /* MY Sidebar*/
-
+/* ------------------------------------------------------------ */
 .ui-side-navigation-item a {
-  line-height: 1.2em;
-  margin-bottom: .75em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+    padding-bottom: 0;
+}
+.ui-side-navigation-item {
+    border-bottom: 1px solid var(--grey-200);
 }
 
 
 
 /* SUCHE */
-
-#app[data-view="search"] .ui-container.midtone::before {
-  display: block;
-  width: 400px;
-  margin: 0 auto;
-  margin-bottom: -10em;
-  padding-top: 2em;
-  content: "Einfache Suche über Madek-Textfelder. Keywords und Personen werden NICHT durchsucht, Operatoren (Plus, Anführungszeichen usw.) werden nicht unterstützt. \A\A Wir empfehlen eine sehr allgemeine Suche (ggf. Suchfeld leer lassen). Die Ergebnisse können dann auf der nächsten Seite mit Filtern detailliert eingeschränkt werden.";
-  white-space: pre-wrap;
+/* ------------------------------------------------------------ */
+#app[data-view="search"] .ui-search-form {
+    margin: 2em auto;
+    padding: 0;
+    width: 40%;
+    border: none;
+    background: transparent;
 }
-#app[data-view="search"] .ui-container.midtone::after {
-  display: block;
-  width: 400px;
-  margin: 0 auto;
-  margin-top: -10em;
-  padding-bottom: 2em;
-  content: "Simple search over Madek text fields. Keywords and persons will NOT be searched, operators (plus, quotes, etc.) are not supported. \A\A We recommend a very general search (or even leaving the search field empty). Results can be narrowed down in detail with filters on the next page.";
-  white-space: pre-wrap;
+#app[data-view="search"] .ui-search {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+#app[data-view="search"] input#search {
+    margin: 0;
+}
+#app[data-view="search"] .ui-search-button {
+    position: relative;
+    top: initial;
+    right: initial;
+    height: 36px;
+    padding: 0 1.5em;
+    overflow: initial;
 }
 #app[data-view="search"] .ui-search div {
-  display: none;
+    display: none;
 }
 
+/*
+#app[data-view="search"] .ui-container.midtone::before {
+display: block;
+width: 400px;
+margin: 0 auto;
+margin-bottom: -10em;
+padding-top: 2em;
+content: "Einfache Suche über Madek-Textfelder. Keywords und Personen werden NICHT durchsucht, Operatoren (Plus, Anführungszeichen usw.) werden nicht unterstützt. \A\A Wir empfehlen eine sehr allgemeine Suche (ggf. Suchfeld leer lassen). Die Ergebnisse können dann auf der nächsten Seite mit Filtern detailliert eingeschränkt werden.";
+white-space: pre-wrap;
+}
+#app[data-view="search"] .ui-container.midtone::after {
+display: block;
+width: 400px;
+margin: 0 auto;
+margin-top: -10em;
+padding-bottom: 2em;
+content: "Simple search over Madek text fields. Keywords and persons will NOT be searched, operators (plus, quotes, etc.) are not supported. \A\A We recommend a very general search (or even leaving the search field empty). Results can be narrowed down in detail with filters on the next page.";
+white-space: pre-wrap;
+}
+*/
+
+/* FILTER*/
+/* ------------------------------------------------------------ */
+.ui-accordion-toggle.open {
+    color: var(--primary);
+}
+.ui-side-filter-list .active a,
+.ui-side-filter-list .active a:hover {
+    color: var(--primary) !important;
+}
+.ui-side-filter-list a:hover {
+    color: var(--text) !important;
+}
+
+
+/* CONTEXTS */
+/* ------------------------------------------------------------ */
+.ui-summary-label {
+    line-height: initial;
+    padding-top: .75em;
+}
+
+
+
+/* EDIT METADATA */
+/* ------------------------------------------------------------ */
+#app[data-action="edit_meta_data_by_context"] ul.ui-tabs li:last-of-type {
+    display: none;
+}
+select.block {
+    border-color: var(--madek-border-color);
+    color: #8c8c8c;
+}
 
 
 
 /* IMPORT MEDIA */
+/* ------------------------------------------------------------ */
 #app[data-action="new"] .ui-form-group h3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #app[data-action="new"] .ui-form-group h3 label {
-  display: block;
-  width: fit-content;
-  margin-top: 1em;
+    display: block;
+    width: fit-content;
+    margin-top: 1em;
 }
 
 
 
 /* make textareas resizable */
+/* ------------------------------------------------------------ */
 textarea {
-  resize: vertical;
+    resize: vertical;
 }
+
+
+
+
+/* ALERTS */
+/* ------------------------------------------------------------ */
+#app-alerts.ui-alerts .ui-alert {
+    margin: 0 auto;
+    margin: 0 2em;
+    border-radius: 2em;
+    text-transform: uppercase;
+}
+.ui-alert.success {
+    background-color: var(--alert-success);
+    color: var(--white); 
+}
+
 
 
 
 /* ADMIN MODE */
+/* ------------------------------------------------------------ */
 body[data-uberadmin] {
-  border: none;
+    border: none;
 }
 body[data-uberadmin] #app {
-  border: 1.5em solid rgb(219, 49, 49);
+    border: .75em solid var(--alert-help);
 }
 
 
 
 /* SECTION LABELS */
-/* currently disabled */
+/* ------------------------------------------------------------ */
 .section-labels {
-  display: none;
+    /* display: none; */
 }
+
+
+
+
+
+/* statische dev-seiten only */
+/* ============================================================ */
+/* .ui-header-user {
+    color: var(--text);
+    border: 1px solid var(--madek-border-color);
+    padding: 3px 10px;
+    margin-right: 8px;
+}
+.ui-header-user::after {
+    content: "▼";
+    font-size: 8px;
+    padding-left: 10px;
+} 
+.ui-header-user:has(.button-tertiary)::after {
+    display: none;
+} */
